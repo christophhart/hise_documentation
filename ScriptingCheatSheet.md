@@ -1,5 +1,5 @@
 #Scripting API Cheat Sheet
-Test tag: 0.9
+Latest version
 
 ## ChildSynth
 
