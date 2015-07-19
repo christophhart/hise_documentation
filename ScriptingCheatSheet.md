@@ -1,6 +1,3 @@
-#Scripting API Cheat Sheet
-Latest version
-
 ## ChildSynth
 
 ```javascript
