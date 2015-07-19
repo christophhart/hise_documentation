@@ -1,11 +1,8 @@
 # HISE Manual
 
-## The Processor System
+This is a in depth overview of the backend application of **HISE**.
 
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
+## The Processor System
 
 Every module in HISE that processes MIDI or Audio (from now on called `Processor` is organized in a <a href="https://en.wikipedia.org/wiki/Tree_structure">tree structure</a> (similar to the file system or XML).
 
