@@ -2,9 +2,19 @@
 
 This is a list of all available Processors in **HISE**. This page is designed as reference guide. For a detailed explanation on how to use them, go to the [Backend Manual](index.php).
 
+Every Processor has a set of parameters, which will be listed in a table.
+
+ID | Parameter  | Range | Description
+-- | ---------  | ------- | ----     
+0  | Parameter Name	| 0.0 ... **0.5 (default value is bold)** ... 1.0  | Description of the parameter.
+
+> You can use the ID to change the parameter with a ScriptProcessor using `Processor.setAttribute(ID, value)`. If you do so, you are not limited to the listed range, but be careful or you crash the application when used with wild values.
+
 ## Sound Generators
 
 All Sound Generators share a few parameters:
+
+#### Parameters
 
 ID | Parameter  | Default | Description
 -- | ---------  | ------- | ----     
@@ -12,6 +22,13 @@ ID | Parameter  | Default | Description
 1  | Balance	| 0 (C)	  | The stereo balance of the Sound Generator.
 2  | Voice Amount | 64 | This is the amount of voices that can be played simultaneously. If all voice slots are used and a new note is triggered, it will kill the oldest note.
 3  | KillTime   | 20 ms   | If a note must be killed, this is the fade time between the old and the new voice. If you set this to 0 ms, you will hear a click noise.
+
+#### Internal Modulation Slots
+
+Modulated Parameter | Allowed Modulator Type
+------------------- | ----------------------
+Gain | All Modulators (Except Container & Synthesizer Groups)
+Pitch | All Modulators (Except Container & Synthesizer Groups)
 
 ### Sine Wave Generator
 <p class="processor">![](images/listSine.PNG)</p>
@@ -48,13 +65,40 @@ The sine and triangle waves are computed cheaply and naive, and the Saw and the 
 
 > Pan and detune the oscillators for that thick **Detuned Stereo Sound**
 
-#### Hallo
+#### Parameters
+ 
+ID | Name | Range | Description 
+ -- | ---- |  ----- | -----------
+4 | Octave Transpose 1  | -5 ... **0** ... 5 | The octave transpose factor for the first Oscillator.
+5 | Waveform 1 | Sine, Triangle, **Saw**, Square, Noise | the waveform type
+6 | Detune 1 | -100ct ... **0.0ct** ... 100ct | The pitch detune of the first oscillator in cent (100 cent = 1 semitone).
+7 | Pan 1 | -100 ... **0** ... 100 | the stereo panning of the first oscillator
+8 | Octave Transpose 2 | -5 ... **0** ... 5 | the octave transpose factor for the first oscillator
+9 | Waveform 2 | Sine, Triangle, **Saw**, Square, Noise | the waveform type
+10 | Detune 2 | -100ct ... **0ct** ... 100ct | the pitch detune of the first oscillator in cent (100 cent = 1 semitone)
+11 | Pan 2 | -100 ... **0** ... 100 | the stereo panning of the first oscillator
+12 | Mix | 0 ... **50%** ... 100% | the balance between the two oscillators (0% is only the left oscillator, while 100% is the right oscillator). This can be modulated using the Mix Modulation chain (if there are some Modulators, this control will be disabled.
+
+
+#### Internal Modulation Slots
+
+Modulated Parameter | Allowed Modulator Type
+------------------- | ----------------------
+Oscillator Mix | All Modulators (polyphonic)
 
 ### Noise Generator
 
+A simple white noise generator. It has no additional parameters (it simply generated white noise).
+
+> White Noise is loud, so be careful!
+
 ### Wavetable Synthesiser
 
+This is a wavetable synthesiser with a hardcoded clarinet wavetable. (only for internal use).
+
 ### Audio Loop Player
+
+This is a basic audio file player which supports looping & pitch tracking.
 
 ### Sampler
 
