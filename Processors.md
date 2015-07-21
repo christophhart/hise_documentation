@@ -16,12 +16,12 @@ All Sound Generators share a few parameters:
 
 #### Parameters
 
-ID | Parameter  | Default | Description
+ID | Parameter  | Range | Description
 -- | ---------  | ------- | ----     
-0  | Volume		| -12 dB  | The volume of the Sound Generator.
-1  | Balance	| 0 (C)	  | The stereo balance of the Sound Generator.
-2  | Voice Amount | 64 | This is the amount of voices that can be played simultaneously. If all voice slots are used and a new note is triggered, it will kill the oldest note.
-3  | KillTime   | 20 ms   | If a note must be killed, this is the fade time between the old and the new voice. If you set this to 0 ms, you will hear a click noise.
+0  | Volume		| -inf ... **-12dB** ... 0dB  | The volume of the Sound Generator.
+1  | Balance	| -100L ... **(C)** ... 100R	  | The stereo balance of the Sound Generator.
+2  | Voice Amount | 0 ... **64** | This is the amount of voices that can be played simultaneously. If all voice slots are used and a new note is triggered, it will kill the oldest note.
+3  | KillTime   | 0 ... **20 ms** ... 20s   | If a note must be killed, this is the fade time between the old and the new voice. If you set this to 0 ms, you will hear a click noise.
 
 #### Internal Modulation Slots
 
@@ -102,6 +102,16 @@ This is a basic audio file player which supports looping & pitch tracking.
 
 ### Sampler
 
+
+
+#### Internal Modulation Slots
+
+Modulated Parameter | Allowed Modulator Type
+------------------- | ----------------------
+Sample Start Modulation | Voice Start Modulators
+
+> The Sample Start Modulation checks the maximal range of the sample start modulation for each sample, so in order to make this work, you have to define a Sample Start Modulation area for each sample (this loads the area into memory, this is why it isn't enabled by default.)
+
 ### Container
 
 ### Synthesiser Group
@@ -109,6 +119,20 @@ This is a basic audio file player which supports looping & pitch tracking.
 ## Midi Processors
 
 ## Voice Start Modulators
+
+### Velocity Modulator
+<p class="processor">![](images/listVelocity.PNG)</p>
+
+This modulator uses the MIDI velocity to calculate its output.
+
+#### Parameters
+
+ID | Name | Range | Description 
+ -- | ---- |  ----- | -----------
+0 | Inverted | On, **Off** | if `true`, then the modulator works inverted, so that high velocity values are damped.
+1 | UseTable | On, **Off** | if `true` then a look up table is used to calculate the value. You can see the input velocity in the Table.
+
+> It uses a linear range, so you might want to change the table (like the screenshot) to a more exponential one.
 
 ## Time Variant Modulators
 
