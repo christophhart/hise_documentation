@@ -9,7 +9,7 @@
 
 <div style="display: table; margin: 0 auto; text-align: center;">
 <div style="display:inline-table; margin-right: 60px;">
-<a href="asc">
+<a href="download/0_95/HISE%200.95%20beta%20Installer.exe">
 <div class="hover">
 <img class="bottom" src="images/download_win_hover.png" />
 <img class="top" src="images/download_win.png" />
@@ -17,7 +17,7 @@
 Download Windows  Installer <br><small>(32MB Download)</small></a></div><div style=display:inline-table;>
 
 
-<a href="asc">
+<a href="download/0_95/HISE%200.95%20beta.dmg">
 <div class="hover">
 <img class="bottom" src="images/download_osx_hover.png" />
 <img class="top" src="images/download_osx.png" />
