@@ -23,7 +23,7 @@ The sampler has no further organization logic - robin groups are normally proces
 
 The sampler interface consists of four parts, which can be shown by clicking on the respective button below the Modulator Chain button bar:
 
-<p class="processor">![](images/listSamplerButtons.png)</p>
+<p class="processor">![](images/listSamplerButtons.PNG)</p>
 
 The sampler uses a global sample selection. That means you can select multiple samples in any panel, and they will be updated in the other panels too.
 
@@ -33,7 +33,7 @@ The sampler uses a global sample selection. That means you can select multiple s
 
 You can use this panel to change the behaviour of the sampler and its global properties:
 
-<p class="processor">![](images/listSamplerSettings.png)</p>
+<p class="processor">![](images/listSamplerSettings.PNG)</p>
 
 ID | Name | Range | Description 
  -- | ---- |  ----- | -----------
@@ -48,7 +48,7 @@ ID | Name | Range | Description
 > You can see the memory usage and the disk performance of this sampler instance on the left. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the streaming buffers (which increases the disk performance) or reduce the voice amount.
 
 ## Sample Editor
-<p class="processor">![](images/listSampleEditor.png)</p>
+<p class="processor">![](images/listSampleEditor.PNG)</p>
 
 The Sample Editor has three panels: A toolbar with some handy actions, a audio waveform which displays the selected sound and some Value Setters to change the *audio-related* properties of the selected samples.
 
@@ -58,14 +58,14 @@ The Sample Editor has three panels: A toolbar with some handy actions, a audio w
 
 Icon | Action | Description
 ---- | ------ | -----------
-![](images/se_zi.png) | Zoom In | Zooms in the audio waveform horizontally.
-![](images/se_zo.png) | ZoomOut | Zooms out the audio waveform horizontally.
-![](images/se_sm.png) | SelectWithMidi | If enabled, the most recently triggered sample will be selected for editing.
-![](images/se_ssa.png) | Enable Sample Start Area Dragging | If enabled, the <span style="color: #5500aa">**Sample Start Area**</span> can be dragged around
-![](images/se_lsa.png) | Enable Loop Area Dragging| If enabled, the <span style="color: #006600">**Loop Area**</span> can be dragged around
-![](images/se_pa.png) | Enable Play Area Dragging| If enabled, the <span style="color: #777777">**Playback Area**</span> can be dragged around
-![](images/se_ns.png) | NormalizeVolume | This normalizes the volume to 0dB.
-![](images/se_le.png) | LoopEnabled | This toggles the loop playback.
+![](images/se_zi.PNG) | Zoom In | Zooms in the audio waveform horizontally.
+![](images/se_zo.PNG) | ZoomOut | Zooms out the audio waveform horizontally.
+![](images/se_sm.PNG) | SelectWithMidi | If enabled, the most recently triggered sample will be selected for editing.
+![](images/se_ssa.PNG) | Enable Sample Start Area Dragging | If enabled, the <span style="color: #5500aa">**Sample Start Area**</span> can be dragged around
+![](images/se_lsa.PNG) | Enable Loop Area Dragging| If enabled, the <span style="color: #006600">**Loop Area**</span> can be dragged around
+![](images/se_pa.PNG) | Enable Play Area Dragging| If enabled, the <span style="color: #777777">**Playback Area**</span> can be dragged around
+![](images/se_ns.PNG) | NormalizeVolume | This normalizes the volume to 0dB.
+![](images/se_le.PNG) | LoopEnabled | This toggles the loop playback.
 
 #### The sample waveform
 
