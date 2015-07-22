@@ -1,6 +1,6 @@
 # HISE Manual
 
-This is a in depth overview of the backend application of **HISE**.
+This is an in depth overview of the backend application of **HISE**.
 
 ## The Processor System
 
@@ -131,7 +131,7 @@ The header bar has some common elements for all processor types and some special
  ![](images/header_debug.png)| *Debug Button* | Midi Processors and Modulators can print useful information to the console if this button is enabled
  ![](images/header_plot.png)| *Plot Button* | You can see the modulation curve for Modulators in the Plotter if this button is enabled
  ![](images/header_delete.png)| *Add Button* | If this Processor can have other Processors as child Processors, this button opens a popup menu
- ![](images/header_add.png)| *Delete button* | This deletes the Processor. Some Processors `Ìnternal Chains` and the `Root Container` don't have this button.
+ ![](images/header_add.png)| *Delete button* | This deletes the Processor. Some Processors `Cnternal Chains` and the `Root Container` don't have this button.
 
 ### The Chain Button Bar
 
