@@ -13,5 +13,5 @@
 - fixed display of playback ruler for sampler
 - minor fixes
 
-[Download Windows Installer](download/0_95/HISE%200.95%20beta%20Installer.exe)
+[Download Windows Installer](download/0_95/HISE%200.95%20beta%20Installer.exe)  
 [Download OSX DMG Image](download/0_95/HISE%200.95%20beta.dmg)
