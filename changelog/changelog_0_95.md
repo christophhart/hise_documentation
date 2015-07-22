@@ -11,6 +11,8 @@
 - added resample support for Looper & AudioFileEnvelope
 - added saving of Filename-Import configuration (as XML)
 - fixed display of playback ruler for sampler
+- added 'About Page' with version number
+- creating a new Processor unfolds the parent
 - minor fixes
 
 [Download Windows Installer](download/0_95/HISE%200.95%20beta%20Installer.exe)  
