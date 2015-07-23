@@ -40,7 +40,7 @@ ID | Name | Range | Description
 4 | Preload Size  | -1 ... **11000** ... | The preload size in samples for all samples that are loaded into the sampler. If the preload size is `-1`, then the whole sample will be loaded into memory.
 5 | Buffer Size | 0 ... **4096** ... | The buffer size of the streaming buffers in samples. The sampler uses two buffers **per voice** which are swapped (one is used for reading from disk and one is used to supply the sampler with the audio data)
 6 | Voice Amount | 0 ... **64** | The amount of voices that the sampler can play. This is not the same as Voice Limit (which is a property of all Sound Generators).
-7 | RR Groups | **0** ... x | The number of groups that are cycled in a round robin manier.
+7 | RR Groups | **0** ... x | The number of groups that are cycled in a round robin manier. **Warning: If you set this value, all samples with a bigger group index loose their group information (it truncates all group numbers to this value)**
 8 | Retrigger Mode | **Kill Note**, Note off, Do nothing | determines how the sampler treats repeated notes.
 9 | Pitch Tracking | **On**, Off | Enables pitch ratio modification for different notes than the root note. Disable this for drum samples.
 10 | OneShot | On, **Off** | plays the whole sample (ignores the note off) if set to enabled.

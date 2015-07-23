@@ -1,3 +1,5 @@
+#Scripting API Cheat Sheet
+
 ## ChildSynth
 
 ```javascript
@@ -974,7 +976,7 @@ Adds the knob / button to a macro controller (from 0 to 7).
  setEditable(bool shouldBeEditable)
 ```
 
-makes a label `editable`.
+makes a label `editable`. > This is a test. 
 
 ---
 
@@ -1353,6 +1355,14 @@ Sets an attribute of the parent synth.
 ---
 
 ```javascript
+float  getAttribute(int attributeIndex)
+```
+
+Returns the attribute of the parent synth. 
+
+---
+
+```javascript
  stopTimer()
 ```
 
@@ -1397,6 +1407,22 @@ Returns the number of child synths. Works with SynthGroups and SynthChains.
 ```
 
 Sets a ModulatorAttribute.
+
+---
+
+```javascript
+ enableRoundRobin(bool shouldUseRoundRobin)
+```
+
+Enables / Disables the automatic round robin group start logic (works only on samplers). 
+
+---
+
+```javascript
+ setActiveGroup(int activeGroupIndex)
+```
+
+Enables the group with the given index (one-based). Works only with samplers and `disableRoundRobin(false)`. 
 
 ---
 

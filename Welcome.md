@@ -5,7 +5,7 @@
 
 #### HISE is a cross-platform *open source audio application* for building virtual instruments.
 
-It emphasizes on sampling (This is what the **S** in **HISE** stands for), but  includes some basic synthesis features for making hybrid instruments. You can create patches, design a custom interface, compile them as plugin and even extend **HISE** with addition modules if you know C++. 
+It emphasizes on sampling, but includes some basic synthesis features for making hybrid instruments. You can create patches, design a custom interface, compile them as plugin and even extend **HISE** with addition modules if you know C++. 
 
 It is available as Standalone application or as VST / AU plugin and can be loaded into other host applications (DAWs).
 
@@ -29,7 +29,7 @@ Two years ago I hit a brickwall when designing my virtual clarinet with the exis
 <p>
 Combine multiple sound generators which are capable of the most basic types of synthesis:  
 additive synthesis, subtractive synthesis, FM synthesis, wavetable synthesis  
-<small>[more information...](Processors.php#sound_generators)</small></p>
+<small>[more information...](ProcessorReference.php#sound_generators)</small></p>
 </div>
 
 <div id="f3">
@@ -42,7 +42,7 @@ additive synthesis, subtractive synthesis, FM synthesis, wavetable synthesis
 <h4>Versatile modulator system</h4>
 <p>
 Use **Modulators** like LFOs or Envelopes to change dedicated parameters (Volume, Pitch, etc.) of any Sound Generators. You can even use Modulators to modulate the parameter of another Modulator that modulates another Modulator...  
-<small>[more information...](Javascript.php)</small>
+<small>[more information...](ProcessorReference.php#voice_start_modulators)</small>
 </p>
 </div>
 
@@ -50,7 +50,7 @@ Use **Modulators** like LFOs or Envelopes to change dedicated parameters (Volume
 <h4>Built in Audio Effects</h4>
 <p>
 Add some audio effects like filters with **polyphonic modulation** of their frequency, parametriq EQ with unlimited bands and FFT graph display, zero latency convolution reverb and many other effects.  
-<small>[more information...](Javascript.php)</small>
+<small>[more information...](ProcessorReference.php#polyphonic_effects)</small>
 </p>
 </div>
 
@@ -59,7 +59,7 @@ Add some audio effects like filters with **polyphonic modulation** of their freq
 
 <p>
 Use the internal **Macro Control System** to expose only some of your internal parameters to the end user and hide the complexity of your patch. Use the WYSIWG editor to build a user interface that controls these parameters.  
-<small>[more information...](Javascript.php)</small>
+<small>[more information...](Manual.php#macro_control_system)</small>
 </p>
 </div>
 
@@ -69,10 +69,10 @@ Use the internal **Macro Control System** to expose only some of your internal p
 
 #### Workflow Helpers
 
-- Debugging tools like on screen console and data plotter for modulators. <small>[more information...](Javascript.php)</small>
+- Debugging tools like on screen console and data plotter for modulators. <small>[more information...](Manual.php#development_tools)</small>
 - Autocomplete script editor that contains the complete Scripting API and declared variables. <small>[more information...](Javascript.php)</small>
 - WYSIWYG editor for designing script interfaces <small>[more information...](Javascript.php)</small>
-- Storable "View Configurations" to allow customizable workflow for bigger patches <small>[more information...](Javascript.php)</small>
+- Storable "View Configurations" to allow customizable workflow for bigger patches <small>[more information...](Manual.php#restorable_view_configurations)</small>
 - Complete Undo / Redo for all sampler editing
 
 ---
