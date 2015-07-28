@@ -19,7 +19,7 @@ Every sample is loaded in an object called **Samplemap**, which contains a arbit
 
 The sampler has no further organization logic - robin groups are normally processed the same way, so it makes sense to put them all into one sound generator. For everything else (eg. release trigger), use another **Sampler** with a **Midi Processor** that provides this functionality.
 
-### Working with the sampler
+## Working with the sampler
 
 The sampler interface consists of four parts, which can be shown by clicking on the respective button below the Modulator Chain button bar:
 
@@ -29,7 +29,7 @@ The sampler uses a global sample selection. That means you can select multiple s
 
 > Also every editing operation has full Undo / Redo support. Simply use <kbd>Strg+Z</kbd> / <kbd>Strg+Y</kbd> (the sampler needs to have keyboard focus for this).
 
-## Sampler Settings
+### Sampler Settings
 
 You can use this panel to change the behaviour of the sampler and its global properties:
 
@@ -47,7 +47,7 @@ ID | Name | Range | Description
 
 > You can see the memory usage and the disk performance of this sampler instance on the left. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the streaming buffers (which increases the disk performance) or reduce the voice amount.
 
-## Sample Editor
+### Sample Editor
 <p class="processor">![](images/listSampleEditor.PNG)</p>
 
 The Sample Editor has three panels: A toolbar with some handy actions, a audio waveform which displays the selected sound and some Value Setters to change the *audio-related* properties of the selected samples.
@@ -92,7 +92,7 @@ LoopEnabled | On ... Off | Enable loop playback
 
 > If you crossfade the loop section, the memory size will increase because it calculates the crossfade area and saves it into a internal buffer.
 
-## Samplemap Editor
+### Samplemap Editor
 
 Name | Description 
 ---- | -----------
@@ -102,6 +102,10 @@ KeyLow | the lowest mapped key.
 VeloLow | the lowest mapped velocity.
 VeloHigh | the highest mapped velocity.
 RR Group | the group index for round robin / random group start behaviour
+
+### Sample Table
+
+The sample table is a list of all loaded samples and can be sorted. There is also a search bar with a full [RegEx parser](https://en.wikipedia.org/wiki/Regular_expression)
 
 ## Importing files
 

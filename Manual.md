@@ -153,14 +153,12 @@ The body shows the actual interface to the `Processor`.
 ### Buttons
 ![](images/button.png)
 
-The most basic element allows switching between two states. The LED will light if it is on.
+The most basic element allows switching between two states. The LED will light if it is on. If a button has the keyboard focus (if you click on it, it gets the keyboard focus), you can toggle the state with the return key.
 
 ### Combo Boxes
 ![](images/Combobox.png)
 
-A combobox opens a popup menu that contains multiple options that can be selected.
-
-> If a combobox has the keyboard focus, you can also use the up / down arrow keys to switch between the selected option.
+A combobox opens a popup menu that contains multiple options that can be selected. If a combobox has the keyboard focus, you can also use the up / down arrow keys to switch between the selected option.
 
 ### Sliders
 ![](images/slider.png)
