@@ -2,7 +2,7 @@
 
 This tutorial is a modified version of the document [A Reintroduction to Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript), published under the [CC 2.5 Licence](http://creativecommons.org/licenses/by-sa/2.5/)
 
-I removed everything that is not useful for our purpose and added some notes if there is something special you have to know when using Javascript in **HISE**.
+I removed everything that isn't useful for our purpose and added some notes if there is something special you have to know when using Javascript in **HISE**.
 
 Because the Javascript Engine of **HISE** is not fully standard compliant, I had to change some examples to make them work in the ScriptProcessor.
 
