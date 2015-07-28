@@ -121,7 +121,7 @@ And if you really hate this licence system (because you want to keep the sale nu
 
 The licence fee for commercial developers allows me to keep on developing new features and maintaining the code base. It will not change anything regarding support - it is not a premium vs. free model. If you discover a bug or need a certain feature, drop me a email or file an issue on GitHub and I try to fix / implement it.
 
-### Compile a plugin based on HISE
+### Build your own VST / AU plugin with HISE
 
 **HISE** is licenced under the [GNU GPL Licence Version 3](http://www.gnu.org/licenses/gpl-3.0.en.html). This prevents using **HISE** for closed-source software without publishing the complete source code. However, there is a additional licence for commercial (closed-source) usage: 
 

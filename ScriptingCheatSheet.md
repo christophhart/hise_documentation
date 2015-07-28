@@ -1,28 +1,4 @@
-## ChildSynth
-
-```javascript
-bool  exists()
-```
-
-Checks if the Object exists and prints a error message on the console if not. 
-
----
-
-```javascript
- setAttribute(int parameterIndex, float newValue)
-```
-
-Changes one of the Parameter. Look in the manual for the index numbers of each effect. 
-
----
-
-```javascript
- setBypassed(bool shouldBeBypassed)
-```
-
-Bypasses the effect. 
-
----
+#Scripting API Cheat Sheet
 
 ## Console
 
@@ -557,6 +533,40 @@ Shows a informative text on mouse hover.
 ```
 
 Adds the knob / button to a macro controller (from 0 to 7). 
+
+---
+
+## PresetStorage
+
+```javascript
+ saveCurrentState( String presetName)
+```
+
+Saves the current state as preset with the given name. 
+
+---
+
+```javascript
+ restoreState( String presetName)
+```
+
+Restores the state with the given name. 
+
+---
+
+```javascript
+ addControl( String controlName)
+```
+
+Restores the value of the control when recalling presets. 
+
+---
+
+```javascript
+ removeControl( String controlName)
+```
+
+Ignores the value of the control when recalling presets. 
 
 ---
 
@@ -1420,7 +1430,7 @@ Enables / Disables the automatic round robin group start logic (works only on sa
  setActiveGroup(int activeGroupIndex)
 ```
 
-Enables the group with the given index (one-based). Works only with samplers and `disableRoundRobin(false)`. 
+Enables the group with the given index (one-based). Works only with samplers and `enableRoundRobin(false)`. 
 
 ---
 
@@ -1485,6 +1495,14 @@ ScriptAudioSampleProcessor *  getScriptingAudioSampleProcessor( String name)
 ```
 
 Returns the child synth with the supplied name. 
+
+---
+
+```javascript
+ScriptPresetStorage *  createScriptPresetStorage( String storageName)
+```
+
+Creates a storage object. 
 
 ---
 
