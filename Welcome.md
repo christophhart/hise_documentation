@@ -109,11 +109,13 @@ Several performance tweaks and design concepts are applied to limit the CPU requ
 
 ### Selling presets made with HISE
 
-**HISE** is free software. This means you can download it for free, use it as long as you like and create instruments which can be loaded by the (upcoming) free **HISE Preset Player** software (or in **HISE** itself). However, if you start selling presets made with **HISE**, there is a **5% licence fee**.  
+**HISE** is free software. This means you can download it for free, use it as long as you like and create instruments which can be loaded by the (upcoming) free HISE Player software or in **HISE** itself. However, if you start selling presets made with **HISE**, there is a licence fee of **5% of the sale price**.  
 
-This business model is based on fairness. I will not persecute developers who won't pay this licence fee. However, it still remains a mandatory licence fee (and not a donation). If you don't want to pay this fee, then don't, but please do not cry about other people pirating your stuff...
+This business model is based on fairness and allows small developers to publish their software without huge amounts of up-front payments. I will not persecute developers who won't pay this licence fee. However, it still remains a mandatory licence fee (and not a donation). If you don't want to pay this fee, then don't, but please do not cry about other people pirating your stuff...
 
-There are no rules on how to pay this licence fee. You can pay it monthly, yearly or after the first sale peak if you got your other expenses back. Just drop me an email with your sale price and number of sales and I'll write an invoice with VAT according to your country.
+There are no rules on how to pay this licence fee. You can pay it monthly, yearly, as soon as someone clicks your "Buy" button, or after the first sale peak when you paid the violinist for playing the same note for five hours. Just drop me an email with your sale price and number of sales and I'll write an invoice with VAT according to your country.
+
+And if you really hate this licence system (because you want to keep the sale number for yourself or don't want to bother writing invoices periodically), contact me and we will work out a custom payment model.
 
 #### Support
 
@@ -132,7 +134,7 @@ If you don't know how to do this, but really need this feature, drop me an email
 
 But you can of course go deeper and build your own software upon the **HISE** engine. I tried to make the code base as extendable as possible (browse the internal API)
 
-In both cases there is a commercial licence which allows to use **HISE** as closed-source project.
+In both cases there is a commercial licence which allows to use **HISE** as closed-source project. I didn't decide how much it'll cost, but it will be in the ballbark of 500-1000€.
 
 **HISE** is built upon [JUCE](http://www.juce.com), so you will need also a valid **JUCE** licence if you want to go closed-source.
 
