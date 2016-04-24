@@ -19,12 +19,12 @@ If you do so, you are not limited to the listed range, but be careful or you cra
 
 All Sound Generators share a few parameters:
 
-Volume
-:	<small>Range: *-inf ... **-12dB** ... 0dB.*</small>  
+#### Volume
+<small>Range: *-inf ... **-12dB** ... 0dB.*</small>  
 The volume of the Sound Generator.  
 `Index: 0`
 
-Balance
+#### Balance
 :	<small>Range: *-100L ... **(C)** ... 100R*</small>  
 The stereo balance of the Sound Generator.  
 `Index: 1`
