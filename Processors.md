@@ -1,7 +1,3 @@
-# Module Reference
-
-This is a list of all available modules in **HISE**. This page is designed as reference guide. For a detailed explanation on how to use them, go to the [Backend Manual](index.php).
-
 Every module has a set of parameters, which will be listed for every module:
 
 Parameter Name
