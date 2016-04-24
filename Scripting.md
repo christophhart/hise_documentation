@@ -341,13 +341,13 @@ The other way around is pretty simple: you can change the values in the editor a
 If you select a widget that was previously edited in the Interface Designer, the script will search for the two metadata lines
 
 ```javascript
-// [JSON Widget]
+// [JSON WidgetName]
 ````
 
 and
 
 ```javascript
-// [JSON Widget]
+// [/JSON WidgetName]
 ```
 
 When it finds these tags, it will select anything between and will update the values as soon as you change any parameters. Some controllers (Colour Selectors, Sliders etc) only send an update when the mouse is released to avoid unnecessary polling. Hitting compile or selecting another widget will deselect the JSON definition.
