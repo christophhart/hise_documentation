@@ -162,9 +162,11 @@ The interface of the Script Processor consists of three elements: the callback b
 
 ### The Callback Bar
 
+![CallbackBar.png](http://hart-instruments.net/hise/blog2/images/CallbackBar.png)
+
 Although the script is saved as one file, the Script Processor divides the script into multiple callback snippets which are shown seperately. This improves readability and the workflow because you don't need to scroll around in big scripts to find the code line you want to change.
 
-> You can jump around the tabs using `Ctrl + Shift + 1-6`.
+> You can jump around the tabs using `Ctrl + Shift + 1-6` or `F2`(left) and `F3`(right)
 
 It has the same appearance as the chain bar of a module with internal chains and shares some of its features:
 
@@ -173,9 +175,13 @@ It has the same appearance as the chain bar of a module with internal chains and
 
 ### The Interface Content
 
+![InterfaceContent.png](http://hart-instruments.net/hise/blog2/images/InterfaceContent.png)
+
 The interface content is an area which can be populated with widgets, images to define a user interface for the script or the whole instrument (using the API call `Synth.addToFront(true)`).
 
 ### The Editor
+
+![ScriptEditor.png](http://hart-instruments.net/hise/blog2/images/ScriptEditor.png)
 
 The editor is a standard code text editor with Javascript syntax highlighting. It also has a Autocomplete popup window which contains all variables and available API calls. Simply press `Escape` to open the popup up and select the desired item using either the arrow keys or by clicking on it.
 
