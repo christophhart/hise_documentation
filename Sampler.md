@@ -124,10 +124,10 @@ You can drag a selection of samples into the map editor and they will be mapped 
 The Sampler has a powerful filename parser which divides the filename into `Tokens` and maps them to properties of the sample zone.  
 Let's assume we have two samples with the filenames
 
-```
-Cello_stacc_RR1_D#2_mp.wav
-Cello_stacc_RR2_C3_f.wav
-``` 
+
+`Cello_stacc_RR1_D#2_mp.wav`  
+`Cello_stacc_RR2_C3_f.wav`
+
 
 Using the filename parser, we can automap the samples so that they have these properties:
 
