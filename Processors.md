@@ -1,34 +1,58 @@
-# Processor Reference
+# Module Reference
 
-This is a list of all available Processors in **HISE**. This page is designed as reference guide. For a detailed explanation on how to use them, go to the [Backend Manual](index.php).
+This is a list of all available modules in **HISE**. This page is designed as reference guide. For a detailed explanation on how to use them, go to the [Backend Manual](index.php).
 
-Every Processor has a set of parameters, which will be listed in a table.
+Every module has a set of parameters, which will be listed for every module:
 
-ID | Parameter  | Range | Description
--- | ---------  | ------- | ----     
-0  | Parameter Name	| 0.0 ... **0.5 (default value is bold)** ... 1.0  | Description of the parameter.
+Parameter Name
+:	<small>Range: *min ... **default value** ... max*</small>  
+Parameter Description  
+`Index: 2`
 
-> You can use the ID to change the parameter with a ScriptProcessor using `Processor.setAttribute(ID, value)`. If you do so, you are not limited to the listed range, but be careful or you crash the application when used with wild values.
+You can use the `Index` to change the parameter with a ScriptProcessor:
+
+```Javascript
+ModuleId.setAttribute(Index, value)
+```
+
+If you do so, you are not limited to the listed range, but be careful or you crash the application when used with wild values.
+
+> All parameters (including integer and boolean data) are internally stored as 32 bit float value for compatibility with host automation.
 
 ## Sound Generators
 
 All Sound Generators share a few parameters:
 
-#### Parameters
+Volume
+:	<small>Range: *-inf ... **-12dB** ... 0dB.*</small>  
+The volume of the Sound Generator.  
+`Index: 0`
 
-ID | Parameter  | Range | Description
--- | ---------  | ------- | ----     
-0  | Volume		| -inf ... **-12dB** ... 0dB  | The volume of the Sound Generator.
-1  | Balance	| -100L ... **(C)** ... 100R	  | The stereo balance of the Sound Generator.
-2  | Voice Amount | 0 ... **64** | This is the amount of voices that can be played simultaneously. If all voice slots are used and a new note is triggered, it will kill the oldest note.
-3  | KillTime   | 0 ... **20 ms** ... 20s   | If a note must be killed, this is the fade time between the old and the new voice. If you set this to 0 ms, you will hear a click noise.
+Balance
+:	<small>Range: *-100L ... **(C)** ... 100R*</small>  
+The stereo balance of the Sound Generator.  
+`Index: 1`
+
+Voice Amount
+:	<small>Range: *0 ... **64***</small>  
+This is the amount of voices that can be played simultaneously. If all voice slots are used and a new note is triggered, it will kill the oldest note.  
+`Index: 2`
+
+KillTime
+:	<small>*Range: 0 ... **20 ms** ... 20s*</small>  
+If a note must be killed, this is the fade time between the old and the new voice. If you set this to 0 ms, you will hear a click noise.  
+`Index: 3`
 
 #### Internal Modulation Slots
 
-Modulated Parameter | Allowed Modulator Type
-------------------- | ----------------------
-Gain | All Modulators (Except Container & Synthesizer Groups)
-Pitch | All Modulators (Except Container & Synthesizer Groups)
+<span style="color: #D9911E;">Gain Modulation</span>
+:	*Allowed Modulator Type: All Modulators (Except Container & Synthesizer Groups)*  
+Modulates the volume of each voice of the sound generator. By default, it uses linear gain scaling, so you might have to change the modulators.
+
+
+<span style="color: #628214;">Pitch</span>
+:	*Allowed Modulator Type: All Modulators (Except Container & Synthesizer Groups)*  
+Modulates the pitch of each voice from -12 semitones to +12 semitones (where modulation value `0.5` is 0 semitones.)
 
 ### Sine Wave Generator
 <p class="processor">![](images/listSine.PNG)</p>
@@ -44,16 +68,37 @@ It has two operating modes for the pitch definition:
 
 #### Parameters
 
-ID | Parameter  | Default | Description
--- | ---------- | ------- | -----------
-4  | Octave | 0  | If the mode is set to `Musical`, this defines the coarse frequency.
-5  | Semitones | 0 | If the mode is set to `Musical`, this defines the fine frequency in semitones
-6  | Use Frequency Ratio | Off | Toggles between the two modes for the pitch definition.
-7  | Coarse Ratio | 1.0 | If the mode is set to `Harmonics`, this defines the harmonic index (1 being the root frequency).
-8  | Fine Ratio | 0.0 | If the mode is set to `Harmonics`, this defines the fine frequency (as factor from 0.0 to 1.0).
-9  | Saturation | 0% | the amount of the wave shaping saturation
+Octave
+:	<small>Range: *-5 ... **0** ... 5*</small>  
+If the mode is set to `Musical`, this defines the coarse frequency.  
+`Index: 4`
 
-If you change one of the frequency parameters, the pitch will be updated at the next note on, so for realtime modulation of the pitch, use the Modulator chain `Pitch Modulation`. 
+Semitones
+:	<small>Range: *-5 ... **0** ... 5*</small>  
+If the mode is set to *Musical*, this defines the fine frequency in semitones.  
+`Index: 5`
+
+Use Frequency Ratio:
+:	<small>Range: *On ... **Off***</small>  
+Toggles between the two modes for the pitch definition.  
+`Index: 6`
+
+Coarse Ratio
+:	<small>Range: ***1** ... 12*</small>  
+If the mode is set to *Harmonics*, this defines the harmonic index (1 being the root frequency).  
+`Index: 7`
+
+Fine Ratio
+:	<small>Range: ***0.0** ... 1.0*</small>  
+If the mode is set to *Harmonics*, this defines the fine frequency (as factor).  
+`Index: 8`
+
+Saturation
+:	<small>Range: ***0%** ... 100%*</small>  
+The amount of the wave shaping saturation.  
+`Index: 9`
+
+If you change one of the frequency parameters, the pitch will be updated at the next note on, so for realtime modulation of the pitch, use the Modulator chain *Pitch Modulation*. 
 
 ### Waveform Generator
 <p class="processor">![](images/listWaveform.PNG)</p>
