@@ -269,7 +269,7 @@ The most important tool for debugging is the console. (The 'DBG' button on the r
 
 ### Live variable watching
 
-Inspect all variables and their current value by clicking on the 'DBG` button on the script processor (the panel with the '{...}` symbol should pop up and show a table with all variables. This works for every variable declared in the root namespace (= in the onInit callback) as well as for global variables. They are updated once a second and if the value changes, they will blink red to indicate the change.
+Inspect all variables and their current value by clicking on the `DBG` button on the script processor (the panel with the '{...}` symbol should pop up and show a table with all variables. This works for every variable declared in the root namespace (= in the onInit callback) as well as for global variables. They are updated once a second and if the value changes, they will blink red to indicate the change.
 
 You can of course add some console message printing code, but this is a neater way of checking if the script works as it is supposed to.
 
