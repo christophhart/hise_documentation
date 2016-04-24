@@ -265,11 +265,11 @@ Although it would be possible to write scripts in your favorite external editor 
 
 ### Console
 
-The most important tool for debugging is the console. (The 'DBG' button on the right panel). It prints out run time error exceptions (if you eg. call a non existent API method it will complain during callback execution and not during compilation time) and your custom messages using `Console.print("string")`.
+The most important tool for debugging is the console. (The `DBG` button on the right panel). It prints out run time error exceptions (if you eg. call a non existent API method it will complain during callback execution and not during compilation time) and your custom messages using `Console.print("string")`.
 
 ### Live variable watching
 
-Inspect all variables and their current value by clicking on the `DBG` button on the script processor (the panel with the '{...}` symbol should pop up and show a table with all variables. This works for every variable declared in the root namespace (= in the onInit callback) as well as for global variables. They are updated once a second and if the value changes, they will blink red to indicate the change.
+Inspect all variables and their current value by clicking on the `DBG` button on the script processor (the panel with the `{...}` symbol should pop up and show a table with all variables. This works for every variable declared in the root namespace (= in the onInit callback) as well as for global variables. They are updated once a second and if the value changes, they will blink red to indicate the change.
 
 You can of course add some console message printing code, but this is a neater way of checking if the script works as it is supposed to.
 
