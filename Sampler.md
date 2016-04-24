@@ -188,10 +188,8 @@ Now press OK and the parser tries to automap all samples to the right place.
 
 SFZ is a free file exchange format for samplers. However, **HISE** is not designed to be a SFZ sample player. The SFZ parser makes it more easy to transfer other sample formats to **HISE**. Although there are opcodes for almost any property of a sampler, I limited the supported opcodes to the following list:
 
-```
-sample, lokey, hikey, lovel, hivel, offset, end, loop_mode, loopstart, loopend, 
-tune, pitch_keycenter, volume, group_volume, pan, groupName, key
-``` 
+	sample, lokey, hikey, lovel, hivel, offset, end, loop_mode, loopstart, loopend, 
+	tune, pitch_keycenter, volume, group_volume, pan, groupName, key
 
 These are pretty much all opcodes thich relate to a **HISE** sampler property. 
 
