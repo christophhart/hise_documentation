@@ -288,11 +288,10 @@ This is a real time saver when it comes to build interfaces. You can select comp
 - File picker for external references (eg. image files)
 - Comboboxes for options (eg. Slider mode or macro control).
 
-In order to edit a component, make sure the editor panel is open (that indicates editing mode), right click a component and choose "Edit in panel". When you are done changing the properties, press `Compile` or `Apply changes` and the script will be updated.
-
-> You can also turn on the editing mode which allows you to simply click on a component to open it in the Interface Designer.
-
+In order to edit a component, make sure the editor panel is open (that indicates editing mode), right click a component and choose "Edit in panel". When you are done changing the properties, press `Compile` or `Apply changes` and the script will be updated.  
 This allows creating of rather complex interfaces without touching the actual scripting code but on the other hand have the power of scripting to embed the actual functionality.
+
+> You can also turn on the editing mode which allows you to simply click on a component to open it in the Interface Designer. Or you can double click on a widget variable in the Live Variable Watch table. This is especially useful if some widgets are masked by other widget (eg. background images), or even invisible.
 
 ### How does it work?
 
