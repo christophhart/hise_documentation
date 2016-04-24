@@ -298,9 +298,11 @@ This allows creating of rather complex interfaces without touching the actual sc
 
 For a code generation system like the Interface Designer it is crucial to keep the possibility of making manual changes to the code it generates without having to overwrite boilerplate code that will be reverted once you switch back to editing. There are systems which append the "metadata" at the end of the file and parse it at compile time (thats how eg. the Introjucer of the JUCE library works). However this leads to duplication of information (in the actual code as well as in the metadata). Also it would be pretty useless if you can't change the properties on the script level anymore, eg. reacting to callbacks and change the appearance of the interface.
 
-The Interface Designer generates a code snippet that will contain a JSON object with every property of the component and inserts it just after the component definition:
+The Interface Designer generates a code snippet that will contain a JSON object with every property of the component **that differs from its default value** and inserts it just after the component definition:
 
 ```javascript
+// All properties of a Knob / Slider
+
 // [JSON Knob]
 Content.setPropertiesFromJSON("Knob", {
   "text": "Knob",
@@ -341,7 +343,7 @@ What if you want to change one of the properties afterwards? There is another AP
 Knob.set("middlePosition", 0.2);
 ```
 
-While the JSON API call overwrites all properties, this can be used to only alter a single property. Also this is a very fast operation, so you can call it from any callback you like with almost no performance penalty.
+The JSON API call overwrites every property that is defined in its JSON parameter. However, this method can be used to only alter a single property. Also this is a very fast operation, so you can call it from any callback you like with almost no performance penalty.
 
 This example shows how to paint a panel green if the sustain pedal is pressed and red if not:
 
