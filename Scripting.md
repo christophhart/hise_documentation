@@ -49,7 +49,7 @@ By default, the timer is not running, but there are some API functions (`Synth.s
 
 Whenever you use a script defined UI element, this callback will be executed. It will contain a reference to the control and the current value as function parameters. If you set a UI control by a script, this callback won't get executed (to prevent recursive call-loops). But nothing stops you from calling this callback directly:
 
-```Javascript
+```javascript
 knob.setValue(0.5);
 onControl(knob, knob.getValue());
 ```
@@ -85,7 +85,7 @@ The `Synth` Object grants access to the sound generator internals. Depenending o
 
 #### Examples
 
-```Javascript
+```javascript
 Synth.playNote(noteNumber, velocity) // sends a note on to the sound generator and all of its children
 Synth.getNumPressedKeys() // returns the number of pressed keys.
 ```
@@ -96,7 +96,7 @@ The sampler object contains methods to access some sampler specific data. Callin
 
 #### Examples
 
-```Javascript
+```javascript
 Sampler.getNumSelectedSamplerSounds();
 ```
 
@@ -106,7 +106,7 @@ If you use one of the MIDI callbacks (`onNoteOn`, `onNoteOff` or `onController`)
 
 #### Examples:
 
-```Javascript
+```javascript
 Message.getNoteNumber() // returns the note number in note callbacks
 Message.setChannel(newChannel) // changes the channel of the midi message
 ```
@@ -115,7 +115,7 @@ Message.setChannel(newChannel) // changes the channel of the midi message
 
 The `Engine` object contains functions related to global properties (like sample rate or host tempo)
 
-```Javascript
+```javascript
 Engine.getSampleRate() // returns the current sample rate
 Engine.sendAllNotesOff() // sends a all note off (MIDI Panic) message at the next audio buffer
 ```
@@ -126,7 +126,7 @@ The `Content` object contains all methods related to interface design.
 
 #### Examples
 
-```Javascript
+```javascript
 Content.addButton("ButtonName", 0, 0) // adds a button
 Content.setHeight(250) // changes the height of the interface
 ```
@@ -137,14 +137,14 @@ The console object allows to print out any value to the console of **HISE**.
 
 #### Examples
 
-```Javascript
+```javascript
 Console.print("Hello World " + 3.4); // Prints something to the console
 ```
 ### The Globals Object
 
 The Globals object does not contain any methods but acts as preset wide value container for cross-script communication.
 
-```Javascript
+```javascript
 // In Script Processor 1
 Globals.x = 5.72; // Define this in one script
 
@@ -202,7 +202,7 @@ The usual suspects of code optimization apply also here, but two things are espe
 
 This reminds of a rather old school programming paradigm, but for a script language it is usually better to define variables up front to avoid the allocation during run time:
 
-```Javascript
+```javascript
 // Not so clever
 function onNoteOn()
 {
@@ -238,7 +238,7 @@ There are some scenarios where you don't need this accuracy. Complex interfaces 
 
 A heavy calculation on this thread does not result in audio drop outs (because it will be yielded to let the higher priority thread do its job). Instead you'll end up with a laggy interface, which is not the nicest thing but definetely the better choice compared to an audio drop out.
 
-```Javascript
+```javascript
 // You'll need a pretty decent computer to not cause a audio drop out with this code
 function onNoteOn()
 {
@@ -298,7 +298,7 @@ For a code generation system like the Interface Designer it is crucial to keep t
 
 The Interface Designer generates a code snippet that will contain a JSON object with every property of the component and inserts it just after the component definition:
 
-```Javascript
+```javascript
 // [JSON Knob]
 Content.setPropertiesFromJSON("Knob", {
   "text": "Knob",
@@ -335,7 +335,7 @@ The other way around is pretty simple: you can change the values in the editor a
  
 What if you want to change one of the properties afterwards? There is another API call which allows you to change one property at a time:
 
-```Javascript
+```javascript
 Knob.set("middlePosition", 0.2);
 ```
 
@@ -343,7 +343,7 @@ While the JSON API call overwrites all properties, this can be used to only alte
 
 This example shows how to paint a panel green if the sustain pedal is pressed and red if not:
 
-```Javascript
+```javascript
 function onController()
 {
 	if(Message.getControllerNumber() == 64)
@@ -363,7 +363,7 @@ There are some hints for ensuring correct functionality of the Interface designe
 
 This is pretty self explanatory, but make sure you give the component the same name as the variable it is assigned to. This is necessary so that the interface designer can associate the JSON string to the right component.
 
-```Javascript
+```javascript
 // Works
 bgPanel = Content.addPanel("bgPanel", 0, 0);
 
