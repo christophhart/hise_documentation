@@ -277,6 +277,8 @@ The next debugging tool is so useful it will get its own chapter:
 
 ## The Interface Designer
 
+![InterfaceDesigner.gif](http://hart-instruments.net/hise/blog2/images/InterfaceDesigner.gif)
+
 This is a real time saver when it comes to build interfaces. You can select components and edit their properties with suitable controls (eg. colour selectors for colours, sliders for numerical values). The components will get updated on the fly (without having to recompile the script). There are six property types with different controllers:
 
 - Editors for Text values (eg. Displayed Name or Value suffix)
