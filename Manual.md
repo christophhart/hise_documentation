@@ -1,10 +1,6 @@
-# HISE Manual
-
-This is an in depth overview of the backend application of **HISE**.
-
 ## The Processor System
 
-Every module in HISE that processes MIDI or Audio (from now on called `Processor` is organized in a <a href="https://en.wikipedia.org/wiki/Tree_structure">tree structure</a> (similar to the file system or XML).
+Every module in HISE that processes MIDI or Audio (from now on called *Processor* is organized in a <a href="https://en.wikipedia.org/wiki/Tree_structure">tree structure</a> (similar to the file system or XML).
 
 This allows a complex structure of parallel (and completely encapsulated) processing of multiple sound layers as well as serial processing of Processor chains.
 
@@ -12,9 +8,9 @@ There are for main Processor types that you will use in order to create
 your virtual instrument:
 
 ### Sound Generators
-![](http://hartinstruments.net/hise/images/dia_soundGenerator.png)
+![](images/dia_soundGenerator.png)
 
-`Sound Generators` take MIDI input and produce a polyphonic audio output. There are many different generators
+*Sound Generators* take MIDI input and produce a polyphonic audio output. There are many different generators
 from
 simple sine wave generators to full blown disk streaming samplers.
 Every sound generator contains slots for the other module types which
@@ -22,50 +18,64 @@ allow to build complex patches.
 
 There are also some Sound Generators which do not produce sound, but act as container for other Sound Generators:
 
-- `Container` processes all child synths independantly (think of it as folder in the file structure). 
-  There are some limitations to this sound generator (no pitch modulation, no modulators that process MIDI messages) in order to achieve this.
--`Synthesizer Group` renders its voice as sum of all child synth voices (and enabling some neat features like FM synthesis). This can be used to build eg. additive synthesis
+Container
+:	Container processes all child synths independantly (think of it as folder in the file structure).  
+There are some limitations to this sound generator (no pitch modulation, no modulators that process MIDI messages) in order to achieve this.
+
+Synthesizer Group
+:	Synthesizer Group renders its voice as sum of all child synth voices (and enabling some neat features like FM synthesis). This can be used to build eg. additive synthesis
 generators while saving CPU power (because every otherwise every harmonic sine wave would be a own synthesiser. And you can use all modulators, so can simply drop an envelope on the Synthesiser Group and
 it will be applied to all child synths.
 
 Every HISE patch starts with a container that can be filled with other sound generators. All patch settings (the interface, the macro controls, the views) are saved within the root container object.
 
 ### Midi Processors
-![](http://hartinstruments.net/hise/images/dia_midiProcessor.png)
+![](images/dia_midiProcessor.png)
 
-`Midi Processors` allow to process incoming MIDI messages and create a customized behaviour of the virtual instrument.
+*Midi Processors* allow to process incoming MIDI messages and create a customized behaviour of the virtual instrument.
 
 For the most common tasks there are some prebuilt MIDI Processors (Transposer, Channel Filter, Release Trigger), but the most interesting part here would be the ScriptProcessor, which allows you to define a customized behaviour by using JavaScript.
 
 Instead of having a global MIDI processor, each Sound Generator has their own MIDI Processor slot so you can define different behaviour for different synths - or by using the MIDI Processor slot of the parent Container define the behaviour for all child synths. This allows to keep the tasks of every MIDI Processor quite simple.
 
 ### Modulators
-![](http://hartinstruments.net/hise/images/dia_modulator.png)
+![](images/dia_modulator.png)
 
-`Modulators` create a sample accurate control signal which is used to modulate some internal parameters of sound generators (gain, playback speed, sample start). There are three types of modulators:
+*Modulators* create a sample accurate control signal which is used to modulate some internal parameters of sound generators (gain, playback speed, sample start). There are three types of modulators:
 
-- `Voice Start Modulators` (polyphonic): only calculates a value when a note is pressed
-- `Time Variant Modulators` (monophonic): calculate one time varying control signal that is applied to all voices.
-- `Envelope Modulators` (polyphonic): calculate as many time varying control signals as the processor has voices.
+Voice Start Modulators (polyphonic)
+:	Voice Start Modulators only calculate their value when a note is pressed
+
+Time Variant Modulators (monophonic)
+:	Time Variant Modulators calculate one time varying control signal that is applied to all voices.
+
+Envelope Modulators (polyphonic)
+: 	Envelope Modulators calculate as many time varying control signals as the processor has voices.
 
 
 Modulators can also have modulators to control their parameters, which creates the possibility of quite complex modulation arrangements. The level of the modulation depth is not restricted (however modulating more than three levels is just insane).
 
 ### Effects
-![](http://hartinstruments.net/hise/images/dia_effects.png)
+![](images/dia_effects.png)
 
 Effects process incoming audio and apply their effect. There are many effects, from simple filters to a convolution engine.
 Some effects contain modulation slots which allow modulation of dedicated parameters (eg. filter frequency). In order to save CPU cycles while retaining the flexibility, there are three effect types:
 
-- `Master Effects` are simply rendered over the entire audio stream (with no modulation of parameters)
-- `Monophonic Effects`are rendered over the entire audio stream and allow modulation of a parameter (thus process MIDI messages)</li>
-- `Polyphonic Effects` render each voice of the sound generator seperately. You can think of having one effect instance per voice. This allows polyphonic modulators (`Voice Start Modulators` and `Envelope Modulators` to change each voice seperately to allow eg. envelope modulation of a filter frequency.
+Master Effects
+:	Master Effects are simply rendered over the entire audio stream (with no modulation of parameters).
+
+Monophonic Effects
+
+:	Monophonic Effects are rendered over the entire audio stream and allow modulation of a parameter (thus process MIDI messages).
+
+Polyphonic Effects
+:	Polyphonic Effects render each voice of the sound generator seperately. You can think of having one effect instance per voice. This allows polyphonic modulators (*Voice Start Modulators* and *Envelope Modulators* to change each voice seperately to allow eg. envelope modulation of a filter frequency.
 
 ## Internal Chains
 
 Every sound generator has at least 4 chains as child processors:
 
-![](http://hartinstruments.net/hise/images/chains.png)
+![](images/chains.png)
 
 But there are of course Modulators which have chains for modulating one of its parameters or sound generators who have more than
 those 4 chains.
@@ -82,7 +92,7 @@ This simple example shows the tree structure of a very simple sound patch, which
 - a velocity modulator in the Gain Modulation Chain on the second sine wave generator
 - a reverb effect that is applied to both sound generators
 
-![](http://hartinstruments.net/hise/images/TreeExample.png)
+![](images/TreeExample.png)
 
 The Sine Generators are children of the root item (which is also a Sound Generator called Container). The Reverb, the Constant
 Modulator and the Velocity Modulator are not direct childs of the Sound Generator but of a subtype called "Chain" which allows serial processing of its siblings. As a matter of fact, a Container is also a "Chain", since its provides the same functionality for Sound Generators.
@@ -90,7 +100,7 @@ Modulator and the Velocity Modulator are not direct childs of the Sound Generato
 This structure is also reflected by the interface. However the (two-dimensional) tree structure had to be transformed into a
 one-dimensional order to allow a scrollable top-down interface for better workflow. This is the same patch as one-dimensionalized diagram
 
-![](http://hartinstruments.net/hise/images/TreeExampleTopDown.png)
+![](images/TreeExampleTopDown.png)
 
 > Notice how the effect chain was put before the two sine generators. This is because the internal chains are put before other sound generators to keep things tidy (although it contradicts the natural signal flow).
 
@@ -99,7 +109,7 @@ Processors are organized in a vertical top-down list with different
 indentation for the tree hierarchy (children get smaller).
 You can recognize the same structure as the diagram above. </p>
 
-![](http://hartinstruments.net/hise/images/TreeExampleScreenshot.PNG)
+![](images/TreeExampleScreenshot.PNG)
 
 ## Processor interface</h2>
 
@@ -109,29 +119,29 @@ The interfaces of every Processor share some common elements:
 - a (optional) button bar for hiding the internal chains
 - the processor body.
 
-![](http://hartinstruments.net/hise/images/processor.png)
+![](images/processor.png)
 
 ### The Processor Header
 
 The header bar of a modulator
-![](http://hartinstruments.net/hise/images/modulator_header.png)
+![](images/modulator_header.png)
 
 The header bar of a sound generator
-![](http://hartinstruments.net/hise/images/soundgenerator_header.png)
+![](images/soundgenerator_header.png)
 
 The header bar has some common elements for all processor types and some special elements for each type (from left to right):
 
  Icon | Name                     | Function  
  - | ------------- | - 
- ![](http://hartinstruments.net/hise/images/header_fold.png) | *Fold Button* 	| collapse / uncollapse the body
- ![](http://hartinstruments.net/hise/images/header_colourIcon.png) | *Processor Icon* | displays the type (or a colour selector for sound generators
- ![](http://hartinstruments.net/hise/images/header_bypass.png) | *Bypass Button* | bypasses the Processor
+ ![](images/header_fold.png) | *Fold Button* 	| collapse / uncollapse the body
+ ![](images/header_colourIcon.png) | *Processor Icon* | displays the type (or a colour selector for sound generators
+ ![](images/header_bypass.png) | *Bypass Button* | bypasses the Processor
  | *Peak meter* | `Sound Generators` have a segmented peak meter in Decibel and `Modulators` have a modulation intensity meter.
  | *Volume / Intensity Slider* | Sound Generators have a volume slider and Modulators have an Intensity slider, which defines the strength of the modulation according to this formula `output = input * INTENSITY` for modulators (nothing for effects and MIDI processors) 
- ![](http://hartinstruments.net/hise/images/header_debug.png)| *Debug Button* | Midi Processors and Modulators can print useful information to the console if this button is enabled
- ![](http://hartinstruments.net/hise/images/header_plot.png)| *Plot Button* | You can see the modulation curve for Modulators in the Plotter if this button is enabled
- ![](http://hartinstruments.net/hise/images/header_delete.png)| *Add Button* | If this Processor can have other Processors as child Processors, this button opens a popup menu
- ![](http://hartinstruments.net/hise/images/header_add.png)| *Delete button* | This deletes the Processor. Some Processors `Cnternal Chains` and the `Root Container` don't have this button.
+ ![](images/header_debug.png)| *Debug Button* | Midi Processors and Modulators can print useful information to the console if this button is enabled
+ ![](images/header_plot.png)| *Plot Button* | You can see the modulation curve for Modulators in the Plotter if this button is enabled
+ ![](images/header_delete.png)| *Add Button* | If this Processor can have other Processors as child Processors, this button opens a popup menu
+ ![](images/header_add.png)| *Delete button* | This deletes the Processor. Some Processors `Cnternal Chains` and the `Root Container` don't have this button.
 
 ### The Chain Button Bar
 
@@ -144,31 +154,31 @@ desired (the body is always the first button in the row) </p>
 
 ### The Processor Body
 
-The body shows the actual interface to the `Processor`.
+The body shows the actual interface to the *Processor*.
 
 ##Interface elements
 
 **HISE** uses a fixed set of control elements for adjusting the parameters of the sound modules. From simple toggle buttons to draggable waveform displays there is a widget for almost any purpose. Most of the controls can be used without further knowledge, but there are some hidden features, that are not eminent.
 
 ### Buttons
-![](http://hartinstruments.net/hise/images/button.png)
+![](images/button.png)
 
 The most basic element allows switching between two states. The LED will light if it is on. If a button has the keyboard focus (if you click on it, it gets the keyboard focus), you can toggle the state with the return key.
 
 ### Combo Boxes
-![](http://hartinstruments.net/hise/images/Combobox.png)
+![](images/Combobox.png)
 
 A combobox opens a popup menu that contains multiple options that can be selected. If a combobox has the keyboard focus, you can also use the up / down arrow keys to switch between the selected option.
 
 ### Sliders
-![](http://hartinstruments.net/hise/images/slider.png)
+![](images/slider.png)
 
 Sliders are used to set a parameter within a given range. You can either drag the knob to adjust the value with the mouse, or enter the value directly by clicking on the displayed value. If the knob also controls a parameter that can be modulated, the ring around the knob will be cyan and shows the actual value (the knob value multiplied by the modulation value).
 
 > If you hold CTRL while dragging, you enter a high-resolution mode which allows fine-tuning of the parameter.
 
 ### Value Setter
-![](http://hartinstruments.net/hise/images/ValueSetter.png)
+![](images/ValueSetter.png)
 
 A value setter is only used by the sampler and can change a selection of multiple samples either absolute (by entering the value
 directly) or incremental (by clicking the +/- buttons). This is useful if you want to change eg. the root note of a selection
@@ -180,7 +190,7 @@ Setter shows the range of all selected values.
 > If you right click on a Value Setter, a big ass slider will appear that also changes the values relatively (this is great for adjusting the sample start) 
 
 ### Table
-![](http://hartinstruments.net/hise/images/table.png)
+![](images/table.png)
 
 A table allows to define a curve which acts as input->output function, where the output value is the y-value at the input value on the x-axis.
 The current x value will always be shown as vertical scanline so you know always what was fed to the table.
@@ -206,7 +216,7 @@ There are always two table points on the left and right edge, which can't be mov
 
 
 ### Waveform Editor
-![](http://hartinstruments.net/hise/images/waveform.png)
+![](images/waveform.png)
 
 A Waveform Editor displays the content of a audio file and the current playing position.
 
@@ -223,7 +233,7 @@ dragging waveform content.)
 You can view the content of the pool with the debug tools.
 
 ### Data Plotter
-![](http://hartinstruments.net/hise/images/plotter.png)
+![](images/plotter.png)
 
 This interface element plots the curve of a modulation value. Normally it resides within the Debugging toolbar, but you can also add a plotter to your script interface and connect it manually to a modulator.
 
@@ -235,16 +245,14 @@ This interface element plots the curve of a modulation value. Normally it reside
 You can add as many Processors your CPU can handle. Simply click on the '+' icon in the header bar where you want to add the new
 module and select the type of module you want to use.
 
-![](http://hartinstruments.net/hise/images/add_popup.png)
+Create new Processor:
+:	creates a new Processor of the selected type and adds it to the chain. You can enter a custom name for the Processor (which must be a valid variable name if you want to access it per script). Make sure you never use a name twice (this has unpredictable effects). <br>By default, it generates a unique name using the formula `TypeName+Number`.
 
+Add from Clipboard:
+:	creates a Processor from the clipboard content (if there is a valid processor in the clipboard)
 
-The popup menu for adding new sound generators
-
-Name | Action
-- | -
- *Create new Processor* | creates a new Processor of the selected type and adds it to the chain. <br> You can enter a custom name for the Processor (which must be a valid variable name if you want to access it per script). Make sure you never use a name twice (this has unpredictable effects). <br>By default, it generates a unique name using the formula `TypeName+Number`.
- *Add from Clipboard* | creates a Processor from the clipboard content (if there is a valid processor in the clipboard)
- *Add from Preset* | loads a Processor that was saved into a preset file
+Add from Preset:
+:	loads a Processor that was saved into a preset file
 
 > Sometimes there are some restrictions on which type of Processor you can add. For example you can't add a 
 > LFO to the Modulator Chain which calculates the sample start offset of a sampler, because it only allows Voice Start Modulators.
@@ -256,15 +264,25 @@ delete.
 
 ### Saving
 
-Every Processor can be saved and reused. There are two ways of saving / loading: *Saving as File* or to the *Clipboard*. Both things can be achieved by right-clicking on the header bar and selecting the option.
+Every Processor can be saved and reused using the popup menu of its header. 
 
-![](http://hartinstruments.net/hise/images/header_popup.png)
+Save as Preset
+:	Saves the Processor into the global preset folder (in a subfolder depending of its type). If it already exists, it will be overwritten.
 
+Copy to Clipboard
+:	Copies the Processor to the Clipboard. Whenever a Processor is in the clipboard, you can insert it using the normal "Add new Processor" menu.
 
-Name | Description
--|-
-Save as Preset | Saves the Processor into the global preset folder (in a subfolder depending of its type). If it already exists, it will be overwritten.
-Copy to Clipboard | Copies the Processor to the Clipboard. Whenever a Processor is in the clipboard, you can insert it using the normal "Add new Processor" menu.
+Rename Processor
+:	Shows a dialog window where you can rename the processor.
+
+Close All Chains
+:	Closes all chains of the processor. This does the same thing as clicking on every chain button, but faster.
+
+Check children for duplicate IDs
+:	Iterates through the processor and checks if any module has a taken name.
+
+Create script variable declaration
+:	Copies a script variable declaration for this module into the clipboard, which can be pasted into any script editor. A simple envelope called "Best Envelope" would yield `bestEnvelope = Synth.getModulator("BestEnvelope")`
 
 > When you save a preset as file, a binary format will be used for faster loading times. If you copy a Processor to the clipboard, it will be copied as XML-Element (because the system clipboard needs human-readable text).
 If you know your way around XML and want to get a deeper understanding of the patch structure, feel free to paste this into a text editor of your choice and dig around...
@@ -274,21 +292,23 @@ If you know your way around XML and want to get a deeper understanding of the pa
 If you want to save or recall all processors at once, you can
 do this by clicking on the symbol in the main tool bar:
 
-![](http://hartinstruments.net/hise/images/backend_popup.png)
+Load preset into MainSynthChain
+:	Loads a new root processor (it must be a Container or it won't work)
 
+Save current MainSynthChain
+:	Saves the root processor as preset.
 
-The popup menu for global loading / saving</p>
+Export package
+:	Exports the package as serialized binary data which can be embedded in a plugin (this is advanced developer stuff).
 
-Name | Description
-- | -
-Load preset into MainSynthChain | Loads a new root processor (it must be a Container or it won't work)
-Save current MainSynthChain | Saves the root processor as preset.
-Export package | Exports the package as serialized binary data which can be embedded in a plugin (this is advanced developer stuff)
-Recompile scripts | Sometimes, you get stuck notes or some script errors which can only be fixed by resetting the script, so this is a handy feature to recompile all scripts
-MIDI Panic | If you have a stuck note (because you cancelled a note off message in a script or something else), you can send an all-notes-off message with this function.
+Recompile scripts
+:	Sometimes, you get stuck notes or some script errors which can only be fixed by resetting the script, so this is a handy feature to recompile all scripts.
+
+MIDI Panic
+:	If you have a stuck note (because you cancelled a note off message in a script or something else), you can send an all-notes-off message with this function.
 
 ## Macro Control System
-![](http://hartinstruments.net/hise/images/macroBar.PNG)
+![](images/macroBar.PNG)
 
 
 The macro control system is a powerful and versatile system
@@ -316,7 +336,7 @@ Adding a parameter to a macro controller is quite straight forward:
 3. A red label with the number will appear on the control (it will be also disabled, so you can't control it manually anymore.
 
 
-![](http://hartinstruments.net/hise/images/controlledSlider.PNG)
+![](images/controlledSlider.PNG)
 
 
 This is it. The parameter will be from now on controlled by the macro controller. You can rename a macro controller by simply clicking on its name and give it a more meaningful description. Be aware that you can only add a parameter to one macro control (adding it to another macro control will simply remove it from the old one!).
@@ -336,20 +356,18 @@ There are multiple ways to remove a parameter from a macro control:
 
 ### Using the Macro Modulator
 
-![](http://hartinstruments.net/hise/images/macroControlModulator.PNG)
+![](images/macroControlModulator.PNG)
 
 
 You can add a macro modulator to a chain and benefit from
 additional features:
 
-**Parameter Smoothing:**
-
-Sometimes when changing a parameter by dragging it with the mouse, there will be artifacts known as the "Zipper Effect" (which
+Parameter Smoothing
+:	Sometimes when changing a parameter by dragging it with the mouse, there will be artifacts known as the "Zipper Effect" (which
 result from the step interval between the changes). In order to get rid of these artifacts, you can use the macro modulator and apply a smoothing filter that smoothes the edges of those steps.
 
-**Define a custom parameter curve**
-
-By default, the macro controller has a linear mapping for every controlled parameter. Sometimes, you need to customize the
+Define a custom parameter curve
+:	By default, the macro controller has a linear mapping for every controlled parameter. Sometimes, you need to customize the
 behaviour. Let's assume, you have a macro controller connected to the frequency knob of a filter. By default, the mid point of the macro controller (=the position 64) is mapped to the mid point of the frequency range (=10kHz). This results in a very unmusical parameter range, where the interesting range is squashed into the first 10% of the complete range (Normally, you want to have precise control over the 0-2kHz range).
 
 So what you can do is to add a macro controller to the frequency modulation chain and change the curve to a more logarithmic one.
@@ -358,7 +376,7 @@ Go to the Module Reference for a detailed explanation of the Macro Control Modul
 
 ### Changing Macro Control properties
 
-![the macro edit panel](http://hartinstruments.net/hise/images/macroEditPanel.PNG) 
+![the macro edit panel](images/macroEditPanel.PNG) 
 
 There is a dedicated panel for editing macro controls in the debugging tools, where you can:
 
@@ -398,16 +416,16 @@ the header bar and the buttons in the chain bar.
 
 ### Processor Popup menu
 
-![](http://hartinstruments.net/hise/images/processorpopup.png)
+![](images/processorpopup.png)
 
 The main toolbar has a button which opens a list with every processor and some functions (the buttons from left to right):
 
 Icon | Name | Action
 - | - | - 
-![](http://hartinstruments.net/hise/images/popup_solo.png) | *Solo Processor* | Adds the processor to the panel on the root level (regardless whether it is already shown or not). <br>This can be used to define a custom list of processors which should be visible together.
-![](http://hartinstruments.net/hise/images/popup_bypass.png)   | *Bypass Processor* | Bypasses the processor. <br> This is the same functionality as the bypass button from the header bar, but it allows you to quickly mute Processors without having to scroll there.
-![](http://hartinstruments.net/hise/images/popup_popup.png)   | *Show temporary popup* | Opens the processor interface in a temporary popup. <br> Use this feature if you want to quickly edit a parameter of a certain processor, but don't want to interrupt your current workflow by scrolling there, making the change and scroll back.
-![](http://hartinstruments.net/hise/images/popup_root.png)   | *Set as Root Processor* | Sets this processor as the root item of the main panel.<br> If you are working on a certain sound generator (or complex modulator archtitecture), you can use this feature to "zoom in" and show the Processor as main root item. The other processors are still working, but you don't get distracted by other sound generator interfaces.
+![](images/popup_solo.png) | *Solo Processor* | Adds the processor to the panel on the root level (regardless whether it is already shown or not). <br>This can be used to define a custom list of processors which should be visible together.
+![](images/popup_bypass.png)   | *Bypass Processor* | Bypasses the processor. <br> This is the same functionality as the bypass button from the header bar, but it allows you to quickly mute Processors without having to scroll there.
+![](images/popup_popup.png)   | *Show temporary popup* | Opens the processor interface in a temporary popup. <br> Use this feature if you want to quickly edit a parameter of a certain processor, but don't want to interrupt your current workflow by scrolling there, making the change and scroll back.
+![](images/popup_root.png)   | *Set as Root Processor* | Sets this processor as the root item of the main panel.<br> If you are working on a certain sound generator (or complex modulator archtitecture), you can use this feature to "zoom in" and show the Processor as main root item. The other processors are still working, but you don't get distracted by other sound generator interfaces.
 
 ### Restorable View Configurations
 
@@ -420,7 +438,7 @@ Let's assume we have a patch where we want to change the bandwidth of a filter w
 script editor and the filter editor (to check what the script is actually doing). Without any workflow enhancement, we have a patch that shows every processor:
 
 
-![](http://hartinstruments.net/hise/images/view_all.png)
+![](images/view_all.png)
 
 
 What we don't need to see is the envelope interface as well as the sine wave generator interface. This is where the "Restorable View" functionality comes in handy. 
@@ -434,7 +452,7 @@ Now we want to hide everything unnecessary. This is achieved by:
 
 Now we see something like this:
 
-![](http://hartinstruments.net/hise/images/view_script.png)
+![](images/view_script.png)
 
 
 Let's save this view as something like "Script & Filter" (again by clicking on the View Icon and choosing "Add new View").
