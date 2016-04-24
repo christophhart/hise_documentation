@@ -206,19 +206,19 @@ var name = o && o.getName();
 
 Or for setting default values:
 
-```
+```javascript
 var name = otherName || "default";
 ```
 
 JavaScript has a ternary operator for conditional expressions:
 
-```
+```javascript
 var allowed = (age > 18) ? "yes" : "no";
 ```
 
 The switch statement can be used for multiple branches based on a number or string:
 
-```
+```javascript
 switch(action) {
   case 'draw':
     drawIt();
@@ -233,7 +233,7 @@ switch(action) {
 
 If you don't add a break statement, execution will "fall through" to the next level. This is very rarely what you want — in fact it's worth specifically labeling deliberate fallthrough with a comment if you really meant it to aid debugging:
 
-```
+```javascript
 switch(a) {
   case 1: // fallthrough
   case 2:
@@ -246,7 +246,7 @@ switch(a) {
 
 The default clause is optional. You can have expressions in both the switch part and the cases if you like; comparisons take place between the two using the === operator:
 
-```
+```javascript
 switch(1 + 3) {
   case 2 + 2:
     yay();
@@ -273,13 +273,13 @@ The "name" part is a JavaScript string, while the value can be any JavaScript va
 
 There are two basic ways to create an empty object:
 
-```
+```javascript
 var obj = new Object();
 ```
 
 And:
 
-```
+```javascript
 var obj = {};
 ```
 
@@ -287,7 +287,7 @@ These are semantically equivalent; the second is called object literal syntax, a
 
 Object literal syntax can be used to initialize an object in its entirety:
 
-```
+```javascript
 var obj = {
   name: "Carrot",
   "for": "Max",
@@ -300,7 +300,7 @@ var obj = {
 
 Attribute access can be chained together:
 
-```
+```javascript
 obj.details.color; // orange
 obj["details"]["size"]; // 12
 ```
@@ -309,7 +309,7 @@ obj["details"]["size"]; // 12
 
 The following example creates an object prototype, Person, and instance of that prototype, You.
 
-```
+```javascript
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -323,7 +323,7 @@ var You = new Person("You", 24);
 
 Once created, an object's properties can again be accessed in one of two ways:
 
-```
+```javascript
 obj.name = "Simon";
 var name = obj.name;
 And...
@@ -340,7 +340,7 @@ Arrays in JavaScript are actually a special type of object. They work very much 
 
 One way of creating arrays is as follows:
 
-```
+```javascript
 var a = [];
 a[0] = "dog";
 a[1] = "cat";
@@ -352,14 +352,14 @@ a.length; // 3
 
 A more convenient notation is to use an array literal:
 
-```
+```javascript
 var a = ["dog", "cat", "hen"];
 a.length; // 3
 ```
 
 Note that array.length isn't necessarily the number of items in the array. Consider the following:
 
-```
+```javascript
 var a = ["dog", "cat", "hen"];
 a[100] = "fox";
 a.length; // 101
@@ -369,13 +369,13 @@ Remember — the length of the array is one more than the highest index.
 
 If you query a non-existent array index, you get `undefined`:
 
-```
+```javascript
 typeof a[90]; // undefined
 ```
 
 If you take the above into account, you can iterate over an array using the following:
 
-```
+```javascript
 for (var i = 0; i < a.length; i++) {
   // Do something with a[i]
 }
@@ -383,7 +383,7 @@ for (var i = 0; i < a.length; i++) {
 
 This is slightly inefficient as you are looking up the length property once every loop. An improvement is this:
 
-```
+```javascript
 for (var i = 0, len = a.length; i < len; i++) {
   // Do something with a[i]
 }
@@ -391,7 +391,7 @@ for (var i = 0, len = a.length; i < len; i++) {
 
 A nicer-looking but limited idiom is:
 
-```
+```javascript
 for (var i = 0, item; item = a[i++];) {
   // Do something with item
 }
@@ -405,7 +405,7 @@ You can iterate over an array using a for...in loop. Note that if someone added 
 
 Another way of iterating over an array that was added with ECMAScript 5 is forEach():
 
-```
+```javascript
 ["dog", "cat", "hen"].forEach(function(currentValue, index, array) {
   // Do something with currentValue or array[index]
 });
@@ -413,7 +413,7 @@ Another way of iterating over an array that was added with ECMAScript 5 is forEa
 
 If you want to append an item to an array simply do it like this:
 
-```
+```javascript
 a.push(item);
 ```
 
@@ -438,7 +438,7 @@ Method name	| Description
 
 Along with objects, functions are the core component in understanding JavaScript. The most basic function couldn't be much simpler:
 
-```
+```javascript
 function add(x, y) {
   var total = x + y;
   return total;
@@ -449,14 +449,14 @@ This demonstrates a basic function. A JavaScript function can take 0 or more nam
 
 The named parameters turn out to be more like guidelines than anything else. You can call a function without passing the parameters it expects, in which case they will be set to undefined.
 
-```
+```javascript
 add(); // NaN 
 // You can't perform addition on undefined
 ```
 
 You can also pass in more arguments than the function is expecting:
 
-```
+```javascript
 add(2, 3, 4); // 5 
 // added the first two; 4 was ignored
 ```
@@ -464,7 +464,7 @@ add(2, 3, 4); // 5
 That may seem a little silly, but functions have access to an additional variable inside their body called arguments, which is an array-like object holding all of the values passed to the function. Let's re-write the add function to 
 take as many values as we want:
 
-```
+```javascript
 function add() {
   var sum = 0;
   for (var i = 0, j = arguments.length; i < j; i++) {
@@ -478,7 +478,7 @@ add(2, 3, 4, 5); // 14
 
 That's really not any more useful than writing 2 + 3 + 4 + 5 though. Let's create an averaging function:
 
-```
+```javascript
 function avg() {
   var sum = 0;
   for (var i = 0, j = arguments.length; i < j; i++) {
@@ -492,7 +492,7 @@ avg(2, 3, 4, 5); // 3.5
 
 This is pretty useful, but introduces a new problem. The avg() function takes a comma separated list of arguments — but what if you want to find the average of an array? You could just rewrite the function as follows:
 
-```
+```javascript
 function avgArray(arr) {
   var sum = 0;
   for (var i = 0, j = arr.length; i < j; i++) {
@@ -506,7 +506,7 @@ avgArray([2, 3, 4, 5]); // 3.5
 
 But it would be nice to be able to reuse the function that we've already created. Luckily, JavaScript lets you call a function and call it with an arbitrary array of arguments, using the apply() method of any function object.
 
-```
+```javascript
 avg.apply(null, [2, 3, 4, 5]); // 3.5
 ```
 
@@ -514,7 +514,7 @@ The second argument to apply() is the array to use as arguments; the first will 
 
 JavaScript lets you create anonymous functions.
 
-```
+```javascript
 var avg = function() {
   var sum = 0;
   for (var i = 0, j = arguments.length; i < j; i++) {
@@ -526,7 +526,7 @@ var avg = function() {
 
 This is semantically equivalent to the function avg() form. It's extremely powerful, as it lets you put a full function definition anywhere that you would normally put an expression. This enables all sorts of clever tricks. Here's a way of "hiding" some local variables — like block scope in C:
 
-```
+```javascript
 var a = 1;
 var b = 2;
 
@@ -541,7 +541,7 @@ b; // 2
 
 JavaScript allows you to call functions recursively. This is particularly useful for dealing with tree structures, such as you get in the browser DOM.
 
-```
+```javascript
 function countChars(elm) {
   if (elm.nodeType == 3) { // TEXT_NODE
     return elm.nodeValue.length;
@@ -556,7 +556,7 @@ function countChars(elm) {
 
 This highlights a potential problem with anonymous functions: how do you call them recursively if they don't have a name? JavaScript lets you name function expressions for this. You can use named IIFEs (Immediately Invoked Function Expressions) as below:
 
-```
+```javascript
 var charsInBody = (function counter(elm) {
   if (elm.nodeType == 3) { // TEXT_NODE
     return elm.nodeValue.length;
