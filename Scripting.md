@@ -293,6 +293,8 @@ This allows creating of rather complex interfaces without touching the actual sc
 
 > You can also turn on the editing mode which allows you to simply click on a component to open it in the Interface Designer. Or you can double click on a widget variable in the Live Variable Watch table. This is especially useful if some widgets are masked by other widget (eg. background images), or even invisible.
 
+There are many properties that can be changed (from common properties like the position or the visibility to component specific properties like the midle position value of the slider). They are named pretty self explanatory and are listed in the Interface Designer table.
+
 ### How does it work?
 
 For a code generation system like the Interface Designer it is crucial to keep the possibility of making manual changes to the code it generates without having to overwrite boilerplate code that will be reverted once you switch back to editing. There are systems which append the "metadata" at the end of the file and parse it at compile time (thats how eg. the Introjucer of the JUCE library works). However this leads to duplication of information (in the actual code as well as in the metadata). Also it would be pretty useless if you can't change the properties on the script level anymore, eg. reacting to callbacks and change the appearance of the interface.
@@ -332,8 +334,6 @@ Content.setPropertiesFromJSON("Knob", {
 // [/JSON Knob]
 ```
 
- It adds some "comment brackets" to detect if there is already a definition so it overwrites the passage in between the brackets. (If you change a value in the edit panel you can see that the editor selects this section and replaces it with the updated data).
- 
 The other way around is pretty simple: you can change the values in the editor and they will be used the next time you open this component in the edit panel. 
 
 ### Modifying a JSON defined widget
@@ -353,6 +353,17 @@ and
 When it finds these tags, it will select anything between and will update the values as soon as you change any parameters. Some controllers (Colour Selectors, Sliders etc) only send an update when the mouse is released to avoid unnecessary polling. Hitting compile or selecting another widget will deselect the JSON definition.
 
 > Everything between those lines will be merciless overwritten the next time you edit the widget. Unless you remove the metadata tags. In this case a new JSON definition will be created directly after the component definition (and therefore before the old definition). The old definition stays intact and will also overwrite the new JSON definition (because it will be called after the new definition).
+
+The value of each property can be changed with a appropriate component for the specific type (there is eg. a Colour Picker for colours and a text editor for tooltips). Depending on the component type there are different update rates of the interface:
+
+Control Widget | Properties | Update |
+ ------------- | ---------- | ------
+**Slider** | `min`, `max`, `x`, `y`, ... | visual update when dragging, code update when mouse up
+**Combo Box** | `macroControls`, `processorId`, ... | visual + code update when selecting
+**Text Editor** | `text`, `suffix` | visual + code update when losing focus
+**Colour Picker** | `itemColour1`, `bgColour`, ... | visual update when dragging, code update when discarding the popup
+**Button** | `enabled`, `saveInPreset`, ... | visual + code update when clicking
+**File Chooser** | `filmStrip`, `image`, ... | visual + code update when clicking *OK*
 
 ### Mixing JSON definition and script modification
 
