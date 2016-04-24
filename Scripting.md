@@ -335,7 +335,27 @@ Content.setPropertiesFromJSON("Knob", {
  It adds some "comment brackets" to detect if there is already a definition so it overwrites the passage in between the brackets. (If you change a value in the edit panel you can see that the editor selects this section and replaces it with the updated data).
  
 The other way around is pretty simple: you can change the values in the editor and they will be used the next time you open this component in the edit panel. 
- 
+
+### Modifying a JSON defined widget
+
+If you select a widget that was previously edited in the Interface Designer, the script will search for the two metadata lines
+
+```javascript
+// [JSON Widget]
+````
+
+and
+
+```javascript
+// [JSON Widget]
+```
+
+When it finds these tags, it will select anything between and will update the values as soon as you change any parameters. Some controllers (Colour Selectors, Sliders etc) only send an update when the mouse is released to avoid unnecessary polling. Hitting compile or selecting another widget will deselect the JSON definition.
+
+> Everything between those lines will be merciless overwritten the next time you edit the widget. Unless you remove the metadata tags. In this case a new JSON definition will be created directly after the component definition (and therefore before the old definition). The old definition stays intact and will also overwrite the new JSON definition (because it will be called after the new definition).
+
+### Mixing JSON definition and script modification
+
 What if you want to change one of the properties afterwards? There is another API call which allows you to change one property at a time:
 
 ```javascript
