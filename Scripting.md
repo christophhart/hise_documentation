@@ -1,9 +1,4 @@
-# Scripting Documentation
-
-The Scripting Engine of **HISE** is a powerful tool for creating virtual instruments. There are two reasons for writing a script: you can change the behaviour of your instrument by writing a custom MIDI processing logic or design a frontend interface with some control elements for your preset.  
-Both things can be achieved with the same module: the Script Processor.
-
-> The Script Processor uses Javascript. If you don't know Javascript yet, check out this small [tutorial](Javascript.php).
+The Script Processor uses Javascript. If you don't know Javascript yet, check out this small [tutorial](Javascript.php).
 
 ## The Callbacks
 
