@@ -1,13 +1,11 @@
-# The Sampler Manual
-
-## Overview
+# Overview
 
 The [Sampler Sound Generator](Processors.php/#sampler) is the most complex sound generator in **HISE**. Documenting all functions would be overkill for the [Processor Reference](Processors.php), therefore this page.
 
 The Sampler is a disk streaming sampler with round robin groups, cross-fade looping and SFZ import.  
 All audio files that are loaded in a sampler are organized in this pretty simple structure (again a tree, like everything in **HISE**:
 
-### Structure
+## Structure
 
 - **Samplemap** (the root object with all information)
 	- *Round Robin Group*  (a group which will be cycled on every note on)
@@ -19,7 +17,7 @@ Every sample is loaded in an object called **Samplemap**, which contains a arbit
 
 The sampler has no further organization logic - robin groups are normally processed the same way, so it makes sense to put them all into one sound generator. For everything else (eg. release trigger), use another **Sampler** with a **Midi Processor** that provides this functionality.
 
-## Working with the sampler
+# Working with the sampler
 
 The sampler interface consists of four parts, which can be shown by clicking on the respective button below the Modulator Chain button bar:
 
@@ -27,13 +25,13 @@ The sampler interface consists of four parts, which can be shown by clicking on 
 
 The sampler uses a global sample selection. That means you can select multiple samples in any panel, and they will be updated in the other panels too.
 
-> Also every editing operation has full Undo / Redo support. Simply use <kbd>Strg+Z</kbd> / <kbd>Strg+Y</kbd> (the sampler needs to have keyboard focus for this).
+> Also every editing operation has full Undo / Redo support. Simply use <kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Strg+Y</kbd> (the sampler needs to have keyboard focus for this).
 
-### Sampler Settings
+## Sampler Settings
 
 You can use this panel to change the behaviour of the sampler and its global properties:
 
-<p class="processor">![](images/listSamplerSettings.PNG)</p>
+![](images/listSamplerSettings.png)
 
 ID | Name | Range | Description 
  -- | ---- |  ----- | -----------
@@ -47,14 +45,14 @@ ID | Name | Range | Description
 
 > You can see the memory usage and the disk performance of this sampler instance on the left. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the streaming buffers (which increases the disk performance) or reduce the voice amount.
 
-### Sample Editor
+## Sample Editor
 <p class="processor">![](images/listSampleEditor.PNG)</p>
 
 The Sample Editor has three panels: A toolbar with some handy actions, a audio waveform which displays the selected sound and some Value Setters to change the *audio-related* properties of the selected samples.
 
 > **HISE** uses a global selection which can include multiple samples. The waveform will only show the last selected sample, where the Value Setters show the range of each property (the minimum value of any sample and the maximum value of any sample)
 
-#### The toolbar actions
+### The toolbar actions
 
 Icon | Action | Description
 ---- | ------ | -----------
@@ -62,17 +60,17 @@ Icon | Action | Description
 ![](images/se_zo.PNG) | ZoomOut | Zooms out the audio waveform horizontally.
 ![](images/se_sm.PNG) | SelectWithMidi | If enabled, the most recently triggered sample will be selected for editing.
 ![](images/se_ssa.PNG) | Enable Sample Start Area Dragging | If enabled, the <span style="color: #5500aa">**Sample Start Area**</span> can be dragged around
-![](images/se_lsa.PNG) | Enable Loop Area Dragging| If enabled, the <span style="color: #006600">**Loop Area**</span> can be dragged around
+![](images/se_lsa.PNG) | Enable <kbd>Strg</kbd> Loop Area Dragging| If enabled, the <span style="color: #006600">**Loop Area**</span> can be dragged around
 ![](images/se_pa.PNG) | Enable Play Area Dragging| If enabled, the <span style="color: #777777">**Playback Area**</span> can be dragged around
 ![](images/se_ns.PNG) | NormalizeVolume | This normalizes the volume to 0dB.
 ![](images/se_le.PNG) | LoopEnabled | This toggles the loop playback.
 
-#### The sample waveform
+### The sample waveform
 
 The sample waveform shows the selected sample and if the sample is played, the current playing position.  
 You can enable dragging with the toolbar and then drag around one of the areas.
 
-#### The *audio-related* sample properties
+### The *audio-related* sample properties
 
 The sample editor has a [Value Setter](index.php/#value_setter) for all audio-related properties.
 
@@ -92,7 +90,7 @@ LoopEnabled | On ... Off | Enable loop playback
 
 > If you crossfade the loop section, the memory size will increase because it calculates the crossfade area and saves it into a internal buffer.
 
-### Samplemap Editor
+## Samplemap Editor
 
 Name | Description 
 ---- | -----------
@@ -103,25 +101,25 @@ VeloLow | the lowest mapped velocity.
 VeloHigh | the highest mapped velocity.
 RR Group | the group index for round robin / random group start behaviour
 
-### Sample Table
+## Sample Table
 
 The sample table is a list of all loaded samples and can be sorted. There is also a search bar with a full [RegEx parser](https://en.wikipedia.org/wiki/Regular_expression)
 
-## Importing files
+# Importing files
 
 Getting audio files into the sampler can be achieved in multiple ways. You can simply drag the files into the map editor, use a pitch detection algorithm to determine the root note or use a filename parser to extract properties from the file name of the sample.
 
 You can import collections of samples as SFZ format or as internal SampleMap XML-File.
 
-### Drag 'n Drop
+## Drag 'n Drop
 
 You can drag a selection of samples into the map editor and they will be mapped according to the drop point:
 
 > The drop-point behaviour is nicked from another well-known sampler ...
 
-### Pitch Detection
+## Pitch Detection
 
-### Filename parser
+## Filename parser
 
 The Sampler has a powerful filename parser which divides the filename into `Tokens` and maps them to properties of the sample zone.  
 Let's assume we have two samples with the filenames
@@ -136,9 +134,9 @@ Using the filename parser, we can automap the samples so that they have these pr
 **1. Sample**: First RR Group, Root Note D2, Velocity Range 25-50  
 **2. Sample**: Second RR Group, Root Note C3, Velocity Range 75-100
 
-#### The Import dialog
+### The Import dialog
 
-<p class="processor">![](images/fileImport.PNG)
+![](images/fileImport.PNG)
 
 Load some audio files into the sampler and choose **Automap root based on file name**. You will see a window like this above where you can define the file name parse logic.
 
@@ -186,7 +184,7 @@ Now press OK and the parser tries to automap all samples to the right place.
 
 > There is a handy tool called "Close Gaps" which can be useful after importing the files with this method.
 
-### SFZ Importer
+## SFZ Importer
 
 SFZ is a free file exchange format for samplers. However, **HISE** is not designed to be a SFZ sample player. The SFZ parser makes it more easy to transfer other sample formats to **HISE**. Although there are opcodes for almost any property of a sampler, I limited the supported opcodes to the following list:
 
@@ -201,7 +199,7 @@ These are pretty much all opcodes thich relate to a **HISE** sampler property.
 
 Loading SFZ files is remarkably easy, just use the SFZ button, or drop a .sfz file on the sampler. If there are multiple groups in the SFZ file, you will see a dialog window where you can consolidate the sfz groups to RR Groups or ignore dedicated sfz groups (and drop the same sfz on another sampler with a inverted selection to split the sfz file to two independant samplers)
 
-### Loading Samplemaps
+## Loading Samplemaps
 
 You can load and save **SampleMaps** independently from the sampler patch as human-readable XML file, which makes it an own sampler file format (similar to SFZ but a lot easier to parse)
 
