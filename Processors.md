@@ -51,7 +51,7 @@ Modulates the volume of each voice of the sound generator. By default, it uses l
 Modulates the pitch of each voice from -12 semitones to +12 semitones (where modulation value `0.5` is 0 semitones.)
 
 ### Sine Wave Generator
-<p class="processor">![](images/listSine.PNG)</p>
+<p class="processor">![SineWaveGenerator](images/listSine.PNG)</p>
 
 A simple and lightweight sine wave generator. It can be used to drive a FM Synthesiser, or stacked together for Additive Synthesis or used as simple enhancement of another sound.
 
@@ -97,7 +97,7 @@ The amount of the wave shaping saturation.
 If you change one of the frequency parameters, the pitch will be updated at the next note on, so for realtime modulation of the pitch, use the Modulator chain *Pitch Modulation*. 
 
 ### Waveform Generator
-<p class="processor">![](images/listWaveform.PNG)</p>
+<p class="processor">![Waveform Generator](images/listWaveform.PNG)</p>
 
 The Waveform Generator is a basic synthesizer module with two oscillators and the most popular waveforms: Sine, Triangle, Saw, Square, Noise.
 The sine and triangle waves are computed cheaply and naive, and the Saw and the Square use some advanced anti aliasing (BLIT).
