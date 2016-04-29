@@ -29,12 +29,12 @@ The volume of the Sound Generator.
 The stereo balance of the Sound Generator.  
 `Index: 1`
 
-Voice Amount
+#### Voice Amount
 :	<small>Range: *0 ... **64***</small>  
 This is the amount of voices that can be played simultaneously. If all voice slots are used and a new note is triggered, it will kill the oldest note.  
 `Index: 2`
 
-KillTime
+#### KillTime
 :	<small>*Range: 0 ... **20 ms** ... 20s*</small>  
 If a note must be killed, this is the fade time between the old and the new voice. If you set this to 0 ms, you will hear a click noise.  
 `Index: 3`
@@ -51,7 +51,7 @@ Modulates the volume of each voice of the sound generator. By default, it uses l
 Modulates the pitch of each voice from -12 semitones to +12 semitones (where modulation value `0.5` is 0 semitones.)
 
 ### Sine Wave Generator
-![SineWaveGenerator](images/listSine.PNG)
+![SineWaveGenerator](http://hartinstruments.net/hise/manual/images/listSine.PNG)
 
 A simple and lightweight sine wave generator. It can be used to drive a FM Synthesiser, or stacked together for Additive Synthesis or used as simple enhancement of another sound.
 
