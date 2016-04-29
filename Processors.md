@@ -51,7 +51,7 @@ Modulates the volume of each voice of the sound generator. By default, it uses l
 Modulates the pitch of each voice from -12 semitones to +12 semitones (where modulation value `0.5` is 0 semitones.)
 
 ### Sine Wave Generator
-<p class="processor">![SineWaveGenerator](images/listSine.PNG)</p>
+![SineWaveGenerator](images/listSine.PNG)
 
 A simple and lightweight sine wave generator. It can be used to drive a FM Synthesiser, or stacked together for Additive Synthesis or used as simple enhancement of another sound.
 
