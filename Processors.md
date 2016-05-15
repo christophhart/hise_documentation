@@ -51,7 +51,7 @@ Modulates the volume of each voice of the sound generator. By default, it uses l
 Modulates the pitch of each voice from -12 semitones to +12 semitones (where modulation value `0.5` is 0 semitones.)
 
 ### Sine Wave Generator
-![SineWaveGenerator](http://hartinstruments.net/hise/manual/images/listSine.PNG)
+![SineWave_Module.png](http://hart-instruments.net/hise/blog2/images/SineWave_Module.png)
 
 A simple and lightweight sine wave generator. It can be used to drive a FM Synthesiser, or stacked together for Additive Synthesis or used as simple enhancement of another sound.
 
@@ -64,40 +64,20 @@ It has two operating modes for the pitch definition:
 
 #### Parameters
 
-Octave
-:	<small>Range: *-5 ... **0** ... 5*</small>  
-If the mode is set to `Musical`, this defines the coarse frequency.  
-`Index: 4`
+| ID | Name                | Range                    | Description                                                                                      |
+|----|---------------------|--------------------------|--------------------------------------------------------------------------------------------------|
+| 4  | Octave              | *-5 ... **0** ... 5*     | If the mode is set to *Musical*, this defines the coarse frequency.                              |
+| 5  | Semitones           | *-12 ... **0** ... 12*   | If the mode is set to *Musical*, this defines the fine frequency in semitones.                   |
+| 6  | Use Frequency Ratio | *On ... **Off***         | Toggles between the two modes for the pitch definition.                                          |
+| 7  | Coarse Ratio        | ***1** ... 12*           | If the mode is set to *Harmonics*, this defines the harmonic index (1 being the root frequency). |
+| 8  | Fine Ratio          | ***0.0** ... 1.0*        | If the mode is set to *Harmonics*, this defines the fine frequency (as factor).                  |
+| 9  | Saturation          | Range: ***0%** ... 100%* | The saturation amount for the internal wave shaper. Use this to quickly add some harmonics.      |
 
-Semitones
-:	<small>Range: *-5 ... **0** ... 5*</small>  
-If the mode is set to *Musical*, this defines the fine frequency in semitones.  
-`Index: 5`
-
-Use Frequency Ratio:
-:	<small>Range: *On ... **Off***</small>  
-Toggles between the two modes for the pitch definition.  
-`Index: 6`
-
-Coarse Ratio
-:	<small>Range: ***1** ... 12*</small>  
-If the mode is set to *Harmonics*, this defines the harmonic index (1 being the root frequency).  
-`Index: 7`
-
-Fine Ratio
-:	<small>Range: ***0.0** ... 1.0*</small>  
-If the mode is set to *Harmonics*, this defines the fine frequency (as factor).  
-`Index: 8`
-
-Saturation
-:	<small>Range: ***0%** ... 100%*</small>  
-The amount of the wave shaping saturation.  
-`Index: 9`
-
-If you change one of the frequency parameters, the pitch will be updated at the next note on, so for realtime modulation of the pitch, use the Modulator chain *Pitch Modulation*. 
+> If you change one of the frequency parameters, the pitch will be updated at the next note on, so for realtime modulation of the pitch, use the Modulator chain *Pitch Modulation*. 
 
 ### Waveform Generator
-![Waveform Generator](http://hartinstruments.net/hise/manual/images/images/listWaveform.PNG)
+
+![WaveSynth_Module.png](http://hart-instruments.net/hise/blog2/images/WaveSynth_Module.png)
 
 The Waveform Generator is a basic synthesizer module with two oscillators and the most popular waveforms: Sine, Triangle, Saw, Square, Noise.
 The sine and triangle waves are computed cheaply and naive, and the Saw and the Square use some advanced anti aliasing (BLIT).
@@ -109,7 +89,7 @@ The sine and triangle waves are computed cheaply and naive, and the Saw and the 
 #### Parameters
  
 ID | Name | Range | Description 
- -- | ---- |  ----- | -----------
+-- | ---- | ----- | -----------
 4 | Octave Transpose 1  | -5 ... **0** ... 5 | The octave transpose factor for the first Oscillator.
 5 | Waveform 1 | Sine, Triangle, **Saw**, Square, Noise | the waveform type
 6 | Detune 1 | -100ct ... **0.0ct** ... 100ct | The pitch detune of the first oscillator in cent (100 cent = 1 semitone).
