@@ -137,7 +137,7 @@ ID | Name | Range | Description
 9 | PitchTracking | **On**, Off | Enables pitch ratio modification for different notes than the root note. Disable this for drum samples.
 10 | OneShot | On, **Off** | plays the whole sample (ignores the note off) if set to enabled.
 11 | CrossfadeGroups | On, **Off** | if enabled, the groups are played simultanously and can be crossfaded with the X-Fade Modulation Chain
-12 | Purged | If this is true, all samples of this sampler won't be loaded into memory. Turning this on will load them.
+12 | Purged | On, **Off** | If this is true, all samples of this sampler won't be loaded into memory. Turning this on will load them.
 
 #### Internal Modulation Slots
 
