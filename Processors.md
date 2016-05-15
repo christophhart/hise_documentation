@@ -123,13 +123,28 @@ This is a basic audio file player which supports looping & pitch tracking.
 
 ### Sampler
 
+![Sampler_Module.png](http://hart-instruments.net/hise/blog2/images/Sampler_Module.png)
 
+The main sampler module. For a detailed reference, go to the dedicaded manual chapter
+
+ID | Name | Range | Description 
+-- | ---- | ----- | -----------
+4 | PreloadSize | -1 ... **11000** ... | The preload size in samples for all samples that are loaded into the sampler. If the preload size is `-1`, then the whole sample will be loaded into memory.
+5 | BufferSize | 0 ... **4096** ... | The buffer size of the streaming buffers (2 per voice) in samples. The sampler uses two buffers which are swapped (one is used for reading from disk and one is used to supply the sampler with the audio data)
+6 | VoiceAmount | 0 ... **64** | The amount of voices that the sampler can play. This is not the same as voice limit.
+7 | RRGroupAmount | **0** ... x | The number of groups that are cycled in a round robin manier.
+8 | SamplerRepeatMode | **Kill Note**, Note off, Do nothing | determines how the sampler treats repeated notes.
+9 | PitchTracking | **On**, Off | Enables pitch ratio modification for different notes than the root note. Disable this for drum samples.
+10 | OneShot | On, **Off** | plays the whole sample (ignores the note off) if set to enabled.
+11 | CrossfadeGroups | On, **Off** | if enabled, the groups are played simultanously and can be crossfaded with the X-Fade Modulation Chain
+12 | Purged | If this is true, all samples of this sampler won't be loaded into memory. Turning this on will load them.
 
 #### Internal Modulation Slots
 
 Modulated Parameter | Allowed Modulator Type
 ------------------- | ----------------------
 Sample Start Modulation | Voice Start Modulators
+Group Fade Modulation | All modulators
 
 > The Sample Start Modulation checks the maximal range of the sample start modulation for each sample, so in order to make this work, you have to define a Sample Start Modulation area for each sample (this loads the area into memory, this is why it isn't enabled by default.)
 
