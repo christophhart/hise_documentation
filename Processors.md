@@ -89,7 +89,7 @@ The sine and triangle waves are computed cheaply and naive, and the Saw and the 
 #### Parameters
  
 ID | Name | Range | Description 
--- | ---- | ----- | -----------
+--- | ---- | ----- | -----------
 4 | Octave Transpose 1  | -5 ... **0** ... 5 | The octave transpose factor for the first Oscillator.
 5 | Waveform 1 | Sine, Triangle, **Saw**, Square, Noise | the waveform type
 6 | Detune 1 | -100ct ... **0.0ct** ... 100ct | The pitch detune of the first oscillator in cent (100 cent = 1 semitone).
@@ -98,7 +98,7 @@ ID | Name | Range | Description
 9 | Waveform 2 | Sine, Triangle, **Saw**, Square, Noise | the waveform type
 10 | Detune 2 | -100ct ... **0ct** ... 100ct | the pitch detune of the first oscillator in cent (100 cent = 1 semitone)
 11 | Pan 2 | -100 ... **0** ... 100 | the stereo panning of the first oscillator
-12 | Mix | 0 ... **50%** ... 100% | the balance between the two oscillators (0% is only the left oscillator, while 100% is the right oscillator). This can be modulated using the Mix Modulation chain (if there are some Modulators, this control will be disabled.
+12 | Mix | 0 ... **50%** ... 100% | the balance between the two oscillators (0% = Left, 100% = Right)
 
 
 #### Internal Modulation Slots
@@ -128,7 +128,7 @@ This is a basic audio file player which supports looping & pitch tracking.
 The main sampler module. For a detailed reference, go to the dedicaded manual chapter
 
 ID | Name | Range | Description 
--- | ---- | ----- | -----------
+--- | ---- | ----- | -----------
 4 | PreloadSize | -1 ... **11000** ... | The preload size in samples for all samples that are loaded into the sampler. If the preload size is `-1`, then the whole sample will be loaded into memory.
 5 | BufferSize | 0 ... **4096** ... | The buffer size of the streaming buffers (2 per voice) in samples. The sampler uses two buffers which are swapped (one is used for reading from disk and one is used to supply the sampler with the audio data)
 6 | VoiceAmount | 0 ... **64** | The amount of voices that the sampler can play. This is not the same as voice limit.
