@@ -170,6 +170,18 @@ ID | Name | Range | Description
 
 > It uses a linear range, so you might want to change the table (like the screenshot) to a more exponential one.
 
+### Array Modulator
+
+![Array_Module.png](http://hart-instruments.net/hise/blog2/images/Array_Module.png)
+
+The Array modulator is a note number to value array. For itself, it has a limited usage but combined with scripting, it can be used to set values quite elegantly.
+
+There are no parameters, instead the numbers `0 - 127` can be used to access the array data:
+
+```javascript
+arrayModulator.setAttribute(64, 0.5) // sets C4 to 0.5
+```
+
 ## Time Variant Modulators
 
 ## Envelope Modulators
