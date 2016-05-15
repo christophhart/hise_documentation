@@ -218,6 +218,8 @@ ID | Parameter | Description
 1 | Release | the release time in milliseconds
 2 | Linear Mode | If `true`, the envelope uses a linear ramp or an exponential curve if `false`.
 
+#### Internal Modulation Slots
+
 Modulated Parameter | Allowed Modulator Type
 ------------------- | ----------------------
 Attack Time Modulation | Voice Start Modulators
