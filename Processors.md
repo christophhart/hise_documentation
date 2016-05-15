@@ -204,12 +204,11 @@ Release Time | Voice Start Modulators
 
 ### Simple Envelope
 
-This modulator is the most simple envelope (only attack and release).
+![SimpleEnvelope_Module.png](http://hart-instruments.net/hise/blog2/images/SimpleEnvelope_Module.png)
 
-It has an attack and release time that can be modified by an internal modulator chain, which are calculated at the note-on (attack) and note-off (release) time.
-You have to specify a sampleRate using the prepareToPlay method or the modulator will not be working!
+This modulator is the most simple envelope: it has an attack and release time. The attack time can be modulated.
 
-> This envelope uses linear ramping. Since we perceive loudness logarithmically, it sounds a bit odd. Consider using another envelope if this bothers you. (The Simple envelope was designed to remove clicks and make some other rather technical tasks).
+This envelope can use either linear ramping or an exponential curve. Since we perceive loudness logarithmically, it is recommended to use the exponential mode for the gain modulation (if the envelope is used as musical sound shaper. For pure technical tasks (removing clicks), the linear ramping should be sufficient.
 
 #### Parameters
 
@@ -217,6 +216,11 @@ ID | Parameter | Description
 --- | --------- | -----------
 0 | Attack | the attack time in milliseconds
 1 | Release | the release time in milliseconds
+2 | Linear Mode | If `true`, the envelope uses a linear ramp or an exponential curve if `false`.
+
+Modulated Parameter | Allowed Modulator Type
+------------------- | ----------------------
+Attack Time Modulation | Voice Start Modulators
 
 
 ## Polyphonic Effects
