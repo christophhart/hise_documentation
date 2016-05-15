@@ -19,36 +19,19 @@ If you do so, you are not limited to the listed range, but be careful or you cra
 
 All Sound Generators share a few parameters:
 
-#### Volume
-<small>Range: *-inf ... **-12dB** ... 0dB.*</small>  
-The volume of the Sound Generator.  
-`Index: 0`
-
-#### Balance
-:	<small>Range: *-100L ... **(C)** ... 100R*</small>  
-The stereo balance of the Sound Generator.  
-`Index: 1`
-
-#### Voice Amount
-:	<small>Range: *0 ... **64***</small>  
-This is the amount of voices that can be played simultaneously. If all voice slots are used and a new note is triggered, it will kill the oldest note.  
-`Index: 2`
-
-#### KillTime
-:	<small>*Range: 0 ... **20 ms** ... 20s*</small>  
-If a note must be killed, this is the fade time between the old and the new voice. If you set this to 0 ms, you will hear a click noise.  
-`Index: 3`
+ID | Name | Range | Description 
+--- | ---- | ----- | -----------
+0 | Volume | *-inf ... **-12dB** ... 0dB.* | The volume of the Sound Generator.
+1 | Balance | *-100L ... **(C)** ... 100R* | The stereo balance of the Sound Generator.  
+2 | Voice Amount | *0 ... **64** * | This is the amount of voices that can be played simultaneously. If all voice slots are used and a new note is triggered, it will kill the oldest note.  
+3 | KillTime | *Range: 0 ... **20 ms** ... 20s* | If a note must be killed, this is the fade time between the old and the new voice. If you set this to 0 ms, you will hear a click noise.  
 
 #### Internal Modulation Slots
 
-<span style="color: #D9911E;">Gain Modulation</span>
-:	*Allowed Modulator Type: All Modulators (Except Container & Synthesizer Groups)*  
-Modulates the volume of each voice of the sound generator. By default, it uses linear gain scaling, so you might have to change the modulators.
-
-
-<span style="color: #628214;">Pitch</span>
-:	*Allowed Modulator Type: All Modulators (Except Container & Synthesizer Groups)*  
-Modulates the pitch of each voice from -12 semitones to +12 semitones (where modulation value `0.5` is 0 semitones.)
+Modulated Parameter | Allowed Modulator Type | Description
+------------------- | ---------------------- | -----------
+<span style="color: #D9911E;">Gain Modulation</span> | All Modulators (Except Container & Synthesizer Groups) | Modulates the volume of each voice of the sound generator. By default, it uses linear gain scaling (0.5 = -6dB), so you might want to change the value curve.
+<span style="color: #628214;">Pitch</span> | All Modulators (Except Container & Synthesizer Groups) | Modulates the pitch of each voice from -12 semitones to +12 semitones (modulation value `0.5` is 0 semitones.)
 
 ### Sine Wave Generator
 ![SineWave_Module.png](http://hart-instruments.net/hise/blog2/images/SineWave_Module.png)
