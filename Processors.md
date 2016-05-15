@@ -164,7 +164,7 @@ This modulator uses the MIDI velocity to calculate its output.
 #### Parameters
 
 ID | Name | Range | Description 
- -- | ---- |  ----- | -----------
+--- | ---- |  ----- | -----------
 0 | Inverted | On, **Off** | if `true`, then the modulator works inverted, so that high velocity values are damped.
 1 | UseTable | On, **Off** | if `true` then a look up table is used to calculate the value. You can see the input velocity in the Table.
 
@@ -200,7 +200,7 @@ the attack time and level, the decay time and the release time with VoiceStartMo
 #### Parameters
 
 ID | Parameter | Default | Description
--- | --------- | ------- | ----
+--- | --------- | ------- | ----
 0 | Attack | 20ms | the attack time in milliseconds
 1 | AttackLevel | 0dB |  the attack level in decibel
 2 | Hold | 20ms | the hold time in milliseconds
@@ -231,7 +231,7 @@ You have to specify a sampleRate using the prepareToPlay method or the modulator
 #### Parameters
 
 ID | Parameter | Description
--- | --------- | -----------
+--- | --------- | -----------
 0 | Attack | the attack time in milliseconds
 1 | Release | the release time in milliseconds
 
