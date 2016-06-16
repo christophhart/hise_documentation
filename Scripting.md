@@ -162,7 +162,7 @@ The interface of the Script Processor consists of three elements: the callback b
 
 ### The Callback Bar
 
-![CallbackBar.png](http://hart-instruments.net/hise/blog2/images/CallbackBar.png)
+![CallbackBar.png](http://hise.audio/blog/images/CallbackBar.png)
 
 Although the script is saved as one file, the Script Processor divides the script into multiple callback snippets which are shown seperately. This improves readability and the workflow because you don't need to scroll around in big scripts to find the code line you want to change.
 
@@ -175,13 +175,13 @@ It has the same appearance as the chain bar of a module with internal chains and
 
 ### The Interface Content
 
-![InterfaceContent.png](http://hart-instruments.net/hise/blog2/images/InterfaceContent.png)
+![InterfaceContent.png](http://hise.audio/blog/images/InterfaceContent.png)
 
 The interface content is an area which can be populated with widgets, images to define a user interface for the script or the whole instrument (using the API call `Synth.addToFront(true)`).
 
 ### The Editor
 
-![ScriptEditor.png](http://hart-instruments.net/hise/blog2/images/ScriptEditor.png)
+![ScriptEditor.png](http://hise.audio/blog/images/ScriptEditor.png)
 
 The editor is a standard code text editor with Javascript syntax highlighting. It also has a Autocomplete popup window which contains all variables and available API calls. Simply press `Escape` to open the popup up and select the desired item using either the arrow keys or by clicking on it.
 
@@ -285,7 +285,7 @@ The next debugging tool is so useful it will get its own chapter:
 
 ## The Interface Designer
 
-![InterfaceDesigner.gif](http://hart-instruments.net/hise/blog2/images/InterfaceDesigner.gif)
+![InterfaceDesigner.gif](http://hise.audio/blog/images/InterfaceDesigner.gif)
 
 This is a real time saver when it comes to build interfaces. You can select components and edit their properties with suitable controls (eg. colour selectors for colours, sliders for numerical values). The components will get updated on the fly (without having to recompile the script). There are six property types with different controllers:
 
