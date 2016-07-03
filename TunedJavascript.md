@@ -242,3 +242,26 @@ While calling the original `Math.PI` function has this overhead:
 
 
 ### Inlining function calls
+
+Another way of reducing the overhead of function calls is to inline them, which means instead of calling the function, the function body is inserted at the code position and executed like a normal block of statements.
+
+This is achieved with the keyword `inline` before the function definition:
+
+```javascript
+inline function multiply(a, b)
+{
+    return a * b;
+};
+
+var x = multiply(2,multiply(2,2));
+print(x);
+```
+
+It should behave like a normal function, however it checks the number of arguments at compile time and complains if there is a mismatch. On runtime, the parameter expressions block of the inlined function are evaluated and stored into a special place in global scope (with faster access than normal variable lookup). The body of the function will be executed like a normal statement block and return its value.
+
+It has one caveat: because the inline parameter storage in the global scope is static, recursive function calls will not work using these inline functions (but recursive functions have no use in dsp anyway...)
+
+> **Profiling Results**  
+> Tested with 7 function calls per sample of an inlined function vs. a standard function. The **performance gain is 80%**, reducing the CPU load from 26% to 3%
+
+
