@@ -265,3 +265,76 @@ It has one caveat: because the inline parameter storage in the global scope is s
 > Tested with 7 function calls per sample of an inlined function vs. a standard function. The **performance gain is 80%**, reducing the CPU load from 26% to 3%
 
 
+### Example
+
+Since the performance gains with these tests are rather theoretical (because they are highly specialised benchmarks) we must take "normal" DSP calculations into account too.
+
+This is a Javascript version of a saturator algorithm that shows the performance gain on practical applications
+
+```javascript
+/** DSP Routine perfomance test
+*
+*	Using a saturator algorithm found on musicdsp.org:
+*	http://musicdsp.org/showone.php?id=46
+*
+*	Two implementations using the slow default Javascript behaviour and the improved versions.
+*/
+
+// Set this to false to speed up the algorithm by ~70%
+var slow = false;
+
+// Variables for the fast algorithm
+
+reg amount = 0.9;
+reg k = 2*amount/(1-amount);
+reg k_inc = k + 1;
+
+// Variables for the slow algorithm
+
+var s_amount = 0.9;
+var s_k = 2*amount/(1-amount);
+var i = 0;
+var numSamples = 0;
+var l = 0;
+var r = 0;
+
+/** the fast function */
+inline function saturate(input)
+{
+    return (1+k)*input/(1+k*Math2.abs(input));
+};
+
+/** the slow function */
+function s_saturate(input)
+{
+    return (1+s_k)*input/(1+s_k*Math.abs(input));
+};
+
+// The render callback
+function processBlock(channels)
+{
+	if(slow)
+	{
+		l = channels[0];
+    	r = channels[1];
+
+
+    	var numSamples = l.length;
+
+    	for(i = 0; i < numSamples; i++)
+    	{
+        	l[i] = s_saturate(l[i]);
+        	r[i] = s_saturate(r[i]);
+    	}
+	}
+	else
+	{
+		for(c in channels)
+    	{
+			for(i in c) i = saturate(i);
+    	}
+
+	}
+}
+```
+
