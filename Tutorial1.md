@@ -1,5 +1,7 @@
 # Getting started
 
+![Interface](http://hise.audio/images/tutorial/tutorialPlugin.png)
+
 This tutorial will guide you through the process of building a simple sample library and export it as VST / AU plugin. The following topics are covered:
 
 - **Part 1: Application overview and Project setup**
