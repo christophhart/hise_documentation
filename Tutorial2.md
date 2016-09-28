@@ -5,7 +5,7 @@ There are a multitude of ways to map audio files in the sampler, from drag 'n dr
 
 You can download a sample set ready to be imported into HISE here:
 
-[Musicbox Samples](http://hise.audio/downloads/tutorial/MusicboxSamples.zip)
+[Musicbox Samples](http://hise.audio/download/tutorial/MusicboxSamples.zip)
 
 For the sake of simplicity, extract and copy all samples you want to import into the `Samples` subfolder of the new project (you can also opt to redirect the sample folder to another location, which is useful if you have a large sample library on another hard disk).
 
