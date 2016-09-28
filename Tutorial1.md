@@ -4,10 +4,10 @@ This tutorial will guide you through the process of building a simple sample lib
 
 - **Part 1: Application overview and Project setup**
 - **Part 2: Sample Mapping**
-- **Part 3: Adding effects and modulators**
-- **Part 4: Add some custom MIDI processing scripts**
-- **Part 5: Design the interface using scripting**
-- **Part 6: Export the patch as plugin**
+- **Part 3: Adding effects and modulators** (coming soon)
+- **Part 4: Add some custom MIDI processing scripts** (coming soon)
+- **Part 5: Design the interface using scripting** (coming soon)
+- **Part 6: Export the patch as plugin** (coming soon)
 
 The sample library will have these features:
 
@@ -18,7 +18,7 @@ The sample library will have these features:
 - release samples
 - a custom interface that controls some selected parameters:
 
-The interface and the samples are kinldy provided by [Wavesfactory](http://wavesfactory.com)
+The interface and the samples are kindly provided by [Wavesfactory](http://wavesfactory.com)
 
 Before we start, let's take a look at the interface of HISE first.
 
