@@ -22,7 +22,7 @@ The sample library will have these features:
 
 The interface and the samples are kindly provided by [Wavesfactory](http://wavesfactory.com)
 
-Before we start, let's take a look at the interface of HISE first.
+Before we start, let's take a look at the interface of HISE.
 
 ## Start up HISE 
 
