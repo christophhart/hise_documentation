@@ -14,9 +14,9 @@ This tutorial will guide you through the process of building a simple sample lib
 The sample library will have these features:
 
 - small sample set of a music box (
-- a convolution reverb with a impulse response
+- a convolution reverb with an impulse response
 - A synthesised mallet click sound that can be added to the samples.
-- modwheel controled decay time
+- modwheel controlled decay time
 - release samples
 - a custom interface that controls some selected parameters:
 
@@ -26,7 +26,7 @@ Before we start, let's take a look at the interface of HISE.
 
 ## Start up HISE 
 
-Download the HISE installer and follow the instructions. For actual development I recommend using the standalone application. HISE changes it appearance according to the window size, so if you want all controls, set it to fullscreen (or a minimal width of 1300px). The window is divided into three sections (from left to right):
+Download the HISE installer and follow the instructions. For actual development I recommend using the standalone application. HISE changes its appearance according to the window size, so if you want all controls, set it to fullscreen (or a minimal width of 1300px). The window is divided into three sections (from left to right):
 
 ![HISE Interface](http://hise.audio/images/tutorial/HiseInterface.png)
 
@@ -34,7 +34,7 @@ Download the HISE installer and follow the instructions. For actual development 
 
 ### Resources
 
-The left area contains all windows loosely related to "resources". It can be thought of "stuff that can be put into HISE". You can toggle each panel by clicking on its icon:
+The left area contains all panels loosely related to "resources". It can be thought of "stuff that can be put into HISE". You can toggle each panel by clicking on its icon:
 
 | Icon | Description |  
 | ---- | ---- |
@@ -47,9 +47,9 @@ The left area contains all windows loosely related to "resources". It can be tho
 
 ### The Main Area
 
-The main area contains a vertically arranged list of all modules in the current patch. Everything in HISE is a tree. The root item is called master chain (and has the module type "Container"). You can add submodules by clicking on the `+` icon and select the desired module.
+The main area contains a vertically arranged list of all modules in the current patch. Everything in HISE is a [tree](http://hise.audio/manual/Manual.php#theprocessorsystem). The root item is called master chain (and has the module type "Container"). You can add submodules by clicking on the `+` icon and select the desired module.
 
-Above the area there are three another elements:
+Above the area there are three other elements:
 
 1. A tooltip bar which displays some help when hovering over certain elements
 2. A real time statistics panel that shows the current voice count / CPU usage etc.
@@ -70,14 +70,12 @@ Icon | Description
 
 ## Project setup
 
-Now let's build this sample library. The first thing we have to deal with is some boring stuff first: project management.
+Now let's build this sample library. The first thing we have to deal with is some boring stuff: project management.
 
 HISE has a internal project system that allows you to easily share and switch between different projects and it's crucial to understand how it works before everything else.
 
 A project in HISE is a folder which contains all files (samples / scripts / images) as well as some specific setting (Project name, version etc). So the first thing you should do after loading up HISE is to create a new project by choosing **File -> Create New Project Folder**.
 
-> If you want to learn more about the project management in HISE, check out the [blog entry](http://hise.audio/blog/posts/project-management) about the topic.
-
-Select a directory and press OK. It will create all necessary sub folders within this directory. You can now copy all external files into the correct subfolder and access it within HISE as relative path so you can simply transfer the project on another computer. When you compile the plugin, all files (except for the actual samples) will be embedded into the plugin binary.
+Select a directory and press OK. It will create all necessary sub folders within this directory. You can now copy all external files into the correct subfolder and access it within HISE as relative path so you can simply transfer the project on another computer. When you compile the plugin, all files (except for the actual samples) will be embedded into the plugin binary so it is crucial that you put everything that belongs to the project in this folder.
 
 Now you are ready to get started with the sampler.
