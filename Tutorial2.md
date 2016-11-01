@@ -1,5 +1,5 @@
 
-We'll be using samples with well-formed file names, that means that the mapping information can be fully extracted from the names without having to use the mapping editor.
+We'll be using samples with well-formatted file names, that means that the mapping information can be fully extracted from the names without having to use the mapping editor. 
 
 There are a multitude of ways to map audio files in the sampler, from drag 'n drop to batch processing via regex commands. However I strongly recommend using a strict file naming scheme. There is a powerful file name parser in HISE which allows to map the samples automatically so if you do it right, you'll never have to touch the mapping editor ever.
 
@@ -17,13 +17,25 @@ Now open the file browser (make sure you're in full screen mode with all three p
 
 ### Drag samples into the map editor
 
-Double click on the sample folder, select all samples (<kbd>Cmd / Strg + A</kbd>) and drag them into the map of the sampler. Select "Automap based on file name and press OK".
+Double click on the sample folder, select all samples (<kbd>Cmd / Strg + A</kbd>) and drag them into the map of the sampler. Select "File Name Parser" and press OK".
 
 ![SC_DragSamples.gif](http://hise.audio/images/tutorial/SC_DragSamples.gif)
 
 ### Use the file import dialog to extract the mapping information
 
-You should now see the file import dialog Select the properties for each token:
+Before we setup the right settings in the next window, let's take a look at one filename:
+
+```
+Musicbox_A0_0_127.wav
+1        2  3  4
+```
+
+1. The instrument name (and can be ignored for mapping)
+2. The note name which will be used for mapping
+3. The low velocity limit
+4. And the high velocity limit
+
+The filename is split into tokens which are vertically arranged and can be assigned to different mapping properties. Select these properties for each token:
 
 1. Ignore
 2. Single Key
