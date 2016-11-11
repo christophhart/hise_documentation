@@ -140,8 +140,8 @@ The header bar has some common elements for all processor types and some special
  | *Volume / Intensity Slider* | Sound Generators have a volume slider and Modulators have an Intensity slider, which defines the strength of the modulation according to this formula `output = input * INTENSITY` for modulators (nothing for effects and MIDI processors) 
  ![](images/header_debug.png)| *Debug Button* | Midi Processors and Modulators can print useful information to the console if this button is enabled
  ![](images/header_plot.png)| *Plot Button* | You can see the modulation curve for Modulators in the Plotter if this button is enabled
- ![](images/header_delete.png)| *Add Button* | If this Processor can have other Processors as child Processors, this button opens a popup menu
- ![](images/header_add.png)| *Delete button* | This deletes the Processor. Some Processors `Cnternal Chains` and the `Root Container` don't have this button.
+ ![](images/header_add.png)| *Add Button* | If this Processor can have other Processors as child Processors, this button opens a popup menu
+ ![](images/header_delete.png)| *Delete button* | This deletes the Processor. Some Processors `Cnternal Chains` and the `Root Container` don't have this button.
 
 ### The Chain Button Bar
 
