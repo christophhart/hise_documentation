@@ -1,7 +1,7 @@
 Every module has a set of parameters, which will be listed for every module:
 
 Parameter Name
-:	<small>Range: *min ... **default value** ... max*</small>  
+: <small>Range: *min ... **default value** ... max*</small>  
 Parameter Description  
 `Index: 2`
 
@@ -34,7 +34,7 @@ Modulated Parameter | Allowed Modulator Type | Description
 <span style="color: #628214;">Pitch</span> | All Modulators (Except Container & Synthesizer Groups) | Modulates the pitch of each voice from -12 semitones to +12 semitones (modulation value `0.5` is 0 semitones.)
 
 ### Sine Wave Generator
-![SineWave_Module.png](http://hart-instruments.net/hise/blog2/images/SineWave_Module.png)
+![SineWave_Module.png](http://hise.audio/blog/images/SineWave_Module.png)
 
 A simple and lightweight sine wave generator. It can be used to drive a FM Synthesiser, or stacked together for Additive Synthesis or used as simple enhancement of another sound.
 
@@ -60,7 +60,7 @@ It has two operating modes for the pitch definition:
 
 ### Waveform Generator
 
-![WaveSynth_Module.png](http://hart-instruments.net/hise/blog2/images/WaveSynth_Module.png)
+![WaveSynth_Module.png](http://hise.audio/blog/images/WaveSynth_Module.png)
 
 The Waveform Generator is a basic synthesizer module with two oscillators and the most popular waveforms: Sine, Triangle, Saw, Square, Noise.
 The sine and triangle waves are computed cheaply and naive, and the Saw and the Square use some advanced anti aliasing (BLIT).
@@ -106,7 +106,7 @@ This is a basic audio file player which supports looping & pitch tracking.
 
 ### Sampler
 
-![Sampler_Module.png](http://hart-instruments.net/hise/blog2/images/Sampler_Module.png)
+![Sampler_Module.png](http://hise.audio/blog/images/Sampler_Module.png)
 
 The main sampler module. For a detailed reference, go to the dedicaded manual chapter
 
@@ -155,7 +155,7 @@ ID | Name | Range | Description
 
 ### Array Modulator
 
-![Array_Module.png](http://hart-instruments.net/hise/blog2/images/Array_Module.png)
+![Array_Module.png](http://hise.audio/blog/images/Array_Module.png)
 
 The Array modulator is a note number to value array. For itself, it has a limited usage but combined with scripting, it can be used to set values quite elegantly.
 
@@ -204,7 +204,7 @@ Release Time | Voice Start Modulators
 
 ### Simple Envelope
 
-![SimpleEnvelope_Module.png](http://hart-instruments.net/hise/blog2/images/SimpleEnvelope_Module.png)
+![SimpleEnvelope_Module.png](http://hise.audio/blog/images/SimpleEnvelope_Module.png)
 
 This modulator is the most simple envelope: it has an attack and release time. The attack time can be modulated.
 
