@@ -17,7 +17,7 @@ Now open the file browser (make sure you're in full screen mode with all three p
 
 ### Drag samples into the map editor
 
-Double click on the sample folder, select all samples (<kbd>Cmd / Strg + A</kbd>) and drag them into the map of the sampler. Select "File Name Parser" and press OK".
+Double click on the sample folder, select all samples (<kbd>Cmd / Strg + A</kbd>) and drag them into the map of the sampler. Select "Filename Token Parser" and press OK".
 
 ![SC_DragSamples.gif](http://hise.audio/images/tutorial/SC_DragSamples.gif)
 
@@ -25,7 +25,7 @@ Double click on the sample folder, select all samples (<kbd>Cmd / Strg + A</kbd>
 
 Before we setup the right settings in the next window, let's take a look at one filename:
 
-```
+```javascript
 Musicbox_A0_0_127.wav
 1        2  3  4
 ```
