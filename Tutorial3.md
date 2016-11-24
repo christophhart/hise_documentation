@@ -6,7 +6,7 @@ This tutorial is a practical guide. For detailed information you can look up the
 
 ## 1. Modulators
 
-Modulators create a signal from `0 ... 1` which can be used to dynamically change parameters of a HISE patch (the range will be converted depending on the modulation target). They are a key feature to add dynamic behaviour to a sampled instrument so let's start with that.
+Modulators create a signal from `0 ... 1` which can be used to dynamically change the parameters of a HISE patch (the range will be converted depending on the modulation target). They are a key feature to add dynamic behaviour to a sampled instrument so let's start with that.
 
 > If you want to know more about the three main modulation types, check out this chapter of the manual. 
 
@@ -16,12 +16,12 @@ Let's add a **Velocity Modulator** to control the volume of our sampler module. 
 
 ![VelocityMod.gif](http://hise.audio/manual/images/VelocityMod.gif)
 
-The gain of each voice is now controlled by the velocity of the incoming note on message. You can define a function that change the behaviour by clicking on **Use Table** and adjust the curve:
+The gain of each voice is now controlled by the velocity of the incoming note on message. You can define a function that changes the behaviour by clicking on **Use Table** to adjust the curve:
 
 1. Click anywhere to add a new point
 2. Drag points around
 3. Right click on a point to delete it
-4. Ctrl + Mousewheel over a point to change the curve to its left.
+4. Ctrl + Mousewheel over a point to change the curve on its left side.
 
 The x-axis will be the input (normalized from the MIDI velocity values 0 - 127) and the y-axis is the resulting modulation value from 0 to 1, which in the case of gain modulation is simply used as gain factor (unless you activate *Decibel Mode*). The default behaviour is linear (= a value of 0.5 is only a 6dB attenuation), so we might want to adjust the curve to make it more "musical". Hover over the right point and `Ctrl + Mousewheel down` until you have a exponential type curve:
 
@@ -29,21 +29,21 @@ The x-axis will be the input (normalized from the MIDI velocity values 0 - 127) 
 
 When you play a note you'll see a horizontal ruler indicating the last x position. You can see the modulation value of each modulator (as well as the combined result) at the horizontal bar in the headers of the modulators (and the parent modulator chain). Next to the bar is the intensity slider of every modulator which can be used to change its impact on the resulting modulation value (a intensity of 0.0 means no influence and 1.0 is a plain multiplication.
 
-Before we continue, let's rename this modulator. Each module in a HISE patch should have a unique name (that's how they can be accessed via scripting), so let's keep things tidy. Click on the "Velocity Modulator" label on the header, and give it a new name (either "Sampler Gain Velocity" or "Joffrey")
+Before we continue, let's rename this modulator. Each module in a HISE patch should have a unique name (that's how they can be accessed via scripting), so let's keep things tidy. Click on the **Velocity Modulator** label on the header, and give it a new name (either "Sampler Gain Velocity" or "Joffrey")
 
 ### Sample Start Modulation
 
-In the real world different dynamic ranges have a lot more differences than just volume. A neat trick for mallet type sounds is to alter the start of the sample for softer notes so that the attack phase is truncated.  
+In the real world different dynamic ranges have a lot more differences than just volume. A neat trick for mallet type sounds is to alter the start of the sample for softer notes by truncating the sample attack phase.
 
-This can be achieved by modulating the sample start depending on the velocity. The memory usage will be increased (because the whole area that is modulated needs to be prebuffered), so it is deactivated by default. Let's open the sampler (and its sample editor panel), select all sounds, and set the `SampleStartMod` value to 800:
+This can be achieved by modulating the sample start depending on the velocity. However this behaviour will increase the memory usage, because the whole area that is modulated needs to be prebuffered, so its deactivated by default. But to achieve our softened attack we will now activate it, shift the Sample Start, and afterwards modulate the attack with another Velocity Table. Open the sampler (and its sample editor panel), select all sounds, and set the `SampleStartMod` value to 800:
 
 ![SampleStartMod.gif](http://hise.audio/manual/images/SampleStartMod.gif)
 
-The sample start is set to the end of the modulated area, so if you play now, you should hear that the attack phase of the sample is skipped. This is because the default modulation value of 1.0 is used until a modulator is added to the sample start chain. So let's add another velocity modulator there. We won't need to adjust the curve again, instead we'll simply copy & paste the first modulator.
+The sample start is set to the end of the modulated area, so if you press a key, you should hear that the attack phase of the sample is skipped. This is because the default modulation value of 1.0 is used until a modulator is added to the sample start chain. So let's add another velocity modulator there. Instead of creating a new one (as seen above) we can also just copy & paste our previous Velocity Modulator.
 
-> Everything in HISE that is copy & pasteable will have a white outline around it (tables, scripts, modules) when it's selected so make sure the velocity modulator has the focus (by clicking somewhere on it). 
+> Everything in HISE that is copy & pasteable (tables, scripts, modules) has a white outline when selected so make sure the velocity modulator has the focus (by clicking somewhere on it). 
 
-Press 'Cmd + C' ('Ctrl+C' on Windows). The module is now pasted to the clipboard. It is a simple XML string (we'll get back to this later on), so if you're curious, paste it into a text editor and see what goes on behind the scenes. Now click on the **Sample Start** button and select the whole chain slot (this is our paste target). Press 'Cmd+V' ('Ctrl+V') and it should paste the other modulator in the new chain. It's now called **"Joffrey 2"**, so let's give him a better name.
+Press 'Cmd + C' ('Ctrl+C' on Windows). The module is now pasted to the clipboard. Every modulator is saved as a simple XML string (we'll get back to this later on), so if you're curious, paste it into a text editor and see what goes on behind the scenes.activate the Sample Start button in the SAMPLER Ribbon, and select the (now visible) new (green) chain slot at the end of our Sampler chain (this is our paste target). Press 'Cmd+V' ('Ctrl+V') and it should paste the other modulator in the new chain. It's now called **"Joffrey 2"**, so let's give him a better name.
 
 > You'll notice the different colours of the modulators. Their layout is always the same, it will have different colours depending on their modulation target so you can quickly get a idea of what they are doing.
 
@@ -326,4 +326,10 @@ Shift click on the first two routing source nodes and connect them to the last t
 
 Set the wet amount of the reverb to 100% (we'll be controlling the reverb level with the gain parameter from the SimpleGain effect. You can leave the other parameters alone (the rest will get implemented when we build the interface in the next chapter).
 
-Before we continue, let's save the patch. Basically there are two file types: .hip files which are a binary format or XML files. If you want to use a version control system, I'd highly recommend using the latter one, but for now we are good with the .hip type. Rename the Master Chain to "MusicBox" and choose **File->Save**. It will store a .hip file in the `Presets` subfolder of the project.
+In the next chapter we'll build the interface for the instrument. But before we do this, let's rename all modules we'll be addressing from the interface to make it more clear:
+
+1. Rename the Simple Gain module to "ReverbSendGain"
+2. Rename the Sampler module to "Musicbox Samples"
+3. Rename the Sine Wave Generator to "Ring Off Sound"
+
+As last step, let's save the patch. Basically there are two file types: .hip files which are a binary format or XML files. If you want to use a version control system, I'd highly recommend using the latter one, but for now we are good with the .hip type. Rename the Master Chain to "MusicBox" and choose **File->Save**. It will store a .hip file in the `Presets` subfolder of the project.
