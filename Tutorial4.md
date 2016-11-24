@@ -98,7 +98,7 @@ Now select the knob again and move it to the correct position (above the *ModWhe
 2. Use modifier keys to alter the behaviour:
 
 Modifier Key | Action | Behaviour
--- | -- | --
+--- | --- | ---
 Command Key | Mouse Drag & Key Stroke | Enables rastered movement (rounded to multiplies of 10)
 Shift Key | Mouse Drag | Enables horizontal / vertical only movement / resizing
 Shift Key | Key Stroke | Resize the widget
