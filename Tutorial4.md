@@ -1,7 +1,6 @@
 # Creating the User Interface
 
-In the last chapter we have created our patch and added modulators and additional sound generators. Now we want to build a custom user interface that controls certain parameters of the patch.  
-For simple interfaces like this one you'll almost get away without writing a single line of Javascript yourself - there are some helper tools which try to do the most boring stuff for you. However please have a look at the generated code. As soon as the interface gets more complicated or you need a more dynamic behaviour, you'll need to go in there manually.
+In the last chapter we have created our patch and added modulators and additional sound generators. Now we want to build a custom user interface. For simple interfaces like this one you'll almost get away without writing a single line of Javascript yourself - there are some helper tools which try to do the most boring stuff for you. However please have a look at the generated code. As soon as the interface gets more complicated or you need a more dynamic behaviour, you'll need to go in there manually.
 
 We'll be using a background image and film strips for the sliders. The graphics are kindly provided by Jesus Ginard from Wavesfactory. You can download the image files [here](http://hise.audio/tutorial/tutorialImages.zip). If you copy them into the `Images` subfolder of our project, we are ready to start.
 
@@ -154,7 +153,7 @@ This does not seem to be less code, but from now on, you can add the same knob t
 const var clickAttackKnob = createMusicBoxKnob("clickAttackKnob", 127, 99);
 ```
 
-Now comes the best part: HISE can automatically convert a widget definition plus its JSON properties into a factory method. Select everything you want to move into the factory method, and select "Convert to UI factory method" in the context menu. Enter a name for the method (start with `createXXX`) and it will replace the definition with the lines shown above:
+Now comes the best part: HISE can automatically convert a widget definition plus its JSON properties into a factory method. Select everything you want to move into the factory method (in this case the widget definition line and all JSON code including the comments), and select "Convert to UI factory method" in the context menu. Enter a name for the method (start with `createXXX`) and it will replace the definition with the lines shown above:
 
 Things get easier from now on. After you successfully positioned the first knob, you can simply duplicate the knob and move it around horizontally by holding both the **Alt** and the **Shift** key (notice the `+` symbol while dragging. Add the other knobs and use these names (so we don't mix things up later):
 
