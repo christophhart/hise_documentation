@@ -2,7 +2,7 @@
 
 In the last chapter we have created our patch and added modulators and additional sound generators. Now we want to build a custom user interface. For simple interfaces like this one you'll almost get away without writing a single line of Javascript yourself - there are some helper tools which try to do the most boring stuff for you. However please have a look at the generated code. As soon as the interface gets more complicated or you need a more dynamic behaviour, you'll need to go in there manually.
 
-We'll be using a background image and film strips for the sliders. The graphics are kindly provided by Jesus Ginard from Wavesfactory. You can download the image files [here](http://hise.audio/tutorial/tutorialImages.zip). If you copy them into the `Images` subfolder of our project, we are ready to start.
+We'll be using a background image and film strips for the sliders. The graphics are kindly provided by Jesus Ginard from Wavesfactory. You can download the image files [here](http://hise.audio/download/tutorial/ImagesTutorial.zip). If you copy them into the `Images` subfolder of our project, we are ready to start.
 
 ## Add the Interface Script Processor
 
