@@ -34,6 +34,3 @@ This documentation has some special layouts to emphasize important information:
 ### Running the installer
 
 There are installers for OSX / Windows. Depending on your operation system, the installation process may vary.
-
-
-## again atest
