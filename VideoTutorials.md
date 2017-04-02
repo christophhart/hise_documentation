@@ -1,5 +1,3 @@
-# Video Tutorials
-
 David Healey from [Xtant Audio](http://xtant-audio.com) started a very extensive series of video tutorials which may help you getting started with HISE.
 
 The discussion about the tutorials can be found [here](http://forum.hise.audio/topic/207/video-tutorials).
