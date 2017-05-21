@@ -10,7 +10,7 @@ This guide will contain three chapters:
 
 ## 1. The ScriptPanel User Manual
 
-![BoringPanel](http://hise.audio/manual/images/BoringPanel.png)  
+![BoringPanel](http://hise.audio/manual/images/panel/boringPanel.png)  
 <small>*this is how it all begins...*</small>
 
 The script panel started out as background panel in order to optically group other UI elements. However it got more and more powerful over the time and evolved to the most complex UI type. If you create a ScriptPanel, you'll still see the original appearance, but the true power of the widget will be unleashed by using three functions:
