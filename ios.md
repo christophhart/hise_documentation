@@ -19,6 +19,8 @@ The procedure for creating iOS apps looks like this:
 ### In HISE
 
 1. Build your instrument just like a desktop plugin / app
+2. Add your Team Development ID (the distribution ID, not the development ID) to your User Settings
+3. Add a App Group ID to the Project Settings (something like `group.shared.productName`. This is used for sharing the user presets between the AUv3 App Extension and the Standalone App. You also have to add the App Group in your developer account and make sure that the entitlements for the product bundle ID contains the App Group.
 2. **File -> Export As Standalone -> iOS Standalone app**. It will open the terminal window, but instead of launching the compiler, it just creates the XCode project.
 
 ### In XCode
@@ -28,7 +30,11 @@ The procedure for creating iOS apps looks like this:
    
   ![iOS Target.png](http://hise.audio/manual/images/Signing.png)
 
-> If the team selection does not appear, you have to enable **Automatic manage Signing**
+> If you supplied a valid Team Development ID, this step should be unnecessary.
+
+3. Go to **Capabilites**, scroll down to the **App Group Entitlements** and select the ID you've specified in the Project Settings for both the AUv3 target as well as the Standalone target (they should be already there, but you just have to click them once:
+
+![iOS App Group.png](http://hise.audio/manual/images/iOSAppGroups.png)
 
 3. Connect your iOS Device and choose it as target on the main XCode Toolbar:
      ![iOS Target.png](http://hise.audio/manual/images/iOSTarget.png)
@@ -36,6 +42,8 @@ The procedure for creating iOS apps looks like this:
 4. Compile the app using **Product -> Build For Profiling** (or **Product -> Build for Testing** to debug)
 
 That's it. From then on you can do everything just like with a normal iOS app (upload to App Store, submit for testing, etc). 
+
+> If you archive the app, make sure you select all targets (or the app won't work).
 
 ## iOS specific features
 
