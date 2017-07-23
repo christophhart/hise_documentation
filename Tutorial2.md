@@ -63,9 +63,9 @@ To fix the octave offset, press and hold down the <kbd>Alt</kbd> key (that the c
 
 ### Export as HLAC monolith
 
-HISE has a custom lossless audio codec that is heavily optimized on decoding performance (which is about 10x as fast as FLAC). You can use this codec and collect all your sample files into one monolithic audio file by exporting the current SampleMap. Press the ![Monolith](http://hise.audio/images/manual/Monolith.png) button to open this dialog:
+HISE has a custom lossless audio codec that is heavily optimized on decoding performance (which is about 10x as fast as FLAC). You can use this codec and collect all your sample files into one monolithic audio file by exporting the current SampleMap. Press the ![Monolith](http://hise.audio/manual/images/Monolith.png) button to open this dialog:
 
-![Export](http://hise.audio/images/manual/MonolithExport.png)
+![Export](http://hise.audio/manual/images/MonolithExport.png)
 
 Choose **Low file size** and enter a name for the sample map. Press OK - and ignore the error message that will popup :)
 
