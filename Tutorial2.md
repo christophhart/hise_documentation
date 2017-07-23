@@ -61,4 +61,16 @@ To fix the octave offset, press and hold down the <kbd>Alt</kbd> key (that the c
 
 ![SC_Mapping.gif](http://hise.audio/images/tutorial/SC_Mapping.gif)
 
+### Export as HLAC monolith
+
+HISE has a custom lossless audio codec that is heavily optimized on decoding performance (which is about 10x as fast as FLAC). You can use this codec and collect all your sample files into one monolithic audio file by exporting the current SampleMap. Press the ![Monolith](http://hise.audio/images/manual/Monolith.png) button to open this dialog:
+
+![Export](http://hise.audio/images/manual/MonolithExport.png)
+
+Choose **Low file size** and enter a name for the sample map. Press OK - and ignore the error message that will popup :)
+
+Now you should have a .xml file in your `SampleMaps` directory and a monolith file with the extension `ch1` (if you export multi mic samples, they will have the extension `ch2`, ...). The file size went down from 12MB to 4MB.
+
+> If you have multiple sample sets, you can export each one as dedicated sample map and use scripting callbacks to switch between these samples.
+
 That's it. You now have a perfectly mapped sample set ready to be played. In the next chapters we will add some modulators and effects to the patch.
