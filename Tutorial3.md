@@ -8,7 +8,7 @@ This tutorial is a practical guide. For detailed information you can look up the
 
 Modulators create a signal from `0 ... 1` which can be used to dynamically change the parameters of a HISE patch (the range will be converted depending on the modulation target). They are a key feature to add dynamic behaviour to a sampled instrument so let's start with that.
 
-> If you want to know more about the three main modulation types, check out this chapter of the manual. 
+> If you want to know more about the three main modulation types, check out [this chapter](http://hise.audio/manual/Manual.php#modulators) of the manual. 
 
 ### Gain Modulation
 
@@ -27,7 +27,7 @@ The x-axis will be the input (normalized from the MIDI velocity values 0 - 127) 
 
 ![TableCurve.gif](http://hise.audio/manual/images/TableCurve.gif)
 
-When you play a note you'll see a horizontal ruler indicating the last x position. You can see the modulation value of each modulator (as well as the combined result) at the horizontal bar in the headers of the modulators (and the parent modulator chain). Next to the bar is the intensity slider of every modulator which can be used to change its impact on the resulting modulation value (a intensity of 0.0 means no influence and 1.0 is a plain multiplication.
+When you play a note you'll see a horizontal ruler indicating the last x position. You can see the modulation value of each modulator (as well as the combined result) at the horizontal bar in the headers of the modulators (and the parent modulator chain). Next to the bar is the intensity slider of every modulator which can be used to change its impact on the resulting modulation value (a intensity of 0.0 means no influence and 1.00 is a plain multiplication.
 
 Before we continue, let's rename this modulator. Each module in a HISE patch should have a unique name (that's how they can be accessed via scripting), so let's keep things tidy. Click on the **Velocity Modulator** label on the header, and give it a new name (either "Sampler Gain Velocity" or "Joffrey")
 
@@ -41,9 +41,9 @@ This can be achieved by modulating the sample start depending on the velocity. H
 
 The sample start is set to the end of the modulated area, so if you press a key, you should hear that the attack phase of the sample is skipped. This is because the default modulation value of 1.0 is used until a modulator is added to the sample start chain. So let's add another velocity modulator there. Instead of creating a new one (as seen above) we can also just copy & paste our previous Velocity Modulator.
 
-> Everything in HISE that is copy & pasteable (tables, scripts, modules) has a white outline when selected so make sure the velocity modulator has the focus (by clicking somewhere on it). 
+> Everything in HISE that is copy & pasteable (tables, scripts, modules) has a green outline when selected so make sure the velocity modulator has the focus (by clicking somewhere on it). 
 
-Press 'Cmd + C' ('Ctrl+C' on Windows). The module is now pasted to the clipboard. Every modulator is saved as a simple XML string (we'll get back to this later on), so if you're curious, paste it into a text editor and see what goes on behind the scenes.activate the Sample Start button in the SAMPLER Ribbon, and select the (now visible) new (green) chain slot at the end of our Sampler chain (this is our paste target). Press 'Cmd+V' ('Ctrl+V') and it should paste the other modulator in the new chain. It's now called **"Joffrey 2"**, so let's give him a better name.
+Press 'Cmd + C' ('Ctrl+C' on Windows). The module is now pasted to the clipboard. Every modulator is saved as a simple XML string (we'll get back to this later on), so if you're curious, paste it into a text editor and see what goes on behind the scenes. Now activate the Sample Start button in the SAMPLER Ribbon, and select the (now visible) new (green) chain slot at the end of our Sampler chain (this is our paste target). Press 'Cmd+V' ('Ctrl+V') and it should paste the other modulator in the new chain. It's now called **"Joffrey 2"**, so let's give him a better name.
 
 > You'll notice the different colours of the modulators. Their layout is always the same, it will have different colours depending on their modulation target so you can quickly get a idea of what they are doing.
 
@@ -56,8 +56,8 @@ Open the **Pitch Chain** and insert a **Voice Start Modulator -> Constant Modula
 
 Notice how the intensity for pitch modulators changes from `0..1` to `-12 ... 12` (by clicking on it, you can enter a exact pitch intensity). There is also another button (between the modulation bar and the intensity slider) which toggles bipolar mode:
 
-    | Bipolar Mode | Unipolar Mode
---- | ------------ | -------------
+What | Bipolar Mode | Unipolar Mode
+---- | ------------ | -------------
 **Icon** | ![Bipolar.png](http://hise.audio/manual/images/Bipolar.png) | ![Unipolar.png](http://hise.audio/manual/images/Unipolar.png)
 **Input** | `0...1` | `0...1`
 **Zero input value** | `0.5`| `0.0`
@@ -133,7 +133,7 @@ Now we need to change the velocity using the `modWheelGain` variable and the val
 
 This formula will be used:
 
-```
+```javascript
 output = (amount * input * modwheelGain) + ((1.0 - amount) * input)
 ```
 
