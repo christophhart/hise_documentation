@@ -69,7 +69,7 @@ HISE has a custom lossless audio codec that is heavily optimized on decoding per
 
 Choose **Low file size** and enter a name for the sample map. Press OK - and ignore the error message that will popup :)
 
-Now you should have a .xml file in your `SampleMaps` directory and a monolith file with the extension `ch1` (if you export multi mic samples, they will have the extension `ch2`, ...). The file size went down from 12MB to 4MB.
+Now you should have a .xml file in your `SampleMaps` directory and a monolith file with the extension `ch1` in the Samples directory (if you export multi mic samples, they will have the extension `ch2`, ...). The file size went down from 12MB to 4MB.
 
 > If you have multiple sample sets, you can export each one as dedicated sample map and use scripting callbacks to switch between these samples.
 
