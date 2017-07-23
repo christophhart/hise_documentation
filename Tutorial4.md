@@ -1,23 +1,12 @@
-# Creating the User Interface
-
 In the last chapter we have created our patch and added modulators and additional sound generators. Now we want to build a custom user interface. For simple interfaces like this one you'll almost get away without writing a single line of Javascript yourself - there are some helper tools which try to do the most boring stuff for you. However please have a look at the generated code. As soon as the interface gets more complicated or you need a more dynamic behaviour, you'll need to go in there manually.
 
 We'll be using a background image and film strips for the sliders. The graphics are kindly provided by Jesus Ginard from Wavesfactory. You can download the image files [here](http://hise.audio/download/tutorial/ImagesTutorial.zip). If you copy them into the `Images` subfolder of our project, we are ready to start.
 
 ## Add the Interface Script Processor
 
-A user interface script is a ScriptProcessor in the **Master Chain** slot which is explicity told to act as interface. Let's insert a Script Processor (you can rename it to *Interface* or something like that...). In the `onInit` callback, please add these lines:
+A user interface script is a ScriptProcessor in the **Master Chain** slot which is explicity told to act as interface. Since HISE 1.0, you can create this automatically using the Interface Creation Wizard. Click on the House icon in the main topbar and it will open a popup where you can define the size of your interface. Set it to `505 x 252` and press OK (press OK again to switch to the scripting workspace with the newly created interface).
 
-```javascript
-Content.makeFrontInterface(505, 252); // width, height
-Synth.deferCallbacks(true);
-```
-
-The first line tells the engine that this script is a interface that will be used in the compiled plugin. The second line defers the callbacks so they won't waste any CPU cycles in the audio thread.
-
-> It is generally recommended to defer the main interface because it increases the encapsulation. You can always add an undeferred ScriptProcessor and control it via the interface script (we'll also do this later in this tutorial).
-
-If you press **Compile**, the interface area will increase and the home button in the top toolbar will be enabled. The button toggles a window with a preview how the finished plugin will look like. Press it and you should see this:
+From now on the House button toggles a window with a preview how the finished plugin will look like. Press it and you should see this:
 
 ![EmptyInterface.png](http://hise.audio/manual/images/EmptyInterface.png)
 
@@ -70,18 +59,30 @@ Now we're ready to tackle the big black space in the middle.
 
 ### Create the interface content
 
-We'll be using the fancy new Interface Designer to add the background image and the knobs and buttons. Close the preview, double click on the header of the interface script to set it to **Full Screen** (there is a breadcrumb bar which shows the current view level) and click on the **Lock** symbol on the top right of the interface to change the interaction mode. Basically there are two modes:
+We'll be using the fancy new Interface Designer to add the background image and the knobs and buttons. You should see something like this:
+
+![ScriptingWorkspace](http://hise.audio/manual/images/ScriptingWorkspace.png)
+
+There are four important panels:
+
+Name | Description
+---- | -----------
+Panel Bar | Shows / hides different panels. If you don't see something like the screenshot above, this is the place to fix it.
+Interface Editor | the preview area of the interface.
+onInit Code Editor | this displays the content of the onInit callback. Whenever you change something in the interface editor, it should update its content so you can see what it's doing (and can step in and add more complex behaviour if desired).
+Property Panel | If you have selected a control in the editor, this panel allows you to change its properties. Whenever you made changes, the code editor will update its content, however you have to press the OK Button on the interface editor to complete an editing process and apply the changes (this will also recompile the script).
+
+The most important panel is the interface editor. You have a toolbar with a few buttons. The first button toggles the mode of the editor:
 
 1. **Edit mode (the pen symbol)**: Create new widgets, drag them around and change their properties
 2. **Play mode (the lock symbol)**: Test the interface
 
-Now that you're in Play mode you'll notice the rasterized overlay with 10px measurements. First let's add the background image. Rightclick somewhere on the interface, choose **Add new Image** and give it a name (`bgImage` would come into mind...). Press OK and you should see a small image without content.
+Now that you're in Edit mode you'll notice the rasterized overlay with 10px measurements. First let's add the background image. Rightclick somewhere on the interface, choose **Add new Image** and give it a name (`bgImage` would come into mind...). Press OK and you should see a small image without content.
 
+Click on the image (it gets selected and the properties of it show up in the right panel). Drag it to (0,0) (you can see how the code changes as you move it around). Scroll down in the property list and click on the **Open** button of the `fileName` property. Select the `Background.png` file in the dialog and press **OK**. The little placeholder for the image should be replaced with the background image. Press the OK button to save the changes (you are currently in a intermediate stage where the changes you made are withholded from the scripting engine to allow a nicer UX):
 
-![AddBgImage.gif](http://hise.audio/manual/images/AddBgImage.gif)
+![InterfaceWithBG.png](http://hise.audio/manual/images/AddBgImage2.gif)
 
-
-Click on the image (it gets selected and the properties of it show up in the right panel). Drag it to (0,0) (you can see how the code changes as you move it around). Scroll down in the property list and click on the **Open** button of the `fileName` property. Select the `Background.png` file in the dialog and press **OK**. The little placeholder for the image should be replaced with the background image. Press **Compile** to save the changes (you are currently in a intermediate stage where the changes you made are withholded from the scripting engine to allow a nicer UX).
 
 If you reopen the preview window now, you'll see something that starts to resemble our final plugin:
 
