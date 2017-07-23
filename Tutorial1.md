@@ -6,19 +6,18 @@ This tutorial will guide you through the process of building a simple sample lib
 
 - **Part 1: Application overview and Project setup**
 - **Part 2: Sample Mapping**
-- **Part 3: Adding effects and modulators** (coming soon)
-- **Part 4: Add some custom MIDI processing scripts** (coming soon)
-- **Part 5: Design the interface using scripting** (coming soon)
-- **Part 6: Export the patch as plugin** (coming soon)
+- **Part 3: Adding effects and modulators & Add some custom MIDI processing scripts**
+- **Part 4: Design the interface using scripting**
+- **Part 5: Export the patch as plugin**
 
 The sample library will have these features:
 
 - small sample set of a music box (
-- a convolution reverb with an impulse response
+- a basic reverb with additional predelay parameter
 - A synthesised mallet click sound that can be added to the samples.
 - modwheel controlled decay time
 - release samples
-- a custom interface that controls some selected parameters:
+- a custom interface that controls some selected parameters.
 
 The interface and the samples are kindly provided by [Wavesfactory](http://wavesfactory.com)
 
@@ -26,24 +25,17 @@ Before we start, let's take a look at the interface of HISE.
 
 ## Start up HISE 
 
-Download the HISE installer and follow the instructions. For actual development I recommend using the standalone application. HISE changes its appearance according to the window size, so if you want all controls, set it to fullscreen (or a minimal width of 1300px). The window is divided into three sections (from left to right):
+Download the HISE installer and follow the instructions. For actual development I recommend using the standalone application. HISE changes its appearance according to the window size, so if you want all controls, set it to fullscreen (or a minimal width of 1300px). The window is divided into four sections:
 
 ![HISE Interface](http://hise.audio/images/tutorial/HiseInterface.png)
 
+### Main Topbar
 
+The main topbar can switch between the workspaces and contains statistics and the tooltip popup.
 
-### Resources
+### Custom Panel
 
-The left area contains all panels loosely related to "resources". It can be thought of "stuff that can be put into HISE". You can toggle each panel by clicking on its icon:
-
-| Icon | Description |  
-| ---- | ---- |
-![](http://hise.audio/images/tutorial/ModuleBrowser.png) | a module browser with a list of every available module
-![](http://hise.audio/images/tutorial/ApiBrowser.png) | a list with every scripting API call
-![](http://hise.audio/images/tutorial/FileBrowser.png) | A file browser
-![](http://hise.audio/images/tutorial/SampleBrowser.png) | a list with every imported sample
-![](http://hise.audio/images/tutorial/AudioBrowser.png) | 5. a list with every imported audio file (impulse responses, loops, etc)
-![](http://hise.audio/images/tutorial/ImageBrowser.png) | 6. a list with every imported image
+This area can be arranged and populated with any kind of panel. This (and how to use the Custom Workspace) will be covered in a seperate tutorial, so you might ignore this area for starters.
 
 ### The Main Area
 
@@ -55,9 +47,9 @@ Above the area there are three other elements:
 2. A real time statistics panel that shows the current voice count / CPU usage etc.
 3. A toolbar that toggles additional views (the most important being the house icon which shows a preview of the compiled plugin)
 
-### Properties
+### Auto Popup Panel
 
-the right area contains all panels loosely related to "properties". These tools share their task to analyse / tweak the current patch.
+the right panel is not customizable, but contains some development tools that automatically popup when needed.
 
 Icon | Description
 ---- | -----------
@@ -66,7 +58,6 @@ Icon | Description
 ![](http://hise.audio/images/tutorial/InterfaceDesigner.png) | 3. the interface designer which allows WYSIWYG editing of script interfaces
 ![](http://hise.audio/images/tutorial/PlotterProperties.png) | 4. a modulator plotter that is able to plot modulation signals of time variant modulators and envelopes.
 ![](http://hise.audio/images/tutorial/Console.png) | 5. the debugging console
-![](http://hise.audio/images/tutorial/PatchBrowser.png) | 6. a searchable browser that contains every module in this patch
 
 ## Project setup
 
