@@ -13,11 +13,24 @@ You need to create a sampler module that the samples will be imported to. Click 
 
 You can use multiple sampler modules within one patch (and for more complex projects it is obligatory to do so). However for our little tutorial, one sampler should be enough (we'll be adding some synths later too).
 
-Now open the file browser (make sure you're in full screen mode with all three panels shown and click on the folder icon on the left panel). Go to the project root folder (you can quickly navigate to the current project folder by clicking on the star icon and select *Current Project Folder*).
+As with HISE 1.0.0, there is a dedicated workspace when working with samplers. You can switch to this workspace by pressing the ![Workspace](http://hise.audio/images/tutorial/GotoWorkspace.png) button on the Sampler you've just created (this also works for script processors, but that will be covered later on). This should switch to this view:
+
+![SamplerWorkspace](http://hise.audio/images/tutorial/SamplerWorkspace.png)
+
+There are 4 main panels:
+
+Name | Description
+---- | -----------
+File Browser | A file browser with drag 'n drop functionality and a preview function (currently for images only).
+Sample Editor | Edit the properties of the selected samples.
+Sample Map Editor | Edit the mapping of the current SampleMap.
+Sample Table | A list with all available samples and a search bar with Regex support (which is incredibly handy if you know how to use it ...)
+
+> There's also the Sample Pool Table which shows all samples loaded into HISE, but it's not important for now...
 
 ### Drag samples into the map editor
 
-Double click on the sample folder, select all samples (<kbd>Cmd / Strg + A</kbd>) and drag them into the map of the sampler. Select "Filename Token Parser" and press OK".
+You should already be in the project folder. Double click on the 'Samples' folder, select all samples (<kbd>Cmd / Strg + A</kbd>) and drag them into the map of the sampler. Select "Filename Token Parser" and press OK".
 
 ![SC_DragSamples.gif](http://hise.audio/images/tutorial/SC_DragSamples.gif)
 
