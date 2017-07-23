@@ -9,15 +9,15 @@ First of all we'll need to gather the required tools. Below is a list of every S
 
 Tool | Type | Windows | macOS | Explanation
 ---- | ---- | ------- | ----- | -----------
-HISE | Source Code | [Download](https://github.com/christophhart/HISE/archive/master.zip) | <- | The source code which contains the HISE engine. Please use the latest tip from GitHub for this (until there is a stable 1.0 version which should be preferred when available).
-VST SDK | Source Code | [Website](https://www.steinberg.net/en/company/developers.html) | <- | If you want to compile VST plugins, you'll need to get the SDK from Steinberg yourself (for licencing reasons it can't be distributed with HISE)
+HISE | Source Code | [Download](https://github.com/christophhart/HISE/archive/master.zip) | <- | The source code which contains the HISE engine. Please use the latest tip from GitHub for this.
+VST SDK | Source Code | [Website](https://www.steinberg.net/en/company/developers.html) | <- | If you want to compile VST plugins, you'll need to get the SDK from Steinberg yourself (for licensing reasons it can't be distributed with HISE)
 ASIO SDK | Source Code| [Website](https://www.steinberg.net/en/company/developers.html) | <- | If you are building a standalone application on Windows, you might want to support the low latency ASIO driver. 
 IDE | Application | [Visual Studio 2015 Community](https://www.visualstudio.com/downloads/) | [XCode](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) | The main application for compiling native applications for each platform. They also come shipped with command line compilers, so if everything runs smoothly, you don't need to go into the IDE once. 
 Intel IPP | Application | [Website](https://registrationcenter.intel.com/en/forms/?productid=2558&licensetype=2) | <- | If you are using the convolution reverb in HISE, it is strongly recommended to use this library because it will improve the performance drastically. The community edition is free but you'll have to register at Intel to get the download link.
 
-Download and install the applications and extract the HISE source files (which also include the JUCE source code as well as precompiled binaries of the Projucer, a handy project management tool from the JUCE people.
-
 > A nice side effect of having these tools at your hand is that you're able to compile HISE yourself. You can work with the bleeding edge and don't have to wait until the next build release. The project files for the Projucer can be found under `projects/standalone/` and `projects/plugin`. Take a look at the GitHub page for instructions how to build **HISE**.
+
+Download and install the applications and extract the HISE source files (which also include the JUCE source code as well as precompiled binaries of the Projucer, a handy project management tool from the JUCE people.
 
 ## 2. Setting up HISE
 
@@ -56,7 +56,7 @@ Now we can setup the last page (**File -> Settings -> Project Settings**).
 
 That's it. Now you should be ready to compile the plugin. Open the saved patch and choose **File -> Export -> Export as Instrument (VSTi / AUi)**. If you are on Windows, you can choose, which platforms you want to compile (x86 / x64 / both). Press OK and go get a coffee while the compiler is doing the hard work (it should pop up a terminal window for a few minutes and spit out cryptic stuff that makes you feel like you're in the matrix).
 
-> **IMPORTANT:** The plugins you'll create are automatically licenced under the GPL v3 licence. This means you can't distribute them without releasing the source (which would be the entire project folder). For commercial usage, there is a separate licence model available. Please get in touch to discuss further details here.
+> **IMPORTANT:** The plugins you'll create are automatically licenced under the GPL v3 licence. This means you can't distribute them without releasing the source (which would be the entire project folder). For commercial usage, there is a separate license model available. Please get in touch to discuss further details [here](info@hise.audio).
 
 ## 4. Deploy the plugin
 
