@@ -148,7 +148,7 @@ Panel.setPaintRoutine(function(g)
 
 ![Example 2](http://hise.audio/manual/images/panel/example3.png)
 
-Paths will be scaled to the given area so it's recommended to use the normalized range `0.0 ... 1.0` for each axis during path creation.
+Paths will be scaled to the given area so it's recommended to use the normalized range `0.0 ... 1.0` for each axis during path creation. You can then use it's `getBounds()` method and supply a scale factor to set it to its correct size (take a look at the vector knob example below).
 
 ```javascript
 
@@ -354,6 +354,12 @@ By default, the panel is rendered transparently over its parent. However this im
 ### 2.1.2 Limit the repaint rate
 
 If you use a timer for animations, a refresh rate of 30 - 50 ms is enough in most cases (this equals 20 - 30 fps). Increasing the timer rate will not make things more fluid, but just clog the internal message event system.
+
+### 2.1.3 Use repaintImmediately() for synchronous repainting
+
+If you want to repaint the panel from either its timer callback or a event callback, you might want to use `this.repaintImmediately()` instead of `this.repaint()` in order to get more fluid animations. This bypasses the internal event queue and directly executes the paint function.
+
+> Do not call this method from the MIDI callbacks (or even the onControl callback) as it will cause drop outs...
 
 ## 2.2 Use the "Create UI Factory method" tool
 
@@ -1155,4 +1161,107 @@ inline function createHeadSprite(name, x, y)
     
     return widget;
 };
+```
+
+## 3.4 A vectorized knob
+
+![VectorButton](http://hise.audio/manual/images/vectorbutton.gif)
+
+Using the ScriptPanel with a Path and its new `addArc` method, you can create fully resizable knobs using only vector graphics. 
+
+```javascript
+inline function createVectorKnob(name, x, y)
+{
+    local widget = Content.addPanel(name, x, y);
+    
+    Content.setPropertiesFromJSON(name, {
+      "width": 80,
+      "height": 80,
+      "saveInPreset": 1,
+      "allowCallbacks": "Clicks, Hover & Dragging",
+      "enableMidiLearn": true
+    });
+    
+    widget.data.p = Content.createPath();
+    
+    widget.setPaintRoutine(function(g)
+    {
+        // this is the start radian
+        var startOffset = 2.5;
+        
+        var arcThickness = 0.15;
+        var arcWidth = 1.0 - 2.0 * arcThickness;
+        
+        // Make sure you reset the path!
+        this.data.p.clear();
+        
+        g.setColour(Colours.white);
+        
+        // Draw the inner circle
+        g.fillEllipse([0.3*this.getWidth(), 0.3*this.getWidth(), 0.4*this.getWidth(), 0.4*this.getWidth()]);
+        
+        // Calculate the normalized value (in case the range is different from 0...1)
+        var min = this.get("min");
+        var max = this.get("max");
+        var normalizedValue = (this.getValue() - min) / (max - min);
+        
+        // calculate the end radian from the current value
+        var endOffset = -startOffset + 2.0 * startOffset * normalizedValue;
+        
+        // make sure the zero value draws a tiny fraction of the arc
+        endOffset = Math.max(endOffset, -startOffset + 0.1);
+        
+        // Add the arc with the given area and its offsets in radian (0 ... 2*PI)
+        this.data.p.addArc([arcThickness, arcThickness, arcWidth, arcWidth], -startOffset, endOffset);
+        g.setColour(Colours.white);
+        
+        // this new method returns the scaled bounds with the correct ratio
+        var pathArea = this.data.p.getBounds(this.getWidth());
+        
+        // draws the arc (use the area from above to avoid weird rescaling)
+        g.drawPath(this.data.p, pathArea, this.getWidth() * arcThickness);
+    });
+    
+    widget.setMouseCallback(function(event)
+    {
+        if(event.clicked)
+        {
+            // save the value from the mouse click
+            this.data.downValue = this.getValue();
+        }
+        if(event.drag)
+        {
+            // Calculate the distance using diagonal drag support
+            var dragDistance = event.dragX + -1.0 * event.dragY;
+            
+            // Calculate the sensitivity value based on the value range
+            var dragSensitivity = 200 / (this.get("max") - this.get("min"));
+            
+            var normalizedDistance = dragDistance / dragSensitivity;
+            
+            // Calculate the new value (limit it to the given range)
+            var newValue = Math.range(this.data.downValue + normalizedDistance, this.get("min"), this.get("max"));
+            
+            // Ignore the mouse events above the limits
+            if(newValue != this.getValue())
+            {
+                // Change the value
+                this.setValue(newValue);
+                
+                // Call the paint method 
+                // unlike repaint, this is a bit faster, but call this only
+                // in either the mouse callback or the timer callback of the panel
+                this.repaintImmediately();
+                
+                // this method triggers the control callback
+                this.changed();
+            }
+        }
+    });
+    
+    return widget;
+};
+
+// Usage: 
+const var Panel = createVectorKnob("Panel", 15, 18);
 ```
