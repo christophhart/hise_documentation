@@ -7,3 +7,7 @@ This repository is only storing the data. A pretty version with working images, 
 [HISE Documentation Website](http://hartinstruments.net/hise/manual/Sampler.php)
 
 This documentation is neither complete nor 100% correct. If you find something weird laying around, please let me know by filing a pull request or an issue.
+
+
+
+Pull request test
