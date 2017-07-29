@@ -634,7 +634,13 @@ namespace SixStateButton
         p.setValue(value);
         p.changed();
         p.repaint();
-    }  
+    }
+    
+    inline function setButtonValue(p, value)
+    {
+        p.setValue(value);
+        p.repaint();
+    }
 };
 
 // Create two buttons
