@@ -2,6 +2,7 @@
 
 HISE can export instruments as iOS standalone app or (with the recent addition) as AUv3 app extension so you can load it into hosts like Garageband, AudioBus 3 or AUM. The workflow is almost the same as exporting desktop apps, but you need to use XCode to compile and transfer it to your device.
 
+
 ## Requirements
 
 In order to compile iOS apps, you need the following things:
@@ -48,6 +49,59 @@ That's it. From then on you can do everything just like with a normal iOS app (u
 ## iOS specific features
 
 **HISE** tries to encapsulate as much platform specific details as possible. However, there are a few things that need special treatment on iOS, which will be explained here.
+
+### Memory
+
+Memory is super tight on iOS devices. As if things weren't hard enough,  Apple enforces a 350MB limit per AUv3 instance, which can be easily surpassed with complex sample based instruments. What makes this really nasty is that there is no error reporting whatsoever, your app just crashes or refuses to load without any hints (took me a few days to figure this out).
+
+This restriction also came with iOS 10.x, so if you're testing on a device with an older iOS version, things run just fine, which doesn't help at all.
+
+There are two things which raise the memory consumption:
+
+#### Images
+
+Images are stored internally as uncompressed bitmap, so having multiple retina background images as well as different filmstrips might cause issues. You can easily calculate the memory usage with the given formula:
+
+``` 
+width * height * 4 bytes
+```
+
+So eg. one retina background image for iPad is using 12MB of memory.
+
+The only solution is to keep an eye on the memory consumption during development. I may add some warnings in the future if you're trying to load too much images though...
+
+Also, rendering big panels via paint routine is ineffective, because it doubles the image canvas. If you are just painting a (clipped) image in the Panels' paint routine, you might want to use the new `Panel.setImage()` method, which just maps the image to the canvas instead of drawing (=duplicating) it.
+
+
+So instead of doing this:
+
+```javascript
+Panel.loadImage("{PROJECT_FOLDER}bg.png", "bg");
+Panel.setPaintRoutine(function()
+{
+    g.drawImage("bg", [0, 0, this.getWidth(), this.getHeight()], 0, 0);
+});
+```
+
+you need to call `setImage()` (it has a similar syntax so the transition should be pretty easy):
+
+```javascript
+Panel.loadImage("{PROJECT_FOLDER}bg.png", "bg");
+
+//                   x  y
+Panel.setImage("bg", 0, 0);
+
+// You can still use offsets to implement filmstrips this way.
+```
+
+#### Samples
+
+The preload buffers and the streaming buffers are obviously also using memory, so this is the other thing that could cause the memory consumption to rise. I highly recommend using HLAC compressed samples on iOS - in this case, it uses 16bit preload buffers (and streaming buffers) which reduces the overall memory consumption by 50%.
+
+### App size
+
+iOS Apps may not exceed 4GB in size. If you do so, iTunes will refuse to load your .ipa (even when testing in XCode is not giving any clues about this issue).
+The only solution to surpass this limitation is to use InApp purchases that load additional content. This is currently not possible in HISE, but may change in the future. So currently, you're limited to 4GB (another great reason for HLACing your samples).
 
 ### Icon
 
