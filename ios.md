@@ -1,7 +1,4 @@
-# IOS Export
-
-HISE can export instruments as iOS standalone app or (with the recent addition) as AUv3 app extension so you can load it into hosts like Garageband, AudioBus 3 or AUM. The workflow is almost the same as exporting desktop apps, but you need to use XCode to compile and transfer it to your device.
-
+HISE exports your instrument both as standalone app as well as AUv3 app extension so you can load it into hosts like Garageband, AudioBus 3 or AUM. The workflow is almost the same as exporting desktop apps, but you need to use XCode to compile and transfer it to your device.
 
 ## Requirements
 
@@ -22,7 +19,7 @@ The procedure for creating iOS apps looks like this:
 1. Build your instrument just like a desktop plugin / app
 2. Add your Team Development ID (the distribution ID, not the development ID) to your User Settings
 3. Add a App Group ID to the Project Settings (something like `group.shared.productName`. This is used for sharing the user presets between the AUv3 App Extension and the Standalone App. You also have to add the App Group in your developer account and make sure that the entitlements for the product bundle ID contains the App Group.
-2. **File -> Export As Standalone -> iOS Standalone app**. It will open the terminal window, but instead of launching the compiler, it just creates the XCode project.
+2. **File -> Export As Standalone -> iOS Standalone app**. It will open the terminal window, but instead of launching the compiler, it just creates the XCode project. It will automatically create the AUv3 plugin too, so you don't need to do anything special here.
 
 ### In XCode
 
