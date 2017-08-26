@@ -57,15 +57,17 @@ There are two things which raise the memory consumption:
 
 #### Images
 
-Images are stored internally as uncompressed bitmap, so having multiple retina background images as well as different filmstrips might cause issues. You can easily calculate the memory usage with the given formula:
+Images are stored internally as uncompressed bitmap, so having multiple retina background images as well as different filmstrips might cause issues. The only solution is to keep an eye on the memory consumption during development. I may add some warnings in the future if you're trying to load too much images though...
 
-``` 
+You can easily calculate the memory usage with the given formula:
+
+```javascript
+for each image:
 width * height * 4 bytes
 ```
 
-So eg. one retina background image for iPad is using 12MB of memory.
+So eg. one retina background image for iPad is using 12MB of memory. This amount of memory could also be used to prebuffer 384 samples using the HLAC codec, so you can decide for yourself how to spend those precious bytes.
 
-The only solution is to keep an eye on the memory consumption during development. I may add some warnings in the future if you're trying to load too much images though...
 
 Also, rendering big panels via paint routine is ineffective, because it doubles the image canvas. If you are just painting a (clipped) image in the Panels' paint routine, you might want to use the new `Panel.setImage()` method, which just maps the image to the canvas instead of drawing (=duplicating) it.
 
