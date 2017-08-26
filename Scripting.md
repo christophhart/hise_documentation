@@ -1,4 +1,4 @@
-The Script Processor uses Javascript. If you don't know Javascript yet, check out this small [tutorial](Javascript.php).
+HISE uses a *modified* version of Javascript. If you don't know Javascript yet, check out this small [tutorial](Javascript.php).
 
 ## The Callbacks
 
@@ -56,20 +56,6 @@ onControl(knob, knob.getValue());
 
 Using this callback is not the only way to add functionality to scripted UI elements. For basic parameter changes, you can simply add a macro control to the control.
 
-### Secondary Callbacks
-
-In addition to the main callbacks, there are some other callbacks which you can use to react on some events. But since their use case is rather special, they don't have a dedicated tab. Instead simply add the callback as function in the onInit tab.
-
-#### the `onClock`-Callback
-
-The onClock callback is a host-synched clock that is executed in a determinable clock interval from one bar to 32th notes. It supplies the sample index of the current buffer as argument (if you need this), but normally you should be fine with it.
-
-> The callback will be executed shortly before the actual event - in fact at the beginning of the buffer that contains the next clock position. For this reason you'll need to round up the song position to get the actual value using `Math.ceil(Engine.getPlayHead().ppqPosition`
-
-#### the `onTransport`-Callback
-
-the onTransport callback is executed whenever the transport status from the host changes (start / stop playing). It supplies the information if the host starts or stops as first argument (boolean).
-
 ## The API
 
 **HISE** provides a API with over 200 functions which allow interaction between the core engine and the script processor. There is a [complete list of all API calls](ScriptingCheatSheet.php), but you can also use the autocomplete feature of the script editor to quickly browse through all available functions.
@@ -77,7 +63,6 @@ the onTransport callback is executed whenever the transport status from the host
 > Press <kbd>Escape</kbd> to open a popup with all API objects and all script variables. If you press the key after a object (eg. `Content.`<kbd>Escape</kbd>), you will get a list of all API functions that belong to this object.
 
 The API is divided into five sub categories which are grouped into the following objects. You can call every API function by using the scheme `Object.function([parameters])`
-
 
 ### The Synth Object
 
@@ -140,18 +125,6 @@ The console object allows to print out any value to the console of **HISE**.
 ```javascript
 Console.print("Hello World " + 3.4); // Prints something to the console
 ```
-### The Globals Object
-
-The Globals object does not contain any methods but acts as preset wide value container for cross-script communication.
-
-```javascript
-// In Script Processor 1
-Globals.x = 5.72; // Define this in one script
-
-// In Script Processor 2
-Console.print(Globals.x) // 5.72
-```
-
 ## The Script Processor
 
 The Script Processor is a MIDI Processor that can be added onto every sound generator. They are processed top down in the tree order (parents first).
@@ -416,6 +389,4 @@ bgPanel = Content.addPanel("pgBanel", 0, 0);
 #### Use order of declaration to change the z-order of the components
 
 Components are defined from front to back so that the first component definition is the last component in the z-order. 
-
-> getting a masked component into the Interface Designer is a bit tricky (because the right click will always affect the component at the front. But you can use the Live variable watch view to select the currently edited component (right click on the entry and chose "Edit in panel")
 
