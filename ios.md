@@ -142,7 +142,7 @@ For simple vector based interfaces this will be enough. But in most cases, you n
 // on the iPhone 5, it will include the file `Interface_iPhone5.js`
 // on the iPad as AUv3, it will include the file `Interface_iPadAUv3.js`
 // ...
-include("Interface_{DEVICE}.js"";
+include("Interface_{DEVICE}.js");
 ```
 
 This yields a workflow like this:
