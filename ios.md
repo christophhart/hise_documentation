@@ -49,7 +49,7 @@ That's it. From then on you can do everything just like with a normal iOS app (u
 
 ### Memory
 
-Memory is super tight on iOS devices. As if things weren't hard enough,  Apple enforces a 350MB limit per AUv3 instance, which can be easily surpassed with complex sample based instruments. What makes this really nasty is that there is no error reporting whatsoever, your app just crashes or refuses to load without any hints (took me a few days to figure this out).
+Memory is super tight on iOS devices. As if things weren't hard enough,  Apple enforces a 360MB limit per AUv3 instance (for 32bit devices even 300MB), which can be easily surpassed with complex sample based instruments. What makes this really nasty is that there is no error reporting whatsoever, your app just crashes or refuses to load without any hints (took me a few days to figure this out).
 
 This restriction also came with iOS 10.x, so if you're testing on a device with an older iOS version, things run just fine, which doesn't help at all.
 
