@@ -72,6 +72,8 @@ So we need to get our hands a little dirty and fix those issues manually in the 
 
 To fix the octave offset, press and hold down the <kbd>Alt</kbd> key (that the cursor changes to the hand) and move the selection two octaves up):
 
+Afterwards you should save your current Samplemap via the Save-Button(Floppy Disk) or with [Ctrl-s]. It will now reside in your projects **SampleMaps** folder as an .xml file.  
+
 ![SC_Mapping.gif](http://hise.audio/images/tutorial/SC_Mapping.gif)
 
 ### Export as HLAC monolith
