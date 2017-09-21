@@ -332,4 +332,6 @@ In the next chapter we'll build the interface for the instrument. But before we 
 2. Rename the Sampler module to "Musicbox Samples"
 3. Rename the Sine Wave Generator to "Ring Off Sound"
 
-As last step, let's save the patch. Basically there are two file types: .hip files which are a binary format or XML files. If you want to use a version control system, I'd highly recommend using the latter one, but for now we are good with the .hip type. Rename the Master Chain to "MusicBox" and choose **File->Save**. It will store a .hip file in the `Presets` subfolder of the project.
+As last step, let's save the patch. Basically there are two file types: .hip files which are a binary format or XML files. If you want to use a version control system, I'd highly recommend using the latter one (it will also save all script as separate files automatically). Rename the Master Chain to "MusicBox" and choose **File->Save File As XML Backup**. Enter the filename in the dialog (*MusicBox.xml*), and press OK a few times (it will ask if it should export the scripts into separate files while saving and remove the view data). You should now have a .xml file in the `XmlPresetBackup` subfolder of the project.
+
+> The other .hip file format is still pretty useful for intermediate states or quick sketches, but I recommend adding this extension to the .gitignore file in your repository
