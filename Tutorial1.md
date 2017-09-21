@@ -1,4 +1,4 @@
-# Getting started
+# Introduction
 
 ![Interface](http://hise.audio/images/tutorial/tutorialPlugin.png)
 
@@ -20,6 +20,8 @@ The sample library will have these features:
 - a custom interface that controls some selected parameters.
 
 The interface and the samples are kindly provided by [Wavesfactory](http://wavesfactory.com)
+
+> You can find the finished project repository [here](https://github.com/christophhart/hise_tutorial), so if you get stuck somewhere or are too impatient to crawl through the whole tutorial, simply clone this repository and check out the final result.
 
 Before we start, let's take a look at the interface of HISE.
 
