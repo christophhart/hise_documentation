@@ -96,10 +96,11 @@ Of course the downside of this is that you can't change the aspect ratio of the 
 
 ### 1.1.4 Fonts
 
-You can use custom fonts to draw any text. You'll need to load the font before you use it.
+You can load custom fonts to draw any text (all TrueType fonts should be supported). If you want to use non standard fonts, you'll need to copy the font into the Image folder of your project and load the font before you use it like this:
 
 ```javascript
-Engine.loadFont("Comic Sans MS");
+// looks in the subdirectory Fonts of the Image folder
+Engine.loadFont("{PROJECT_FOLDER}Fonts/Comic Sans MS.ttf"); 
 
 const var Panel = Content.addPanel("Panel", 0, 0);
 
@@ -107,7 +108,7 @@ Panel.setPaintRoutine(function(g)
 {
     g.fillAll(Colours.blanchedalmond);
     g.setColour(Colours.blue);
-    g.setFont("Comic Sans MS", 50.0);
+    g.setFont("Comic Sans MS", 50.0); 
     g.drawText("Best font EVER!!", [0, 0, 400, 50]);
 });
 ````
@@ -116,9 +117,43 @@ Panel.setPaintRoutine(function(g)
 
 ![Example 2](http://hise.audio/manual/images/panel/example2.png)
 
-When using **HISE** it will look for the system fonts, but compiled plugins will embed that font and load it from there (you can't expect every user to have Comic Sans MS).
+When using **HISE** it will look for the system fonts (it assumes that you've installed the font you want to use), but compiled plugins will embed that font from the image directory and load it from there (you can't expect every user to have Comic Sans MS).
 
-> Please make sure that you own the full rights to embed fonts into an application as most font licenses handle that case specificly (as far as I am aware, Google Fonts are allowed to be embedded)
+The string passed in as into the `g.setFont()` method must match the exact font name (this is not necessarily the file name and this name might be even different between Windows and OSX). A neat trick is to create a dummy label, select the font in the interface designer for the label (as soon as you loaded the font, it should be globally available in the drop down list) and copy the string from the JSON:
+
+```javascript
+const var versionLabel = Content.addLabel("versionLabel", 842, 443);
+// [JSON Label]
+Content.setPropertiesFromJSON("Label", {
+  "fontName": "Trebuchet MS", // use this String to load
+  "multiline": false
+});
+// [/JSON Label]
+```
+
+For fonts that use a different name on OSX and Windows, you can use the `Engine.getOS()` command:
+
+```javascript
+inline function getGlobalFontName()
+{
+    if(Engine.getOS() == "WIN")
+    {
+        return "WindowsFontID";
+    }
+    else
+    {
+        return "OSXFontID";
+    }
+};
+```
+
+In order to use a different font style by appending either ` Bold` or ` Italic` (or both) after the font ID:
+
+```javascript
+g.setFont("Trebuchet MS Bold")
+```
+
+Please make sure that you own the full rights to embed fonts into an application as most font licenses handle that case specificly (as far as I am aware, Google Fonts are allowed to be embedded)
 
 #### 1.1.5 Paths
 
