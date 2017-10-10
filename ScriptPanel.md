@@ -122,7 +122,7 @@ When using **HISE** it will look for the system fonts (it assumes that you've in
 The string passed in as into the `g.setFont()` method must match the exact font name (this is not necessarily the file name and this name might be even different between Windows and OSX). A neat trick is to create a dummy label, select the font in the interface designer for the label (as soon as you loaded the font, it should be globally available in the drop down list) and copy the string from the JSON:
 
 ```javascript
-const var versionLabel = Content.addLabel("versionLabel", 842, 443);
+const var Label = Content.addLabel("Label", 0, 0);
 // [JSON Label]
 Content.setPropertiesFromJSON("Label", {
   "fontName": "Trebuchet MS", // use this String to load
