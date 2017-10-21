@@ -32,7 +32,7 @@ The idea is that you have to set up the compiler settings only once but can use 
 
 ### Compiler Settings
 
-Open the compiler settings panel (**File -> Settings -> Compiler Settings**) and enter your settings accordingly (it should be pretty self explanatory what to do).
+Open the compiler settings panel (**File -> Settings -> Compiler Settings**) and enter your settings accordingly. , **HISE Path** must be the directory where you've extracted the HISE source code, the rest should be pretty self explanatory.
 
 Press **OK** and open the next panel to enter the user credentials (**File -> Settings -> User Settings**)
 
