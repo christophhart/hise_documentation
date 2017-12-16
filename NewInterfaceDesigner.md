@@ -113,8 +113,8 @@ The main advantage of this new system is that the workflow of the Interface Desi
 
 Below is a non-comprehensive list of things that are supposed to be done with either the Interface Designer or the Scripting Engine
 
-Action    | Interface Designer | Scripting Engine
---- |   ------------------ | ----------------
+Action | Interface Designer | Scripting Engine
+------ | ------------------ | ----------------
 **Building** | Adding / Removing Components | Customizing the appearance of ScriptPanels
 **Properties** | Setting static Properties | Setting dynamic properties based on events
 **Parameter Connection** | Connect widgets directly to a module parameter | Implement more complex connections (multiple parameters, inverted range, UI logic)
@@ -221,7 +221,7 @@ You can change the position and size of the currently selected items by either j
 When the canvas has the keyboard focus, you can use the arrow keys for nudging them around. The modifier keys can be used here to change the action. Their effect is similar for both keyboard and mouse interaction, but here is a detailed overview:
 
 Modifier Key | Effect with Keystroke | Effect when dragging
------------- | ------
+------------ | --------------------- | --------------------
 **Cmd / Ctrl** | Use a 10px raster | Use a 10px raster
 **Shift** | Change the size instead of the position | Restrict the movement to horizontal / vertical only
 **Alt** | nothing | Duplicating the current control
