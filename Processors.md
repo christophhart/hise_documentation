@@ -132,10 +132,20 @@ Group Fade Modulation | All modulators
 > The Sample Start Modulation checks the maximal range of the sample start modulation for each sample, so in order to make this work, you have to define a Sample Start Modulation area for each sample (this loads the area into memory, this is why it isn't enabled by default.)
 
 ### Container
+As the name suggests it acts as a container for other sound generators (think of it as a folder in a file structure).  
+Containers process all child sound generators independently but have some limitations (no pitch modulation, no modulators that process MIDI messages) which are neccessary to achieve this.
+
+Every HISE patch starts with a container that can be filled with other sound generators. All patch settings (the interface, the macro controls, the views) are saved within the root container object.
 
 ### Synthesiser Group
+Renders its voice as sum of all child synth voices (and enabling some neat features like FM synthesis). This can be used to build eg. additive synthesis generators while saving CPU power (because every otherwise every harmonic sine wave would be a own synthesiser. And you can use all modulators, so can simply drop an envelope on the Synthesiser Group and it will be applied to all child synths.
 
 ## Midi Processors
+Midi Processors allow to process incoming MIDI messages and create a customized behaviour of the virtual instrument.
+
+For the most common tasks there are some prebuilt MIDI Processors (Transposer, Channel Filter, Release Trigger), but the most interesting part here would be the ScriptProcessor, which allows you to define a customized behaviour by using JavaScript.
+
+Instead of having a global MIDI processor, each Sound Generator has their own MIDI Processor slot so you can define different behaviour for different synths - or by using the MIDI Processor slot of the parent Container define the behaviour for all child synths. This allows to keep the tasks of every MIDI Processor quite simple.
 
 ## Voice Start Modulators
 
