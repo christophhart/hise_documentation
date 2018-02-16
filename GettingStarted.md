@@ -12,6 +12,8 @@ This documentation has some special layouts to emphasize important information:
 
 **HISE** can be used either as standalone application or as plugin (VST / AU format).
 
+>GNU/Linux support is currently experimental. The instructions to build and install HISE on Linux can be found here https://github.com/christophhart/HISE#linux.
+
 ### System Requirements
 
 - Windows 7 / OSX 10.6
