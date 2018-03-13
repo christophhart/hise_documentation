@@ -58,7 +58,7 @@ Using this callback is not the only way to add functionality to scripted UI elem
 
 ## The API
 
-**HISE** provides a API with over 200 functions which allow interaction between the core engine and the script processor. There is a [complete list of all API calls](ScriptingCheatSheet.php), but you can also use the autocomplete feature of the script editor to quickly browse through all available functions.
+**HISE** provides a API with over 200 functions which allow interaction between the core engine and the script processor. There is a [complete list of all API calls](http://hise.audio/scripting_api/class_scripting_api.html), but you can also use the autocomplete feature of the script editor to quickly browse through all available functions.
 
 > Press <kbd>Escape</kbd> to open a popup with all API objects and all script variables. If you press the key after a object (eg. `Content.`<kbd>Escape</kbd>), you will get a list of all API functions that belong to this object.
 
