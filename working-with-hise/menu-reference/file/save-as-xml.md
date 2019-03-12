@@ -1,0 +1,1 @@
+Saves the current instrument as XML tree. 

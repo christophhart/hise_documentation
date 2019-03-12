@@ -1,0 +1,1 @@
+This only takes the size of the preload buffers and streaming buffers of the samples into account - the actual memory consumption might be much higher if you are using lots of images.

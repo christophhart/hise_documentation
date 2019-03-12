@@ -1,0 +1,1 @@
+This copies the entire UI model from the desktop and copies it to the currently active device model.
