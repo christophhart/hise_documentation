@@ -1,6 +1,8 @@
 ---
 keywords: Array
 summary:  An Array is a object that can hold multiple other objects and can be indexed using a sequential number.
+author:   Christoph Hart
+modified: 13.03.2019
 ---
 
 # Array Class Reference
