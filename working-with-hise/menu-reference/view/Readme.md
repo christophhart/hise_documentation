@@ -1,6 +1,7 @@
 ---
-keywords: Menu Reference
-summary:  The reference for the menu commands in HISE.
+keywords: View Menu
+summary:  Actions related to the appearance of HISE
+author:   Christoph Hart
+modified: 18.03.2019
 ---
 
-This is the menu reference for all the menus in HISE.

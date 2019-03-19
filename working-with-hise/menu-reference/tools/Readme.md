@@ -1,7 +1,12 @@
 ---
 keywords: Tools Menu
-summary:  The reference for the tools menu in HISE
+summary:  A collection of various useful tool actions.
+author:   Christoph Hart
+modified: 18.03.2019
 ---
 
-![warning](/images/icon_warning:64px)  
-> Oops, this document has not been created yet. Luckily, you can help out. If you want to learn how to contribute to the documentation, please visit[this site](glossary/contributing#contributing) to learn more.  
+The tools menu contains commands that perform useful tasks during development. It is loosely categorised into these sections:
+
+- Sample Management
+- Scripting Tools
+- License Management

@@ -10,4 +10,4 @@ index:    05
 
 ![warning](/images/icon_warning:64px)
 
->Oops, this document is under construction. If you want to learn how to contribute to the documentation, please visit [this site](glossary/contributing#contributing) to learn more.
+>Oops, this document is under construction. If you want to learn how to contribute to the documentation, please visit [this site](/glossary/contributing) to learn more.
