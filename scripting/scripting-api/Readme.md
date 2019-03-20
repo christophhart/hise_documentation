@@ -50,6 +50,6 @@ v.asTableProcessor().addTablePoint(0, 0.5, 0.25);
 
 ### List of base class references:
 
-- [`AudioSampleProcessor`](/Scripting API/AudioSampleProcessor)  
-- [`TableProcessor`](/Scripting API/TableProcessor)  
-- [`SlotFX`](/Scripting API/SlotFX)
+- [`AudioSampleProcessor`](/scripting/scripting-api/audiosampleprocessor)  
+- [`TableProcessor`](/scripting/scripting-api/tableprocessor)  
+- [`SlotFX`](/scripting/scripting-api/slotfx)

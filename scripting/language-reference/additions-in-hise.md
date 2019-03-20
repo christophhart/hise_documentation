@@ -85,7 +85,7 @@ Console.print(car1.make);
 This concept is known as **Object Factory**. In this example, the code looks 
 more verbose, but it has a big advantage: **you can use existing objects and 
 turn it into the thing you want**. If you take a look at the 
-[ScriptPanel documentation](link), you'll notice that every single code example 
+[ScriptPanel documentation](/ui-components/plugin-components/panel), you'll notice that every single code example 
 uses this form:
 
 ```javascript

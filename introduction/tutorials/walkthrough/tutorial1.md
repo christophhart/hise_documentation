@@ -1,3 +1,10 @@
+---
+keywords: Tutorial Pt. 1
+summary:  The first steps in HISE
+author:   Christoph Hart
+modified: 19.03.2019
+---
+
 # Introduction
 
 ![Interface](http://hise.audio/images/tutorial/tutorialPlugin.png)
@@ -71,6 +78,5 @@ A project in HISE is a folder which contains all files (samples / scripts / imag
 
 Select a directory and press OK. It will create all necessary sub folders within this directory. You can now copy all external files into the correct subfolder and access it within HISE as relative path so you can simply transfer the project on another computer. When you compile the plugin, all files (except for the actual samples) will be embedded into the plugin binary so it is crucial that you put everything that belongs to the project in this folder.
 
-Now you are ready to get started with the [sampler](Tutorials/Tutorial2.md).
 
-> `keywords: "Tutorial Pt. 1" | description: The first steps in HISE`
+
