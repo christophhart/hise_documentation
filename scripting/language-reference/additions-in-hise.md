@@ -14,7 +14,7 @@ things you need to forget**.
 
 This chapter provides a detailed overview over every single customisation added to 
 the scripting engine in HISE. From now on, the scripting language in HISE will be 
-referred to as **HiseScript** as opposed to standard **Javascript**. We will take a look at the concepts that have been stripped  from Javascript first and then go through the 
+referred to as **HiseScript** as opposed to standard **Javascript**. We will take a look at the concepts that have been stripped from Javascript first and then go through the 
 additions.
 
 ## Object-oriented programming
