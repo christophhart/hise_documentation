@@ -1,6 +1,6 @@
 ---
 keywords: Contributing
-summary:  Howto contribute to this documentation.
+summary:  How to contribute to this documentation.
 icon:     /images/icon_markdownpanel
 ---
 

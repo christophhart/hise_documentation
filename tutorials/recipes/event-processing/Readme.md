@@ -1,5 +1,5 @@
 ---
-keywords: event processing
+keywords: Event Processing
 summary:  Please enter a brief description.
 weight:   50
 index:    01

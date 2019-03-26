@@ -1,6 +1,6 @@
 ---
 keywords: Settings
-summary:  The settings windows in HISE
+summary:  HISE Settings 
 icon:     /images/icon_settings
 ---
 

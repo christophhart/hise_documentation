@@ -1,5 +1,5 @@
 ---
-keywords: ui
+keywords: UI
 summary:  Please enter a brief description.
 weight:   50
 index:    01
