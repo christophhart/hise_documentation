@@ -2,7 +2,7 @@
 keywords: Menu Reference
 summary:  The reference for the view menu in HISE.
 author:   Christoph Hart
-index:    01
+index:    03
 weight:   50
 icon:     /images/icon_book
 ---

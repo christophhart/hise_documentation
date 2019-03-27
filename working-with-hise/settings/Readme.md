@@ -2,6 +2,7 @@
 keywords: Settings
 summary:  HISE Settings 
 icon:     /images/icon_settings
+index: 04
 ---
 
 You can change the preferences of HISE in the settings dialog, which appears when you click on the Settings icon on the top right of HISE. The settings are organized into multiple categories.
