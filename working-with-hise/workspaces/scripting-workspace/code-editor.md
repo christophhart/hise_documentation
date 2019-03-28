@@ -1,9 +1,8 @@
 ---
 keywords: The Code editor
 summary:  A overview of the callback system that powers the HISE scripting engine
+index: 01
 ---
-
-### Code Editor
 
 ![code-editor](images/scripting/code-editor.png)
 
@@ -27,7 +26,7 @@ There are also some helpful shortcuts which will speed up your development workf
 | `Shift+Enter` | Put a semicolon at the end of line + jump to new line |
 | `Select+d` | Select multiple occurences of the selection. `ESC` to quit. |  
 
-### Console
+## Console
 
 ![Console](images/scripting/console.png)
 
@@ -41,7 +40,7 @@ All [Console API](#The-Console-Object) calls print directly to the Console. The 
 Console.print()
 ```
 
-### ScriptWatchTable
+## ScriptWatchTable
 
 But the Console is not the only way in **HISE** to observe what is going on in the scripts. On the right side of the **Code Editor** you can find the **ScriptWatchTable**. It shows an overview of every referenced or activated script item, with their:
 

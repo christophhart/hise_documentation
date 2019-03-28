@@ -1,3 +1,5 @@
-# The Right Panel
-
-> `keywords: "Right Panel" | description: "A predefined collection of debugging tools"`
+---
+keywords: Right Panel
+summary:  A predefined collection of debugging tools
+index:    03
+---

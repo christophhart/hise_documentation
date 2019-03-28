@@ -1,3 +1,5 @@
-# The Left Panel
-
-> `keywords: "Left Panel" | description: "A generic space for adding custom UI elements"`
+---
+keywords: Left Panel
+summary:  A generic space for adding custom UI elements
+index:    01
+---
