@@ -6,9 +6,9 @@ icon:     /images/icon_filebrowser
 index:    01
 ---
 
-When you first start up **HISE** you will get asked to create a new project. This **HISE project** consist of a folder structure for all the files, scripts and samples that are necessary to build and compile your virtual instrument. Most of them are empty at the beginning, but ready to be filled with your ideas.
+When you create a new project, HISE will set up a directory with a bunch of predefined folders that can hold all the data, files and scripts that you need in your instrument/plugin.
 
-The folders are categorized according to their file type and usage:
+These folders are categorized according to their file type and usage:
 
 ![image folderstructure](images/custom/folder.png)
 

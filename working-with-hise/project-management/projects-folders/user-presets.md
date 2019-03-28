@@ -2,7 +2,7 @@
 keywords: UserPresets
 author:   Christoph Hart
 summary:  Explains the HISE UserPresets Folder
-index:    10
+index:    08
 ---
 
 

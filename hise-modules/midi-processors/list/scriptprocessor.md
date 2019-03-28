@@ -8,8 +8,9 @@ The ScriptProcessor is the basic module for injecting scripts in **HISE**. You c
 
 You can use the ScriptProcessors directly in the Main-Workspace or connect its interface to the Code Editor in the Scripting Workspace for more space and interoperability with the Interface Designer. 
 
-There are also a few other modules that use scripting in **HISE**. The Script Modulators and Script FX. 
+A handy shortcut: When you click on the ScriptProcessors little **open-in** Button it will open in the Scripting Workspace.
 
+There are also a few other modules that use scripting in **HISE**. The Script Modulators and Script FX. 
 
 ### Callbacks
 
@@ -17,7 +18,7 @@ There are also a few other modules that use scripting in **HISE**. The Script Mo
 
 Beneath the top-bar of the ScriptProcessor you can find the **Callback-Tabs**. Each one of them opens a dedicated coding window, prepopulated with a script-function to access these callbacks. 
 
-A <a href="https://en.wikipedia.org/wiki/Callback_(computer_programming)">callback</a> gives you access to scripting that is triggered by certain events. With this you can react to incoming MIDI Messages or events that are triggered by the user on the User Interface.
+A [Callback](https://en.wikipedia.org/wiki/Callback_(computer_programming) gives you access to scripting that is triggered by certain events. With this you can react to incoming MIDI Messages or events that are triggered by the user on the User Interface.
 
 
 #### The `onInit`-callback
@@ -30,8 +31,10 @@ The `OnInit`-Tab is therefore not really a callback, but more like the main scri
 
 #### The `onNoteOn`-callback
 
-If you press any Key on your MIDI-device or receive a MIDI-Message from a DAW, this callback will get executed. You can catch informations of the incoming MIDI messages via the Scripting APIs [Message](scripting.html#The-Message-Object) object:
-``` js
+
+If you press any Key on your MIDI-device or receive a MIDI-Message from a DAW, this callback will get executed. You can catch informations of the incoming MIDI messages via the Scripting APIs [Message](/scripting/scripting-api/message) object:
+
+```javascript
 function onNoteOn()
 {
   Console.print("NoteNumber: " + Message.getNoteNumber());
@@ -39,7 +42,7 @@ function onNoteOn()
 }
 ```
 
-For a few use-cases of the onNoteOn()-callback please have a look at the MIDI-Handling Recipes.
+For a few use-cases of the `onNoteOn()`-callback please have a look at the MIDI-Handling Recipes.
 
 #### The `onNoteOff`-callback
 
@@ -51,7 +54,8 @@ This callback will react to MIDI-noteOff messages. Most of the time when you wri
 
 If MIDI controller messages come in (eg. modulation wheel, pitch wheel, aftertouch), this callback will get executed.
 You can catch the Controllers with...:
-``` js
+
+```javascript
 function onController()
 {
   Console.print(Message.getControllerNumber());
@@ -76,7 +80,7 @@ If you start a timer, this callback will be called periodically (depending on th
 
 The `onControl`-callback is a dedicated callback for handling the interactions of all UIComponents. Whenever you use a UIComponent with a defined script reference, this callback will be executed. The best way to use it, is to catch the component with a `switch` function: 
 
-``` js
+```javascript
 function onControl(number, value)
 {
     switch(number) // number selects the component and switches between them in "case" they are used.
