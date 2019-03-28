@@ -28,7 +28,7 @@ The sample library will have these features:
 
 The interface and the samples are kindly provided by [Wavesfactory](http://wavesfactory.com)
 
-> You can find the finished project repository [here](https://github.com/christophhart/hise_tutorial), so if you get stuck somewhere or are too impatient to crawl through the whole tutorial, simply clone this repository and check out the final result.
+> You can find the finished project repository [here](), so if you get stuck somewhere or are too impatient to crawl through the whole tutorial, simply clone this repository and check out the final result.
 
 Before we start, let's take a look at the interface of HISE.
 
@@ -48,7 +48,7 @@ This area can be arranged and populated with any kind of panel. This (and how to
 
 ### The Main Area
 
-The main area contains a vertically arranged list of all modules in the current patch. Everything in HISE is a [tree](http://hise.audio/manual/Manual.php#theprocessorsystem). The root item is called master chain (and has the module type "Container"). You can add submodules by clicking on the `+` icon and select the desired module.
+The main area contains a vertically arranged list of all modules in the current patch. Everything in HISE is a [tree]. The root item is called master chain (and has the module type "Container"). You can add submodules by clicking on the `+` icon and select the desired module.
 
 Above the area there are three other elements:
 
@@ -100,8 +100,6 @@ There are 4 main panels:
 ### Drag samples into the map editor
 
 You should already be in the project folder. Double click on the 'Samples' folder, select all samples (`Cmd / Strg + A`) and drag them into the map of the sampler. Select "Filename Token Parser" and press OK".
-
-![SC_DragSamples.gif](http://hise.audio/images/tutorial/SC_DragSamples.gif)
 
 ### Use the file import dialog to extract the mapping information
 
@@ -158,9 +156,6 @@ Now you should have a .xml file in your `SampleMaps` directory and a monolith fi
 > If you have multiple sample sets, you can export each one as dedicated sample map and use scripting callbacks to switch between these samples.
 
 That's it. You now have a perfectly mapped sample set ready to be played. In the next chapters we will add some modulators and effects to the patch.
-
-> `keywords: "Tutorial Pt. 2" | description: Going into the sampler.`
-
 
 
 # Part 3
@@ -226,7 +221,7 @@ Notice how the intensity for pitch modulators changes from `0..1` to `-12 ... 12
 
 | What | Bipolar Mode | Unipolar Mode |
 | ---- | ------------ | ------------- |
-| **Icon** | ![Bipolar.png](http://hise.audio/manual/images/Bipolar.png) | ![Unipolar.png](http://hise.audio/manual/images/Unipolar.png) |
+| **Icon** | ![Bipolar.png](http://hise.audio/manual/images/Bipolar.png)| ![Unipolar.png](http://hise.audio/manual/images/Unipolar.png) |
 | **Input** | `0...1` | `0...1` |
 | **Zero input value** | `0.5`| `0.0` |
 | **Output** |`-intensity ... +intensity`| `0 ... +intensity` |
@@ -779,43 +774,6 @@ That`s it. The interface is fully functional and the instrument is ready to be e
 
 # Part 5
 
-
-The last tutorial will take you through the process of exporting a HISE instrument as VST / AU plugin.  HISE itself does not compile anything itself, but just collects everything, creates the project files and outsources the heavy lifting to the system compilers. However this means you have to install the raw tools and SDKs and setup the paths in HISE so it knows where to look.
-
-> **Disclaimer:** Compiling HISE instruments is regularly used and tested on OS X 10.11 and Windows 7. However it should also work on the newest versions of both operating systems. In case there are some problems, please feel free to contact me so I can work out a solution.
-
-### 1. The raw ingredients
-
-First of all we'll need to gather the required tools. Below is a list of every SDK / application required for building instruments with HISE. They are all free, but some require that you register an account at the company's website. Cross compilation of plugins is not possible, so you have to setup each OS separately, although it's perfectly fine to use Bootcamp on a Macbook so you can compile both targets on one machine - in fact I went some extra miles to make this possible and I am using this method myself, so you can expect it to work.
-
-Tool | Type | Windows | macOS | Explanation
----- | ---- | ------- | ----- | -----------
-HISE | Source Code | [Download](https://github.com/christophhart/HISE/archive/1.0.0.zip) | <- | The source code which contains the HISE engine. It is important that the source code version and the HISE version are matching (use the tag feature in GitHub in case you don't use the latest HISE version). Extract the .zip and put it wherever you want. 
-VST SDK | Source Code | [Steinberg Website](https://www.steinberg.net/en/company/developers.html) | <- | If you want to compile VST plugins, you'll need to download the SDK from Steinberg yourself (for licensing reasons it can't be distributed with HISE). Grab the `VST 3.6.7 Audio Plug-Ins SDK` and extract it. In the extracted folder you'll find a .bat file that you have to execute. The folder `VST3_SDK` has to be renamed to `VST3 SDK` (get rid of that pesky underscore) and be put in your HISE-master folder `HISE-master > tools > SDK >`. 
-ASIO SDK | Source Code| [Steinberg Website](https://www.steinberg.net/en/company/developers.html) | <- | If you are building a standalone application on Windows, you might want to support the low latency ASIO driver. Get `ASIO SDK` and put the extracted `ASIOSDK2.3` in `HISE-master > tools > SDK >`, too.
-IDE | Application | [Visual Studio 2015 Community](https://www.visualstudio.com/de/vs/older-downloads/) [ISO](https://imagine.microsoft.com/en-us/Catalog/Product/101) | [XCode](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) | The main application for compiling native applications for each platform. They also come shipped with command line compilers, so if everything runs smoothly, you don't need to go into the IDE once. 
-Intel IPP | Application | [Website](https://registrationcenter.intel.com/en/forms/?productid=2558&licensetype=2) | <- | If you are using the convolution reverb in HISE, it is strongly recommended to use this library because it will improve the performance drastically. The community edition is free but you'll have to register at Intel to get the download link.
-
-> A nice side effect of having these tools at your hand is that you're able to compile HISE yourself. You can work with the bleeding edge and don't have to wait until the next build release. The project files for the Projucer can be found under `projects/standalone/` and `projects/plugin`. Take a look at the GitHub page for instructions how to build **HISE**.
-
-Download and install the applications and extract the HISE source files (which also include the JUCE source code as well as precompiled binaries of the Projucer, a handy project management tool from the JUCE people.
-
-### 2. Setting up HISE
-
-Now that we have gathered everything we need, we can tell HISE where to find these tools. HISE has three levels of settings:
-
-| Compiler Settings | User Settings | Project Settings |
-| ----------------- | ------------- | ---------------- |
-| *system wide* | *project specific* | *project specific* |
-| SDK paths, IDE versions, ... | Company name, website, ... | Project Name, version, ...
-
-The idea is that you have to set up the compiler settings only once but can use different user and project settings for every project. So let's start with the compiler settings
-
-### Compiler Settings
-
-Open the compiler settings panel (**File -> Settings -> Compiler Settings**) and enter your settings accordingly. , **HISE Path** must be the directory where you've extracted the HISE source code, the rest should be pretty self explanatory.
-
-Press **OK** and open the next panel to enter the user credentials (**File -> Settings -> User Settings**)
 
 ### User Settings
 

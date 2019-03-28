@@ -6,7 +6,7 @@ weight: 100
 index: 01
 ---
 
-## What is HISE?
+### What is HISE?
 
 **HISE** is an open source framework for building sample based virtual instruments. 
 
@@ -15,13 +15,13 @@ index: 01
 
 - A flexible DSP-Audio **Module system** that lets you combine Sound Generators, Modulators and Effects in a tree-like architecture for maximum efficiency. See: [Hise Modules](/hise-modules)
 
-- A handy **Interface Designer** that makes it easy to hook up an interface with customizable [UI Components](/ui-components/plugin-components) and convenient [FloatingTiles](/ui-components/floating-tiles/plugin).
+- A handy **Interface Designer** that makes it easy to hook up an interface with customizable [UI Components](/ui-components/plugin-components) and convenient [Floating Tiles](/ui-components/floating-tiles/plugin).
 
 - Connect & control the interactions with your virtual instrument via the powerful **HISE Scripting Language** (based upon javascript) in an IDE-like environment. See: [Scripting](/scripting) 
 
 - Build upon the **HISE** architecture, include external libraries and get the most out of the Engine with C++. See: [Hraw](/hraw)
 
-- [Export and Compile](glossary/) your **HISE** instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. 
+- [Export and Compile](/working-with-hise/project-management/export) your **HISE** instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. 
 
 
 ### Rationale
@@ -39,13 +39,9 @@ index: 01
 
 
 ### Community
-  - If you have any questions, want to learn something new or help in the development of HISE, please join our community at the [HISE Forum](https://forum.hise.audio/). You'll meet a bunch of motivated developers there who can surely help you out. See you!
+- If you have any questions, want to learn something new or help in the development of HISE, please join our community at the [HISE Forum](https://forum.hise.audio/). You'll meet a bunch of motivated developers there who can surely help you out. See you!
 
 
 
 ### Getting Started
-
-So...
-
-Ready for more? Let's take the tour! 
 
