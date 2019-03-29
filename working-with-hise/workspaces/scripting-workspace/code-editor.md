@@ -4,7 +4,7 @@ summary:  A overview of the callback system that powers the HISE scripting engin
 index: 01
 ---
 
-![code-editor](images/scripting/code-editor.png)
+![Code Editor](images/custom/code-editor.png)
 
 The editor is a standard code text editor with Javascript syntax highlighting. In the top row you can connect the Code Editor to different ScriptProcessors and access their callbacks.
 

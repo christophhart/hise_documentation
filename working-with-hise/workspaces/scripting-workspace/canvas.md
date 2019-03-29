@@ -16,6 +16,8 @@ items:
 - Horizontal Distribute: Distribute the selection horizontally with equal space. 
 ---
 
+![interfacedesigner](images/custom/interface-designer.png)
+
 ## Canvas
 
 In the middle of the window is the Canvas, which is a preview of the interface that can be edited graphically.
