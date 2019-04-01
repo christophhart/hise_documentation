@@ -4,4 +4,4 @@ summary:  Different workspaces
 index: 02
 ---
 
-HISE is seperated into multiple workspaces which a tailored for a specific part of the development process.
+The HISE GUI is separated into 4 workspaces which are tailored for a specific parts of the development process.
