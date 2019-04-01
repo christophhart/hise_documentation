@@ -1,6 +1,6 @@
 ---
 keywords: Audio Analyser
-summary:  A floating tile that visualizes the audio signal
+summary:  A floating tile that connects to an Analyser Module and visualizes the audio signal
 weight:   50
 index:    01
 author:   Christoph Hart
@@ -9,6 +9,22 @@ properties:
 - Index: The visualisation type.
 ---
 
+You can connect the AudioAnalyser Floating Tile to the Analyser Module with the property "ProcessorId". Just put in the Analysers Processor ID to connect them. 
 
-![warning](/images/icon_warning:64px)  
-> Oops, this document has not been created yet. Luckily, you can help out. If you want to learn how to contribute to the documentation, please visit[this site](/glossary/contributing) to learn more.  
+```javascript
+{
+  "ProcessorId": "Analyser1",
+  "Index": 0
+}
+``` 
+## Goniometer
+
+`"Index": 0`
+
+## Oscilloscope
+
+`"Index": 1`
+
+## Spectral Analyser
+
+`"Index": 2`
