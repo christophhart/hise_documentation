@@ -178,7 +178,7 @@ General Workflow:
    2. [Pitch Detection](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#pitch-detection), which automatically tries to detect the pitch of the samples.
    3. [Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser), which reads the filename of your samples and maps them according to your requirements.
 3. Edit and finetune your samples with the [Sample Editor](/working-with-hise/workspaces/sampler-workspace/sample-editor) and the [Sampler Settings](/working-with-hise/workspaces/sampler-workspace/sample-settings). 
-4. When you are happy with the map, save it into the SampleMap folder. You can access SampleMaps with scripting[link] and play & switch them in your instrument. 
+4. When you are happy with the map, save it. It'll appear in the SampleMap folder. You can now access SampleMaps with scripting[link] and play them with your instrument. 
 5. If you are sure that you won't change the samples anymore you can compress them into the lossless **HLAC Monolith file-format** `.ch1` (per SampleMap). This speeds up streaming-performance and reduces file-size.
-6. In the final step, these Monolith files can be collected and exported together as **HISE Resource Archive File** `.hr1 ` via **Export > Export Samples for Installer** to distribute the samples with your instrument. 
+6. In the final step, these Monolith files can be collected and exported together as **HISE Resource Archive File** `.hr1 ` via **Export > Export Samples for Installer** to distribute the samples alongside your instrument. 
 

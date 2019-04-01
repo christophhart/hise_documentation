@@ -1,7 +1,12 @@
 ---
 keywords: Analyser
-summary:  [Enter summary]
+summary:  An Analyser Module to analyse and visualise generated sounds.
 ---
 
-![warning](/images/icon_warning:64px)  
-> Oops, this document has not been created yet. Luckily, you can help out. If you want to learn how to contribute to the documentation, please visit[this site](/glossary/contributing) to learn more.  
+## Goniometer
+
+
+## Oscilloscope
+
+
+## Spectral Analyser
