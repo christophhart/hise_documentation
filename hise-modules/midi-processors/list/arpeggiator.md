@@ -1,6 +1,6 @@
 ---
 keywords: Arpeggiator
-summary: A arpeggiator module
+summary: A Arpeggiator module
 parameters:
 - BypassButton: Bypasses the arpeggiator. You can call this from other MIDI callbacks to stop it from running.
 ---

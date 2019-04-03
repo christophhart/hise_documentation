@@ -15,7 +15,7 @@ The waveform generator is a virtual analog synthesiser with two oscillators that
 ## Oscillator types
 
 | Index | Name | Waveform | Description |
-| - | -- | -- | ------------- |
+| - | --- | -- | ----------- |
 | 1 | Sine | ![](/images/icon_sine:64px) | a sinusoidal curve |
 | 2 | Triangle | ![](/images/icon_triangle:64px) | a triangular waveform |
 | 3 | Saw | ![](/images/icon_saw:64px) | a sawtooth waveform (only odd harmonics). |
