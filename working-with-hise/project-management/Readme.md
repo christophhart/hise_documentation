@@ -60,7 +60,7 @@ The folder for the User-`.presets` that can save different states of your instru
 
 The folder for your **HISE presets** human readable `.xml` savefiles. 
 
-### Workflow 
+## Workflow 
 
 During development, HISE will fetch all files from these folders. When you export a plugin or standalone app it will embed the data into the plugin and read it directly from memory. 
 
@@ -80,11 +80,9 @@ Oh, and samples that will be played through the streaming engine, will obviously
 
 Two concepts are fundamental to understand: **File Pools** and the **Project Folder Wildcard**.
 
-### File Pools
+## File Pools
 
-//TODO which file types
-
-There are a few data types () in HISE that use a pool system that caches loaded resources as long as they are used. These pools makes sure that you reuse internal data (so that when eg. two convolution reverbs use the same impulse response, they will use the same audio buffer in the memory).
+There are a few data types ([SamplePool](/ui-components/floating-tiles/hise/samplepooltable), [ImagePool](/ui-components/floating-tiles/hise/imagepool), [MidifilePool](/ui-components/floating-tiles/hise/midifilepool), [AudiofilePool](/ui-components/floating-tiles/hise/audiofilepool), [SampleMapPool](/ui-components/floating-tiles/hise/samplemappool)) in HISE that use a pool system that caches loaded resources as long as they are used. These pools makes sure that you reuse internal data (so that when eg. two convolution reverbs use the same impulse response, they will use the same audio buffer in the memory).
 
 Some file types are even cached from the beginning: They are loaded into the pool on startup and then the files aren't accessed anymore but the cached data is used instead. 
 
@@ -92,7 +90,7 @@ Some file types are even cached from the beginning: They are loaded into the poo
 
 For each file type that is using a Pool there is a dedicaded FloatingTile that shows a list of all files in the pool and shows detailed information about the metadata as well as some handy drag 'n drop functions.
 
-### Project Folder Wildcard
+## Project Folder Wildcard
 
 There are multiple occasions in HISE where you need to use an external resource, and all of them use the HISE project system - some of them (like SampleMaps) do this implicitely and you don't have to bother about how it works, but in some situations (mostly when using Scripting API calls that access an external resource) you will have to supply a String that is resolved to the desired resource. 
 

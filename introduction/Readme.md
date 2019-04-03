@@ -28,10 +28,9 @@ index: 01
 
 
 ### Licensing
-- **HISE** is published under the [GPLv3](http://www.gnu.org/licenses/gpl-3.0) open source licence. 
-  (that means, that every compiled (&derived) plugin or VSTi that was built with **HISE** has to be published and open-sourced under the GPLv3 License, too)
+- **HISE** is published under the [GPLv3](http://www.gnu.org/licenses/gpl-3.0) open source licence. (that means, that every compiled (&derived) plugin or VSTi that was built with **HISE** has to be published and open-sourced under the GPLv3 License, too)
 
-- In case that you want to release a closed source product you can aquire a commercial **HISE** license. Please get in touch with us via [email](mailto:info@hise.audio).
+- In case that you want to release a closed source product you can aquire a commercial **HISE** license. Please get in touch with us via [email](http://hise.audio).
   
 - Furthermore **HISE** is based on the [JUCE](http://www.juce.com) library which additionally has to be licensed for commercial applications: @ https://shop.juce.com/get-juce. 
   
@@ -39,9 +38,4 @@ index: 01
 
 
 ### Community
-- If you have any questions, want to learn something new or help in the development of HISE, please join our community at the [HISE Forum](https://forum.hise.audio/). You'll meet a bunch of motivated developers there who can surely help you out. See you!
-
-
-
-### Getting Started
-
+- If you have any questions, want to learn something new, found a bug or want to help in the development of HISE, please join our community at the [HISE Forum](https://forum.hise.audio/). You'll meet a bunch of lovely developers there who can surely help you out. See you!

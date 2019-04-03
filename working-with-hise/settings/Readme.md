@@ -24,4 +24,4 @@ HISE will create XML files for each setting category at the sensible location fo
 | --- | ------- |
 | [Project](/working-with-hise/settings/project#settings) | The project specific settings |
 | [Development](/working-with-hise/settings/development#hise-path) | The preferences for development in HISE |
-| [Audio & MIDI](/working-with-hise/settings/audio-midi#settings) | The audio settings dialogue. |
+| [Audio Settings](/working-with-hise/settings/audio-midi) | The audio settings dialogue. |

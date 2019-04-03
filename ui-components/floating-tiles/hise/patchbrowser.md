@@ -1,6 +1,6 @@
 ---
-keywords: patchbrowser
-summary:  Please enter a brief description.
+keywords: Patch Browser
+summary:  Deprecated, Nothing to see, move along...
 weight:   50
 index:    01
 author:   chris

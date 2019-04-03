@@ -99,7 +99,7 @@ Behind the scenes, the architecture of modules that is built within the Main/Pre
 
 By the way: Did you know that it's very easy to share your **HISE presets** as Snippets with each other? Exporting your preset via **Export > Export as HISE Snippet** will copy a base64-encoded version of the `.xml` to your clipboard. 
 
-You can  easily share this string on the [Forum](https://forum.hise.audio/) (tip: surrounding the string with markdown code-fences (three successive backticks) will make it look much nicer.)
+> You can easily share this string on the [Forum](https://forum.hise.audio/) (tip: surrounding the string with markdown code-fences (three successive backticks) will make it look much nicer.)
 
 Import the **HISE Snippet** from clipboard via **File > Import HISE Snippet**. 
 
@@ -126,9 +126,10 @@ The [Code editor](/working-with-hise/workspaces/scripting-workspace/code-editor)
 Content.makeFrontInterface(600, 500);
 ```
 
-This command tells **HISE** to (_blush_) make a Front Interface with the width of `600` and the height of `500` pixels that you can see right now on the Interface Designers Canvas. You can change the values (`600 to 60`), and hit **Compile [F5]**. This evaluates the script, redraws the interface and prints "Compiled OK" to the **Console** beneath the editor. But.. oh, obviously this Interface Canvas is much too small, so let's change it back to the previous values. 
+This command tells **HISE** to (_blush_) make a Front Interface with the width of `600` and the height of `500` pixels that you can see right now on the Interface Designers Canvas. You can change the values (`600 to 60`), and hit **Compile [F5]**. This evaluates the script, redraws the interface and prints "Compiled OK" to the [Console](/working-with-hise/workspaces/scripting-workspace/code-editor#console) beneath the editor. But.. oh, obviously this Interface Canvas is much too small, so let's change it back to the previous values. 
 
 We don't want to delve too much in scripting right now but it's important to know that even the basic use of **HISE** definitely relies on scripting for building instruments. If you want to learn more about scripting in **HISE** please check out the [Scripting](/scripting) docs.  
+
 In case that you just want to say hello to the world, type + **[F5]**:
 
 ```!javascript
