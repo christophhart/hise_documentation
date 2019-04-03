@@ -1,6 +1,6 @@
 ---
 keywords: Table
-summary:  A table Element
+summary:  A Table Element
 author:   Christoph Hart
 modified: 18.03.2019
 ---

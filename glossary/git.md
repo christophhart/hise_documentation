@@ -1,3 +1,11 @@
+---
+keywords: Version Control with Git / LFS
+summary:  How to track your project changes with git and use its LFS System.
+index: 0
+---
+
+
+
 # How to use Git LFS with samples
 
 If you use Git for version control for your HISE project, it is heavily recommended to not track the sample files as regular files, because your repository size will exponentially grow with each commit of your samples. This will make the checkout times a serious problem and therefore should be avoided.

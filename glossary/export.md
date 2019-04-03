@@ -5,10 +5,6 @@ index: 0
 ---
 
 
-
-
-
-
 ## Export and Deployment 
 
 If you use the .hr1 resource file (which I highly recommend for distribution), the user has to extract the monolith data to a customizable location, and it will automatically create a link file for you.
