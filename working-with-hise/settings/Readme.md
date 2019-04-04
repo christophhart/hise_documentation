@@ -4,12 +4,8 @@ summary:  HISE Settings
 icon:     /images/icon_settings
 index: 04
 ---
-
-You can change the preferences of HISE in the settings dialog, which appears when you click on the Settings icon on the top right of HISE. The settings are organized into multiple categories.
-
 ![SettingsWindow](/images/custom/settingswindow.png) 
-
-You can either select one of the category, or go to the All tab, which shows them all. You can also search for settings with the search bar on top.
+You can change the preferences of HISE in the settings dialog, which opens when you click on the Settings icon on the top right of HISE or with **File > Settings**. The settings are organized into multiple categories.
 
 ## Setting files
 
@@ -22,6 +18,6 @@ HISE will create XML files for each setting category at the sensible location fo
 
 | Category | Description |
 | --- | ------- |
-| [Project](/working-with-hise/settings/project#settings) | The project specific settings |
-| [Development](/working-with-hise/settings/development#hise-path) | The preferences for development in HISE |
+| [Project Settings](/working-with-hise/settings/project) | The project specific settings |
+| [Development Settings](/working-with-hise/settings/development) | The preferences for development in HISE |
 | [Audio Settings](/working-with-hise/settings/audio-midi) | The audio settings dialogue. |

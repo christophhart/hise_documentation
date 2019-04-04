@@ -2,7 +2,7 @@
 keywords: Scripting
 summary:  The scripting reference for HISE.
 icon:     /images/icon_script
-index: 03
+index: 05
 weight: 50
 ---
 

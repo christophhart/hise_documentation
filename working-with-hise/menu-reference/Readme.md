@@ -7,5 +7,21 @@ weight:   50
 icon:     /images/icon_book
 ---
 
-![warning](/images/icon_warning:64px)  
-> Oops, this document has not been created yet. Luckily, you can help out. If you want to learn how to contribute to the documentation, please visit[this site](/glossary/contributing) to learn more.  
+This is the reference for the **HISE** menu toolbar.
+ 
+
+|  |  |  |  |  |  |
+| -- | -- | -- | -- | -- | -- |
+| [File](/working-with-hise/menu-reference/file) | [Edit](/working-with-hise/menu-reference/edit) | [Export](/working-with-hise/menu-reference/export) | [Tools](/working-with-hise/menu-reference/tools) | [View](/working-with-hise/menu-reference/view) | [Help](/working-with-hise/menu-reference/help) |
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,7 @@ icon:     /images/icon_filebrowser
 index:    01
 ---
 
+A general explanation of **HISE**s project architecture.
 ## Folders
 
 When you create a new project, HISE will set up a directory with a bunch of predefined folders that can hold all the data, files and scripts that you need in your instrument/plugin.
@@ -40,7 +41,7 @@ A folder for MIDI files used in the [Midiplayer](/hise-modules/midi-processors/l
 
 [Presets](/working-with-hise/project-management/projects-folders/presets)
 
-Contains the **HISE Preset files** (`.hip`), which hold the compressed save-state of your instruments architecture. The auto-save files will also show up here.
+Contains the **HISE Preset files** (`.hip`), which are the save-files of your Projects plugin architecture. The auto-save files will also show up here.
 
 [SampleMaps](/working-with-hise/project-management/projects-folders/sample-maps)
 

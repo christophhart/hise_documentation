@@ -101,7 +101,7 @@ Of course the downside of this is that you can't change the aspect ratio of the 
 
 > Images will share a reference between multiple Panels, so you don't have more memory consumption if you duplicate Panels.
 
-### 1.1.4 Fonts
+### Fonts
 
 You can load custom fonts to draw any text (all TrueType fonts should be supported). If you want to use non standard fonts, you'll need to copy the font into the Image folder of your project and load the font before you use it like this:
 
@@ -280,7 +280,7 @@ In addition to these properties, you'll also get the current modifier keys that 
 
 You can now implement the logic by using conditions to match the desired event and store data or call other functions for the Panel (the Example section will give you some usage scenarios). 
 
-### 1.2.3 Handling context menus
+### Handling context menus
 
 If your UI widgets needs to display a context menu on eg. right click, you don't need to build this by yourself. Instead, you can enable it using the callback level `"Context Menu"` (or above) and specify the items with the `popupMenuItems"` property (best use the text editor in the interface designer for this).
 
@@ -297,7 +297,7 @@ You can align the popup menu to the panel width and bottom by setting `"popupMen
 
 The **Mouse Event Callback** will then contain the index as well as the item text so you can implement the logic accordingly.
 
-## 1.3 The Timer callback
+## The Timer callback
 
 If you want to animate or delay something, you'll need to give the Panel a timer function:
 
@@ -312,7 +312,7 @@ and then call `Panel.startTimer(interval)` which will periodicall call the event
 
 > **Important:** the `startTimer()` argument is in **milliseconds** (as opposed to `Synth.startTimer()`, which is in seconds. Don't ask why :)
 
-## 1.4 Storing Data
+## Storing Data
 
 In order to make the ScriptPanel a real UI widget, you need the possibility to store data in between the three main function calls. Basically any data that is stored into a panel can be separated into two types:
 
@@ -322,7 +322,7 @@ In order to make the ScriptPanel a real UI widget, you need the possibility to s
 
 For example, a slider with a filmstrip has one **Control Data** value (the actual value as double number) and some few other **UI Data** values (eg. current y-offset, alpha value, fine-control mode eg.).
 
-### 1.4.1 UI Data
+### UI Data
 
 Every panel has an object property called `data` which can be populated with any values that need to be stored inside the panel. Using it is pretty straightforward, however there is one important rule: **Don't access the data via the variable name but through the `this` keyword**:
 
@@ -352,7 +352,7 @@ const var Panel2 = createPanel("Panel2", 150, 0);
 
 The `this` keyword is only meaningful inside the three callbacks, but it allows a totally encapsulated widget.
 
-### 1.4.2 Control Data
+### Control Data
 
 The control data is the data that actually represents the current value of the widget:
 
@@ -375,27 +375,27 @@ this.data.setValue(0);
 
 Calling `setValue(value)` does not execute the `onControl` callback (for safety reasons). Instead you need to explicitely tell the engine to fire the control callback using the method `Panel.changed()`
 
-# 2. Best Practices
+# Best Practices
 
-## 2.1 Performance Tricks
+### Performance Tricks
 
 As long as you don't do anything super complex, the performance should be fine for a fluid UI (and if you don't do anything stupid, it won't affect the audio performance at all). However, there are a few tricks that speed up the graphic rendering that are worth considering:
 
-### 2.1.1 Deactivate transparency if not needed
+### Deactivate transparency if not needed
 
 By default, the panel is rendered transparently over its parent. However this implicates that the parent must be rerendered too if the panel changes. If you don't have a transparent UI widget, you might want to consider changing the `opaque` property to `false` which gives the engine the hint that the parent must not be repainted because the child is not transparent. Keep in mind that when you do this on transparent widgets, it will cause graphic glitches.
 
-### 2.1.2 Limit the repaint rate
+### Limit the repaint rate
 
 If you use a timer for animations, a refresh rate of 30 - 50 ms is enough in most cases (this equals 20 - 30 fps). Increasing the timer rate will not make things more fluid, but just clog the internal message event system.
 
-### 2.1.3 Use repaintImmediately() for synchronous repainting
+### Use repaintImmediately() for synchronous repainting
 
 If you want to repaint the panel from either its timer callback or a event callback, you might want to use `this.repaintImmediately()` instead of `this.repaint()` in order to get more fluid animations. This bypasses the internal event queue and directly executes the paint function.
 
 > Do not call this method from the MIDI callbacks (or even the onControl callback) as it will cause drop outs...
 
-## 2.2 Use the "Create UI Factory method" tool
+## Use the "Create UI Factory method" tool
 
 If you need to create a UI widget that will be used multiple times, you definitely don't need to write all the code every time you need a new Panel. Instead, you can write a function that creates the Panel, sets the data and callbacks and returns the panel. This function is called **Factory Method** and is a common paradigm in UI design.
 
@@ -466,7 +466,7 @@ const var Panel = createMonochromaticPanel("Panel", 125, 12);
 
 > It's heavily recommended to use the syntax `createXXX` for the **UI Factory method**. This allows the interface designer to drag around the panel just like any other inbuilt widget (however changing the size is not supported, but in most cases you just want to move the widget to the right position). Just test it with the example above, selecting and moving the panel should magically update the arguments to the function call :)
 
-## 2.3 Use namespaces and wrapper functions to hide the internals
+## Use namespaces and wrapper functions to hide the internals
 
 In order to make encapsulated widgets, it's recommended to put each widget in its own namespace. Also you might want to create functions that are one abstraction layer above the internal stuff so when you use the widget you don't have to bother how it is implemented.
 
@@ -497,11 +497,11 @@ Another nice trick is to use a leading underscore to indicate "private" methods 
 
 For a full encapsulation and reusablility experience, you might also want to move the code to an external file and include it in multiple scripts.
 
-# 3. Examples
+# Examples
 
 The following examples should demonstrate how to use the ScriptPanel for actual UI widgets. All those examples were actual user requests.
 
-## 3.1 A six state button
+## A six state button
 
 The button in HISE can be filmstripped, but just uses two states. Since I am rather lazy about updating the in built widgets, I'd rather use this as an example how to build a really simple UI widget that is virtually indistinguishable from a hardcoded one.
 
@@ -511,7 +511,7 @@ This is the "filmstrip" we'll be using:
 
 It uses the same order as KONTAKT expects, so we can reuse those images here - thanks Dorian for the explanation :) 
 
-### 3.1.1 Creating the Panel and set its properties
+### Creating the Panel and set its properties
 
 We need the Panel to be 200 pixels wide, store its value persistently, be non transparent and have a stepsize of 1 (this is important for host automation). Use the interface designer to set its properties and you should end up with a JSON property list like this:
 
@@ -527,7 +527,7 @@ Content.setPropertiesFromJSON("Panel", {
 // [/JSON Panel]
 ```
 
-### 3.1.1 The data
+### The data
 
 Now let's take a look what data we need. The UI data will store the current states (hover and down) as well as the height per filmstrip seperately (so we can use other images). The **Control Value** will store the "on" and "off" state and will be either 1 or 0.
 
@@ -558,7 +558,7 @@ inline function loadFilmStrip(p, image, heightPerFilmstrip)
 loadFilmStrip(Panel, "{PROJECT_FOLDER}SixStateButton.png", 50);
 ```
 
-### 3.1.2 The Paint Routine
+### Paint Routine
 
 Drawing this panel is pretty easy: just calculate the offset and draw the image:
 
@@ -570,7 +570,7 @@ Panel.setPaintRoutine(function(g)
 });
 ```
 
-### 3.1.3 The mouse event callback
+### The mouse event callback
 
 We told the panel to fire the callback on click and hover events. In the callback we need to distinguish between those two events and handle them accoringly. We'll be changing the value at the mouse release (this makes the example a bit more readable)
 
@@ -599,7 +599,7 @@ Panel.setMouseCallback(function(event)
 });
 ```
 
-### 3.1.4 Final Code
+### Final Code
 
 That's it. We now have a six state button that we can use. This is the complete code wrapped into a namespace and with some helper methods and example usage:
 
@@ -697,7 +697,7 @@ function onControl(number, value)
 }
 ```
 
-## 3.2 A ButtonPack
+## A ButtonPack
 
 ![ButtonPack](http://hise.audio/manual/images/panel/ButtonPack.gif)
 
@@ -707,7 +707,7 @@ We'll be starting with the most naive implementation of this widget and change i
 
 We'll keep an array of `N` bool values that contains each button state. Then we'll vertically divide the ButtonPack into `N` equal rectangles (the buttons) and draw them according to their state Whenever we drag the mouse over the area of a button, we'll be toggling the array and update everything. We don't need any filmstrips, instead we render the whole thing completely scalable.
 
-### 3.2.1 Creating the Panel and its Properties
+### Creating the Panel and its Properties
 
 ```javascript
 const var Panel = Content.addPanel("Panel", 0, 0);
@@ -743,7 +743,7 @@ We also made a function that allows changing the number of buttons. Notice how w
 
 We also filled the button states with random values in order to have something for the paint routine. This will be of coursed replaced by zeroing the array later...
 
-### 3.2.2 The Paint Routine
+### ButtonPack Paint Routine
 
 This is the most simple implementation of our ButtonPack's paint function:
 
@@ -921,7 +921,7 @@ if(event.clicked)
 }
 ```
 
-### 3.2.3 Handling the **Control Data**
+### Handling the **Control Data**
 
 The **Control Data** must be the whole value array in order to allow correct restoring of presets. This makes things a bit more complicated than just using a simple number, but with a little caretaking, this should be no problem.
 
@@ -1203,7 +1203,7 @@ inline function createHeadSprite(name, x, y)
 };
 ```
 
-## 3.4 A vectorized knob
+## A vectorized knob
 
 ![VectorButton](http://hise.audio/manual/images/vectorbutton.gif)
 

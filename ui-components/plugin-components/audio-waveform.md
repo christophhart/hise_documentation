@@ -5,4 +5,4 @@ index:    01
 author:   Christoph Hart
 ---
 
-The audio waveform can be used to display an audio file that was loaded into a HISE module that supports the `AudioSampleProcessor` Interface (eg. the [Looper](/hise-modules/sound-generators/list/audiolooper) or the [Convolution Reverb](/hise-modules/effects/list/convolution) 
+The audio waveform can be used to display an audio file that was loaded into a HISE module that supports the `AudioSampleProcessor` Interface (eg. the [Looper](/hise-modules/sound-generators/list/audiolooper) or the [Convolution Reverb](/hise-modules/effects/list/convolution). Connect it to on of these two with the property: "`processorID`"
