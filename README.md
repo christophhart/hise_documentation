@@ -6,13 +6,12 @@ https://docs.hise.audio
 
 ## Contributing
 
-It is explicitely encouraged to participate in the creation of this documentation. It is licensed under a non-restrictive CC license. If you want to contribute, take a look at the [contributing guidelines](https://docs.hise.audio/glossary/contribute).
+It is explicitely encouraged to participate in the creation of this documentation. It is licensed under a non-restrictive CC license. If you want to contribute, take a look at the [Contributing Guidelines](https://docs.hise.audio/glossary/contributing.html).
 
 The recommended workflow for contributions looks like this:
 
-- pull this repository
-- setup HISE to use the markdown files as documentation source
-- make changes
-- submit a pull request. It will be merged into the master branch and the build server will update the targets on a daily basis.
+- pull the [documentation repository](https://github.com/christophhart/hise_documentation/tree/new_docs)
+- setup HISE to use the markdown files as documentation source in the [settings](https://docs.hise.audio/working-with-hise/settings/development.html#doc-repository)
+- make your changes and submit them with pull requests. They will be merged into the master branch and published in a timely basis.
 
 If you contribute a non-trivial amount of documentation, your authorship will be properly attributed. 

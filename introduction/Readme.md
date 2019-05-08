@@ -24,9 +24,6 @@ index: 01
 - [Export and Compile](/working-with-hise/project-management/export) your **HISE** instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. 
 
 
-### Rationale
-
-
 ### Licensing
 - **HISE** is published under the [GPLv3](http://www.gnu.org/licenses/gpl-3.0) open source licence. (that means, that every compiled (&derived) plugin or VSTi that was built with **HISE** has to be published and open-sourced under the GPLv3 License, too)
 

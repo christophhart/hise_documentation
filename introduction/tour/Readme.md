@@ -148,7 +148,7 @@ While in **edit mode** add a new [Slider](/ui-components/plugin-components/knob)
 
 #### Property Editor
 
-On the right hand side you can see the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor). It lets you access and modify differnt properties of an UI Component. A list of all common and special UI Components can be found in [Plugin Components](/ui-components/plugin-components).
+On the right hand side you can see the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor). It lets you access and modify different properties of an UI Component. A list of all common and special UI Components can be found in [Plugin Components](/ui-components/plugin-components).
 
 The Sliders **ID** will most definitely be "Knob1". You can change it to anything you want, but you should be aware that the **ID** is the internal handle for accessing the component via scripting. So if you should want to change it at a later stage it's quite easy to mess things up. The **ID** should therefore be as consistent as possible. If you just want to change the name of the slider you can do that via the `text` property.
 
@@ -158,7 +158,7 @@ If you toggle back to **presentation mode** **[F4]** the interface will lock dow
 
 On the left hand side of the Interface Designer you can see an overview of your added UI Components in the [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list). 
 
-You can drag the Components to change the z-order of the components from the top (background) to the bottom (front). The green and red dots indicate if an UI Components state is going to be saved in a [User Presets](/working-with-hise/project-management/user-presets) via the `saveInPreset` property. 
+You can drag the Components to change the z-order of the components from the top (background) to the bottom (front). The green and red dots indicate if an UI Components state is going to be saved in a [User Presets](/glossary/user-presets) via the `saveInPreset` property. 
 
 A neat way to group several elements together is to drag them into a shared [Panel](/ui-components/plugin-components/panel) Component. This makes it easy to structure complex projects as well as to implement page-like UI-designs. You can open a JSON representation of the UIComponents properties when you press the [j]-Key with a selected element. You can then edit these values on the fly and accept the changes with [F5].
 
@@ -174,7 +174,7 @@ The main task of these tabs is to comfortly map your samples into SampleMaps, ed
 General Workflow:
 
 1. Put all the samples that you want to map into your Projects [Samples](/working-with-hise/project-management/projects-folders/samples)-Folder
-2. Drag the samples from the Filebrowser[link] into the [Sample Map Editor](/working-with-hise/workspaces/sampler-workspace/sample-map-editor) and choose one of three options to map them: 
+2. Drag the samples from the [Filebrowser](/ui-components/floating-tiles/hise/filebrowser) into the [Sample Map Editor](/working-with-hise/workspaces/sampler-workspace/sample-map-editor) and choose one of three options to map them: 
    1. [Drop Point](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#drop-point), which places the samples where you drag them. 
    2. [Pitch Detection](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#pitch-detection), which automatically tries to detect the pitch of the samples.
    3. [Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser), which reads the filename of your samples and maps them according to your requirements.

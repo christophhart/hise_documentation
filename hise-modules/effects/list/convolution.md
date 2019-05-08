@@ -18,3 +18,17 @@ You can load a pooled audio file into this module and it will use it as impulse 
 
 > This module can also be used for cabinet simulation when a cabinet IR is used.
 
+
+
+### Load AudioFiles per script
+
+```javascript
+// Create a typed Audio Sample Script Reference with right click on the Convolution Module
+const var ConvolutionReverb1 = Synth.getAudioSampleProcessor("Convolution Reverb1");
+
+// load all Audio Files from the AudioFiles Folder into the Pool
+Engine.loadAudioFilesIntoPool();
+
+// set a new file 
+ConvolutionReverb1.setFile("{PROJECT_FOLDER}impulse.wav");
+```
