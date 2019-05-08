@@ -7,3 +7,7 @@ index: 02
 ---
   
 ![sampler-map](/images/custom/sampler-editor.png)
+
+The Sample Editor has three panels: A toolbar with some handy actions, a audio waveform which displays the selected sound and some Value Setters to change the *audio-related* properties of the selected samples.
+
+> **HISE** uses a global selection which can include multiple samples. The waveform will only show the last selected sample, where the Value Setters show the range of each property (the minimum value of any sample and the maximum value of any sample)

@@ -6,3 +6,5 @@ modified: 18.03.2019
 index: 04
 ---
 ![sampler-table](/images/custom/sampler-table.png) 
+
+The sample table is a list of all loaded samples and can be sorted. There is also a search bar with a full [RegEx parser](https://en.wikipedia.org/wiki/Regular_expression)
