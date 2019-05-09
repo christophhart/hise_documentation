@@ -33,12 +33,6 @@ items:
 With the Map Editor you can map your samples and save them as a SampleMap.   
 
 
-
-
-
-
-
-
 ## Toolbar
 
 {ICON_TABLE}
