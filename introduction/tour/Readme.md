@@ -28,7 +28,7 @@ The top-down arrangement thereby follows the [tree structure](https://en.wikiped
 
 You can save your **HISE Preset** (The name for the current modules state) in two different formats. Either as a compressed `.hip`-file **File > Save as Archive** (features: autosave, HiseSnippet), or as a human-readable `.xml`-File **File > Save as XML** (features: version control).
 
-## adding a Sound Generator
+## Add a Sound Generator
 
 ![masterchain](images/custom/masterchain.png)
 
