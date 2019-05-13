@@ -4,7 +4,6 @@ summary:  All UI elements that can be added to a plugin made with HISE
 author:   Christoph Hart
 ---
 
-You can add different UI elements to your plugin.
 
 ### List of common properties
 

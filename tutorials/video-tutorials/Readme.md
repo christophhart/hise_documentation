@@ -33,7 +33,7 @@ David does a great job explaining all those subfolders and file types.
 
 $[Play video in browser](http://www.youtube.com/watch?v=MuoNFp2dAEc)
 
-## Tutorial 3: Using Multiple Dynamic Layers - Velocity mapping, Round Robin, and CC Crossfading
+## Tutorial 3: Using Multiple Dynamic Layers
 
 ![IMAGE ALT TEXT](http://img.youtube.com/vi/0cn1l8231n4/0.jpg)
 
@@ -41,4 +41,36 @@ This tutorials covers the handling of morphing between dynamic crossfade layers 
 
 $[Play video in browser](http://www.youtube.com/watch?v=0cn1l8231n4)
 
-> more to follow...
+# HISE 2.0
+
+
+## Interface Designer: Introduction
+
+![IMAGE ALT TEXT](http://img.youtube.com/vi/JVga_eDvTP8/0.jpg)
+
+$[Play video in browser](https://www.youtube.com/watch?v=JVga_eDvTP8)
+
+
+
+## Interface Designer: Widget List
+
+![IMAGE ALT TEXT](http://img.youtube.com/vi/r65crWRb3vc/0.jpg)
+
+$[Play video in browser](https://www.youtube.com/watch?v=r65crWRb3vc)
+
+
+
+## Interface Designer: Property Editor
+
+![IMAGE ALT TEXT](http://img.youtube.com/vi/V4wHbkz5HVc/0.jpg)
+
+$[Play video in browser](https://www.youtube.com/watch?v=V4wHbkz5HVc)
+
+
+## Interface Designer: Editing properties with JSON
+
+
+![IMAGE ALT TEXT](http://img.youtube.com/vi/hfcIuvJZMyE/0.jpg)
+
+$[Play video in browser](https://www.youtube.com/watch?v=hfcIuvJZMyE)
+
