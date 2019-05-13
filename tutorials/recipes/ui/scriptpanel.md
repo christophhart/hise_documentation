@@ -15,7 +15,7 @@ You can open an Website with `Engine.openWebsite("")`. The easiest way to implem
 Please remember to set the ScriptPanels `allowCallbacks` property to "Clicks & Hover".
 
 
-``` js
+```javascript
 const var Panel1 = Content.getComponent("Panel1");
 
 reg link_hover = 0;
@@ -56,10 +56,10 @@ HiseSnippet 967.3ocsV01aiSDDdcZ8wk.AwIwW3aqxGPNnPpc4tiJPUTZZJDw0dQjxARHT0V6Iwqhy
 A script to rotate an image with a dedicated ScriptPanel.
 
 Resource:
-![logo bw](images/scriptpanel/logo_bw.png)
+![logo bw](images/custom/logo_bw.png)
 save as `logo_bw.png` in the **Images** Folder of your project.
 
-``` js
+```javascript
 Content.makeFrontInterface(600, 500);
 
 const var Panel1 = Content.getComponent("Panel1");
@@ -83,7 +83,6 @@ Panel1.setTimerCallback(function(){
 
 
 // Custom Callbacks for Knob1 and Button1
-
 inline function onKnob1Control(component, value)
 {
     speed = value;
@@ -108,14 +107,12 @@ Content.getComponent("Button1").setControlCallback(onButton1Control);
 ```
 ```
 HiseSnippet 1335.3ocyXEsaaaCEkJMpq1adXEXOrG1CDFX.JXYoNpocEnXndwIYHqsIFwcECXnKiQh1lnxjBTzMIKH.8SoeJ8SYeB8OX6RQJKZGaG6VDfICCXdIO7d34dI0ktsTDQyxDRjWkWbdJE48E9cNmq52pOgwQ6uCx6q7amPTJJOKkQSnRz1mmRxxnwHOua8K5Q4UYUT9yGdx1jDBOhVZBgdofEQeFa.SUZscymxRR1iDSeAafyn2p49QBdKQhXHvna42.kRhdMoG8.hdXq3i7t8twLkP1QQTzLj2paKhOuSewoby3eIKicRBU2XSTGXhLl2SjDqYr1JpUeVRb6hUdFBlk1k5vsL5vW6+bVLajcW8P2AtDgqd3sx7n2ltzqwhSOOG5spgd20uSjjkpJ6QysO2eethJ6RfPfKsLiEsxatieKALBtZiAjWS2SBMFgH3gMZrN9AMZr1iqUsVUHPjovugHwsIbZxl3eBWfsGU0RLHUvgFA0McWWiZBLgyGSX8I8zS4hSlsix6cB+nsENWDW0KaOToD7Y6Ga+S3Ii0vqAUg2pUUR6ggMC8Rn.jFO1XP5ZvNlrTJM1cLtFzeLB7FIBR79CfMCA0un8QG9q615EGu2gOamcO5xDQOwwmb5Fo7d0WGWGR8TVdXwlQUsgDX0QhgJFmFzcHORwD7fdqcQspX3o2FRgNoM34DU+MThiHwLBOKvrDVac7en5yxzq4f5mxhU8qu18BWGWZrOk0quRa8UZWalyXI4TKmyIELMPNVCWb1IaZS0qxGJjOV8xIWM5yMjsHIIm.GPTtbJVMiDdK+weuUmWC+c36+vFVBl6RIMUKMAS3lvOAAO7SPvk+uSvCW.AeThsk+ffKWbAW+4d2C2ZXlRL.W3kL7yncU59X7DPDwEdEK34mEn2HJEIAQE6BWG1olLjtVsp.spLZmUtQvQWBem6QK5EpcRGsTG2WE78pLxdpw0vIVWbPQasfbAFa9g9oH8VQjF8NXKcrP20klQQSxnVfSAlH0fpDyk4z8ZNla5q5wWOl08zhQGoSclcPJ7ZDD4xEjBmWPJbACRgexAovOtfT3GYPJb9AI20syh8.ghdHrEs5EUqT8xqzS2tSqK6TknY3U60R8YBKfObvITYgbZGGT0x3kE4O6xhbqZKxHINCTv2myTGlR4ypXIjUG0U0YIELTUdQSeosnoNIrXnPVFTazm4mu6Fky2xBQ+1lnEFb3Dfe6AyFrIdkCthucG1j99COYYfGNE3+196PTDcgiVw.DnTpTwzZu2Nz2.UjaJirh+NzrWC4jPg0ix5feabashhL04t4d8N9lCaPmU5vuo44kMvMye8xHCMiaZd4Ro7DqkmE1UgNt5ccccU8IbE9Jt58Qi4pJWaVvYtWEozUuqWyAN2y4eRe+.xYNMapnmozyRG8YYnLEMsC6uGKljMraWFfw2GKiQKCqbEf+puCqd+MIqt8Bj25nVOxUs3VOeavy.AGOJgNt4x4G20Olsv94s+YSzUu1Db4MQ7P39rieiN80Xsc.GmM1UmzWOhmwTm6pa2HWyaQo6c8ayTQ8mNeWYJ7ENH3llu1KMWye2tcoQpRxtp+d+9M+MjQlxr6AkRKyymOX3fNhgxHJvDNbJh9cNdqne6focCcasxzgxiya7uvisyM0s8rctYQmnAjHo33HyQy5qkembK.m34+6DU7ettMdzA5ZdOfEyNNJRKD+.v7oiHboQb+kFwVKMhGrzHd3Ri3GWZDOZNHz+wL+7Pn7Ty1BvP6cyeSnm2tbBjUkmAh9Ov8xBDj
-
-
 ```
 
 ## Loop a filmstrip
 
 
-``` js
+```javascript
 const var Panel1 = Content.getComponent("Panel1");
 const var Button1 = Content.getComponent("Button1");
 
@@ -158,9 +155,6 @@ HiseSnippet 1090.3ocsV8uaiSDDdcaLbIPPbR7.rJRmjCT5kTxUPpBQn4Gn.WaiZJm3DBEs0dc7pZu
 
 ```
 
-
-
-
 ## A six state button
 
 The button in HISE can be filmstripped, but just uses two states. Since I am rather lazy about updating the in built widgets, I'd rather use this as an example how to build a really simple UI widget that is virtually indistinguishable from a hardcoded one.
@@ -168,96 +162,6 @@ The button in HISE can be filmstripped, but just uses two states. Since I am rat
 This is the "filmstrip" we'll be using:
 
 ![FilmStrip](http://hise.audio/manual/images/panel/SixStateButton.png)
-
-It uses the same order as KONTAKT expects, so we can reuse those images here - thanks Dorian for the explanation :) 
-
-### Creating the Panel and set its properties
-
-We need the Panel to be 200 pixels wide, store its value persistently, be non transparent and have a stepsize of 1 (this is important for host automation). Use the interface designer to set its properties and you should end up with a JSON property list like this:
-
-```javascript
-// [JSON Panel]
-Content.setPropertiesFromJSON("Panel", {
-  "width": 200,
-  "allowCallbacks": "Clicks & Hover",
-  "saveInPreset": true,
-  "opaque": true,
-  "stepSize": "1"
-});
-// [/JSON Panel]
-```
-
-### The data
-
-Now let's take a look what data we need. The UI data will store the current states (hover and down) as well as the height per filmstrip seperately (so we can use other images). The **Control Value** will store the "on" and "off" state and will be either 1 or 0.
-
-Whenever we change the button value (either when we click on it or when it gets restored from the preset, we'll be calling the `setButtonValue` method to encapsulate the inner behaviour.
-
-```javascript
-Panel.data.down = 0; 
-Panel.data.hover = 0; 
-Panel.data.heightPerFilmStrip = 50; // this will be changed when we use another image
-
-inline function setButtonValue(p, value)
-{
-    p.setValue(value);
-    p.repaint();
-}
-```
-
-Loading the filmstrip image will be wrapped into a function so it can be easily replaced later:
-
-
-```javascript
-inline function loadFilmStrip(p, image, heightPerFilmstrip)
-{
-    p.loadImage(image, "filmstrip");
-    p.data.heightPerFilmstrip = heightPerFilmstrip;
-};
-
-loadFilmStrip(Panel, "{PROJECT_FOLDER}SixStateButton.png", 50);
-```
-
-### The Paint Routine
-
-Drawing this panel is pretty easy: just calculate the offset and draw the image:
-
-```javascript
-Panel.setPaintRoutine(function(g)
-{
-    var offset = this.data.heightPerFilmStrip * this.data.yOffset;
-    g.drawImage("filmstrip",[0, 0, this.getWidth(), this.getHeight()], 0, offset);
-});
-```
-
-### The mouse event callback
-
-We told the panel to fire the callback on click and hover events. In the callback we need to distinguish between those two events and handle them accoringly. We'll be changing the value at the mouse release (this makes the example a bit more readable)
-
-```javascript
-Panel.setMouseCallback(function(event)
-{
-    if(event.clicked) // Handle mouse clicks 
-    {
-        // set the `down` flag and repaint
-        this.data.down = true;
-        this.repaint();
-    }
-    else if(event.mouseUp) // Change the value on mouse up
-    {
-        // set the `down` flag, change the value and call the onControl callback
-        this.data.down = false;
-        setButtonValue(this, 1 - this.getValue());  
-        this.changed();
-    }
-    else // Handle the hovering
-    {
-        // set the `hover` flag and repaint
-        this.data.hover = event.hover;
-        this.repaint();
-    }
-});
-```
 
 ### Final Code
 
@@ -362,241 +266,6 @@ function onControl(number, value)
 ![ButtonPack](http://hise.audio/manual/images/panel/ButtonPack.gif)
 
 There is the SliderPack widget for an array of sliders that can represent a lookup table, but what if we need an array of buttons that can be changed by dragging the mouse over them? Setting the SliderPack range to 0...1 does not work to our full satisfaction. Again, it's ScriptPanel time.
-
-We'll be starting with the most naive implementation of this widget and change it until it meets our UX expectations.
-
-We'll keep an array of `N` bool values that contains each button state. Then we'll vertically divide the ButtonPack into `N` equal rectangles (the buttons) and draw them according to their state Whenever we drag the mouse over the area of a button, we'll be toggling the array and update everything. We don't need any filmstrips, instead we render the whole thing completely scalable.
-
-### Creating the Panel and its Properties
-
-```javascript
-const var Panel = Content.addPanel("Panel", 0, 0);
-// [JSON Panel]
-Content.setPropertiesFromJSON("Panel", {
-  "width": 380,
-  "height": 50,
-  "allowCallbacks": "Clicks, Hover & Dragging",
-  "opaque": true
-});
-// [/JSON Panel]
-
-this.data.bgColour = Colours.white;
-this.data.offColour = Colours.black;
-this.data.onColour = Colours.red;
-
-inline function setNumButtons(p, numButtons)
-{
-    // Reset the array
-    p.data.buttonValues = [];
-    
-    for(i = 0; i < numButtons; i++)
-    {
-        // Fill the button values randomly for starters
-        p.data.buttonValues[i] = Math.randInt(0, 2);
-    }
-}
-
-setNumButtons(Panel, 16);
-```
-
-We also made a function that allows changing the number of buttons. Notice how we don't define the array outside of the function: the array will created only when calling this function (before it's `undefined`)
-
-We also filled the button states with random values in order to have something for the paint routine. This will be of coursed replaced by zeroing the array later...
-
-### The Paint Routine
-
-This is the most simple implementation of our ButtonPack's paint function:
-
-```javascript
-Panel.setPaintRoutine(function(g)
-{
-    var numButtons = this.data.buttonValues.length;
-    var buttonWidth = (this.getWidth()-1) / numButtons;
-    
-    g.fillAll(this.data.bgColour);
-    
-    for(i = 0; i < numButtons; i++)
-    {
-        g.setColour(this.data.buttonValues[i] ? this.data.onColour : this.data.offColour);
-        
-        // We'll need to subtract 1 on each side to have a "border"
-        g.fillRect([1 + i*(buttonWidth), 1, buttonWidth-1, this.getHeight()-2]);
-    }
-});
-```
-
-There is a little issue with this paint routine: the borders get blurred. This is caused by having non-integer button widths which cause some lines to be between two pixels and get antialiased. There are two solutions to the problem:
-
-1. Change the paint routine to round the button widths. This will lead to empty space at the right side of the button pack if you don't use a matching width.
-2. Expect the user to use a width that doesn't create blurred lines (in this case, the width must be `x*16 + 1` (eg. 65, 129, 513...)
-
-Solution 1 would not be hard to implement, but it will make the code less readable so for the sake of this tutorial, we'll go with number 2.
-
-### The Mouse Event callback
-
-This time we chose the `"Click, Drag & Hover"` callback level because we want to allow dragging over the ButtonPack and allow multiple buttons to be toggled without clicking each time (this is the whole reason for this widget, otherwise we could just have created an array of buttons).
-
-First we'll create a bunch of helper functions that we need later on:
-
-```javascript
-// Returns the button index for the given x position.
-inline function getButton(p, x)
-{
-    // Calculate the proportion of the x position
-    local xNormalized = x / p.getWidth();
-    
-    // Calculate the array index by rounding it down.
-    local index = Math.floor(p.data.buttonValues.length * xNormalized);
-    return index;
-}
-
-// Inverts the button with the given index
-inline function toggleButton(p, index)
-{
-    this.data.buttonValues[index] = 1 - this.data.buttonValues[index];
-    handleUpdate(p);
-    this.changed();
-}
-
-// Sets the array as Control Value and repaints the panel
-inline function handleUpdate(p)
-{
-    this.setValue(this.data.buttonValues);
-    this.repaint();
-}
-```
-
-Now we can write the event callback:
-
-```javascript
-Panel.setMouseCallback(function(event)
-{
-    if(event.clicked)
-    {
-        // Toggle the button on mouse click
-        toggleButton(this, getButton(this, event.mouseDownX));
-    }
-    else if(event.drag)
-    {
-        // You'll need to calculate the current position
-        var x = event.mouseDownX + event.dragX;
-        toggleButton(this, getButton(this, x));
-    }
-});
-```
-
-Now there is one serious problem: the buttons are flickering when you drag the mouse. This is because it toggles the button everytime a mouse drag event is received. In order to fix this behaviour, we'll need to keep track of the most recently changed button and prevent toggling until a new button is used:
-
-```javascript
-Panel.data.lastDraggedIndex = -1;
-
-Panel.setMouseCallback(function(event)
-{
-    if(event.clicked)
-    {
-        this.data.lastDraggedIndex = getButton(this, event.mouseDownX); 
-        toggleButton(this, this.data.lastDraggedIndex);
-    }
-    else if(event.drag)
-    {
-        var x = event.mouseDownX + event.dragX;
-        var newDraggedIndex = getButton(this, x);
-        
-        if(newDraggedIndex != this.data.lastDraggedIndex)
-        {
-            this.data.lastDraggedIndex = newDraggedIndex;
-            toggleButton(this, this.data.lastDraggedIndex);
-        }
-    }
-});
-```
-
-That's better. We can now drag the mouse to change multiple buttons at once. However the toggle behaviour is a bit irritating, we'd rather want to use the value of the clicked button for all other button values. In order to do this, we'll add another helper function that allows us to set the button value directly and add a `downValue` property to the data object to store the value of the first button:
-
-```javascript
-inline function setButtonValue(p, index, value)
-{
-    p.data.buttonValues[index] = value;
-    handleUpdate(p);
-}
-    
-Panel.data.downValue = 0;
-
-Panel.setMouseCallback(function(event)
-{
-    if(event.clicked)
-    {
-        this.data.lastDraggedIndex = _getButton(this, event.mouseDownX);    
-            
-        toggleButton(this, this.data.lastDraggedIndex);
-        this.data.downValue = this.data.buttonValues[this.data.lastDraggedIndex];
-    }
-    else if(event.drag)
-    {
-        var newDraggedIndex = _getButton(this, event.mouseDownX + event.dragX);
-            
-        if(newDraggedIndex >= this.data.buttonValues.length)
-            return;
-            
-        if(newDraggedIndex != this.data.lastDraggedIndex)
-        {
-            this.data.lastDraggedIndex = newDraggedIndex;
-            setButtonValue(this, this.data.lastDraggedIndex, this.data.downValue);
-        }
-    }
-});
-```
-
-Now we are almost finished. The last thing we want to add is the ability to enable / disable all buttons at once by shift clicking on a button:
-
-```javascript
-// Sets all buttons to the given value
-inline function setAllButtonValues(p, value)
-{
-    for(i = 0; i < p.data.buttonValues.length; i++)
-    {
-        p.data.buttonValues[i] = newValueForAll;
-    }
-                
-    updateInternal(p);
-}
-
-// MouseEvent callback:
-if(event.clicked)
-{
-    this.data.lastDraggedIndex = getButton(this, event.mouseDownX); 
-            
-    if(event.shiftDown)
-    {
-        var newValueForAll = 1 - this.data.buttonValues[this.data.lastDraggedIndex];
-                    
-        setAllButtonValues(this, newValueForAll);
-        this.data.downValue = newValueForAll;
-    }
-    else
-    {
-        toggleButton(this, this.data.lastDraggedIndex);
-        this.data.downValue = this.data.buttonValues[this.data.lastDraggedIndex];
-    }
-}
-```
-
-### Handling the **Control Data**
-
-The **Control Data** must be the whole value array in order to allow correct restoring of presets. This makes things a bit more complicated than just using a simple number, but with a little caretaking, this should be no problem.
-
-So whenever we change the button values, we call `setValue()` with the `data.buttonValues` array as argument. Luckily, Javascript doesn't clone the array, but only passes in a reference to the `buttonValue` array, so our update function can do just opposite and store the `value` from the onControl callback in the `data.buttonValue` property. 
-
-> Remember that the restoring of UI controls in HISE works by calling the `onControl` callback of every widget that has its `saveInPreset` property enabled just after compiling or preset load.
-
-However there is one case where it gets complicated and this is when the length of the both arrays don't match which happens at first initialisation:
-
-1. You create a Panel
-2. You sets its button amount to eg. 16 which causes the `data.buttonValues` array to grow to 16.
-3. After the `onInit` callback, the Panel gets an empty array as `value` from the onControl callback
-4. The array gets copied over to the `data.buttonValue` property effectively rendering the `setNumButtons` call useless.
-
-In order to fix this, we'll need to specificly handle this case and copy the values manually when the sizes don't match:
 
 ```javascript
 /** Call this from the onControl callback. */
