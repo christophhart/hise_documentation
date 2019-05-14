@@ -303,6 +303,10 @@ variables are defined in the script while the access time to `reg` slots stay th
 enough for most tasks. If you need more, you get additional 32 slots inside each 
 namespace you declare.
 
+
+## `Globals.x` variables
+
+
 ## Namespaces
 
 In a ideal world, scripts are little code snippets that fulfill a single purpose and the 
