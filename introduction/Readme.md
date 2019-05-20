@@ -29,7 +29,7 @@ index: 01
 
 - In case that you want to release a closed source product you can aquire a commercial **HISE** license. Please get in touch with us via [email](http://hise.audio).
   
-- Furthermore **HISE** is based on the [JUCE](http://www.juce.com) library which additionally has to be licensed for commercial applications: @ https://shop.juce.com/get-juce. 
+- Furthermore **HISE** is based on the [JUCE](http://www.juce.com) library which additionally has to be licensed for commercial applications: @  [https://shop.juce.com/get-juce](https://shop.juce.com/get-juce). 
   
 - In the case that you publish an instrument/plugin built with **HISE**  it is welcomed (but not obligatory) to attribute the **HISE** Engine somewhere in your plugin.
 
