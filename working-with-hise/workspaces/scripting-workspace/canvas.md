@@ -26,6 +26,9 @@ The Interface Designer is split in three parts:
 
 ## Canvas
 
+![canvas](images/custom/canvas.png)
+
+
 The Canvas shows your plugins Graphical User Interface if you connect an Interface ScriptProcessor to it. (If you don't see anything yet, create a new User Interface by clicking the house symbol in the top-bar.)
 
 With the Pen/Lock symbol in the Toolbar you can toggle between the **Edit** and **Play**-Mode. In **Edit Mode** you can **right-click** on the interface to create new UI Components and edit their properties in the Property Editor.
@@ -59,6 +62,8 @@ You can move the selected Components with **Mouse Dragging** or the **Arrow Keys
 
 ## Component List
 
+![component-list](images/custom/component-list.png)
+
 The [Component List](/ui-components/floating-tiles/hise/scriptcomponentlist) shows a list of all UI Components that have been added to the Interface. You can add new components in here, too.
 
 The Z-order of the components starts on the top (background) and advances to the bottom (front).
@@ -69,6 +74,7 @@ The little **green/red dot** indicates if an UIComponent has its `saveinPreset`-
 
 
 ## Property Editor
+![property-editor](images/custom/property-editor.png)
 
 The Property Editor displays a list of all available properties of a selected component. All UI Components have the same core properties like **ID** and **Component Size**, but they may vary widely in their additional properties, depending on their specific use. Have a look at [Plugin Components](/ui-components/plugin-components) for a list of all **Common-, and Component Specific properties**. 
 
