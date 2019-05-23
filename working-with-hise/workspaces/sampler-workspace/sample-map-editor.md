@@ -44,6 +44,7 @@ In the Sample Map Editor you can use some of the usual suspected Action Keys whi
 - **Ctrl + Arrow Keys** - To move the samples with the keyboard arrows.
 
 After you're finished with editing you can save the SampleMap (Ctrl+s). It will be saved into the [SampleMaps Folder](/working-with-hise/project-management/projects-folders/sample-maps) of your project and from this moment on be available in the SampleMap Selector in the toolbar and accessible with the scripting capabilities of HISE. (link)
+## Todo samplemap script link
 
 The next step would be to compress the SampleMaps samples into a single big monolith-file (HLAC) for improved loading-time and reduced file-size. Learn more about this here: [Compress and Export](/hise-modules/sound-generators/list/streamingsampler#compress-and-export)
 
@@ -157,3 +158,10 @@ The Solution to the example:
 
 
 
+### Scripting
+
+If you want to access attributes of SampleMaps or change SampleMap aspects with scripting, use a typed Sampler script reference. (Shortcut: Right click on the top bar of the Sampler)
+
+```javascript
+const var Sampler2 = Synth.getSampler("Sampler1");
+```

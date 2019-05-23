@@ -7,39 +7,55 @@ index: 01
 ---
 ![sampler-table](/images/custom/sampler-settings.png) 
 
-
-> You can see the memory usage and the disk performance of this sampler instance on the left. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the streaming buffers (which increases the disk performance) or reduce the voice amount.
-
 **Disk IO Settings**	
 | name | default value | description |
-| ---- | ---- | ---------- |
-| Buffer Size | 4096 | Sets the buffer size of the Sampler |
-| Preload Size | 8192 ||
-| Purge Channel | NoMultiChannel ||
-| Memory | 0.00MB ||
-| Disk Usage | 0.0% ||
-| Purge All | Disabled | |
+| --- | --- | ------------ |
+| Buffer Size | 4096 | Sets the buffer size of the Sampler. The sampler uses two streaming buffers which are swapped (one is used for reading from disk and one is used to supply the sampler with the audio data). |
+| Preload Size | 8192 | Change the preload size in samples for all samples that are loaded into the sampler. If the preload size is set to `-1`, the whole sample will be loaded into memory.|
+| Purge Channel | NoMultiChannel | Purge the Channel when using MultiChannel|
+| Memory | 0.00MB | Shows the memory usage of the loaded samplemap |
+| Disk Usage | 0.0% | Shows the disk usage of the played samples |
+| Purge All | Disabled | If Purge All is set to Enabled, all samples of this sampler won't be loaded into memory. |
+
+> In the Disk IO Settings you can see the Memory and the Disk Usage of the sampler. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the Buffer Size (which increases the disk performance) or reduce the voice amount.
+
+
+
+## Todo: Ask for purge channel
+## Todo: ask for Amount / SoftLimit
 
 
 **Voice Settings**
 | name | default value | description |
-| ---- | ---- | ---------- |
-| Amount | 256 ||
-| Soft Limit | 256 ||
-| Fade Time | 20 ||
+| --- | --- | ------------ |
+| Amount | 256 | The number of voices that this synth can play. |
+| Soft Limit | 256 | The amount of voices that this sampler can play. |
+| Fade Time | 20 | If you play more than the number of available voices this determines the fadeout time of the voice that is going to be killed in ms. |
 
 
-*Group Settings*
+**Group Settings**
+
 | name | default value | description |
-| ---- | ---- | ---------- |
-| RR Groups | 1 ||
-| Group FX | Disabled ||
-| Edit FX | Group 1 ||
+| --- | --- | ------------ |
+| RR Groups | 1 | Set the amount of RRGroups of the Sampler |
+| Group FX | Disabled | Enable, to play all groups simultanously. The crossfade can be modulated in the Group Fade Modulation Chain. |
+| Edit FX | Group 1 | Set the crossfade table for each RRGroup if Group XF is enabled. Invert the table to crossfade between different groups. |
 
   
-*Playback Settings*
+**Playback Settings**
 | name | default value | description |
 | ---- | ---- | ---------- |
-| Pitch Track | Enabled ||
-| Retrigger | Kill Duplicate ||
-| Playback | Normal ||
+| Pitch Track | Enabled | Change the samples pitch ratio with Root note. Disable this for drum samples. |
+| Retrigger | Kill Duplicate | Determines how the sampler treats repeated notes: **Kill Note**, **Note Off**, **Do nothing**, **Kill Duplicate** |
+| Playback | Normal | Switch between **Normal** and **Reverse** Playback. **One Shot** plays the whole sample (ignores the NoteOff). |
+
+
+
+
+### Scripting
+
+You can access most of these properties with scripting. Use a generic script reference to access the Samplers Audio Settings. 
+
+```javascript
+const var Sampler1 = Synth.getChildSynth("Sampler1");
+```

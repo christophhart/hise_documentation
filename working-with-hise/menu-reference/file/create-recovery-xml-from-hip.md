@@ -1,0 +1,1 @@
+Tries to create a recovery XML from a previously saved (or auto-saved).hip file in case of technical disturbances.

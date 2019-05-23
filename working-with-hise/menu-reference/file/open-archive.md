@@ -1,0 +1,1 @@
+Open a .hip file in the [Presets Folder](/working-with-hise/project-management/projects-folders/presets).

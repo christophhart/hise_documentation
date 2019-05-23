@@ -1,1 +1,1 @@
-Saves the current instrument as XML tree. 
+Saves the current preset as a .xml file in the [XmlPresetBackups Folder](/working-with-hise/project-management/projects-folders/xml-preset-backups). 
