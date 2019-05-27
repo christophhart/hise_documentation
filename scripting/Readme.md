@@ -10,8 +10,7 @@ weight: 50
 Console.print("Hello World");
 ```
 
-*Scripting* provides the glue with which you can access each Module and UIComponent in a [Script Processor](/hise-modules/midi-processors/list/scriptprocessor) and mold together advanced interactions of your instrument.
-
+*Scripting* provides the glue with which you can access each Module and UIComponent in a [Script Processor](/hise-modules/midi-processors/list/scriptprocessor) and mold together more advanced interactions with your instrument.
 
 The core of HISE scripting is its powerful [Scripting API](/scripting/scripting-api) with more than 200 inbuilt functions to access and modify almost every aspect of your virtual instrument. 
 

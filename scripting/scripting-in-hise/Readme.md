@@ -7,25 +7,30 @@ index: 01
 
 ### Create Script References
 
-One crucial scripting paradigm in **HISE** is that you have to create a **script reference** to [Modules](../reference/modules.html) and [UIComponents](../reference/uicomponents.html) before you can manipulate them. The best place for this is the `onInit`-Tab.
+One crucial paradigm in **HISE** is that you have to create a **script reference** to [HISE Modules](/hise-modules) and [UI Components](/ui-components) before you can manipulate them with scripting. The best place to declare this references is the [Script Processors](/hise-modules/midi-processors/list/scriptprocessor) `onInit`-Tab.
 
-After you have referenced the elements you can access their attributes/parameters and properties and change these values according to your script logic.  
+After you have referenced the elements you can access their attributes/parameters and properties and change the values with to your script logic.  
 
 #### Module References
 
-The best way to create a script reference to a Module is to take a built-in shortcut. When you **right-click** on the header-bar of a Module in the Main-Workspace, a little context menu will pop up with the option: **create script reference**. This will copy a `const var` script variable definition of the Module to your clipboard. You can now directly paste this reference to your `onInit`-script and compile the script with [**F5**]. Take notice that the Module is identified by its **Processor ID** and that the new script variable adopts this naming.
-
-Let's try this out with a newly created SineWaveGenerator Module:
-
-``` js
+```javascript
 // A script reference to a SineWaveGenerator Module 
 const var SineWaveGenerator1 = Synth.getChildSynth("Sine Wave Generator1");
 ```
 
-Now that we have created a reference to the Module we can access all its methods and attributes/parameters directly via script. Start to type `SineW...` in the `onInit`-script and hit `Escape`. Select the full variable-name `SineWaveGenerator1` with ↓ and `Enter` or clicking. When you now append a `.`(dot) and hit `Escape` again you'll see a list of all available methods and attributes of the Module.
+The quickest way to create a script reference to a Module is to take a built-in shortcut. When you **right-click** on the header-bar of a Module in the Main-Workspace, a little context menu will pop up with the option: **Create generic script reference**. 
 
-Let's try out the `getAttribute()` and `setAttribute()` method to get a grip of the attributes/parameters of the Module. 
-``` js
+This will copy a `const var` script variable definition of the Module to your clipboard. You can now directly paste this reference to your `onInit`-script and compile the script with **[F5]**. The Module is now accessible with this variable.
+
+>Take notice that the Module is identified by its **Processor ID** name and that the variable adopts this naming.
+
+Now that we have created a reference to the Module we can access all its methods and attributes/parameters directly via script. 
+
+Start to type `SineW...` in the `onInit`-script and hit **[Escape]**. Select the full variable-name `SineWaveGenerator1` with the **[Down Arrow]** and **[Enter]** or click. When you now append a `.`(dot) and hit **[Escape]** again you'll see a list of all available methods and attributes of the Module in the [Autocomplete Popup](/working-with-hise/workspaces/scripting-workspace/code-editor#autocomplete-popup-[esc]).
+
+Let's try out the `getAttribute()` and `setAttribute()` methods to get a grip of the attributes/parameters of the Module. The parameter is accessed with the variable + `.` followed by the parameters name. 
+
+```javascript
 // Get and print the current SaturationAmount
 Console.print("Saturation Amount: " + SineWaveGenerator1.getAttribute(SineWaveGenerator1.SaturationAmount));
 
@@ -33,36 +38,51 @@ Console.print("Saturation Amount: " + SineWaveGenerator1.getAttribute(SineWaveGe
 SineWaveGenerator1.setAttribute(SineWaveGenerator1.SaturationAmount, 0.17);
 ```
 
-In this way you can access all the attributes/parameters of every Module. See a list with all attributes for each Module in the [Modules](modules.html) chapter. 
+In this way you can get and set the attributes/parameters of every Module. See a list with all parameters of each Module in the [HISE Modules](/hise-modules) chapter. 
 
 
 
 #### UIComponent References
 
-Referencing UIComponents works the same way as with Modules. Select a created UIComponent in the Interface Designer in **edit mode** or in the **Component List** and **right-click** on it. Select **create script reference for selection** and paste the code in your `onInit` script.  
 
-Now you can directly `set()` and `get()` the properties of the component in your script, which will show up in the **Property Editor** as "Overwritten by script". 
-
-
-``` js
-// A script reference to a Slider UIComponent
+```javascript
+// A script reference to a Slider UI Component
 const var Knob1 = Content.getComponent("Knob1");
+```
 
-// set and get a UIComponents property
+Referencing UI Components works in same way as with Modules. Select a newly created UI Component in the Interface Designers [Canvas](/working-with-hise/workspaces/scripting-workspace/canvas#canvas) in **edit mode** or in the [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list) and **right-click** on it. Select **create script reference for selection** and paste the code in your `onInit` script.  
+
+Now you can directly `set()` and `get()` the properties of the component in your script, which will show up in the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor) as "Overwritten by script". 
+
+```javascript
+// set and get a UI Components property
 Knob1.set("text", "Saturation");
 Console.print("text property: " + Knob1.get("text"));
 ```
 
-The `getValue()` method will return the current "value" of the UIComponent. It depends on the kind of component which value it returns. Have a look at the [UIComponent](components.html) section for more details.
-value-range for sliders, 0/1 for button, array-indexes for each ComboBox entry, array for SliderPack, and 0-127 range for Table1.
+The `getValue()` method will return the current "value" of the UIComponent. It depends on the kind of component which value it returns. Have a look at the [UI Components](/ui-components) section for more details.
 
-``` js
-// Returns the current value of the UIComponent
+> E.g: a 0-1 value range for Sliders, boolean 0/1 for Buttons, Array-indexes for each ComboBox item, an Array for the SliderPack and a 0-127 range for a Table.
+
+```javascript
+// Prints the current value of the UI Component to the Console
 Console.print(Knob1.getValue());
 ```
 
+### Create Custom-onControl-Callbacks
 
-### Create Custom-onControl-Callback for Selection
+While the above scripts are evaluated only once on Initialisation **[F5]**, we want to have the ability to use the UI Components values more dynamically. This is the task of the **onControl Callback**.
+
+It "fires" every time a components value is changed on the interface.
+## Todo custom callback
+```javascript
+inline function onKnob1Control(component, value)
+{
+	Console.print(value);
+};
+
+Content.getComponent("Knob1").setControlCallback(onKnob1Control);
+```
 
 This shortcut provides a convenient way to create a function wrapper for a single UIComponent that also automatically registers this function as a Custom Callback. This allows you to access the values of the component that are dynamically changed by the user. 
 
@@ -70,7 +90,7 @@ You can copy the Custom Callback definition to the clipboard with a **right-clic
 
 You can see that the shortcut inserts the `ID` of the component in the callback name (on`...`Control). Another argument for not changing the `ID` of a component later on.  
 
-``` js
+```javascript
 // A custom onControl Callback
 inline function onKnob1Control(component, value)
 {
