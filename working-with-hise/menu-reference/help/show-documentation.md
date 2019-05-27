@@ -1,0 +1,1 @@
+Opens the HISE Documentation.

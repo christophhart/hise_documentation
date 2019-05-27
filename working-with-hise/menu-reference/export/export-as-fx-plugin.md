@@ -1,0 +1,1 @@
+Compile your plugin into a VST or AAX format (32/64bit). It will take your IDE systems compilers to create your plugin. The final .dll will show up in your projects, `Binaries/VST/` or `Binaries/AAX` folders.

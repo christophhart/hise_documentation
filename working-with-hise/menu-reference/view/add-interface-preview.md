@@ -1,0 +1,1 @@
+Add a new OS window with the display preview of your instruments/plugins interface. Great for always having your final plugin in view while building the interface.

@@ -1,0 +1,1 @@
+Records **seven** seconds of HISE output and saves it into a .wav file. After the time passed, a filebrowser with the file will show up. This makes it easy to analyse the output with external tools.  
