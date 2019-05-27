@@ -4,6 +4,7 @@ summary:  All UI elements that can be added to a plugin made with HISE
 author:   Christoph Hart
 ---
 
+**HISE** features a bunch of commonly used interface controls. Below you see a list of common properties that the most of the Plugin Components share:
 
 ### List of common properties
 

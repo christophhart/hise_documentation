@@ -32,20 +32,10 @@ The Sampler features four different edit tabs
 
 ## Sample Maps
 
-
-## Sample Mapping
-
-![sampler-full](images/sampler/sampler-full.png)
+You can load and save **SampleMaps** independently from the Sampler as human-readable `.xml` files, which makes it an own sampler file format. 
 
 
-You can load and save **SampleMaps** independently from the sampler patch as human-readable XML file, which makes it an own sampler file format 
-The open `.xml`
-
-
-### Round Robin
-
-
-### MultiMic Samples
+### Todo MultiMic Samples
 
 > Pro-Tip: If you have a multimic sample library, create a Samplemap for one mic position, export the samplemap and replace the audio reference files with a text editor and "Search and Replace"...  
 > Then create a new sampler and load this samplemap. With this trick you don't have to import and edit the other samples, as they will use the same properties as the first mic position.  
@@ -55,101 +45,42 @@ The open `.xml`
 
 ### Export to HLAC (Monolith)
 
-**HISE Lossless Audio Codec**
+A Map Editors SampleMap let's you play the samples directly from the Samples folder. This is not the most efficient way to play samples, especially if you have a lot of mapped samples. Here HLAC (HISE Lossless Audio Codec) comes in to compress all the SampleMaps samples into one big "monolith" chunk. **Export to HLAC** will render your samples in a single compressed file, and access the samples from within. This shrinks the overall filesize + speeds up file access. The `.ch1` monolith files will end up in the root directory of the [Samples Folder](/working-with-hise/project-management/projects-folders/samples).
 
-16-Bit HLAC monolith
+> Read this Forum entry of Christoph if you want to understand how it works behind the hood: [HISE Lossless Audio Codec is ready](https://forum.hise.audio/topic/236/hise-lossless-audio-codec-is-ready) 
 
+There are three modes in which the HLAC (.ch1) file can be processed: 
 
-Yes 
+#### No Normalization
 
-Oh and the .hrx compression / decompression is 100% bit equal, the Full Dynamics is something baked into HLAC directly.
+**No Normalization** just takes the samples and compresses them into the monolith file.
 
+#### Normalise every sample
 
-#### Standard
-
-#### Full Dynamic
-24bit samples 
-
-
-Full Dynamics is still 16bit, but it normalises the samples internally in chunks of 1024 samples so that decaying samples still use the full available bit depth.
-
-This way you still get the advantages of a 16bit signal path (half memory usage for all the streaming buffers) but the quantisation noise at the end of a sample is not audible anymore (which can happen if you heavily compress or distort the sound).
-
-The user can decide for herself if she favors disk usage or sound quality during the extraction of the samples. But with full dynamics enabled, the .hr1 archive files uses 24 bit FLAC encoding, otherwise the normalisation would be pointless.
-
-gets slightly bigger 
-
-if your material is 16bit from the start, you won‘t get any benefits from using Full dynamics. Just disable it at exporting and the end user will not have this option.
+This **normalises every sample** individually and compressed them together. 
 
 
+#### Full Dynamics
 
-#### .ch1 hlac monolith files
+**Full Dynamics** is a mode that leverages the higher resolution of 24bit samples. 
+
+Behind the scenes **Full Dynamics** still uses 16bit, but it normalises the samples internally in chunks of 1024 samples so that decaying samples still use the full available bit depth.
+
+This way you get the advantages of a 16bit signal path (half memory usage for all the streaming buffers) but the quantisation noise at the end of a sample is not audible anymore (which can happen if you heavily compress or distort the sound).
+
+During the extraction process of the samples the user can decide for herself if she favors disk usage or sound quality. But with Full Dynamics enabled, the .hr1 archive file uses 24bit FLAC encoding, otherwise the normalisation would be pointless.
 
 
+> If your material is 16bit from the start, you won‘t get any benefits from using Full Dynamics. Just disable it at exporting and the end user will not have this option.
 
 
 ### Hise Resources Archive File
 
-.hr1
+If you want to distribute the samples to the enduser you have the option to compresses (lossless) the sample monoliths further for delivery. [Export > Export Samples for installer](/working-with-hise/menu-reference/export#export-samples-for-installer).
 
-The HR is an archive (like zip). It compresses (lossless) the sample monoliths further for delivery to the user. When the user runs the plugin for the first time they will be asked to locate the HR files, then the monoliths will be extracted to their chosen location, after which they can delete the HR files.
-
-
-* split archive
-
-
-**Export Samples for Installer**
-
-> **Export all Monoliths into Resource File**
-
--> Root Folder of Project
-
-
-
-The user can decide for himself if he favors disk usage or sound quality during the extraction of the samples. 
-
-But with full dynamics enabled, the .hr1 archive files uses 24 bit FLAC encoding, otherwise the normalisation would be pointless.
-
-
-
-
-
+The HR is a file archive (like zip). When the user runs the plugin for the first time they will be asked to locate the HR files that were shipped with the instrument/plugin. The monoliths will be extracted to their chosen location, after which the user can opt-in to delete the HR files.
 
 
 ### Connect to GUI
 
-
 [Link to SampleMap GUI Connect Recipes ]()
-
-
-
-# Chris Stuff
-
-
-## Structure
-
-A sample map is arranged into three dimensions.
-
-![](/images/custom/samplemapaxis.svg:600px)
-
-- **Samplemap** (the root object with all information)
-- *Round Robin Group*  (a group which will be cycled on every note on)
-- Sample (a reference to a audio file with some information on how to play it)
-
-Every sample is loaded in an object called **Samplemap**, which contains a arbitrary amount of **Round Robin Groups**, which contain all samples.
-
-The sampler has no further organization logic - robin groups are normally processed the same way, so it makes sense to put them all into one sound generator. For everything else (eg. release trigger), use another **Sampler** with a **Midi Processor** that provides this functionality.
-
-
-
-
-
-
-
-## Loading Samplemaps
-
-> Pro-Tip: If you have a multimic sample library, create a Samplemap for one mic position, export the samplemap and replace the audio reference files with a text editor and "Search and Replace"...  
-> Then create a new sampler and load this samplemap. With this trick you don't have to import and edit the other samples, as they will use the same properties as the first mic position.  
-
-
-
