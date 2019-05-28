@@ -40,10 +40,7 @@ SineWaveGenerator1.setAttribute(SineWaveGenerator1.SaturationAmount, 0.17);
 
 In this way you can get and set the attributes/parameters of every Module. See a list with all parameters of each Module in the [HISE Modules](/hise-modules) chapter. 
 
-
-
 ### UIComponent References
-
 
 ```javascript
 // A script reference to a Slider UI Component
