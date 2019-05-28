@@ -4,9 +4,12 @@ summary:  A module that processes audio.
 icon:     /images/icon_fx
 ---
 
-# Effects
+An Effect receives audio input, applies its effect and returns an audio signal.  
 
 ![FX](/images/custom/fx.svg:700px) 
+
+
+There are two types of effect audio processing:
 
 | Icon | Type |
 | ----:64px | ---- |

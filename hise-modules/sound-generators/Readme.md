@@ -4,7 +4,7 @@ summary:  A HISE module that takes MIDI input and creates audio output.
 icon:     /images/icon_speaker
 ---
 
-A sound generator is a HISE module that takes MIDI input and creates audio output.
+A sound generator is a HISE module that takes incoming MIDI data to generate audio signals.
 
 ## Signal Path
 
