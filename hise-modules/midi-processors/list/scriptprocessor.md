@@ -21,7 +21,7 @@ Beneath the top-bar of the ScriptProcessor you can find the **Callback-Tabs**. E
 A [Callback](https://en.wikipedia.org/wiki/Callback_(computer_programming) gives you access to scripting that is triggered by certain events. With this you can react to incoming MIDI Messages or events that are triggered by the user on the User Interface.
 
 
-#### The `onInit`-callback
+## The `onInit`-callback
 
 The `OnInit`-callback is the 'main' callback that is getting executed (initialized) every time the script is compiled **[F5]** or freshly loaded. It is therefore the right place to define variables and script references, especially if you want to use them in other callbacks.
 
@@ -29,7 +29,7 @@ The `OnInit`-Tab is therefore not really a callback, but more like the main scri
 
 > There is a compile time-out that will abort the script execution to prevent endless loops. You can adjust this value using the [Compile Timeout](/working-with-hise/settings/development#compile-timeout) setting.
 
-#### The `onNoteOn`-callback
+## The `onNoteOn`-callback
 
 
 If you press any Key on your MIDI-device or receive a MIDI-Message from a DAW, this callback will get executed. You can catch informations of the incoming MIDI messages via the Scripting APIs [Message](/scripting/scripting-api/message) object:
@@ -44,13 +44,13 @@ function onNoteOn()
 
 For a few use-cases of the `onNoteOn()`-callback please have a look at the MIDI-Handling Recipes.
 
-#### The `onNoteOff`-callback
+## The `onNoteOff`-callback
 
 This callback will react to MIDI-noteOff messages. Most of the time when you write a `onNoteOn` script, you also have to care about the `onNoteOff` behaviour. If you don't it's pretty easy to get stuck notes.
 
 > Do not rely on the assumption that every noteOff message is preceded by a note on message (for example if you start the playback of your host between a note on and a note off)
 
-#### The `onController`-callback
+## The `onController`-callback
 
 If MIDI controller messages come in (eg. modulation wheel, pitch wheel, aftertouch), this callback will get executed.
 You can catch the Controllers with...:
@@ -63,9 +63,7 @@ function onController()
 }
 ```
 
-#### The `onTimer`-callback
-
-> Completely unclear how this works.. examples + better explanation 
+## The `onTimer`-callback
 
 Every sound generator has its own (pretty accurate) timer that runs on the audio thread.
 
@@ -76,7 +74,7 @@ If you start a timer, this callback will be called periodically (depending on th
 > The timer frequency is limited to 40ms (this should be enough for almost any case and prevent CPU freezing)
 
 
-#### The `onControl`-callback
+## The `onControl`-callback
 
 The `onControl`-callback is a dedicated callback for handling the interactions of all UIComponents. Whenever you use a UIComponent with a defined script reference, this callback will be executed. The best way to use it, is to catch the component with a `switch` function: 
 
@@ -126,3 +124,18 @@ For these cases, there is the API call `Synth.deferCallbacks(true);`. But be awa
 reflect this.
 
 - if a callback is deferred (= not running on the audio thread), the callback name will have a `(D)` suffix to indicate the threading state.
+
+
+## `include` External Files
+
+As your scripts grow larger you can quickly loose oversight over complex scripts. The ScriptProcessor has a inbuilt tool to handle this kind of problem.
+
+If you select a codeblock in the ScriptEditor and **right-click**, you can find an option to **Move selection to external file**.
+
+This command creates a new `.js` file out of your selection and saves it into the [Scripts Folder](/working-with-hise/project-management/projects-folders/scripts), deletes the selected code and includes the newly created external script with the `include("");` command. 
+
+After you have included the external `.js` file you can access it with the Callback-dropdown-selector in the ScriptEditors topbar.
+
+This separation of code blocks is not only great for code clarity but also if you want to reuse certain scripts in your next projects. You just have to drop them in the **Scripts Folder** and `include("");` them in your current project.   
+
+

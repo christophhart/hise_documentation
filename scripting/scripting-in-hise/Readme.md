@@ -5,13 +5,13 @@ index: 01
 ---
 
 
-### Create Script References
+## Create Script References
 
 One crucial paradigm in **HISE** is that you have to create a **script reference** to [HISE Modules](/hise-modules) and [UI Components](/ui-components) before you can manipulate them with scripting. The best place to declare this references is the [Script Processors](/hise-modules/midi-processors/list/scriptprocessor) `onInit`-Tab.
 
 After you have referenced the elements you can access their attributes/parameters and properties and change the values with to your script logic.  
 
-#### Module References
+### Module References
 
 ```javascript
 // A script reference to a SineWaveGenerator Module 
@@ -42,7 +42,7 @@ In this way you can get and set the attributes/parameters of every Module. See a
 
 
 
-#### UIComponent References
+### UIComponent References
 
 
 ```javascript
@@ -69,12 +69,12 @@ The `getValue()` method will return the current "value" of the UIComponent. It d
 Console.print(Knob1.getValue());
 ```
 
-### Create Custom-onControl-Callbacks
+## Create Custom-onControl-Callbacks
 
 While the above scripts are evaluated only once on Initialisation **[F5]**, we want to have the ability to use the UI Components values more dynamically. This is the task of the **onControl Callback**.
 
 It "fires" every time a components value is changed on the interface.
-## Todo custom callback
+
 ```javascript
 inline function onKnob1Control(component, value)
 {
