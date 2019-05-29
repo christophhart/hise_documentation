@@ -45,7 +45,9 @@ You can load and save **SampleMaps** independently from the Sampler as human-rea
 
 ### Export to HLAC (Monolith)
 
-A Map Editors SampleMap let's you play the samples directly from the Samples folder. This is not the most efficient way to play samples, especially if you have a lot of mapped samples. Here HLAC (HISE Lossless Audio Codec) comes in to compress all the SampleMaps samples into one big "monolith" chunk. **Export to HLAC** will render your samples in a single compressed file, and access the samples from within. This shrinks the overall filesize + speeds up file access. The `.ch1` monolith files will end up in the root directory of the [Samples Folder](/working-with-hise/project-management/projects-folders/samples).
+A freshly mapped SampleMap plays the samples directly from the Samples folder. This is not the most efficient way to play samples,though, especially if you have a lot of mapped samples. 
+
+Here HLAC (HISE Lossless Audio Codec) comes in to compress all the SampleMaps samples into one big "monolith" chunk. **Export to HLAC** will render your samples in a single compressed file, and access the samples from within. This shrinks the overall filesize + speeds up file access. The `.ch1` monolith files will end up in the root directory of the [Samples Folder](/working-with-hise/project-management/projects-folders/samples).
 
 > Read this Forum entry of Christoph if you want to understand how it works behind the hood: [HISE Lossless Audio Codec is ready](https://forum.hise.audio/topic/236/hise-lossless-audio-codec-is-ready) 
 
@@ -79,8 +81,3 @@ During the extraction process of the samples the user can decide for herself if 
 If you want to distribute the samples to the enduser you have the option to compresses (lossless) the sample monoliths further for delivery. [Export > Export Samples for installer](/working-with-hise/menu-reference/export#export-samples-for-installer).
 
 The HR is a file archive (like zip). When the user runs the plugin for the first time they will be asked to locate the HR files that were shipped with the instrument/plugin. The monoliths will be extracted to their chosen location, after which the user can opt-in to delete the HR files.
-
-
-### Connect to GUI
-
-[Link to SampleMap GUI Connect Recipes ]()
