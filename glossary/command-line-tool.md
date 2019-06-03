@@ -75,3 +75,6 @@ The windows install script for [InnoSetup](http://www.jrsoftware.org/isinfo.php)
 ### Installer (macOS)
 
 For macOS you can use [Whitebox Packages](http://s.sudre.free.fr/Software/Packages/about.html). @d-healey's Sofia Woodwinds has an [installer script](https://github.com/davidhealey/librewave_woodwinds/tree/master/Installer/OSX) for macOS that you might be able to reuse.
+
+### Installer (Linux)
+Check out: [https://makeself.io/](https://makeself.io/)

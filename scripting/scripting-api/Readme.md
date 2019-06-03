@@ -12,7 +12,7 @@ author:   Christoph Hart
 
 **HISE** provides a API with over 200 functions which allow interaction between the core engine and the script processor. There is a [complete list of all API calls], but you can also use the autocomplete feature of the script editor to quickly browse through all available functions.
 
-> <kbd>Escape</kbd> opens a popup with all available API objects and script variables for an object. If you press <kbd>Escape</kbd> after an object followed by a dot (eg. `Content.`<kbd>Escape</kbd>), you will get a list of all API functions that belong to this object. Hit ESC again, and the popup will disappear. 
+> `Escape` opens a popup with all available API objects and script variables for an object. If you press `Escape` after an object followed by a dot (eg. `Content.`, `Escape`), you will get a list of all API functions that belong to this object. Hit ESC again, and the popup will disappear. 
 
 The API is divided into five sub categories which are grouped into the following objects. You can call every API function by using the scheme `Object.function([parameters])`
 
@@ -22,7 +22,7 @@ The API is divided into five sub categories which are grouped into the following
 The `Synth` Object grants access to the sound generator internals. Depenending on the type of the sound generator, there are some function which will not work, because they are limited to a certain sound generator type (You will get a error message if you try to use a illegal API call)
 
 
-``` js
+```javascript
 Synth.playNote(noteNumber, velocity) // sends a note on to the sound generator and all of its children
 Synth.getNumPressedKeys() // returns the number of pressed keys.
 ```
@@ -32,7 +32,7 @@ Synth.getNumPressedKeys() // returns the number of pressed keys.
 The sampler object contains methods to access some sampler specific data. Calling it on another Sound Generator does not harm anything but the world will not get better by doing so.
 
 
-``` js
+```javascript
 Sampler.getNumSelectedSamplerSounds();
 ```
 
@@ -41,7 +41,7 @@ Sampler.getNumSelectedSamplerSounds();
 If you use one of the MIDI callbacks (`onNoteOn`, `onNoteOff` or `onController`), this object contains method to get / change the message that triggered the callback.
 
 
-``` js
+```javascript
 Message.getNoteNumber() // returns the note number in note callbacks
 Message.setChannel(newChannel) // changes the channel of the midi message
 ```
@@ -50,7 +50,7 @@ Message.setChannel(newChannel) // changes the channel of the midi message
 
 The `Engine` object contains functions related to global properties (like sample rate or host tempo)
 
-``` js
+```javascript
 Engine.getSampleRate() // returns the current sample rate
 Engine.sendAllNotesOff() // sends a all note off (MIDI Panic) message at the next audio buffer
 ```
@@ -60,7 +60,7 @@ Engine.sendAllNotesOff() // sends a all note off (MIDI Panic) message at the nex
 The `Content` object contains all methods related to interface design.
 
 
-``` js
+```javascript
 Content.addButton("ButtonName", 0, 0) // adds a button
 Content.setHeight(250) // changes the height of the interface
 ```
@@ -68,7 +68,7 @@ Content.setHeight(250) // changes the height of the interface
 ### The Console Object
 The console object allows you to print any value to the console of **HISE**.
 
-``` js
+```javascript
 Console.print("Hello World " + 3.4); // Prints "Hello World + 3.4 to the console.
 
 Console.assertEqual(x, y); // You could write assertion tests to check your code. 
@@ -82,7 +82,7 @@ Console.stop(); // wrapping these two Console commands around your code.
 
 The Globals object does not contain any methods but acts as preset wide value container for cross-script communication.
 
-``` js
+```javascript
 // In Script Processor 1
 Globals.x = 5.72; // Define this in one script
 
@@ -93,17 +93,6 @@ Console.print(Globals.x) // 5.72
 
 
 
-
-
-
-
-
-
-
-
-
-
-The scripting API in HISE can be used to customize the behaviour.
 
 ## Using references to objects in HISE
 
@@ -135,8 +124,6 @@ v.setIntensity(0.5);                         // change the intensity to 50%
 const var v_t = Synth.getTableProcessor();   // create a interface class reference
 v_t.addTablePoint(0, 0.5, 0.25);             // create a table point in the centre.
 ```
-
-
 
 ```javascript
 // short cut - create a temporary interface reference

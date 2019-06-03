@@ -9,6 +9,6 @@ Try out the Math functions in this interactive code editor:
 ```!javascript
 var input = 1.0;
 var result = Math.sin(input);
-return result;
+Console.print(result);
 ```
 

@@ -4,20 +4,18 @@ summary:  The language reference for the Javascript implementation in HISE
 author:   Christoph Hart
 ---
 
+To make **HISE Scripting** perform well in a Audio-DSP context, a few major adaptations had to be made to it's JavaScript-Engine Implementation. It does'nt include the latest **[ES6]** specifications and had also to be stripped of a few known JS paradigms and is therefore not fully standard compliant. Take a look at [HISE Additions](/scripting/scripting-in-hise/additions-in-hise) for the main differences between a standard JavaScript and the HiseScript implementation.
 
-This part builds upon the [A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) Tutorial. 
+This Tutorial builds upon the [A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) Tutorial, reduced to the scope of Scripting in **HISE**.
 
-To make **HISE** Scripting perform well in a Audio-DSP context, a few major adaptations had to be made to it's Javascript-Engine Implementation. It does'nt include the latest [ES6] specifications and had also to be stripped of a few known JS paradigms and is therefore not fully standard compliant. Some of these adaptations are modeled after the C++ language to make up for an easy conversation of .js scripts to C++ code. 
+### Overview
 
-This Tutorial
-underlying JavascriptEngine from **JUCE**)
+JavaScript is an object oriented dynamic language with types and operators, standard built-in objects, and methods. Its syntax is derived from the Java and C languages so many structures from those languages apply to JavaScript as well.
 
-#### Overview
-
-JavaScript is an object oriented dynamic language with types and operators, standard built-in objects, and methods. Its syntax comes from the Java and C languages, so many structures from those languages apply to JavaScript as well. One of the key differences is that JavaScript does not have classes; instead, the class functionality is accomplished by object prototypes. The other main difference is that functions are objects, giving functions the capacity to hold executable code and be passed around like any other object.
+One of the key differences is that JavaScript does not have classes. Instead, the class functionality is accomplished by object prototypes. The other main difference is that functions are objects, giving functions the capacity to hold executable code and be passed around like any other object.
 
 
-### Data Types
+## Data Types
 
 Let's start off by looking at the building block of any language: the types. JavaScript programs manipulate values, and those values all belong to a type. JavaScript's types are:
 
@@ -25,12 +23,12 @@ Let's start off by looking at the building block of any language: the types. Jav
 - `String`
 - `Boolean`
 - `Object`
-  - `Array`
-  - `Function`
+- `Array`
+- `Function`
 
 Arrays and Functions are special kinds of Objects. ... oh, and `undefined` and `null`, which are... slightly odd.
 
-#### Numbers
+### Numbers
 
 Numbers in JavaScript are "double-precision 64-bit format IEEE 754 values", according to the spec. This has some interesting consequences. There's no such thing as an integer in JavaScript, so you have to be a little careful with your arithmetic if you're used to math in C or Java. Watch out for stuff like:
 
@@ -40,7 +38,7 @@ Numbers in JavaScript are "double-precision 64-bit format IEEE 754 values", acco
 
 In practice, integer values are treated as 32-bit ints (and are stored that way in some browser implementations), which can be important for bit-wise operations.
 
-The standard arithmetic operators are supported, including addition, subtraction, modulus (or remainder) arithmetic and so forth. There's also a built-in object that I forgot to mention earlier called `Math` if you want to perform more advanced mathematical functions and constants:
+The standard arithmetic operators are supported, including addition, subtraction, modulus (or remainder) arithmetic and so forth. There's also a built-in object that I forgot to mention earlier called [Math](/scripting/scripting-api/math) if you want to perform more advanced mathematical functions and constants:
 
 ```javascript
 var r = Math.sin(3.5);
@@ -71,9 +69,10 @@ JavaScript has the special values Infinity and -Infinity:
 
 > The parseInt() and parseFloat() functions parse a string until they reach a character that isn't valid for the specified number format, then return the number parsed up to that point. However the "+" operator simply converts the string to NaN if there is any invalid character in it. Just try parsing the string "10.2abc" with each method by yourself in the console and you'll understand the differences better.
 
-#### Strings
+### Strings
 
 Strings in JavaScript are sequences of characters. More accurately, they are sequences of Unicode characters, with each character represented by a 16-bit number. 
+
 ```javascript
 "hello"
 ```
@@ -92,7 +91,7 @@ There's our first brush with JavaScript objects! Did I mention that you can use 
 "hello".toUpperCase(); // "HELLO"
 ```
 
-#### Boolean
+### Boolean
 
 JavaScript has a boolean type, with two possible values `true` and `false` (both of which are keywords). Any value can be converted to a boolean according to the following rules:
 
@@ -100,16 +99,16 @@ JavaScript has a boolean type, with two possible values `true` and `false` (both
 2. all other values become `true`.
 
 
-However, conversion is rarely necessary, as JavaScript will silently perform this conversion when it expects a boolean, such as in an if statement (see below). For this reason, we sometimes speak simply of "true values" and "false values," meaning values that become true and false, respectively, when converted to booleans. Alternatively, such values can be called "truthy" and "falsy".
+However, conversion is rarely necessary, as JavaScript will silently perform this conversion when it expects a boolean, such as in an [if statement](/scripting/scripting-in-hise/javascript#if-/-else) For this reason, we sometimes speak simply of "true values" and "false values," meaning values that become true and false, respectively, when converted to booleans. Alternatively, such values can be called "truthy" and "falsy".
 
-Boolean operations such as `&&` (logical and), `||` (logical or), and `!` (logical not) are supported; see below.
+[Boolean operations](/scripting/scripting-in-hise/javascript#and-/-or-operators) such as `&&` (logical and), `||` (logical or), and `!` (logical not) are supported.
 
-#### null / undefined
+### null / undefined
 
 JavaScript distinguishes between `null`, which is a value that indicates a deliberate non-value (and is only accessible through the null keyword), and `undefined`, which is a value of type `undefined` that indicates an uninitialized value — that is, a value hasn't even been assigned yet. In JavaScript it is possible to declare a variable without assigning a value to it. If you do this, the variable's type is undefined. `undefined` is actually a constant.
 
 
-### Variables
+## Variables
 
 New variables in JavaScript are declared using the var keyword:
 
@@ -118,17 +117,20 @@ var a;
 var name = "simon";
 ```
 
-* const var
-* reg
-* Globals
+> **HISE Advice:** Because of the real-time-safe requirements of **HISE** the declaring of `var` variables is discouraged in all audio related callbacks since it will result in unpredictable performance with drop outs & stuff. Best practice is to declare all variables in the `onInit()` callback and assign values to the variable in the other callbacks.
 
-* scope
 
-An important difference from other languages like Java is that in JavaScript, blocks do not have scope; only functions have scope. So if a variable is defined using var in a compound statement (for example inside an if control structure), it will be visible to the entire function. 
+HiseScript also features three other ways of declaring variables:
 
-> **IMPORTANT:** Do not declare variables in one of the callbacks that are triggered from a MIDI message, since it will result in unpredictable performance with drop outs & stuff. Normally you declare all variables in the `onInit()` callback and assign values to the variable in the other callbacks.
+- [const variables](/scripting/scripting-in-hise/additions-in-hise#const-variables)
+- [reg variables](/scripting/scripting-in-hise/additions-in-hise#reg-variables)
+- [global variables](/scripting/scripting-in-hise/additions-in-hise#globals.x-variables)
 
-### Operators
+> Please have a look at the [HISE Additions Chapter](/scripting/scripting-in-hise/additions-in-hise#custom-variable-types-/-function-calls) to learn more about custom variables and scopes in **HISE**.
+
+An important difference from other languages like Java is that in JavaScript, blocks do not have scope; only functions have scope. So if a variable is defined using `var` in a compound statement (for example inside an if control structure), it will be visible to the entire function. 
+
+## Operators
 
 JavaScript's numeric operators are `+`, `-`, `*`, `/` and `%` - which is the remainder operator. Values are assigned using ` = `, and there are also compound assignment statements such as `+=` and `-=`. These extend out to `x = x <operator> y`.
 
@@ -172,8 +174,11 @@ There are also `!=` and `!==` operators.
 
 JavaScript also has bitwise operations. If you want to use them, they're there.
 
-### Control structures
+## Control structures
 JavaScript has a similar set of control structures to other languages in the C family. Conditional statements are supported by **if** and **else**; you can chain them together if you like:
+
+
+### If / else
 
 ```javascript
 var name = "kittens";
@@ -188,17 +193,41 @@ name == "kittens!!"
 ```
 
 
-JavaScript's **for loop** is the same as that in C and Java: it lets you provide the control information for your loop on a single line.
+### For loop
+
+JavaScript's **for loop** is the same as that in C and Java: it lets you provide the control information for your loop in a single line.
 
 ```javascript
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 5; i++) 
+{
   // Will execute 5 times
 }
+```
+This variant with a pre-defined `reg` variable is a bit faster though.
+
+```javascript
+reg i = 0;
+for (i; i < 5; i++) 
+{
+  // Will execute 5 times
+}
+```
+
+You can loop through an array with the `for (i in array)` syntax.
+
+```javascript
+const var array = [1,2,3,4]
+for (i in array) 
+{
+  Console.print(i);
+} 
+
 ```
 
 > **IMPORTANT:** Go easy on the loops in the MIDI callbacks.
 
 
+### While loops
 
 JavaScript has **while loops** and **do-while loops**. The first is good for basic looping; the second for loops where you wish to ensure that the body of the loop is executed at least once:
 
@@ -213,7 +242,7 @@ do {
 } while (inputIsNotValid(input))
 ```
 
-
+### AND / OR operators
 
 The `&&` (AND) and `||` (OR) operators use short-circuit logic, which means whether they will execute their second operand is dependent on the first. This is useful for checking for null objects before accessing their attributes:
 
@@ -227,11 +256,16 @@ Or for setting default values:
 var name = otherName || "default";
 ```
 
+### Ternary operator
+
 JavaScript has a **ternary operator** for conditional expressions:
 
 ```javascript
-var allowed = (age > 18) ? "yes" : "no";
+var allowed = (age > 18) ? "yes" : "no"; 
+// if (condition == true) ?(become) "yes" :(else) "no";
 ```
+
+### Switch statement
 
 The **switch statement** can be used for multiple branches based on a number or string:
 
@@ -263,8 +297,8 @@ switch(a) {
 
 
 
-### Objects
-JavaScript objects can be thought of as simple collections of name-value pairs. As such, they are similar to:
+## Objects
+JavaScript objects can be thought of as simple collections of "name-value pairs". As such, they are similar to:
 
 - Dictionaries in Python
 - Hash tables in C and C++
@@ -275,7 +309,7 @@ The fact that this data structure is so widely used is a testament to its versat
 
 The "name" part is a JavaScript string, while the value can be any JavaScript value — including more objects. This allows you to build data structures of arbitrary complexity.
 
-There is only one way to create an a plain object. (The "new" operator is not supported in **HISE**)
+There is only one way to create an a plain object. (The [`new` operator](/scripting/scripting-in-hise/additions-in-hise#no-new-operator) is not supported in **HISE**)
 
 
 ```javascript
@@ -305,45 +339,9 @@ obj["details"]["size"]; // 12
 ```
 
 
+## Arrays
 
-* `New` does'nt work: please explain inline functions with this, local, JSON etc.. 
-
-
-The following example creates an object prototype, Person, and instance of that prototype, You.
-
-```javascript
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
-}
-
-// Define an object
-var You = new Person("You", 24); 
-// We are creating a new person named "You" 
-// (that was the first parameter, and the age..)
-```
-
-Once created, an object's properties can again be accessed in one of two ways:
-
-```javascript
-obj.name = "Simon";
-var name = obj.name;
-And...
-
-obj["name"] = "Simon";
-var name = obj["name"];
-```
-
-These are also semantically equivalent. The second method has the advantage that the name of the property is provided as a string, which means it can be calculated at run-time though using this method prevents some JavaScript engine and minifier optimizations being applied. It can also be used to set and get properties with names that are reserved words: 
-
--------
-
-
-
-
-### Arrays
-
-Arrays in JavaScript are actually a special type of object. They work very much like regular objects (numerical properties can naturally be accessed only using [] syntax) but they have one magic property called 'length'. This is always one more than the highest index in the array.
+Arrays in JavaScript are actually a special type of object. They work very much like regular objects (numerical properties can naturally be accessed using [] syntax) but they have one magic property called 'length'. This is always one more than the highest index in the array.
 
 One way of creating arrays is as follows:
 
@@ -413,32 +411,20 @@ If you want to append an item to an array simply do it like this:
 a.push(item);
 ```
 
-Arrays come with a number of methods. See also the full documentation for array methods.
+Arrays come with a number of methods. See the full API documentation for [Array](/scripting/scripting-api/array) methods.
 
-| Method name	| Description |
-|----------- | ----------- |
-|`a.toString()` | 	Returns a string with the toString() of each element separated by commas.|
-|`a.toLocaleString()` |	Returns a string with the toLocaleString()` of each element separated by commas.|
-| `a.concat(item1[, item2[, ...[, itemN]]])` |	Returns a new array with the items added on to it.|
-| `a.join(sep)` |	Converts the array to a string - values delimited by the sep param|
-|`a.pop()`	| Removes and returns the last item.|
-|`a.push(item1, ..., itemN)` |	Push adds one or more items to the end.|
-|`a.reverse()`	| Reverse the array.|
-|`a.shift()` |	Removes and returns the first item.|
-|`a.slice(start, end)` |	Returns a sub-array.|
-|`a.sort([cmpfn])`	| Takes an optional comparison function.|
-|`a.splice(start, delcount[, item1[, ...[, itemN]]])` |	Lets you modify an array by deleting a section and replacing it with more items.|
-|`a.unshift([item])` |	Prepends items to the start of the array.|
 
-### Functions
+
+## Functions
 
 Along with objects, functions are the core component in understanding JavaScript. The most basic function couldn't be much simpler:
 
-```javascript
+```!javascript
 function add(x, y) {
   var total = x + y;
   return total;
 }
+Console.print(add(2,3));
 ```
 
 This demonstrates a basic function. A JavaScript function can take 0 or more named parameters. The function body can contain as many statements as you like, and can declare its own variables which are local to that function. The return statement can be used to return a value at any time, terminating the function. If no return statement is used (or an empty return with no value), JavaScript returns undefined.
@@ -456,8 +442,6 @@ You can also pass in more arguments than the function is expecting:
 add(2, 3, 4); // 5 
 // added the first two; 4 was ignored
 ```
-
-*  no access to  `arguments` in HISE... deleted complete section.
 
 Note that JavaScript functions are themselves objects and you can add or change properties on them just like on objects we've seen in the Objects section.
 

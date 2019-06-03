@@ -10,7 +10,7 @@ weight: 50
 Console.print("Hello World");
 ```
 
-*Scripting* provides the glue with which you can access each Module and UIComponent in a [Script Processor](/hise-modules/midi-processors/list/scriptprocessor) and mold together more advanced interactions with your instrument.
+**Scripting** provides the glue with which you can access each Module and UIComponent in a [Script Processor](/hise-modules/midi-processors/list/scriptprocessor) and mold together more advanced interactions with your instrument.
 
 The core of HISE scripting is its powerful [Scripting API](/scripting/scripting-api) with more than 200 inbuilt functions to access and modify almost every aspect of your virtual instrument. 
 
@@ -18,7 +18,7 @@ The scripting language of **HISE** builds upon javascript (Some therefore call i
 
 > If you are interested in the dirty details; please consider watching Christophs talk: [Javascript for DSP prototyping](https://www.youtube.com/watch?v=fV9hOZrNO_g) to learn more about the technical implementation.
 
-If you want to refresh your knowledge of basic javascript please jump to the [HISE Javascript Tutorial](/scripting/scripting-in-hise/javascript) which is adapted to the scope of scripting in **HISE**.
+If you want to refresh your knowledge of basic javascript please jump to the [HiseScript Tutorial](/scripting/scripting-in-hise/javascript) which is adapted to the scope of scripting in **HISE**.
 
 Here are some of the most useful purposes of scripting in HISE:
 

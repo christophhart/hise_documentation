@@ -72,7 +72,7 @@ Console.print(Knob1.getValue());
 
 ## Create Custom-onControl-Callbacks
 
-While the above scripts are evaluated only once on initializing the `onInit` **[F5]**, we may want to use the live values of the UI Components to interact with our plugin/instrument. This is the task of an **onControl Callback**.
+While the above scripts are evaluated only once on initialising the `onInit` **[F5]**, we may want to use the live values of the UI Components to interact with our plugin/instrument. This is the task of an **onControl Callback**.
 
 It "fires" every time a UI Components value changes on the interface.
 
