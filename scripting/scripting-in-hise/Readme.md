@@ -21,10 +21,10 @@ const var SineWaveGenerator1 = Synth.getChildSynth("Sine Wave Generator1");
 ```
 
 The quickest way to create a script reference to a Module is to take a built-in shortcut. When you **right-click** on the header-bar of a Module in the Main-Workspace, a little context menu will pop up with the option: **Create generic script reference**. 
-
+  
 This will copy a [`const var`](/scripting/scripting-in-hise/additions-in-hise#const-variables) script variable definition of the Module to your clipboard. You can now directly paste this reference to your `onInit`-script and compile the script with **[F5]**. The Module is now accessible with this variable.
 
->Take notice that the Module is identified by its **Processor ID** name and that the variable adopts this naming.
+> Take notice that the Module is identified by its **Processor ID** name and that the variable automatically adopts this naming. 
 
 Now that we have created a reference to the Module we can access all its methods and attributes/parameters directly via script. 
 
@@ -52,6 +52,8 @@ const var Knob1 = Content.getComponent("Knob1");
 ```
 
 Referencing UI Components works in the same way as with Modules. Select a newly created UI Component in the Interface Designers [Canvas](/working-with-hise/workspaces/scripting-workspace/canvas#canvas) in **edit mode** or in the [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list) and **right-click** on it. Select **create script reference for selection** and paste the code in your `onInit` script.  
+
+> In a bigger project, you will most likely want to use multiple references. If you select many components and create a **script reference** it will store them in an [Array](/scripting/scripting-api/array) that you can iterate over.
 
 Now you can directly `set()` and `get()` the properties of the component in your script, which will show up in the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor) as "Overwritten by script". 
 

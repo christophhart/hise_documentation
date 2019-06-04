@@ -26,3 +26,37 @@ Every Module has a topbar with at least four controls:
 A **right click** on the topbar opens a dialog in which you can copy&paste the Module or create [script references](/scripting/scripting-in-hise#module-references) to it, if you want to access the modules parameters with scripting.
 
 
+
+### HISE module reference types
+
+The HISE module architecture is based on a strong hierarchy of inheritance with a few interface types. This means that every HISE module has exactly one base class but can have multiple interface classes that add additional functionality.  
+
+For example the [Velocity Modulator](/hise-modules/modulators/voice-start-modulators/list/velocity) has the base class [Modulator](/scripting/scripting-api/modulator), because it creates a signal that can be used to control paramaters of other modules.  
+
+However, it can also be connected to a [Table](/ui-components/plugin-components/table) that can be used to change the velocity curve. Therefore, it has the additional interface type [TableProcessor](/scripting/scripting-api/tableprocessor).
+
+> Depending on what functionality you want, you need to create a reference of the desired base class type or interface.
+
+```javascript
+const var v = Synth.getModulator("VeloMod"); // create a base class reference
+v.setAttribute(v.UseTable, 1);               // enable the table
+v.setIntensity(0.5);                         // change the intensity to 50%
+
+
+const var v_t = Synth.getTableProcessor();   // create a interface class reference
+v_t.addTablePoint(0, 0.5, 0.25);             // create a table point in the centre.
+```
+
+```javascript
+// short cut - create a temporary interface reference
+v.asTableProcessor().addTablePoint(0, 0.5, 0.25);
+```
+
+### List of base class references:
+
+- [`AudioSampleProcessor`](/scripting/scripting-api/audiosampleprocessor)  
+- [`TableProcessor`](/scripting/scripting-api/tableprocessor)  
+- [`SlotFX`](/scripting/scripting-api/slotfx)
+- [RoutingMatrix](/scripting/scripting-api/routingmatrix)
+- [Sampler](/scripting/scripting-api/sampler) 
+## TODO [SliderPackProcessor]

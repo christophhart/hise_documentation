@@ -238,6 +238,15 @@ If you have a script with lots of variables, the interpreter must search the ent
 
 ## `Globals.x` variables
 
+The Globals object does not contain any methods but acts as preset wide value container for cross-script communication.
+
+```javascript
+// In Script Processor 1
+Globals.x = 5.72; // Define this in one script
+
+// In Script Processor 2
+Console.print(Globals.x) // 5.72
+```
 
 ## Namespaces
 

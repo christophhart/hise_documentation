@@ -3,11 +3,19 @@ keywords: Waveform Generator
 summary:  A waveform generator based on BLIP synthesis of common synthesiser waveforms.
 parameters:
  - OctaveTranspose1: The octave shift for the first oscillator
- - WaveForm1: the waveform of the first oscillator (see [](#oscillator-types))
+ - WaveForm1: the waveform of the first oscillator 
  - OctaveTranspose2: The octave shift for the second oscillator
- - WaveForm2: the waveform of the second oscillator (see [](#oscillator-types))
+ - WaveForm2: the waveform of the second oscillator 
+ - Detune1: Detunes the first oscillator
+ - Detune2: Detunes the second oscillator
+ - Pan1: Pans the first oscillator
+ - Pan2: Pans the second oscillator
+ - Mix: The balance between osc1 and osc2
+ - PulseWidth1: Changes the pulse of the OSC1 Square and Trapezoid oscillator
+ - PulseWidth2: Changes the pulse of the OSC12 Square and Trapezoid oscillator
+ - EnableSecondOscillator: Turn the second OSC on and off
 chains:
- - Mix Modulation: the balance between the first and the second oscillator. This can be modulated polyphonically.
+ - Mix: the balance between the first and the second oscillator. This can be modulated polyphonically.
 ---
 
 The waveform generator is a virtual analog synthesiser with two oscillators that can be detuned and modulated. It uses a BLIP syntesis algorithm to reduce the aliasing artifacts.

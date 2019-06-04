@@ -91,6 +91,9 @@ There's our first brush with JavaScript objects! Did I mention that you can use 
 "hello".toUpperCase(); // "HELLO"
 ```
 
+[String API](/scripting/scripting-api/string)
+
+
 ### Boolean
 
 JavaScript has a boolean type, with two possible values `true` and `false` (both of which are keywords). Any value can be converted to a boolean according to the following rules:
@@ -120,11 +123,12 @@ var name = "simon";
 > **HISE Advice:** Because of the real-time-safe requirements of **HISE** the declaring of `var` variables is discouraged in all audio related callbacks since it will result in unpredictable performance with drop outs & stuff. Best practice is to declare all variables in the `onInit()` callback and assign values to the variable in the other callbacks.
 
 
-HiseScript also features three other ways of declaring variables:
+HiseScript also features four other ways of declaring variables:
 
 - [const variables](/scripting/scripting-in-hise/additions-in-hise#const-variables)
 - [reg variables](/scripting/scripting-in-hise/additions-in-hise#reg-variables)
 - [global variables](/scripting/scripting-in-hise/additions-in-hise#globals.x-variables)
+- [local variables](/scripting/scripting-in-hise/additions-in-hise#inline-functions)
 
 > Please have a look at the [HISE Additions Chapter](/scripting/scripting-in-hise/additions-in-hise#custom-variable-types-/-function-calls) to learn more about custom variables and scopes in **HISE**.
 
@@ -413,7 +417,7 @@ a.push(item);
 
 Arrays come with a number of methods. See the full API documentation for [Array](/scripting/scripting-api/array) methods.
 
-
+[Array API](/scripting/scripting-api/array)
 
 ## Functions
 
@@ -444,4 +448,6 @@ add(2, 3, 4); // 5
 ```
 
 Note that JavaScript functions are themselves objects and you can add or change properties on them just like on objects we've seen in the Objects section.
+
+Take a look at [inline functions](/scripting/scripting-in-hise/additions-in-hise#inline-functions) for function with scope.
 
