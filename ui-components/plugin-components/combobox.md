@@ -1,6 +1,6 @@
 ---
 keywords: ComboBox
-summary:  A ComboBox to select different values
+summary:  A ComboBox to select different items from an indexed `items` list
 author:   Christoph Hart
 modified: 18.03.2019
 properties:
@@ -27,3 +27,5 @@ Content.getComponent("ComboBox1").setControlCallback(onComboBox1Control);
 
 ```
  
+## Scripting API
+[ScriptCombobox](/scripting/scripting-api/scriptcombobox)

@@ -8,3 +8,5 @@ properties:
 - scaleFactor: if you use a filmstrip, this scalefactor will be used to resize the image. You can use this to support Retina displays.
 ---
 
+## Scripting API
+[ScriptSlider](/scripting/scripting-api/scriptslider)

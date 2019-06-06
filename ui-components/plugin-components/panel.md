@@ -1,8 +1,15 @@
 ---
 keywords: Panel
-summary:  A generic component that can be customized.
+summary:  A generic Panel component that can subgroup other components and be customized with Mouse-, Paint- and Timer-Callbacks.
 author:   Christoph Hart
 ---
+
+## Scripting API
+[ScriptPanel](/scripting/scripting-api/scriptpanel)
+
+
+
+# The Script Panel
 
 ```!!javascript
 const var panel = Content.addPanel("Panel", 0, 0);

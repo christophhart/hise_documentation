@@ -10,3 +10,5 @@ properties:
 - scale: Scales the image. 
 ---
 
+## Scripting API
+[ScriptImage](/scripting/scripting-api/scriptimage)
