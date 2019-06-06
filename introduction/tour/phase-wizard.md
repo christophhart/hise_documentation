@@ -1,9 +1,10 @@
 ---
-keywords: Tutorial Project 1: Phase Wizard
+keywords: Tutorial Project 1: PhaseWizard
 summary:  Build a Synth VSTi
 index:    01
 weight:   70
-Author:   Dominik Mayer
+author:   Dominik Mayer
+modified: 10.06.2019
 ---
 
 The best way to show how these workspaces act together is probably to dig in right away and built a simple virtual instrument from scratch to exportation. 
@@ -12,7 +13,7 @@ Panning two oscillators against each other can yield some mesmerizing phase inte
 
 ![gonio](images/custom/gonio3.png)
 
-Let us create a new instrument with the name **Phase Wizard** to explore these interpolations.
+Let us create a new instrument with the name **PhaseWizard** to explore these interpolations.
 
 ![phasewizard_preset](images/custom/phasewizard_preset.png)
 
@@ -42,7 +43,7 @@ In the next step we want to mirror both Octave, Pan and Detune controls of the W
 
 Tip: Create a Slider (e.g. Octave1) and drag it with **Alt+Drag** to create a copy (Octave2).
 
-Solution:
+**Solution:**
 
 ```
 HiseSnippet 1635.3oc6Y0saaaCElJIrqIsoHsqnX6NcQKPKVWgsS5OC6hn7maMV9wsNMs4hgVFI5XhHQpIQkDmsAzK6yvtYOJM.6EX.8lAra1iPeC1H0OVT1x1xIsAM.yEnHjhGxuuuygGdnTcOlI12m4Azlby1tXf1kgMZS4sVpEhPA0VFnMMrdKjO9EjiPdVfEa6h78wV.MswerbHZSNA..dS6u7OmeQjMhZhi6J72VLhIdUhCgm1qqwOPrsqhrvaRbTF8bF0LYzkX1r.AbFGVB3hL2CsKdcjbXiAAZWXEKBm40fi3Xef1DKxrZ2nE6.Zz32h3S1wFKaTFzPLQQcWkYaIQrrWvRsH1V0SnsO.nAqmJBiGIBWGtFwhzo+TwXlvGnmZgpdnM1ffWYU3Up3vSSAdSDAuqBaX5Qb4oOQhsKAqQ4XulHgKPEVQiEn8GvkXhAP42yAsGtpmnQGCt8CJU5t52uTo678SOUz+ZFPM4DFUmQWmwwaPu8cl5mmZxo90ddRyl48H4h4wrswd48Toq2a.lcaZfyNXu6puOxN.mLNgBjUhg8WhUi.LiHtx.YzZTBeCWLseBOHVsDtfKFCJwP4gNfqD6.ZXSrvd.hPmghHiCAgnMMj9elGT.Su.bCSd4tsEbbgssR219g2ULaqin8rtaebgssm0caihX6jvkw7.JtWJCFEyqbRMeU1A0E6N5xbie2.77ZKi3H4ltXmuHfvE6wIxXMskw6KxlEsETBB+83L2vnCGWFUFpnc4gDebXmkS2wncZiCLNfXwakxkWazBS1skRZymX3Prrrw0Y9D4dE0nLGlkXUuAbclmCxlbD1pN1yTfHQ1SfePylhkVDleKfEtIJvluU2gotIA90rjY+dAZebSwbo+XLE6gDa3D4h8DogEoKp0gL.EhekgEcmxbftByA6Lbl+XCN9PQ6ojyj.Y5kA9braCAOUB4m2gnnIW+XGjxRBLFQFds30ZSOD02k4KBV6m7CNNeUMbCbGAZ5gsENEse3WFQA5ImZ1UAzkb0kXlmdmOq+v65xYUISbxLCKaTehSzaUncHg6CfxYBjgAamMbXai7HT5FkU6uyFLhRcLsxWr193Hw5KjCRu7nnT8MfoXJ0IgEhfjy.8sOJkgpRkMlZ5BbRSeBqdC8SfXktpYznalUitoQhd.g5l7AnHIanhl0tBSlt.mS1mHkWSK1oNChC8G0YY2ITBqzM4KZ1jzS4UH+QJjelChyVbIXUO7OEfolsy5ulyPkqu88CLlVvxmbT+7ghRKxv+IgUI1BlVNKoUQRt6BDySjbLSB6zilHPV+ndd9QPu2iPbaFlUfsT9Uuhi7dcwOPxB06RHuv.Uvt1pZvmj68TT3dUXcB2rU93crbvqn5tO03M9VjSCWoYSrIOErS.q9xS5UFy+FskF1UFgQXYJ3BTjcaebzcEUZpBmEEQyXurw3GaT2ST3K9f3Be6Thf13mRrmqL9LV.mP2cMD2Kbe05ANMXAhhYEpHkhskW5SaLYo9QsKIaKwSCL0Jrw+J9E+vxx1ZwOrbxCUcUWOhUWJLiT3a9HTexMC0Y569nmxOUpqrmh2Tp9J4nGEfjjJUoKI6pJXm53LR5Tc9lOr5Eky4CqCP4XY4EATtHwJTjvm2.KXi0F9lBxFJcpSXfs7sIIxWUV0vztqn18oNHqz4uW4yYWl5wKFbyQAGqdOu4vYfMHNt13Un6isEWaNN87xQmj0oWUPtFixbawnDS0fymgE682cWblvlb4yBbNxbuzddjwyv1Xje5Nq+5sFqRnXj2ZgG1ehjhxCVJzJn65qfQvUWt0W+ypCXuXxgDaI7QlxUOJIXRS8NzY3f8493MQgnQ04sO1iKMRMqjIYGrcV+hHqY7RFNGguMFsaAqL28x9a+MD+WyuQ9me2RgsAezbneTp7X7+uxi3zBWCVmY2NZWdb0pR.kVCbeNVM7WZAwJ0.+z3FFyN66mOa7itwSCP1opt9O9a+8BKRbY1HuSaFwgjFXhBF1bizp70OGUkszyb9AueML1oqKE6yO39Jvmd9ArxJiN7y.3dVbkgyh0vAY5wdkYzmvPlR4hg8H3MM7KfNIbMYa8Ne2DHrbkGJeoCjWYZJyw+sB8Iea57wRj5YgrX1Q1h4RrXB38qTLSt+HuHOXjs3girEOZ.VHuLvBAblSTHuni5qDUlhVzceBi9A+W1TYvf
@@ -62,8 +63,9 @@ Visuals: We want to scale the "AudioViz" up a little for more detail and put it 
 
 Uh yeah. Now it's time to [lissajous](https://en.wikipedia.org/wiki/Lissajous_curve) around.
 
-BTW: If you have a MIDI device at hand you can connect it in the **HISE** Audio&MIDI settings. If you don't, you can fall back to play MIDI notes with your keyboard-keys [**a-l**].
+BTW: If you have a MIDI device at hand you can connect it in the **HISE** Audio&MIDI settings. If you don't, you can fall back to play MIDI notes with your keyboard-keys **[a-l]**.
 
+**Solution:**
 
 ```
 HiseSnippet 1999.3oc0Z8zbabaEGqjfqEcnqRhmLM215IYFmItdHojkSZOnURTzlSrrnMkkiNk.sKnHFuDX6tfRhJMSyzS5CPu2OA8yf08doyjK8X+H3uApOr+gKVxkRKkUbi3AMDOfGvu2O7v68.nZ4KroAABejw7aOvihL9.b6AbY206RXbTy5Hix3VcIAzWwNl36fVafGIHf5fLLl8wpgXL+bHD5mF7w+6UVi3R31zXQge1QvroOk0iISk5Y8MLW2FDG51rdZidIql1B95BWQe.Nyhqf7H1ulrO8YD0vlAiLtwFNLovusjHoAHi4VS3LncWwg7nwuCKfsmKU0nJpMLQQhaHbcTHVIEsdWlqSqDyN.gLvsRIgYiHg6f2j4vFJOkLVHrCyTMz4CiYNO3U8RBOCM3MWD79PbaaelmLsGE1tEtIWR86Pfs.cXEMVjwavqKfAvkOnG40zF9PigJbukqT49lOrRku3OUtT4Rc5yskLA2TvelPR2heuunzOTZ9R+3X8zoSdcoVHegqK0OudUa69miZ2i2u2dT+6ad.wsOMYbf0mkdwEidsiLZsAJ3M4L4VdT9jHcTLSAz+MiAELTYH4e6XxusKyg5iX.GiAuhiPgnM0c9+tBp.pdC7V1xpipK5zBqasQ08suoX51hvGac28zBq6Xq6tVEQ24w0ox9b53lLZZTu1kU8mJNrEbxXD0s9GVnW1rNQRTG3h27AGBOpujo70LpSO.hjEc7SAhfWKEdHiRqK54I3JWEixx3XGQKaCWAQx36uMC7IUKdI7p8cXhcXGiNB7YLpAK7.0W98oNbQKvuMZjqxItCB.nu29IQEm+FKt3hgPlIo8RkdxImbVVo0ThqWudnXI8HY5f+WmFJDEZuF0v+P4Rll2cn+eSm69GMuaxhe26G1aStC8HPdkxk9QsUYQ07YY82CmuCYNxtC4zJ+UqtT19cSi7uvAJWjg70Gbg702PGrmPk0IjuLR3q+owH7k1H0oJGGmbnpyN6rOMGpBDmOUc1PpZFpQLWAK2qTFKPHUWJhfpyB7bICfSjjCnOKL.FzaGha.MZ.fmGnFHawkiD7DVT6p0dTjf06GHE8drOwqKyNHq10ocH8ckq54QI9prrP2R+9w8tlKjoDlsW.LnPsK8fk+5nOQ8usX+8coaJbnYmUUxLH4FmScU.IR3KCn6Psg.s4iDn6FtDYa4.2QmsVajrOLVGPPaeY5RUaXGavczPvxJ2qr9Qm92F5GgMZFcPeTenIFS9ngSiYOqAoMNzJ6hf99QcVQOwpGywwk1RDvT4mzir2CXRjwmfelvuGwkcL0oE02FPDTsBJnemNvRCoV9bjSz11NilZvK8vl5Dvq.elNvbY9XJm5S.tGp8wGJ6ARO2bnwna329hxnjZ4HSMKGs2Ea4O1RcHPcrJxa1rJJPR8ZC1oVZlU5wz3j6bZOh1RhrlRK7ihWqsAm6.OQ.jfXRzO5z7Y0vjliFMdxoMSQ6a+KSIA8j2YqqFZD5ZDxLO9Neq9suYjMqZY7SV3hp.XB9IlcKzIjvyAX0LgxXA6l0cXWq7LnzCJOcxa1nojpiMq7IqcOMhr9MpAYVcZXpI5vTLl5xXEfSx6A9cBLkkNSk0mpbAptaBtU+D+W.xJcUyvQeVVN5yrR3CL1zVdNLRxApnYcD2jxEn1zI3o787hk047rgIi5rV2kjBqMpwWznIoUVqY7GqY7KbXbzhaga3S+y8ob6AY2uVxR2VO4mOWeZvJexwSZODJmOi8OOtAyErzpYMZcjj6o.XdhniERrNynIZjRTLyaeDM981W.Ckf02UQ+5Oof5cTh6PYE52cWcAcNXcCz4fo3cFpT32Ynnv8CwsXR6t4i2YxAuvMp9kFuwuZSY7Fc5.UtlB14vM91q1mnoxE8DM3jqjL71aJfn0TGNqAdyT+r93mZ0xGtrI8v3KaNrDAiYyh8YKF1yg5dgnu5lVaRj9gmkfqqzFtviMMtRb0iqXLipR6n1UTsUXnMk6D1Pcao3Nqlb2LUmUS5Te64NQVxsBiBE95hgbRtQkdu99hiUxoVsjiUvlVEWIoaz.RR3SMQJqqAXc5iyJQn97sRXEKZ41Cy8qkJVU7u1kG1fSf841TvZb1JvFL1PpSeB66pdwVHFUUcESEWSW7nNVWMua4+OdV0q9vcu6QmmsXvMGFblVi857Kfay544R2fe.0U.RhBIG+5.CkpCxMEbgWWAmYq6b9BJb1e+8oYbax0dVUJI1uNUxWY8BpKkDjdx5+bh0SYbJweyvD7WJp37iXk2ifm610uCGAWS0QeyeUkT8lIIF1A1irUqdTPvjllCMmKFruLftMIDM5adGP8kJkziJYy1i5lceAhZFujgyQzq.943ZK8freNXK3Oc9R0W+50Caitx1PuRp1X1qaUab4CEXLdnfOB2R3NH5jcbUoJPjVq6DRkF9IsvWsZcedbCqEW7mWIqOio0y6SbGgoWi4IbI9uqQAufi9yUPWkOIsZdyqQUSq1Yt9f2OEGuoapH6qO3913me8ArppgN5WAv88w0DderF8H19huyN5mGTER4lgR.6lG9eVv73MUsMG9aRhwUq8H0iKv9NaaUb8+.vO4qyveHREeVHMVbp0XoDMlC+vZESkGN0KxxSsFOZp03qNGMTW.X09RQuHWdPPqMhJMwH59Ngd+n+G2qQ78B
@@ -76,9 +78,9 @@ HiseSnippet 1999.3oc0Z8zbabaEGqjfqEcnqRhmLM215IYFmItdHojkSZOnURTzlSrrnMkkiNk.sKn
 
 In the next step we want to create drop-down selectors for the wave-forms of both synths. For this task we need a [ComboBox](/ui-components/plugin-components/combobox) and a little bit of scripting. 
 
-The ComboBox can hold a list of `items` that are defined in the **Component Specific Properties**. Each of the inserted lines corresponds to a list entry that can be selected in the ComboBox drop-down menu. 
+The ComboBox can hold a list of `items` that are defined in the **Component Specific Properties**. Each of the inserted strings (separated by a newline) corresponds to a list entry that can be selected in the ComboBox drop-down menu. The index of these items starts with 1 and not 0. 
 
-Let's create a new ComboBox, name it "OSC1Wave", and insert this list of Waveform shapes in the `items` properties. It matches the first five WaveForm types of our Waveform Generator.
+Let's create a new ComboBox, name it "OSC1Wave", and insert this list of Waveform shapes in the `items` properties. The names match the first five WaveForm types of our Waveform Generator. 
 
 ```
 Sine
@@ -90,34 +92,33 @@ Noise
 
 This time we don't have a simple plug&play method at hand to connect the ComboBox to the WaveForm-Selector of the Waveform Generator. Let's do it with scripting.  
 
-If we want to access and manipulate the Waveform Generator by script, we first have to create a **Script Reference** to it. This reference is a variable that "references" the Module with its current attributes/parameters. 
+If we want to access and manipulate the Waveform Generator by script, we first have to create a [Script Reference](/scripting/scripting-in-hise) to it. This reference is a variable that "references" the Module and let us access it with its methods and current attributes/parameters. 
 
-> A convenient shortcut to auto-generate the script-code for the Script Reference is to select and **right-click** the Module in the Main-Workingspace and select **Create Script Reference**. This copies the Script References variable definition to your clipboard. Paste it to the Code Editors `onInit`-Tab and press Compile[**F5**].   
+> A convenient shortcut to auto-generate the script-code for the Script Reference is to select and **right-click** the topbar of the Module in the Main-Workingspace and select **Create generic script reference**. This copies the Script References variable definition to your clipboard. Paste it to the Code Editors `onInit`-Tab and press Compile **[F5]**.
 
 ```javascript
  // Script Reference to the Waveform Generator
 const var WaveformGenerator = Synth.getChildSynth("Waveform Generator");
+
 ```
 
-The Waveform Generator is now accessible with this handle. Start to type `Wav...` and press `ESC` for an auto-completion-popup.
+The Waveform Generator is now accessible with this handle. Start to type `Wav...` in the line underneath and press `ESC` to access the [Autocomplete Popup](/working-with-hise/workspaces/scripting-workspace/code-editor#autocomplete-popup-[esc]).
 
-
-and lets us manipulate its attributes/parameters with `getAttribute`- and `setAttribute`-methods.
+Let's try out to `get` 'n' `set` `Attributes` of the WaveformGenerator:
 
 ```javascript
-// Print the Waveform Generators WaveForm1-Attribute(index) to the console. 
+// Print the Waveform Generators current WaveForm1-Attribute index to the console. 
 Console.print(WaveformGenerator.getAttribute(WaveformGenerator.WaveForm1)); 
 ```
 
 ```javascript
-// This sets the Waveform Generators WaveForm1 Attribute to the fifth item (Noise) 
+// Set the Waveform Generators WaveForm1-Attribute index to the fifth item (Noise) 
 WaveformGenerator.setAttribute(WaveformGenerator.WaveForm1, 5);
 ```
 
-The value of the 
-that is accessible with an Array-Index starting with 1.   
+Now that we can set the Waveforms via script we have to somehow connect them to our ComboBox to switch the values when we want to select another Waveform. Here the [Custom onControl Callback](/scripting/scripting-in-hise#create-custom-oncontrol-callbacks) comes in. Let's create one (**right-click** on the ComboBox, select **Create custom callback** and paste the code into `onInit`).
 
-
+Insert the `setAttribute()` line into the callback function and exchange the `5` with the callbacks `value` parameter. Now everytime we select a ComboBox item the `value` gets updated to the items index and the Waveform Attribute changes accordingly.
 
 ```javascript
 // Custom Callbacks for ComboBox WaveForm Selectors
@@ -128,17 +129,9 @@ inline function onOSC1WaveControl(component, value)
 };
 
 Content.getComponent("OSC1Wave").setControlCallback(onOSC1WaveControl);
-
-
-inline function onOSC2WaveControl(component, value)
-{
-	WaveformGenerator.setAttribute(WaveformGenerator.WaveForm2, value);
-};
-
-Content.getComponent("OSC2Wave").setControlCallback(onOSC2WaveControl);
-
 ```
 
+**Solution:**
 
 ```
 HiseSnippet 2238.3oc0Z07SjbbEuZfx1L6xZryJqjasH1QCJqwyL7sshn4ycQdAlkAyFrjkcQ20vTZ6oq1cWCvfskbxI+ePjykj+DxwbybI2ijuDobwWykn8+fjW0eV8L8.8r1KxzHgn9300u2u2qduWUM083lTeetGRa7C55RQZ2E2nqin05sHLGz1afzl.WuEwm9T1EDOKzZccI99TKjl1nOTNEswGCgPec2ew+bk0H1DGSZTWAOGxYlzGyZyDo85Z7gLa6sHVzCXsUl8bFaaxcVmay6.vYTbEjKw7YjSn6RjSaDLR6U1zhI3dMDDA0GoM1ZbqtMZwOyIb9Gx7YGaSkMphZ.unvt2haaIQrrWz5sX1V0iUaeDRCWOkDFMjDtOdGlEKo+TxXxfAzSkPkOzF4pfWUU3Uo3vSSAdiEBu2.2vzi4JRGQhs6f21QP8ZR.SfJrBmKZjVihWmCyvQLSaxyna4AMRjn7BUp7.84qTY5OXhRxedu2SOTP88oModTvvpK35OkbJsI2qs9CoNTOBnsxIC1Meg9oDujwSFV+2oG3PMyITQfxEzp7T8+hlZ5OPOYsWuiuf2Vechs8wfWfuNLW804sOluF+7fUYKovMn1TSPVeoXLGalCUuYGGSAi6nyc1qw5UkyUp2db6xl71tbGfAd..V6NzomnzWLQow6Czy3SEqJDdri6Hnk6e330uZ76AHsuJf3hYXo1FuXkmJFGSMs7MGglXcqbe3L1FjqBU6koBUq3JTsqQgp0mBAl0CZw70AI70Esn43L4Gz26lw1Jc6jytIqonkNSPaqW1gy7oSCtKJbytbAcOmxSW5KJMdoupuQZ1Lugh.nM0KuQkAn7tBwJ6zo8wTuXRKZdv9zrABvCNPfZbJyPpVYhbmscXh8boNCJ7.Jx9.AJJEAJXphfvDSFElHdaChAwCJgic1PAfNM96jFnh+FpUv2v8hdCMrYVTu.4wPLzy6UzeXkhH5qf2yTTsWYQWVXYq0qrO+6Jlr0IN8stGcYgksu08nBQUii2fJ53P6WkQCi3YW8+529s+mUJl3OleVcHOR1U+qG+eXf9ns2fHHxzSQNffSoK0Svj96ZaPOEx6GlrRBB+mI3tPsEIQPf+VDkoMbY2xlSDLmSNfA6KB8xVsiEieH6Bz4o586azMswhFmwrDsR5nxevnEkcRqzZMpbpwwmDWQwqhqNa0JKhjQPh66t34pszhUmcwkqsjx.0hFo1BKLWkJygDzyEphr7bKOe0pUmOd2Wnl95gPdUGhcWefCCXHsZXHhrt9TI6Z21Zp2Wep3YM0CBFcaGK54P+Uf3tRa6PvSeHs6wbYsYJ7zyWIkm9aWzCO82+i8xSF6qvSxPQ8xQIJbebTxHEiiTfaH87einGn6mJQIvAUmKjS1f46ZS5BaagXM6FDoEFsIw1mFNAv8DDC5a1EB63Qrv1UqsXXGgkQ7POhaKloeVo2f1jzwVrpqKk3IKbEFV30IZz0rgLYvaaeft4RCyLKrbvyRKUYwkqrHnYyubDPOfexI1zc3VzrqfrVQn1QGGpsDT8ZZe0hElVwr9aTb+M9Xi1DXLrFFZIsKvNueMtgrhgRG3wHN.lJ0fbVoFedGhGsztxblkJgbScDk9U8mDd3.Ysd.4O7k27f7tWSxlTzo2VAc5m0yNCzm06NCziLZyrrro049LYxe0TVsAKNR6sv6BHiXytfZUm5YBHBNzBxuSylvRCamdGjUnq1g8ly650RWv0rMEJRe6DkQUwu20kpTw4QWM14wWul+PC4V5.qbvNP8pHeA0sAnmpAZZyT3j6eYf4NIMkwPpguYzZc.rgz2k6CY9FD8itLeVMnZfDBZhqqdfTz97ubHInG8iV6pg5gt5gLyiuyWqe920iwpVF+jW+5JsY.9I5sJzNjf8AX4aBkQCNJq6vQF4oPoaTd7fM1ngjpiTq7IqitbH3lA5hTLt4EA2fawM.iN.twnXAVSKMc.tNelyKA5IcUyvJucVV4sMhY.LV2TbEbvvoqCzUnX55UC4ACxrJyKHikMdvDEnneEc8BEccxyh1ueG7VdzOuC0wraVqwbFpp1278WoOJnTO5hAYgb+SYcPFGuEyFTrpY0QUjjqWswew.0+0nMIFJYqisjyTugO40ZFMfDKpWkl75xb.L1UUSdobseEEtuAtNSX1Je7NRN3ENx1Ka7FcIpSf2rYSpoHErig252eCeio33icjbpLIPTZpBm0.eRpWVO0KMp6AmlkdVzoYSRUqMZVrOZwtjmbnt84cjGoaGhvKXGAbTmFvwnLoQmcPdCRZiHCVE1thrsDCMnNVAM9evSzfUks0hFrZ7fplm6GpI2IHzQvswFvI4FJ4F8596qzOkZ55qvIkJehSIn.j3XdJ23Qxc1pdeUI26oZmAUNnjwMHirRBRYQ3JEwuoCAryMnf1XsmuInrATmRDh5crke.EHAQUUAS6tlZ285XMVwbrR2TT412W43lK57nECt4vfiTuuOVFbpXVaWa5lNmRs4POggjitYgjdUA4NbGtaKtCyT0eceJr2+jSnYbaxUeVUHHlOKsmkL1mZSI9o6r9WeiwigyWS71IHM8KDUb0Qrx6aRkq45WhCgqtbqu9OqRp9ZwIFNDrQlxUOLHXbS8D045A6G4SOfDfFUi2oTOgTH0nRlrio1YsKPTynkL3cDdqXuCt1byj84z8fe072J+ykWOnM5mLC5OIUaL5sspMdwCEn0enf2DWma2MbmcXQpAfHsh0AjJM3Is7Uk6X+IQMLlc1uekr9L5FOoCwNko0+j+7+d00Xtbah2O1nfWyV+wJnqxakVSt9snpokVlaO38WgiL55Rx91CtuG9I2d.qrZny+Y.buINlvMwZzlX5w+Tyvu+nLjxqEzCn2NA+i9LNdGYa8jO5IFWs1hxqHf8ollx35uKvO4KSxW5TxmERhYGZIlKVhwvyWqXhL+PuHKLzRr3PKwRWgDxC.rZGAucnKOzQ8MCKMQK77NAd+n+OPPpNg.
@@ -147,13 +140,18 @@ HiseSnippet 2238.3oc0Z07SjbbEuZfx1L6xZryJqjasH1QCJqwyL7sshn4ycQdAlkAyFrjkcQ20vTZ
 
 ## Settings and About
 
-As next step we want to a create [Customsettings](/ui-components/floating-tiles/plugin/customsettings), to give the user the ability to change the Audio Settings and add an [Aboutpagepanel](/ui-components/floating-tiles/plugin/aboutpagepanel)-Floating Tile to show some About informations to the user. 
+![phasewizard](images/custom/phasewizard.png)
 
-Create both FloatingTiles, name them "Settings" and "About" and set their `ContentType`s to "CustomSettings" and "AboutPagePanel". Both FloatingTiles give you the option to decide which of their entries are going to be shown and which not via their `Data`-Properties. For a little tutorial plugin like ours it makes sense to restrict a few of those. 
 
-Here are my `Data`-Properties for the CustomSettings and AboutPagePanel: 
+As next step we want to a create [CustomSettings](/ui-components/floating-tiles/plugin/customsettings) to give the user the ability to change the Audio Settings. We'll also add a [MidiSources FloatingTile](/ui-components/floating-tiles/plugin/midisources) to hook up MIDI Devices. They will both be shown when the user clicks on a SettingsButton in the top right of the interface. 
 
-```json
+Create both FloatingTiles, name them "Settings" and "MidiSources" and set their `ContentType`s to "CustomSettings" and "MidiSources". You can place them in the middle of the Interface. 
+
+The CustomSettings FloatingTile gives us the option to decide which of its custom settings are going to be shown via its `Data`-Property. For a little tutorial plugin like ours it makes sense to restrict them to the most important ones. 
+
+Here are my `Data`-Properties for the CustomSettings: 
+
+```javascript
 {
   "Driver": true,
   "Device": true,
@@ -163,10 +161,10 @@ Here are my `Data`-Properties for the CustomSettings and AboutPagePanel:
   "GlobalBPM": false,
   "StreamingMode": false,
   "GraphicRendering": false,
-  "ScaleFactor": false,
+  "ScaleFactor": true,
   "SustainCC": false,
   "VoiceAmountMultiplier": false,
-  "ClearMidiCC": true,
+  "ClearMidiCC": false,
   "SampleLocation": false,
   "DebugMode": false,
   "ScaleFactorList": [
@@ -180,32 +178,77 @@ Here are my `Data`-Properties for the CustomSettings and AboutPagePanel:
 }
 ```
 
-"About" AboutPagePanel.
+Now we want to create the **SettingsButton** to show and hide the Settings FloatingTiles. We'll put it in the top-right corner. Afterwards we can create a custom callback for it, create script references for both FloatingTiles and set their "visible" property to the Buttons `value` to turn them on and off.
 
-```json
+
+```javascript
+// Settings FloatingTiles
+
+const var Settings = Content.getComponent("Settings"); 
+const var MidiSources = Content.getComponent("MidiSources");
+
+inline function onSettingsButtonControl(component, value)
+{
+	// Sets the FloatingTiles property "visible" to the SettingsButton value (On/Off)
+    Settings.set("visible", value);
+    MidiSources.set("visible", value);
+};
+
+Content.getComponent("SettingsButton").setControlCallback(onSettingsButtonControl);
+```
+
+In the next step we want to add a Logo that opens an [AboutPagePanel](/ui-components/floating-tiles/plugin/aboutpagepanel) with Plugin information when you click on that Logo. 
+
+First we want to create a new **Logo**-[Label](/ui-components/plugin-components/label) and set its "text" to our plugins name (+ "editable" :false). A **Label** can't do much more that that, though. We can change its Font and FontSize but it doesnt have the capability to react to mouse clicks. We will need a [Panel](/ui-components/plugin-components/panel) for that purpose.
+
+The **Panel**, also known as [ScriptPanel](/ui-components/plugin-components/panel#the-script-panel) has a lot of capabilities. If you plan to do some customized components, graphics and animations you should definitely check it out. For our case we only need its [MouseEvent callback](/ui-components/plugin-components/panel#the-mouseevent-callback) to react to a simple click event. 
+
+Create a new Panel (**LogoPanel**) and get rid of its border by setting its Component Colors to **alpha: 0** (or "BorderSize": 0), and put it right on top of the Logo-Label in the interface. Now we can set the "allowCallbacks" property to "Clicks Only" to activate the Panels MouseCallback capability.
+
+Before we stitch everything together we have to create the [AboutPagePanel](/ui-components/floating-tiles/plugin/aboutpagepanel)(**About**). It has a few `Data`-property entries, in which we just want to show the Version, HISE Version and the Build Date.. We'll put it right below the Logo.
+
+```javascript
 {
   "CopyrightNotice": "",
-  "ShowLicensedEmail": true,
+  "ShowLicensedEmail": false,
   "ShowVersion": true,
   "BuildDate": true,
   "WebsiteURL": "",
   "ShowProductName": false,
   "UseCustomImage": false
 }
+```
 
+Now we can add our final script to the `onInit` Tab. Two references to the **About** and **LogoPanel**, and the LogoPanels **MouseCallback** that sets the "visible" property of the About-FloatingTile to `0` or `1` if we click on it.
+
+```javascript
+// About FloatingTile
+const var About = Content.getComponent("About");
+const var LogoPanel = Content.getComponent("LogoPanel"); 
+
+// Hook a MouseCallback to the LogoPanel that lies transparently over the Logo. 
+LogoPanel.setMouseCallback(function(event)
+{
+    if (event.clicked) {
+        // Sets a free definable "LogoPanel.data.variable" to the inverted value of the last value.
+        LogoPanel.data.show = (1 - LogoPanel.data.show);
+        // Set the About FloatingTile property "visible" to that variables value.
+        About.set("visible", LogoPanel.data.show);    
+    }
+});
 
 ```
 
+Yeaj!, we have created a full fledged PhaseWizard VSTi. In the last step we want to export and compile it to use it as a Standalone Plugin. 
 
-![phasewizard](images/custom/phasewizard.png)
-* Final HISE Snippet:
+**Final PhaseWizard Snippet:**
 
 ```
-HiseSnippet 3130.3oc6Z0zaabbFdorW4HZqD6zffzaKTSJjacXHWQ8UBB7JQYYKD8AinrbcKZSFt6PwAd4NL6NTRzIAvsmxwbqGaO0yE8T6oneAEEHW5w7KnH+CbemY1Ol8CJQ5FaDCTFfXsyLuy77947LytM8o13f.puVoYNXXerVoqo2ZnGqaitHhm1VanUZV8lcQA3GPdLx2Qa8g8QAAXGsRktzc4CozLWVSS6IC+I+qauNxE4YiCaR76PJwFuMoGgkzZeqOh35tIxAe.omxnqaskM0qA0kN.fykzqp0GY+HzQ3cQ7gMktVoouiCgQ8awPLbfVoKuN0YXqtzS7ji+PR.osKl+PMsVvDIadSpqCGw7V0Zzk35zLRsCzzJo2LwHbIoQ3Mz2g3PhaOwXbcQGFIRnZOJM04AuZpvq53CuRJv6xR3cC8V19j9rjd3X6p5a4wv9cPfKPEVxwpM06+J5MnvH7XU5gdDdSe3gXIleopUukwhUqdyOX1x7+68dOiGfNFuI0umQMCjmigoQCZu1z0omZzB6hsAMMfORvoEvLNF4KDnCHvcwdXeDzuwGZHhlpbDlIzLwSyOWz.MhG4b27CLfkThUi8wcv9XHVxfQMxO3zq5dsZTiOFXwhzO9xQ60m5AOL+bQC3bViXMKYvYVByKZILmjkvLbID14FCBXzdFMPttsgH9.CPaSFdrWHkQm34R7vFcF3YyHTOCpWDv4.zm5NucD5tEnBtCv2b1xe9rkmImOpR.lsFi4SZOfgmOe2Qqesn4ABP9RQPxEYs4ybHZhzs4ygyn3sBUHymmJj43qPlWfBYVfBwCCvLFw6n.iMcoH9ec.wEmN3MdHiJxJZ.gQV9wgTibxKxVFM30GvX7ZrmqEUh7.CVWkUouOsO1mMzXtikkwliGTqND4bGHmJi42y681qSGXJMfeQigaAmOdFx3.3oBTOOHHWt11x7B6PSswIDVW0ULZACy1bvcHdDtBWYTtxzPcTNzBMVJt00ZSGvNGepr+Q4PE8NGe5RjXa5QzlHOr6HkJdDgwAqEp0h1Bw08nTn3AxXG5f.bj9D4kRVBVWDyvkfAirOxKnOBhmXtCMnGi8iGZEiYKGKB2LkZRmOJzZd7wfvx3FtelzwP1TEaWh8ivN2zHrG9un.KjQGeLV5vPPfPB3p3fXnJfIgHZOD6DO.ZLrSXnEsinUWjv5AsTIYIxLSAvtufMc9ZFuaQcw8BJfaMXWN9Lm2AOxveTdHHjNafdgKNezBw9RHAHJ.SIqcWJCum272r7mWdlxeYtd5zontBiWcw9E0Kmxk+4H17dC50F6GkYFNNf4QZpM5ilZiJyKaYrrx.odaA4n60G6MJBOZgI..0mqEBJXnLAwmqGR7IZyQMBvvordzVJZBPqv+zRa7mAyhlgu+14lgWMbFZ4Rbv9B40AVgmlUzuarDcZ88rY0xA7yFaYMyA4uY7jEhFystO7rwV1bq6CsFGYmQeCLafGNuJqMIhaNAhKKiKDG79opsOFyxrgyx1n1X2P0mmLGIZ5iGMd5v1zSZBzyyr5V+IKs6u0FP4ANq+vrflx5NDdRWoMvGCGmRdF.tkH3QLZe33.w6S.oLrvCvHWV0ZXgg5qMvgPOj7XsSSz622ZXxCKacBwg0Mtgp+dqtXxQcSNBW0isZeTzA0thdsEpUcYMBC2KpsqoW2bkkqsvxqZthRGlg8XtzR0qVstFCeJSUjUqu5h0pUawnR.RM80jPdMOj6v.vFJrPkL0EarLWboisbl68MlKZTycKQua44fOEZuJTfk6bl.6zGgG1lx8ompVNHwN8WebF6ze+Oj0NYsuhchWOLqMJVgyYih6Y7rQJvUZd9OglGn4GvQIXCpUWZS1fDz2EMDpc.E71UTtG5sCxM.KG.DdBhAssvRxFtGQ9bMykkMHOwxc8Q86RrCRK8F3NnAtr052Gi742G.zMyePXuq6BzGfYaevbS4NlJKsp32JqTc4UqtLnYKtZHPOfdzQt3cnN3zq.+H3vQx83rg.Pk00dkwauBE25OWI725Wa0CA8oWRGdh6WfLueldKNg5xG.7R7.LUtE5jxs9rA.0ox6RIA3xk05mDHxiqxep0ICjlY.428Eu3A40tfc7RPmQOEzYbRlLCsOMalg18r5QbbbwMoABJ6p6a1C73ZkdS8cAjgbIOF6zD6aCHBcDVKXPmNvRCoSuiliLT6vra7dwZIP5E0CyvhQHUFUE+Uun8qUBdLTqc19h076ZwSoEdYQFnQMs.FteKPOUKzzinXSdiyDt6DdMSnF95gq0ABB+z.X62QY90NqXqpfRRrAZ1KhTRBZ+9uXBMP26+YsyTKi4JiwrH6cwZ82+MYbVlohSdsKhe0HhSL5NVYHh7.c9LokRCdX5vgGZUjBkjnr8nc1ZSnoNTsJ1X8vyl.ayHCQFOayyBtgvhW.VzQXarFuBqI7iGQnym58bv7jrporJucZqxaaEYAz0MrYmiMXxz0QFJLd554C4QCxzJyynEKc8fxi+IOT.4STKP9VwaODIfVZavSNLmM3CsRweblouwMtgrZaL6yYl9oO8oh1T4fNyzKrvB47XydgbiiglhVzQQKdxGk0wQyBZiGYcwnKeqlpMmhB700krRiwlfH7T+sRgLg2vmbrfoaBYT44oR0zdCX8GvRSYEhSv97hAoZtEpWeWLviMC6z65RaibWu4NoatEyGifP0ixymMjG89X3vJ9vHxHnMxEuIhey+Y5.TWDwqQizMKdkaq0iNvisCTGhz2kjkfeCWfZtfEciBToso1bx4dYo02dPAXWAcaSB3Ftei7lvpVYwaE8WKG8m0h92JlwMEONS9+7a4r4Sb2Kn5tON5RlJtPyUSefcwssIhWupd7suoFvpoMT8gzArm86xkkslU5fyHAUOgVBXO+faS0I.45ROI9s+v0fF7KOMvXOO2gEkYNx6jXb0tmjW6tsUGHaJ8VdKDVKJ8cbHFGaH2QLs95TWYKxWR6qoCnkXazBXhYrSqbmdckkW0b450qqgcHLT7KCMsgQGNe6J0WoVQTsFYQoqnKt2UUSvBp0U+fLUj9t7akLFmVeokMW87NsdlJRBH0DN1hL3Sdz7+QXAoFz9C84HXWJSVFZtvasfeeoaCM4EfctSODwMcVJz6gX+.YJpZcJhqyFx5QIs9.baXqO782e6LKPSepy.ageKcJ88CvxJoa0CPdTe77xMoBOQFe7l4ha9EVoyI95u9qeZ5D3oKJAd1w3JyTXJ7XE260OIjs7U02zG+YCvd1CSykotkJwfu5aOWFd.kf683B32TRPY9Olld0L5aRbAZA0RyPPEIExIjeee4e29WWGJxNvky3P8yNf+sVD1AGKpuee96v2Cv3PUM44x2hv3B2an2jvr6VLdmp.7po8bGugeYGypeGX2baVBXur9l+pm0Oiih+JSpdQeFG5QWZW7cZxAhxipvIg9Qh85Lql9.2E7Ig2Eb7AcKcozX+RiG1KvzsOT4hyVAw7EYD6NnWKHc1FGdya7WBToo3IvxmqxeligV.MFwCvtdOMryZ7mKE1YsnNUcOugTStpf3s3qDQXSJjH9KzuAobWbhxMhj6ZGTt2fnCTo.jnSLnzT7GWgpSL9CTPMgVbtakyqJNOqxwK4WgkxUfcGwKVsEFzFm8BrAkUX5TmvAt7szg8DqoJXRylpMmMv5Gljheb+oW8hq57ybZZooZl6K3CNpIgyi+NdGicoPKxRxg2KebqpfbGpGseWpGwVM3beLj6ezQ3TgMEpOqwX.00jVVwZeLbFifjLq+8WYsMwierCw1zOOLEkFS20aoKgqAO023GUap9JQaLbH3ir4qtrHXziFwpyECVfF2AnTGWh67jeHEoqJYSfiQj1u.UMCWRwbHIt9N5l0qj92w6A+uN+R9etZCwyZ+f4P+Agswk9+rMBKK755MotCkY4RBqB.kvdcDaqJ9kPkUg85GG9f0BK7s2Nc7ig0GO.4lX0+y27u7OWacRepKx+4bEwKOlgMuYB+biWhXVy8Lu7f2epdnS2fare4A2up9G+xCX4LiN8GAv8EwQFdQrF8P19zOwV9k7vKo7JhV.81SbIWynuC+Yi3ugIc8ZlKyut.xmXayqw+tf8oXYh+vk31ywRhElXIpGIwk0Wzb7DYwIdQVZhkX4IVhUNGI3GFXsALZOYHOzPy6HooTRd1GQzu1+E0gloZC
+HiseSnippet 3193.3oc0Z07abbaEeVIOxVqshsSBBZQuPnlVHW3HuypuSPfW8gksPzGazpHG2h1DpY3pkvyNb8Lbk75DC31S4Xt0i8+f1hdpmZzwBjKsH8POzC4ufBesmTejb9fyGqzJ4DiX4CdGR9H+898d7w2iyT2mYSBBX9FkFcmdcHFkthYidd7VK2BS8LVaEiRiYVuENfbe5Sv9NFK0qCNHf3XTpzv2ULjRidACCim06M9G2dIrK1ylD1j7ucYTax5z1TdRqcp8ATW2UwNjcns0F8z0Vyl4sLyk0EfyvlUL5fseHdexlXwvFxznzH2wgxY9M3XNIvnzEVh4zqQK1gdpwuKMftmKQ7fkQCXhTMuJy0QfXQqFK2h55TORsCLLJYVOgDFVQBuo4FTGZb6Ijw0jcfRjPmOJMzIAOKc3UoP3UoH3URCdWPAuqa1v1m1gmzi.aW1bMONwuIFLA5vRMVigdzEMWlAiviOYa7CIq5CODKwDyVoxMQyToxMduwJK92stE593CHqx7airPXOGTUzxr16wVh8XTChKwFzz.wHAiV.Gc.1WJPSPf6R7H9Xnez6ijdSStOgK0L4SSLdz.Qwib7a7dHXIUXEsMoIwm.9RHNCkevwHb4tAbVazxXW28.ek.DLtDTFi+Tvk54R8Hnlc8r4TlGh4sUiksDiUvN9L2IrYs6v7.d5lfV41kbiwJ+YiUdzbZ2jAD9hbtOcutbxD46NZ8shlGfZepjdirCBZIZwlX7HbL9MDybHZhzsIxgyHKUgJT0uOUnpCtBU8TTnpEnPB+.BmS81O.spKCK90NTWRFus3w79nhW9nAH7szETrEtADjA16zWY0Fy3Jbkmlil+k5x4h.WmHYqTp.DuEIsRg53y5P748PiefJ.w3Budw3Ru.poCMwVd2ZqlMgoEA+EMDAAOQ7DnYeDCRSY563NI6XZbzOqYgzglMcw8Xc4oz8z1SU+8yfH6UZJRjXc19r5XOhaekJdDJe.INtGi8PDFsAqa.IB9QLdxLxag4HWJXe39XufNXHdD2sGhc.wOdnSByYrHBVI0jNQjuxDjC.gUNBB6AsIR0zj1tT6GRbtAJrGweQdJXTSeBA4PZR8vf0BknMS5f43IAJfh08Wnd.33DmPOEVSYqtXIcAsLYxhjYpBfSo.RbBKz6TTWQNRIvSNy4sn80YFKsXR3FjCLx4IqmYgvPLZoXOE7Xi7sz1RtIiS1xahaT9yJOZ4mVFksqlMKruPmUWhegcKxSw+jDbButs2i3GscJZfvA1oyHvr+YDnmvhsxWVafLu07n7s5P75WZLFga.fLFtRHpfgxk4Kbsv7EhNYzfBIFT1L57DCIpSRD6R0LF7Yn5.NCuV3Lzvk5P7kxaBIS83rh9s2dPDcDysr4VYk03nAV1pYk84e0fIK3RlacevQCrr4V2GLPT0nlqP3c8H4UYiyh3UOuhuN6v5PBkYDu1en+fWcJfTbv4I0QCC.HFKbVVGuGwMj8DADhDMcQIFezZq.wHDIKGtKntJLDUroqzJjCfpPToNKXhfGxYcLJ85wmS.aY3g48qVV8PZgt5K10gx1k9DiGm.72sVujGlq1gTGdq3Fp7aq0hP2uURkOUNn1d6GUeyEMslxpxbFTNocTaWwb5pyOm0TysP0405nZXOUmc1oqTYZCN4wbcQVX5ElwxxZlnP.JM8pJHunG1sW.XHkLToplxSZFONzwZNi+tnwiF032T16ZdNjGCsWAhxJLNmAd5CH81iILJZ7zyucBO8meRFd5u96xxS01VimDwCyxQwJbNNJtmAiizfqhd9ugzCz78EnD3.qoUbxJzfNt3dPrCHf2lx38PuMwtAD0.f8HfXPaSMqpg6QUOaUcNUCpxUtqOtSKpcPZoWgzD20kuXmNDrunLZnate2vdWxExm.lssA5lILLSN6Bx+le9JysPk4.MalEBA5Nr822krAygjdEDYABUx5IxFB.UVS6EGryJzLq+bM2+Z+xZswPelkLgmD1EXm2O0rgHk4x6.G76AXpbC7gka7ntPtTk2jQCHkKazIwQT3WkuXuyFHqlAje6m+xGjW4TNwKAcn1ZnCcXlcFFeZ1cFF2qVapiiKoNKfJRAQ+by1fE2nzaYtIfLrK8IDm5DHkeONdehQP2lMgkF1N8yLbTtZ6l8f2SWKgrfwsIbhbDJkQWwesS67ZMmGjdry8NcM+t0DaoEAvU6.sLB3jNM.0TONSapFk7lGIs1wGyT6Lpfud3Rsir..V.rl8i8MNpXRUlQRL+L1okSRBZe9meF4m68BqcUMxPWYHyh36h05m+UosUUS4kb0SK6p93kfZMP6Oj6BLEyjQJE3Ao8FdPshzmjsIq2easwYjoCUqh4pGbzYfa5qGxfwMmGbCdEuDXz9vM0FrvpIYG2GWmO066A5IYUSwJucZV4sqEw.llHa9IvAmMcsutBCltdxPt+fLsxbNYrzwCFa.p6Pdn8epjgQOwOdD7CkW4kMW0m7ntDO6dosBSWSWk9hu4D8MAk4dOoeVlN+9zNFiZtJ0ETHqz5lNRJzaVUrTrVWdvKWRp7FCEp7i.ykJ7Z43AZj1h+rcyYwe+ZoxUdzQt90ut5nk3LsGcjiO9XYa54aO5HSM0T47OG6TqCHFZRz+GMBQ+sfeDBVyR+O3gHfZV5+LPnIeqU0aNU58WyTkwcLVjI4OzeoTXV9q3SOPlEeRh1pZES0zVc4c5xSmNN33P7EtSoZtAtcGWBjidlLuuqKaOr6R02HcyM39DL30te9b0CqQXaBTHlOLhLBZicIqhEuRizqOnsXp2xKmd3xWB2hsYc83a.tkzNtzr0trrKT0gr.gLxpTo0Y1hBO7xVxxdcK.6ZnacZff39Upq5qxjybyneMWzOsh9+IqF2T73pJ9uesnRkDy8T5l6Cht.sSLLZecSGyT6pwUdp+8HO0KUJi2T5Aq6oBhbbdO0u9niOt.O0nlUEbNhvU7oIaI95TaI1+zUwwRegIxaLUpaW1L9FTCifDoYFI6ACmyi9M4BXrXM8RnkL9GKiWv7cTt95HR051XGZ2fTsmd+76kmkhFYFVJpYrqK6v32umPOWVbk4Ans7b6cRDQtaN5z3fmkmCtcXMGousolfSQCdOgIYDykXtpVTuj5qZBHhZiZ.4Ti1nQtqgX94Vn5bSO8zFDGJGG+xfSq7lVVVyO87VpUJESOUsBxVrut2WzTdy5JU+MhT8eRNU+aymgv.bELyNW0ENoqfISnXITpC0hpbIUt++svHwKy5zyWffMYbU72waQ.Se38QItI70g18BHN2oMl5lNrGz6tD+.U.J8nzTWmUTQiSZ89j8fS3Iez1qKVEsEntOyoqszPlNf1GEPTmirVa.9Q8I11tJSZFxXzWMmY6WjYyzW9ke4woCeE6vaj+08eMSHHaWWQ9T5eIBhO+hvND4qn+J+EuVeOPK6omsyK7mmPgu1gADtW2rNka2pX7NTA30v36c7NbTb86.mlayS.6ELW8i+t8K6v5z9xNLitPx36qU.DsG0gSR5GI70Q0p6C4tPNL7dtiqhuzvow9vC16fp.paaXCrHaEL2Wl07lcaqNML7VEEufqRCINdR8bkn.sMfzXjO.GAbbXmVhmKE1oUTm5lm2ToIWVVVg7CGQxIEVlwK0OKob2Jj108j6NUztTjnxE0.RT8PZME+Uin+5zh+xKzaTdqBZUiKqVWq3Yw0yoc8d2Q9VjaP.swYq.aPYkTmVDh5ccEmxAGMXoKXRyU0aNqi0EFLGqWY9ZrdQB28hGcd3ACtEvfCUO2G0GTRIUjG+c7Nf3xfVTgjCemCwspCxMXdrNsXdTacmysIvd+82mjxsoP8YQNGxXKok4qsMAJxHHYm0+9KpsN0ST2grT9yEUbxQrJ5amqPy0OxTAWjXqO5GTGpdonCF1ErQ1hUWEDL5QTr5b5fERjYGbpZIDFO02LR5nR1TH64z1EHpY3RJmCU9ahOJyuqrVemjJwvupkJw4eedo76yecy5L2dpsspaoRBhjqrpOmSJ+K49qztxpOL7gZSM02b6zNDnZeXWraBS+r+0y+mKtDsCyE6+hFh6T1WegAzU4sRtTNzqPoJKrLu5f2erYnQGIH6Wcv8qY9gu5.VQpNO9G.v8kQM.uLVi1Xae1mXq9riDgTtjrEPu8jWjynlaHdFE+AWcQSqpyMYEwaIf9I11hH6uCvPEKU72YkoYkAUloNGxLcjLiXNS0AUnYNGKzrmCYl6bHy7mnLhr8WrKm0VsE.Zn9cT4gTRUbib2fw+GmvUmBB
 ```
 
 
-## Compile & Export
+##  Export & Compile
 
 * please check compile requirements @Installation
 *  Export Dialog 
