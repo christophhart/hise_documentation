@@ -4,18 +4,17 @@ summary:  Overview and explanation of HISEs UI Elements
 weight:   50
 index:    02
 author:   Christoph Hart
-icon:     /images/icon_hise
 ---
 
-![HISE Topbar](images/custom/hise-topbar.png)
+![HISE Topbar](images/custom/hise-topbar.png:700px)
 
 **Working with HISE** provides an overview of **HISE**s Interface and Tools. 
 
-[Project Management](/working-with-hise/project-management)
+- [Project Management](/working-with-hise/project-management)
 
-[Workspaces](/working-with-hise/workspaces)
+- [Workspaces](/working-with-hise/workspaces)
 
-[Menu Reference](/working-with-hise/menu-reference)
+- [Menu Reference](/working-with-hise/menu-reference)
 
-[Settings](/working-with-hise/settings)
+- [Settings](/working-with-hise/settings)
 

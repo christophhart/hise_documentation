@@ -6,7 +6,7 @@ weight: 100
 index: 01
 ---
 
-![HISE Frontend](images/custom/hise_frontend.png)
+![HISE Frontend](images/custom/hise_frontend.png:700px)
 
 ### What is HISE?
 

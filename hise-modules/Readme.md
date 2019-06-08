@@ -7,6 +7,8 @@ index: 03
 weight: 50
 ---
 
+![hise-modules](images/custom/hise-modules.png:700px)
+
 A **HISE Module** is a basic Audio-DSP building block of HISE. You can stitch them together to create your instrument/plugin. They come in four different base types:
 
 - [Sound Generators](/hise-modules/sound-generators) 
