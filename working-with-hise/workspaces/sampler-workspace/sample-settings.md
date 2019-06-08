@@ -7,7 +7,12 @@ index: 01
 ---
 ![sampler-table](/images/custom/sampler-settings.png) 
 
-**Disk IO Settings**	
+
+The Settings for the Sampler Module. They set how the sampler engine treats your samples with Disk IO-, Voice-, Group- and Playback Settings.
+
+
+## Disk IO Settings	
+
 | name | default value | description |
 | --- | --- | ------------ |
 | Buffer Size | 4096 | Sets the buffer size of the Sampler. The sampler uses two streaming buffers which are swapped (one is used for reading from disk and one is used to supply the sampler with the audio data). |
@@ -19,21 +24,16 @@ index: 01
 
 > In the Disk IO Settings you can see the Memory and the Disk Usage of the sampler. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the Buffer Size (which increases the disk performance) or reduce the voice amount.
 
+## Voice Settings
 
-
-## Todo: Ask for purge channel
-## Todo: ask for Amount / SoftLimit
-
-
-**Voice Settings**
 | name | default value | description |
 | --- | --- | ------------ |
-| Amount | 256 | The number of voices that this synth can play. |
-| Soft Limit | 256 | The amount of voices that this sampler can play. |
-| Fade Time | 20 | If you play more than the number of available voices this determines the fadeout time of the voice that is going to be killed in ms. |
+| Amount | 256 | The hard limit of voices that this synth can play. |
+| Soft Limit | 256 | The soft limit of voices that this sampler plays before it  starts to fade out voices.   |
+| Fade Time | 20 | If you play more than the number of soft-limit voices this setting will determine the fadeout time of each voice that is going to be killed in ms. |
 
 
-**Group Settings**
+## Group Settings
 
 | name | default value | description |
 | --- | --- | ------------ |
@@ -42,13 +42,13 @@ index: 01
 | Edit FX | Group 1 | Set the crossfade table for each RRGroup if Group XF is enabled. Invert the table to crossfade between different groups. |
 
   
-**Playback Settings**
+## Playback Settings
+
 | name | default value | description |
 | ---- | ---- | ---------- |
 | Pitch Track | Enabled | Change the samples pitch ratio with Root note. Disable this for drum samples. |
 | Retrigger | Kill Duplicate | Determines how the sampler treats repeated notes: **Kill Note**, **Note Off**, **Do nothing**, **Kill Duplicate** |
 | Playback | Normal | Switch between **Normal** and **Reverse** Playback. **One Shot** plays the whole sample (ignores the NoteOff). |
-
 
 
 
