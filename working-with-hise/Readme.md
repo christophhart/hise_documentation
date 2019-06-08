@@ -7,6 +7,8 @@ author:   Christoph Hart
 icon:     /images/icon_hise
 ---
 
+![HISE Topbar](images/custom/hise-topbar.png)
+
 **Working with HISE** provides an overview of **HISE**s Interface and Tools. 
 
 [Project Management](/working-with-hise/project-management)
