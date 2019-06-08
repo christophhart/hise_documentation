@@ -38,31 +38,31 @@ With the stable release you should be ready to go and be able to prototype your 
 Let's get going: Below is a list of every application required for compiling & exporting virtual instruments with **HISE**. They are all free, but some require that you register an account at the company's website.
 
 
-| Tool | Type | Windows | macOS | Explanation |
-| ---- | ---- | ------- | ----- | ----------- |
-| **HISE** | Source Code | [Download ](https://github.com/christophhart/HISE) | <- | The source code which contains the HISE engine. It's important that the source code version and the **HISE** version are matching. Clone or download, extract the `.zip` and put it wherever you want.  |
-| **IDE** | Application | [Visual Studio 2017](https://www.visualstudio.com/vs/older-downloads/) | [XCode](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) | The main application for compiling native applications for each platform. They come shipped with command-line compilers, so if everything runs smooth you don't need to touch the IDE once.  |
-| **VST SDK** | Source Code | [Steinberg Website](https://www.steinberg.net/en/company/developers.html) | <- | If you want to compile VST plugins, you'll need to download the VST SDK from Steinberg yourself (for licensing reasons it can't be distributed with **HISE**). Grab the `VST 3 Audio Plug-Ins SDK` from their website and extract it. In the extracted folder you'll find a .bat file that you have to execute. The folder `VST3_SDK` has to be renamed to `VST3 SDK` (get rid of that pesky underscore) and be put in your **HISE** source code folder under `HISE > tools > SDK >`. |
-| **ASIO SDK** | Source Code| [Steinberg Website](https://www.steinberg.net/en/company/developers.html) | <- | If you are building a standalone application on Windows, you might want to support the low latency ASIO driver. Get `ASIO SDK` from their website and put the extracted `ASIOSDK2.3` in `HISE > tools > SDK >`, too. |
-| **Intel IPP** | Application | [Intel Website](https://registrationcenter.intel.com/en/forms/?productid=2558&licensetype=2) | <- |It's strongly recommended to use this library because it will improve the performance drastically and it's obligatory for the convolution reverb. The community edition is free but you'll have to register at Intel to get the download file. |
+| Tool | Type | Link |  Explanation |
+| ---- | ---- | ----- | ----------- |
+| **HISE** | Source Code | [Github](https://github.com/christophhart/HISE) | The source code that contains the HISE engine. It's important that the source code version and the **HISE** version are matching. **Clone or download**, extract the `.zip` and put it wherever you want.  |
+| **IDE** | Application | [Visual Studio 2017](https://www.visualstudio.com/vs/older-downloads/) for Windows / [XCode](http://adcdownload.apple.com/Developer_Tools/Xcode_7.3.1/Xcode_7.3.1.dmg) for macOS  | The main application for compiling native applications for each platform. They come shipped with command-line compilers, so if everything runs smooth you don't need to touch the IDE once.  |
+| **VST SDK** | Source Code | [Steinberg Website](https://www.steinberg.net/en/company/developers.html) | If you want to compile VST plugins, you'll need to download the VST SDK from Steinberg yourself (for licensing reasons it can't be distributed with **HISE**). Grab the `VST 3 Audio Plug-Ins SDK` from their website and extract it. In the extracted folder you'll find a .bat file that you have to execute. The folder `VST3_SDK` has to be renamed to `VST3 SDK` (get rid of that pesky underscore) and be put in your **HISE** source code folder under `HISE > tools > SDK >`. |
+| **ASIO SDK** | Source Code| [Steinberg Website](https://www.steinberg.net/en/company/developers.html) | If you are building a standalone application on Windows, you might want to support the low latency ASIO driver. Get `ASIO SDK` from their website and put the extracted `ASIOSDK2.3` in `HISE > tools > SDK >`, too. |
+| **Intel IPP** | Application | [Intel Website](https://registrationcenter.intel.com/en/forms/?productid=2558&licensetype=2) | It's strongly recommended to use this library because it will improve the performance drastically and it's obligatory for the convolution reverb. The community edition is free but you'll have to register at Intel to get the download file. |
 
 
-After installing these programs we're almost ready for compiling plugins with **HISE**. As last step we only have to point the **HISE** instance to its source code via the **HISE Path** Setting.
+After installing these programs we're almost ready for compiling plugins with **HISE**. As last step we have to point the **HISE** instance to its source code via the **HISE Path** Setting.
 
 
-## Configure the Settings
+### Configure the Settings
 
 To access the Settings dialog, choose **File -> Settings** or click the little gear symbol on the right of the tool-bar. 
 
-One crucial thing to do is to set your **HISE Path**, which has to point to the root **HISE**-source-code folder that you downloaded or cloned earlier.
+Let's set the **HISE Path**, which has to point to the root **HISE**-source-code folder that you downloaded or cloned earlier.
 
 ![hise-path](images/custom/hise-path.png)
 
 Go to the Compiler Settings section in the HISE Settings Menu. You can insert your path by hand or select the **HISE** source code folder location with the Browse button.
 
-You will encounter a lot of other options to adjust your Project and Development Settings. Have a look at [HISE Settings](/working-with-hise/settings) to learn more about them.
+In the Settings you will encounter many other options to adjust your project. Have a look at [HISE Settings](/working-with-hise/settings) to learn more about them.
 
-BTW: Here you can also find the Audio & MIDI Settings to adjust and connect your sound-card, drivers and MIDI Equipment.
+BTW: There you'll also find the Audio & MIDI Settings to adjust and connect your sound-card, drivers and MIDI Equipment.
 ![audio-settings](images/custom/audio-settings.png)
 
 
