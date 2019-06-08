@@ -1,10 +1,22 @@
 ---
-keywords: Tutorial Project 2: Music Box
-summary:  The first steps in HISE
+keywords: Tutorial Project 2: MusicBox
+summary:  Build a Sample-based VSTi
 author:   Christoph Hart
 index: 02
 modified: 19.03.2019
 ---
+
+### Do Ouline New Simple Sample Player:  Music Box
+
+- **features:**
+  - 4 switchable Samplemaps
+  - Filmstrip Interface
+  - Panel Navigation
+  - Sample Modulation
+    - Velocity Modulation
+    - Modwheel, Release Trigger, NoteOff/Ringing
+  - Colored Keyrange + Key Trigger
+  - Save/Load Presets in Preset Browser
 
 
 ![Interface](http://hise.audio/images/tutorial/tutorialPlugin.png)
@@ -19,7 +31,7 @@ This tutorial will guide you through the process of building a simple sample lib
 
 The sample library will have these features:
 
-- small sample set of a music box (
+- small sample set of a music box 
 - a basic reverb with additional predelay parameter
 - A synthesised mallet click sound that can be added to the samples.
 - modwheel controlled decay time
@@ -31,45 +43,6 @@ The interface and the samples are kindly provided by [Wavesfactory](http://waves
 > You can find the finished project repository [here](), so if you get stuck somewhere or are too impatient to crawl through the whole tutorial, simply clone this repository and check out the final result.
 
 Before we start, let's take a look at the interface of HISE.
-
-#### Start up HISE 
-
-Download the HISE installer and follow the instructions. For actual development I recommend using the standalone application. HISE changes its appearance according to the window size, so if you want all controls, set it to fullscreen (or a minimal width of 1300px). The window is divided into four sections:
-
-![HISE Interface](http://hise.audio/images/tutorial/HiseInterface.png)
-
-### Main Topbar
-
-The main topbar can switch between the workspaces and contains statistics and the tooltip popup.
-
-### Custom Panel
-
-This area can be arranged and populated with any kind of panel. This (and how to use the Custom Workspace) will be covered in a seperate tutorial, so you might ignore this area for starters.
-
-### The Main Area
-
-The main area contains a vertically arranged list of all modules in the current patch. Everything in HISE is a [tree]. The root item is called master chain (and has the module type "Container"). You can add submodules by clicking on the `+` icon and select the desired module.
-
-Above the area there are three other elements:
-
-1. A tooltip bar which displays some help when hovering over certain elements
-2. A real time statistics panel that shows the current voice count / CPU usage etc.
-3. A toolbar that toggles additional views (the most important being the house icon which shows a preview of the compiled plugin)
-
-### Auto Popup Panel
-
-the right panel is not customizable, but contains some development tools that automatically popup when needed.
-
-
-### Project setup
-
-Now let's build this sample library. The first thing we have to deal with is some boring stuff: project management.
-
-HISE has a internal project system that allows you to easily share and switch between different projects and it's crucial to understand how it works before everything else.
-
-A project in HISE is a folder which contains all files (samples / scripts / images) as well as some specific setting (Project name, version etc). So the first thing you should do after loading up HISE is to create a new project by choosing **File -> Create New Project Folder**.
-
-Select a directory and press OK. It will create all necessary sub folders within this directory. You can now copy all external files into the correct subfolder and access it within HISE as relative path so you can simply transfer the project on another computer. When you compile the plugin, all files (except for the actual samples) will be embedded into the plugin binary so it is crucial that you put everything that belongs to the project in this folder.
 
 
 ## Part 2
