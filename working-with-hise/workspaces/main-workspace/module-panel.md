@@ -11,5 +11,4 @@ In the signal chain it is also the first and last processed element. Every added
 
 ## Routing Matrix
 
-## Right Click
-* Check children for duplicate IDs
+
