@@ -1,18 +1,36 @@
 ---
-keywords: Version Control with Git / LFS
+keywords: Version Control with Git 
 summary:  How to track your project changes with git and use its LFS System.
 index: 0
 ---
 
+Version Control is an inevitable tool if you want to build projects in a team. **HISE**s architecture was built with that in mind. 
+
+# Track your project
+
+Create a new HISE project, and initialise Git with your preferred Git-client or with `git init` in the project folder. 
+
+Add a `.gitignore` file to your project to prevent the tracking of binary or cached files. 
+
+`.gitignore`: 
+
+```javascript
+Presets // or *.hip
+Binaries
+PooledResources
+// add files or folders that you don't want to track..
+```
+
+Start to build your project.. After you've finished, save your HISE Preset with [File > Save as XML](/working-with-hise/menu-reference/file#save-as-xml) to create a human-readable save-file in the [XmlPresetBackups](/working-with-hise/project-management/projects-folders/xml-preset-backups) Folder. This will also save the ScriptProcessors `.js` files into the [Scripts](/working-with-hise/project-management/projects-folders/scripts) Folder. Commit your changes, and start to collaborate.
 
 
-# How to use Git LFS with samples
+# How to use Git LFS (Large File Storage) with samples
 
 If you use Git for version control for your HISE project, it is heavily recommended to not track the sample files as regular files, because your repository size will exponentially grow with each commit of your samples. This will make the checkout times a serious problem and therefore should be avoided.
 
 This leaves you with two options:
 
-1. Ignore the files by adding filters to `.gitignore`. If you go for this option, you need to upload the files to another cloud storage (eg. Dropbox) and use the **Redirect Sample folder** option in your project.
+1. Ignore the files by adding filters to `.gitignore`. If you go for this option, you need to upload the files to another cloud storage (eg. Dropbox) and use the [Redirect Sample Folder](/working-with-hise/settings/project#redirect-sample-folder) option in your project.
 2. Track the files using Git LFS. This option is a bit more pricey (if you use GitHub you need to purchase storage packs which cost about 5$ / month for 50GB) and for really really large libraries (> 50GB) it might not be worth it, but it offers a pretty convenient workflow, because it automatically pulls the samples and you don't need to keep track of the samples manually.
 
 A nice introduction video for Git LFS can be found here:
