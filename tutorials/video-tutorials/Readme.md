@@ -2,6 +2,7 @@
 keywords: Video Tutorials
 summary:  A series of video tutorials on Youtube.
 author:   Christoph Hart / David Healey
+index: 02
 ---
 
 # Video Tutorials
