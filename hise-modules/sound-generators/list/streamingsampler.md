@@ -49,16 +49,7 @@ You can load and save **SampleMaps** independently from the Sampler as human-rea
 </samplemap>
 ```
 
-
-### MultiMic Samples
-
-> Pro-Tip: If you have a multimic sample library, create a Samplemap for one mic position, export the samplemap and replace the audio reference files with a text editor and "Search and Replace"...  Then create a new sampler and load this samplemap. With this trick you don't have to import and edit the other samples, as they will use the same properties as the first mic position.  
-
-
 ## Compress and Export
-
-
-
 
 ### Export to HLAC (Monolith)
 
@@ -97,6 +88,25 @@ During the extraction process of the samples the user can decide for herself if 
 
 ### Hise Resources Archive File
 
-If you want to distribute the samples to the enduser you have the option to compress the monoliths (lossless) further for delivery. [Export > Export Samples for installer](/working-with-hise/menu-reference/export#export-samples-for-installer).
+If you want to distribute the samples to the enduser you have the option to compress 
+the monoliths (lossless) further for delivery. [Export > Export Samples for installer](/working-with-hise/menu-reference/export#export-samples-for-installer).
 
-The HR is a file archive (like zip). When the user runs the plugin for the first time they will be asked to locate the HR files that were shipped with the instrument/plugin. The monoliths will be extracted to their chosen location, after which the user can opt-in to delete the HR files.
+The HLAC codec is optimized for maximal decoding performance so a standard lossless algorithm like FLAC 
+can provide you with a 10%-20% better compression ratio. 
+
+The Hise Resource is a file archive that uses the FLAC codec and splits up the files into customizable chunks of 500MB - 1GB. 
+So if you compress a 3.7GB library and choose 1GB file size, you will get these files:
+
+```
+Samples.hr1 // 1GB
+Samples.hr2 // 1GB
+Samples.hr3 // 1GB
+Samples.hr4 // 700MB
+```
+
+When the user runs the plugin for the 
+first time they will be asked to locate the HR files that were shipped with the 
+instrument/plugin. The monoliths will be extracted to their chosen location, after 
+which the user can opt-in to delete the HR files.
+
+A thorough explanation of this process can be found on the excellent user manual of David Healey's [Sofia Woodwinds](https://librewave.com/knowledge-base/sample-library-installation-guide/?v=3a52f3c22ed6#Installing_the_samples):
