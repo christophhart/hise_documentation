@@ -40,7 +40,7 @@ For example the [Velocity Modulator](/hise-modules/modulators/voice-start-modula
 
 However, it can also be connected to a [Table](/ui-components/plugin-components/table) that is used to change the velocity curve. Therefore, it has an additional interface type: [TableProcessor](/scripting/scripting-api/tableprocessor).
 
-> Depending on what functionality you want, you need to create a reference to the desired base class type or interface.
+> Depending on what functionality you want, you need to create a **generic** or **typed reference** to the desired base class type or interface.
 
 ```javascript
 const var v = Synth.getModulator("VeloMod"); // create a base class reference
@@ -64,5 +64,6 @@ v.asTableProcessor().addTablePoint(0, 0.5, 0.25);
 - [`SlotFX`](/scripting/scripting-api/slotfx)
 - [RoutingMatrix](/scripting/scripting-api/routingmatrix)
 - [Sampler](/scripting/scripting-api/sampler) 
+- [MidiPlayer](/scripting/scripting-api/midiplayer)
 
 ## TODO [SliderPackProcessor]
