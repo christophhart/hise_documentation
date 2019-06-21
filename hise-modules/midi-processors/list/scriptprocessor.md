@@ -125,6 +125,10 @@ reflect this.
 
 - if a callback is deferred (= not running on the audio thread), the callback name will have a `(D)` suffix to indicate the threading state.
 
+Be aware that if no interface of your plugin is opened, deferred callbacks will not get executed, because for this case the UI rendering is deliberately bypassed to save up resources. 
+
+
+
 
 ## `include` External Files
 

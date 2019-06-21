@@ -21,7 +21,7 @@ It will be saved in your projects [UserPresets](/working-with-hise/project-manag
 
 - **Main Interface**  The Script Processor that you use for creating the main interface. By adding controls to this interface, you are building up a data model that is used for the User preset system.
 
-- **Restorable UI control**  You'll certainly want to (re-)store some UI Components with a User Preset, while excluding others from the UserPreset system (Navigation buttons, page handlers and buttons that load other user presets). You can do this with setting the `saveInPreset` property of each [Plugin Component](/ui-components/plugin-components) to enabled or disabled.
+- **Restorable UI control**  You'll certainly want to (re-)store some UI Components with a User Preset, while excluding other components from the UserPreset system (Navigation buttons, page handlers and buttons that load other user presets). You can do this with setting the `saveInPreset` property of each [Plugin Component](/ui-components/plugin-components) to enabled or disabled.
   
 - **Interface values**  The current value of the UI Component. Behind the scenes this value is a `var` variable with its Data type depending on the kind of UI Component you use (Sliders will use a double precision floating point value, Buttons a boolean value and Comboboxes an integer number for the selected index starting with 1).  Since it's a `var`, it can even hold objects and arrays which is a backdoor for implementing a custom user preset system if you are not satisfied with the possibilities of HISE [Presetbrowser](/ui-components/floating-tiles/plugin/presetbrowser).
 
@@ -53,53 +53,77 @@ If you create a User preset, you will get a `.xml` file that looks like this:
 Loading the user preset will go through this list and set the value for each Control (UI Component) or execute its respective callback.
 
 1. Controls which are connected to a Processor parameter just set the parameter of the Module as if you would have interacted with the Control via mouse / keyboard.
-2. Controls which have a scripted callback will execute this callback asynchronously.
+2. Controls which have a scripted callback will execute their callbacks asynchronously.
 
-## TODO hier.
+The values are set according to this files top-down flow. There are a few edge cases in which you need to be aware of this: If you have a Slider that controls the [Sample Start offset](/hise-modules/sound-generators/list/streamingsampler#chains-) of a [Sampler](/hise-modules/sound-generators/list/streamingsampler) and a Combobox that selects the different [SampleMap indexes](/tutorials/recipes/ui/general#switch-samplemaps-with-a-combobox), the Slider must be placed after the ComboBox to set the values in this order:
 
-The values are set according to this files order of definition top-down. There are a few edge cases in which you need to be aware of this order: If you have a Slider that controls the sample start offset of a Sampler and a Combobox that stores the sample map index, the Slider must be placed after the sample map selector so that the restoring process will be executed in this order:
+1. Load the new SampleMap including samples
+2. Apply the sample start offset modulation value to the new sample set.
 
-1. Load new samples
-2. Apply the sample start modulation value to the new sample set.
-
-If the order is wrong, you will end up changing the sample start offset of the old samples, then load the sample map which resets the start offset to the original values so the slider will not have any effect.
+If the order is wrong, you will end up changing the sample start offset of the old samples, and then load the SampleMap which resets the start offset to the original values. In this case the Slider will not have any effect.
 
 ## File Management
 
-These files are saved in the **UserPresets** folder, which is either the subfolder of your project folder during development, or a subfolder in your app data directory when you are using the compiled plugin. The User Preset Browser just mirrors the file structure found in this directory. By default it uses a three level hierarchy (Banks -> Categories -> Presets), but you can change it to a 2-level or even flat list hierarchy if that is not apprpriate for your project (simple FX plugins usually have just one level of hierarchy).
+These files are saved in the [UserPresets](/working-with-hise/project-management/projects-folders/user-presets) folder, which is either the subfolder of your project folder during development, or a subfolder in your **app data** directory when you are using the compiled plugin. The [Preset Browser](/ui-components/floating-tiles/plugin/presetbrowser) mirrors the file structure found in this directory. By default it uses a three level hierarchy (Banks -> Categories -> Presets), but you can change it to a 2-level or even flat list hierarchy if that is not apprpriate for your project (simple FX plugins usually need only one level of hierarchy).
 
 ## User presets in compiled plugins
 
-If you export a project it will embedd all user presets found in the projects directory into the plugin. After the user has installed your plugin and loads it up the first time (or more precisely, if there are no existing user presets in the expected directory), it will extract the user presets as factory content into the predefined location found at:
+If you export a project it will embed all .presets found in the projects UserPresets directory into the plugin. After the user has installed the plugin and loads it up for the first time (or more precisely, if there are no existing user presets in the expected directory), it will extract the user presets as factory content into the predefined location found in:
 
 **Windows**:
 
 ```
-%APPDATA%/Roaming/Company/Product/User Presets
+%APPDATA%/Roaming/<Company>/<Product>/User Presets
 ```
 
 **macOS**:
 
 ```
-~/Library/Application Support/Company/Product/User Presets
+~/Library/Application Support/<Company>/<Product>/User Presets
 ```
 
-This process will only take place if this directory either doesn't exist yet or is empty. If you ship an update with new user presets you will have to make sure that people can add them manually. Also be aware that on the end user side it's called `User Presets` (instead of the nerdy `UserPresets`).
+This process will take place if this directory is empty doesn't exist yet. If you want to ship an update with new user presets you will have to make sure that people can add them manually. Also be aware that on the end user side the folder is called `User Presets` (instead of the nerdy `UserPresets`).
 
 ## The Init Preset
 
-Every project has an initial state which will be the state when the user instantiates your plugin or loads the app. If you don't put any thought into this fact, it will be the exact state your project has in HISE when you click export. This is subideal because:
+Every project has an initial state which will be the state when the user for the first time instantiates the plugin or loads the app. It will be the exact state of your project when you exported it in HISE. In some cases this may be subideal because:
 
-- It deprives the user to reset the plugin to the vanilla state
-- It will be unpredictable (you might end up changing values accidently before exporting which changes the default state)
-- The Scripting call `Engine.getUserPresetName()` will return an empty string.
-- If you are using Git, it will create a lot of noise in the commit because the control values will be all over the place.
+- It may deprive the user of the funtctionality to reset the plugin to a vanilla state
+- It may be messy (you might end up changing values accidently before exporting which would change the default state)
+- The Scripting call `Engine.getCurrentUserPresetName()` will return an empty string.
+- If you are using Git, it will create a lot of noise in a commit because the control values will be all over the place.
 
-The solution to all these problems is to create a user preset that contains the exact state how you want your project to load up. During development, everytime before you save the project (or every time you want to save it and commit it to Git) just load this user preset before saving. This will make sure that the control values are always the same reducing the Git noise and the unpredictability. The user can load the init state to reset your plugin to default values, and even if the scripting function will still return an empty string, you can just hardcode it to show the initial name on startup:
+The solution to all these problems is to create a **Init user preset** that contains the exact state how you want your project to load up. During development, everytime before you (.xml) save the project (or every time you want to save it and commit it to Git) just load the Init preset before saving. This will make sure that the control values are always the same reducing Git noise and general unpredictability. The user can load the init state to reset your plugin to default values, and even if `Engine.getCurrentUserPresetName()` still returns an empty string, you can hardcode a preset Label to show the initial name on startup:
 
 ```javascript
 const var presetLabel = Content.getComponent("PresetLabel");
 presetLabel.set("text", "Init"); // or whatever you call your init preset
 ```
 
-> Speaking of default values, make sure that the `defaultValue` property of each control will match the value in the onInit callback. Some hosts (ProTools AFAIK) will override the init preset with the default values for all plugin parameters so if these values differ, you will end up with two versions of your plugin's initial state.
+> Speaking of default values.. Please make sure that the `defaultValue` property of each [UI Component](/ui-components/plugin-components) will match the value in the `onInit` callback. Some hosts (ProTools AFAIK) will override the init preset with the default values for all plugin parameters so if these values differ, you may end up with two versions of your plugin's initial state.
+
+
+## Scripting Access to User Presets
+
+The [Engine](/scripting/scripting-api/engine) Scripting API holds the methods to access the User Preset system with scripting:
+
+```javascript
+// Returns the current UserPresets name
+Engine.getCurrentUserPresetName(); 
+
+// Returns an Array with Strings of all UserPreset derived from the UserPresets folder
+const var x = Engine.getUserPresetList(); 
+for (i in x)
+    Console.print(i);
+
+// Loads a User preset with a string (relative path to the .preset file without the file ending) 
+Engine.loadUserPreset("New Directory/test");
+
+// Loads the next/previous UserPreset, with a boolean to stay in the same directory
+Engine.loadNextUserPreset(1);
+Engine.loadPreviousUserPreset(1);
+
+// Saves the current plugin state as new User Preset
+Engine.saveUserPreset("test2");
+
+```
