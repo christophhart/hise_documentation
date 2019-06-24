@@ -125,5 +125,4 @@ Engine.loadPreviousUserPreset(1);
 
 // Saves the current plugin state as new User Preset
 Engine.saveUserPreset("test2");
-
 ```
