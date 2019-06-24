@@ -43,7 +43,7 @@ This list might get extended with additional modules over time, but if you can't
 
 ## Scripting API
 
-A [typed reference](/hise-modules#hise-module-reference-types) to a **MIDI Player** module gives you additional methods to:
+A [typed reference](/scripting/scripting-api/midiplayer) to a **MIDI Player** module gives you additional methods to:
 
 1. Control the playback of the player with perfect sample accuracy
 2. Perform MIDI processing on the files
