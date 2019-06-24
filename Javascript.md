@@ -256,8 +256,6 @@ switch(1 + 3) {
 }
 ```
 
-> **HISE** (and its underlying JavascriptEngine from **JUCE**) does not support the switch statement. I left this paragraph in because it may be added it the future.
-
 ## Objects
 JavaScript objects can be thought of as simple collections of name-value pairs. As such, they are similar to:
 
