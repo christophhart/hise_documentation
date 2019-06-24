@@ -8,10 +8,10 @@ The most simple application of this is to draw a piano-roll content into a Panel
 
 ```javascript
 // Fetch a Panel
-const var Panel = Content.getComponent("Panel");
+const var Panel = Content.getComponent("Panel1");
 
 // Fetch a MIDI Player
-const var Player = Synth.getMidiPlayer("MidiPlayer");
+const var Player = Synth.getMidiPlayer("MIDI Player1");
 
 // Connect the player to the panel to make it update automatically
 Player.connectToPanel(Panel);
@@ -22,8 +22,8 @@ Panel.setPaintRoutine(function(g)
     // the argument is the boundaries of this panel so it will scale
     // them to the dimensions of the entire panel.
     var entireArea = [0, 0, this.getWidth(), this.getHeight()];
-    var list = Player.getRectangleList(entireArea);
-
+    var list = Player.getNoteRectangleList(entireArea);
+    
     g.setColour(Colours.white);
 
     // Now we can simply iterate over them and paint them

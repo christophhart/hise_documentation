@@ -8,5 +8,9 @@ properties:
 - scaleFactor: if you use a filmstrip, this scalefactor will be used to resize the image. You can use this to support Retina displays.
 ---
 
+![Slider](/images/ui-controls/knob.png)
+
+
+
 ## Scripting API
 [ScriptSlider](/scripting/scripting-api/scriptslider)

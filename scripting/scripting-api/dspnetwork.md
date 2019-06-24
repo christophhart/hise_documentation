@@ -5,7 +5,7 @@ author:   Christoph Hart
 modified: 23.06.2019
 ---
   
-This class is a container for a collection of nodes that can be arranged in multiple containers to build up a signal chain. 
+The **DSPNetwork** is a class with a collection of nodes that can be arranged in multiple containers to build up a signal chain. 
 It supercharges the script processor modules that already perform DSP operations with a graph-based audio development environment.
 
 ## Feature list

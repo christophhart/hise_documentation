@@ -7,6 +7,7 @@ properties:
 - items: Put in a list with the values that you want to select. Seperated by a newline.
 ---
 
+
 ## Scripting
 
 Each ComboBox-selection returns the selected items index value. 
