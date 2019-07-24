@@ -4,9 +4,15 @@ The discussion about the tutorials can be found [here](http://forum.hise.audio/t
 
 ## Tutorial 1: Building HISE from source 2019
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/rUuEoJk6FF8/0.jpg)](https://www.youtube.com/watch?v=rUuEoJk6FF8 "Building HISE from Source on GNU/Linux")
+### GNU/Linux
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/YYUZ4K4J3Os/0.jpg)](https://www.youtube.com/watch?v=YYUZ4K4J3Os "Building HISE from Source on Windows 10")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/rUuEoJk6FF8/0.jpg)](https://www.youtube.com/watch?v=rUuEoJk6FF8 "Building HISE from Source on GNU\Linux")
+
+### Windows 10
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/YYUZ4K4J3Os/0.jpg)](https://www.youtube.com/watch?v=YYUZ4K4J3Os "Building HISE from Source on Windows10")
+ 
+### MacOS Mojave
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/zeLeCSNh0XM/0.jpg)](https://www.youtube.com/watch?v=zeLeCSNh0XM "Building HISE from Source on MacOS Mojave")
 
