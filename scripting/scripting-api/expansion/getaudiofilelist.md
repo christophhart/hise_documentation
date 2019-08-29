@@ -1,0 +1,1 @@
+This returns a list of all audio files that are included in the given Expansion. Also it will load all audio files into the pool so they are available in the list.
