@@ -1,4 +1,4 @@
-This method is useful when you want to change the item list of some UI controls, for example a [Combobox](/ui-components/combobox).
+This method is useful when you want to change the item list of some UI controls, for example a [Combobox](/ui-components/plugin-components/combobox).
 
 ```!!javascript
 const var list = ["item1", "item2", "item3"];     // Creates a list of all available samplemaps

@@ -36,7 +36,7 @@ Click the little plus icon to create a new [Sound Generator](/hise-modules/sound
 
 You will notice that the Sine Wave Generator features nearly the same top-bar as the Master Chain with its mostly self-explanatory controls:
 
-**Minimize** **Colorpicker** [processor ID]() **Mute** **Meter** [Routing Matrix](/glossary/routing-matrix) **Gain** **Pan** and **Delete** 
+**Minimize** **Colorpicker** [processor ID]() **Mute** **Meter** [Routing Matrix]() **Gain** **Pan** and **Delete** 
 
 ![Sine](/images/custom/gen-sinewave.png)
 

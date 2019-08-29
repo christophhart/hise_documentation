@@ -769,7 +769,7 @@ Now we can setup the last page (**File -> Settings -> Project Settings**).
 
 That's it. Now you should be ready to compile the plugin. Open the saved patch and choose **File -> Export -> Export as Instrument (VSTi / AUi)**. If you are on Windows, you can choose, which platforms you want to compile (x86 / x64 / both). Press OK and go get a coffee while the compiler is doing the hard work (it should pop up a terminal window for a few minutes and spit out cryptic stuff that makes you feel like you're in the matrix).
 
-> **IMPORTANT:** The plugins you'll create are automatically licenced under the GPL v3 licence. This means you can't distribute them without releasing the source (which would be the entire project folder). For commercial usage, there is a separate license model available. Please get in touch to discuss further details [here](info@hise.audio).
+> **IMPORTANT:** The plugins you'll create are automatically licenced under the GPL v3 licence. This means you can't distribute them without releasing the source (which would be the entire project folder). For commercial usage, there is a separate license model available. Please get in touch to discuss further details. mail @ info@hise.audio 
 
 ### 4. Deploy the plugin
 

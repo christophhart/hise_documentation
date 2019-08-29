@@ -29,4 +29,4 @@ Please have a look at the [Recipes](/tutorials/recipes) to access some handy scr
 
 ### Performance
 
-Compared to compiled C++ code, a Javascript engine is rather slow. But for occasional event handling like incoming MIDI data or a timer every 50 milliseconds the JS-engine is absolutely fit for the purpose. This is completely sufficent for the most use cases of audio plugins and virtual instruments. If you don't want to relinquish the performance gains of a native C++ implementation please consider taking a look at [Hraw](hraw.html).
+Compared to compiled C++ code, a Javascript engine is rather slow. But for occasional event handling like incoming MIDI data or a timer every 50 milliseconds the JS-engine is absolutely fit for the purpose. This is completely sufficent for the most use cases of audio plugins and virtual instruments. If you don't want to relinquish the performance gains of a native C++ implementation please consider taking a look at [C++ API](/cpp_api).

@@ -70,7 +70,7 @@ The Z-order of the components starts on the top (background) and advances to the
 
 You can group components into each other. Create a [Panel](/ui-components/plugin-components/panel) or a [Viewport](/ui-components/plugin-components/viewport) and add or drag other components beneath them in the Component List. This will group components together, which makes it easy to implement page-like logic for complex projects.
 
-The little **green/red dot** indicates if an UIComponent has its `saveinPreset`-property set to true or false. Learn more about this in the [User Presets](/glossary/user-presets) chapter.  
+The little **green/red dot** indicates if an UIComponent has its `saveinPreset`-property set to true or false. Learn more about this in the [User Presets](/working-with-hise/project-management/user-presets) chapter.  
 
 
 ## Property Editor
