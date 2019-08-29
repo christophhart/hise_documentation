@@ -1,0 +1,1 @@
+This will fetch all files from your project and build a Standalone Version of your Instrument/Plugin that works without a DAW. After validating the samples references and files it will ask you to choose between a 32bit and 64bit version (both are possible, too).

@@ -1,0 +1,1 @@
+This is a quick operation (the allocated storage space will not be freed), so you can use it in a realtime callback.

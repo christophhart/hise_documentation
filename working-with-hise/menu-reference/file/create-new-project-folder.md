@@ -1,0 +1,1 @@
+Create a new HISE project. You will get asked to create a new directory.

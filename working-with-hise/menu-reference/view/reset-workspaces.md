@@ -1,0 +1,1 @@
+If you accidentally messed up HISEs interface, you can clear the interface layout. After restarting HISE its interface will be reset to the default settings.

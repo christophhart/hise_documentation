@@ -1,0 +1,2 @@
+By default this is off, but if you need your [connected Panel](/scripting/scripting-api/midiplayer#connecttopanel) to 
+repaint during playback (eg. to display a ruler that indicates the position), set this to true and it repaint() will be called periodically during playback.

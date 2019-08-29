@@ -1,0 +1,1 @@
+Directly saves the current Preset.

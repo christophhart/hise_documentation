@@ -1,9 +1,17 @@
 # HISE Documentation
 
-This is the online documentation for **HISE**.
+This is the repository for the documentation of [HISE](http://hise.audio). It contains the documentation in Markdown format which is processed and build into the internal documentation system of HISE as well as the online documentation available at
 
-This repository is only storing the data. A pretty version with working images, a TOC to scroll around and a more mobile friendly CSS can be found here:
+https://docs.hise.audio
 
-[HISE Documentation Website](http://hartinstruments.net/hise/manual/Sampler.php)
+## Contributing
 
-This documentation is neither complete nor 100% correct. If you find something weird laying around, please let me know by filing a pull request or an issue.
+It is explicitely encouraged to participate in the creation of this documentation. It is licensed under a non-restrictive CC license. If you want to contribute, take a look at the [Contributing Guidelines](https://docs.hise.audio/glossary/contributing.html).
+
+The recommended workflow for contributions looks like this:
+
+- pull the [documentation repository](https://github.com/christophhart/hise_documentation/tree/new_docs)
+- setup HISE to use the markdown files as documentation source in the [settings](https://docs.hise.audio/working-with-hise/settings/development.html#doc-repository)
+- make your changes and submit them with pull requests. They will be merged into the master branch and published in a timely basis.
+
+If you contribute a non-trivial amount of documentation, your authorship will be properly attributed. 

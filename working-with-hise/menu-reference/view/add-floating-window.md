@@ -1,0 +1,1 @@
+Adds a new [Empty](/ui-components/floating-tiles/plugin/empty) Popup Window that can filled (**right-click**) with [Hise Floating Tiles](/ui-components/floating-tiles/hise) if you prefer to work with (multiple possible) detached windows. 

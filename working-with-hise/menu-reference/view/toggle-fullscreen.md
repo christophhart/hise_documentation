@@ -1,0 +1,1 @@
+Toggles the fullscreen mode.

@@ -1,0 +1,1 @@
+Checks if newer versions of HISE are available.

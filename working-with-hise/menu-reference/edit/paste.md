@@ -1,0 +1,1 @@
+Paste the copied HISE Module (.xml via clipboard) to the Master or a Container Module to create a copy of it.

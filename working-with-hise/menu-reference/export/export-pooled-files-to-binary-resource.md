@@ -1,0 +1,1 @@
+Will collect all pooled Audio-, Image-, MIDI files and SampleMaps and save them as .dat files in a newly created **PooledResources** folder in your project.

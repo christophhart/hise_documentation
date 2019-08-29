@@ -1,0 +1,126 @@
+---
+keywords: Scripting in HISE
+summary:  An introduction to scripting in HISE.
+index: 01
+---
+
+## Basics
+
+
+### Create Script References
+
+One crucial paradigm in **HISE** is that you have to create a **script reference** to [HISE Modules](/hise-modules) and [UI Components](/ui-components) before you can manipulate them with scripting. The best place to declare this references is the [Script Processors](/hise-modules/midi-processors/list/scriptprocessor) `onInit`-Tab.
+
+After you have referenced the element you can access its attributes/parameters,properties and [API methods](/scripting/scripting-api) and change the values with script logic.  
+
+### Module References
+
+![sinewave-topbar](images/custom/sinewave-topbar.png)
+
+```javascript
+// A script reference to a SineWaveGenerator Module 
+const var SineWaveGenerator1 = Synth.getChildSynth("Sine Wave Generator1");
+```
+
+The quickest way to create a script reference to a Module is to take a built-in shortcut. When you **right-click** on the header-bar of a Module in the Main-Workspace, a little context menu will pop up with the option: **Create generic script reference**. 
+  
+This will copy a [`const var`](/scripting/scripting-in-hise/additions-in-hise#const-variables) script variable definition of the Module to your clipboard. You can now directly paste this reference to your `onInit`-script and compile the script with **[F5]**. The Module is now accessible with this variable.
+
+> Take notice that the Module is identified by its **Processor ID** name and that the variable automatically adopts this naming. 
+
+Now that we have created a reference to the Module we can access all its methods and attributes/parameters directly via script. 
+
+Start to type `SineW...` in the `onInit`-script and hit **[Escape]**. Select the full variable-name `SineWaveGenerator1` with the **[Down Arrow]** and **[Enter]** or click. When you now append a `.`(dot) and hit **[Escape]** again, you'll see a list of all available API methods and attributes/parameters of the Module in the [Autocomplete Popup](/working-with-hise/workspaces/scripting-workspace/code-editor#autocomplete-popup-[esc]).
+
+Let's try out the `getAttribute()` and `setAttribute()` methods to get a grip of the parameters of the Module. The parameter is accessed with the reference variable + `.` followed by the parameters name. 
+
+```javascript
+// Get and print the current SaturationAmount
+Console.print("Saturation Amount: " + SineWaveGenerator1.getAttribute(SineWaveGenerator1.SaturationAmount));
+
+// Set the SaturationAmount of the SineWaveGenerator to 17%
+SineWaveGenerator1.setAttribute(SineWaveGenerator1.SaturationAmount, 0.17);
+```
+
+In this way you can get and set the attributes/parameters of every Module. You can take a look at the parameters of each Module in the [HISE Modules](/hise-modules) chapter. 
+
+### UIComponent References
+
+![knob1](images/custom/knob1.png)
+
+```javascript
+// A script reference to a Slider UI Component
+const var Knob1 = Content.getComponent("Knob1");
+```
+
+Referencing UI Components works in the same way as with Modules. Select a newly created UI Component in the Interface Designers [Canvas](/working-with-hise/workspaces/scripting-workspace/canvas#canvas) in **edit mode** or in the [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list) and **right-click** on it. Select **create script reference for selection** and paste the code in your `onInit` script.  
+
+> In a bigger project, you will most likely want to use multiple references. If you select many components and create a **script reference** it will store them in an [Array](/scripting/scripting-api/array) that you can iterate over.
+
+Now you can directly `set()` and `get()` the properties of the component in your script, which will show up in the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor) as "Overwritten by script". 
+
+```javascript
+// set and get a UI Components property
+Knob1.set("text", "Saturation");
+Console.print("text property: " + Knob1.get("text"));
+```
+
+The `getValue()` method will return the current "value" of the UIComponent. It depends on the kind of component which value it returns. Have a look at the [UI Components](/ui-components) section for more details.
+
+> E.g: a 0-1 value range for Sliders, boolean 0/1 for Buttons, Array-indexes for each ComboBox item, an Array for the SliderPack and a 0-127 range for a Table.
+
+```javascript
+// Prints the current value of the UI Component to the Console
+Console.print(Knob1.getValue());
+```
+
+### Create Custom-onControl-Callbacks
+
+While the above scripts are evaluated only once on initialising the `onInit` **[F5]**, we may want to use the live values of the UI Components to interact with our plugin/instrument. This is the task of an **onControl Callback**.
+
+It "fires" every time a UI Components value changes on the interface.
+
+**Right-click** on an UI Component and select **Create custom callback for selection**. Now you can paste the autogenerated code into the `onInit` Tab. It automatically names the callback function after the Components ID and registers it as a ControlCallback.  
+
+```javascript
+// Turn the Slider to print its value to the Console
+inline function onKnob1Control(component, value)
+{
+	Console.print(value);
+};
+
+Content.getComponent("Knob1").setControlCallback(onKnob1Control);
+```
+
+A very common use case for this functionality would be to connect a Slider or Button to a HISE Modules attribute/parameter: 
+
+```javascript
+// Connect a Slider to the SineWaveGenerators SaturationAmount
+inline function onKnob1Control(component, value)
+{
+    SineWaveGenerator1.setAttribute(SineWaveGenerator1.SaturationAmount, value);
+};
+
+Content.getComponent("Knob1").setControlCallback(onKnob1Control);
+```
+But because this behaviour is needed very frequently, theres an extra shortcut for this connection. You can directly link a UI Components value to a Module attribute/parameter with the Components `processorId` and `parameterId` properties in the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor). 
+
+
+Nevertheless, the full power of the ControlCallback lies in its scripting flexibility to customize your instruments behaviour regarding incoming values:
+
+```javascript
+inline function onKnob1Control(component, value)
+{
+    if (value < 0.5) {
+        Console.print("Value smaller than 0.5: " + value);
+    }
+    else if (value == 1){
+        Console.print("Ditz!" + value + "!!");
+    }
+    else {
+        Console.print("Value bigger than 0.5: " + value);
+    }
+};
+
+Content.getComponent("Knob1").setControlCallback(onKnob1Control);
+```
