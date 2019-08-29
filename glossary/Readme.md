@@ -1,7 +1,7 @@
 ---
 keywords: Glossary
 summary:  A collection of useful articles
-index: 06
+index: 07
 weight: 50
 ---
 

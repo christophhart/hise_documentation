@@ -1,3 +1,10 @@
+---
+keywords: Scriptnode Glossary
+summary:  A list of brief explanations of the most important concepts in scriptnode
+author:   Christoph Hart
+modified: 24.06.2019
+---
+
 # Scriptnode Glossary
 
 There are a few concepts in scriptnode which will be used throughout the interface and this documentation which are important to understand.
