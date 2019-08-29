@@ -6,11 +6,11 @@ icon:     /images/icon_speaker
 
 A sound generator is a HISE module that takes incoming MIDI data to generate audio signals.
 
-## Signal Path
 
-The sound generator renders polyphonic voices using the following graph:
 
-![SoundGenerators2](/images/custom/soundgenerators2.svg:1200px) 
+![SoundGenerators2](/images/custom/soundgenerators2.svg:1200px)
+
+> Notice the signal path: MIDI > Pitch Modulation > Polyphonic voices > Gain Modulation > FX. 
 
 ## Common parameters
 

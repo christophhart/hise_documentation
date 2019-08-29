@@ -27,9 +27,9 @@ Every Module has a topbar with at least four controls:
 
 Behind the scenes (in the module `.xml`-tree) every **HISE Module** is called Processor. Each modules has its specific "Type=" attribute, that declares what it "is" and a unique **Processor ID** that identifies the individual module. A [script reference](/scripting/scripting-in-hise#module-references) to a module needs a consistent **Processor ID** to point to, so be careful to change the **Processor ID** later on, because it will probably break your references.  
 
-A **right click** on the topbar opens a dialog in which you can copy the Modules `.xml` to the clipboard. You can paste it into a ParentProcessor to create a duplicate of it.
+A **right click** on the topbar of a module opens a dialog in which you can copy the modules `.xml` to the clipboard. You can paste it into a ParentProcessor to create a duplicate of it.
 
-There's also the option to ["create a script reference"](/scripting/scripting-in-hise#module-references) to the Module. Paste this into a ScriptProcessors `onInit` Callback to change its attributes with scripting. 
+In the dialog you'll also find an option to ["create a script reference"](/scripting/scripting-in-hise#module-references) to the module. Paste it into a ScriptProcessors `onInit` callback to access the modules attributes with scripting. 
 
 
 ### HISE module reference types

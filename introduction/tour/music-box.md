@@ -7,9 +7,9 @@ modified: 19.03.2019
 ---
 
 
-### Still under construcion: Rework of the Music Box
+### Still under construcion: Rework of the Music Box Tutorial
 
-- **features:**
+- **Outline: Vsti with:** 
   - 4 switchable Samplemaps
   - Filmstrip Interface
   - Panel Navigation
