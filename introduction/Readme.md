@@ -29,7 +29,7 @@ index: 01
 ## Licensing
 - **HISE** is published under the [GPLv3](http://www.gnu.org/licenses/gpl-3.0) open source licence. That means, that every compiled (&derived) plugin or VSTi that was built with **HISE** has to be published and open-sourced under the GPLv3 License, too.
 
-- In case that you want to release a closed source product you have to aquire a **Commercial HISE License**. Please get in touch with us via [email](http://hise.audio).
+- In case that you want to release a closed source product you have to aquire a **HISE License**. Please get in touch with us via [email](http://hise.audio).
   
 - Attention: **HISE** is based on the [JUCE](http://www.juce.com) library which has to be licensed separately for commercial applications: [https://shop.juce.com/get-juce](https://shop.juce.com/get-juce). 
   

@@ -9,12 +9,12 @@ icon:     /images/icon_book
 
 This is the reference for the **HISE** menu toolbar.
  
-* [File](/working-with-hise/menu-reference/file) 
-* [Edit](/working-with-hise/menu-reference/edit) 
-* [Export](/working-with-hise/menu-reference/export) 
-* [Tools](/working-with-hise/menu-reference/tools) 
-* [View](/working-with-hise/menu-reference/view)
-* [Help](/working-with-hise/menu-reference/help)
+- [File](/working-with-hise/menu-reference/file) 
+- [Edit](/working-with-hise/menu-reference/edit) 
+- [Export](/working-with-hise/menu-reference/export) 
+- [Tools](/working-with-hise/menu-reference/tools) 
+- [View](/working-with-hise/menu-reference/view)
+- [Help](/working-with-hise/menu-reference/help)
 
 
 

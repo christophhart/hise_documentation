@@ -16,51 +16,51 @@ These folders are categorized according to their filetype and usage:
 
 ![image folderstructure](images/custom/folder.png)
 
-- [AdditionalSourceCode](/working-with-hise/project-management/projects-folders/additional-source-code)
+[AdditionalSourceCode](/working-with-hise/project-management/projects-folders/additional-source-code)
   
-The place for additional C++ files that are used in connection with the [C++ API](c++_api).
+The place for additional C++ files that are used in connection with the [C++ API](/cpp_api).
 
-- [AudioFiles](/working-with-hise/project-management/projects-folders/audio-files)
+[AudioFiles](/working-with-hise/project-management/projects-folders/audio-files)
 
 Contains single audio-files that can be used in the [Audio Loop Player](/hise-modules/sound-generators/list/audiolooper) or the [Convolution Reverb](/hise-modules/effects/list/convolution).
 
-- [Binaries](/working-with-hise/project-management/projects-folders/binaries)
+[Binaries](/working-with-hise/project-management/projects-folders/binaries)
 
 Contains the `Source` and `temp` folders that are necessary to compile your instrument. After compilation your exported plugins will show up here in a `Compiled`-Folder
 
-- [Images](/working-with-hise/project-management/projects-folders/images)
+[Images](/working-with-hise/project-management/projects-folders/images)
 
 A folder that can contain image files and filmstrips for usage in the interface designer as well as a few predefined hooks (e.g. splashscreen and fonts). Per scripting accessible via `"{PROJECT_FOLDER}image.png"`.
 
-- [MetaData](/working-with-hise/project-management/projects-folders/meta-data)
+[MetaData](/working-with-hise/project-management/projects-folders/meta-data)
 
 The Metadata files () in the projects root folder. 
 
-- [MidiFiles](/working-with-hise/project-management/projects-folders/midi-files)
+[MidiFiles](/working-with-hise/project-management/projects-folders/midi-files)
 
 A folder for MIDI files used in the [Midiplayer](/hise-modules/midi-processors/list/midiplayer)
 
-- [Presets](/working-with-hise/project-management/projects-folders/presets)
+[Presets](/working-with-hise/project-management/projects-folders/presets)
 
 Contains the **HISE Preset files** (`.hip`), which are the save-files of your Projects plugin architecture. The auto-save files will also show up here.
 
-- [SampleMaps](/working-with-hise/project-management/projects-folders/sample-maps)
+[SampleMaps](/working-with-hise/project-management/projects-folders/sample-maps)
 
 When you mapped samples in the [Sampler](/hise-modules/sound-generators/list/streamingsampler) this folder will hold the `SampleMap.xml`'s that point to your samples.
 
-- [Samples](/working-with-hise/project-management/projects-folders/samples)
+[Samples](/working-with-hise/project-management/projects-folders/samples)
 
 The folder for your samples and the compressed `.ch1`-monolith files.
 
-- [Scripts](/working-with-hise/project-management/projects-folders/scripts)
+[Scripts](/working-with-hise/project-management/projects-folders/scripts)
 
 If you create an interface for your instrument this folder will hold the main `interface.js`-file + all the scripts that you need for building the GUI and user-interactions of your instrument.
 
-- [UserPresets](/working-with-hise/project-management/projects-folders/user-presets)
+[UserPresets](/working-with-hise/project-management/projects-folders/user-presets)
 
 The folder for the User-`.presets` that can save different states of your instruments GUI. You can easily organize these with the [Presetbrowser](/ui-components/floating-tiles/plugin/presetbrowser)-FloatingTile.
 
-- [XmlPresetBackups](/working-with-hise/project-management/projects-folders/xml-preset-backups)
+[XmlPresetBackups](/working-with-hise/project-management/projects-folders/xml-preset-backups)
 
 The folder for your **HISE presets** human readable `.xml` savefiles. 
 
