@@ -4,7 +4,10 @@ summary:  A ComboBox to select different items from an indexed `items` list
 author:   Christoph Hart
 modified: 18.03.2019
 properties:
-- items: Put in a list with the values that you want to select. Seperated by a newline.
+- items: Put in a list with the values that you want to select. Seperate the values with a newline.
+- fontName: Select a font of your system fonts. 
+- fontSize: Set the font size
+- fontStyle: Set the font style
 ---
 
 

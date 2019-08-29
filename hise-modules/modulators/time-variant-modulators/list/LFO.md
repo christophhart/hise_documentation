@@ -12,5 +12,8 @@ parameters:
 - TempoSync: Syncs the LFO to the Main Tempo
 - SmoothingTime: Smooth the LFO 
 - NumSteps:
-- LoopEnabled: 
+- LoopEnabled:
+- PhaseOffset: Offsets the phase of the oscillator. @ 0% down from 1 (top of sinus-hill), 25% down from 0.5, 50% up from 0, 75% up from 0.5 .  
+chains:
+- LFO Intensity Mod: Modulates the intensity of the LFO. 
 ---
