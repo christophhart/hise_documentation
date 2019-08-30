@@ -20,7 +20,7 @@ If you have setup your system for developing in HISE, you will have a compiler a
 
 If you have spent some time with scriptnode, you might have realized that certain graphs have an ridiculously high CPU usage. This is especially true for graphs that utilize single-sample processing since it will cause the graph to be calculated for each sample. Combine this with 16x oversampling, and the most simple graph will burn even modern CPUs. While this is a no-go for any other development platforms, we can lean back and trust the compiler to produce a reasonably fast product at the end.
 
-However, if you're hitting CPU levels which are too high even for development (or if you have finished the work on a certain sub-graph and want to check how it will perform in the end), you can always take that scriptnode graph, export it as Cpp, recompile HISE and then use the Cpp version (you can even jump back to the interpreted version with a single click to make adjustments and recompile the graph for an iterative workflow style).  
+However if you're hitting CPU levels which are too high even during development (or if you have finished the work on a certain sub-graph and want to check how it will perform in the end), you can always take that scriptnode graph, export it as Cpp, recompile HISE and then use the Cpp version (you can even jump back to the interpreted version with a single click to make adjustments and recompile the graph for an iterative workflow style).  
 However, HISE in it's default state has this feature disabled (otherwise you would not be able to compile it). There are two things that you have to do:
 
 ### Setup the folder
@@ -33,7 +33,7 @@ Point HISE to the folder where you want your custom nodes to be stored in. This 
 
 Open the projucer file of HISE (either the standalone or the plugin project), change the compile flag `HI_ENABLE_CUSTOM_NODE_LOCATION` in the `hi_modules` module and recompile HISE:
 
-![projucer_flag.png](/Volumes/Shared/Development/hise_documentation/images/custom/scriptnode/projucer_flag.png)
+![projucer_flag.png](../../images/custom/scriptnode/projucer_flag.png)
 
 ### Export nodes
 
@@ -80,7 +80,7 @@ using Example = Example_impl::instance;
 
 ```
 
-As you can see, it moves the implementation into a private namespace called `Class_impl`, and then uses a alias to refer to the implementation in the `custom` namespace (so it's accessible as `custom::Example` from other nodes).
+As you can see, it moves the implementation into a private namespace called `Class_impl`, and then uses a alias to refer to the implementation in the `custom` namespace (so it's accessible as `custom::Example` from other nodes). The reason is that it keeps the "original" namespace clean from all the internal declarations of signal chains, which might conflict with each other.
 
 Now this looks pretty boring, but it's important to understand the structure. Everything else will either be declared as compile-time expression (the signal path) or in the constructor (the default initialisation values and parameter callbacks).
 
