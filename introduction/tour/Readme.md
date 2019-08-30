@@ -84,7 +84,7 @@ which set a value directly when a key is pressed and a voice is started. (see: [
 
 whose signals vary over time and can influence the voice dynamically. ([LFO](/hise-modules/modulators/time-variant-modulators/list/lfo))
 
-[Envelope Modulators](/hise-modules/modulators/list)(polyphonic):
+[Envelope Modulators](/hise-modules/modulators/envelopes)(polyphonic):
 
 who follow a defineable envelope to shape the tone of the voices. ([AHDSR](/hise-modules/modulators/list/ahdsr))
 

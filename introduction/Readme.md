@@ -23,7 +23,7 @@ index: 01
 
 - Build upon the **HISE** architecture, include external libraries and get the most out of the Engine with C++. See: [C++ API](/cpp_api/raw)
 
-- [Export and Compile](/working-with-hise/project-management/export) your **HISE** instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. 
+- [Export and Compile](/glossary/export) your **HISE** instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. 
 
 
 ## Licensing
