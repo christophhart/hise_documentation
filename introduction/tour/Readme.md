@@ -86,7 +86,7 @@ whose signals vary over time and can influence the voice dynamically. ([LFO](/hi
 
 [Envelope Modulators](/hise-modules/modulators/envelopes)(polyphonic):
 
-who follow a defineable envelope to shape the tone of the voices. ([AHDSR](/hise-modules/modulators/list/ahdsr))
+who follow a defineable envelope to shape the tone of the voices. ([AHDSR](/hise-modules/modulators/envelopes/list/ahdsr))
 
 >In a few of the TimeVariant and Envelope-Modulators you'll even find slots for modulating the Modulations, which creates the possibility for some quite complex modulation arrangements. Also make sure that you try out the power of these modulators on some of the Effects in the FX section. 
 
