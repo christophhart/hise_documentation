@@ -8,7 +8,7 @@ This module can be used to create a fully customizable **constant modulation val
 
 ## Callbacks
 
-There are 5 callbacks for this processor, you probably recognize the [`onInit`](/hise-modules/midi-processors/list/script-processor#oninit), `onController` and `onControl` callbacks from the MIDI script processor - they do exactly the same. However there are two special callbacks that make this module useful:
+There are 5 callbacks for this processor, you probably recognize the [`onInit`](/hise-modules/midi-processors/list/scriptprocessor#the-oninit-callback), `onController` and `onControl` callbacks from the MIDI script processor - they do exactly the same. However there are two special callbacks that make this module useful:
 
 ## onVoiceStart
 

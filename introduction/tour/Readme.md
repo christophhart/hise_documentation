@@ -53,7 +53,7 @@ The MidiProcessor Chain processes MIDI input before the actual sound generation.
 
 **Gain**
 
-Via the GainModulation Chain you can modulate the volume of the sounds after the sound generation. You can see that it already contains a [Simple Envelope](/hise-modules/modulators/list/simpleenvelope)-Modulator by default (as indicated by the little **1**) to remove the start and end clicks of a raw synthesized soundwave.
+Via the GainModulation Chain you can modulate the volume of the sounds after the sound generation. You can see that it already contains a [Simple Envelope](/hise-modules/modulators/envelopes/list/simpleenvelope)-Modulator by default (as indicated by the little **1**) to remove the start and end clicks of a raw synthesized soundwave.
 
 **Pitch**
 

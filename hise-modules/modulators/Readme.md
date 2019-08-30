@@ -10,4 +10,4 @@ Modulators generate modulation signals to modulate the control parameters of Gai
 
 - [Time Variant Modulators](/hise-modules/modulators/time-variant-modulators)
 
-- [Envelope Modulators](/hise-modules/modulators/list)
+- [Envelope Modulators](/hise-modules/modulators/envelopes)

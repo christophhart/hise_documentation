@@ -21,7 +21,7 @@ index: 01
 
 - Connect & control the interactions with your virtual instrument via the powerful **HISE Scripting Language** (based upon javascript) in an IDE-like environment. See: [Scripting](/scripting) 
 
-- Build upon the **HISE** architecture, include external libraries and get the most out of the Engine with C++. See: [Hraw](/hraw)
+- Build upon the **HISE** architecture, include external libraries and get the most out of the Engine with C++. See: [C++ API](/cpp_api/raw)
 
 - [Export and Compile](/working-with-hise/project-management/export) your **HISE** instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. 
 

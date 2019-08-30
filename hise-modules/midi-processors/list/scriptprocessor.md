@@ -101,7 +101,7 @@ function onControl(number, value)
 }
 ```
 
-If you don't want to separate the UI-logic from other parts of your scripting (e.g in support of a more modular approach) consider using [Custom Callbacks](scripting.html#Create-Custom-Callback-for-Selection).
+If you don't want to separate the UI-logic from other parts of your scripting (e.g in support of a more modular approach) consider using [Custom Callbacks](/scripting/scripting-in-hise#create-custom-oncontrol-callbacks).
 
 
 ## Audio thread and Deferred callbacks
