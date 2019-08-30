@@ -18,7 +18,7 @@ The discussion about the tutorials can be found [here](http://forum.hise.audio/t
 The tutorial goes through the process of building HISE from the source code that can be found on the [GitHub repository](https://github.com/christophhart/HISE).  
 This is for Windows users only, but OSX chaps may adapt this pretty easily.
 
-$[Play video in Browser](http://www.youtube.com/watch?v=0TtezP8lp24)
+[Play video in Browser](http://www.youtube.com/watch?v=0TtezP8lp24)
 
 Building HISE from the source code yields two advantages:
 
@@ -32,7 +32,7 @@ Building HISE from the source code yields two advantages:
 It covers the project management system of HISE. Basically you put everything into one folder and HISE uses subfolders for each file type.
 David does a great job explaining all those subfolders and file types.
 
-$[Play video in browser](http://www.youtube.com/watch?v=MuoNFp2dAEc)
+[Play video in browser](http://www.youtube.com/watch?v=MuoNFp2dAEc)
 
 ## Tutorial 3: Using Multiple Dynamic Layers
 
@@ -40,7 +40,7 @@ $[Play video in browser](http://www.youtube.com/watch?v=MuoNFp2dAEc)
 
 This tutorials covers the handling of morphing between dynamic crossfade layers (but it also shows how to load samples into HISE and use basic modulators).
 
-$[Play video in browser](http://www.youtube.com/watch?v=0cn1l8231n4)
+[Play video in browser](http://www.youtube.com/watch?v=0cn1l8231n4)
 
 # HISE 2.0
 
@@ -49,7 +49,7 @@ $[Play video in browser](http://www.youtube.com/watch?v=0cn1l8231n4)
 
 ![IMAGE ALT TEXT](http://img.youtube.com/vi/JVga_eDvTP8/0.jpg)
 
-$[Play video in browser](https://www.youtube.com/watch?v=JVga_eDvTP8)
+[Play video in browser](https://www.youtube.com/watch?v=JVga_eDvTP8)
 
 
 
@@ -57,7 +57,7 @@ $[Play video in browser](https://www.youtube.com/watch?v=JVga_eDvTP8)
 
 ![IMAGE ALT TEXT](http://img.youtube.com/vi/r65crWRb3vc/0.jpg)
 
-$[Play video in browser](https://www.youtube.com/watch?v=r65crWRb3vc)
+[Play video in browser](https://www.youtube.com/watch?v=r65crWRb3vc)
 
 
 
@@ -65,7 +65,7 @@ $[Play video in browser](https://www.youtube.com/watch?v=r65crWRb3vc)
 
 ![IMAGE ALT TEXT](http://img.youtube.com/vi/V4wHbkz5HVc/0.jpg)
 
-$[Play video in browser](https://www.youtube.com/watch?v=V4wHbkz5HVc)
+[Play video in browser](https://www.youtube.com/watch?v=V4wHbkz5HVc)
 
 
 ## Interface Designer: Editing properties with JSON
@@ -73,5 +73,5 @@ $[Play video in browser](https://www.youtube.com/watch?v=V4wHbkz5HVc)
 
 ![IMAGE ALT TEXT](http://img.youtube.com/vi/hfcIuvJZMyE/0.jpg)
 
-$[Play video in browser](https://www.youtube.com/watch?v=hfcIuvJZMyE)
+[Play video in browser](https://www.youtube.com/watch?v=hfcIuvJZMyE)
 
