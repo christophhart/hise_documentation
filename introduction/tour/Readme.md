@@ -36,7 +36,7 @@ Click the little plus icon to create a new [Sound Generator](/hise-modules/sound
 
 You will notice that the Sine Wave Generator features nearly the same top-bar as the Master Chain with its mostly self-explanatory controls:
 
-**Minimize** **Colorpicker** [processor ID]() **Mute** **Meter** [Routing Matrix]() **Gain** **Pan** and **Delete** 
+**Minimize** **Colorpicker** **processor ID** **Mute** **Meter** **Routing Matrix** **Gain** **Pan** and **Delete** 
 
 ![Sine](/images/custom/gen-sinewave.png)
 
@@ -158,7 +158,7 @@ If you toggle back to **presentation mode** **[F4]** the interface will lock dow
 
 On the left hand side of the Interface Designer you can see an overview of your added UI Components in the [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list). 
 
-You can drag the Components to change the z-order of the components from the top (background) to the bottom (front). The green and red dots indicate if an UI Components state is going to be saved in a [User Presets](/glossary/user-presets) via the `saveInPreset` property. 
+You can drag the Components to change the z-order of the components from the top (background) to the bottom (front). The green and red dots indicate if an UI Components state is going to be saved in a [User Presets](/working-with-hise/project-management/user-presets) via the `saveInPreset` property. 
 
 A neat way to group several elements together is to drag them into a shared [Panel](/ui-components/plugin-components/panel) Component. This makes it easy to structure complex projects as well as to implement page-like UI-designs. You can open a JSON representation of the UIComponents properties when you press the [j]-Key with a selected element. You can then edit these values on the fly and accept the changes with [F5].
 

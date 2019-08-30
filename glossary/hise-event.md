@@ -6,7 +6,9 @@ author: Christoph Hart
 ---
 
 
-### Todo overview HISE events, what is it?
+
+[HISE Event](/cpp_api/hise/classhise_1_1_hise_event) in the C++ API.
+
 
 ### Artificial Events
 
