@@ -63,7 +63,7 @@ BTW: There you'll also find the Audio & MIDI Settings to adjust and connect your
 
 ## Compile the latest HISE
 
-A nice side effect of having installed these tools is that you are now able to compile **HISE** yourself! In this way you can work with the bleeding edge [master](https://github.com/christophhart/HISE/tree/master) or [development branch](https://github.com/christophhart/HISE/tree/develop) and don't have to wait for upcoming stable build releases. Simply grab the latest version via download or cloning and proceed with the next steps.  
+A nice side effect of having installed these tools is that you are now able to compile **HISE** yourself! In this way you can work with the bleeding edge [master](https://github.com/christophhart/HISE/tree/master) or [development branch](https://github.com/christophhart/HISE/tree/develop) (right now everyone is on [scriptnode](https://github.com/christophhart/HISE/tree/scriptnode) ) and don't have to wait for upcoming stable build releases. Simply grab the latest version via download or cloning and proceed with the next steps.  
 
 **HISE** ships with an adapted version of the [JUCE Projucer](https://juce.com/discover/projucer) that can be found @ `HISE/tools/projucer/Projucer`. The Projucer is a practical application that allows you to deploy **HISE** on different platforms in conjunction with your preferred IDE.
 
