@@ -1,5 +1,5 @@
 ---
-keywords: Documentation, Markdown
+keywords: Documentation
 summary:  Create documentations for your projects and or contribute to the HISE docs.
 author:   Christoph Hart
 modified: 18.09.2019
