@@ -6,11 +6,27 @@ icon:     /images/icon_speaker
 
 A sound generator is a HISE module that takes incoming MIDI data to generate audio signals.
 
+## Signal Path
 
+The sound generator renders polyphonic voices using the following graph:
 
-![SoundGenerators2](/images/custom/soundgenerators2.svg:1200px)
+![SoundGenerators2](/images/custom/soundgenerators2.svg:1200px) 
 
-> Notice the signal path: MIDI > Pitch Modulation > Polyphonic voices > Gain Modulation > FX. 
+It starts with the MIDI processing which takes the incoming MIDI messages and starts / stops the voices. 
+The next step is the rendering of all monophonic pitch modulators: this signal will be merged with the polyphonic pitch modulation signal, but only needs to be calculated once.  
+Now we iterate over each active voice and render its output - actually it will calculate the polyphonic pitch modulation first, then render the voice output using the pitch modulation data and apply the polyphonic gain modulation plus the polyphonic effects for each voice.
+
+At the end, the monophonic gain modulation will be applied to the voices, then the monophonic effects will be processed on the entire output. The output then will be **added** to the existing signal (so that you can stack up multiple sound generators).
+
+## Multichannel Routing
+
+There are multiple use cases in the instrument design where you would want to have a multichannel routing:
+
+- multimic samples
+- AUX sends
+- parallel FX processing
+
+A sound generator in HISE can process multiple channels (if applicable, a sine wave generator doesn't need to calculate the signal for every channel obviously).
 
 ## Common parameters
 

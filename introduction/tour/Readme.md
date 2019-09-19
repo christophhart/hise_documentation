@@ -173,13 +173,13 @@ The main task of these tabs is to comfortly map your samples into SampleMaps, ed
 
 General Workflow:
 
-1. Put all the samples that you want to map into your Projects [Samples](/working-with-hise/project-management/projects-folders/samples)-Folder
-2. Drag the samples from the [Filebrowser](/ui-components/floating-tiles/hise/filebrowser) into the [Sample Map Editor](/working-with-hise/workspaces/sampler-workspace/sample-map-editor) and choose one of three options to map them: 
-   1. [Drop Point](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#drop-point), which places the samples where you drag them. 
-   2. [Pitch Detection](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#pitch-detection), which automatically tries to detect the pitch of the samples.
-   3. [Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser), which reads the filename of your samples and maps them according to your requirements.
-3. Edit and finetune your samples with the [Sample Editor](/working-with-hise/workspaces/sampler-workspace/sample-editor) and the [Sampler Settings](/working-with-hise/workspaces/sampler-workspace/sample-settings). 
-4. When you are happy with the map, save it. It'll appear in the SampleMap folder. You can now access SampleMaps with scripting[link] and play them with your instrument. 
-5. If you are sure that you won't change the samples anymore you can compress them into the lossless **HLAC Monolith file-format** `.ch1` (per SampleMap). This speeds up streaming-performance and reduces file-size.
-6. In the final step, these Monolith files can be collected and exported together as **HISE Resource Archive File** `.hr1 ` via **Export > Export Samples for Installer** to distribute the samples alongside your instrument. 
+- Put all the samples that you want to map into your Projects [Samples](/working-with-hise/project-management/projects-folders/samples)-Folder
+- Drag the samples from the [Filebrowser](/ui-components/floating-tiles/hise/filebrowser) into the [Sample Map Editor](/working-with-hise/workspaces/sampler-workspace/sample-map-editor) and choose one of three options to map them: 
+   - [Drop Point](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#drop-point), which places the samples where you drag them. 
+   - [Pitch Detection](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#pitch-detection), which automatically tries to detect the pitch of the samples.
+   - [Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser), which reads the filename of your samples and maps them according to your requirements.
+- Edit and finetune your samples with the [Sample Editor](/working-with-hise/workspaces/sampler-workspace/sample-editor) and the [Sampler Settings](/working-with-hise/workspaces/sampler-workspace/sample-settings). 
+- When you are happy with the map, save it. It'll appear in the SampleMap folder. You can now access SampleMaps with scripting[link] and play them with your instrument. 
+- If you are sure that you won't change the samples anymore you can compress them into the lossless **HLAC Monolith file-format** `.ch1` (per SampleMap). This speeds up streaming-performance and reduces file-size.
+- In the final step, these Monolith files can be collected and exported together as **HISE Resource Archive File** `.hr1 ` via **Export > Export Samples for Installer** to distribute the samples alongside your instrument. 
 
