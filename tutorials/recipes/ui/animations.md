@@ -1,0 +1,76 @@
+---
+keywords: Animations in HISE
+summary:  Use Lottie Animation files to display animated vectors in HISE
+author:   Christoph Hart
+modified: 12.10.2019
+---
+  
+If you want to display animated vector graphics on your interface, you can do so now by loading Lottie Animation files into a ScriptPanel.
+
+## Looped Animation
+
+Below you can see the hello world, a simple animation that will loop using the timer callback.
+
+```!!javascript
+Content.setHeight(200);
+
+const var p = Content.addPanel("panel", 0, 0);
+p.set("width", 300);
+p.set("height", 200);
+
+// This loads an animation. The string is a processed JSON file
+// that was compressed with the Lottie Dev Panel.
+p.setAnimation("2431.nT6K8CVP5z5R.nYQvsfIP7FkNXfcbj1U7O0HpZ0ec3FT+fqP+.O.VgDxxHStiI.QUUUUMvXt.TK.jBvuzc4UtPcucQdMTmI9Hy8JQuqU+zuX2vg4lS6Z0qZks2u5T7JgnErhog3EyFN4jSCENKLJPHIxDJIZZnTYWjFZWqgZTuFXxliglPuPFgRjSFLEGIQzH4Xn0Tbl.YoQg4XnyBjFIvZTl3fjo3fgIGCoPZzrfAEGoDNMNYnASwQxjEIRTNFJMEGGbvgigNrw7HBiaogAGSw4ADHNFJ60TbrvwPqjibLDyz3XnTYJNMObLzwQE6io3HwICoMlJ2PIUeVlz.hHr4DlHQkKClyhINOZh7fDHJMOnURQHwUbxbxzLwNiQCHXTZNfilNsPQuJkq+8WoNCGOXm0rLwQCCHwVnPyhBzGOdrte9o7yujqqdpGW6ookS7aky7B8mUK2L1ZqveWocYOkV3qJO8bas+bkZqRFx4U4Uk3P4AGffoBQZNfclCrlHSXr.Aq.Bf.A.xiigNpAwDkIVpPyDF9RUlyFWMgp9axthqlSMptegItwfuZb20t51uZWcZHkpTu6ehIkg1F0UwmSpzBy6t2W7Mjg51PFxY0Uqdg74Ni8qvURU3dF5tOQ2PpVSKkRhGu6x6t6bCYHCYH0pJ1ntXj0TBWCsbL4N+31XuXgHNLPxghDKX4jJSk+z2pu82a1VjvzvgiBvJ0wwRlTkwPFpUJ9sCFMMF.umhppP+Lz5wUqYB0UhIT0xpSXXLzIUIjGH7EVfAWovKD.fIVDQixCMydsfxMlpUQvCKMoEZmp+8e+Ok78Pc6I7WY86W8KFU6k7+pZa3oTs3dYLxjMkptVHudl5qdhY5aCIxDlPiF3I8TqNw5woK4nJs1000p7y2s6JknxmJwz9M+IdWxSquXE1qdspxtCKMP0I+qew452lS+4kmJ2U+m3ck2c2cmlLtx8UF2UBW2c2c2c24op2TyVyku9eyESvfrfprS7UEM...JZH.hDkghknKmzox6HJXHQo4nvXXHiBYX.HPfAF...BD..I..LgdIVeX6P.tISV2YPpGpMIObyzKIS1Uo6atGDwnoXMe3wU+dzIySjGoo4yeOTtDIJEOVs9ZmRKzR7xwrdbQNR7wOU8YuobmDhFeXFYsKrKAZ63Kz4FPT7PW07BinoACHaN1JR9MliXlPY0O0cfHjBow3bbewCKxnnRYMmvbB3aftqcbPvu.JLMKzkJj2d.HHfTlNblfEPoB3VdVPzBbnyDPqjRfVQn+Yf5Vm32f5PUkF0CNkWIo+R5yNCjsPCzo.Gax8nfrfsvgClZnrIQWeV65gFsJtzRIFFlcheJkFJ4TDO3jH0pEWlGcK5CUlAG.EP1lLKQE3s2lDL93RJZF.FUgqbAvseJLFUFnUoJY6lc7j..Djd7YQI+BMBVD7LQDdF0iVe8w.6YffxHfGk8KE5xRIHrfestGxUNVZ4kp1t5uLYzRBixAh0Rj5m0t+JxewNwJSTtmULpSnWZFtBtqW.tCkIma7Q7hICPzRrM4GKfYB6MrNwZXzAT6B7P6XJnYra3q1.iy1618SN7anG3KFzSZfWrvtrDcKK4V3fmK8VTlqXg0FtFaSpDU+ZMiIenUj6zZiwtgRLyhko8QCVMZwjo4TeK6oW3y33JXqgjBhE9Pkt5wi4uSQ0nGS9xo7CZN6QvXkjqMw1F.O1.Ccx0NCm5BZ+JEkbTcKUp4htPpHenLcgutvr6v2Jb2xJH8rI8+EhI.lC9DAPP4vI3GfafkoBqik.zOd.UsufcGSMfvB8rnShgsxnEgEZissyAIsUObzvfwhj1DjADH7FIj+F9F4YZLqFHv83PhAxbXSYojiDCnuwBfsU2qMm4MsokSZFzEn9QS.RM90hnZNS2zVoQgwKrzuvwPBpqem+J.DZ+R+ul2d1j+0K7pU4SwKcleTjE.SWcjXrjny.EkQQYsXAYZoxl2RlCgcX+4f1Ub+wU4cLOk2Xnk+V.hb.oAYEb9ThrgIjTETzwOdYw24LdnlVNxRyNi52CNfKs+MupXqOYDF.brnqgjdm6MXYphemRphB401Vp22wOc0DQydqzu6jXc0lsZQF+tq6I4KnX8kIvYEmYQpaoOxNkBViZuDviyQMqjbFPp0Jvfyg+JwgtaVVon1ptzc7NQNvnpCebtrLd7903Mw9AIHuVIB.5yHjIdEFiqKY5EGu7QHy2iD4HcjyR4yQs+evORAaK2ewX1VE2nfrvHfJhPa73DC7fsvFgs3M.d5wvLJRLLqMZJ0TeUUpzlQ6q9wrCWaR.MRbLuqOH6.ZA9X3WERAvZsKyCJZ8RI44RWacgvqpoT1IptuBuZtPcI5QEwYxtO.NYjcbMTNCpglkqlMuC65qwejdscuaPPewYHpzdrGwE+bOzkQrqC46VAXYUlyGQiAQ.vvtr3D2YctdPmM7iZeo9pcXHhkRfFJA8xYHlRrWjyMRg8hkpMuWsgPeDvKPa8je5u80pgf7ACNueNKLiTdGIJzxWP.fvjmOv51tvQre71otYzP1CUZWgkjAgN2c3QIbPDb7kiTWPvNyd4O8rp0sOoYRU1Y68PxcRFcbuRlsmF.ncz4kt3TrMowJMDVhhushSKVZZKSJRMZXHpG.ZJbzkrx.C.RR6ajfoU3Uvb2jSgF2vHe6fcIUHevzjB5BI7UZN9yJA+aSQL7yyy53GaAQnlYQpWje84PPbRaQSZJLwX0gNaItAuUeYx7znJOgn.QWOVZLMvXDTNz20Boyt5GPMUVLqHBSPwd4uFvwpYS7Z8wD9jnNobf..mPsymcCPFQTM3EWFHirJEZdsVqvfweIq5EavS9UzkSxse3ppCZpHgAzJXoLbqmHE34awmZTlxQnnEH2GlxpA4FF8Uzbs7TdZLmSk0HyP94ut7CdGT2PRGRiYY7aoww8eNqeDUrXAEZX3p2GvHyrgpIeGKI1Sbhe4r66p0kn71ok1LW8pJcoVyLhnose1BzF5GRYasrb9Abvk0miypkkrmZja3RRGb8cKFTUr1BfF9rwnrFZJtajKipCFVf4EJ7CrujgIh6kgLSlQ2KJc5GRu1Gq.CXirxLWVzfPykM0ueahqkFSGYkvC7B3.brKVt5.2tga7pUEmedPun7g0824bZcf5.9yp6ImiDBvfUyPMyFGGb.H3.rBzJa4XtdA5n+ymdWMRZpqwdZRdnC3iJTYgB+bwcSP4JqUqveOwe5p1PbseDu2GnQzcO.");
+
+// This object will contain the specs of the animation.
+// We'll use it to control the animation playback.
+const var object = p.getAnimationData();
+
+// Let's do a simple looped animation first
+p.setTimerCallback(function()
+{
+    // using modulo to wrap around the loop
+    var nextFrame = (object.currentFrame + 1) % object.numFrames;
+
+    this.setAnimationFrame(nextFrame);
+});
+
+// We need to convert the framerate from Hz to a millisecond interval for the timer:
+p.startTimer(1000.0 / object.frameRate);
+```
+
+## Interaction based animation
+
+We can also use these animation files to make an interactive animation. This example will react on mouse drags,
+which could be used to implement a slider or a knob.
+
+> Click on Run on the bottom left, then drag the animation and it will be updated as you drag.
+
+```!!javascript
+// Old stuff from the last example...
+Content.setHeight(200);
+const var p = Content.addPanel("panel", 0, 0);
+p.set("width", 300);
+p.set("height", 200);
+p.setAnimation("2431.nT6K8CVP5z5R.nYQvsfIP7FkNXfcbj1U7O0HpZ0ec3FT+fqP+.O.VgDxxHStiI.QUUUUMvXt.TK.jBvuzc4UtPcucQdMTmI9Hy8JQuqU+zuX2vg4lS6Z0qZks2u5T7JgnErhog3EyFN4jSCENKLJPHIxDJIZZnTYWjFZWqgZTuFXxliglPuPFgRjSFLEGIQzH4Xn0Tbl.YoQg4XnyBjFIvZTl3fjo3fgIGCoPZzrfAEGoDNMNYnASwQxjEIRTNFJMEGGbvgigNrw7HBiaogAGSw4ADHNFJ60TbrvwPqjibLDyz3XnTYJNMObLzwQE6io3HwICoMlJ2PIUeVlz.hHr4DlHQkKClyhINOZh7fDHJMOnURQHwUbxbxzLwNiQCHXTZNfilNsPQuJkq+8WoNCGOXm0rLwQCCHwVnPyhBzGOdrte9o7yujqqdpGW6ookS7aky7B8mUK2L1ZqveWocYOkV3qJO8bas+bkZqRFx4U4Uk3P4AGffoBQZNfclCrlHSXr.Aq.Bf.A.xiigNpAwDkIVpPyDF9RUlyFWMgp9axthqlSMptegItwfuZb20t51uZWcZHkpTu6ehIkg1F0UwmSpzBy6t2W7Mjg51PFxY0Uqdg74Ni8qvURU3dF5tOQ2PpVSKkRhGu6x6t6bCYHCYH0pJ1ntXj0TBWCsbL4N+31XuXgHNLPxghDKX4jJSk+z2pu82a1VjvzvgiBvJ0wwRlTkwPFpUJ9sCFMMF.umhppP+Lz5wUqYB0UhIT0xpSXXLzIUIjGH7EVfAWovKD.fIVDQixCMydsfxMlpUQvCKMoEZmp+8e+Ok78Pc6I7WY86W8KFU6k7+pZa3oTs3dYLxjMkptVHudl5qdhY5aCIxDlPiF3I8TqNw5woK4nJs1000p7y2s6JknxmJwz9M+IdWxSquXE1qdspxtCKMP0I+qew452lS+4kmJ2U+m3ck2c2cmlLtx8UF2UBW2c2c2c24op2TyVyku9eyESvfrfprS7UEM...JZH.hDkghknKmzox6HJXHQo4nvXXHiBYX.HPfAF...BD..I..LgdIVeX6P.tISV2YPpGpMIObyzKIS1Uo6atGDwnoXMe3wU+dzIySjGoo4yeOTtDIJEOVs9ZmRKzR7xwrdbQNR7wOU8YuobmDhFeXFYsKrKAZ63Kz4FPT7PW07BinoACHaN1JR9MliXlPY0O0cfHjBow3bbewCKxnnRYMmvbB3aftqcbPvu.JLMKzkJj2d.HHfTlNblfEPoB3VdVPzBbnyDPqjRfVQn+Yf5Vm32f5PUkF0CNkWIo+R5yNCjsPCzo.Gax8nfrfsvgClZnrIQWeV65gFsJtzRIFFlcheJkFJ4TDO3jH0pEWlGcK5CUlAG.EP1lLKQE3s2lDL93RJZF.FUgqbAvseJLFUFnUoJY6lc7j..Djd7YQI+BMBVD7LQDdF0iVe8w.6YffxHfGk8KE5xRIHrfestGxUNVZ4kp1t5uLYzRBixAh0Rj5m0t+JxewNwJSTtmULpSnWZFtBtqW.tCkIma7Q7hICPzRrM4GKfYB6MrNwZXzAT6B7P6XJnYra3q1.iy1618SN7anG3KFzSZfWrvtrDcKK4V3fmK8VTlqXg0FtFaSpDU+ZMiIenUj6zZiwtgRLyhko8QCVMZwjo4TeK6oW3y33JXqgjBhE9Pkt5wi4uSQ0nGS9xo7CZN6QvXkjqMw1F.O1.Ccx0NCm5BZ+JEkbTcKUp4htPpHenLcgutvr6v2Jb2xJH8rI8+EhI.lC9DAPP4vI3GfafkoBqik.zOd.UsufcGSMfvB8rnShgsxnEgEZissyAIsUObzvfwhj1DjADH7FIj+F9F4YZLqFHv83PhAxbXSYojiDCnuwBfsU2qMm4MsokSZFzEn9QS.RM90hnZNS2zVoQgwKrzuvwPBpqem+J.DZ+R+ul2d1j+0K7pU4SwKcleTjE.SWcjXrjny.EkQQYsXAYZoxl2RlCgcX+4f1Ub+wU4cLOk2Xnk+V.hb.oAYEb9ThrgIjTETzwOdYw24LdnlVNxRyNi52CNfKs+MupXqOYDF.brnqgjdm6MXYphemRphB401Vp22wOc0DQydqzu6jXc0lsZQF+tq6I4KnX8kIvYEmYQpaoOxNkBViZuDviyQMqjbFPp0Jvfyg+JwgtaVVon1ptzc7NQNvnpCebtrLd7903Mw9AIHuVIB.5yHjIdEFiqKY5EGu7QHy2iD4HcjyR4yQs+evORAaK2ewX1VE2nfrvHfJhPa73DC7fsvFgs3M.d5wvLJRLLqMZJ0TeUUpzlQ6q9wrCWaR.MRbLuqOH6.ZA9X3WERAvZsKyCJZ8RI44RWacgvqpoT1IptuBuZtPcI5QEwYxtO.NYjcbMTNCpglkqlMuC65qwejdscuaPPewYHpzdrGwE+bOzkQrqC46VAXYUlyGQiAQ.vvtr3D2YctdPmM7iZeo9pcXHhkRfFJA8xYHlRrWjyMRg8hkpMuWsgPeDvKPa8je5u80pgf7ACNueNKLiTdGIJzxWP.fvjmOv51tvQre71otYzP1CUZWgkjAgN2c3QIbPDb7kiTWPvNyd4O8rp0sOoYRU1Y68PxcRFcbuRlsmF.ncz4kt3TrMowJMDVhhushSKVZZKSJRMZXHpG.ZJbzkrx.C.RR6ajfoU3Uvb2jSgF2vHe6fcIUHevzjB5BI7UZN9yJA+aSQL7yyy53GaAQnlYQpWje84PPbRaQSZJLwX0gNaItAuUeYx7znJOgn.QWOVZLMvXDTNz20Boyt5GPMUVLqHBSPwd4uFvwpYS7Z8wD9jnNobf..mPsymcCPFQTM3EWFHirJEZdsVqvfweIq5EavS9UzkSxse3ppCZpHgAzJXoLbqmHE34awmZTlxQnnEH2GlxpA4FF8Uzbs7TdZLmSk0HyP94ut7CdGT2PRGRiYY7aoww8eNqeDUrXAEZX3p2GvHyrgpIeGKI1Sbhe4r66p0kn71ok1LW8pJcoVyLhnose1BzF5GRYasrb9Abvk0miypkkrmZja3RRGb8cKFTUr1BfF9rwnrFZJtajKipCFVf4EJ7CrujgIh6kgLSlQ2KJc5GRu1Gq.CXirxLWVzfPykM0ueahqkFSGYkvC7B3.brKVt5.2tga7pUEmedPun7g0824bZcf5.9yp6ImiDBvfUyPMyFGGb.H3.rBzJa4XtdA5n+ymdWMRZpqwdZRdnC3iJTYgB+bwcSP4JqUqveOwe5p1PbseDu2GnQzcO.");
+const var object = p.getAnimationData();
+
+// Now we want to react on mouse drags
+p.set("allowCallbacks", "Clicks, Hover & Dragging");
+
+// Just give it something as init value...
+p.setAnimationFrame(100);
+
+p.setMouseCallback(function(event)
+{
+    if(event.drag)
+    {
+        // We'll calculate the normalised drag position
+        var value = event.y / this.getHeight();
+        // now we set the animation frame
+        this.setAnimationFrame(value * object.numFrames);
+    }
+});
+```
+
+
