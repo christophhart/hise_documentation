@@ -128,7 +128,7 @@ laf.registerFunction("drawPopupMenuItem", function(g, obj)
 | `obj.text` | the button text. |
 | `obj.value` | the toggle state. |
 
-In addition to these properties, all the colour properties from the interface designer are available to:
+In addition to these properties, all the colour properties from the interface designer are available too:
 
 - `obj.bgColour`
 - `obj.itemColour1`
@@ -167,13 +167,14 @@ laf.registerFunction("drawToggleButton", function(g, obj)
 | `obj.active` | true if an item is selected |
 | `obj.enabled` | true if the combobox is enabled and contains items |
 
-In addition to these properties, all the colour properties from the interface designer are available to:
+In addition to these properties, all the colour properties from the interface designer are available too:
 
 - `obj.bgColour`
 - `obj.itemColour1`
 - `obj.itemColour2`
 - `obj.textColour`
 
+#### Example
 
 ```javascript
 s.registerFunction("drawComboBox", function(g, obj)
@@ -187,5 +188,234 @@ s.registerFunction("drawComboBox", function(g, obj)
     g.drawAlignedText(obj.text, [a[0] + 10, a[1], a[2]-10, a[3]], "left");
     var h = a[3];
     g.fillTriangle([a[0] + a[2] - h/3 - 10, a[1] + h/3, h/3, h/3], Math.PI);
+});
+```
+
+### `drawDialogButton`
+
+> How to draw the text-only buttons that appear on the dialogues and preset browser.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the button. |
+| `obj.over` | true if the mouse hovers over the button. |
+| `obj.down` | true if the mouse clicked on the button. |
+| `obj.text` | the button text. |
+| `obj.value` | the toggle state. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawDialogButton", function(g, obj)
+{
+    g.fillAll(0x22000000);
+    
+    if(obj.over)
+        g.fillAll(0x22000000);
+        
+    if(obj.down)
+        g.fillAll(0x22000000);
+       
+    g.setFont("Comic Sans MS", 18.0);
+        
+    g.setColour(Colours.white);
+    g.drawAlignedText(obj.text, obj.area, "centred");
+});
+```
+
+### `drawPresetBrowserBackground`
+
+> How to draw the background of the preset browser.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the button. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+```javascript
+laf.registerFunction("drawPresetBrowserBackground", function(g, obj)
+{
+    g.fillAll(obj.bgColour);
+});
+```
+
+### `drawPresetBrowserColumnBackground`
+
+> How to draw the background of a preset browser column.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the column relative to the entire preset browser. |
+| `obj.text` | the text that is being displayed if the column is empty (eg. "Add a Category"). |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+### `drawPresetBrowserListItem`
+
+> How to draw a item in a preset browser column. This will be called for each visible item.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the column relative to the entire preset browser. |
+| `obj.text` | the item text (either the folder or preset name). |
+| `obj.columnIndex` | the index of the column (0-2) Be aware that the preset column always has the index 2 regardless whether you show the category or bank column. |
+| `obj.rowIndex` | the index of the item in the list starting with 0. |
+| `obj.selected` | whether the item is active or note. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawPresetBrowserListItem", function(g, obj)
+{
+    if(obj.selected)
+    {
+        g.setColour(0x22FFFFFF);
+        g.fillRoundedRectangle(obj.area, 5.0);
+    }
+   
+    g.setColour(obj.textColour);
+    g.drawAlignedText(obj.text, obj.area, "centred");
+});
+```
+
+### `drawPresetBrowserDialog`
+
+> How to draw the modal dialogue that pops up if you are trying to overwrite or delete a preset.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the dialog box within the preset browser. |
+| `obj.text` | The text message that is being displayed. |
+| `obj.title` | The action that is about to be performed (usually shown as title). |
+| `obj.labelArea` | the area which will be used for the text input (it's always inside `obj.area`. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+```javascript
+// A little helper function nicked from JUCE...
+inline function removeFromTop(area, amountToRemove)
+{
+    local a = [area[0], area[1], area[2], amountToRemove];
+    
+    area[1] += amountToRemove;
+    area[2] -= amountToRemove;
+    return a;
+}
+
+laf.registerFunction("drawPresetBrowserDialog", function(g, obj)
+{
+   g.fillAll(0x88000000) ;
+   g.setColour(0xEE555555);
+   g.fillRoundedRectangle(obj.area, 5.0);
+   g.setColour(0xFF333333);
+   g.fillRoundedRectangle(obj.labelArea, 5.0);
+   g.setColour(0xFF000000);
+   g.drawAlignedText(obj.title, removeFromTop(obj.area, 20), "right");
+   g.drawAlignedText(obj.text, removeFromTop(obj.area, 30), "left");
+    
+});
+```
+
+### `drawPresetBrowserTag`
+
+> How to draw a tag in the preset browser.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the tag. |
+| `obj.text` | The name of the tag. |
+| `obj.blinking` | If you're editing tags of a preset, they will blink. |
+| `obj.selected` | If a tag is selected so that only the presets with that tag appear. |
+| `obj.value` | Whether the currently loaded preset is tagged with this tag. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+
+// You need to create a list of tags before they show up...
+Engine.setUserPresetTagList(["My Tag1", "Funky Tag", "Best Ones"]);
+
+laf.registerFunction("drawPresetBrowserTag", function(g, obj)
+{
+    g.setColour(0x11FFFFFF);
+    
+    if(obj.selected)
+        g.fillRoundedRectangle(obj.area, 3.0);
+        
+    if(obj.blinking)
+        g.fillRoundedRectangle(obj.area, 3.0);
+        
+    g.fillRoundedRectangle(obj.area, 3.0);
+    g.setColour(Colours.white);
+    
+    if(obj.value)
+        g.drawRect(obj.area, 1.0);
+    
+    g.setFont("Comic Sans MS", 14.0);
+    g.drawAlignedText(obj.text, obj.area, "centred");
+});
+```
+
+
+### `drawPresetBrowserSearchBar`
+
+> How to draw the search bar of the preset browser.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the search bar |
+| `obj.icon` | the search bar icon as path ready to be painted using `g.fillPath(obj.icon, [5, 5, 20, 20]);`. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawPresetBrowserSearchBar", function(g, obj)
+{
+    g.setColour(0x11FFFFFF); 
+    g.fillRoundedRectangle(obj.area, 5.0);
+    g.setColour(Colours.white);
+    g.fillPath(obj.icon, [5, 5, 20, 20]);
 });
 ```
