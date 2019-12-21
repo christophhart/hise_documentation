@@ -40,8 +40,7 @@ and it will use this paint routine instead of the stock HISE rendering functions
 
 That's it. Below you can find a comprehensive list of all functions along with a list of their properties and an example that can be customized.
 
-## List of customizable functions
-
+## Popup menu
 
 ### `drawPopupMenuBackground`
 
@@ -115,6 +114,8 @@ laf.registerFunction("drawPopupMenuItem", function(g, obj)
     g.drawAlignedText(obj.text, [a[0] + h, a[1], a[2] - h, a[3]], "left");
 });
 ```
+
+## Generic UI elements
 
 ### `drawToggleButton`
 
@@ -227,6 +228,8 @@ laf.registerFunction("drawDialogButton", function(g, obj)
     g.drawAlignedText(obj.text, obj.area, "centred");
 });
 ```
+
+## PresetBrowser
 
 ### `drawPresetBrowserBackground`
 
@@ -419,3 +422,103 @@ laf.registerFunction("drawPresetBrowserSearchBar", function(g, obj)
     g.fillPath(obj.icon, [5, 5, 20, 20]);
 });
 ```
+
+## Table Editor
+
+Below are all functions that can be used to draw the table UI element. You can draw the curve as path, define how each point is being displayed and customize the ruler.
+
+### `drawTablePath`
+
+> How to draw the curve of the table function. You can use the path and the area supplied with the `obj` parameter to draw it like any other vector shape.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the table |
+| `obj.path` | the curve as path ready to be painted using `g.fillPath(obj.path, obj.area);`. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawTablePath", function(g, obj)
+{
+    g.setColour(obj.bgColour);
+    g.drawPath(obj.path, obj.area, 0.5);
+    g.setColour(Colours.withAlpha(obj.bgColour, 0.08));
+    g.fillPath(obj.path, obj.area);
+});
+```
+
+### `drawTablePoint`
+
+> How to draw each (draggable) point in the table. This function will be called for each point
+
+| Object Property | Description |
+| - | ---- |
+| `obj.tablePoint` | the area (`[x, y, w, h]` of the point relative to the table. |
+| `obj.hover` | the hover state of the point. |
+| `obj.clicked` | the mouse down state of the point. |
+| `obj.isEdge` | whether the point is either the start or the end point (which is a bit bigger than the other points). |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+saf.registerFunction("drawTablePoint", function(g, obj)
+{
+    g.setColour(Colours.withAlpha(obj.bgColour, 0.4));
+    g.drawEllipse(obj.tablePoint, 0.5);
+    
+    if(obj.hover)
+    {
+        g.setColour(Colours.withAlpha(obj.bgColour, 0.4));
+        g.fillEllipse(obj.tablePoint);
+    }
+});
+```
+
+### `drawTableRuler`
+
+> How to draw the vertical ruler that displays the last input value.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the table. |
+| `obj.position` | the normalised x-position of the ruler. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+saf.registerFunction("drawTableRuler", function(g, obj)
+{
+    g.setColour(Colours.withAlpha(obj.bgColour, 0.1));
+    
+    var x = obj.position * obj.area[2];
+    
+    g.drawLine(x, x, 0, obj.area[3], 10.0);
+    g.setColour(obj.bgColour);
+    g.drawLine(x, x, 0, obj.area[3], 0.5);
+});
+```
+
+
+
