@@ -394,6 +394,35 @@ laf.registerFunction("drawPresetBrowserTag", function(g, obj)
 });
 ```
 
+### `drawNumberTag`
+
+> How to draw the number tag that is displayed for a macro control assignment
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the entire component |
+| `obj.macroIndex` | the index for the macro assignment starting with 0. |
+
+#### Example
+
+```javascript
+laf.registerFunction("drawNumberTag", function(g, obj)
+{
+    obj.area[0] += obj.area[2] - 16;
+    obj.area[1] += 2;
+    obj.area[2] = 14;
+    obj.area[3] = 14;
+    
+    g.setColour(0x88000000);
+    g.fillRoundedRectangle(obj.area, 4);
+    g.setColour(Colours.white);
+    g.drawRoundedRectangle(obj.area, 4, 2);
+    
+    var letters = ["A", "B", "C"];
+    
+    g.drawAlignedText(letters[obj.macroIndex], obj.area, "centred");
+});
+```
 
 ### `drawPresetBrowserSearchBar`
 
