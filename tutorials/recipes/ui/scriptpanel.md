@@ -644,3 +644,148 @@ inline function createVectorKnob(name, x, y)
 // Usage: 
 const var Panel = createVectorKnob("Panel", 15, 18);
 ```
+
+
+## Horizontal List example
+
+This example snippet shows the usage of the [`ScriptPanel.addChildPanel()`](/scripting/scripting-api/scriptpanel#addchildpanel) function in order to implement a dynamic list of items that are aligned vertically (like the list items in a viewport).  
+The text from the label will be used as data for each row. Just enter some text and press the Add Line button and it will create a new row.  
+Each row has a close button on the right that will remove the item.
+
+This example can be used as starting point for any kind of dynamic list:
+
+- file browser
+- custom preset browser
+- dynamic signal chains
+- etc...
+
+```javascript
+Content.makeFrontInterface(600, 250);
+
+// This is the canvas for the list items. It's placed in a viewport and will
+// be dynamically resized to match the height of the list.
+const var Panel1 = Content.getComponent("Panel1");
+
+const var Label1 = Content.getComponent("Label1");
+
+// This array will contain all list items. It's important to store the child
+// panels in a variable or array because they will be deleted when they are
+// not referenced anymore
+const var list = [];
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.fillAll(0xFF444444);
+});
+
+const var lineHeight = 30;
+
+/** This function will be called whenever the list item changes. */
+inline function updateList()
+{
+    Panel1.set("height", list.length * lineHeight);
+    
+    local y = 0;
+    
+    for(c in list)
+    {
+        c.set("y", y);
+        y += lineHeight;
+    }
+}
+
+/** Adds a close button to a panel. We will call this method with an anonymous panel
+    as parent so you can see how to create nested child panel structures. */
+inline function addCloseButton(p)
+{
+    var b = p.addChildPanel();
+    p.data.closeButton = b;
+    
+    // This line would be a big No-No. If you don't know why,
+    // read up on cyclic references...
+    //b.data.parent = p;
+    
+    
+    b.set("allowCallbacks", "Clicks & Hover");
+    b.setPosition(p.getWidth() - lineHeight, 0, lineHeight, lineHeight);
+    b.setMouseCallback(function(event)
+    {
+        this.data.hover = event.hover;
+        
+        if(event.clicked)
+        {
+            // we will use the `getParentPanel()` method in order
+            // to fetch the parent without creating a cyclic reference
+            this.getParentPanel().removeFromParent();
+            
+            // Remove the parent from the list
+            list.remove(this.getParentPanel());
+            
+            // update all positions
+            updateList();
+            
+        }
+        else
+            this.repaint();
+    });
+    
+    // Just paints the X icon
+    b.setPaintRoutine(function(g)
+    {
+        var path = Content.createPath();
+        path.startNewSubPath(0, 0);
+        path.lineTo(1, 1);
+        path.startNewSubPath(0, 1);
+        path.lineTo(1, 0);
+        
+        g.setColour(Colours.withAlpha(Colours.white, this.data.hover ? 0.9 : 0.4));
+        
+        g.drawPath(path, [8, 8, this.getWidth()-16, this.getHeight()-16], 3);
+    });
+}
+
+inline function createRow(text)
+{
+    local p = Panel1.addChildPanel();
+    p.data.text = text;
+    
+    // We'll place it inside the panel. The y-position will get updated with 
+    // updateList later on, but the other values will remain the same
+    p.setPosition(0, list.length * lineHeight, Panel1.getWidth(), lineHeight);
+    p.setPaintRoutine(function(g)
+    {
+        var a = [0, 0, this.getWidth(), this.getHeight() - 1];
+        g.setColour(0x44FFFFFF);
+        g.drawRect(a, 1);
+        g.setFont("Oxygen", 16.0);
+        g.setColour(0x88FFFFFF);
+        a[0] += 10;
+        
+        g.drawAlignedText(this.data.text, a, "left"); 
+    });
+    
+    // Add a close button to each row
+    addCloseButton(p);
+    
+    // add the row to the array so it will be referenced
+    list.push(p);
+    updateList();
+}
+
+// on initialisation there will be no rows, so we'll set the height to zero.
+Panel1.set("height", 0);
+
+inline function onButton1Control(component, value)
+{
+    if(value)
+        createRow(Label1.getValue());
+};
+
+Content.getComponent("Button1").setControlCallback(onButton1Control);
+```
+
+### Full Snippet
+
+```
+HiseSnippet 2389.3ocsYstaaibElxwJcsacQ118AXfQQCUpLC0FuYcqgwZGG6ttM1QH1MYABB1cD4HoAlbFhgirLyB+m9j0mg9fTz2f1yYlghjRxtoFHDAxjykys46bYNouRFwxykJuVqcQQFyq0up84EB83CGS4BuSdoWqeY69TAK4BVt16EEYz7bVrWqVO3OiKn0Zq5Yd92e2KnITQDqZHOu2J4QrWwS45pQ6u+ekmjbLMlcAOs1p2d+ShjhCkIxIfv7f1gdYznKoiXmQwksRauVO7nXtVpNWS0rbuVq9BYbw4ikSE10+VdNePBC+nm24.grCerLIFkXbTuCGySh6Wpz4d.U5WYBdf0D7UsOkGymMdko3QlIHU6nt8n0J2k30qt3E9oKdspIdqZEuur84QJdltZF6wzIBMSMjBGA0EK6Z8V4e8n1O8IOg78RE+iRgllPdEOWSXWSSyRXar9FqSfmKFyyKGijK3YYLMIGThbhdLiLIGNPHxglODroDZbrUlQHheGxvIhHMWJrTiKHRULSQzRBGIYJSnITRbgflxiHInD.TiqYoHCnvjJFglvGIXwjqXJMOhljTXImeB+Rlg0lMZ2EvCJ4JNaZlTo6DToHvJYWqICUxT6dnCXIjo.3iL.0DfAzbRLUSICkJBiFMlnjSCH+kIncAMljbYJyROCsnhXRlBr4FBdPbLXCELxfIZsTXlkqsbHRw.T.HYnQBopkJ1eOxwJxXP.njnDY9Lh.+CoshOZr1ZQLzSwRkWY0cTsaPtFmYQTQc0KWSAanXDISxASOpnTQA4RNHqfgu9AgyFyFEPFxAJM.jvblpKIBrGfMDUb.LLaXlNBM2O4onI+P.RAlrfT5kriUvGy.i9OOLrK4q+lvN6hK7oO0JubqMDD2q.wDkqlmqAjSzONmjk.jHt4grwPiVEC0.k0oEHPALT47OB6.PboTMXmQxNlYLmNbKxDPvgnM.ythpHFvaOxdjRsXDSenLMSJfO72zN8lV4uZWuBwS29trSuYSslpTzBGBAcBQ8BdeA0FbV.EkBmXfd.Vek8nOBc0LTKCkoRvOUwoPjEBd3ZXv.VDEP.3dJlg3iYILMXYlNlIry.9ZFhIjZvtMjoXBzXC.jTINUktZDv8Hu+CFswZPB.zPePCzuQNAfXL+Ree+QcV+mWesQA.LJ4fjD+vqO93sMOn03lN6tdSZKXeu8.ZOxyBs1KHRkwfURyYZAdJ6TB1Ur4PMfAhJFw.qHhJ4BjzUjXRF3ryvnd9c1X8e1h2qzE+MsvjM6ZQHILwH8XxSpIfn3W42kHAggT.RcXiwAvreDdzfjoicLG2vmHKyJ.9TTRP7of7G1qFubybCXvJsHP.mEhW.3CpEMDPdGyAsPLkFMeoL8XI5r.JBEiPIwy1I41cX4.E+RgAlykjB4DSHjbF30.Qn.x6BkIf7+fg2.AsaG.lpIQ5IpayfiIGPY8EFQ0Oqxpim6C.CWVvbIPbZcV.FWNHpZ2vhGzvJW5RYX4T4DPpFfAbGvGQNSt0YRvUZnQehkhGqIWJ.0Y53hty1NnWw.n.C4FUDk.gAm4DjGDDTttAVYwYi.YtgXX+cf8LEr6xoGB+N.JcIGNf27PfrWlS98PdW.stYo9YVeeYN23ujggNdGOVOFxftUMLPWRX2FetHTzPoSgiTVIeq7CAGDwR.fHxvpSiQgBTIyBseUCPV8FenkVAnU5RVbmpopQWmYcpCE5B.Q9oQXbBz34Ni+oRXYY4AKPB.0MjUF71Y3QLLDnwBGwLZzEN0ZRGiZNOuCrIRgTTo1w8q6B1TqcByapR85DkpRJlk1r7wD4vxC+kJ.+OYmMJkIsPlCfj2bQ0iicqT6lpWgDEKyznXYXz6Yz3lNy6eYJDxrHax5efviJKsavcE9eAHG5umQgfPUYKsgU5SQPeMs.WUfopkyXSOex.yB.ufvEVD5KbgzuWWRuOEBz6NHPChW81HTGs2Hw29m7.DFdPR1XZ0HigTOcWvq56HgA+QxeB9c6N2F4iUzoF4Ckmtj2uSWxNcmAbcQD1p2yqFy57aF7CcIOCRk5N5rYIlOBr0H+F4Ter90p3u1TWYvwgK+2cFF1T66dlRfmGh7N1iQfJVkFV6KWjyiK8UL4jv5vK1pDIaiL.5gCD6RMMibUPanbcr.bonKloyPQI7iBfRISX4ypJFKgBmLmVVodViXqg2d17tkJeksdYQXy9+FoSwRkBMAum6rbwCRHdeuOr6xwbgWu81Gad5r67vl2vhz9z4f0lMerDK+70WWLhIfTP8ddPXmakA6ryhLf99vOf0hzK7NfsGXui1E.lvuB5iPjtDPr1LgMTCo6H2VrE7xSKVJS4kvbUlLe8CySDXA1aKYqTAe0V.LTIS4MwfhBpps0g9Q.Q1j7wUjbtXp23JZGjJt..RvMRyoF.LhAYynrPh7NuKxvoFWA7JR0txAHUejojA0KZtVgltKEMuaqTXU4dXvRkLwOp7dEcs3+JOYH0b4HyJvblSu8NHHb6s3ZrYetY25WXq4kVbrcyNVPhg4ypqXdoBIVMQ9Lol8Zguo1+0uYcx7SMb3RmyQrDlZoSiMIRcWazWLIc.deTqYnbgdsVsY6XZe6siod2hhr1kZKTJNAf.uNiItslz34Llva+sSdI3Gf8swMFrtLrMFnHz5krq3QLaWbVq8KY4WpkY.UmcB305WnMy9ab83gE+V2sd83wXSdJ+rm2006zVQ8OxoWwNQz2becrEPSwfOyVv+3uuuE+UsE99n7NuLrQYelPjqg8egsUf2EuaxKRMd8v+oaI1pnpwu5Zk2hxwu1IGVzmQPVqsCJVWR9c6WTWkl2Jfwl7Zsd6x113wyOUhMjhpf80Zk5b9gMs.F+HmEv5SUmuwM46bVfOtukw+11GYZoD01JILLhm2hM26QsOUFOAR90ruiXyVcS.n+FM3C6zBj1UWTuYreVZF4mp39ks6ygp2Wt7txRjWve4ys75Zs6FsOZ3PH0YkvtZ6i+gO+8w0yV6vnSoZEGvNsOaR54PJ3HFHIBrWNvX.FD2p46P7azxbNSDa93+.OtI6ge2xMYuxI8RoQJ4OFYiKhMO9KLi.xjvzC80ZeJ9MommIVIru1gAgdo7X9OFEglhs.Ye464quG64Y2i8r88XOey8XOO+drmu8drmcty8f+2IbvDsL05l.Cz+HSBjVsNRf8zyfH89uBUMSDA
+```
