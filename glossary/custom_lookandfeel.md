@@ -229,6 +229,114 @@ laf.registerFunction("drawDialogButton", function(g, obj)
 });
 ```
 
+## Alert Windows
+
+An alert window is a popup window that will ask the user a question or show an message. There are a few occasions where these windows appear, but you can use the new API call `Engine.showYesNoWindow()` to use these for yourself.
+
+### `drawAlertWindowIcon`
+
+> Sets custom icons for the different message types.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the button. |
+| `obj.type` | The message type. |
+
+The `type` property is guaranteed to be one of those strings:
+
+- `"Question"` for any query that the user has to answer with yes or no. The original icon is a `?`
+- `"Info"` any non-error information. The original icon is a `i`
+- `"Warning"` indicates that something might go wrong. The original icon is a `!`
+- `"Error"` indicates that something went wrong. The original icon is a `X`.
+
+Be aware that you can't load images because these look and feel functions have to be self-containing, but you can load
+a SVG-path like shown in the example.
+
+#### Example
+
+```javascript
+laf.registerFunction("drawAlertWindowIcon", function(g, obj)
+{
+    if(obj.type == "Question")
+        p.loadFromData([110,109,41,92,60,66,104,145,109,61,98,209,34,78,66,152,110,18,62,18,3,94,66,160,26,127,64,47,93,94,66,170,241,8,65,98,45,178,94,66,63,53,171,65,45,178,94,66,219,249,8,66,47,93,94,66,16,88,60,66,98,37,6,94,66,31,5,78,66,96,229,78,66,244,253,93,66,41,92,
+60,66,16,88,94,66,98,244,253,8,66,20,174,94,66,113,61,171,65,20,174,94,66,12,2,9,65,16,88,94,66,98,109,231,131,64,6,1,94,66,117,147,24,62,145,237,78,66,37,6,129,61,10,87,60,66,98,49,8,172,188,219,249,8,66,49,8,172,188,63,53,171,65,37,6,129,61,170,241,
+8,65,98,6,129,21,62,10,215,131,64,90,100,123,64,43,135,22,62,37,6,9,65,104,145,109,61,98,113,61,171,65,227,165,155,188,244,253,8,66,227,165,155,188,41,92,60,66,104,145,109,61,99,109,72,225,10,65,8,172,116,64,98,156,196,196,64,45,178,117,64,98,16,120,
+64,252,169,193,64,244,253,116,64,70,182,9,65,98,20,174,111,64,6,129,171,65,143,194,101,64,135,22,9,66,86,14,117,64,109,103,60,66,98,14,45,122,64,16,88,70,66,150,67,195,64,141,23,79,66,168,198,9,65,180,72,79,66,98,55,137,171,65,178,157,79,66,160,26,9,
+66,143,66,80,66,133,107,60,66,168,70,79,66,98,35,91,70,66,195,245,78,66,166,27,79,66,27,47,70,66,205,76,79,66,233,38,60,66,98,209,162,79,66,248,211,8,66,168,70,80,66,231,251,170,65,199,75,79,66,57,180,8,65,98,231,251,78,66,231,251,193,64,57,52,70,66,
+217,206,119,64,2,43,60,66,106,188,116,64,98,31,5,9,66,119,190,111,64,106,188,171,65,8,172,116,64,72,225,10,65,8,172,116,64,99,109,207,247,199,65,6,129,56,66,98,113,61,194,65,6,129,56,66,98,16,189,65,61,138,55,66,164,112,184,65,184,158,53,66,98,242,210,
+179,65,51,179,51,66,18,131,177,65,59,95,49,66,18,131,177,65,215,163,46,66,98,18,131,177,65,160,154,42,66,240,167,179,65,188,244,38,66,182,243,183,65,51,179,35,66,98,168,198,188,65,86,14,32,66,195,245,194,65,100,59,30,66,18,131,202,65,100,59,30,66,98,
+12,2,215,65,100,59,30,66,137,65,221,65,111,18,34,66,137,65,221,65,137,193,41,66,98,137,65,221,65,4,86,45,66,104,145,219,65,92,143,48,66,27,47,216,65,139,108,51,66,98,25,4,212,65,217,206,54,66,166,155,206,65,6,129,56,66,207,247,199,65,6,129,56,66,99,109,
+70,182,210,65,90,100,19,66,98,66,96,205,65,90,100,19,66,33,176,200,65,53,94,18,66,227,165,196,65,229,80,16,66,98,178,157,192,65,150,67,14,66,141,151,190,65,164,240,11,66,141,151,190,65,4,86,9,66,98,141,151,190,65,16,216,4,66,145,237,198,65,178,157,254,
+65,141,151,215,65,201,118,241,65,108,209,34,3,66,223,79,206,65,98,55,137,11,66,35,219,191,65,106,188,15,66,215,163,178,65,106,188,15,66,252,169,166,65,98,106,188,15,66,92,143,151,65,33,48,12,66,190,159,137,65,141,23,5,66,94,186,121,65,98,18,131,252,65,
+244,253,96,65,244,253,237,65,190,159,84,65,190,159,222,65,190,159,84,65,98,139,108,214,65,190,159,84,65,12,2,204,65,37,6,93,65,66,96,191,65,217,206,109,65,98,119,190,178,65,166,155,126,65,158,239,170,65,6,129,131,65,158,239,167,65,6,129,131,65,98,154,
+153,162,65,6,129,131,65,12,2,158,65,41,92,129,65,2,43,154,65,172,28,122,65,98,248,83,150,65,31,133,113,65,115,104,148,65,84,227,103,65,115,104,148,65,76,55,93,65,98,115,104,148,65,215,163,72,65,53,94,158,65,39,49,52,65,186,73,178,65,84,227,31,65,98,197,
+32,196,65,227,165,13,65,109,231,210,65,68,139,4,65,190,159,222,65,68,139,4,65,98,205,204,248,65,68,139,4,65,174,71,8,66,219,249,24,65,188,244,18,66,59,223,65,65,98,209,162,29,66,131,192,106,65,213,248,34,66,178,157,140,65,213,248,34,66,252,169,166,65,
+98,213,248,34,66,8,172,185,65,121,233,31,66,55,137,202,65,193,202,25,66,125,63,217,65,98,227,37,22,66,160,26,226,65,66,96,15,66,92,143,237,65,225,122,5,66,190,159,251,65,98,61,10,247,65,55,9,5,66,14,45,233,65,96,229,10,66,41,92,225,65,84,99,15,66,98,
+205,204,220,65,92,15,18,66,133,235,215,65,90,100,19,66,70,182,210,65,90,100,19,66,99,101,0,0]);
+
+    g.setColour(Colours.white);
+    g.fillPath(p, [10, 10, obj.area[2]-20, obj.area[3]-20]);
+});
+```
+
+### `drawAlertWindow`
+
+> How to draw the background and the title of the alert window
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the button. |
+| `obj.title` | The title of the message. |
+
+Be aware that the actual text content is being rendered as markdown, so in order to customize the text appearance, use the next method `getAlertWindowMarkdownStyleData`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawAlertWindow", function(g, obj)
+{
+    g.fillAll(0xFF333333);
+    
+    var a = [0, 0, obj.area[2], 30];
+    g.setColour(0x44000000);
+    g.fillRect(a);
+    g.setColour(Colours.white);
+    g.drawRect(obj.area, 0.3);
+    g.setFont("Comic Sans MS", 18);
+    g.drawAlignedText(obj.title, a, "centred");
+});
+```
+
+### `getAlertWindowMarkdownStyleData`
+
+> Define the properties for the markdown rendered text in the alert window.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.font` | the font name for the paragraph text. |
+| `obj.headlineFont` | the font name for the headline text. |
+| `obj.codeFont` | the font name for the inplace `code` text. |
+| `obj.textColour` | the colour for the paragraph text. |
+| `obj.headlineColour` | the colour for the headlines. |
+| `obj.codeColour` | the colour for the inplace `code`. |
+| `obj.linkColour` | the colour for the links. |
+| `obj.fontSize` | the basic font size used for all texts. The headlines get scaled automatically depending on their level. |
+
+Be aware that unlike most other functions listed here, this function only has one argument (`obj`) containing an object that you need to modify. The function expects you to return this `obj` (of course you can create this from scratch, but the best practice is to just modify the object passed in like shown in the example).
+
+#### Example
+
+```javascript
+laf.registerFunction("getAlertWindowMarkdownStyleData", function(obj)
+{
+    obj.font = "Comic Sans MS";
+    obj.fontSize = 24;
+    obj.headlineColour = Colours.crimson;
+    
+    return obj;
+});
+```
+
 ## PresetBrowser
 
 ### `drawPresetBrowserBackground`
