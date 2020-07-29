@@ -1,0 +1,1 @@
+If you want to remove a panel from the interface that has been created with [`addChildPanel()`](/scripting/scripting-api/scriptpanel#addchildpanel), call this method and it will remove the panel from the parent and update the UI.

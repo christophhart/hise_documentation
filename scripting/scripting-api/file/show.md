@@ -1,0 +1,1 @@
+This opens a OS specific file browser that will reveal the file to the user.

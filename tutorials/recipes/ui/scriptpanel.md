@@ -645,7 +645,6 @@ inline function createVectorKnob(name, x, y)
 const var Panel = createVectorKnob("Panel", 15, 18);
 ```
 
-
 ### A ball shooting game
 
 ![images](http://hise.audio/images/shoot.gif)
@@ -654,4 +653,148 @@ Let's have some funs!
 
 ```
 HiseSnippet 3106.3ocsZstaabbEdoiYaDacQBP+U+0B8i.x50r6rW4VkKxV1twnwNBQoowPPHY8xQja7pcIVtxRrNFnOB8cnuH4AHuBEn+nO.8Mn8bYl8BIkriAhbjD24Ly47cNmuyYlUSNrrHQtbYQoQuc9xUKjF8908OZUd07ClGmla7n6az6W0+vX7YYxyMt2pEwKWJmZzq267mvIzamaZPe8e+j6EmEmmHaFxv3qJRSjeV5YoUMid39+4zrrGFOU9kom0Z1d6+njh7CJxJNG.y6z21XQbxyimIeRLNsaz2n2u3ASSqJJOpJtRtzn2MuWwzUGMu3hbd9eU5xzmkIwGDFGAJhG9gEYSQDiiZbv7zroGpc5kFfVNrID7NbH321+woSSqGuIT7dj.ylUzNdz6FWG7Dsgm8aN750Bd2jg262+njxzEUMR3zzixqjkmFCof1vhmqwMdxuq+AEvLxqFeV7ykOrDdndECCrssL8ssGs2sFbqAPhXYk4KhKMWX9Ql5kkTJAOCICC4osXbVQ7TPSmc+3p3gGKD1VB6HKwj.qPW3idVA9V9QVNNtz2AtVQSrDdfrHOKge.JW34a43FZ4XaE3YAKU.hhbIQg1VNdBPjCJywywxArgC.VTJnJWgkOYEPu9f1gIYKvmASAOGvSDLjHJPKR3OALXDMKeKvxArA7QHHB8rB4oYiSCLtO7sfla.ZwH7WqIefZBnTbbgcndJ1V1Z02Mt.H1QftMBNRiXHJDTfufAC9MDKB8YgPbDU8DZ05XgviUcTjUnuVQvOgnVjCfGOFVBPjiN.fgBPaBGdonWgfwlh4XpBfkBjNtfPGOBHJGZMebvZwHTTm3zVj635ZAJliyNdSrl3ps.AjHK.2JuVX4Vm4BAWvAcmIHcPfeK.mbBKbBtXWlo3a4oiiDiSQw.UADCGu.KOLz0lFgwGlzfTSGF557yDh61MzfNx.aK9eWQhG+2FjFgOfYL0AFBzpvGlSnJXffMvZB7SxC03hSwvRfhIJiidO7K7ofZGlK2Dp+CFEzVXfkuOJF0.lz8fuIgfQ7Cs7XGEJhbfPoiKEDDgHJ0XBGGjFQRZxtCXOpNBrI0ninqqmPD01v0mrBkqQZOXzIHWUE1TI+.1eAK33g4BcXCys.QXBQMT8Q3BbHFB7MwjPZg7zvxbh6AnCB9pJgIfIvlSS704BDSNVbyBGHtEBlbB569LSDDp6hg.BRRLWDoPVJa.PTfjrn51JXOLnZHLpSVIvu1UnxCeJHhYcaasTATWi7ZWkpUQg.1p1jKv0YHKFCB0sG4zH3PT3ih.BOlIK7oDC1wAIF1rY3ZfMyJCpSKpDmBuh.219Sje25YkXUEMV.Pc3Yll1CTE3NdsC39DPvDiqOkK0cOAS6wFi5iQ0MbQutn1kdBZY53DxkLfhhrzNfCo0f5FS39NXyZEsRutHakIGnS5p1t041IbYudmMtzPmOBokq1YiaVwEeJFJ11BK5BzLu5nhqpt0kxXS3Z0HhSnnr3hH0xsWb74pTwZsZ2dtQk9vzOHehSmN90sPzAkAtgcpYPlE1ANhBPN9LyhPm6j16Fh0TfH3ILz6TGrUzNNHn2lXRcCTONPfG..VspkQTS1G7SGasXthSXSoU0IATsF43kfYybbl4d.8BycNQ5JDHe6ZqpezsM3RjAB1441k0Sjj0wuToJe+0Ohfxu3iWnrIEETbF0IdTXxulXnfgfxn9XPMTaXcHPUoVKTzt9moPZ9UMgC6o3q19vWsKgxG0jHVOt3V7XNVvMAU6c529jDQM4zN92l4Ttcgf2zyW2ZXhNopK3zgYterGeNAZOcUEAWd29nOb7SAOGedOxMi+c3bj7qk8Cs5IHymQQUWoBUv9.ZaX6Rcv3xJGeLkDPGOiqfvShQsuBawQbbXLp13vWsGC2SSe9CFapFWJudhsF65vE6apimDV2vGO7nmu9DiXKBg.OrY6TCVI2p4D4Rpy.As3384BoVjzgX7Z2rh6DW2zSPavpaS6X2huGw68d0QQUqH81a5cNo0yabSajn1tqSqNZ8zo3IVmWMfQWjZPQkTgT6IkQ8qK4UsnBE0GaHfrMzqG2qKfNNAsMQPT6WIgOFBd5lvlSFC0iA0ushJ4D1zcgYypcYUmAfKzaedHrQVH0IyUc97.pefcy4CEMGUleGAG6VwKGNQozoZyQ7bqHSSvjN9zXZlDySbrqIzCttDQDkAAW+D70.MW6q1u83gw4xLQqWgblr5fhyVTjCOLbWV7tq+NmIzeCfkvxNl+yArb7JYVVwEVl5mKkSad3YYmKadZVoTl2RXI7B3MOlrJtsP7uXwb4z3ryJxmZdBAjz7rzbo4ommmTkVjaxu168hyxFBHX9naM3krWmUjDmYV7ruCPJOxKaBG6FmsXd7t+QSwXaqVCeILzigWgdbYb9T38uGBu28EiZOiUaYFy6LiDXFpfzwqOS03iyj4ypleGwnSZuxoxrp3udcCHrLCFswzd5VmFOqWoR77OKkUmWliQh8F7JLDxI1wSiqhGWEWBYcJaxwWkvkRfADio0Cfe9r3jmubWKycOHKE9j4GX9oEuPVp3F2ZvoEkCSAcXumYp4GZJvee6aqPyVL23Emub9vVoN0blgV8hzoUy2cjkY6AmKSmMuZ2QiFscV.vfiSyWNLFzok4hhz7pFpfJBPidr8IlerINM7SevGzL5GZNTM7sY4NmLBlPmZHdxhZUHZoBQiJDZU3BEgbPuTNy7d28y9ru4u9n6+keJDq7r2pm.d6CtbAjSkS+BYRUb9rL4Px.VlTheC253ZO3N7LrZ.T8HzuL+8lNs93IHxXdRSV+PHLV8EEmWAnZnFUCmMRazY3j3Jzg5B0KlmVIG0gzMa7ooYY2ERs1W537P5qtyXvNHqoxLM2rZd5xN7iQaTvtUylVM+tXc7vpwIVlUioh5Qsa6wv3AYYoKVJGt0X6wUiuDW7pSrZkf9CNfd3hoAuB9T6NfGsPJmdksMIo0UFqmdKxOJ8uIwUVVjMLQuLKPwPeRN2tSGdRfMjqHofJeEo1qvvfh2cDGmH0qqbG1wnZj0jxw+Ruk0StNm2PzPm9B.JTdpcM5dMxm2QttbsSF+mR9FUINs6SsDQcOl6NBACJBi14qvnxv146NK6oMK6oW+xZ9DPFLu8G0xz60V1pNxd5V0P5oCQk7wlWbm1zIyu+6Ik+gcIYMq6kc2rtwe+Hy6H1acgWB9lt8+L4PhC2VwVqY91d6qtRXuBf87s.6U+Tg8SuBXuZcXuZcXOeMX2AjsP9fVOy+jXUkxEXCrgXa2Qc1PCnZLSenq8l0.Ot37kxMqAju.Jsp68AwHZfwI31fxoMz1cpA.QqwrCOyK2aCgqpEtRKT8qWaAxVB3.lp276mV+MKyiUXzRimSFMZyiLp5qhauO1du0yE51iaqU2WHon9qoaWsWukCJLRG8pw.bfsWSePkUupVgcA0n81FO.1cA.0h0NQ6w1i8sfff+I0m6owWeRQk7ygllCd4fcF7pAlqK5zS2pLELx.Z41DyD1qYgCyO+rmIK0QT8DM5cytW2U+q95tZeabIbDs0DKxeTdZ0muPleUWBlgJMX.SPgJ3SUzkg8aTWF1QYoSkkFoSM58K6SMhMH.qtfw+8+bw+5SLdCV7unOtSVm09C+3O9et50duyqpJxo0tSeUpuyx4u9KOBuiL7B8TNC3fKjkUoXrq28kuHMQxWu2N8uub4yqJV.g3ZRG3UrYuk9x+PBEY02sOStLtr1fe62s+plG918oMSqG3GJ2m28rdDyua+tmDGupytmDGSB0X4lu1X+ks0cCV9GuX+2L8nRCMpw3xVp4u2UM8eCxHW118aooWte5xGWbFnm3RX3d2vXyKb885+3hommEW08tfwK.WI.pX5boq3EqluLsZU6KH+mkKH9MEtue+CSqRluc7disfWfp9yMdUW29s5+fSOE1MoAr2r+C+5e9uacC9kPlAGWnLE3G8ex4mcDzLNQBHIGJovtZ.g.WJ8rM9LFYNRlOkd3+AeoDJvm6oDJzBMNKNor3aR3lG3E5+tzH.lxo++ZXm9OFe1Tn6YzuOrInwYoSS+ljDLTbG.6aeMNuEqw8sXMduEqw+sXMAuEqI7sXMSt10f+u3wcOup3LtLAF3vGP8t606A4w.KiXjF+e.KF+fMB
+```
+=======
+## Horizontal List example
+
+This example snippet shows the usage of the [`ScriptPanel.addChildPanel()`](/scripting/scripting-api/scriptpanel#addchildpanel) function in order to implement a dynamic list of items that are aligned vertically (like the list items in a viewport).  
+The text from the label will be used as data for each row. Just enter some text and press the Add Line button and it will create a new row.  
+Each row has a close button on the right that will remove the item.
+
+This example can be used as starting point for any kind of dynamic list:
+
+- file browser
+- custom preset browser
+- dynamic signal chains
+- etc...
+
+```javascript
+Content.makeFrontInterface(600, 250);
+
+// This is the canvas for the list items. It's placed in a viewport and will
+// be dynamically resized to match the height of the list.
+const var Panel1 = Content.getComponent("Panel1");
+
+const var Label1 = Content.getComponent("Label1");
+
+// This array will contain all list items. It's important to store the child
+// panels in a variable or array because they will be deleted when they are
+// not referenced anymore
+const var list = [];
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.fillAll(0xFF444444);
+});
+
+const var lineHeight = 30;
+
+/** This function will be called whenever the list item changes. */
+inline function updateList()
+{
+    Panel1.set("height", list.length * lineHeight);
+    
+    local y = 0;
+    
+    for(c in list)
+    {
+        c.set("y", y);
+        y += lineHeight;
+    }
+}
+
+/** Adds a close button to a panel. We will call this method with an anonymous panel
+    as parent so you can see how to create nested child panel structures. */
+inline function addCloseButton(p)
+{
+    var b = p.addChildPanel();
+    p.data.closeButton = b;
+    
+    // This line would be a big No-No. If you don't know why,
+    // read up on cyclic references...
+    //b.data.parent = p;
+    
+    
+    b.set("allowCallbacks", "Clicks & Hover");
+    b.setPosition(p.getWidth() - lineHeight, 0, lineHeight, lineHeight);
+    b.setMouseCallback(function(event)
+    {
+        this.data.hover = event.hover;
+        
+        if(event.clicked)
+        {
+            // we will use the `getParentPanel()` method in order
+            // to fetch the parent without creating a cyclic reference
+            this.getParentPanel().removeFromParent();
+            
+            // Remove the parent from the list
+            list.remove(this.getParentPanel());
+            
+            // update all positions
+            updateList();
+            
+        }
+        else
+            this.repaint();
+    });
+    
+    // Just paints the X icon
+    b.setPaintRoutine(function(g)
+    {
+        var path = Content.createPath();
+        path.startNewSubPath(0, 0);
+        path.lineTo(1, 1);
+        path.startNewSubPath(0, 1);
+        path.lineTo(1, 0);
+        
+        g.setColour(Colours.withAlpha(Colours.white, this.data.hover ? 0.9 : 0.4));
+        
+        g.drawPath(path, [8, 8, this.getWidth()-16, this.getHeight()-16], 3);
+    });
+}
+
+inline function createRow(text)
+{
+    local p = Panel1.addChildPanel();
+    p.data.text = text;
+    
+    // We'll place it inside the panel. The y-position will get updated with 
+    // updateList later on, but the other values will remain the same
+    p.setPosition(0, list.length * lineHeight, Panel1.getWidth(), lineHeight);
+    p.setPaintRoutine(function(g)
+    {
+        var a = [0, 0, this.getWidth(), this.getHeight() - 1];
+        g.setColour(0x44FFFFFF);
+        g.drawRect(a, 1);
+        g.setFont("Oxygen", 16.0);
+        g.setColour(0x88FFFFFF);
+        a[0] += 10;
+        
+        g.drawAlignedText(this.data.text, a, "left"); 
+    });
+    
+    // Add a close button to each row
+    addCloseButton(p);
+    
+    // add the row to the array so it will be referenced
+    list.push(p);
+    updateList();
+}
+
+// on initialisation there will be no rows, so we'll set the height to zero.
+Panel1.set("height", 0);
+
+inline function onButton1Control(component, value)
+{
+    if(value)
+        createRow(Label1.getValue());
+};
+
+Content.getComponent("Button1").setControlCallback(onButton1Control);
+```
+
+### Full Snippet
+
+```
+HiseSnippet 2389.3ocsYstaaibElxwJcsacQ118AXfQQCUpLC0FuYcqgwZGG6ttM1QH1MYABB1cD4HoAlbFhgirLyB+m9j0mg9fTz2f1yYlghjRxtoFHDAxjykys46bYNouRFwxykJuVqcQQFyq0up84EB83CGS4BuSdoWqeY69TAK4BVt16EEYz7bVrWqVO3OiKn0Zq5Yd92e2KnITQDqZHOu2J4QrWwS45pQ6u+ekmjbLMlcAOs1p2d+ShjhCkIxIfv7f1gdYznKoiXmQwksRauVO7nXtVpNWS0rbuVq9BYbw4ikSE10+VdNePBC+nm24.grCerLIFkXbTuCGySh6Wpz4d.U5WYBdf0D7UsOkGymMdko3QlIHU6nt8n0J2k30qt3E9oKdspIdqZEuur84QJdltZF6wzIBMSMjBGA0EK6Z8V4e8n1O8IOg78RE+iRgllPdEOWSXWSSyRXar9FqSfmKFyyKGijK3YYLMIGThbhdLiLIGNPHxglODroDZbrUlQHheGxvIhHMWJrTiKHRULSQzRBGIYJSnITRbgflxiHInD.TiqYoHCnvjJFglvGIXwjqXJMOhljTXImeB+Rlg0lMZ2EvCJ4JNaZlTo6DToHvJYWqICUxT6dnCXIjo.3iL.0DfAzbRLUSICkJBiFMlnjSCH+kIncAMljbYJyROCsnhXRlBr4FBdPbLXCELxfIZsTXlkqsbHRw.T.HYnQBopkJ1eOxwJxXP.njnDY9Lh.+CoshOZr1ZQLzSwRkWY0cTsaPtFmYQTQc0KWSAanXDISxASOpnTQA4RNHqfgu9AgyFyFEPFxAJM.jvblpKIBrGfMDUb.LLaXlNBM2O4onI+P.RAlrfT5kriUvGy.i9OOLrK4q+lvN6hK7oO0JubqMDD2q.wDkqlmqAjSzONmjk.jHt4grwPiVEC0.k0oEHPALT47OB6.PboTMXmQxNlYLmNbKxDPvgnM.ythpHFvaOxdjRsXDSenLMSJfO72zN8lV4uZWuBwS29trSuYSslpTzBGBAcBQ8BdeA0FbV.EkBmXfd.Vek8nOBc0LTKCkoRvOUwoPjEBd3ZXv.VDEP.3dJlg3iYILMXYlNlIry.9ZFhIjZvtMjoXBzXC.jTINUktZDv8Hu+CFswZPB.zPePCzuQNAfXL+Ree+QcV+mWesQA.LJ4fjD+vqO93sMOn03lN6tdSZKXeu8.ZOxyBs1KHRkwfURyYZAdJ6TB1Ur4PMfAhJFw.qHhJ4BjzUjXRF3ryvnd9c1X8e1h2qzE+MsvjM6ZQHILwH8XxSpIfn3W42kHAggT.RcXiwAvreDdzfjoicLG2vmHKyJ.9TTRP7of7G1qFubybCXvJsHP.mEhW.3CpEMDPdGyAsPLkFMeoL8XI5r.JBEiPIwy1I41cX4.E+RgAlykjB4DSHjbF30.Qn.x6BkIf7+fg2.AsaG.lpIQ5IpayfiIGPY8EFQ0Oqxpim6C.CWVvbIPbZcV.FWNHpZ2vhGzvJW5RYX4T4DPpFfAbGvGQNSt0YRvUZnQehkhGqIWJ.0Y53hty1NnWw.n.C4FUDk.gAm4DjGDDTttAVYwYi.YtgXX+cf8LEr6xoGB+N.JcIGNf27PfrWlS98PdW.stYo9YVeeYN23ujggNdGOVOFxftUMLPWRX2FetHTzPoSgiTVIeq7CAGDwR.fHxvpSiQgBTIyBseUCPV8FenkVAnU5RVbmpopQWmYcpCE5B.Q9oQXbBz34Ni+oRXYY4AKPB.0MjUF71Y3QLLDnwBGwLZzEN0ZRGiZNOuCrIRgTTo1w8q6B1TqcByapR85DkpRJlk1r7wD4vxC+kJ.+OYmMJkIsPlCfj2bQ0iicqT6lpWgDEKyznXYXz6Yz3lNy6eYJDxrHax5efviJKsavcE9eAHG5umQgfPUYKsgU5SQPeMs.WUfopkyXSOex.yB.ufvEVD5KbgzuWWRuOEBz6NHPChW81HTGs2Hw29m7.DFdPR1XZ0HigTOcWvq56HgA+QxeB9c6N2F4iUzoF4Ckmtj2uSWxNcmAbcQD1p2yqFy57aF7CcIOCRk5N5rYIlOBr0H+F4Ter90p3u1TWYvwgK+2cFF1T66dlRfmGh7N1iQfJVkFV6KWjyiK8UL4jv5vK1pDIaiL.5gCD6RMMibUPanbcr.bonKloyPQI7iBfRISX4ypJFKgBmLmVVodViXqg2d17tkJeksdYQXy9+FoSwRkBMAum6rbwCRHdeuOr6xwbgWu81Gad5r67vl2vhz9z4f0lMerDK+70WWLhIfTP8ddPXmakA6ryhLf99vOf0hzK7NfsGXui1E.lvuB5iPjtDPr1LgMTCo6H2VrE7xSKVJS4kvbUlLe8CySDXA1aKYqTAe0V.LTIS4MwfhBpps0g9Q.Q1j7wUjbtXp23JZGjJt..RvMRyoF.LhAYynrPh7NuKxvoFWA7JR0txAHUejojA0KZtVgltKEMuaqTXU4dXvRkLwOp7dEcs3+JOYH0b4HyJvblSu8NHHb6s3ZrYetY25WXq4kVbrcyNVPhg4ypqXdoBIVMQ9Lol8Zguo1+0uYcx7SMb3RmyQrDlZoSiMIRcWazWLIc.deTqYnbgdsVsY6XZe6siod2hhr1kZKTJNAf.uNiItslz34Llva+sSdI3Gf8swMFrtLrMFnHz5krq3QLaWbVq8KY4WpkY.UmcB305WnMy9ab83gE+V2sd83wXSdJ+rm2006zVQ8OxoWwNQz2becrEPSwfOyVv+3uuuE+UsE99n7NuLrQYelPjqg8egsUf2EuaxKRMd8v+oaI1pnpwu5Zk2hxwu1IGVzmQPVqsCJVWR9c6WTWkl2Jfwl7Zsd6x113wyOUhMjhpf80Zk5b9gMs.F+HmEv5SUmuwM46bVfOtukw+11GYZoD01JILLhm2hM26QsOUFOAR90ruiXyVcS.n+FM3C6zBj1UWTuYreVZF4mp39ks6ygp2Wt7txRjWve4ys75Zs6FsOZ3PH0YkvtZ6i+gO+8w0yV6vnSoZEGvNsOaR54PJ3HFHIBrWNvX.FD2p46P7azxbNSDa93+.OtI6ge2xMYuxI8RoQJ4OFYiKhMO9KLi.xjvzC80ZeJ9MommIVIru1gAgdo7X9OFEglhs.Ye464quG64Y2i8r88XOey8XOO+drmu8drmcty8f+2IbvDsL05l.Cz+HSBjVsNRf8zyfH89uBUMSDA
 ```

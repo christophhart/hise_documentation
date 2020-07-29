@@ -1,0 +1,3 @@
+This creates an array with references to all panels that have been created using `addChildPanel()`. Be aware that this only takes one level of hierarchy into account, so if you have nested child panels, the list will only contain the top level panels.
+
+See [`addChildPanel()`](/scripting/scripting-api/scriptpanel#addchildpanel), [`getParentPanel()`](/scripting/scripting-api/scriptpanel#getparentpanel) and [`removeFromParent()`](/scripting/scripting-api/scriptpanel#removefromparent)

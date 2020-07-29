@@ -1,0 +1,1 @@
+It will return `true` if the file operation was completed successfully or `false` if there was an error during the operation.
