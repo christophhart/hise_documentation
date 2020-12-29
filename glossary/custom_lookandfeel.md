@@ -156,6 +156,77 @@ laf.registerFunction("drawToggleButton", function(g, obj)
 });
 ```
 
+### `drawRotarySlider`
+
+> How to draw the stock HISE rotary slider (Knob style).
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the button. |
+| `obj.id` | the ID of the component. |
+| `obj.text` | the text property. |
+| `obj.value` | the slider value. |
+| `obj.valueNormalized` | the normalized slider value. |
+| `obj.valueSuffixString` | the slider value plus the suffix. |
+| `obj.suffix` | the suffix property. |
+| `obj.skew` | the skew factor. |
+| `obj.min` | the min value property. |
+| `obj.max` | the max value property. |
+| `obj.clicked` | the mouse clicked state of the slider. |
+| `obj.hover` | the mouse hover state of the slider. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+
+### `drawLinearSlider`
+
+> How to draw the stock HISE slider (linear and range style).
+
+#### All linear style
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the button. |
+| `obj.id` | the ID of the component. |
+| `obj.text` | the text property. |
+| `obj.valueSuffixString` | the slider value plus the suffix. |
+| `obj.suffix` | the suffix property. |
+| `obj.skew` | the skew factor. |
+| `obj.syle` | return the Juce slider style code (Horizontal:2, Vertical:3, Range:9). |
+
+#### Vertical and horizontal style addition
+
+| Object Property | Description |
+| - | ---- |
+| `obj.min` | the min value property. |
+| `obj.max` | the max value property. |
+| `obj.value` | the slider value. |
+| `obj.valueNormalized` | the normalized slider value. |
+
+#### Range style addition
+
+| Object Property | Description |
+| - | ---- |
+| `obj.valueRangeStyleMin` | the min value property. |
+| `obj.valueRangeStyleMax` | the max value property. |
+| `obj.valueRangeStyleMinNormalized` | the normalized slider value. |
+| `obj.valueRangeStyleMinNormalized` | the normalized slider value. |
+| `obj.clicked` | the mouse clicked state of the slider. |
+| `obj.hover` | the mouse hover state of the slider. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+
 ### `drawComboBox`
 
 > How to draw the stock HISE combobox
