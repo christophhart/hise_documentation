@@ -161,7 +161,7 @@ laf.registerFunction("drawToggleButton", function(g, obj)
 > How to draw the stock HISE rotary slider (Knob style).
 
 | Object Property | Description |
-| - | ---- |
+| -- | ---- |
 | `obj.area` | the area (`[x, y, w, h]` of the button. |
 | `obj.id` | the ID of the component. |
 | `obj.text` | the text property. |
@@ -190,7 +190,7 @@ In addition to these properties, all the colour properties from the interface de
 #### All linear style
 
 | Object Property | Description |
-| - | ---- |
+| -- | ---- |
 | `obj.area` | the area (`[x, y, w, h]` of the button. |
 | `obj.id` | the ID of the component. |
 | `obj.text` | the text property. |
@@ -202,7 +202,7 @@ In addition to these properties, all the colour properties from the interface de
 #### Vertical and horizontal style addition
 
 | Object Property | Description |
-| - | ---- |
+| -- | ---- |
 | `obj.min` | the min value property. |
 | `obj.max` | the max value property. |
 | `obj.value` | the slider value. |
@@ -211,11 +211,11 @@ In addition to these properties, all the colour properties from the interface de
 #### Range style addition
 
 | Object Property | Description |
-| - | ---- |
+| --- | ---- |
 | `obj.valueRangeStyleMin` | the min value property. |
 | `obj.valueRangeStyleMax` | the max value property. |
-| `obj.valueRangeStyleMinNormalized` | the normalized slider value. |
-| `obj.valueRangeStyleMinNormalized` | the normalized slider value. |
+| `obj.valueRangeStyleMinNormalized` | the min normalized slider value. |
+| `obj.valueRangeStyleMaxNormalized` | the max normalized slider value. |
 | `obj.clicked` | the mouse clicked state of the slider. |
 | `obj.hover` | the mouse hover state of the slider. |
 
