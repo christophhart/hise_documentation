@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The goal of this document is to provide a set of rules that can be followed to produce clean and readable HISE script. Through the use of such a framework developers can share code and have a high level of confidence that others will be able to read, understand, modify, and maintain it without too much difficulty. Although some elements of this guide aim to encourage better coding practices, following these guidelines will not guerentee that your code is bug free of efficient, but it will be readable.
+The goal of this document is to provide a set of rules that can be followed to produce clean and readable HISE script. Through the use of such a framework developers can share code and have a high level of confidence that others will be able to read, understand, modify, and maintain it without too much difficulty. Although some elements of this guide aim to encourage better coding practices, following these guidelines will not guarantee that your code is bug free of efficient, but it will be readable.
 
 HISE script is born from a mixture of Javascript and C++; This guide tries to follow pre-existing conventions for those language with particular inspiration taken from the [JUCE Coding Standards](https://juce.com/discover/stories/coding-standards), [LLVM Coding Standards](http://llvm.org/docs/CodingStandards.html), and the [Airbnb Javascript style guide](https://github.com/airbnb/javascript). Other elements, unique to HISE, are based upon Christoph's blogs, documentation, and forum posts, and the default behaviour of the HISE script editor when possible.
 
@@ -57,7 +57,7 @@ At the top of every source file there should be a header section that includes a
 
 ### Line length
 
--   The usual practice is to limit lines to 80 columns, however this is unecessarily restrictive on modern large screens. Keep lines as short as possible but, for the sake of readibility, favour a longer line over a single command spanning multiple lines. If the line is really long it might be better to break it up into multiple shorter lines.
+-   The usual practice is to limit lines to 80 columns, however this is unnecessarily restrictive on modern large screens. Keep lines as short as possible but, for the sake of readability, favour a longer line over a single command spanning multiple lines. If the line is really long it might be better to break it up into multiple shorter lines.
 
 
 -   When splitting expressions containing operators across multiple lines each new line should begin with the operator symbol.
@@ -83,7 +83,7 @@ At the top of every source file there should be a header section that includes a
 
 -   Leave a blank line between blocks.
 
--   Don't pad blocks with unecessary blank lines.
+-   Don't pad blocks with unnecessary blank lines.
 
     ```javascript
     //Bad 
@@ -165,7 +165,7 @@ At the top of every source file there should be a header section that includes a
 
     > If it spreads over multiple lines use an `if-else` instead.
 
--   Avoid uneeded ternary statements.
+-   Avoid unneeded ternary statements.
 
     ```javascript
     // Bad
@@ -198,7 +198,7 @@ At the top of every source file there should be a header section that includes a
 
 -   Inline functions that contain `for` loops, and will be called by other `for` loops, should have their iterators declared as `local`.
 
-    > This is because by default iterators exists in the global scope, delcaring the function's iterator as `local` prevents it conflicting with the global version.
+    > This is because by default iterators exists in the global scope, declaring the function's iterator as `local` prevents it conflicting with the global version.
 
     ```javascript
     for (i = 0; i < 10; i++)
@@ -264,7 +264,7 @@ At the top of every source file there should be a header section that includes a
     const var jedi = "Luke";
     ```
 
--   It's ok to use single char variables as loop variables/iterators or as arguments to simple functions.
+-   It's okay to use single char variables as loop variables/iterators or as arguments to simple functions.
 
     ```javascript
     function divider(a, b)
@@ -386,7 +386,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   Prefer defined constants over hex values when possible.
 
-    > You can use built-in contstants, define const vars, or use an enum.
+    > You can use built-in constants, define const vars, or use an enum.
 
     ```javascript
     // Bad 
@@ -440,7 +440,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
     const var notes = ["a", "a#", "b", "c", "c#", "d", "d#"];
     ```
 
--   Longer declerations should be spread over multiple lines, e.g.
+-   Longer declarations should be spread over multiple lines, e.g.
 
     ```javascript
     const var dogs = {
@@ -477,7 +477,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 ## UI Components
 
--   Component references will usually be defined as a section of code grouping the reference variable, property assignments, paint routines, mouse callbacks, custom callback functions, and callback assignments, etc. Place a comment containg the name of the component above such sections.
+-   Component references will usually be defined as a section of code grouping the reference variable, property assignments, paint routines, mouse callbacks, custom callback functions, and callback assignments, etc. Place a comment containing the name of the component above such sections.
 
     > If components are defined by themselves in a namespace, init, or factory function then such a comment may not be necessary.
 
@@ -669,7 +669,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   `var` variables cannot be declared inside a namespace.
 
--   Each namespace can contain upto 32 `reg` variables
+-   Each namespace can contain up to 32 `reg` variables
 
 ## Enumeration
 
@@ -689,4 +689,4 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 ## Custom HISE Additions
 
--   If your project makes use of custom additions to the HISE codebase these should be clearly indicated with a comment when they are referenced. If possible the comment should provide a link to a public git repository along with a commit hash of the addition in question. If the project can function without the additional feature this should also be noted in the comment and if possible the feature should be placed in a seperate script to ease decoupling.
+-   If your project makes use of custom additions to the HISE codebase these should be clearly indicated with a comment when they are referenced. If possible the comment should provide a link to a public git repository along with a commit hash of the addition in question. If the project can function without the additional feature this should also be noted in the comment and if possible the feature should be placed in a separate script to ease decoupling.
