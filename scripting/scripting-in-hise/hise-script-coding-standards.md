@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The goal of this document is to provide a set of rules that can be followed to produce clean and readable HISE script. Through the use of such a framework developers can share code and have a high level of confidence that others will be able to read, understand, modify, and maintain it without too much difficulty. Although some elements of this guide aim to encourage better coding practices, following these guidelines will not guarantee that your code is bug free of efficient, but it will be readable.
+The goal of this document is to provide a set of rules that can be followed to produce clean and readable HISE script. Through the use of such a framework developers can share code and have a high level of confidence that others will be able to read, understand, modify, and maintain it without too much difficulty. Although some elements of this guide aim to encourage better coding practices, following these guidelines will not guarantee that your code is bug free or efficient, but it will be readable.
 
 HISE script is born from a mixture of Javascript and C++; This guide tries to follow pre-existing conventions for those language with particular inspiration taken from the [JUCE Coding Standards](https://juce.com/discover/stories/coding-standards), [LLVM Coding Standards](http://llvm.org/docs/CodingStandards.html), and the [Airbnb Javascript style guide](https://github.com/airbnb/javascript). Other elements, unique to HISE, are based upon Christoph's blogs, documentation, and forum posts, and the default behaviour of the HISE script editor when possible.
 
