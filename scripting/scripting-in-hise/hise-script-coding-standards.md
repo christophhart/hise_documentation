@@ -323,8 +323,8 @@ At the top of every source file there should be a header section that includes a
 
 #### var
 
--   Declare variables as `var` within paint routines and mouse callbacks. 
-    > These are the only two places you should ever need to use `var`.
+-   Declare variables as `var` within paint routines, mouse callbacks, regular functions, and custom timer callbacks. 
+    > These are the only places you should ever need to use `var`.
 
 #### const var
 
