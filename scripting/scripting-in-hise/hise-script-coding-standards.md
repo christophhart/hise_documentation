@@ -177,7 +177,9 @@ At the top of every source file there should be a header section that includes a
 
 ### Switch
 
--   `break` statements should be indented one level greater than their `case` statement, e.g.
+-   Leave an empty line between each case.
+
+-   `break` statements should be indented one level more than their case statement.
 
     ```javascript
     switch (value)
@@ -185,6 +187,89 @@ At the top of every source file there should be a header section that includes a
       case 0:
         doSomething();
         break;
+    }
+    ```
+
+-   There is no need to use braces for each case but if you do it for one case you should do it for all cases.
+
+    ```javascript
+      switch (value) 
+      {
+        case 0:
+        {
+          doSomething();
+          break;
+        }
+        
+        case 1: 
+        {
+          doSomethingElse();
+          break;
+        }
+      }
+    ```
+
+-   Don't declare variables within a case statement. 
+
+    > Cases don't have their own scope, if you declare a variable within a case statement and that case is reached, the variable will be available outside of the switch statement too. Declare the variable outside of the switch statement so its scope is clear from the start.
+
+    ```javascript
+    // Bad
+    const var c = 1;
+
+    switch (c)
+    {        
+        case 1:
+            var pizza = "Cheese";
+            Console.print(pizza);
+            break;
+    }
+        
+    Console.print(pizza);
+
+    // Good
+    const var c = 1;
+    const var pizza = "Cheese";
+
+    switch (c)
+    {        
+        case 1:
+            Console.print(pizza);
+            break;
+    }
+        
+    Console.print(pizza);
+    ```
+
+-   Not every case needs a break statement. If no break is present the program flow will fall through subsequent cases until a break is reached.
+
+    ```javascript
+    const var c = 1;
+
+    switch (c)
+    {        
+        case 1:
+            Console.print("Hello");
+        
+        case c > 0: 
+            Console.print(" World");
+            break;
+    }
+    ```
+
+-   When used, the `default` case should be the last case of the switch statement. It doesn't need to be followed by a `break`.
+
+    ```javascript
+    const var c = 10;
+
+    switch (c)
+    {        
+        case 1:
+            Console.print("First Case");
+            break;
+        
+        default: 
+            Console.print("Default!!!");
     }
     ```
 
