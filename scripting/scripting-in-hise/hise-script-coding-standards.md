@@ -169,12 +169,10 @@ At the top of every source file there should be a header section that includes a
 
     ```javascript
     // Bad
-    const var foo = a ? a : b;
-    const var bar = c ? false : true;
+    const var foo = a ? false : true;
 
     // Good
-    const var foo = a || b;
-    const var bar = !c;
+    const var foo = !a;
     ```
 
 ### Switch
