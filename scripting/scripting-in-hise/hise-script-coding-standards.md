@@ -456,7 +456,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   Use dot notation to access properties, e.g. `myObject.property;`
 
--   When accessing properties using variables or invalid identifiers use brackets `[]`, e.g
+-   When accessing properties using variables or invalid identifiers use brackets `[]`, e.g.
     `myObject["foo-bar"];`
 
 -   Only quote properties that are invalid identifiers, e.g.
@@ -627,7 +627,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
     }
     ```
 
--   Function names should be in (camel-case)[https://techterms.com/definition/camelcase].
+-   Function names should be in [camel-case](https://techterms.com/definition/camelcase).
 
 -   Aim to have each function perform a single task.
 
