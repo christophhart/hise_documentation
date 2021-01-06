@@ -335,7 +335,22 @@ At the top of every source file there should be a header section that includes a
 
 ### Naming
 
--   Variable names should be written in [camel-case](https://techterms.com/definition/camelcase), e.g. `theCamelsHump`
+-   Variable names should be written in [camel-case](https://techterms.com/definition/camelcase), e.g. `theCamelsHump`.
+
+-   Fixed constants, with a value that will never change, should be declared in all caps with underscores between each word. The declarations should be placed near the top of the script or namespace, e.g. `NUMBER_OF_BUTTONS=10`.
+
+    > This improves readability as such variables will clearly standout.
+
+-   Global variable names should be prefixed with `g_`.
+
+    ```javascript
+    // Bad
+    global myVariable = 1;
+    global myGlobalVariable = 2;
+
+    // Good 
+    global g_myVariable = 1;
+    ```
 
 -   Variable names should be meaningful and will generally be nouns.
 
@@ -378,20 +393,9 @@ At the top of every source file there should be a header section that includes a
     const var smsContainer = {};
     ```
 
--   Global variable names should be prefixed with `g_`.
-
-    ```javascript
-    // Bad
-    global myVariable = 1;
-    global myGlobalVariable = 2;
-
-    // Good 
-    global g_myVariable = 1;
-    ```
-
 -   There is a Javascript convention of prefixing private variables with an underscore but this should be avoided.
 
-    > This is because there is no such thing as private variables in Javascript or HISE script and indicating that these fully public variables are private could mislead a developer into thinking a change won't affect another part of the program.
+    > This is because there is no such thing as private variables in Javascript or HISE script. Indicating that these fully public variables are private could mislead a developer into thinking a change won't affect another part of the program.
 
     ```javascript
     // Bad
@@ -402,14 +406,12 @@ At the top of every source file there should be a header section that includes a
     }
     ```
 
--   With the exception of global variables, variable names should not include underscores.
-
 ### Types
 
 #### var
 
 -   Declare variables as `var` within paint routines, mouse callbacks, regular functions, and custom timer callbacks. 
-    > var may occasionally be needed in other parts of your script but avoid using them if there is a suitable alternative.
+    > var may occasionally be needed in other parts of your script but avoid using it if there is a suitable alternative.
 
 #### const var
 
@@ -492,6 +494,31 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 -   Prefer namespaces to objects when appropriate.
 
 -   Prefer `Array.push()` over direct assignment to an index.
+
+-   Call reserve() before pushing large amounts of data to an array:
+
+    ```javascript
+    const var NUM_ELEMENTS = 100000;
+    const var badList = [];
+    const var goodList = [];
+
+    // Bad
+    Console.start();
+
+    for(i = 0; i < NUM_ELEMENTS; i++)
+      badList.push(i);
+
+    Console.stop(); // ~41ms
+
+    //Good
+    Console.start();
+
+    goodList.reserve(NUM_ELEMENTS);
+    for(i = 0; i < NUM_ELEMENTS; i++)
+      goodList.push(i);
+
+    Console.stop(); // ~39ms
+    ```
 
 -   Place the opening brace on the same line as the object name.
 
