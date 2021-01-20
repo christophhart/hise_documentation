@@ -63,7 +63,7 @@ At the top of every source file there should be a header section that includes a
 -   When splitting expressions containing operators across multiple lines each new line should begin with the operator symbol.
 
     ```javascript
-    const var x = 1 + 12
+    const x = 1 + 12
               * 100 - 50;
     ```
 
@@ -115,10 +115,10 @@ At the top of every source file there should be a header section that includes a
 
     ```javascript
     // Bad 
-    const var fish = [ "Shark", "Gold", "Trout", "Salmon" ];
+    const fish = [ "Shark", "Gold", "Trout", "Salmon" ];
 
     // Good
-    const var fish = ["Shark", "Gold", "Trout", "Salmon"];
+    const fish = ["Shark", "Gold", "Trout", "Salmon"];
     ```
 
 ## Statements
@@ -169,10 +169,10 @@ At the top of every source file there should be a header section that includes a
 
     ```javascript
     // Bad
-    const var foo = a ? false : true;
+    const foo = a ? false : true;
 
     // Good
-    const var foo = !a;
+    const foo = !a;
     ```
 
 ### Switch
@@ -215,7 +215,7 @@ At the top of every source file there should be a header section that includes a
 
     ```javascript
     // Bad
-    const var c = 1;
+    const c = 1;
 
     switch (c)
     {        
@@ -228,8 +228,8 @@ At the top of every source file there should be a header section that includes a
     Console.print(pizza);
 
     // Good
-    const var c = 1;
-    const var pizza = "Cheese";
+    const c = 1;
+    const pizza = "Cheese";
 
     switch (c)
     {        
@@ -244,7 +244,7 @@ At the top of every source file there should be a header section that includes a
 -   Not every case needs a break statement. If no break is present the program flow will fall through subsequent cases until a break is reached.
 
     ```javascript
-    const var c = 1;
+    const c = 1;
 
     switch (c)
     {        
@@ -260,7 +260,7 @@ At the top of every source file there should be a header section that includes a
 -   When used, the `default` case should be the last case of the switch statement. It doesn't need to be followed by a `break`.
 
     ```javascript
-    const var c = 10;
+    const c = 10;
 
     switch (c)
     {        
@@ -356,10 +356,10 @@ At the top of every source file there should be a header section that includes a
 
     ```javascript
     // Bad
-    const var j = "Luke";
+    const j = "Luke";
 
     // Good
-    const var jedi = "Luke";
+    const jedi = "Luke";
     ```
 
 -   It's okay to use single char variables as loop variables/iterators or as arguments to simple functions.
@@ -385,12 +385,12 @@ At the top of every source file there should be a header section that includes a
 
     ```javascript
     // Bad 
-    const var HttpRequests = [];
-    const var SmsContainer = {};
+    const HttpRequests = [];
+    const SmsContainer = {};
 
     // Good 
-    const var HTTPRequests = [];
-    const var smsContainer = {};
+    const HTTPRequests = [];
+    const smsContainer = {};
     ```
 
 -   There is a Javascript convention of prefixing private variables with an underscore but this should be avoided.
@@ -401,8 +401,8 @@ At the top of every source file there should be a header section that includes a
     // Bad
     namespace Clown
     {
-        const var _Bozo = "Twister";
-        const var _balloonAnimals = ["Cat", "Dingo", "Robert Frost"];
+        const _Bozo = "Twister";
+        const _balloonAnimals = ["Cat", "Dingo", "Robert Frost"];
     }
     ```
 
@@ -413,11 +413,11 @@ At the top of every source file there should be a header section that includes a
 -   Declare variables as `var` within paint routines, mouse callbacks, regular functions, and custom timer callbacks. 
     > var may occasionally be needed in other parts of your script but avoid using it if there is a suitable alternative.
 
-#### const var
+#### const
 
--   Declare variables as `const var` for all fixed values in the `on init` callback.
+-   Declare variables as `const` for all fixed values in the `on init` callback.
 
--   Always use `const var` for MIDI lists.
+-   Always use `const` for MIDI lists.
 
 #### reg
 
@@ -461,17 +461,17 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
     ```javascript
     // Bad 
-    const var foo = .1;
+    const foo = .1;
       
     // Good
-    const var foo = 0.1;
+    const foo = 0.1;
     ```
 
 -   Hexedecimal numbers should be lowercase, e.g. `0xff45abcd`.
 
 -   Prefer defined constants over hex values when possible.
 
-    > You can use built-in constants, define const vars, or use an enum.
+    > You can use built-in constants, define consts, or use an enum.
 
     ```javascript
     // Bad 
@@ -498,9 +498,9 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 -   Call reserve() before pushing large amounts of data to an array:
 
     ```javascript
-    const var NUM_ELEMENTS = 100000;
-    const var badList = [];
-    const var goodList = [];
+    const NUM_ELEMENTS = 100000;
+    const badList = [];
+    const goodList = [];
 
     // Bad
     Console.start();
@@ -523,8 +523,8 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 -   Place the opening brace on the same line as the object name.
 
     ```javascript
-    const var myObject = {a: 1, b: 2, c: 3};
-    const var myArray = [
+    const myObject = {a: 1, b: 2, c: 3};
+    const myArray = [
       1,
       2,
       3,
@@ -535,7 +535,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 -   Place a space after the colon between an object's property and its value.
 
     ```javascript
-     const var theFellowship = {
+     const theFellowship = {
        Wizard: "Gandalf",
        Dwarf: "Gimli",
        Elf: "Legolas",
@@ -546,14 +546,14 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 -   Short declarations can be written on a single line, e.g.
 
     ```javascript
-    const var animals = {dog: "woof", cat: "meow", fox: "?"};
-    const var notes = ["a", "a#", "b", "c", "c#", "d", "d#"];
+    const animals = {dog: "woof", cat: "meow", fox: "?"};
+    const notes = ["a", "a#", "b", "c", "c#", "d", "d#"];
     ```
 
 -   Longer declarations should be spread over multiple lines, e.g.
 
     ```javascript
-    const var dogs = {
+    const dogs = {
       Larry: "Mr White",
       Freddy: "Mr Orange",
       Vic: "Mr Blonde",
@@ -572,7 +572,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 -   Only quote properties that are invalid identifiers, e.g.
 
     ```javascript
-    const var myObject = {
+    const myObject = {
       property1: "value1",
       property2: 123,
       "foo-bar": "Hello World"
@@ -593,7 +593,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
     ```javascript
     // btnEQBypass - EQ bypass toggle button
-    const var btnEQBypass = Content.getComponent("btnEQBypass");
+    const btnEQBypass = Content.getComponent("btnEQBypass");
     btnEQBypass.set("saveInPreset", false);
     btnEQBypass.set("text", "EQ Bypass");
     btnEQBypass.setControlCallback(onbtnEQBypassControl);
@@ -604,7 +604,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
     }
     ```
 
--   Always use `const var` for component references.
+-   Always use `const` for component references.
 
 -   Component references should be prefixed with a lowercase abbreviation of the component type. Since knobs and sliders are both represented by the same component type stick with one abbreviation for all of them regardless of their appearance; either `knb` or `sli`.
 
@@ -612,12 +612,12 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
     ```javascript
     // Bad
-    const var expression = Content.addKnob("Expression");
-    const var expressionKnob = Content.addKnob("Expression");
+    const expression = Content.addKnob("Expression");
+    const expressionKnob = Content.addKnob("Expression");
 
     // Good
-    const var knbExpression = Content.addKnob("Expression");
-    const var knbExpression = Content.addKnob("knbExpression");
+    const knbExpression = Content.addKnob("Expression");
+    const knbExpression = Content.addKnob("knbExpression");
     ```
 
 -   It is a good idea to store component references in an array when they share a common control callback function or properties.
@@ -625,7 +625,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
     > This makes it possible to manipulate multiple components at once using loops.
 
     ```javascript
-    const var knbADSR = [];
+    const knbADSR = [];
     knbADSR[0] = Content.getComponent("knbAttack");
     knbADSR[1] = Content.getComponent("knbRelease");
 
@@ -651,7 +651,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
     ```javascript
     // pnlMain - Main contents panel
-    const var pnlMain = Content.getComponent("pnlMain");
+    const pnlMain = Content.getComponent("pnlMain");
     pnlMain.set("saveInPreset", false);
     pnlMain.setControlCallback(onpnlMainControl);
 
@@ -678,10 +678,10 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
     });
     ```
 
--   If a Paint Routine or Mouse Callback is to be used by multiple panels they should be declared as `const var` before they are assigned. The functions should be given a meaningful name followed by either `PaintRoutine` or `MouseCallback` as appropriate.
+-   If a Paint Routine or Mouse Callback is to be used by multiple panels they should be declared as `const` before they are assigned. The functions should be given a meaningful name followed by either `PaintRoutine` or `MouseCallback` as appropriate.
 
     ```javascript
-    const var tabbarPaintRoutine = function(g)
+    const tabbarPaintRoutine = function(g)
     {
       g.fillAll(Colours.red);
     }
@@ -696,10 +696,10 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
     ```javascript
     // Bad
-    const var btnPresetBrowser = Content.getComponent("btnPresetBrowser");
+    const btnPresetBrowser = Content.getComponent("btnPresetBrowser");
 
     // Good
-    const var btnPresetBrowser = Content.addButton("btnPresetBrowser", 0, 10);
+    const btnPresetBrowser = Content.addButton("btnPresetBrowser", 0, 10);
     ```
 
 ## Operators
@@ -710,7 +710,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
     ```javascript
     // Bad
-    const var bar = a + b / c * d;
+    const bar = a + b / c * d;
 
     // Good
     const bar = a + (b / c) * d;
@@ -720,10 +720,10 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
     ```javascript
     // Bad
-    const var x = 1+y - 2*(z / 3);
+    const x = 1+y - 2*(z / 3);
 
     // Good
-    const var x = 1 + y - 2 * (z / 3);
+    const x = 1 + y - 2 * (z / 3);
     ```
 
 ## Functions
@@ -785,15 +785,15 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   Don't use "magic numbers" to refer to module parameters. Use the pre-defined enums listed in the module browser.
 
--   For custom attributes you can leverage namespaces to create your own enums. Enum variables should always be `const var` and written in [Pascal case](https://techterms.com/definition/pascalcase).
+-   For custom attributes you can leverage namespaces to create your own enums. Enum variables should always be `const` and written in [Pascal case](https://techterms.com/definition/pascalcase).
 
     ```javascript
       namespace Articulations
       {
-        const var Sustain = 0;
-        const var Staccato = 1;
-        const var Spiccato = 2;
-        const var FastAttack = 3;
+        const Sustain = 0;
+        const Staccato = 1;
+        const Spiccato = 2;
+        const FastAttack = 3;
       }
     ```
 
