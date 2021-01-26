@@ -411,7 +411,31 @@ At the top of every source file there should be a header section that includes a
 #### var
 
 -   Declare variables as `var` within paint routines, mouse callbacks, regular functions, and custom timer callbacks. 
+
     > var may occasionally be needed in other parts of your script but avoid using it if there is a suitable alternative.
+
+-   Don't declare `var` variables inside a namespace. Use `reg` instead.
+
+    > vars are not be limited in scope to the namespace in which they are declared.
+
+    ```javascript
+    // Bad
+    namespace MyNamespace
+    {
+      var aVariable = 10;
+    }
+
+    Console.print(aVariable); // 10
+
+    // Good
+    namespace MyNamespace
+    {
+      reg aVariable = 10;
+    }
+
+    Console.print(aVariable); // undefined
+    Console.print(MyNamespace.aVariable); // 10
+    ```
 
 #### const
 
@@ -424,6 +448,8 @@ At the top of every source file there should be a header section that includes a
 -   Use `reg` when declaring temporary variables which are accessed in the audio callbacks.
 
 -   Don't declare `reg` variables inside inline functions.
+
+-   Use `reg` variables in namespaces for all non `const` declarations. If you exceed the 32 `reg` limit you should try to make your code more modular by creating additional namespaces.
 
 #### local
 
@@ -775,9 +801,9 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   Namespaces cannot be nested.
 
--   Don't declare `var` variables inside a namespace.
+-   Don't declare `var` variables inside a namespace. Use `reg` instead.
 
--   Each namespace can contain up to 32 `reg` variables
+-   Each namespace can have up to 32 `reg` variables
 
 ## SVG Paths
 
@@ -785,7 +811,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
     > Group related paths inside an object. You can access them from your script with a simple reference, for example `Paths.fontAwesome["trash-icon"];`.
     >
-    > A single reg variable can be reused to declare all svg data arrays before they are converted to paths.
+    > A single variable can be reused to declare all svg data arrays before they are converted to paths.
 
     ```javascript
     namespace Paths
@@ -801,6 +827,12 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
       svgData = [113,10,0,0,25]
       const myHeading = Content.createPath();
       heading.loadFromData(svgData);
+    }
+
+    pnlLogo.setPaintRoutine(function(g))
+    {
+      g.setColour(Colours.blue);
+      g.fillPath(Paths.logo, [x, y, w, h]);
     }
     ```
 
