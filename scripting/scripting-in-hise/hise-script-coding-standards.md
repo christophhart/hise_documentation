@@ -777,7 +777,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   Namespaces cannot be nested.
 
--   `var` variables cannot be declared inside a namespace.
+-   Don't declare `var` variables inside a namespace.
 
 -   Each namespace can contain up to 32 `reg` variables
 
