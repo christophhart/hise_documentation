@@ -423,8 +423,6 @@ At the top of every source file there should be a header section that includes a
 
 -   Use `reg` when declaring temporary variables which are accessed in the audio callbacks.
 
--   `reg` variables should only be used for numbers, booleans, and strings.
-
 -   Don't declare `reg` variables inside inline functions.
 
 #### local
