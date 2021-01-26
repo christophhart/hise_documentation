@@ -781,6 +781,31 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   Each namespace can contain up to 32 `reg` variables
 
+## SVG Paths
+
+-   Create all of your SVG paths in a separate file called `Paths.js` with its own namespace. This will help to keep your paths organised in a single location and prevent large data arrays from clogging up your scripts.
+
+    > Group related paths inside an object. You can access them from your script with a simple reference, for example `Paths.fontAwesome["trash-icon"];`.
+    >
+    > A single reg variable can be reused to declare all svg data arrays before they are converted to paths.
+
+    ```javascript
+    namespace Paths
+    {
+      reg svgData;
+      
+      // My logo
+      svgData = [110,109,51,179,243]
+      const logo = Content.createPath();
+      logo.loadFromData(svgData);
+      
+      // My heading
+      svgData = [113,10,0,0,25]
+      const myHeading = Content.createPath();
+      heading.loadFromData(svgData);
+    }
+    ```
+
 ## Enumeration
 
 -   Don't use "magic numbers" to refer to module parameters. Use the pre-defined enums listed in the module browser.
