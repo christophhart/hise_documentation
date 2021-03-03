@@ -131,7 +131,7 @@ At the top of every source file there should be a header section that includes a
     }
     ```
 
--   Omit curly braces for if statements and loops, that only contain one line.
+-   Omit curly braces for if statements and loops that only contain one line.
 
     ```javascript
     // Bad
