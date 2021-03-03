@@ -151,12 +151,12 @@ At the top of every source file there should be a header section that includes a
 
     > Either all of them use braces, or none of them use braces.
 
--   Do not write if statements all-on-one-line, unless you have a set of consecutive if statements which are similar, and by aligning them it makes it clear to see the pattern of similarities and differences.
+-   Do not write if statements all-on-one-line unless you have a set of consecutive if statements which are similar, and by aligning them it makes it clear to see the pattern of similarities and differences.
 
     ```javascript
     if (x == 1) return “one”;
     if (x == 2) return “two”;
-    if (x == 3) return “three”
+    if (x == 3) return “three”;
     ```
 
 ### Ternary
@@ -211,7 +211,7 @@ At the top of every source file there should be a header section that includes a
 
 -   Don't declare variables within a case statement. 
 
-    > Cases don't have their own scope, if you declare a variable within a case statement and that case is reached, the variable will be available outside of the switch statement too. Declare the variable outside of the switch statement so its scope is clear from the start.
+    > Cases don't have their own scope. If you declare a variable within a case statement and that case is reached, the variable will be available outside of the switch statement too. Declare the variable outside of the switch statement so its scope is clear from the start.
 
     ```javascript
     // Bad
