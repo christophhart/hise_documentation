@@ -1,0 +1,3 @@
+If you have included the .hxi as metadata during the [Sample export](/working-with-hise/menu-reference/export#export-samples-for-installer), you can use this function to automatically extract the samples, copy the expansion file (and encrypt it if you have user credentials available) and refresh the list.
+
+This operation will be asynchronously executed on the sample loading thread, which means you can use the [`ScriptPanel.setLoadingCallback`](/scripting/scripting-api/scriptpanel#setloadingcallback) function which will notify the user about the progress (extracting large sample sets might take a while so you most likely want some indication about the process).

@@ -1,0 +1,1 @@
+If you have a licensing scheme that offers a unique identification for each user, you can use this object to pass it to the ExpansionHandler so it can encode this data into the [expansions](/working-with-hise/project-management/expansions/encrypted_expansion)
