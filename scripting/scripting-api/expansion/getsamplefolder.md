@@ -1,0 +1,1 @@
+This will return either the local Samples subfolder of the expansion folder or another one that was set with either [`Expansion.setSampleFolder()`](/scripting/scripting-api/expansion#setsamplefolder) or [`ExpansionHandler.installFromPackage()`](/scripting/scripting-api/expansionhandler#installexpansionfrompackage)

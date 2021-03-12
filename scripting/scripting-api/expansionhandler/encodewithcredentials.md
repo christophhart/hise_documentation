@@ -16,7 +16,6 @@ function installExp(hxiFile)
 FileSystem.browse(FileSystem.Documents, 
                   false,   // read
                   "*.hxi", // hxi
-                  false,   // no folder
                   installExp); // callback
 ```
 

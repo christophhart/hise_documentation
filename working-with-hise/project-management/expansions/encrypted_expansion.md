@@ -52,12 +52,11 @@ The first thing we need to do is to specify the expansion type and key in the pr
 1. Go into the **Project Settings**, set the [Expansion Type](/working-with-hise/settings/project#expansion-type) to **Encrypted**.
 2. Choose a reasonably safe blowfish key (spoiler alert: "1234" won't be enough) and paste it in the [Encryption Key](/working-with-hise/settings/project#encryption-key) field.
 
-Then in the `onInit` callback of our main script, we'll set the project key again and specify the expansion types:
+Then in the `onInit` callback of our main script, we'll specify the expansion types:
 
 ```javascript
 const var expHandler = Engine.createExpansionHandler();
 
-expHandler.setEncryptionKey("1234");
 expHandler.setAllowedExpansionTypes([expHandler.FileBased, 
                                      expHandler.Intermediate, 
                                      expHandler.Encrypted]);
@@ -94,7 +93,5 @@ As soon as it's loaded and verified, you need to pass this object to the API cal
 #### Encode new expansions
 
 If the user wants to install a new expansion let him point to the .hxi file (or do this automatically after the download has finished), then call [`ExpansionHandler.encodeWithCredentials()`](/scripting/scripting-api/expansionhandler#encodewithcredentials). This will encrypt the user object into the .hxi file and copies it to the Expansion folder to a `info.hxp` file. 
-
-
 
 > There's also the handy [`ExpansionHandler.installExpansionFromPackage()`](/scripting/scripting-api/expansionhandler#installexpansionfrompackage) function that takes a .hr1 archive that contains the .hxi file in its metadata.
