@@ -1,0 +1,4 @@
+If the expansion contains **User Presets**, they will be extracted automatically when you install the expansion the first time.  
+However if you update an existing expansion, the installation procedure will not override the user presets by default. If you want to ship new / modified user presets with your expansion update, you will need to call this manually after the installation of the expansion is finished.  
+
+The most convenient place for calling this method is the install callback that can be defined with [`Expansionhandler.setInstallCallback()`](/scripting/scripting-api/expansionhandler#setinstallcallback)
