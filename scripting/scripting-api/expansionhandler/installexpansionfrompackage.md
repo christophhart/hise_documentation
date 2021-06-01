@@ -2,6 +2,8 @@ If you have included the .hxi as metadata during the [Sample export](/working-wi
 
 This operation will be asynchronously executed on the sample loading thread, which means you can use the [`ScriptPanel.setLoadingCallback`](/scripting/scripting-api/scriptpanel#setloadingcallback) function which will notify the user about the progress (extracting large sample sets might take a while so you most likely want some indication about the process).
 
+> If you want to do more specific tasks at the start and / or end of the installation routine, you can use the [`Expansionhandler.setInstallCallback()`](/scripting/scripting-api/expansionhandler#setinstallcallback) function.
+
 The function expects two parameters, the first must be a file object that points to the .hr1 file you want to install and the second parameter must be either a constant from the FileSystem class or a file object pointing to an (existing) folder:
 
 | 2nd Parameter | Effect |

@@ -1,0 +1,1 @@
+This returns a reference to the [DisplayBuffer](/scripting/scripting-api/displaybuffer) at the given index. 
