@@ -728,5 +728,45 @@ saf.registerFunction("drawTableRuler", function(g, obj)
 });
 ```
 
+## Midi Dropper
 
+The MIDI dropper is a field that can be used to drop MIDI files that are loaded to a connected MIDI Player or perform a drag operation of the current MIDI content to an external target (eg. DAWs).  
+In order to use it, add a FloatingTile, set the `ContentType` to `MidiOverlayPanel`, then set the `ProcessorId` to the MIDI Player ID you want to connect to and the `Index` to `0`.
+
+### `drawMidiDropper`
+
+> How to draw the drop area
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the drop area |
+| `obj.text` | the default text being displayed. |
+| `obj.hover` | `true` if a drag operation is active (either an item hovers over the dropper or a external drag is performed |
+| `obj.active` | `true` if a sequence is loaded into the connected MIDI Player |
+
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawMidiDropper", function(g, obj)
+{
+    if(obj.active)
+        g.fillAll(obj.bgColour);
+    
+    if(obj.hover)
+    {
+        g.setColour(obj.itemColour1);
+        g.drawRect(obj.area, 3);
+    }
+    
+    g.setColour(obj.textColour);
+    g.drawAlignedText(obj.text, obj.area, "centred");
+});
+```
 
