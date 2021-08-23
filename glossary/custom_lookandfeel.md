@@ -770,3 +770,82 @@ laf.registerFunction("drawMidiDropper", function(g, obj)
 });
 ```
 
+## AHDSR Graph
+
+How to render the envelope graph for a AHDSR envelope. There are two methods, one for rendering the path (and the active subsection) and one for the ball animation.
+
+
+### `drawAhdsrPath`
+
+> How to render the envelope graph. This function will get called on different occasions, take a look at the example for an explanation.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.path` | a reference to the path object that should be rendered. |
+| `obj.area` | the area (`[x, y, w, h]` of the path that is being rendered |
+| `obj.isActive` | true if this function call is supposed to render the active section |
+| `obj.currentState` | the state of the envelope (attack, sustain, hold, etc.) |
+
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour`
+- `obj.itemColour2`
+- `obj.itemColour3`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawAhdsrPath", function(g, obj)
+{
+	// This function will be called for the whole path
+	// and once again for the currently active section
+
+	if(obj.isActive)
+	{
+		// Just render the "active section of the path"
+		g.setColour(obj.itemColour2);
+		
+		// the `area` property contains the original bounds 
+		// of the path, so we need to pass it to the method
+		g.fillPath(obj.path, obj.area);
+	}
+	else
+	{
+		// Render the entire path
+		g.fillAll(obj.bgColour);
+		g.setColour(obj.itemColour);
+		g.drawPath(obj.path, obj.area, 2.0);
+	}
+});
+```
+
+### `drawAhdsrBall`
+
+> How to render the ball animation
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the envelope |
+| `obj.position` | the position (`[x, y]` of the ball |
+| `obj.currentState` | the state of the envelope (attack, sustain, hold, etc.) |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour`
+- `obj.itemColour2`
+- `obj.itemColour3`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawAhdsrBall", function(g, obj)
+{
+	g.setColour(obj.itemColour3);
+	g.fillRect([obj.position[0] - 5, obj.position[1] - 5, 10, 10]);
+});
+```
+
+
