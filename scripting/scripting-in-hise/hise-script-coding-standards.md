@@ -416,7 +416,7 @@ At the top of every source file there should be a header section that includes a
 
 -   Don't declare `var` variables inside a namespace. Use `reg` instead.
 
-    > vars are not be limited in scope to the namespace in which they are declared.
+    > vars are not limited in scope to the namespace in which they are declared.
 
     ```javascript
     // Bad
