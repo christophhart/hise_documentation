@@ -13,9 +13,9 @@ For this purpose we'll need a parameter which will control the gain of both L/R 
 
 **The nodes we'll use :** 
 
- - 1 `container.multi`
- - 2 `core.gain`
- - 1 `control.xfader`
+ - 1 [`container.multi`](/scriptnode/list/container/multi)
+ - 1 [`control.xfader`](/scriptnode/list/control/xfader)
+ - 2 [`core.gain`](/scriptnode/list/core/gain)
 
 **2 - SIGNAL FLOW**
 
