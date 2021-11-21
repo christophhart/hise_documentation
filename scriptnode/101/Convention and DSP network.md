@@ -14,9 +14,7 @@ modified: 21.11.2021
 >
 > Links to the documentation nodes descriptions will be provided at the beginning of the chapters.
 
-This chapter will show how to create a DSP network.
-
- **CREATE A DSP NETWORK :**
+ **HOW TO CREATE A DSP NETWORK :**
 
 Create a ScriptFx module : 
 
