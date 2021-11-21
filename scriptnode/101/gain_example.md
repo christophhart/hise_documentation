@@ -77,8 +77,8 @@ Although it's possible to leave the knob's range as it is, the logical thing to 
 Open the range editor by clicking on this little icon : 
 
 ![image](https://user-images.githubusercontent.com/84969276/142497869-93ebf3f7-71f9-4f34-8d0f-05068551d17b.png)
-![image](https://user-images.githubusercontent.com/84969276/142757665-2d08743e-2629-4f75-8a80-9714f1bb1714.png)
-![image](https://user-images.githubusercontent.com/84969276/142757684-c82b9ed0-9cb9-4f75-81d3-9d275fe5482b.png)
+![image](https://user-images.githubusercontent.com/84969276/142757715-70fc20f8-78e2-4883-b94f-e127928b6eca.png)
+![image](https://user-images.githubusercontent.com/84969276/142757754-206a2583-a92f-4443-873a-b3eed4d9fee7.png)
 
 With the range editor you get the ability to drag the min and max value as well as the skew factor with the mouse. With a right-click you can access the context menu which allows you to quickly set it to different presets, or in this case, simple copy the target range to the source range (so that you don't have to edit the range of the main parameter). Now the `Gain` has the correct range.
 
@@ -87,8 +87,6 @@ With the range editor you get the ability to drag the min and max value as well 
 > Use CTRL+click and drag the left/right borders to move the values by increments.
 >
 > Uncheck the "Make sticky" option to go out of the range editor.
-
-Our range is set now 
 
 Then click again on the target icon to exit the "connect" mode. 
 
@@ -117,7 +115,7 @@ Content.getComponent("knobGain").setControlCallback(onknobGainControl);
 ```
 > Here I did it by script to show how it works but you can also do it within the Interface editor, like you would do for any other module parameter.
 > 
-> ![image](https://user-images.githubusercontent.com/84969276/142501327-d270a8dc-1bfb-4db0-a804-16ccdbd03504.png)
+![image](https://user-images.githubusercontent.com/84969276/142757779-66452f0a-27a9-464a-87c5-0c92e03c4b1f.png)
 
 
 Voila ! You got yourself a nice little gain knob made with scriptnode. You are now ready to start noodling around. :D
