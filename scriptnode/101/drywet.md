@@ -24,17 +24,17 @@ Let's build a little reverb wit a Dry/Wet control :
 Add a `container.split` node to the graph and add 2 `container.chain` nodes. These will contain our stuff : 
 
 ![83dd2341-b9a1-4575-a683-b08494f2978f-image.png](https://i.imgur.com/JEGr9Dt.png) 
-![image](https://user-images.githubusercontent.com/84969276/142740122-e504275e-d6b1-4cb3-a1b3-3c386c0cce81.png)
+![image](https://user-images.githubusercontent.com/84969276/142757250-b7bff0db-7a9f-49f2-847f-88bffdabd938.png)
 
 > See the signal cables ? You can see that the whole signal is send to both the DRY and WET containers and not split into left and right as in the previous example.
 
 Add a `DryWet` parameter and the required nodes as shown on the picture : 1 `core.gain` for the DRY channel and a `core.gain` + a `fx.reverb` for the WET channel and a `control.xfader`. Set the crossfading menu to "RMS" and connect the crossfade sources to the gains :
 
-![image](https://user-images.githubusercontent.com/84969276/142739740-d7e023f7-143a-40ef-a8ca-d05d0900a702.png)
+![image](https://user-images.githubusercontent.com/84969276/142757284-6e734ccf-87b8-4f4e-8442-8244c15bfeae.png)
 
 Done ! How simple is that ? Now if you want to build you own reverb and manipulate it via your interface, just create parameters and connect everything : 
 
-![image](https://user-images.githubusercontent.com/84969276/142739770-2398ca4a-93fb-437f-915d-8b2d2f0b041b.png)
+![image](https://user-images.githubusercontent.com/84969276/142757298-148dccd7-8af0-4e18-b50c-93b1b84f0062.png)
 
 > Keep in mind though to take care of the Main parameters's ranges, depending on whether you're controlling linear values, levels, frequencies, etc...
 > Use the range editor !
