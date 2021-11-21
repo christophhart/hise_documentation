@@ -2,8 +2,8 @@
 keywords: Chapter 2: Panner
 summary:  A simple stereo panner that introduces the multi container
 author:   Matt_SF
-index:    02
-modified: 18.11.2021
+index:    03
+modified: 21.11.2021
 ---
   
 **1 - INTRO**
