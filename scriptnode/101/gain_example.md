@@ -8,9 +8,9 @@ modified: 18.11.2021
   
 > **Convention used in these chapters :**
 > 
-> All nodes will be written like this : `category.node`
+> When we'll talk about nodes, we will write them like this : `category.node`
 > 
-> All parameters we'll use will be written like this : `parameter`
+> The Main Parameters we'll add to the graph's top bar will be written like this : `parameter`
 
 In this chapter we'll cover the DSP network creation and the network graph basics, by creating a simple Gain effect.
 
