@@ -6,11 +6,11 @@ index:    02
 modified: 21.11.2021
 ---
 
+**INTRO**
 
+In this chapter we'll build a simple Gain effect. This will show you the basics of creating Main parameters, adding and connecting nodes in the network graph.
 
  **1 - HOW TO ADD AND CONNECT NODES :**
-
-Let's build a simple Gain Knob : 
 
 **The nodes we'll use :** 
 
