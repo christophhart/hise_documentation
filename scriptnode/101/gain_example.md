@@ -2,8 +2,8 @@
 keywords: Chapter 1: Gain Example
 summary:  The first hello world of scriptnode: a simple gain effect
 author:   Matt_SF
-index:    01
-modified: 18.11.2021
+index:    02
+modified: 21.11.2021
 ---
   
 > **Convention used in these chapters :**
