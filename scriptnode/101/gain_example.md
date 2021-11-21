@@ -1,38 +1,12 @@
 ---
-keywords: Chapter 1: Gain Example
+keywords: Chapter 2: Gain Example
 summary:  The first hello world of scriptnode: a simple gain effect
 author:   Matt_SF
 index:    02
 modified: 21.11.2021
 ---
-  
-> **Convention used in these chapters :**
-> 
-> When we'll talk about nodes, we will write them like this : `category.node`
-> 
-> The Main Parameters we'll add to the graph's top bar will be written like this : `parameter`
 
-In this chapter we'll cover the DSP network creation and the network graph basics, by creating a simple Gain effect.
 
- **1 - CREATE A DSP NETWORK :**
-
-Create a ScriptFx module : 
-
-![bf41c6ff-4e8d-41e5-b12a-cfe9e435218c-image.png](https://i.imgur.com/5IyKXNp.png) 
-
-This popup will show : 
-
-![04f59041-07ad-42b8-a82f-6599eb9f20a0-image.png](https://i.imgur.com/6oStZTJ.png) 
-
-Click on the left icon "Create an embedded DSP network".
-
-Congrats ! You've finally created a DSP network and entered the scriptnode graph editor :
-
-![78a4d524-7dd0-4ea5-8d52-502ba2019dad-image.png](https://i.imgur.com/gm3qwl3.png)
-
-Before the next step, in order to keep things clean let's rename the scriptFx module to something nicer : 
-
-![image](https://user-images.githubusercontent.com/84969276/142500563-15e8dd97-036f-4795-a3f9-51edc0700715.png)
 
  **2 - HOW TO ADD AND CONNECT NODES :**
 
@@ -42,8 +16,13 @@ Let's build a "Hello world" Gain Knob :
 
  - 1 [`core.gain`](/scriptnode/list/core/gain)
 
+First, in order to keep things clean let's rename the scriptFx module to something nicer : 
+
+![image](https://user-images.githubusercontent.com/84969276/142500563-15e8dd97-036f-4795-a3f9-51edc0700715.png)
+
 Once the DSP network created, click into the graph. You'll get this popup showing : 
 
+![78a4d524-7dd0-4ea5-8d52-502ba2019dad-image.png](https://i.imgur.com/gm3qwl3.png)
 ![c5319edc-0f60-4bcb-bbfe-426e0fb0aec6-image.png](https://i.imgur.com/ynr9knj.png) 
 > Here you have access to all available nodes
 
@@ -51,7 +30,7 @@ Type in the search bar : "gain" and click on the gain node to add it to the grap
 
 ![6491d540-d9a7-41ac-b786-52faf358a6eb-image.png](https://i.imgur.com/p3w1L3a.png) 
 
-Let's name it "GainFx" by right-clicking on the title bar : 
+Let's name it "GainFx" by right-clicking on the graph's title bar : 
 
 ![3e26bf30-a176-4d1d-a1cf-b56f401ba021-image.png](https://i.imgur.com/VJkzFDU.png) 
 ![image](https://user-images.githubusercontent.com/84969276/142492735-bbcbe215-fe17-40f7-8da6-3b134b182734.png)
