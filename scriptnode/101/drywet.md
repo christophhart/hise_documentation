@@ -1,8 +1,8 @@
 ---
-keywords: Chapter 3: Dry / Wet FX
+keywords: Chapter 4: Dry / Wet FX
 summary:  A introduction to the split container and how to setup a dry/wet signal routing
 author:   Matt_SF
-modified: 18.11.2021
+modified: 21.11.2021
 ---
 
 **1 - INTRO**
