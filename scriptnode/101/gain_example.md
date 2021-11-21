@@ -73,12 +73,12 @@ Now click on the target icon to acces the "connect" mode and click'n'drag a cabl
 
 > How to delete a parmeter ? While in the "connect" mode, simply click on it and hit 'Suppr' or 'Del' on your keyboard.
 
-Although it's possible to leave the knob's range as it is, the logical thing to do here it to modify the range of the `Gain`.
+Although it's possible to leave the knob's range as it is, the logical thing to do here it to modify the range of the `Gain`. And while we're at it, why not make it possible to go above 0dB ? Let set the Max value to +24dB.
 Open the range editor by clicking on this little icon : 
 
 ![image](https://user-images.githubusercontent.com/84969276/142497869-93ebf3f7-71f9-4f34-8d0f-05068551d17b.png)
-![image](https://user-images.githubusercontent.com/84969276/142497924-0dd459db-fff5-48aa-9e4c-b35d5874c53a.png)
-![image](https://user-images.githubusercontent.com/84969276/142498247-266d0cb1-9036-437b-9dce-b1323d7777d1.png)
+![image](https://user-images.githubusercontent.com/84969276/142757665-2d08743e-2629-4f75-8a80-9714f1bb1714.png)
+![image](https://user-images.githubusercontent.com/84969276/142757684-c82b9ed0-9cb9-4f75-81d3-9d275fe5482b.png)
 
 With the range editor you get the ability to drag the min and max value as well as the skew factor with the mouse. With a right-click you can access the context menu which allows you to quickly set it to different presets, or in this case, simple copy the target range to the source range (so that you don't have to edit the range of the main parameter). Now the `Gain` has the correct range.
 
@@ -88,7 +88,7 @@ With the range editor you get the ability to drag the min and max value as well 
 >
 > Uncheck the "Make sticky" option to go out of the range editor.
 
-
+Our range is set now 
 
 Then click again on the target icon to exit the "connect" mode. 
 
