@@ -10,11 +10,11 @@ modified: 21.11.2021
 
 In this chapter we'll build a simple Gain effect. This will show you the basics of creating Main parameters, adding and connecting nodes in the network graph.
 
- **1 - HOW TO ADD AND CONNECT NODES :**
-
 **The nodes we'll use :** 
 
  - 1 [`core.gain`](/scriptnode/list/core/gain)
+
+ **1 - HOW TO ADD AND CONNECT NODES :**
 
 First, in order to keep things clean let's rename the scriptFx module to something nicer : 
 
