@@ -26,33 +26,33 @@ Let's start a new network and add the `container.multi` node and rename it "Chan
 
 Now, add a gain node and duplicate it with Ctrl/Cmd + D : 
 
-![image](https://user-images.githubusercontent.com/84969276/142730234-0ab483eb-8d46-4687-99a1-cfd6eefcf7b4.png)
+![image](https://user-images.githubusercontent.com/84969276/142757342-8c7940c4-98e6-4daa-be2f-54a2fa6d6cc2.png)
 
 See the cables which connect every nodes ? this is your signal flow. You can easily see whether you're working with mono or stereo signals.
 
-![image](https://user-images.githubusercontent.com/84969276/142730382-34555783-5de3-4fa7-832c-e88c4fb58d67.png)
+![image](https://user-images.githubusercontent.com/84969276/142757373-dc8f9479-5079-4f4f-b4d8-52f44e527aee.png)
 
 **3 - CONNECTING EVERYTHING**
 
 In order to control both gain the way we want, we'll add now the `control.xfader` before the `container.multi`. 
 The default crossfading curves are linear. Since we're dealing with decibel values, we have to set the curves to RMS. Just use the dedicated menu :
 
-![image](https://user-images.githubusercontent.com/84969276/142728850-5c3f4f46-7582-4292-afbb-ca3509f69351.png)
+![image](https://user-images.githubusercontent.com/84969276/142757400-c009bba1-1601-4721-a644-4c9ba93b21f2.png)
 
 Then create a `Pan` parameter and connect everything like on this picture : 
 
-![image](https://user-images.githubusercontent.com/84969276/142730453-711d7ebb-27c0-4192-b3d9-9a905c6a2cf4.png)
+![image](https://user-images.githubusercontent.com/84969276/142757418-e9c32ed1-14c5-4f3e-bf4f-396c444e0ebd.png)
 
 Now our `Pan` parameter controls the crossfade between two values. The both target icons labelled "1" & "2" are modulation sources which are controlled by the `control.xfader`.
 
 Even if we could leave everything like this, we can do one more thing : here our `Pan` values range is set to (0...1). Since we're making a Panner effect, it would be more logical to set it to (-1...1).
 To do so, open the range editor of the `Pan` parameter like we did in the previous tutorial : 
 
-![image](https://user-images.githubusercontent.com/84969276/142729274-b5fe5b2d-c7ab-4e9d-9458-eb93ffa712ad.png)
+![image](https://user-images.githubusercontent.com/84969276/142757445-12d66873-db3e-4b09-b876-9da9c156b8fb.png)
 
 And don't forget to set the same values to your GUI's Pan knob :
 
-![image](https://user-images.githubusercontent.com/84969276/142730683-f129677e-be94-4091-a628-997fb2cfeb1e.png)
+![image](https://user-images.githubusercontent.com/84969276/142757499-b1308b37-75b4-48a3-bf9c-2cabaad6d45c.png)
 
 And voila again. Now you know how to split the left and right channels.
 
