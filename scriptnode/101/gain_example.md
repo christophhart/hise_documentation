@@ -38,7 +38,7 @@ Let's name it "GainFx" by right-clicking on the graph's title bar :
 
 Done. Now let's make this gain knob available in the script editor so you can manipulate it.
 
-Open the parameter control bar by clicking on the little upper knob, then click the "plus" icon to add a parameter, and name it `Gain` :
+Open the parameter control bar by clicking on the little upper knob, then click the "plus" icon to add a main parameter, and name it `Gain` :
 
 ![image](https://user-images.githubusercontent.com/84969276/142497072-ebdd5708-ca34-4ebd-beb8-6d847bfb8d7c.png)
 ![image](https://user-images.githubusercontent.com/84969276/142497109-23bb66d1-d534-4fd2-b9a0-8792b496150a.png)
