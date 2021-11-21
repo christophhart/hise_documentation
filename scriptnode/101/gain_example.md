@@ -8,9 +8,9 @@ modified: 21.11.2021
 
 
 
- **2 - HOW TO ADD AND CONNECT NODES :**
+ **1 - HOW TO ADD AND CONNECT NODES :**
 
-Let's build a "Hello world" Gain Knob : 
+Let's build a simple Gain Knob : 
 
 **The nodes we'll use :** 
 
@@ -69,7 +69,7 @@ With the range editor you get the ability to drag the min and max value as well 
 
 Then click again on the target icon to exit the "connect" mode. 
 
-**3 - HOW TO CONNECT THE MAIN CONTROLS TO YOUR GUI ?**
+**2 - HOW TO CONNECT THE MAIN CONTROLS TO YOUR GUI ?**
 
 Now that everything is set up, how to manipulate the `Gain` from the plugin GUI ?
 
