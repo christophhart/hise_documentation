@@ -1,5 +1,5 @@
 ---
-keywords: Chapter 0: Creating a DSP Network
+keywords: Chapter 1: Convention and DSP Network
 summary:  How to create a DSP network and how to access the network graph.
 author:   Matt_SF
 index:    01
@@ -11,8 +11,10 @@ modified: 21.11.2021
 > When we'll talk about nodes, we will write them like this : `category.node`
 > 
 > The Main Parameters we'll add to the graph's top bar will be written like this : `parameter`
+>
+> Links to the documentation nodes descriptions will be provided at the beginning of the chapters.
 
-In this chapter we'll cover the DSP network creation and the network graph basics, by creating a simple Gain effect.
+This chapter will show how to create a DSP network.
 
  **CREATE A DSP NETWORK :**
 
@@ -26,6 +28,6 @@ This popup will show :
 
 Click on the left icon "Create an embedded DSP network".
 
-Congrats ! You've finally created a DSP network and entered the scriptnode graph editor :
-
 ![78a4d524-7dd0-4ea5-8d52-502ba2019dad-image.png](https://i.imgur.com/gm3qwl3.png)
+
+Congrats ! You've finally created a DSP network and entered the scriptnode graph editor.
