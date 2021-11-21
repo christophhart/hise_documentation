@@ -92,14 +92,13 @@ Then click again on the target icon to exit the "connect" mode.
 
 **3 - HOW TO CONNECT THE MAIN CONTROLS TO YOUR GUI ?**
 
-Now that everything is set up, how to manipulate the `Gain via script ? In the script editor, create a generic script reference of the ScriptFX module : 
+Now that everything is set up, how to manipulate the `Gain` from the plugin GUI ?
 
-```javascript
-const var GainFX = Synth.getEffect("GainFX");
-```
-Create a slider in the interface editor, and don't forget to make its min/max values the same as the network's parameter (here : -100...0, since it's a gain knob). Then create a custom callback for this slider. : 
+Create a slider in the interface editor, link it to the GainFx we just created, and don't forget to make its min/max values the same as the network's parameter (here : -100...+24).
 
-![image](https://user-images.githubusercontent.com/84969276/142501619-a46a3893-18bb-4fba-9ea8-7dd1b5614f91.png) 
+![image](https://user-images.githubusercontent.com/84969276/142757779-66452f0a-27a9-464a-87c5-0c92e03c4b1f.png)
+
+But what if you want to manipulate it with script ? In the script editor, create a generic script reference of the ScriptFX module and create a custom callback for the slider on the plugin GUI.
 
 Now you can access the network's parameter like any other in HISE. This is the whole script : 
 
@@ -113,13 +112,9 @@ inline function onknobGainControl(component, value)
 
 Content.getComponent("knobGain").setControlCallback(onknobGainControl);
 ```
-> Here I did it by script to show how it works but you can also do it within the Interface editor, like you would do for any other module parameter.
-> 
-![image](https://user-images.githubusercontent.com/84969276/142757779-66452f0a-27a9-464a-87c5-0c92e03c4b1f.png)
-
 
 Voila ! You got yourself a nice little gain knob made with scriptnode. You are now ready to start noodling around. :D
 
 ```snippet
-HiseSnippet 1544.3ocyX0raabCDlqroarRZPSaBZOtvnGT.RMrbSZKPPgk+SoBMxVvJ0I4TJ8tTVDhK4hcorsZQt2a8bt068Ru1a9Qn.8EnOB8MncH4tZ4Zq3pJ33DcRbFNC+3LC+3vsShLfllJSPdK9jQwTj2MvcGIT82rOgIPs1B4cSbaRphl3aEswnXRZJMD44M2izB7Vbdj42eu1FDNQDPKDgP6KYAzGyhXpBocZ7sLNuIIj9DVjyrueiVARwlRtbHfm4vqfhIACHGR2gnmVELxagsCYJYRWEQQSQdyugLbT29xiE14uOKkc.mpGTG0EbjUbSIOTiXsTzl8Y7vN466TDxC2oHJLmMJbabaVHar7hnwGXT3WXga7vqRY3MWI3U2Edq3.uI.IOGHMuER2B2MHgEqJznwy0wsDPxoGAB6tPwNWTke0CuoDlgPsbDY.sYBLXrE0V8AqbO+5OXk69vpUgPepx+HRhu01lOqt+W6aJFV9PpZ6d8nApZKYU5CZWRaUUlfyDT+dCEAJlT3KECDxCzUF50MQxqEHihkB.A2C7NeH8tU+wpKNdMVNkpVWoRXGLTQqUHV6gbCdX0WBKU99..yl4tr1R4q1R2U6or0bSBme.T6T6bnA7kCT2Qpn6JpYPT0WV0+rp50ah5x7EmlLQ05p5jKxvZhgQGPSbiG5IBo5x0O3We8ia4cfMv3LQonkfo1MlJdcE8nrnotVKCUvTUlJsalUo0kyBoIHFTPUEmGGQFL6dDG8cs1hnH4dBbJrPwzDESuG71hdDPAXqgWDuEMcfRFalaVND79zrtmTrl61XTwfVMhjgY9Nfc.kihbYkd9oQjSbgKvkE2k8C4age4Uu52WKcXudLXVXre3Ff8ggbZGYJSm1Jrc0SQm+XIPHHCGxIpxrDZHmoP6C2il5ieBv2iboNOK0w7SG0wEyrMsv8V3NLUP+Ii2JS.uPt9MMdyHheerk3o.ryia9rqNV2p3bJIyheMShs4IShq06mvEm0iSnwjD5Sjc3jQ0RIQwb5d.9tm+AbYv.cA34IHhsK+F5YTKnOQHn7zYgGYgoNhT+BiHn8jCULwgsI.As97wNCi5B2NGP2LCcfLuJZ5D63Uzi00GcohPyf+A9kortdrWlx54JKXhP6PUGKSFXREY+GRD539Mvolf7K5cRcz5bt7XM8AKqZExAFYcj7Qw8kBVfVjcF4Hc8H4PMWiEtdU1wPZrPSR.DnF0gn5qOGnoRgDLMY4fwEbiy4ZSx6NwtKgkHxvfA8lTph.h0cHIPaKvMsZRvJdy4PJZqzzifyTUr6uVo6q0FP3n8sLr.P0qnMZXPKVO0EvGpQVIfec.3IzkMJldT5UwESHG.C0CiGg7du1Lw9kY8e9osImr+YuIn6DnV6NfdrEqYRO8ve6NMraDCu947x5CUxHnv0P9fbvwBmGGHz4vQietwTgiu+i15OWy1BU2HoT0GpyOKXtei+i0+xHNbC7dTn0EqWNmuJmV7bgiSP7xGYmwT3FJ8s6BpgBJM6x9rgPIhtpqU33pywvzJ6MDF29DflMM0f.n1FsgTNHhXHPlolRbu+4NVkWG+TxQTSWvFxf6XF2SlD4+HJvSnuHs9E7nn+XZeTT7T+nncCT.DdRBQjFKSo0c87YzspqtsnpghxS2Jpzrzaulv1yYdWqQtvUcE1gHJ4LXbIO0l4z20es11BBbmSWJraB2MM.1rjhzooBqyPdJ8orPU+5tFVHdUWweCIIDxKAk5JYtotqj+GuObg24de3UWenWNMSsXNF6xzMBss3HJGNMZv3GBG+5QFxU4RKebpsTHyuSuHQuGEZH4vCokpel3FBdaI7PvBI2twdTNkj5bD6Sa7X3JeRRa66HlkXQ8+2MVNw70mfsv0WyA3+VIuco7lg4lp2Lbofw2BuSX5O8ATfuamE+XLPEupuIU5+1IWdU7Diqh0HhDjHeQf8kY5C8WyHA12BymubQba8X+54eAELdkkWQ+wFXuHHPWu9YvsOS1lUmAa97Yvl6OC17fYvluXFr4KmAa9pKzF8M0YO1PWyCB5rsooQOOayJlxez+BzywjnD
+HiseSnippet 1536.3oc2XEzaaTDEdVmrgF2REEZEbbUDGbkJQwgVnRUn3Dm3hE0IVYCozSkI6NNdjmclU6NNIFTuyMN2KH9IvUtkeBHwe.9Iv+.3Myrq2YicCFq1RK9Rx7l27dey68lu4Ma2DQ.IMUjfbV9fQwDjy0b8Gwk8a1GS4n1aibttaGbpjj3YDs0nXbZJID43rvCUBbVdQj92etwVXFlGPJDgPGJnAjGQinxBoca7UTFqENjb.MxR661ncff2TvDCA7rf6ZnXbv.7wjcwJ0p3hbVZmPpTj3KwRRJxYwsDgi76KNkaz+PZJ8HFQMnNxGLjQbKAKTgXkTTy9TVX278cJB431sHJrfIJbS2NzP5X4EQi2SOgWwJriGNUJCuEJAu51vaMK3MEH4XAoEMP5Ft9AIzXYwLJ7bU21bH4zCCgcanXzEU4mbbaJ.M3xUivCHsRfAiWQs0u2Z2wq98V61OnZUHzmJ8NAm3oRqsNy6K7zUBqdLQtSudj.YsULyrhR8pTNixId8FxCjTA2SvGvEGozP4vDAqVfHJVvAWeGvrrgjaW86qtrwDqlRjaJkIziFJI0xjo9StpOn5y.mjCc.BMyMVsUx8yJ2VYlLu0DyXGAkK0l.Gfsr.4tBIYOdMMVp9rpdWbpd8l5bY1hQRl5zpB4jKag03CiNhjXGITJBY2xkLtu3RF6J5.SfwRQAuMmJ2KlveQ04nrnop7JCUfpRcw00yJt7YzPRBhB0PUcyiiHMlsOUi951aik3bKAFEbTLIQRU6AmsIm.m5MksK6tMIcfTDq0MKGBVeV76YE9buFiJFztQjHLy1AziHLTjMQzSNOBasz62HcXudTPhqqW3VftggLRWQJUkhJza8yAZtXe52QTZt1pPLbxSgv4eQ3PFVVlTPA2rIT1z9jn5zFG70HalxWZLEyJDugaWpLn+zwXkofQH29p.iY7quqqgRo.fK515ad8QlVMqtC7ox4Ww0PAMMJTmevs37bbBIFmPNPzkgGUKEGEyH6C36NdGwDACTEOSRBDab+VJMpEzGy4DV57vUrzLGQpe4Ij8ECkT9wcv.Cr5bwtCi7gKcCHMyPGHyohhxvLdM0XUMgOgGpG7WvurIqqF6jMY87IKXaP6RjmJRFnSEY+OjHTw8q4lpCxOs2Y0QaxXhSUTDzrJTHGnk0UvFE2WvoAJQFMxQ5lQhgJ9DCbcprqlXXoV3.HPMpKV1WU6qnKgDLIY0fwEbiy4pkj2zgYWBtHRyRAsbTph.h0cwIP2HvEnJhtJNKXQ7YpzTifyQUL6u1oGplM.yPGZXQAfp7nIZnQqqR0kbOVgrR.+p.vSHqpmX1QoSEaLgr.LTOLdDx4c5P4GVlY+Im2Ae1Ejc+F9ioE0x94m+7ecC+AjSMXMS54G+K2pgYin4tO7h2Yr4PoHBJb0DNHKbrzj3.gl.GM9wYCGe6Gr8uugoyH+HgP1GpyuHXtai+A+Os3.Te+uJNbM28IP6IFqLgsJmVbrgiUP7keFZhkpuAmSzTPoYWnmMDJQTUcsCGWcNFlFYuhv3NmAzrooZD.01nsDhAQXMAxb03g88O2xL4UceL9Dht+VMYvszi6IRh7dHA3ITWdV+RdqyuMqu0IdleqydAR.BGjf4owhTRcaKeg4V2dtsIxg7xpaDURK01qEr8rz6JMxEttsvtXdIiAiKYoNTqdq9iM1gig6b7IvtIbuz.XyhKRm5dc5NjkRdLMT1ut8BKDuts3uDmDB4kfRchrvk8ru5y4y9V5Mtm88VP+lkZlZ4bL5SUMBsC+DBCNMpw36CG+5gGxj4RKebpifKxuSuHQuOAZH43iIkpel5FBd7H7XuBI2rw9DFAmZcD6ia7H3JebRGyaElmXQ8+0MVN070G4ZfqmhCv6s22Irv+qemvre5Cn.eyNK9gt.U75d5To2+M4xWGOw30gOhvAIhmFXdYl5P+UzRf8MW+UIW1siZrW87uRh5SGrl5iLPeZPfpd8Sfael9ZVeNVymNGq4tywZt2brlOaNVymOGq49W5ZT2Tm8XCUMOHn6N5lFcbLMqnK+Q+Mvmomg1
 ```
