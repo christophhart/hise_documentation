@@ -1,7 +1,8 @@
 ---
-keywords: Chapter 1: Creating a DSP Network
+keywords: Chapter 0: Creating a DSP Network
 summary:  How to create a DSP network and how to access the network graph.
 author:   Matt_SF
+index:    01
 modified: 21.11.2021
 ---
 
