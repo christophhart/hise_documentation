@@ -1,93 +1,99 @@
 ---
-keywords: Chapter 1: Gain Example
+keywords: Chapter 2: Gain Example
 summary:  The first hello world of scriptnode: a simple gain effect
 author:   Matt_SF
-index:    01
-modified: 18.11.2021
+index:    02
+modified: 21.11.2021
 ---
-  
 
-First thing first : create a DSP network : 
+**INTRO**
 
-![bf41c6ff-4e8d-41e5-b12a-cfe9e435218c-image.png](https://i.imgur.com/5IyKXNp.png) 
-**Create a scriptFx module** 
+In this chapter we'll build a simple Gain effect. This will show you the basics of creating Main parameters, adding and connecting nodes in the network graph.
 
-This popup will show : 
+**The nodes we'll use :** 
 
-![04f59041-07ad-42b8-a82f-6599eb9f20a0-image.png](https://i.imgur.com/6oStZTJ.png) 
-**Create a DSP network** 
+ - 1 [`core.gain`](/scriptnode/list/core/gain)
 
-Congrats ! You've finally created a DSP network and entered the scriptnode graph editor :
+ **1 - HOW TO ADD AND CONNECT NODES :**
 
-![78a4d524-7dd0-4ea5-8d52-502ba2019dad-image.png](https://i.imgur.com/gm3qwl3.png)
+First, in order to keep things clean let's rename the scriptFx module to something nicer : 
 
-Let's build a "Hello world" Gain Knob : 
+![image](https://user-images.githubusercontent.com/84969276/142500563-15e8dd97-036f-4795-a3f9-51edc0700715.png)
 
 Once the DSP network created, click into the graph. You'll get this popup showing : 
 
+![78a4d524-7dd0-4ea5-8d52-502ba2019dad-image.png](https://i.imgur.com/gm3qwl3.png)
 ![c5319edc-0f60-4bcb-bbfe-426e0fb0aec6-image.png](https://i.imgur.com/ynr9knj.png) 
-**Here you have access to all available nodes**
+> Here you have access to all available nodes
 
 Type in the search bar : "gain" and click on the gain node to add it to the graph :
 
 ![6491d540-d9a7-41ac-b786-52faf358a6eb-image.png](https://i.imgur.com/p3w1L3a.png) 
 
-Here we go : 
+Let's name it "GainFx" by right-clicking on the graph's title bar : 
 
 ![3e26bf30-a176-4d1d-a1cf-b56f401ba021-image.png](https://i.imgur.com/VJkzFDU.png) 
+![image](https://user-images.githubusercontent.com/84969276/142492735-bbcbe215-fe17-40f7-8da6-3b134b182734.png)
+![image](https://user-images.githubusercontent.com/84969276/142494166-a54632f5-2245-483e-ace1-20b8eeb25f8a.png)
 
-Done. But let's make this gain knob available in the script editor so you can manipulate it.
+Done. Now let's make this gain knob available in the script editor so you can manipulate it.
 
-Open the parameter control bar by clicking on the little upper knob, then click the "plus" icon to add a control, and name it "Gain" :
+Open the parameter control bar by clicking on the little upper knob, then click the "plus" icon to add a main parameter, and name it `Gain` :
 
-![16d2fcc8-5edb-4073-8f6e-10506572f099-image.png](https://i.imgur.com/M1Dhc5X.png) 
-![022cbe1d-511a-4caf-ad00-fc768c719ab5-image.png](https://i.imgur.com/52OL1m9.png) 
+![image](https://user-images.githubusercontent.com/84969276/142497072-ebdd5708-ca34-4ebd-beb8-6d847bfb8d7c.png)
+![image](https://user-images.githubusercontent.com/84969276/142497109-23bb66d1-d534-4fd2-b9a0-8792b496150a.png)
 
 > When you add a parameter like this, its range is always 0...1.
 
-Although it's possible to leave the knob's range as it is, the logical thing to do here it to modify the range of the knob.
-Right-click on it to access its setup : 
- 
-![75952ae9-e1ad-4351-b1f5-c2408bec8227-image.png](https://i.imgur.com/KE0bkAo.png) 
-
-And change the min/max values like this, and click outside the box to close it.: 
-
-![b350df1f-e2b9-44d7-96b1-721545bb37e5-image.png](https://i.imgur.com/9IN57j7.png) 
-
-> You can access the setup of every node and parameters by right-clicking on it.
-
-Now click on the target icon to acces the "connect" mode...
+Now click on the target icon to acces the "connect" mode and click'n'drag a cable from the control to the parameter you want to manipulate (here the `Gain`) : 
  
 ![d12fe4d8-7b1f-4142-a3dd-1e005a44060a-image.png](https://i.imgur.com/YGTaSon.png) 
-
-... and click'n'drag a cable from the control to the parameter you want to manipulate (here the gain parameter) : 
-
 ![af8a1af0-4c37-43cb-bb67-799e42869484-image.png](https://i.imgur.com/3Wv4EfT.png) 
 
-Then click again on the target icon to exit the "connect" mode. Now, how to manipulate the gain via script ? In the script editor, create a generic script reference of the ScriptFX module : 
+> How to delete a parmeter ? While in the "connect" mode, simply click on it and hit 'Suppr' or 'Del' on your keyboard.
+
+Although it's possible to leave the knob's range as it is, the logical thing to do here it to modify the range of the `Gain`. And while we're at it, why not make it possible to go above 0dB ? Let set the Max value to +24dB.
+Open the range editor by clicking on this little icon : 
+
+![image](https://user-images.githubusercontent.com/84969276/142497869-93ebf3f7-71f9-4f34-8d0f-05068551d17b.png)
+![image](https://user-images.githubusercontent.com/84969276/142757715-70fc20f8-78e2-4883-b94f-e127928b6eca.png)
+![image](https://user-images.githubusercontent.com/84969276/142757754-206a2583-a92f-4443-873a-b3eed4d9fee7.png)
+
+With the range editor you get the ability to drag the min and max value as well as the skew factor with the mouse. With a right-click you can access the context menu which allows you to quickly set it to different presets, or in this case, simple copy the target range to the source range (so that you don't have to edit the range of the main parameter). Now the `Gain` has the correct range.
+
+> Use SHIFT+click on the left/right borders of the graph to enter custom values.
+>
+> Use CTRL+click and drag the left/right borders to move the values by increments.
+>
+> Uncheck the "Make sticky" option to go out of the range editor.
+
+Then click again on the target icon to exit the "connect" mode. 
+
+**2 - HOW TO CONNECT THE MAIN CONTROLS TO YOUR GUI ?**
+
+Now that everything is set up, how to manipulate the `Gain` from the plugin GUI ?
+
+Create a slider in the interface editor, link it to the GainFx we just created, and don't forget to make its min/max values the same as the network's parameter (here : -100...+24).
+
+![image](https://user-images.githubusercontent.com/84969276/142757779-66452f0a-27a9-464a-87c5-0c92e03c4b1f.png)
+
+But what if you want to manipulate it with script ? In the script editor, create a generic script reference of the ScriptFX module and create a custom callback for the slider on the plugin GUI.
+
+Now you can access the network's parameter like any other in HISE. This is the whole script : 
 
 ```javascript
-const var ScriptFX1 = Synth.getEffect("Script FX1");
-```
-Create a slider in the interface editor, and don't forget to make its min/max values the same as the network's parameter (here : -100...0, since it's a gain knob) : 
+const var GainFX = Synth.getEffect("GainFX");
 
-![e340173c-549d-4690-9e0e-d67130cafc5c-image.png](https://i.imgur.com/Lr3wzP9.png) 
-And create a custom callback for this slider.
-
-Now you can access the network's parameter like any other in HISE : 
-
-```javascript
 inline function onknobGainControl(component, value)
 {
-	ScriptFX1.setAttribute(ScriptFX1.Gain, value);
+	GainFX.setAttribute(GainFX.Gain, value);
 };
 
 Content.getComponent("knobGain").setControlCallback(onknobGainControl);
 ```
-> Here I did it by script to show how it works but you can also do it within the Interface editor.
 
-Voila ! You got yourself a nice little gain knob made with scriptnode. You can now start noodling around. :D
+Voila ! You got yourself a nice little gain knob made with scriptnode. You are now ready to start noodling around. :D
 
 ```snippet
-HiseSnippet 1567.3oc2X8zbaTCEWqc1PiaggBsCbbmLbvclRFaSKvLcXhSbhKdnNwSbHs8TQYW4XMVqzN6JmDCSuyMNCm3NW3J2xGAlgu.7QfuAvSR6lUqiapw8OLTex58O8SO8zO8z1KV3SRRDwHmU1eRDA4bM29S3xgsFhobTmsPNuiaWbhjD6YDs4jHbRBI.43T99JANqrDR+6uVeSLCy8I4hPnCDTexCngTYtzdM+JJi0FGP1mFZY8cZ1wWvaIXhw.dJ6VCEg8GgOhrCVYVIWjyxaGPkh39RrjjfbVZSQvj9CEmvM1e.MgdHinFTG0GBjQbaAKPgX0+QsFRYA8xV2IHjiau7rPYSV3FtcoAzykmmMdWsBubOryGNkJBuxEfW8mE7lAjbrfzRFHcc299wzHYtFEdtpaGNr4L.CocanXrEU5WbbaI.K3x0BwiHsigAm6Q0F2s1s8pe2Z25dUp.o9Do2w3XOiuseTcuuvSWLr1QD41CFP7kUW0nzCztpxqJTNixIdCFy8kTA2SvGwEGppLTyarfU0WDFI3.BtMDc1Xxsp7cUV474XsDhbCoLld3XIoZtXUDxb3dUdJLUYqC.LsxBY0UylsUukJRoyYKLicHT6T8BnAhkET2QHI6xqpQTkmVwaZUCFLScowhQhmoZUUc7k4XU93vCIw14CkgvVcw5mkmu5GeShwxPAuCmJ2MhjNN+.P8YTsgRyrp5tTDBlJ0UcuSZUWeFMfDinPPp3lkSQZ7aebG80c1BKwYQBBJLQQjXIUsdb1hbLPGXpmWwcKRxHoHRaa59ID84YdOMeN2s4j7AcZFJBRisO8PBCEZyP83yBwmZCWfWKpO8a0Kge5GU+9s0SFOX.Erx00KXSv+f.FomHgp1By8swYnKdDEHGDAiYXYQFCEjSUnhg8wT0QQND6I1znSSirzytLn1LY4l4l7bB2q61iJ8GNa7VZF3E1qeUi2TR4210PBkC1kba+nKkAdo46Dzy4BhYvFWwMipRCjq4lyKNKdXmu2MmGHJlDgiI6K5wvSplfCiXj8.7dauCYB+QpBxKRdDYfvlJKp5ODy4DVxhvwr7Ko6nP6IFKo7i5hAxa04kcFG1Gt41mzJEcfLmRJ5Ey3Zpwp5k9DdfdveC+RUVWM1IUY8Lk4LSncHxSDwizaGo+G1LL49DcR9ICNsNZCFSbhhNglV8B6AZY8DrIQCEbpuRjwhLjtQnXrh6w.WmR6nIQVtM1GRTS5gkCUmKTzrPgGIdM+yK.uh6QveaeJR4RVmKlUILEgZFMnukBUDPttGNFZoAtEVQJVxorEIooZSMBNiUxr95jbfRqOlgNvv3B.UMilrgFstJSWVCGTAfeU.3wj0zJleT5TxFSHK.C0CmOB47Vco7CJdKviOqK9zCl9lg9VTsvveVQ01eD4DCVSkd1Q+5MaZVHZd9KDkMFKEgPgqlLBYgikuHNPnKfil+Py4BGey6u0erto8p9gBgbHTmOMXtSymy7+xHObM28HPaMlnbgXUbawwFNVIwEDYFYSiL8ETS4Jbik51dNQSAkjd4e5PnDQU00I37pyygoQ1KBFujr21mBzrIIZD.01nMEhQgXMAxB0jh88Q2zn7ptODeLQ2grlL3l5wCDwgd2m.7DpKVqeIOX52m2GLEM2OXZWeI.g8iw7jHQBotcjmRWCacaQji4EM2HpfUpkWaX4YY2UZlIrgsvdXdgfAiKDotTq9v9y02lig6b5SfUSvtI9vhEOUIWuwrDxCoAxg0scLWbCaweINN.1W7KzkR4Ep0fhMuYY+L5SX4WUOj70ZGfu3MrVd9f6yoSqUxvXeppCos4GSXvwTMFeO3b4.7XlLSZwyYcEbQ1k84U.6QfNUN5HRgBqYtffGjBudLWxMZtGgQvIVm89nlO.5E.G207fiEIW7u+a.Ly8qOz0.WOE4f2aFOzn7aPOz3UwITf+7+O6zefKvo2vSuc68e+98qi2s75XNBw9whm3adtmhv3JZIv5lq+doq31UM1qd1mow0s1Z0TeQC5S78U0zeLjelsOMV.e9jEvm6r.9b2EvmOcA74yV.e97K0G0M9oufQU+CB5sstSTGGSGP5iBn+A.tUO2.
+HiseSnippet 1536.3oc2XEzaaTDEdVmrgF2REEZEbbUDGbkJQwgVnRUn3Dm3hE0IVYCozSkI6NNdjmclU6NNIFTuyMN2KH9IvUtkeBHwe.9Iv+.3Myrq2YicCFq1RK9Rx7l27dey68lu4Ma2DQ.IMUjfbV9fQwDjy0b8Gwk8a1GS4n1aibttaGbpjj3YDs0nXbZJID43rvCUBbVdQj92etwVXFlGPJDgPGJnAjGQinxBoca7UTFqENjb.MxR661ncff2TvDCA7rf6ZnXbv.7wjcwJ0p3hbVZmPpTj3KwRRJxYwsDgi76KNkaz+PZJ8HFQMnNxGLjQbKAKTgXkTTy9TVX278cJB431sHJrfIJbS2NzP5X4EQi2SOgWwJriGNUJCuEJAu51vaMK3MEH4XAoEMP5Ft9AIzXYwLJ7bU21bH4zCCgcanXzEU4mbbaJ.M3xUivCHsRfAiWQs0u2Z2wq98V61OnZUHzmJ8NAm3oRqsNy6K7zUBqdLQtSudj.YsULyrhR8pTNixId8FxCjTA2SvGvEGozP4vDAqVfHJVvAWeGvrrgjaW86qtrwDqlRjaJkIziFJI0xjo9StpOn5y.mjCc.BMyMVsUx8yJ2VYlLu0DyXGAkK0l.Gfsr.4tBIYOdMMVp9rpdWbpd8l5bY1hQRl5zpB4jKag03CiNhjXGITJBY2xkLtu3RF6J5.SfwRQAuMmJ2KlveQ04nrnop7JCUfpRcw00yJt7YzPRBhB0PUcyiiHMlsOUi951aik3bKAFEbTLIQRU6AmsIm.m5MksK6tMIcfTDq0MKGBVeV76YE9buFiJFztQjHLy1AziHLTjMQzSNOBasz62HcXudTPhqqW3VftggLRWQJUkhJza8yAZtXe52QTZt1pPLbxSgv4eQ3PFVVlTPA2rIT1z9jn5zFG70HalxWZLEyJDugaWpLn+zwXkofQH29p.iY7quqqgRo.fK515ad8QlVMqtC7ox4Ww0PAMMJTmevs37bbBIFmPNPzkgGUKEGEyH6C36NdGwDACTEOSRBDab+VJMpEzGy4DV57vUrzLGQpe4Ij8ECkT9wcv.Cr5bwtCi7gKcCHMyPGHyohhxvLdM0XUMgOgGpG7WvurIqqF6jMY87IKXaP6RjmJRFnSEY+OjHTw8q4lpCxOs2Y0QaxXhSUTDzrJTHGnk0UvFE2WvoAJQFMxQ5lQhgJ9DCbcprqlXXoV3.HPMpKV1WU6qnKgDLIY0fwEbiy4pkj2zgYWBtHRyRAsbTph.h0cwIP2HvEnJhtJNKXQ7YpzTifyQUL6u1oGplM.yPGZXQAfp7nIZnQqqR0kbOVgrR.+p.vSHqpmX1QoSEaLgr.LTOLdDx4c5P4GVlY+Im2Ae1Ejc+F9ioE0x94m+7ecC+AjSMXMS54G+K2pgYin4tO7h2Yr4PoHBJb0DNHKbrzj3.gl.GM9wYCGe6Gr8uugoyH+HgP1GpyuHXtai+A+Os3.Te+uJNbM28IP6IFqLgsJmVbrgiUP7keFZhkpuAmSzTPoYWnmMDJQTUcsCGWcNFlFYuhv3NmAzrooZD.01nsDhAQXMAxb03g88O2xL4UceL9Dht+VMYvszi6IRh7dHA3ITWdV+RdqyuMqu0IdleqydAR.BGjf4owhTRcaKeg4V2dtsIxg7xpaDURK01qEr8rz6JMxEttsvtXdIiAiKYoNTqdq9iM1gig6b7IvtIbuz.XyhKRm5dc5NjkRdLMT1ut8BKDuts3uDmDB4kfRchrvk8ru5y4y9V5Mtm88VP+lkZlZ4bL5SUMBsC+DBCNMpw36CG+5gGxj4RKebpifKxuSuHQuOAZH43iIkpel5FBd7H7XuBI2rw9DFAmZcD6ia7H3JebRGyaElmXQ8+0MVN070G4ZfqmhCv6s22Irv+qemvre5Cn.eyNK9gt.U75d5To2+M4xWGOw30gOhvAIhmFXdYl5P+UzRf8MW+UIW1siZrW87uRh5SGrl5iLPeZPfpd8Sfael9ZVeNVymNGq4tywZt2brlOaNVymOGq49W5ZT2Tm8XCUMOHn6N5lFcbLMqnK+Q+Mvmomg1
 ```

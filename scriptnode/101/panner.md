@@ -1,41 +1,61 @@
 ---
-keywords: Chapter 2: Panner
+keywords: Chapter 3: Panner
 summary:  A simple stereo panner that introduces the multi container
 author:   Matt_SF
-index:    02
-modified: 18.11.2021
+index:    03
+modified: 21.11.2021
 ---
   
+**INTRO**
 
-Let's go a bit further and create a L/R balance knob. This example is only here to demonstrate the L/R signal manipulation. Althoug it will be usable, a proper L/R balance control would need a bit more work than that :) How to split the L/R channels ? Let's start a new network and add a `container.multi` node and rename it "ChanneSplit" : 
+In this tutorial we'll create a stereo panner effect. This example will demonstrate how to split the signal into Left & Right channels.
+For this purpose we'll need a parameter which will control the gain of both L/R channels in an opposite way : increasing the Left channel's gain will decrease the Right channel's and vice-versa.
 
-![9ef061bd-35d8-4eb1-91fc-40a35dbf3a41-image.png](https://i.imgur.com/WFWB2DZ.png) 
+**The nodes we'll use :** 
 
+ - 1 [`container.multi`](/scriptnode/list/container/multi)
+ - 1 [`control.xfader`](/scriptnode/list/control/xfader)
+ - 2 [`core.gain`](/scriptnode/list/core/gain)
+
+**1 - SIGNAL FLOW**
+
+Let's start a new network and add the `container.multi` node and rename it "ChannelSplit" : 
 > Reminder : to rename nodes : right click on the title bar
+
+![image](https://user-images.githubusercontent.com/84969276/142730197-73ac1486-9a4f-47e2-a231-fe8507402463.png)
 
 Now, add a gain node and duplicate it with Ctrl/Cmd + D : 
 
-![a2ab24ce-2fc1-4f15-95e5-5a413b7caab8-image.png](https://i.imgur.com/GYzjr9y.png) 
+![image](https://user-images.githubusercontent.com/84969276/142757342-8c7940c4-98e6-4daa-be2f-54a2fa6d6cc2.png)
 
-See the cables which connect every nodes ? this is your signal flow. Follow it and you'll never be lost :D
+See the cables which connect every nodes ? this is your signal flow. You can easily see whether you're working with mono or stereo signals.
 
-![e83f0611-a612-43d1-b5c3-d2baead6c0a8-image.png](https://i.imgur.com/LOWVbvV.png) 
+![image](https://user-images.githubusercontent.com/84969276/142757373-dc8f9479-5079-4f4f-b4d8-52f44e527aee.png)
 
-Now we'll add aparameter control, and set its range to -1...1 : 
+**2 - CONNECTING EVERYTHING**
 
-![57cba45b-6aba-49f3-a073-e8376a80a4e5-image.png](https://i.imgur.com/9pUZxpo.png) 
+In order to control both gain the way we want, we'll add now the `control.xfader` before the `container.multi`. 
+The default crossfading curves are linear. Since we're dealing with decibel values, we have to set the curves to RMS. Just use the dedicated menu :
 
-Connect the Balance control to the 2 gain parameters : 
+![image](https://user-images.githubusercontent.com/84969276/142757400-c009bba1-1601-4721-a644-4c9ba93b21f2.png)
 
-![f73dade8-397c-4c3b-a935-22b1ee80edb7-image.png](https://i.imgur.com/1CAJWn2.png) 
+Then create a `Pan` parameter and connect everything like on this picture : 
 
-But in order for this to work, we have to modify the range of one of the gain parameters since we want the Balance control to handle both the L/R levels. 
-Lets give the gain nodes a proper name and invert the rightChannel's gain values - node values AND connection values - from (-100...0) to (0...-100) : 
+![image](https://user-images.githubusercontent.com/84969276/142757418-e9c32ed1-14c5-4f3e-bf4f-396c444e0ebd.png)
 
-![9cff57a3-f1ee-43cb-9fb7-5292ede06724-image.png](https://i.imgur.com/7WOgNj9.png) 
+Now our `Pan` parameter controls the crossfade between two values. The both target icons labelled "1" & "2" are modulation sources which are controlled by the `control.xfader`.
+
+Even if we could leave everything like this, we can do one more thing : here our `Pan` values range is set to (0...1). Since we're making a Panner effect, it would be more logical to set it to (-1...1).
+To do so, open the range editor of the `Pan` parameter like we did in the previous tutorial : 
+
+![image](https://user-images.githubusercontent.com/84969276/142757445-12d66873-db3e-4b09-b876-9da9c156b8fb.png)
+
+And don't forget to set the same values to your GUI's Pan knob :
+
+![image](https://user-images.githubusercontent.com/84969276/142757499-b1308b37-75b4-48a3-bf9c-2cabaad6d45c.png)
 
 And voila again. Now you know how to split the left and right channels.
 
 ```snippet
-HiseSnippet 1611.3oc6X8zbaTCEWqc1Pi6eFJzNvwcxvA2YJYhCo.yzgIN+s3g5DOwgT3TQYWYaMVqzN6JmDWldiCbiy8FeD3BG3T6GAlgu.v2f9M.dRZsWs1tAGSZZOfOY8jz68Su+7SuUMhE9jjDQLxYgC5GQPNWysYetrylcvTNp1VHma3VGmHIwdFQazOBmjPBPNNEefRfyBygz+d4ZafYXtOISDBcnf5SdHMjJyj1n5WQYrcvAjCngVqd0p07E7MELQO.OEcWFEg86haS1EqVVAWjy7aGPkh3lRrjjfblaCQP+lcDmvMq+PZB8HFQMnBpInHi3cDr.EhURQa1gxBZL3bmfPNtMx7BEMdga4VmFPGJOya7t5I7x1gs+voPd3ULG7pXCuksf2DfjiEjly.oa51zOlFIylQgmq5ViCAmVXvsaCEyZQE9UG2MEvJ3xkBwcI6DCCFtixqbukuqWk6s7cteoRfqOQ5cLN1KMLtyodegmNYXo1D41sZQ7kkWb3jKp1DkynbhWqdbeIUv8D7tbwQoqQY3XAqruHLRvAHbWP8rdj6T56KsvP8rTBQttTFSOpmjTNSb5+Frm6W5of8FbV..s4.sVdQKat3cT5K0xahYrifTnxSBVfFsf8tBIYOdYMzJ8zRdiNUqVSbtTcwHwSbZU9c7Yswx7dgGQhscLpEBA87YRtu5LI6Dcei6wZgBdMNUtWDg+pR+Qo9TUVWJpfkJ04b2HMmqIiFPhQTH055tVtRjF1oUvU+qm7COG8001BKwCTFnWvVQjXIUcLb1hbLvGXRnWvcKRRWoHRu1zfIThOkl9zLhicq1OaPspg4XkddHMHfQZHRnJeuM4DZ7pLn9VDzigk4K5ULcoSnzgcklpZhC5tuMS3nLAyMcLAmMQ0zB2a51fJ86LY7VXB3EhVutwaJu50cM7HYfcN2c9lyjD8bCkokPsTZFFXeCS5PtmIwj57itY0uQwjHbL4.QCFte4DbXDirO.265cDS32sI8IjwK5iLHXC0JJ62Ay4DVxrvML+TeKSky7VFz9hdRJuccLv9BkSt61KrIb2KPQlhNPlSAEEgY7xpwpzklDdfdveC+RmrhZrS5jUFLYF6BZWh7DQbWczH8+PrP45ulah1I+3VmVAsNiINQwGPSSdgXfVVCAqeTGAm5qDYVw.jtdnnmh7v.WmB6JB.Gv76f8AGU+FXYGUYghdDx6HwK4OL+yNrq10f1OLGTvJgZVIn4ibIEf6tANF5KAtJUQrUvonEQmIeSMBpxJXNh0RNTMqOlgNzvZBXUYQiCQCXW0Rutq4P0LhAcM8JOBg8XR54.x4A3PKWHmkYjVxTWZdKeUvxwjkZqbamCaVHmMs7XPN4vQHm2oNken0UIvuu8E0wmNhLH2RRhTUWox94m8reaslcImXvZpzWz9WtcU04YdMuMZLsrdOoHDJdz7gHKbL+33.gFCGU+opSEN9t2eq+XMSNVyPgP1Ap0FELqV8ew9WD9gq4tOA5JxnkwzExJC3Ftwz1cdKIEXBtdvc7+o.uFRArCK4iQN1XSooEFPXhFGou74iizWt1HH0f9QQpdkiALcWjbh9lQMaU1PHkQkEVKXTdqg.VMUZ7+h2ot8oPS.IIZf.o7nIBrQJmlNj8eMseTjsgPzMDqu3cl5N2tMtaal7ptOBeLQ+sg5KQusdbKQbn2CHvkSp9QqbFOUvuOsOUPzT+TA64KAHbPLlmDIRHUr07Hysh8baQj834WtQTtUoNd6.GOq0ckpCDthsvFXdNkAiyoo5TqOb4OWaaNF5UqIANMA6k3CGV7H0DM5wRHOhFH6TwdiYhWwV7WhiCf3hethnhScG0miWMY925d0jKuOm6h4gcVX.FaRUe.w17iILnZTiw2CJ+ZggV7FHMe4TcAWLnW3r.89DnQ91sI4xel3AZcoD62MSxsptOgQvIVkXeT0GB8Yhiqq6NXl7EUN2Ox0DiWenqAtdJN.u2HwsKjO8t3T8o2WHXb1+b6KgpOfB7s6n3G3BTwq3oCkduYhkWFeZ9kgMBw9whG6adQCUQ+UzRfyMW+n9K3VWM1qxfmRz0c4kVFEBWW7XeeU95GC29L48rxLrmOYF1ypyvdt2LrmOcF1ymMC64yOy8ntoN8qiT47ffFaqaZzwwzrhN8G8O.e9J+E
+HiseSnippet 1321.3oc6X0rbaaCDFTRPwxIoMYZe.zQmYRzPJqDaO8Pc7OJUSic3X55o2x.SBYgQj.bHghsZmduuUsOR8MncW9iHnirislIoWhNYr6hc+v9yG.sahxmmlpRHVcNcdLmX8Hp2bodx9SXBIYzADquk5o4IbUWWlTxSH6MOlklxCHVVMeCZjUmVjre+yOtGKjI84UhHjyTBe9aEQBckT2c+YQX3PV.+TQjg0C1cjuRtuJTMC.TSpMIl4OkcA+XFZVCJwp8gABsJwSyz7ThUq8TAy8lntTla+YhTw4gbbgCwCbTt3gpv.DwnTx9SDgAtkG7TB3E2pzPy7zv2SORDHVHuJc7jLEcq1gY9vpQc30rF7bLgmsA7VBjrLfTqbH8TpmehHVWoAwyCoijP8YLCR6lPI2Vh0eS2WAFH08hXS4CSfEK1vF86a+7tN8se1OLdlzWKTxtJ4wJM+cxMd15+95cV+OVu60UMd7R0ggIQEFxSVpZrRmbaabC4rny4IOu6GXgy3KLDN90yozaNmZVx8yO0FFpjijB86h4xapQfTjpv7eAp.S0YY+uoH66EJBfo.Ajj6PmJUmCiEjLHa10S9kQGvzrRGA9DhSLOQKvif0A7O.SE4k0NzC3oS0p3LaihURDAVctCg8ppPNZ24UKNXWM+JvGqQKlYipMl9WQhffPtqJUfk.SbGWlMFAAZ8hsO7JXNLAFAg1FTNEkCSweTGJLanBlExz0GXPVhBEX3L6RwVQI.i4lrHWeJp0caJ51Gxuqv8oTWg1exxwaikfWnF+4FuEbROld33wbecEXaQG9q2JAz8FJ2Uxn0K5Kg3i.wnUYYjP+IsZfONgCcS7SUtgr4ajxhhC4m.n84cOOT4O0S7a7OlknnubOzhM7mfwJLcUHSZemInctUBZxIpYZg7hiX5DALGROdVjGbskOe+BzAxrZfbJ4qsw0X2hGWFjs3egeEJcv0VEJcJUVQGQNlquTkLMqXT72PoHm++77KcGeE40ggpKQNDQQqKTBxj4pBmGOQIE9nnbKJA5qiTyPBmbzBtWE.m+1CY9PdZtKSOAGJP5TnqimzyeQ22RK5YMVPB0sjwHMOYhts7l87DA.inLpN7d8lnd730HO9TL.qQuZLCo8pAlmjAFnH2qPa8f+IBTKChXPRwJXdtQ9icf5nAzOKmXuIse1.ooosQ1CdoET5IG4A0uKQxiSYIWv0Y92TPwsARdVyZZ8kfCQji7qsou8vgmRbM4bamwhRNRHKB3ZzW3Xa2ylbD6pEX.WCuVKFGhv2vX2CrI6myfcrcbdEzTOkeYd5jX8czW1aP+982xdqsFr8.mMs2o9Q3th3GPOYza9o+2frQACIqJWAE6pfmGIyH6.qwB4Cn4hd8LsJBnEJojqtBXQ8jXzb9XJN.wC8hCg21diiKQyB0h6WK5RmEJZJpEmGBwIg26BLMeuhPiZYrlFYr1e9KW4mlrdiqmxWNPtdoaMJFy6GPPC1z1wdSvfc1Y6A6rksSw6m8hTJ8DfKubVtMsO5cxW9zxinmvS45b2Vy4DSZKy1vxQuu1X70Fi5Lg2rl5bjn+yeRe0YoMbVVBc4hqCsu8KFZUdwvhavqcyPIi6mhct1IH6UnlW.+H5nzyPs9rvRjAugYU9xquHulKh4mndewaWvCzZYRfzoL6euQG5Q35tNkeNYdRA9XMw688wG6+BXRX46o+JrmMWg8LXE1yKWg87pUXOasB6Y6acO3+omBlHrsFD3dXVykk0gRF7cBYejC4+.r0rCQC
 ```
