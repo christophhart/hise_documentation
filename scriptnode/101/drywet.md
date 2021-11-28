@@ -6,19 +6,19 @@ index:    04
 modified: 21.11.2021
 ---
 
-**1 - INTRO**
+### Introduction
 
 In this chapter we'll take a look at how to setup a dry/wet signal routing. Using the `container.split` node we'll be able to creates parallel signal chains to process only one chain and mix its level with the dry signal.
 
 **The nodes we'll use :** 
 
- - 1 [`container.split`](/scriptnode/list/container/split)
- - 2 [`container.chain`](/scriptnode/list/container/chain)
- - 2 [`core.gain`](/scriptnode/list/core/gain)
- - 1 [`control.xfader`](/scriptnode/list/control/xfader)
- - 1 [`fx.reverb`](/scriptnode/list/fx/reverb)
+- 1x [`container.split`](/scriptnode/list/container/split)
+- 2x [`container.chain`](/scriptnode/list/container/chain)
+- 2x [`core.gain`](/scriptnode/list/core/gain)
+- 1x [`control.xfader`](/scriptnode/list/control/xfader)
+- 1x [`fx.reverb`](/scriptnode/list/fx/reverb)
 
-**2 - SETUP A DRY / WET SIGNAL ROUTING**
+### Setup a dry / wet routing
 
 Let's build a little reverb wit a Dry/Wet control : 
 
@@ -31,12 +31,12 @@ Add a `container.split` node to the graph and add 2 `container.chain` nodes. The
 
 Add a `DryWet` parameter and the required nodes as shown on the picture : 1 `core.gain` for the DRY channel and a `core.gain` + a `fx.reverb` for the WET channel and a `control.xfader`. Set the crossfading menu to "RMS" and connect the crossfade sources to the gains :
 
-<img src="https://user-images.githubusercontent.com/84969276/142762123-c60f82a8-46e2-4f05-8e21-71b3e240eef1.png" width="640"/>
+![](https://user-images.githubusercontent.com/84969276/142762123-c60f82a8-46e2-4f05-8e21-71b3e240eef1.png)
 
 
 Done ! How simple is that ? Now if you want to build you own reverb and manipulate it via your interface, just create parameters and connect everything : 
 
-<img src="https://user-images.githubusercontent.com/84969276/142761787-e6a9faaf-acbf-4817-9e67-842811309f82.png" width="640"/>
+![](https://user-images.githubusercontent.com/84969276/142761787-e6a9faaf-acbf-4817-9e67-842811309f82.png)
 
 
 > Keep in mind though to take care of the Main parameters's ranges, depending on whether you're controlling linear values, levels, frequencies, etc...

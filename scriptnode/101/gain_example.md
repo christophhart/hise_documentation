@@ -6,15 +6,15 @@ index:    02
 modified: 21.11.2021
 ---
 
-**INTRO**
+### Introduction
 
 In this chapter we'll build a simple Gain effect. This will show you the basics of creating Main parameters, adding and connecting nodes in the network graph.
 
 **The nodes we'll use :** 
 
- - 1 [`core.gain`](/scriptnode/list/core/gain)
+- 1x [`core.gain`](/scriptnode/list/core/gain)
 
- **1 - HOW TO ADD AND CONNECT NODES :**
+### How to connect nodes
 
 First, in order to keep things clean let's rename the scriptFx module to something nicer : 
 
@@ -61,15 +61,11 @@ Open the range editor by clicking on this little icon :
 
 With the range editor you get the ability to drag the min and max value as well as the skew factor with the mouse. With a right-click you can access the context menu which allows you to quickly set it to different presets, or in this case, simple copy the target range to the source range (so that you don't have to edit the range of the main parameter). Now the `Gain` has the correct range.
 
-> Use SHIFT+click on the left/right borders of the graph to enter custom values.
->
-> Use CTRL+click and drag the left/right borders to move the values by increments.
->
-> Uncheck the "Make sticky" option to go out of the range editor.
+> Use SHIFT+click on the left/right borders of the graph to enter custom values.  Use CTRL+click and drag the left/right borders to move the values by increments.  Uncheck the "Make sticky" option to go out of the range editor.
 
 Then click again on the target icon to exit the "connect" mode. 
 
-**2 - HOW TO CONNECT THE MAIN CONTROLS TO YOUR GUI ?**
+### How to connect the main controls to the GUI
 
 Now that everything is set up, how to manipulate the `Gain` from the plugin GUI ?
 

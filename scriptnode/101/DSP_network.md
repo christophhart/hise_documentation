@@ -6,15 +6,13 @@ index:    01
 modified: 21.11.2021
 ---
 
-> **Convention used in these chapters :**
-> 
-> When we'll talk about nodes, we will write them like this : `category.node`
-> 
-> The Main Parameters we'll add to the graph's top bar will be written like this : `parameter`
->
-> Links to the documentation nodes descriptions will be provided at the beginning of the chapters.
+### Convention used in these chapters
 
- **HOW TO CREATE A DSP NETWORK :**
+- When we'll talk about nodes, we will write them like this : `category.node`
+- The Main Parameters we'll add to the graph's top bar will be written like this : `parameter`
+- Links to the documentation nodes descriptions will be provided at the beginning of the chapters.
+
+### How to create a DSP Network
 
 Create a ScriptFx module : 
 

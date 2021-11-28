@@ -6,18 +6,18 @@ index:    03
 modified: 21.11.2021
 ---
   
-**INTRO**
+### Introduction
 
 In this tutorial we'll create a stereo panner effect. This example will demonstrate how to split the signal into Left & Right channels.
 For this purpose we'll need a parameter which will control the gain of both L/R channels in an opposite way : increasing the Left channel's gain will decrease the Right channel's and vice-versa.
 
 **The nodes we'll use :** 
 
- - 1 [`container.multi`](/scriptnode/list/container/multi)
- - 1 [`control.xfader`](/scriptnode/list/control/xfader)
- - 2 [`core.gain`](/scriptnode/list/core/gain)
+- 1x [`container.multi`](/scriptnode/list/container/multi)
+- 1x [`control.xfader`](/scriptnode/list/control/xfader)
+- 2x [`core.gain`](/scriptnode/list/core/gain)
 
-**1 - SIGNAL FLOW**
+### Signal Flow
 
 Let's start a new network and add the `container.multi` node and rename it "ChannelSplit" : 
 > Reminder : to rename nodes : right click on the title bar
@@ -32,7 +32,7 @@ See the cables which connect every nodes ? this is your signal flow. You can eas
 
 ![image](https://user-images.githubusercontent.com/84969276/142757373-dc8f9479-5079-4f4f-b4d8-52f44e527aee.png)
 
-**2 - CONNECTING EVERYTHING**
+### Connect everything
 
 In order to control both gain the way we want, we'll add now the `control.xfader` before the `container.multi`. 
 The default crossfading curves are linear. Since we're dealing with decibel values, we have to set the curves to RMS. Just use the dedicated menu :
