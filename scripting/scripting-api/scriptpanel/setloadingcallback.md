@@ -23,7 +23,7 @@ panel.setLoadingCallback(function(isPreloading)
 	if(isPreloading)
         this.data.colour = Colours.white;
     else
-        this.data.colur = Colours.grey;
+        this.data.colour = Colours.grey;
         
     // Update the UI
     this.repaint();

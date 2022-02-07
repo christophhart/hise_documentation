@@ -1,0 +1,3 @@
+If the task is running, this will send a abort signal so that the next time you call [shouldAbort()](/scripting/scripting-api/backgroundtask#shouldabort) it will return false and gives you the option to cancel the task gracefully.
+
+This can be called from any thread (but the most useful application is a control callback obviously). if `blockUntilStopped` is true, the function will wait until the thread has been stopped (in case you require that the thread has been terminated before proceeding).

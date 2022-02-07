@@ -156,6 +156,77 @@ laf.registerFunction("drawToggleButton", function(g, obj)
 });
 ```
 
+### `drawRotarySlider`
+
+> How to draw the stock HISE rotary slider (Knob style).
+
+| Object Property | Description |
+| -- | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the button. |
+| `obj.id` | the ID of the component. |
+| `obj.text` | the text property. |
+| `obj.value` | the slider value. |
+| `obj.valueNormalized` | the normalized slider value. |
+| `obj.valueSuffixString` | the slider value plus the suffix. |
+| `obj.suffix` | the suffix property. |
+| `obj.skew` | the skew factor. |
+| `obj.min` | the min value property. |
+| `obj.max` | the max value property. |
+| `obj.clicked` | the mouse clicked state of the slider. |
+| `obj.hover` | the mouse hover state of the slider. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+
+### `drawLinearSlider`
+
+> How to draw the stock HISE slider (linear and range style).
+
+#### All linear style
+
+| Object Property | Description |
+| -- | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the button. |
+| `obj.id` | the ID of the component. |
+| `obj.text` | the text property. |
+| `obj.valueSuffixString` | the slider value plus the suffix. |
+| `obj.suffix` | the suffix property. |
+| `obj.skew` | the skew factor. |
+| `obj.syle` | return the Juce slider style code (Horizontal:2, Vertical:3, Range:9). |
+
+#### Vertical and horizontal style addition
+
+| Object Property | Description |
+| -- | ---- |
+| `obj.min` | the min value property. |
+| `obj.max` | the max value property. |
+| `obj.value` | the slider value. |
+| `obj.valueNormalized` | the normalized slider value. |
+
+#### Range style addition
+
+| Object Property | Description |
+| --- | ---- |
+| `obj.valueRangeStyleMin` | the min value property. |
+| `obj.valueRangeStyleMax` | the max value property. |
+| `obj.valueRangeStyleMinNormalized` | the min normalized slider value. |
+| `obj.valueRangeStyleMaxNormalized` | the max normalized slider value. |
+| `obj.clicked` | the mouse clicked state of the slider. |
+| `obj.hover` | the mouse hover state of the slider. |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour1`
+- `obj.itemColour2`
+- `obj.textColour`
+
+
 ### `drawComboBox`
 
 > How to draw the stock HISE combobox
@@ -657,5 +728,124 @@ saf.registerFunction("drawTableRuler", function(g, obj)
 });
 ```
 
+## Midi Dropper
+
+The MIDI dropper is a field that can be used to drop MIDI files that are loaded to a connected MIDI Player or perform a drag operation of the current MIDI content to an external target (eg. DAWs).  
+In order to use it, add a FloatingTile, set the `ContentType` to `MidiOverlayPanel`, then set the `ProcessorId` to the MIDI Player ID you want to connect to and the `Index` to `0`.
+
+### `drawMidiDropper`
+
+> How to draw the drop area
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the drop area |
+| `obj.text` | the default text being displayed. |
+| `obj.hover` | `true` if a drag operation is active (either an item hovers over the dropper or a external drag is performed |
+| `obj.active` | `true` if a sequence is loaded into the connected MIDI Player |
+
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour`
+- `obj.textColour`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawMidiDropper", function(g, obj)
+{
+    if(obj.active)
+        g.fillAll(obj.bgColour);
+    
+    if(obj.hover)
+    {
+        g.setColour(obj.itemColour1);
+        g.drawRect(obj.area, 3);
+    }
+    
+    g.setColour(obj.textColour);
+    g.drawAlignedText(obj.text, obj.area, "centred");
+});
+```
+
+## AHDSR Graph
+
+How to render the envelope graph for a AHDSR envelope. There are two methods, one for rendering the path (and the active subsection) and one for the ball animation.
+
+
+### `drawAhdsrPath`
+
+> How to render the envelope graph. This function will get called on different occasions, take a look at the example for an explanation.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.path` | a reference to the path object that should be rendered. |
+| `obj.area` | the area (`[x, y, w, h]` of the path that is being rendered |
+| `obj.isActive` | true if this function call is supposed to render the active section |
+| `obj.currentState` | the state of the envelope (attack, sustain, hold, etc.) |
+
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour`
+- `obj.itemColour2`
+- `obj.itemColour3`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawAhdsrPath", function(g, obj)
+{
+	// This function will be called for the whole path
+	// and once again for the currently active section
+
+	if(obj.isActive)
+	{
+		// Just render the "active section of the path"
+		g.setColour(obj.itemColour2);
+		
+		// the `area` property contains the original bounds 
+		// of the path, so we need to pass it to the method
+		g.fillPath(obj.path, obj.area);
+	}
+	else
+	{
+		// Render the entire path
+		g.fillAll(obj.bgColour);
+		g.setColour(obj.itemColour);
+		g.drawPath(obj.path, obj.area, 2.0);
+	}
+});
+```
+
+### `drawAhdsrBall`
+
+> How to render the ball animation
+
+| Object Property | Description |
+| - | ---- |
+| `obj.area` | the area (`[x, y, w, h]` of the envelope |
+| `obj.position` | the position (`[x, y]` of the ball |
+| `obj.currentState` | the state of the envelope (attack, sustain, hold, etc.) |
+
+In addition to these properties, all the colour properties from the interface designer are available too:
+
+- `obj.bgColour`
+- `obj.itemColour`
+- `obj.itemColour2`
+- `obj.itemColour3`
+
+#### Example
+
+```javascript
+laf.registerFunction("drawAhdsrBall", function(g, obj)
+{
+	g.setColour(obj.itemColour3);
+	g.fillRect([obj.position[0] - 5, obj.position[1] - 5, 10, 10]);
+});
+```
 
 

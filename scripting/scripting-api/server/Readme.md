@@ -5,7 +5,7 @@ author: Christoph Hart
 modified: 17.07.2020
 ---
 
-This class offers a basic API for communicating with a server using POST and GET requests. 
+This class offers a basic API for communicating with a server using POST and GET requests as well as a downloading resources. 
 
 ### Server callbacks
 
@@ -50,3 +50,7 @@ Server.callSomething("api/recent");
 ### Encryption
 
 If you use SSL for the communication and the POST method for passing around parameters, the communication with the server should be safe enough. However if you want to store any kind of data to a file, please use the [`File.writeEncryptedObject()`](/scripting/scripting-api/file#writeencryptedobject) to make sure that there is no sensitive data lurking around on your hard drive.
+
+### Debugging server calls & downloads
+
+The [ServerController](/ui-components/floating-tiles/hise/servercontroller) floating tile offers a few useful tools that will assist you during the development of Server related tasks, so you might want to consider adding this to the scripting workspace while you're working on your server code.

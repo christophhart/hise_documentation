@@ -1,0 +1,1 @@
+You can pass a function with two parameters here that will be executed when the thread starts and when it stops. This might be useful for notifying your UI that the task is in progress. Be aware that this function will be called on the scripting thread and might be executed at the same time as the actual task!

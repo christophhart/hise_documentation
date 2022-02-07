@@ -1,0 +1,4 @@
+Be aware that while there is only one expansion that can be active at the same time, it does not mean that you can't load content from multiple expansions at once (and you don't need to call this function before you want to load some data from an expansion).  
+It is more an additional feature that allows you to eg. adapt the UI to the most recently loaded expansion.
+
+Whenever you call this method, the function that was specified at [`Expansionhandler.setExpansionCallback()`](/scripting/scripting-api/expansionhandler#setexpansioncallback) is being executed with a reference to the active [Expansion](/scripting/scripting-api/expansion) object as parameter.

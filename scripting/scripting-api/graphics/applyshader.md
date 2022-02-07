@@ -1,0 +1,1 @@
+You can use this method in order to render the [ScriptShader](/scripting/scripting-api/scriptshader) object to the given area (relative to the ScriptPanel's boundaries).

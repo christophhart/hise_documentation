@@ -1,0 +1,1 @@
+The lifetime of a [Download](/scripting/scripting-api/download) object will exceed the download time (so you can display a list of completed downloads). You can query the list of all available downloads with this method. If you want to remove all finished downloads, call [`Server.cleanFinishedDownloads()`](/scripting/scripting-api/server#cleanfinisheddownloads)

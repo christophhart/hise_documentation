@@ -1,0 +1,1 @@
+If you want to create a [ScriptShader](/scripting/scripting-api/scriptshader), use this method and supply the filename as parameter (see [ScriptShader.setFragmentShader()](/scripting/scripting-api/scriptshader#setfragmentshader) for more information about including shaders).
