@@ -496,6 +496,7 @@ Console.stop(); // ~41ms
 Console.start();
 
 goodList.reserve(NUM_ELEMENTS);
+
 for (i = 0; i < NUM_ELEMENTS; i++)
   goodList.push(i);
 
