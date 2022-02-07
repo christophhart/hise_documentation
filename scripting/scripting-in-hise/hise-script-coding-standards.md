@@ -460,13 +460,9 @@ const foo = 0.1;
 // Bad 
 g.fillAll(0xffff0000);
 
-    ```javascript
-    // Bad 
-    g.fillAll(0xffff0000);
-
-    // Good
-    g.fillAll(Colours.red);
-    ```
+// Good
+g.fillAll(Colours.red);
+```
     
 -   When possible, use the colour properties of components rather than hex values or colour constants.
 
