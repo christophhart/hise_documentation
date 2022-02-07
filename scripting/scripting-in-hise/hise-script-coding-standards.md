@@ -4,7 +4,7 @@
 
 The goal of this document is to provide a set of rules that can be followed to produce clean and readable HISE script. Through the use of such a framework developers can share code and have a high level of confidence that others will be able to read, understand, modify, and maintain it without too much difficulty. Although some elements of this guide aim to encourage better coding practices, following these guidelines will not guarantee that your code is bug free or efficient, but it will be readable.
 
-HISE script is born from a mixture of Javascript and C++; This guide tries to follow pre-existing conventions for those language with particular inspiration taken from the [JUCE Coding Standards](https://juce.com/discover/stories/coding-standards), [LLVM Coding Standards](http://llvm.org/docs/CodingStandards.html), and the [Airbnb Javascript style guide](https://github.com/airbnb/javascript). Other elements, unique to HISE, are based upon Christoph's blogs, documentation, and forum posts, and the default behaviour of the HISE script editor when possible.
+HISE script is born from a mixture of Javascript and C++; This guide tries to follow pre-existing conventions for those languages with particular inspiration taken from the [JUCE Coding Standards](https://juce.com/discover/stories/coding-standards), [LLVM Coding Standards](http://llvm.org/docs/CodingStandards.html), and the [Airbnb Javascript style guide](https://github.com/airbnb/javascript). Other elements, unique to HISE, are based upon Christoph's blogs, documentation, and forum posts, and the default behaviour of the HISE script editor when possible.
 
 ## General Formatting
 
@@ -69,10 +69,6 @@ At the top of every source file there should be a header section that includes a
 
 ### White space
 
--   Use 4 spaces rather than tab characters.
-
-    > If you're using the HISE code editor then this is the default behaviour when you hit the tab key.
-
 -   Remove trailing white space from the ends of lines.
 
 -   Never put a space before a comma.
@@ -81,7 +77,7 @@ At the top of every source file there should be a header section that includes a
 
 -   Leave a blank line before if statements, loops, and function declarations.
 
--   Leave a blank line between blocks.
+-   Leave a blank line between blocks of code.
 
 -   Don't pad blocks with unnecessary blank lines.
 
@@ -151,7 +147,7 @@ At the top of every source file there should be a header section that includes a
 
     > Either all of them use braces, or none of them use braces.
 
--   Do not write if statements all-on-one-line unless you have a set of consecutive if statements which are similar, and by aligning them it makes it clear to see the pattern of similarities and differences.
+-   Do not write if statements all-on-one-line unless it's a set of similar consecutive statements, and by aligning them it makes it clear to see the pattern of similarities and differences.
 
     ```javascript
     if (x == 1) return “one”;
@@ -313,23 +309,6 @@ At the top of every source file there should be a header section that includes a
 
 -   All constant references (components, modules, etc.) should be declared upfront in the `on init` callback before they are used in other parts of the script.
 
--   If you're declaring and initializing a group of related variables you can wrap them inside an inline function.
-
-    > This improves readibility and makes the root scope cleaner.
-
-    ```javascript
-    inline function initPageButtons()
-    {
-        local p = [];
-        for(i = 0; i < 16; i++)
-        {
-            p.push(Content.getComponent("PageButton" + i));
-        }
-
-        return p;
-    };
-    ```
-
 -   Declare multiple short variables on the same line when they are related. e.g. `reg a = 0, b = 1, c = 2;`.
     > When there are many variables or they have longer names it is better to use a namespace or object.
 
@@ -337,9 +316,9 @@ At the top of every source file there should be a header section that includes a
 
 -   Variable names should be written in [camel-case](https://techterms.com/definition/camelcase), e.g. `theCamelsHump`.
 
--   Fixed constants, with a value that will never change, should be declared in all caps with underscores between each word. The declarations should be placed near the top of the script or namespace, e.g. `NUMBER_OF_BUTTONS=10`.
+-   Fixed constants, with a value that will never change, should be declared in all caps with underscores between each word. The declarations should be placed near the top of the script or namespace, e.g. `const NUMBER_OF_BUTTONS=10`.
 
-    > This improves readability as such variables will clearly standout.
+    > This improves readability as such variables will clearly stand out.
 
 -   Global variable names should be prefixed with `g_`.
 
@@ -381,18 +360,6 @@ At the top of every source file there should be a header section that includes a
     var isActive = true;
     ```
 
--   Acronyms and initialisms should always be all uppercased or all lowercased.
-
-    ```javascript
-    // Bad 
-    const HttpRequests = [];
-    const SmsContainer = {};
-
-    // Good 
-    const HTTPRequests = [];
-    const smsContainer = {};
-    ```
-
 -   There is a Javascript convention of prefixing private variables with an underscore but this should be avoided.
 
     > This is because there is no such thing as private variables in Javascript or HISE script. Indicating that these fully public variables are private could mislead a developer into thinking a change won't affect another part of the program.
@@ -412,11 +379,11 @@ At the top of every source file there should be a header section that includes a
 
 -   Declare variables as `var` within paint routines, mouse callbacks, regular functions, and custom timer callbacks. 
 
-    > var may occasionally be needed in other parts of your script but avoid using it if there is a suitable alternative.
+    > var may occasionally be needed in other parts of your script but avoid using it if there is an alternative.
 
--   Don't declare `var` variables inside a namespace. Use `reg` instead.
+-   Don't declare `var` variables directly inside a namespace. Use `reg` instead.
 
-    > vars are not limited in scope to the namespace in which they are declared.
+    > The scope of a var is not limited to the namespace in which it is declared.
 
     ```javascript
     // Bad
@@ -441,7 +408,13 @@ At the top of every source file there should be a header section that includes a
 
 -   Declare variables as `const` for all fixed values in the `on init` callback.
 
+-   Use `const` instead of `const var`
+
+    > There is no functional difference between the two so the var is unnecessary.
+
 -   Always use `const` for MIDI lists.
+
+-   Arrays should be declared as `const` unless it is being populated directly from another array.
 
 #### reg
 
@@ -475,10 +448,6 @@ At the top of every source file there should be a header section that includes a
 
 -   For larger projects it's a good idea to declare all global variables in an external script file called `Globals.js` and include it at the top of your interface script.
 
-## Data Types
-
-When working with simple data types (numbers, strings, bools, etc.) you are working directly on the variable's value. With complex data types (arrays, objects) you are working on a reference to the value.
-
 ### Numbers
 
 -   Floating point numbers should have at least one digit before and after the dot.
@@ -504,6 +473,8 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
     // Good
     g.fillAll(Colours.red);
     ```
+    
+-   When possible, use the colour properties of components rather than hex values or colour constants.
 
 ### Strings
 
@@ -515,7 +486,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   Never declare objects or arrays inside the audio callbacks.
 
--   Prefer namespaces to objects when appropriate.
+-   When working with simple data types (numbers, strings, bools, etc.) you are working directly on the variable's value. With complex data types (arrays, objects) you are working on a reference to the value.
 
 -   Prefer `Array.push()` over direct assignment to an index.
 
@@ -529,7 +500,7 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
     // Bad
     Console.start();
 
-    for(i = 0; i < NUM_ELEMENTS; i++)
+    for (i = 0; i < NUM_ELEMENTS; i++)
       badList.push(i);
 
     Console.stop(); // ~41ms
@@ -538,7 +509,8 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
     Console.start();
 
     goodList.reserve(NUM_ELEMENTS);
-    for(i = 0; i < NUM_ELEMENTS; i++)
+    
+    for (i = 0; i < NUM_ELEMENTS; i++)
       goodList.push(i);
 
     Console.stop(); // ~39ms
@@ -632,15 +604,12 @@ When working with simple data types (numbers, strings, bools, etc.) you are work
 
 -   Component references should be prefixed with a lowercase abbreviation of the component type. Since knobs and sliders are both represented by the same component type stick with one abbreviation for all of them regardless of their appearance; either `knb` or `sli`.
 
-    > It's not necessary to use the abbreviation in the name of the component as the component type is shown in the component list, however it can be helpful to do so.
-
     ```javascript
     // Bad
     const expression = Content.addKnob("Expression");
     const expressionKnob = Content.addKnob("Expression");
 
     // Good
-    const knbExpression = Content.addKnob("Expression");
     const knbExpression = Content.addKnob("knbExpression");
     ```
 
