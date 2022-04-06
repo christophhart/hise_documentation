@@ -58,6 +58,47 @@ void main() // must be named `main()` without parameters
 
 > As soon as there is an image or something in the `iChannel` boxes on the shadertoy website, the shader will not work, so make sure that you only use shaders without external textures.
 
+### How to declare constants
+
+You can define constants or declare them above the main function like so:
+
+```cpp
+#define PI 3.14159265359
+
+const float myFloat = 2.35468;
+
+const vec2 myVector = vec2(0.6546, 0.9512);
+```
+
+> Arrays cannot be declared as constants as it is not supported by this version of GLSL.
+
+So this won't work:
+
+```cpp
+// this doesn't work
+const vec2 myArray1[2] = vec2[2] (vec2( 0.4657,  0.2149), vec2( 0.5536,  0.1345));
+```
+
+But instead, you can declare arrays inside the main function like so:
+
+```cpp
+void main()
+{
+	vec2 myArray1[2]; 
+    myArray1[0] = vec2( 0.4657,  0.2149);
+    myArray1[1] = vec2( 0.5536,  0.1345);
+    
+    vec2 myArray2[64];
+    for (int i=0; i < 64; i++) // myArray2.length() isn't supported by the current GLSL version
+    {
+	    myArray2[i] = vec2(0.);
+    }
+    
+    // Note that this won't work either:
+    //vec2 myArray1[2] = vec2[3] (vec2( 0.4657,  0.2149), vec2( 0.5536,  0.1345));
+}
+```
+
 ### Learn to write shaders
 
 If you want to do more than pasting shaders from shadertoy.com and look at it in awe, you will need to learn how to write shaders. OpenGL shaders use a specific language called `GLSL` which is similar to C / C++. There are lots of useful resources on the web, 
