@@ -115,6 +115,32 @@ laf.registerFunction("drawPopupMenuItem", function(g, obj)
 });
 ```
 
+### `getIdealPopupMenuItemSize`
+
+> Sets the height of the item in the popup menu. This will be called for each item.
+
+Be aware that unlike most other functions listed here, this function only has one argument (`obj`).
+The function expects you to return either a 2 element array containing the width and height or a single number for the height only.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.isSeparator` | true if the item is a separator. |
+| `obj.text` | the text that is being displayed. |
+| `obj.standardMenuHeight` | the default height of the menu item |
+
+#### Example
+
+```javascript
+laf.registerFunction("getIdealPopupMenuItemSize", function(obj)
+{		 
+	// this will set the width to 200 and height to 50
+	//return [200, 50];
+	 
+	// sets the height to 60
+	return 30;
+});
+```
+
 ## Generic UI elements
 
 ### `drawToggleButton`
@@ -628,6 +654,34 @@ laf.registerFunction("drawPresetBrowserSearchBar", function(g, obj)
     g.fillRoundedRectangle(obj.area, 5.0);
     g.setColour(Colours.white);
     g.fillPath(obj.icon, [5, 5, 20, 20]);
+});
+```
+
+### `createPresetBrowserIcons`
+
+> Sets the paths for the favourite and search icons.
+
+Be aware that unlike most other functions listed here, this function only has one argument (`id`).
+
+The function expects you to return a path that will be used to draw the icon.
+
+| Object Property | Description |
+| - | ---- |
+| `obj.id` | the icon's id |
+
+#### Example
+
+```javascript
+laf.registerFunction("createPresetBrowserIcons", function(id)
+{
+    if (id == "favorite_on")
+        return myFavoriteOnPath;
+
+    if (id == "favorite_off")
+        return myFavoriteOffPath;
+        
+    if (id == "searchIcon")
+        return mySearchIconPath;
 });
 ```
 
