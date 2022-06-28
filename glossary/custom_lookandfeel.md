@@ -136,7 +136,7 @@ laf.registerFunction("getIdealPopupMenuItemSize", function(obj)
 	// this will set the width to 200 and height to 50
 	//return [200, 50];
 	 
-	// sets the height to 60
+	// sets the height to 30
 	return 30;
 });
 ```
