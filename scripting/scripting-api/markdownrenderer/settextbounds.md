@@ -1,0 +1,1 @@
+Call this after you've set the text in order to create the layout of the text. This will also set the absolute position in the graphics context later. The argument must be a valid Rectangle (= array of 4 float numbers), however since the height is being calculated automatically, there's absolutely no reason to NOT use `9000` as height.

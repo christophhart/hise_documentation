@@ -1,0 +1,1 @@
+Returns an object containing the style information for the markdown text.
