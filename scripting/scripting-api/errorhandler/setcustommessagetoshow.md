@@ -1,0 +1,1 @@
+If you don't like the wording of these messages, the days of messing around with the source code are finally over because you can use this method to override the default error messages for all error events.

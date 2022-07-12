@@ -1,0 +1,1 @@
+If you're creating your custom error handling, the chances are great that you want to check how it behaves in a controlled environment so this method allows you to create artificial error events that you can then catch and handle gracefully. (In the compiled plugin this method will not do anything).

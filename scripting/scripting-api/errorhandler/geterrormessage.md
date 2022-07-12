@@ -1,0 +1,1 @@
+This will return the message that should be displayed to the user. It is either a custom string from you calling `Engine.showErrorMessage()` or one of the predefined error messages from HISE. 

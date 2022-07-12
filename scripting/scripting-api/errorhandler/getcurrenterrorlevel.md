@@ -1,0 +1,1 @@
+Returns the current error level that the user should care about. This might not be the only error (and you can query the amount of pending issues with `getNumActiveErrors()`). It will return an integer that you can compare against one of the constants of this class (all error states are available as constant, eg. `eh.LicenseNotFound`).

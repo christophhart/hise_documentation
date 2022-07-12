@@ -1,0 +1,1 @@
+This will remove all error states (including the ones that are masked by the current error).
