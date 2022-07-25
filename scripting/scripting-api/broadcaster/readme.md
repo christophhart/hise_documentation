@@ -133,9 +133,66 @@ However, with the stock HiseScript solutions there are a few disadvantages:
 
 The Broadcaster object tries to address these issues by giving you (basically) the same functionality as shown in the script above, but with a clean interface, async callback support.
 
-In order to use it, call [`Engine.createBroadcaster`](/scripting/scripting-api/engine#createbroadcaster) with the default values and then use one of its methods to implement the observer pattern.
+In order to use it, call [`Engine.createBroadcaster`](/scripting/scripting-api/engine#createbroadcaster) with the default values and then use one of its methods to implement the observer pattern:
 
-### Bonus Level: The Broadcaster Controller
+```javascript
+// If you pass in a JSON object into the constructor, you can
+// access the properties later using the standard dot operator.
+const var bc = Engine.createBroadcaster({"myProperty": 12});
+
+bc.addListener("testFunction", function(index)
+{
+	Console.print(index);
+});
+
+// Access the property as if the broadcaster would be a generic JSON object:
+Console.print(bc.myProperty);
+
+
+// Setting the property sends a (synchronous) message to the listeners
+bc.myProperty = 90;
+
+// This line does the same as the one above...
+bc.sendMessage([90], false);
+```
+
+However, calling `sendMessage()` or assigning properties manually from your code is just one of the ways that this class can be used: you can also register it to any callback or even attach it to internal event sources that weren't accessible before.
+
+### Compatibility with callback slots
+
+In HiseScript, there are many callback slots that can be registered with a function (or inline function), eg:
+
+- [`ErrorHandler.setErrorCallback()`](/scripting/scripting-api/errorhandler#seterrorcallback)
+- [`MIDIPlayer.setPlaybackCallback()](/scripting/scripting-api/midiplayer#setplaybackcallback)
+- [`ScriptPanel.setFileDropCallback()`](/scripting/scripting-api/scriptpanel#setfiledropcallback)
+
+However instead of a reference to a function, you can also pass in a `Broadcaster` object, and it will then call its listeners (asynchronously) everytime the callback happens.
+
+> Be aware that in this case the parameter amount defined by the argument in `Engine.createBroadcaster()` must match the expected argument amount.
+
+### Attachable Event Sources 
+
+Another feature that vastly increases the usefulness of this object is the ability to register it to internal event types that were not accessible in HISE before:
+
+#### Value changes 
+
+On the first look this doesn't sound particularly interesting because the value callback was already accessible through `setControlCallback()`, however if you're using `processorId` / `parameterId` properties it will not fire so this gives you the chance to add additional, "non-exclusive" callbacks for UI things
+
+See: [`attachToComponentValue()`](/scripting/scripting-api/broadcaster#attachtocomponentvalue)
+
+#### Property changes 
+
+This is super helpful if you want to react on changing properties (eg. the `visible` flag) of certain components.
+
+See: [`attachToComponentProperties()`](/scripting/scripting-api/broadcaster#attachtocomponentproperties)
+
+#### Mouse events
+
+This gives you the ability to attach custom mouse callbacks to **ANY** component using the same interface as [`ScriptPanel.setMouseCallback()`](/scripting/scripting-in-hise/scriptpanel#the-mouseevent-callback) This will not override the default mouse behaviour but rather give you the option to customize the user interface and eg. show certain things while a slider is being dragged.
+
+See: [`attachToComponentMouseEvents()`](/scripting/scripting-api/broadcaster#attachtocomponentmouseevents)
+
+### Bonus Level: The Broadcaster Controller;
 
 ![bc](/images/custom/broadcaster_controller.png)
 
