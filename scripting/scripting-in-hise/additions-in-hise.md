@@ -163,9 +163,40 @@ Console.stop();
 
 Inline functions can't be members of Objects, so it might clutter your global scope if you overdo it. You can use them inside namespaces though.
 
-
-
 If you read the code example above, you might stumble over the `local` keyword. This indicates a local variable definition (which can be used in inline functions as well as callbacks). Since it preallocates the storage, it will not affect realtime performance - however this is obviously only true as long as you use primitive types.
+
+## Explicit capturing of locally scoped variables
+
+There are many occasions where you will assign callbacks to certain events in HiseScript and in some cases this will happen inside a function. However if you want to use either a parameter from the outside function or a locally defined variable, the inner function will fail to resolve that variable:
+
+```
+inline function someFunction(input)
+{
+	Engine.showYesNoWindow("Title", "Message", function(ok)
+	{
+		Console.print(input);
+	});
+};
+
+someFunction(90);
+```
+
+> It doesn't matter whether you're using an inline function or a normal function here - the inline function will throw a compile error though so that's a bit clearier than the `undefined` value that will be used in the standard JS function call...
+
+The solution is again borrowed from C++ (and namely from C++11 lambdas that allow capturing of local variables). The syntax is pretty simple: just put every variable or parameter reference that you want to access in the inner function in a bracket list between the `function` keyword and the parameter list:
+
+```
+inline function someFunction(input)
+{
+	//                                 This right here: <----->
+	Engine.showYesNoWindow("Title", "Message", function [input](ok)
+	{
+		Console.print(input);
+	});
+};
+
+someFunction(90);
+```
 
 ## `const` variables
 
@@ -247,6 +278,8 @@ Globals.x = 5.72; // Define this in one script
 // In Script Processor 2
 Console.print(Globals.x) // 5.72
 ```
+
+> This does exactly the same as using the `global` keyword for variable definition, so you can use whatever syntax you prefer.
 
 ## Namespaces
 
