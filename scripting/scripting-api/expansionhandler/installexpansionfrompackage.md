@@ -8,7 +8,7 @@ The function expects two parameters, the first must be a file object that points
 
 | 2nd Parameter | Effect |
 | ---- | ----- |
-| `FileSystem.Expansion` | The samples will be copied to the expansion folder. This means they end up in the AppData directory of your system drive which is not the best idea if you have lots of samples |
+| `FileSystem.Expansions` | The samples will be copied to the expansion folder. This means they end up in the AppData directory of your system drive which is not the best idea if you have lots of samples |
 | `FileSystem.Samples` | The samples will be copied to the global sample folder that you can specified with the CustomSettingsPanel(!LINK). It will create an symlink file in the Expansion's Sample folder to redirect anything to the global sample folder. |
 | Custom folder object | This will create a symlink file in the Expansion's sample folder to point to any arbitrary location. You can use this to setup your own sample management system and allow the user to spread the samples across multiple locations. |
 
