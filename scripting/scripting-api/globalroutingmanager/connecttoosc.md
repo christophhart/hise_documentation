@@ -1,9 +1,11 @@
 The Global Routing Manager can also be set to send and receive OSC messages by calling this method. It expects two arguments, the first one is a JSON object containing the connection data. The second argument is a function with a single argument that will handle any OSC error messages.
 
-The OSC support with this system is not fully standard compliant to OSC, but is limited to the scope of the Global Routing system:
+The OSC support of this system is not fully standard compliant to OSC, but is limited to the scope of the Global Routing system:
 
 - only single value OSC messages are allowed (anything else will throw a custom error)
 - only bool, integer and float messages are allowed (the integer types are converted automatically)
+
+However if you want to use more complex data types in OSC messages, you can send and receive them using scripting callbacks, which give you almost the full feature set of OSC (minus binary data blobs and colours).
 
 ### The connection data
 
@@ -16,6 +18,9 @@ The JSON object that comes in as first argument describes the URLs and ports for
 | `SourcePort` | The port number for listening to incoming OSC messages | 9000 |
 | `TargetURL` | The IP address for the target URL. Can be left empty to use the local host. | "127.0.0.1" |
 | `TargetPort` | The port number for outgoing OSC messages. If you omit this or set it to -1, it will deactivate OSC output. | -1 |
+| `Parameters` | By default, HISE expects all incoming OSC messages to be within the 0...1 range. However if you can't control the output of your OSC source / target, you can provide a list of parameter ranges as a JSON object with the OSC subdomain as key and a JSON object with the scriptnode range properties as value. It will then transform incoming and outgoing values using the range (see the example below).  | `{}` |
+
+> There is a new FloatingTile (the OSCLogger) which logs all incoming messages with filtering and cable based colour coding so make sure you use it during development / prototyping
 
 ### Example
 
@@ -30,7 +35,16 @@ inline function printError(message)
 rm.connectToOSC({
 	"Domain": "/myDomain",
 	"SourcePort": 6666,
-	"TargetPort": 6667
+	"TargetPort": 6667,
+	"Parameters":
+	{
+		"/fader1":
+		{
+			"MinValue": -1.0,
+			"MaxValue": 1.0,
+			"SkewFactor": 0.25
+		}
+	}
 }, printError);
 
 // Create a cable with a OSC subdomain
