@@ -13,7 +13,8 @@ In order to access files, you will need to use the constants of the `FileSystem`
 
 | Location | Description |
 | ==== | =============== |
-| AudioFiles | The audio file folder. In HISE it will be the repo folder, but in the compiled project it will be a sub folder in the appdata folder. |
+| AudioFiles | The audio file folder. In HISE it will be in the repo folder, but in the compiled project it will be a sub folder in the appdata folder. |
+| Expansions | The expansion folder file folder. In HISE it will be in the repo folder, but in the compiled project it will be a sub folder in the appdata folder. |
 | Samples | The sample folder as specified in the settings (or the subfolder of the HISE project during development). |
 | AppData | The app data directory. This is the main directory for your project which will house the configuration files and user presets. |
 | UserHome | The user home folder. 
