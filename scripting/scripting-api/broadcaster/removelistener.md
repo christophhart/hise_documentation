@@ -1,0 +1,3 @@
+This removes the listener from the list so that it will not be notified anymore. The parameter must be the exact same thing you've used in the addListener() function, so if you're using a JSON object, you need to use the exact same object (and not a clone with the same properties).
+
+> If you just want to temporarily deactivate a listener, you can do so by pressing the bypass button in the Broadcaster Controller. This is helpful for debugging

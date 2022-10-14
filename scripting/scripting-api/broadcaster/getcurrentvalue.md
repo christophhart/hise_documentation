@@ -1,0 +1,1 @@
+This just returns the current value of the broadcaster and can be used if you want to query its state.

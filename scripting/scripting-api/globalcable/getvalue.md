@@ -1,0 +1,1 @@
+This function will return the current value of the cable after converting it using the range you defined with one of the range methods. If you need the normalised value, check out the `getValueNormalised()` function.

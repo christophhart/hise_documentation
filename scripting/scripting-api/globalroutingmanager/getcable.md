@@ -1,0 +1,1 @@
+This method will create a new [Global Cable](/scripting/scripting-api/globalcable) or return a reference to an existing cable with the given ID.
