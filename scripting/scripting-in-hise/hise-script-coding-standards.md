@@ -759,12 +759,12 @@ namespace Paths
   reg svgData;
   
   // My logo
-  svgData = [110,109,51,179,243]
+  svgData = [110,109,51,179,243];
   const logo = Content.createPath();
   logo.loadFromData(svgData);
   
   // My heading
-  svgData = [113,10,0,0,25]
+  svgData = [113,10,0,0,25];
   const myHeading = Content.createPath();
   heading.loadFromData(svgData);
 }
