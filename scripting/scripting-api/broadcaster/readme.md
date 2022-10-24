@@ -192,16 +192,20 @@ This gives you the ability to attach custom mouse callbacks to **ANY** component
 
 See: [`attachToComponentMouseEvents()`](/scripting/scripting-api/broadcaster#attachtocomponentmouseevents)
 
-### Bonus Level: The Broadcaster Controller;
+## Metadata
 
-![bc](/images/custom/broadcaster_controller.png)
+There is another concept of the broadcaster system which is tightly coupled with the visualisation of the broadcaster connections and this is the **Metadata**. Almost all methods which will generate an item on the BroadcasterMap (so the broadcaster itself but also all listeners and event sources) have a metadata parameter in their function signature that needs to be populated with a description of what this item is doing. This enforces self-documenting code on the coding level, which is fine but also heavily increases the usability of the broadcaster map which will help tremendously at keeping the overview over large projects.
 
-In addition to the quality of live improvements on the coding level, there is a helpful debug component called the Broadcaster Controller available that allows you to:
+A metadata object can be a simple string that only contains a description of the item, but for more information you can use a JSON object containing these properties:
 
-- navigate to every listener in the code (by clicking the goto button)
-- trigger a breakpoint whenever a message is sent (by enabling the breakpoint butto in the top row)
-- simulate events by typing the value into the "Current Value" box
-- disabling individual listeners during debugging (by clicking on the bypass button of the respective row)
-- reset to the default value (by clicking on the reset button in the top row)
+| Property | Type | Description |
+| -- | -- | ------ |
+| `id` | String | a (unique) String that is used as name for the item. This doesn't need to be a variable name so you can use any human-readable title here. If you don't supply a JSON object but a simple string, this string will be used as `id` (making this the only non-optional property in this list). |
+| `comment` | String | A markdown formatted string which will be shown on the broadcaster map. There is one little magic trick applied here and that is that if you comment the function call or object definition with a `/**` comment (instead of the default `/*` one), it will parse the comment from the code and write it into the metadata as `comment` property. |
+| `colour` | int | A colour value that is used for the item drawing. You can supply a colour value using the `0xAARRGGBB` notation, or just enter `-1`, then it will create a random colour from the ID hash, which is a quick way to colour an item. |
+| `tags` | Array of strings | You can attach tags to any item and then filter the broadcaster map to only display the items you want. This helps navigating around big projects. |
+| `priority` | int | This property is only valid when used with a listener item and defines the order of how the listeners are called. By default they are called by the order of the `addListener` call, but if that is not what you want, you can shuffle around the listeners by supplying a priority (higher priority values means that the items are moved up the list and the default value is `0`). |
+| `args` | Array of strings | This is only valid for [broadcaster definitions](/scripting/scripting-api/engine#createbroadcaster) and contains a list of strings describing the arguments of this broadcaster. |
 
-In order to show the Broadcaster Controller, just right click on the table row in the script watch table and choose **View in popup**.
+
+For an example usage take a look at the various API calls.
