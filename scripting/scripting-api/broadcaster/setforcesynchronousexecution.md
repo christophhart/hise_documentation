@@ -1,0 +1,1 @@
+This function will enforce synchronous execution of its callback independently of which function is called.
