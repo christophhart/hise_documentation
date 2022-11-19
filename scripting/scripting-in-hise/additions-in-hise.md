@@ -407,3 +407,60 @@ Of course you can use namespaces in external files (it would pretty much defeat 
 #### No extension of namespace
 
 Every namespace must be defined once. In C++ you can take up existing namespaces and add your variables to it, but this isn't supported in **HISE**.
+
+## C Preprocessor
+
+All C-based languages have a preprocessor that will process the code files before they are send to the compiler. They are usually performing simple replace operations and conditional compilation of files.
+
+Adding this concept to HiseScript gives a few advantages:
+
+- you can "physically" exclude scripting code from being included in the plugin (eg. if you have a plugin with some kind of demo functionality and want to avoid unlocking the demo by changing a simple flag in the embedded scripting code)
+- you can define global constants which will be replaced in every script
+- you can query the extra definitions that are passed to the C++ compiler on export and modify your scripts
+- you can quickly deactivate parts of the code without resorting to commenting out the code
+- the code editor in HISE will grey out code that will not be compiled which is pretty helpful
+
+The preprocessor implementation in HISE is not fully standard compliant and these directives are not supported:
+
+```
+#ifdef
+#undef
+#pragma
+#include
+```
+
+so that leaves these directives that are implemented:
+
+```
+#if
+#elif
+#else
+#endif
+#define
+#error
+```
+
+There is plenty of documentation available on how to use preprocessors, but a good overview is available here:
+
+[https://www.tutorialspoint.com/cprogramming/c_preprocessors.htm](https://www.tutorialspoint.com/cprogramming/c_preprocessors.htm)
+
+## Using the preprocessor
+
+By default the preprocessor is disabled. This is because there is a slight overhead in compilation time so unless you really want to use it there's no need to add this overhead. In order to activate the preprocessor, you have two options:
+
+1. Set the **EnableGlobalPreprocessor** flag in the Project Settings. This will enable the preprocessor for all scripts in the project
+2. Add the custom directive `#on` at the beginning of each file that you want to process.
+
+> If you haven't activated the preprocessor, you're most likely will get an error message like `Found '#' when expecting a statement`.
+
+## How the preprocessor is used in HISE
+
+It's important to know when and how the preprocessor in HISE is used in order to take full advantage over the system. There are two important rules here:
+
+1. Just like SNEX and FAUST, the preprocessor will never have to work in the exported plugin. During development it will be evaluated each time you recompile the script, but if you export the plugin, the preprocessor will process the script code that is about to be embedded in the binary **so that the processed code is embedded** with the current preprocessor definitions.
+
+2. The preprocessor is global so any `#define` directive will be available in all other scripts. You can also use all preprocessor directives that you've added to the **ExtraDefinition** field (and also all compiler flags you pass in as command line argument `-D:NAME=VALUE` when you export a plugin from the command-line
+
+
+
+ 
