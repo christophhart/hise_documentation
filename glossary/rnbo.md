@@ -55,10 +55,6 @@ On the other hand, the following are all invalid C++ identifiers:
 
 Once you have configured these settings, you can go ahead and export the patch by clicking the "Export" button. This will generate the necessary C++ files and save them to the specified output directory. After the export process is finished, open HISE and use it to build the C++ wrapper template.
 
-### Special event IDs
-
-The wrapper class in HISE will send a few special events that you can use in the RNBO patch. 
-
 ## Create the HISE C++ wrapper
 
 To create the C++ wrapper code for the RNBO patch, you will need to use the template builder in HISE. Here is the process for creating the template:
