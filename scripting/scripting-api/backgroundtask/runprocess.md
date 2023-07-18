@@ -38,10 +38,19 @@ function downloadLogger(thread, isFinished, data)
 	// Now let's hack around and format the CURL output to something
 	// that we can show in HISE
 	
-	// Begin of nasty hacking procedure using minified coding style...
-	var v=data.split(" ");for(i=0;i<v.length;i++){if(v[i].length==0)
-	v.removeElement(i--);}var progress=parseInt(v[0])/100.0;var m="Downloading "
-	+v[3]+"B of "+v[1]+"B";if(progress<0.01)m="Start Downloading...";
+	// Begin of nasty hacking procedure...
+	var v = data.split(" ");
+	for (i = 0; i < v.length; i++) 
+	{
+	    if (v[i].length == 0)
+	        v.removeElement(i--);
+	}
+	
+	var progress = parseInt(v[0]) / 100.0;
+	var m = "Downloading " + v[3] + "B of " + v[1] + "B";
+	
+	if (progress < 0.01) 
+		m = "Start Downloading...";
 	// ...End of nasty hacking procedure
 	
 	thread.setProgress(progress);	

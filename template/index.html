@@ -5,22 +5,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>HISE | Docs</title>
-	<link rel="stylesheet" type="text/css" href="css/prism.css">
-	<link rel="stylesheet" type="text/css" media="screen" href="./css/autoComplete.css">
+	<link rel="stylesheet" type="text/css" href="template/css/prism.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="template/css/autoComplete.css">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" media="screen" href="./css/style.css">
-	<script src="scripts/toc.json"></script>
-	<script language="javascript" src="scripts/generate.js"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="template/css/style.css">
+	<script src="template/scripts/toc.json"></script>
+	<script language="javascript" src="template/scripts/generate.js"></script>
 </head>
 <body>
+	
 	<header>
 		<a id="nav-button">
 		</a>
 		<logo>
-			<a href="http://hise.audio"><img src="css/images/logo.png" alt=""> </a>
 			<a href="/">
-				<div class="heading">Docs</div>
-			</a>
+				<div class="heading">HISE Docs</div>
+		</a>
 		</logo>
 		<div class="search">
 			<input id="autoComplete" tabindex="1">
@@ -38,102 +38,26 @@
 		</nav>
 
 		<div class="content">
-			<h1 id="scripting-api">
-				Scripting API
+			<h1 id="hise-docs">
+				HISE Docs
 			</h1>
-			<p>
-				The scripting API in HISE can be used to customize the behaviour.
-			</p>
-			<h2 id="using-references-to-objects-in-hise">
-				Using references to objects in HISE
-			</h2>
-			<p>
-				Most of the time you will find yourself changing existing objects in HISE - either UI Components or HISE modules.
-				The usual workflow for this task is to grab a reference with the desired target type and then call one of its
-				methods:
-			</p>
-			<pre><code class="language-javascript line-numbers">const var knob = Content.getComponent("My Knob"); // Create a reference to a knob
-knob.setValue(125);                               // Call a method.</code></pre>
-
-			<p class="comment">
-				In a real world project, you will most likely use multiple references. In this case consider storing them in an <a
-				 href="/scripting/scripting-api/array/index.html">
-					Array
-				</a>
-				and iterate over it
-			</p>
-			<h2 id="hise-module-reference-types">
-				HISE module reference types
-			</h2>
-			<p>
-				The HISE module architecture is based on a strong hierarchy of inheritance with a few interface types. This means
-				that every HISE module has exactly one base class but can have multiple interface classes that add additional
-				functionality.</p>
-			<p>For example the VelocityModulator has the base class <a href="/scripting/scripting-api/modulator/index.html">
-					Modulator
-				</a>
-				, because it creates a signal that can be used to control paramaters of other modules.
-				<p> However, it can also be
-					connected to a <a href="/scripting/scripting-api/scripttable/index.html">
-						Table
-					</a>
-					that can be used to change the velocity curve. Therefore, it has the additional interface type <a href="/scripting/scripting-api/tableprocessor/index.html">
-						TableProcessor
-					</a>
-					.
-				</p>
-				<p class="comment">
-					Depending on what functionality you want, you need to create a reference of the desired base class type or
-					interface.
-				</p>
-				<pre><code class="language-javascript line-numbers">const var v = Synth.getModulator("VeloMod"); // create a base class reference
-v.setAttribute(v.UseTable, 1);               // enable the table
-v.setIntensity(0.5);                         // change the intensity to 50%
-
-
-const var v_t = Synth.getTableProcessor();   // create a interface class reference
-v_t.addTablePoint(0, 0.5, 0.25);             // create a table point in the centre.</code></pre>
-				<pre><code class="language-javascript line-numbers">// short cut - create a temporary interface reference
-v.asTableProcessor().addTablePoint(0, 0.5, 0.25);</code></pre>
-				<h3 id="list-of-base-class-references:">
-					List of base class references:
-				</h3>
-				<ul>
-					<li>
-						<a href="/scripting-api/slotfx/index.html">
-							AudioSampleProcessor
-						</a>
-						<br>
-					</li>
-					<li>
-						<a href="{LINK1}">
-							TableProcessor
-						</a>
-						<br>
-					</li>
-					<li>
-						<a href="{LINK2}">
-							SlotFX
-						</a>
-
-					</li>
-
-				</ul>
-
-
+			<img src="Modules_Sampler.webp" style="max-width:43rem;">
+			</img>
+			<p>Welcome to the official <a href="https://github.com/christophhart/HISE"> HISE</a> Documentation.</p>
+<br><hr><br>
+<span class="content-footer-right">Next: <a href="/introduction/index.html">Introduction</span>
 			<!-- content end -->
 		</div>
 
 		<!-- container end -->
-	</div>
+</div>
 
 	<footer>
-		<div>HISE Docs <img src="css/images/pd.svg" width="14px" style="padding: 2px 2px" /> 2019</div>
+		<div>HISE Docs <img src="template/css/images/pd.svg" width="14px" style="padding: 2px 2px" /> 2019</div>
 	</footer>
 
-	<script src="scripts/prism.js"></script>
-	<script src="scripts/autoComplete.js"></script>
-	<script src="scripts/search.js"></script>
-	
+	<script src="template/scripts/prism.js"></script>
+	<script src="template/scripts/autoComplete.js"></script>
+	<script src="template/scripts/search.js"></script>
 </body>
 </html>
