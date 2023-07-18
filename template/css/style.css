@@ -366,12 +366,12 @@ footer > div {
     text-decoration: none;
     margin-left: auto;
     margin-right: 1rem;
-    color: rgb(147, 147, 147);
+    color: #2c2c2c
 
 }
 footer > div > a {
     text-decoration: none;
-    color: #828282;
+    color: #2c2c2c;
 }
 
 footer > div > a:hover {
