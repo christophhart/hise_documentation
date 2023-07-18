@@ -5,4 +5,4 @@ author:   Christoph Hart
 modified: 18.03.2019
 ---
 
-**Envelopes** "envelope" over a modulation signal.. 
+An envelope is a polyphonic, timevarying modulation source. Usually it's considered as envelope that will apply it's envelope shape on a signal, but it can also be other things (eg. MPE modulator or a polyphonic LFO). There are a few inbuilt envelope modulators in HISE, but you can also create your own envelope modulators with scriptnode.
