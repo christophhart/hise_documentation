@@ -1,0 +1,25 @@
+<html>
+<head>
+<base target="_self" href="https://docs.hise.audio/">
+<script language="javascript" type="text/javascript" src="/template/scripts/generate.js"></script>
+<script src="/template/scripts/toc.json"></script>
+<link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/template/css/style.css">
+</head>
+<body>
+	<div class="topbar">HISE Docs</div>
+	<nav class="toc">
+	<script>
+		for(rootIndex in rootDb.Children)
+		{
+			document.write(createTocElement(rootDb.Children[rootIndex]));
+		}
+	</script>
+	</nav>
+	<div class="content">
+	</div>
+<div id="footer">HISE Doc copy 2019</div>
+<script src="/template/scripts/prism.js"></script>
+</body>
+</html>
+

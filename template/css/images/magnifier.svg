@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="218px"
+   height="218px"
+   viewBox="0 0 218 218"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="magnifier.svg">
+  <metadata
+     id="metadata15">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Magnifier</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1537"
+     inkscape:window-height="802"
+     id="namedview13"
+     showgrid="false"
+     inkscape:zoom="1.0825688"
+     inkscape:cx="110.84746"
+     inkscape:cy="109"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Artboard" />
+  <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title4">Magnifier</title>
+  <desc
+     id="desc6">Created with Sketch.</desc>
+  <defs
+     id="defs8" />
+  <g
+     id="Page-1"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="Artboard"
+       transform="translate(-91.000000, -91.000000)"
+       fill="rgb(255, 122, 122)"
+       fill-rule="nonzero">
+      <path
+         d="M300.328642,261.923704 L245.953333,207.529383 C251.035062,196.904198 253.962963,185.048642 253.962963,172.484198 C253.965679,127.481975 217.480988,91 172.481481,91 C127.479259,91 91,127.481975 91,172.481481 C91,217.480988 127.479259,253.962963 172.481481,253.962963 C185.054074,253.962963 196.901481,251.026914 207.537531,245.953333 L261.920988,300.328642 C272.519012,310.937531 289.725185,310.937531 300.328642,300.328642 C310.937531,289.717037 310.937531,272.51358 300.328642,261.923704 Z M109.107901,172.481481 C109.107901,137.468889 137.479753,109.105185 172.481481,109.105185 C207.485926,109.105185 235.855062,137.468889 235.855062,172.481481 C235.855062,207.472346 207.485926,235.855062 172.481481,235.855062 C137.479753,235.857778 109.107901,207.475062 109.107901,172.481481 Z M287.522469,287.525185 C285.825195,289.223065 283.522835,290.176974 281.122099,290.176974 C278.721363,290.176974 276.419002,289.223065 274.721728,287.525185 L223.306914,236.104938 C228.028516,232.315389 232.321823,228.021172 236.11037,223.298765 L287.522469,274.724444 C289.221681,276.42101 290.176512,278.723636 290.176512,281.124815 C290.176512,283.525993 289.221681,285.828619 287.522469,287.525185 Z"
+         id="Magnifier"
+         style="fill:#f9f9f9" />
+    </g>
+  </g>
+</svg>
