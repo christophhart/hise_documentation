@@ -8,13 +8,14 @@
 code[class*="language-"],
 pre[class*="language-"] {
 	color: white;
-	font-family: 'Source Code Pro', 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-family: 'Roboto Mono', 'Andale Mono', 'Ubuntu Mono', monospace;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
+	font-size: 1.0em;
 	line-height: 1.5;
 
 	-moz-tab-size: 4;
@@ -142,7 +143,7 @@ pre[class*="language-"] {
 pre.line-numbers {
 	position: relative;
 	
-	padding-left: 3.8em;
+	padding-left: 3.3em;
 	counter-reset: linenumber;
 }
 
@@ -156,11 +157,10 @@ pre.line-numbers > code {
 	pointer-events: none;
 	top: 0;
 	font-size: 100%;
-	font-weight: bold;
 	text-align: right;
-	color: #fff;
-	left: -3.8em;
-	width: 3em; /* works for line-numbers below 1000 lines */
+	color: #888;
+	left: -3.2em;
+	width: 2.5em; /* works for line-numbers below 1000 lines */
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -177,7 +177,7 @@ pre.line-numbers > code {
 
 		.line-numbers-rows > span:before {
 			content: counter(linenumber);
-			color: #fff;
+			color: #888;
 			display: block;
 			padding-right: 0.8em;
 			text-align: right;
