@@ -6,33 +6,29 @@ author: Christoph Hart (assisted by ChatGPT)
 
 The purpose of this documentation is to provide a guide on how to import a DSP patch from RNBO into HISE. 
 
-RNBO is a subset of Max/MSP and was released in December 2022. You can read more about it here:
+[RNBO](https://rnbo.cycling74.com) is a subset of Max/MSP and was released in December 2022. The RNBO integration in HISE supports a number of powerful capabilities, including:
 
-https://rnbo.cycling74.com
-
-The RNBO integration supports a number of powerful capabilities, including:
-
--   MIDI communication
--   Tempo syncing, including transport start/stop and BPM synchronization
--   Modulation output (only in scriptnode) using the `outport` object with the `mod` tag ID
--   HISE complex data types (Tables, SliderPacks, and AudioFiles) can be used as data buffers within an RNBO patch.
+-  MIDI communication
+-  Tempo syncing, including transport start/stop and BPM synchronization
+-  Modulation output (only in scriptnode) using the `outport` object with the `mod` tag ID
+-  HISE complex data types (Tables, SliderPacks, and AudioFiles) can be used as data buffers within an RNBO patch.
 
 In this process, we will use the template builder in HISE to create the necessary wrapper code and compile the patch as a dynamic-link library (DLL). This will allow us to seamlessly integrate the patch into scriptnode and use it within HISE, either as node inside scriptnode or as Hardcoded effect module.
 
->If you are familiar with the process of integrating third-party C++ DSP code or using the Faust Integration in HISE, the process of integrating RNBO should be relatively straightforward because you'll be using the same basic concept as these other integration processes.
- 
+> If you are familiar with the process of integrating third-party C++ DSP code or using the Faust Integration in HISE, the process of integrating RNBO should be relatively straightforward because you'll be using the same basic concept as these other integration processes.
+
 ## Export the RNBO Patch
 
 To begin the process of exporting the DSP patch from RNBO, you will need to open the patch in RNBO and navigate to the "Export" menu (it's a button on the right edge of the window). Here, you will find options for exporting the patch as C++ classes.
 
 To ensure that the patch is exported correctly, you will need to configure the following settings:
-
-| Setting             | Value        | Description    |
-|----|----|--------------------------------------------------------------------------------------|
-| Output directory    | `DspNetworks/ThirdParty/src` | This setting determines the folder where the exported patch will be saved. It is important to use the correct output directory, as this is where HISE will look for the patch when it is time to build the wrapper code.                                                 |
-| ExportName          | `your_patch_name` | This setting determines the name of the exported patch. It must be unique within your HISE project, and it must also be a valid C++ identifier (see below).                                                                             |
-| ClassName           | `your_patch_name` | This setting determines the name of the C++ class that will be created for the patch.                                                                             |
-| Polyphony settings  | "Disabled" | This setting determines whether the patch will be exported with polyphonic capabilities. In this case, we want to disable polyphony as it must be disabled in order to use the patch with HISE. However, you can enable the HISE polyphony in the next step if you want to play the patch in a polyphonic scriptnode context.  |
+ 
+| Setting | Value | Description |
+|--|----|------|
+| Output directory | `DspNetworks/ThirdParty/src` | This setting determines the folder where the exported patch will be saved. It is important to use the correct output directory, as this is where HISE will look for the patch when it is time to build the wrapper code. |
+| ExportName | `your_patch_name` | This setting determines the name of the exported patch. It must be unique within your HISE project, and it must also be a valid C++ identifier (see below). |
+| ClassName | `your_patch_name` | This setting determines the name of the C++ class that will be created for the patch. |
+| Polyphony settings | "Disabled" | This setting determines whether the patch will be exported with polyphonic capabilities. In this case, we want to disable polyphony as it must be disabled in order to use the patch with HISE. However, you can enable the HISE polyphony in the next step if you want to play the patch in a polyphonic scriptnode context. |
 
 Make sure to use the same C++ Identifier for the ExportName and ClassName. A valid C++ identifier is a name that is used to identify a variable, function, class, or any other entity in C++. There are a few rules that must be followed when naming an identifier in C++:
 
@@ -43,15 +39,15 @@ Make sure to use the same C++ Identifier for the ExportName and ClassName. A val
 
 For example, the following are all valid C++ identifiers:
 
--   `myVariable`
--   `_privateVariable`
--   `someFunction`
+- `myVariable`
+- `_privateVariable`
+- `someFunction`
 
 On the other hand, the following are all invalid C++ identifiers:
 
--   `2ndVariable` (starts with a digit)
--   `my variable` (contains whitespace)
--   `for` (a reserved keyword)
+- `2ndVariable` (starts with a digit)
+- `my variable` (contains whitespace)
+- `for` (a reserved keyword)
 
 Once you have configured these settings, you can go ahead and export the patch by clicking the "Export" button. This will generate the necessary C++ files and save them to the specified output directory. After the export process is finished, open HISE and use it to build the C++ wrapper template.
 
@@ -59,12 +55,12 @@ Once you have configured these settings, you can go ahead and export the patch b
 
 To create the C++ wrapper code for the RNBO patch, you will need to use the template builder in HISE. Here is the process for creating the template:
 
-1.  Open HISE and navigate to the "Tools" menu.
-2.  Select the "Create Template for RNBO Patch" option.
-3.  In the template builder window that appears, use the drop-down menu to select the C++ file for the RNBO patch that you exported in the previous step.
-4.  Adjust the configuration options as necessary. These may include the number of channels and the polyphony settings. Every setting has a help button with more information.
-5.  Press the "OK" button to create the wrapper code. This will generate a new file in the "ThirdParty" folder of your HISE project.
-6.  Once the wrapper code has been created, you will need to export the DLL and restart HISE in order for the changes to take effect.
+1. Open HISE and navigate to the "Tools" menu.
+2. Select the "Create Template for RNBO Patch" option.
+3. In the template builder window that appears, use the drop-down menu to select the C++ file for the RNBO patch that you exported in the previous step.
+4. Adjust the configuration options as necessary. These may include the number of channels and the polyphony settings. Every setting has a help button with more information.
+5. Press the "OK" button to create the wrapper code. This will generate a new file in the "ThirdParty" folder of your HISE project.
+6. Once the wrapper code has been created, you will need to export the DLL and restart HISE in order for the changes to take effect.
 
 Once the wrapper code has been created, you can use the RNBO patch like any other third-party C++ node in HISE. This can be done either through hardcoded FX or by using scriptnode with your HISE project. 
 
@@ -94,7 +90,7 @@ Then in the Template builder, you just need to enter this ID into the fields of 
 
 Example: 
 1. Add a `buffer~ @name my_table @external 1` object in RNBO
-2. Add `my_table`  to the `Table IDs` field of the Template builder
+2. Add `my_table` to the `Table IDs` field of the Template builder
 
 When you compile the node, it will show a single table that you can connect to an external slot or reference from your main interface just like any other table in HISE.
 

@@ -1,0 +1,3 @@
+You can tell the WebView to execute any chunk of JS code with this method - it will pass the string to the native browser API so make sure you follow the conventions here (I'm not a web guy lol).
+
+One thing to keep in mind is that you need to pass in a unique ID for each time you call this function. This will store the JS string into a dictionary and then call it with the last JS code when a new WebView is created (to allow persistence).
