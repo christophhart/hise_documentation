@@ -229,7 +229,7 @@ h3 > code {
 .content img {
 		padding-top:1rem;
 		padding-bottom:1rem;
-        max-width: 100%;
+        max-width: 100% !important;
 }
 
 
@@ -364,12 +364,12 @@ footer > div {
     text-decoration: none;
     margin-left: auto;
     margin-right: 1rem;
-    color: #2c2c2c
+    color: rgb(147, 147, 147);
 
 }
 footer > div > a {
     text-decoration: none;
-    color: #2c2c2c;
+    color: #828282;
 }
 
 footer > div > a:hover {
@@ -389,8 +389,8 @@ nav.toc {
 	
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: all 0.2s cubic-bezier(0.4, 0, 0, 1);
-    -webkit-transform: translate(-300px, 0);
-    transform: translate(-300px, 0);
+    -webkit-transform: translate(-370px, 0);
+    transform: translate(-370px, 0);
 
     		-webkit-box-shadow: 1px 0px 12px 1px rgba(0,0,0,0.09);
 		-moz-box-shadow: 1px 0px 12px 1px rgba(0,0,0,0.09);
