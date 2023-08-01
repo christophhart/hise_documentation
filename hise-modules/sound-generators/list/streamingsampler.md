@@ -50,6 +50,53 @@ You can load and save **SampleMaps** independently from the Sampler as human-rea
 </samplemap>
 ```
 
+## Timestretching
+
+Starting with HISE 3.5.1 the sampler module has an inbuilt timestretching mode that allows you to independently control pitch and time of your samplemaps.
+
+It's using the (slightly modified) timestretching algorithm from [signalsmith](https://github.com/Signalsmith-Audio/signalsmith-stretch) which is a pretty new library with a reasonably good performance / sound quality ratio. It's licensed permissively which means that the library can be embedded into the HISE codebase and used in proprietary projects.
+
+In order to use the timestretching mode, just switch the mode in the Sampler Settings and adjust the stretch ratio using either the slider on the Sampler Settings (if applicable) or the scripting API call [Sampler.setTimestretchRatio()](/scripting/scripting-api/sampler#settimestretchratio). There are four modes which define how this stretch ratio is applied to the samples:
+
+| Mode | Description |
+| - | ----- |
+| `Disabled` | The default state with timestretching disabled. There's almost no CPU overhead if this is disabled to ensure that the CPU performance of most projects will stay the same. |
+| `VoiceStart` | This mode will use the current stretch ratio and apply it statically to new voices. This allows you to define different stretch ratios for different voices. |
+| `TimeVariant` | This mode will apply the current stretch ratio to all voices. This allows you to define a dynamic stretch ratio, but all voices will have the same ratio. |
+| `TempoSynced` | This mode will ignore the manual stretch ratio and automatically sync the stretch ratio to the BPM of the master clock. By default it tries to detect the musical length of a sample using the current tempo, but that automatic detection can be overriden by supplying a `NumQuarters` property to the timestretching options. |
+
+Be aware that if the timestretch mode is anything else than `Disabled`, it will process the sample using the timestretching library, even if the time and pitch ratio are 1.
+
+> If the timestretching is enabled, any pitch modulation (using the modulation or root note detune) will not change the pitch using resampling but with the pitch transposition of the timestretch algorithm which retains the duration of the sample.
+
+### Timestretching Options
+
+In addition to the timestretching mode, there are several other options which allow you to customize the timestretching:
+
+| Property | Type | Default | Description |
+| -- | - | -- | -------- |
+| `Mode` | `String` | `"Disabled"` | the timestretching mode (as described above). Changing this mode will kill all voices and refresh the voice states on the background thread. |
+| `SkipLatency` | `bool` | `false` | If true, starting a new voice will skip the inherent latency of the timestretching algorithm. This vastly improves the timing of the voice, however it comes with a pretty steep CPU overhead because it has to (silently) calculate the timestretched signal for the duration of the latency (about 50ms). |
+| `NumQuarters` | `double` | `0.0` | if this is not 0.0, it will skip the automatic detection of the sample length when in tempo-synced mode and use this value to determine the BPM of the source sample (so you will need to set this to the value of your loop lengths). |
+| `Tonality` | `double` | `0.0` | This value allows you to [retain the timbre](https://signalsmith-audio.co.uk/code/stretch/#how-to-use-pitch-shifting) when using pitch transposition. |
+
+
+Be aware that there is no UI interface for these properties in HISE (except for the mode). Instead, you will have to use the scripting API calls that query and set these properties from a JSON object.
+
+```javascript
+// fetch the current state
+const var obj = Sampler.getTimestretchOptions();
+
+// print out all properties
+Console.print(trace(obj));
+
+// Apply your changed
+obj.SkipLatency = true;
+
+// Update the options
+Sampler.setTimestretchOptions(obj);
+```
+
 ## Compress and Export
 
 ### Export to HLAC (Monolith)
@@ -71,7 +118,6 @@ There are three modes in which the HLAC (.ch1) file can be processed:
 #### Normalise every sample
 
 This **normalises every sample** individually and compressed them together. 
-
 
 #### Full Dynamics
 
