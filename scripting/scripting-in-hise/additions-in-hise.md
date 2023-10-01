@@ -408,6 +408,62 @@ Of course you can use namespaces in external files (it would pretty much defeat 
 
 Every namespace must be defined once. In C++ you can take up existing namespaces and add your variables to it, but this isn't supported in **HISE**.
 
+## Type safety
+
+Javascript (and therefore HiseScript) is a so-called dynamic language. This means that variables can change their type during the lifetime of the program:
+
+```javascript
+var x = "I'm a string";
+x = ["Now", "I'm", "a", "Array"];
+x = { "Did": "somebody", "say": "JSON????" };
+x = 42;
+```
+
+This flexibility makes it extremely easy to write programs because you even don't need to know what types are in order to create the logic you're after. It also removes a lot of boilerplate code of converting the types to match the expected type. 
+
+However there are also a few examples of how the automatic type conversion produces glitches and issues (eg. seen [here](https://forum.hise.audio/topic/8270/confusing-issue-with-scripting-simple-knob-for-ahdsr-envelope-knob?_=1695985708890))
+
+I'm not onto a revolutionary new approach to programming here - there is actually a typesafe variant of Javascript around called TypeScript - but I thought a bit about how to add some optional type-safety to HiseScript. So I've made a few additions to the HiseScript language which are completely optional and backwards compatible.
+
+> In fact there is one breaking change, but this is because I realized that under certain circumstances (calling a API call on an object that is stored in a list) the check for undefined parameters for the function call was bypassed, so if you're scripts stop compiling or throw an error during runtime, you'll most likely had a undetected undefined parameter in a function call.
+
+The type-safety is applied to these concepts:
+
+- API calls so you can't call `Message.setNoteNumber()` with a String or a JSON object (implenting this for the full HISE API will be a longer process because it requires to change all wrapper code definitions so I'll add the type safety over time)
+- `reg` variables.
+- `const var` variables do not need to be type-safe as they are already typesafe because they are initialised with a fixed type.
+- `inline functions` can have a return type and a well-defined type for each parameter. These types will be then evaluated during runtime (only in HISE, there is not a single CPU cycle overhead in your compiled project)
+
+For the syntax of defining types, I've tried to stick as much as possible to the type script syntax (with the exception of defining return types of inline functions).
+
+```javascript
+// a reg variable that must always be an integer
+reg:int myVariable = 90; 
+h
+myVariable = 125; // OK
+myVariable = "Didn't get the memo"; // Will not compile
+myVariable = undefined; // this will compile as special case
+						// to allow resetting values
+
+// making a function parameter typesafe by prepending a type token
+// You can only declare selected parameters as typesafe
+inline function doSomething(x: int, unsafe)
+{
+	Console.print(typeof(unsafe)); // this can be anything
+}
+
+doSomething(90, 1); // OK
+doSomething(90, [1, 2, 3]); // Still OK
+//doSomething("Didn't get the memo", [1, 2, 3]); // Will not compile
+
+// Define a static return type by adding a type token before the function name
+inline function: int getSomeInteger()
+{
+	return 124; // OK
+	//return "Didn't get the memo"; // Will not compile
+}
+```
+
 ## C Preprocessor
 
 All C-based languages have a preprocessor that will process the code files before they are send to the compiler. They are usually performing simple replace operations and conditional compilation of files.
