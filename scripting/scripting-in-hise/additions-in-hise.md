@@ -464,6 +464,28 @@ inline function: int getSomeInteger()
 }
 ```
 
+Below is a list of all available type identifiers you can use. There are two types of type IDs: elementary types and composite types which define a combination of elementary types so that you can allow multiple types to be passed into the function.
+
+| ID | Type | Description |
+| === | == | ========= |
+| `int` | elementary | an integer number |
+| `double` | elementary | a floating point number |
+| `string` | elementary | a string variable |
+| `Array` | elementary | the Javascript array |
+| `Buffer` | elementary | The inbuilt float array type in HISE to represent audio signals |
+| `ObjectWithLength` | composite| Anything that has the `length` property (So a string, an array or a buffer) |
+| `JSON` | elementary | a JSON object |
+| `ScriptObject` | elementary | a object that was created with the API to interact with HISE (eg. the TransportHandler or a File object) |
+| `Function` | elementary | A callable object (either a function or a broadcaster) |
+| `number` | composite | either a int or a double number. Note: it's highly advised to use this over the elementary types because of the very loose type
+| `object` | composite | either a JSON object or a ScriptObject |
+| `Colour` | composite | either a string ("0xFFRRRGGBB") oder a integer number (0xFFRRGGBB). It's called Colour because the most likely use case for this will be colour variables but you can use it whenever you need either a number or a string. |
+| `ComplexType` | composite | Anything that is not a number |
+ conversion behaviour of JS that will implicitely convert a integer to a double |
+| `NotUndefined` | composite | Anything but not undefined | 
+
+> If the mixing of uppercase and CamelCase triggers your OCD, rest assured that this is not a case of me being sloppy but trying to use the existing type IDs from Java/Typescript (eg `number`) but for the complex types like `Array` and `Buffer` I have to stick to the existing HiseScript identifiers.
+
 ## C Preprocessor
 
 All C-based languages have a preprocessor that will process the code files before they are send to the compiler. They are usually performing simple replace operations and conditional compilation of files.
