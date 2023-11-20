@@ -638,6 +638,83 @@ We already know our little buddy `set` in our example, however in a real world p
 - Read up on the [Threads](/scripting/scripting-api/threads) API class for a detailed explanation of the threading model in HISE and how to apply it.
 - Read up on the `Event Notification` chapter of the HISE documentation (tbd) for a detailed description of the `defer` statement.
 
+## Type safety
+
+Javascript (and therefore HiseScript) is a so-called dynamic language. This means that variables can change their type during the lifetime of the program:
+
+```javascript
+var x = "I'm a string";
+x = ["Now", "I'm", "a", "Array"];
+x = { "Did": "somebody", "say": "JSON????" };
+x = 42;
+```
+
+This flexibility makes it extremely easy to write programs because you even don't need to know what types are in order to create the logic you're after. It also removes a lot of boilerplate code of converting the types to match the expected type. 
+
+However there are also a few examples of how the automatic type conversion produces glitches and issues (eg. seen [here](https://forum.hise.audio/topic/8270/confusing-issue-with-scripting-simple-knob-for-ahdsr-envelope-knob?_=1695985708890))
+
+I'm not onto a revolutionary new approach to programming here - there is actually a typesafe variant of Javascript around called TypeScript - but I thought a bit about how to add some optional type-safety to HiseScript. So I've made a few additions to the HiseScript language which are completely optional and backwards compatible.
+
+> In fact there is one breaking change, but this is because I realized that under certain circumstances (calling a API call on an object that is stored in a list) the check for undefined parameters for the function call was bypassed, so if you're scripts stop compiling or throw an error during runtime, you'll most likely had a undetected undefined parameter in a function call.
+
+The type-safety is applied to these concepts:
+
+- API calls so you can't call `Message.setNoteNumber()` with a String or a JSON object (implenting this for the full HISE API will be a longer process because it requires to change all wrapper code definitions so I'll add the type safety over time)
+- `reg` variables.
+- `const var` variables do not need to be type-safe as they are already typesafe because they are initialised with a fixed type.
+- `inline functions` can have a return type and a well-defined type for each parameter. These types will be then evaluated during runtime (only in HISE, there is not a single CPU cycle overhead in your compiled project)
+
+For the syntax of defining types, I've tried to stick as much as possible to the type script syntax (with the exception of defining return types of inline functions).
+
+```javascript
+// a reg variable that must always be an integer
+reg:int myVariable = 90; 
+h
+myVariable = 125; // OK
+myVariable = "Didn't get the memo"; // Will not compile
+myVariable = undefined; // this will compile as special case
+						// to allow resetting values
+
+// making a function parameter typesafe by prepending a type token
+// You can only declare selected parameters as typesafe
+inline function doSomething(x: int, unsafe)
+{
+	Console.print(typeof(unsafe)); // this can be anything
+}
+
+doSomething(90, 1); // OK
+doSomething(90, [1, 2, 3]); // Still OK
+//doSomething("Didn't get the memo", [1, 2, 3]); // Will not compile
+
+// Define a static return type by adding a type token before the function name
+inline function: int getSomeInteger()
+{
+	return 124; // OK
+	//return "Didn't get the memo"; // Will not compile
+}
+```
+
+Below is a list of all available type identifiers you can use. There are two types of type IDs: elementary types and composite types which define a combination of elementary types so that you can allow multiple types to be passed into the function.
+
+| ID | Type | Description |
+| === | == | ========= |
+| `int` | elementary | an integer number |
+| `double` | elementary | a floating point number |
+| `string` | elementary | a string variable |
+| `Array` | elementary | the Javascript array |
+| `Buffer` | elementary | The inbuilt float array type in HISE to represent audio signals |
+| `ObjectWithLength` | composite| Anything that has the `length` property (So a string, an array or a buffer) |
+| `JSON` | elementary | a JSON object |
+| `ScriptObject` | elementary | a object that was created with the API to interact with HISE (eg. the TransportHandler or a File object) |
+| `Function` | elementary | A callable object (either a function or a broadcaster) |
+| `number` | composite | either a int or a double number. Note: it's highly advised to use this over the elementary types because of the very loose type
+| `object` | composite | either a JSON object or a ScriptObject |
+| `Colour` | composite | either a string ("0xFFRRRGGBB") oder a integer number (0xFFRRGGBB). It's called Colour because the most likely use case for this will be colour variables but you can use it whenever you need either a number or a string. |
+| `ComplexType` | composite | Anything that is not a number |
+ conversion behaviour of JS that will implicitely convert a integer to a double |
+| `NotUndefined` | composite | Anything but not undefined | 
+
+> If the mixing of uppercase and CamelCase triggers your OCD, rest assured that this is not a case of me being sloppy but trying to use the existing type IDs from Java/Typescript (eg `number`) but for the complex types like `Array` and `Buffer` I have to stick to the existing HiseScript identifiers.
 
 ## C Preprocessor
 
