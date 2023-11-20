@@ -408,6 +408,237 @@ Of course you can use namespaces in external files (it would pretty much defeat 
 
 Every namespace must be defined once. In C++ you can take up existing namespaces and add your variables to it, but this isn't supported in **HISE**.
 
+## Scoped Statements
+
+One of the most powerful concepts of C++ is [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) which means that you have precise control over a lifetime of an object. This is used in various situations to ensure that state changes are always being reverted, even if you forget a branch or the execution throws an error. Let's take a look at this code and how the utilisation of the scoped statement concept will increase both the safety as well as clarity of the code:
+
+```javascript
+
+reg someWorkIsBeingDone = false;
+
+inline function doSomeWork()
+{
+    someWorkIsBeingDone = true;
+	
+	if(Engine.getDate().isMonday())
+		return;
+	
+	if(Engine.getDate().isThursday())
+		Console.print(undefined);
+	
+	someWorkIsBeingDone = false;
+}
+
+inline function someOtherFunction()
+{
+	while(someWorkIsBeingDone)
+		; // do nothing, busywait
+}
+```
+
+We have a function `doSomeWork()` and another function `someOtherFunction()` which is executed on a different thread and must ensure that it's never being executed while `doSomeWork` is running. Now there are two severe problems with `doSomeWork()`:
+
+1. If you call that function on a Monday, it will return early and forget to set that variable back to `false` so that `someOtherFunction` can resume its task.
+2. If you call that function on a Thursday, it will throw a script error leaving the variable `someWorkIsBeingDone` in the `true` state.
+
+Now solving problem 1 can just be solved by not being sloppy and forget to clean up the variable at each branch, however with more complex functions this might be very easy to overlook and also increase the amount of useless boilerplate code because we have to sprinkle that `someWorkIsBeingDone = false;` line before every return or break statement. Problem 2 is even harder to solve as you somehow have to guarantee that everything always works perfectly and will never cause an issue, which is a bold claim to make.
+
+This is precisely where the scoped statements come in handy as they guarantee a "cleanup" operation whenever the scope (aka `{}` brackets) is finished. The cause of the cleanup doesn't matter, so a compile error will still perform the cleanup as well as any kind of `return` or `break` / `continue` statement - and even a compile error in the cleanup stage will resume the cleanup of other statements giving you the absolute guarantee that you'll never leave anything in a intermediate state which is essential for any kind of thread synchronization (and thread synchronization is the main driver behind why I've implemented this concept at all).
+
+### General Syntax
+
+This is a non-standard language addition, so I came up with these syntax rules for a scoped statement. First of all let's define scope as a list of statements that are executed serially. In HiseScript they are easy to spot: whenever you see brackets, you see a scope with the sole exception of brackets defining a JSON object:
+
+```javascript
+inline function dudel()
+{ // SCOPE!
+	if(x == 0)
+	{ // SCOPE!
+		for(i = 0; i < 1290; i++)
+		{ // SCOPE!
+		}
+	}
+	
+	if(x == 90)
+		Console.print(x); // NOT A SCOPE, no brackets!
+	
+	{// SCOPE! 
+		{ // SCOPE!
+		}
+	}
+}
+
+namespace dudel
+{ // SCOPE!
+}
+
+{ // SCOPE!
+	const var obj =
+	{ // NOT A SCOPE !!!!
+		"myValue": 12
+	};
+}
+```
+
+Now we can define the syntax of a scoped statement
+
+1. Scoped statements must be the first statements of a scope. If you add a scoped statement after you've added a normal statement (anything else except for comments and preprocessor conditions), it will throw an error.
+2. A scoped statement is preceded by a dot followed by the statement name and its arguments: `.statement(args...)`. The statement name must be one of the inbuilt statement types which are listed below.
+3. Scoped statements can be chained together to combine multiple scoped statements in one scope: `.statement1(args).statement2(args)` Important: the cleanup phase will be executed in reverse, so the last scoped statement will be cleaned up first
+4. A semicolon must be put at the end of a scoped statement chain (or even a single statement) to tell the parser to stop parsing scoped statements : `.statement1(args).statement2(args);`
+5. A scoped statement can be excecuted conditionally by using the `if(condition):statement(args)` syntax. The condition is a usual HiseScript expression and the operation as well as the cleanup phase will only be executed if the expression is true.
+
+Here are a few example use cases of these rules:
+
+```javascript
+
+// Hello world:
+{
+	.print("hello";
+	Console.print("world");
+}
+// => Output: enter hello, world, exit hello
+
+// Inverse order at cleanup:
+{
+	.print("hello")
+	.print("world";
+}
+// => Output: enter hello, enter world, exit world, exit hello
+
+// Conditional execution
+{
+	.if(Math.random() > 0.5):print("50% chance that this happens");
+}
+// => Output (maybe): enter 50% chance that this happens exit 50% chance that this happens
+
+/* Illegal syntax:
+{
+	.print("wrong")
+	Console.print("forgot a semicolon");
+}
+
+{
+	Console.print("wrong order");
+	.print("must come before the other statement"
+}
+*/
+```
+
+Now before we take a look at all the available statements, let's go back to that example from the start. What we want to achieve is to make sure that the `isWorkBeingDone` variable is guaranteed to be set back to false, no matter how we leave that function. For this we use the `set` statement, which takes two arguments, a variable and a value which will be set temporarily. When the scope is finished, it will be set back to whatever value was before (this allows you to chain different set statements and make sure that at the end it will be in the original state:
+
+```javascript
+inline function doSomeWork()
+{
+	.set(someWorkIsBeingDone, true);
+	
+	if(Engine.getDate().isMonday())
+		return;
+	
+	if(Engine.getDate().isThursday())
+		Console.print(undefined);
+}
+
+inline function someOtherFunction()
+{
+	while(someWorkIsBeingDone)
+		; // do nothing, busywait
+}
+```
+
+As you can see, the function code is both clearer (because we can omit the last line) and 100% more safe, which is a double win for the scoped statements. I've also went the extra mile of indicating any scope with scoped statements in the code editor fold display (so the foldable ranges of a scoped statement will be coloured as well as the background of a scoped statement) which you will see if you paste these example into the HISE code editor.
+
+### List of scoped statements
+
+Now that we've defined the general syntax and purpose, let's take a look at the list of all available scoped statements. In general there are two different types of statements: debug statements and logic statements. Debug statements will perform a task that is usually used during development: measuring the time, logging something or dumping a value of some variables. These statements will be **removed** in the exported plugin (same as with all `Console.xxx()` calls). Non-debug statements will have a real impact on the program logic and thus will be executed in both cases.
+
+#### Debug statements
+
+| Statement | Arguments | Description |
+| -- | ---- | ------- |
+| `print` | `(expression)` | Prints `enter expression` and `exit expression` when entering and leaving the scope. |
+| `profile` | `(ID)` | Prints the duration of the scope with the literal string as label. |
+| `dump` | `(e1, e2, ...)` | Dumps whatever variables you put in there at the beginning and the end of the scope. |
+| `count` | `(ID)` | Counts the number of times that this scope is executed (reset at compilation). |
+| `before` | `(actual, expected)` | Checks the equality of the two expressions **at the beginning of the scope** and throws a compile error if they don't match. |
+| `after` | `(actual, expected)` | Checks the equality of the two expressions **at the end of the scope** and throws a compile error if they don't match. |
+
+In general, all these statements do not bring something revolutionary new to the table, but can rather be considered as quality of live improvements over their `Console.xxx()` counterparts that makes coding in HISE a little bit more pleasant. Some remarks:
+
+- most of the statements produce a console output that includes a gibberish string containing an encoded location, so you can double click on it and it will take you directly to the statement that caused the console output. The days of searching leftover Console.print() statements which clog up the console are finally over...
+- the `dump` method manages to resolve the variable names (without the namespace) if you put in an expression that resolves to a single variable, which is nice so you don't have to do weird string concatenations to get a meaningful console output. Also it dumps every argument on a single line which looks a bit nicer than the `trace()` function.
+- the `before` and `after` statements can be used to make fixed assumptions of what the function is supposed to do and can act as both documentation and error check at once.
+
+```javascript
+//! DUMP EXAMPLE ============================================
+
+var x = 125;
+var obj = { "id": 12 };
+
+{
+	.dump(x, obj);
+	x = 900;
+	obj.id = "funky";
+	
+	// this would be the equivalent which is much more annoying to type
+	Console.print("obj: " + trace(obj) + "x: " + trace(x));
+}
+
+/* Console Output:
+
+// 			       double click here to get to the code
+// 									|
+//									V
+Interface: dump before: {SW50ZXJmYWNlfHw5M3wxNXw3} 
+> x = 125
+> obj = {"id": 12}
+
+Interface: dump after: {SW50ZXJmYWNlfHw5M3wxNXw3}
+> x = 900
+> obj = {"id": "funky"}
+*/
+
+//! BEFORE / AFTER EXAMPLE ==================================
+
+// If this condition isn't true, the function will 
+// throw an error
+reg someCondition = true;
+reg someOtherCondition = false;
+
+inline function getDoubleValue(x)
+{
+	// these statements at the top tell us exactly
+	.before(someCondition, true) // what the function is expecting and
+	.after(someOtherCondition, true); // what the function is supposed to do
+	
+	// If you fail to set the other condition in the 
+	// function (which you can simulate by commenting
+	// out that line, it will throw an error).
+	someOtherCondition = true;
+	
+	return x * 2;
+}
+```
+
+#### Logic statements
+
+Now we get to the real juicy stuff. The guaranteed cleanup operation gives us the ability to add some powerful functions to HiseScript which I was a bit hesitant to offer before because the consequences of forgetting the cleanup would be too severe including dead locks and UI freezes. The functionality basically boils down to two reasons:
+
+1. Controlling the event notification system
+2. Synchronizing the data access between threads
+
+| Statement | Arguments | Description |
+| -- | ---- | ------- |
+| `set` | `(variable, tempValue)` | temporarily sets the given variable to the temp value and resets it after the scope. |
+| `lock` | `(Threads.XXX)` | Locks the given thread for the duration of the scope. This performs additional safe checks to avoid common mistakes that lead to deadlocks. |
+| `defer` | `("path")` | This suspends all notifications for the given path until the scope is done. |
+
+We already know our little buddy `set` in our example, however in a real world project we wouldn't roll our own solution for multithreaded synchronisation but rather rely on its powerful friend, the `lock` statement. Since this is a language guide, describing the concepts behind `lock` and `defer` is out of the scope of this document (hihihi), so if you want to know more about that, keep reading here:
+
+- Read up on the [Threads](/scripting/scripting-api/threads) API class for a detailed explanation of the threading model in HISE and how to apply it.
+- Read up on the `Event Notification` chapter of the HISE documentation (tbd) for a detailed description of the `defer` statement.
+
+
 ## C Preprocessor
 
 All C-based languages have a preprocessor that will process the code files before they are send to the compiler. They are usually performing simple replace operations and conditional compilation of files.
