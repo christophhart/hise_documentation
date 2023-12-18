@@ -1,0 +1,1 @@
+This function will create and return a unordered stack container with the maximum length specified by the parameter. The returned object is a [FixObjectStack](/scripting/scripting-api/fixobjectstack) and offers a few advantages over the default array.

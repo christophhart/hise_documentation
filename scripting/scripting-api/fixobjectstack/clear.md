@@ -1,0 +1,1 @@
+Like [FixObjectArray.clear()](/scripting/scripting-api/fixobjectarray#clear), this is a rather slow operation because it will iterate over the entire data range. If you want to "reset" the state in a realtime context, using `clearQuick()` might be a better candidate.

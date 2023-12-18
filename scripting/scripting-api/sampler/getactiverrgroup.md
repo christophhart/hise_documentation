@@ -1,0 +1,1 @@
+If you have set the active group using the API call [`Sampler.setActiveGroupForEventId()`](/scripting/scripting-api/sampler#setactivegroupforeventid), then you need to use the function [`Sampler.getActiveGroupForEventId()`](/scripting/scripting-api/sampler#getactiverrgroupforeventid) to query the specific group for the given event ID.

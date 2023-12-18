@@ -1,0 +1,1 @@
+This operation might be slower than `Array.clear()` because it has to iterate all elements.

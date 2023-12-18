@@ -1,0 +1,1 @@
+This will use the comparison function defined by [FixObjectFactory.setCompareFunction()](/scripting/scripting-api/fixobjectfactory#setcomparefunction) in order to define equality of two elements.

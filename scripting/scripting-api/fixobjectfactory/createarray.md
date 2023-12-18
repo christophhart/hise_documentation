@@ -1,0 +1,1 @@
+This function will create and return a preallocated array using the prototype data layout. The returned object is a [FixObjectArray](/scripting/scripting-api/fixobjectarray) and shares a lot of methods with its default JS counterpart.

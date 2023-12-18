@@ -1,0 +1,3 @@
+Be aware that if you call this method with a positive timestamp, it might create a stuck note if you don't ensure that the note-off message you create has a timestamp bigger than this.
+
+There's a shortcut to solving this issue: the new API call [`Synth.setFixNoteOnAfterNoteOff()`](/scripting/scripting-api/synth#setfixnoteonafternoteoff) which performs a few safe checks to prevent stuck notes in this scenario.

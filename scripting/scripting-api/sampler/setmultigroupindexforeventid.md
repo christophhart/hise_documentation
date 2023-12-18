@@ -1,0 +1,1 @@
+This function is the event-ID agnostic variant of `setMultiGroupIndex()`. In order to find out which function to use, take a look at [this function](/scripting/scripting-api/sampler#setactivegroup) for a description of the problem.

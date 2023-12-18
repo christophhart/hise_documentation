@@ -31,3 +31,5 @@ function onNoteOn()
     on = !on;
 }
 ```
+
+> Note: if you're using this function in the `onNoteOn` callback and must ensure that the correct group index state is applied to the current note on message, you will need to use the [Sampler.setMultiGroupIndexForEventId()](/scripting/scripting-api/sampler#setmultigroupindexforeventid) method which takes in the event ID of the current note. More information about this issue can be found [here](/scripting/scripting-api/sampler#setactivegroup).

@@ -7,6 +7,9 @@ Calling this function will turn this Viewport into a table with multiple columns
 | RowHeight | int | the height of each row. |
 | MultiSelection | bool | if enabled, this allows selection of multiple rows at once. |
 | ScrollOnDrag | bool | if enabled, dragging the mouse will scroll the viewport (like on a web browser). If disabled, you'll need to use the scrollbars. |
+| SliderRangeIdSet | String | if you're using sliders in a cell, you can define which ID set is used to fetch the range limits. This is useful if you're displaying JSON data with a fixed format (eg. the output of [`Midiautomationhandler.getAutomationDataObject()`](/scripting/scripting-api/midiautomationhandler#getautomationdataobject)). The possible values are `"scriptnode"`, `"ScriptComponent"`, `"MidiAutomation"` and `"MidiAutomationFull"` (check the console output for a list of range ids that is used when you call this method with this property). |
+| CallbackOnSliderDrag | bool | This controls whether the sliders in the table will send a update while dragging or just when you lift the mouse button. In some cases, you will need to skip the updates while dragging because it will spawn a heavyweight operation that you only want to perform once (eg. when setting the automation data from the JSON object). |
+
 
 This function needs to be called before any other function related to tables. Also be aware that calling this function is only possible during the onInit callback.
 
