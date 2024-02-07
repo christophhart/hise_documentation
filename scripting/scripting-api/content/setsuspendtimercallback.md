@@ -1,0 +1,7 @@
+HISE automatically detects when there is no interface of your plugin open and automatically suspends all Panel timer callbacks (as well as the deferred MIDI callbacks) in order to save CPU resources. However the timers created with [Engine.createTimerObject()](/scripting/scripting-api/engine#createtimerobject) will keep running. The rationale behind this difference is that in an usual project you have many panels with timer callbacks but just a few selected dedicated timer objects so the overhead is neglible, but if that is not the case for your project, you can use this method to attach a callback to the suspension event and then start and stop the timers yourself (along with other things that might be required).
+
+The callback you pass in requires a single parameter, which will be **true** if the plugin is supposed to be suspended (and **false** if there is at least one plugin interface visible).
+
+> During development you cannot close and open plugin interfaces, so there is a new tool function in the interface designer which simulates the suspension process (the moon icon).
+
+Check out the documentation of the [Timer](/scripting/scripting-api/timer) class for an example of how to use this method. For complex projects it's highly recommended to attach a broadcaster to this callback slot and then attach all timer objects as listeners at their definition.
