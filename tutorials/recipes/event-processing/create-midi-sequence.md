@@ -5,9 +5,9 @@ author:   Christoph Hart
 modified: 29.08.2019
 ---
 
-This snippet shows you how to programatically create a MIDI sequency that can be played in a [Midi Player](/hise-modules/midi-processors/list/midiplayer)
+This snippet shows you how to programatically create a MIDI sequence that can be played in a [Midi Player](/hise-modules/midi-processors/list/midiplayer)
 
-The API is pretty low-level, so the first thing that we add is a helper function that writes a proper note (including note-on and off).
+The API is pretty low-level, so the first thing that we add is a helper function that writes a proper note (including note-on and off). 
 The arguments are pretty self-explanatory, the only thing to note is that the timing values are expressed as fraction of a quarter beat.
 
 ```javascript
