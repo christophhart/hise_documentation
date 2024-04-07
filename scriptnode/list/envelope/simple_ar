@@ -1,0 +1,20 @@
+---
+keywords: simple_ar
+summary:  A simple Attack / Release envelope with adjustable curve gamma
+author:   Christoph Hart
+modified: 04.07.2022
+parameters:
+  - Attack: The time it takes for the envelope to reach its maximum level after the envelope is triggered, measured in milliseconds.
+  - Release: The time it takes for the envelope to return to its minimum level after the envelope is released, measured in milliseconds.
+  - Attack curve: The shape of the attack curve. This can be a linear curve or an exponential curve, specified as a gamma factor. A gamma factor of 0.5 corresponds to a linear curve, while a gamma factor greater than 0.5 corresponds to an exponential curve that fades in more slowly and fades out more quickly. A gamma factor less than 0.5 corresponds to an exponential curve that fades in more quickly and fades out more slowly.
+  - Gate: A value between 0 and 1 that controls whether the envelope is triggered. When the gate value passes 0.5, the envelope is triggered and the attack phase begins. When the gate value falls below 0.5, the envelope is released and the release phase begins. The gate value can also be controlled using MIDI notes, with a note on message triggering the attack phase and a note off message triggering the release phase.
+---
+
+An simple_ar node applies an envelope to an audio signal. The envelope shapes the amplitude of the signal over time, allowing you to control how the signal fades in and out.
+
+## Modulation Outputs
+
+- **CV**: An audio-rate modulation output that sends out the envelope value at each audio buffer. The output range is 0 to 1.
+- **GT**: An audio-rate modulation output that sends out a pulse whenever the gate value changes. The output range is 0 to 1.
+
+In addition to providing modulation outputs, the envelope node also processes the audio signal by applying the envelope to the amplitude of the signal. This allows you to use the envelope node to modulate the gain of the signal directly, without the need to use the modulation outputs.
