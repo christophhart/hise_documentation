@@ -550,7 +550,7 @@ As you can see, the function code is both clearer (because we can omit the last 
 
 ### List of scoped statements
 
-Now that we've defined the general syntax and purpose, let's take a look at the list of all available scoped statements. In general there are two different types of statements: debug statements and logic statements. Debug statements will perform a task that is usually used during development: measuring the time, logging something or dumping a value of some variables. These statements will be **removed** in the exported plugin (same as with all `Console.xxx()` calls). Non-debug statements will have a real impact on the program logic and thus will be executed in both cases.
+Now that we've defined the general syntax and purpose, let's take a look at the list of all available scoped statements. In general there are two different types of statements: debug statements and logic statements. Debug statements will perform a task that is usually used during development: measuring the time, logging something or dumping a value of some variables. These statements will be **removed** in the exported plugin (same as with all `Console.xxx()` calls). Logic statements will have a real impact on the program logic and thus will be executed in both cases.
 
 #### Debug statements
 
@@ -558,12 +558,13 @@ Now that we've defined the general syntax and purpose, let's take a look at the 
 | -- | ---- | ------- |
 | `print` | `(expression)` | Prints `enter expression` and `exit expression` when entering and leaving the scope. |
 | `profile` | `(ID)` | Prints the duration of the scope with the literal string as label. |
+| `trace` | `(ID)` | Creates a label for the Perfetto tracer so you can find it by searching for the ID |
 | `dump` | `(e1, e2, ...)` | Dumps whatever variables you put in there at the beginning and the end of the scope. |
 | `count` | `(ID)` | Counts the number of times that this scope is executed (reset at compilation). |
 | `before` | `(actual, expected)` | Checks the equality of the two expressions **at the beginning of the scope** and throws a compile error if they don't match. |
 | `after` | `(actual, expected)` | Checks the equality of the two expressions **at the end of the scope** and throws a compile error if they don't match. |
 
-In general, all these statements do not bring something revolutionary new to the table, but can rather be considered as quality of live improvements over their `Console.xxx()` counterparts that makes coding in HISE a little bit more pleasant. Some remarks:
+In general, all these statements do not bring something revolutionary new to the table (with the exception of `.trace()`, which is a unique feature that only makes sense with a scoped statement), but can rather be considered as quality of live improvements over their `Console.xxx()` counterparts that makes coding in HISE a little bit more pleasant. Some remarks:
 
 - most of the statements produce a console output that includes a gibberish string containing an encoded location, so you can double click on it and it will take you directly to the statement that caused the console output. The days of searching leftover Console.print() statements which clog up the console are finally over...
 - the `dump` method manages to resolve the variable names (without the namespace) if you put in an expression that resolves to a single variable, which is nice so you don't have to do weird string concatenations to get a meaningful console output. Also it dumps every argument on a single line which looks a bit nicer than the `trace()` function.
@@ -711,7 +712,6 @@ Below is a list of all available type identifiers you can use. There are two typ
 | `object` | composite | either a JSON object or a ScriptObject |
 | `Colour` | composite | either a string ("0xFFRRRGGBB") oder a integer number (0xFFRRGGBB). It's called Colour because the most likely use case for this will be colour variables but you can use it whenever you need either a number or a string. |
 | `ComplexType` | composite | Anything that is not a number |
- conversion behaviour of JS that will implicitely convert a integer to a double |
 | `NotUndefined` | composite | Anything but not undefined | 
 
 > If the mixing of uppercase and CamelCase triggers your OCD, rest assured that this is not a case of me being sloppy but trying to use the existing type IDs from Java/Typescript (eg `number`) but for the complex types like `Array` and `Buffer` I have to stick to the existing HiseScript identifiers.

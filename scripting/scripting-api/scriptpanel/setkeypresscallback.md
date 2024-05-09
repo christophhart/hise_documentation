@@ -1,7 +1,11 @@
 If you want the Panel to react on key strokes (from the computer keyboard, not the MIDI controller), you can attach a function with this method.  
-The function you pass in must have a single parameter which will contain the details of the key that was pressed (see below) and must return `true` or `false` depending on whether the key is supposed to be "consumed" by the panel. If it is not consumed, the key press will trickle down the parent hierarchy until it finds a suitable target, so in order to avoid multiple actions with a single key press, make sure to return `true` if appropriate.
+The function you pass in must have a single parameter which will contain the details of the key that was pressed (see below).
 
-The function that you pass in will be synchronously executed on the message thread (because it needs to know the return value), so there might be a few synchronisation edge cases that you need to be aware of (since everything else will be executed in a dedicated scripting thread).
+You will also need to call [setConsumedKeyPresses()](/scripting/scripting-api/scriptpanel#setconsumedkeypresses) and supply a list of key presses that you expect this component to consume (and not doing this will cause a compilation error to ensure that you don't accidentaly forget this and cause other issues later down the line).
+
+> This is a breaking change introduced in May 2024 to ensure that the callbacks can be executed asynchronously to match the behaviour of [Content.setKeyPress()](/scripting/scripting-api/content#setkeypresscallback). 
+
+ If it is not consumed, the key press will trickle down the parent hierarchy until it finds a suitable target, so in order to avoid multiple actions with a single key press, make sure to register any key press if appropriate.
 
 > Also be aware that this function can be used with each component type (Labels, Buttons, etc), it's not limited to ScriptPanels
 
