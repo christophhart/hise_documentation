@@ -6,23 +6,21 @@ icon:     /images/icon_filebrowser
 index:    01
 ---
 
-A general explanation of **HISEs** project architecture.
-
 ## Project Folders
 
-When you create a new project, HISE will set up a directory with some predefined folders that will hold all the data, files and scripts that you need in your instrument/plugin.
+A project directory in HISE will hold predefined folders with all the files, data and scripts  that you need in your instrument/plugin.
 
 These folders are categorized according to their filetype and usage:
 
 ![image folderstructure](images/custom/folder.png)
 
-[AdditionalSourceCode](/working-with-hise/project-management/projects-folders/additional-source-code)
+- [AdditionalSourceCode](/working-with-hise/project-management/projects-folders/additional-source-code)
   
-The place for additional C++ files that are used in connection with the [C++ API](/cpp_api).
+The place for additional C++ files that are using the [C++ API](/cpp_api).
 
 [AudioFiles](/working-with-hise/project-management/projects-folders/audio-files)
 
-Contains single audio-files that can be used in the [Audio Loop Player](/hise-modules/sound-generators/list/audiolooper) or the [Convolution Reverb](/hise-modules/effects/list/convolution).
+Single audio-files that can be used in the [Audio Loop Player](/hise-modules/sound-generators/list/audiolooper) or the [Convolution Reverb](/hise-modules/effects/list/convolution).
 
 [Binaries](/working-with-hise/project-management/projects-folders/binaries)
 
@@ -34,7 +32,7 @@ A folder that can contain image files and filmstrips for usage in the interface 
 
 [MetaData](/working-with-hise/project-management/projects-folders/meta-data)
 
-The Metadata files () in the projects root folder. 
+The Metadata _info files (.xml) in the projects root folder hold the project specific settings.
 
 [MidiFiles](/working-with-hise/project-management/projects-folders/midi-files)
 
