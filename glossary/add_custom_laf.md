@@ -156,7 +156,7 @@ struct MyInterface: public ControlledObject
 
 ## Add the documentation
 
-All functions that are available in the scripted look and feel are documented in the Glossary chapter ["Look and Feel Customisation"](https://docs.hise.audio/glossary/custom_lookandfeel.html). In order to remember how it's being used and tell other users about this, it's pretty important that this reference is being kept up to date, so whenever you add a new method, make sure to edit this doc to reflect the addition. You can use this format template:
+All functions that are available in the scripted look and feel are documented in the Glossary chapter ["Look and Feel Customisation"](https://docs.hise.dev/glossary/custom_lookandfeel.html). In order to remember how it's being used and tell other users about this, it's pretty important that this reference is being kept up to date, so whenever you add a new method, make sure to edit this doc to reflect the addition. You can use this format template:
 
 ```markdown
 ### `theFunctionNameAsString`

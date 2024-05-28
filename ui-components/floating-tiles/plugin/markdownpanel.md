@@ -99,4 +99,4 @@ The files are being stored in the app data directory's subfolder `CachedDocument
 
 > The same thing is true for the HISE documentation: as long as you don't fork the doc repository and tell HISE where to find it, you'll be using the cached files that HISE fetches from the server.  If you're editing the HISE documentation, you can simply switch between file-based mode and cached mode using the button at the right edge of the topbard (either the lock or the pen).
 
-Now the window above can be used to **compile** all markdown files and images into these cache files **or** to just fetch the cached files from the server to update the documentation. There's also a third option which allows you to create a 1:1 HTML copy for showing a [static website](https://docs.hise.audio) with the same content
+Now the window above can be used to **compile** all markdown files and images into these cache files **or** to just fetch the cached files from the server to update the documentation. There's also a third option which allows you to create a 1:1 HTML copy for showing a [static website](https://docs.hise.dev) with the same content
