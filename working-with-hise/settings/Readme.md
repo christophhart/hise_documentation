@@ -1,6 +1,6 @@
 ---
 keywords: Settings
-summary:  HISE Settings 
+summary:  Settings 
 icon:     /images/icon_settings
 index: 04
 ---

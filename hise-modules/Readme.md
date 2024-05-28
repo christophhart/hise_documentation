@@ -1,5 +1,5 @@
 ---
-keywords: HISE Modules
+keywords: Audio Modules
 summary:  Reference for HISE DSP Modules
 author:   Christoph Hart
 modified: 18.03.2019

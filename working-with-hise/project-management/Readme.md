@@ -1,66 +1,44 @@
 ---
-keywords: Project Management
+keywords: Project Folder
 author:   Christoph Hart
 summary:  A overview of the Project Management in HISE
 icon:     /images/icon_filebrowser
-index:    01
+index:    03
 ---
 
-## Project Folders
+## Project Folder
 
-A project directory in HISE will hold predefined folders with all the files, data and scripts  that you need in your instrument/plugin.
+A new project in HISE will hold predefined sub-folders with all the files, data and scripts that you need in your instrument/plugin.
 
 These folders are categorized according to their filetype and usage:
 
 ![image folderstructure](images/custom/folder.png)
 
-- [AdditionalSourceCode](/working-with-hise/project-management/projects-folders/additional-source-code)
-  
-The place for additional C++ files that are using the [C++ API](/cpp_api).
+[AdditionalSourceCode](/working-with-hise/project-management/projects-folders/additional-source-code) - The place for additional C++ files that are using the [C++ API](/cpp_api).
 
-[AudioFiles](/working-with-hise/project-management/projects-folders/audio-files)
+[AudioFiles](/working-with-hise/project-management/projects-folders/audio-files) - Single audio-files that can be used in the [Audio Loop Player](/hise-modules/sound-generators/list/audiolooper) or the [Convolution Reverb](/hise-modules/effects/list/convolution).
 
-Single audio-files that can be used in the [Audio Loop Player](/hise-modules/sound-generators/list/audiolooper) or the [Convolution Reverb](/hise-modules/effects/list/convolution).
+[Binaries](/working-with-hise/project-management/projects-folders/binaries) - Contains the `Source` and `temp` folders that are necessary to compile your instrument. After compilation your exported plugins will show up here in a `Compiled`-Folder
 
-[Binaries](/working-with-hise/project-management/projects-folders/binaries)
+[Images](/working-with-hise/project-management/projects-folders/images) - A folder that can contain image files and filmstrips for usage in the interface designer as well as a few predefined hooks (e.g. splashscreen and fonts). Per scripting accessible via `"{PROJECT_FOLDER}image.png"`.
 
-Contains the `Source` and `temp` folders that are necessary to compile your instrument. After compilation your exported plugins will show up here in a `Compiled`-Folder
+[MetaData](/working-with-hise/project-management/projects-folders/meta-data) - The Metadata _info files (.xml) in the projects root folder hold the project specific settings.
 
-[Images](/working-with-hise/project-management/projects-folders/images)
+[MidiFiles](/working-with-hise/project-management/projects-folders/midi-files) - A folder for MIDI files used in the [Midiplayer](/hise-modules/midi-processors/list/midiplayer)
 
-A folder that can contain image files and filmstrips for usage in the interface designer as well as a few predefined hooks (e.g. splashscreen and fonts). Per scripting accessible via `"{PROJECT_FOLDER}image.png"`.
+[Presets](/working-with-hise/project-management/projects-folders/presets) - Contains the **HISE Preset files** (`.hip`), which are the save-files of your Projects plugin architecture. The auto-save files will also show up here.
 
-[MetaData](/working-with-hise/project-management/projects-folders/meta-data)
+[SampleMaps](/working-with-hise/project-management/projects-folders/sample-maps) - When you mapped samples in the [Sampler](/hise-modules/sound-generators/list/streamingsampler) this folder will hold the `SampleMap.xml`'s that point to your samples.
 
-The Metadata _info files (.xml) in the projects root folder hold the project specific settings.
+[Samples](/working-with-hise/project-management/projects-folders/samples) - The folder for your samples and the compressed `.ch1`-monolith files.
 
-[MidiFiles](/working-with-hise/project-management/projects-folders/midi-files)
+[Scripts](/working-with-hise/project-management/projects-folders/scripts) - If you create an interface for your instrument this folder will hold the main `interface.js`-file + all the scripts that you need for building the GUI and user-interactions of your instrument.
 
-A folder for MIDI files used in the [Midiplayer](/hise-modules/midi-processors/list/midiplayer)
+[UserPresets](/working-with-hise/project-management/projects-folders/user-presets) - The folder for the User-`.presets` that can save different states of your instruments GUI. You can easily organize these with the [Presetbrowser](/ui-components/floating-tiles/plugin/presetbrowser)-FloatingTile.
 
-[Presets](/working-with-hise/project-management/projects-folders/presets)
+[XmlPresetBackups](/working-with-hise/project-management/projects-folders/xml-preset-backups) - The folder for your **HISE presets** human readable `.xml` savefiles. 
 
-Contains the **HISE Preset files** (`.hip`), which are the save-files of your Projects plugin architecture. The auto-save files will also show up here.
 
-[SampleMaps](/working-with-hise/project-management/projects-folders/sample-maps)
-
-When you mapped samples in the [Sampler](/hise-modules/sound-generators/list/streamingsampler) this folder will hold the `SampleMap.xml`'s that point to your samples.
-
-[Samples](/working-with-hise/project-management/projects-folders/samples)
-
-The folder for your samples and the compressed `.ch1`-monolith files.
-
-[Scripts](/working-with-hise/project-management/projects-folders/scripts)
-
-If you create an interface for your instrument this folder will hold the main `interface.js`-file + all the scripts that you need for building the GUI and user-interactions of your instrument.
-
-[UserPresets](/working-with-hise/project-management/projects-folders/user-presets)
-
-The folder for the User-`.presets` that can save different states of your instruments GUI. You can easily organize these with the [Presetbrowser](/ui-components/floating-tiles/plugin/presetbrowser)-FloatingTile.
-
-[XmlPresetBackups](/working-with-hise/project-management/projects-folders/xml-preset-backups)
-
-The folder for your **HISE presets** human readable `.xml` savefiles. 
 
 ## Workflow 
 
@@ -86,7 +64,7 @@ Some file types are even cached from the beginning: They are loaded into the poo
 
 > This might lead to a few quirks that are often solved by restarting HISE after changing a file in order to use the updated version instead of the cached one.
 
-## Project Folder Wildcard
+## {PROJECT_FOLDER} Wildcard
 
 There are multiple occasions in HISE where you need to use external resources, and all of them use the HISE project system - some of them (like SampleMaps) do this implicitely and you don't have to bother about how it works, but in some situations (mostly when using Scripting API calls that access an external resource) you will have to supply a String that is resolved to the desired resource. 
 

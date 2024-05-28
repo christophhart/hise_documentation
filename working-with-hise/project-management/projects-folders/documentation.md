@@ -3,18 +3,21 @@ keywords: Documentation
 summary:  The folder for the markdown files of your documentation
 author:   Christoph Hart
 modified: 19.09.2019
-weight:   99
+index:   04
 ---
 
 The **Documentation** folder in your project will contain all files related to the documentation of your project. It is the root for all URLs that you'll use to link between pages.
 
 > Be aware that the contents of this folder will not be embedded into the plugin, but have to be compiled separately and shipped to the end user as described [here](/ui-components/floating-tiles/plugin/markdownpanel#-updating-the-documentation).
 
-## The file system
+---
+
+**The file system**
   
 The markdown documentation system uses relative paths in order to resolve links. This allows you to create links that will work on HTML pages as well as the embedded docs. The compatibility with HTML URLs oppose some restrictions on the filenames for folders and files inside this directory:
 
-### Filename conventions
+---
+**Filename conventions**
 
 In order to be compatible with web URLs, any link has to follow these rules:
 
@@ -30,7 +33,10 @@ In order to find out the link URL of a markdown file you have to:
 
 > There is one special file: the `readme.md` file, which is used if you just supply an URL to a folder. If you have a little bit of experience with web design, it's similar to the procedure where it appends an `index.html` to a URL that points to a folder.  That means if you want to link to a readme.md file, just omit readme.md and use the path to the parent directory instead.
 
-### Example
+---
+
+
+**Example**
 
  Our project is located at `C:\MyProject` and we want to create a link to the headline **Driver Settings** in the file `C:\MyProject\Documentation\settings-page\audio-settings.md`.
 
@@ -43,7 +49,9 @@ Another example: we want to point at the file `C:\MyProject\Documentation\effect
 
 Since it is a readme.md file, we can omit the entire filename and end up with `/effect-page`.
 
-### Images
+---
+
+**Images**
 
 If you want to show images in your documentation, you need to put them all into the `/images` subfolder of this folder (or you can link to a web URL with an image). Links to images are a little bit different than to text URLs:
 

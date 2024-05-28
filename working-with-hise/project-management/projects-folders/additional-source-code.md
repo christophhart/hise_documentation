@@ -5,7 +5,6 @@ summary:  Explains the AdditionalSourceCode Folder
 index:    01
 ---
 
-
 If you are using custom C++ modules, this folder will be the place for every C++ code you add to your project. HISE expects two files in this directory: 
 
 - a CopyProtection.cpp file 

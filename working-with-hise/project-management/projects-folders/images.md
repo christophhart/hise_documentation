@@ -2,7 +2,7 @@
 keywords: Images
 author:   Christoph Hart
 summary:  Explains the Images Folder
-index:    04
+index:    07
 ---
 
 As the self explanatory name suggests, this is the place for all embedded images - filmstrips and backgrounds. Also, all other artwork-related data like custom fonts or the icon should be put here.
