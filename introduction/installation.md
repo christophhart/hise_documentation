@@ -49,7 +49,7 @@ After installing these programs we're almost ready for compiling plugins with **
 
 ### Configure the Settings
 
-To access the Settings dialog, choose **File -> Settings** or click the little gear symbol on the right of the tool-bar. Let's set the **HISE Path**, which has to point to the root **HISE**-source-code folder that you downloaded or cloned earlier.
+To access the Settings dialog, choose **File -> Preferences** or click the little gear symbol on the right of the tool-bar. Let's set the **HISE Path**, which has to point to the root **HISE**-source-code folder that you downloaded or cloned earlier.
 
 ![hise-path](images/custom/hise-path.png)
 

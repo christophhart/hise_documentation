@@ -3,7 +3,7 @@ keywords: Documentation
 summary:  The folder for the markdown files of your documentation
 author:   Christoph Hart
 modified: 19.09.2019
-weight:   40
+weight:   99
 ---
 
 The **Documentation** folder in your project will contain all files related to the documentation of your project. It is the root for all URLs that you'll use to link between pages.

@@ -11,4 +11,4 @@ parameters:
   
 This node can be used to build up FM synthesisers. It takes the incoming signal and interprets it as frequency modulation, so you can stack them together to create more complex FM algorithms.
 
-> Currently the waveform that is being modulated is restricted to a sine wave but I might add a few other basic waveforms later on.
+The node is producing a sine wave as output and if you want to create custom waveforms, please use the [phasor_fm](/scriptnode/list/core/phasor_fm) node as generator of the base waveform.
