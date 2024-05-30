@@ -1,5 +1,5 @@
 ---
-keywords: Oscillator
+keywords: oscillator
 summary:  A oscillator node, that creates a static osc waveform.
 author:   Christoph Hart
 modified: 24.06.2019
