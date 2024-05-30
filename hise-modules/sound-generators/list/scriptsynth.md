@@ -1,7 +1,9 @@
 ---
-keywords: Scriptnode Synthesiser
-summary:  Use this Synthesiser to build polyphonic synthesisers with ScriptNode.
-author:   Do Mayer
-modified: 30.05.2024
+keywords: ScriptSynth
+summary:  A polyphonic scriptable synthesiser.
+author:   Christoph Hart
+modified: 29.05.2024
 ---
   
+![warning](/images/icon_warning:64px)  
+> Oops, this document has not been created yet. Luckily, you can help out. If you want to learn how to contribute to the documentation, please visit [this site](glossary/contributing#contributing) to learn more.  

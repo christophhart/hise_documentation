@@ -40,7 +40,43 @@ Containers can exported to Cpp modules, which turns them into dedicated nodes.
 
 A parameter is a number that will change the behaviour of a node. Unlike the signal graph which still follows the tree paradigm, Parameters can be connected to basically anything (the only limitation is that container parameters can only connect to their children or it breaks the rules of encapsulation). Nodes have a fixed amount of parameters, but Containers can have a dynamic amount of parameters that connect to parameters of their child nodes to build up "macro" parameters.
 
-> Unlike parameters in HISE, scriptnode parameters do not have a fixed range (but rather a default range). You can change the ranges anytime by right-clicking on the knob and change its `min` and `max` property.
+### Range
+
+Unlike parameters in HISE, scriptnode parameters do not have a fixed range (but rather a default range that you can change to whatever you need). A range does not only define a min and max value, but also three other properties:
+
+- **SkewFactor**. A skew factor of 1.0 is linear and other values will "skew" the curve to the min value (skew < 1.0) or max value (skew > 1.0). It's calculated using the formula `Math.pow(normalizedInput, skewFactor)`
+- **StepSize**. A step size that allows the parameter to act in discrete steps. **Important:** this property is exclusive to the skew factor so you can either have a skewed range or a discrete range.
+- **Inverted**: swaps the min and max value for inverting the curve
+
+You can change the ranges anytime, either by right-clicking on the knob and change its properties in the popup editor, or by using the range editor which gives you a more intuitive approach. If you hover over the parameter and click on the two-faced arrow left to the knob, it will show the range editor (which you can close by double clicking on it or right click and unselect "Make sticky").
+
+> You can also temporarily show the range editor by hovering over a knob while holding down the alt key. This gives you the ability of quickly changing multiple parameters.
+
+With the range editor you can:
+
+- change the range limits by dragging either the left or right edge (shift click to enter a value)
+- change the skew by dragging up or down the middle (shift click to enter a value)
+- use the context menu for more options:
+
+
+| Item | Description |
+| -- | ------ |
+| Make sticky | Closes the range editor |
+| Load Range Preset | Quickly set the range to a predefined list of range presets. |
+| Save Range Preset | Save the current range to be used later on. This information will be stored in the `RangePresets.xml` file of the HISE app data folder. |
+| Reset Range | Resets the range to the exact state when you opened the range editor. |
+| Reset skew | Removes the skewing of the range making it a perfectly flat line. |
+| Invert range | swaps the min and max values so that the value is inverted. This will not affect the UI interaction of dragging the knob because we're not in crazy-town, but if you modulate that parameter, the modulation will be inverted. |
+| Copy range to source | If the parameter is connected to another parameter as target, you can sync the ranges between the source and target parameter by copying the target range to the source range (in many cases you just want them to have the same range, especially if you only link a single parameter) |
+
+### Scaled vs. unscaled parameters
+
+There are two types of parameters in scriptnode: scaled (aka normalized) parameters and unscaled parameters. A *scaled parameter* expects the input to be within the 0...1 range and converts the input value to its own range. This is the default behaviour and allows you to adjust the "modulation" amount directly by changing the target range of the knob (this wasn't the case in early versions of scriptnode and lead to many issues and data redundancy). However there are a few use cases where you don't want this behaviour and directly use the source value without any conversion. These types of parameters (so-called *unscaled parameters*) have a little `U` icon displayed next to its knob. A few examples of these nodes are:
+
+- the `control.converter` node: the range of its value parameter shouldn't matter, what goes in, comes out as converted value no matter the range
+- the `cable.expr` node: if you jump through the hoops of defining a custom SNEX function to convert your signal value, you don't want it to 
+
+> Some control nodes that process a cable value come in two different forms to ensure that the modulation chain can be carried out with the desired mode in mind. Eg. the `control.pma` node has a `control.pma_unscaled` variant that allows you to "pass through" the value that you hook up to its **Value** parameter.
 
 ## Modulation Source
 

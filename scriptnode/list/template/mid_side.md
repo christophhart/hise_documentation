@@ -1,7 +1,10 @@
 ---
 keywords: mid_side
-summary:  Please enter a brief description.
+summary:  A node template for a Mid / Side processing setup
 author:   Christoph Hart
-modified: 30.05.2024
+modified: 29.05.2024
 ---
   
+This template will create all containers & nodes for a M/S processing algorithm - a multi container and M/S encoders. You can then populate the Mid / Side chain with whatever processing you want to use.
+
+

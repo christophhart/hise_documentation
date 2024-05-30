@@ -282,22 +282,33 @@ In addition to these properties, you'll also get the current modifier keys that 
 
 You can now implement the logic by using conditions to match the desired event and store data or call other functions for the Panel (the Example section will give you some usage scenarios). 
 
-### Handling context menus
+## Context menus (aka Popup Menu)
 
 If your UI widgets needs to display a context menu on eg. right click, you don't need to build this by yourself. Instead, you can enable it using the callback level `"Context Menu"` (or above) and specify the items with the `popupMenuItems"` property (best use the text editor in the interface designer for this).
 
-```markdown
-**First Header**         | Section Title
-Item 1                   | Normal Item
-___                      | Separator
-~~Deactivated Item~~     | Disabled Item
-**Second Header**
-Item 2
+In order to customize the appearance of the context menu (adding headers, grouping things into submenus, deactivating items), you can use a weird Frankenstein "language"" between C++ and Markdown:
+
+
 ```
+Item 1                        | Normal Item (clickable)
+**Header**                    | Section Title (not clickable)
+___ (three underscores)       | Separator (not clickable)
+~~Deactivated Item~~          | Disabled Item (not clickable)#
+MySubMenu::First SubItem      | Item in submenu (clickable)
+MySubMenu::**Sub Header**     | Header in submenu (not clickable)
+MySubMenu::~~Second SubItem~~ | Disabled item in submenu (not clickable)
+```
+
+This example will produce the following context menu:
+
+![](/images/custom/contextmenu.png)
 
 You can align the popup menu to the panel width and bottom by setting `"popupMenuAlign"`  to true (it will otherwise popup at the mouse down position with the minimal width needed to display all text)
 
-The **Mouse Event Callback** will then contain the index as well as the item text so you can implement the logic accordingly.
+The **Mouse Event Callback** will then contain the index (one-based, zero means the user clicked somewhere else) as well as the item text so you can implement the logic accordingly.  
+One thing to keep in mind though that it will count up the integer index only for clickable items and skipping all unclickable items. In the example above, this would mean that since only the `Item 1` and the `First SubItem` are clickable, `Item1` would be associated with the index 1 and `First SubItem` would be the index 2 (and not 5 as its index within the full list).
+
+> The feature of building customized context menus using this syntax is also available in the [`Broadcaster.attachToContextMenu() `](/scripting/scripting-api/broadcaster#attachtocontextmenu) function as well as if you use a ComboBox with its `useCustomPopup` property which will cause the combobox items to be processed with the same logic.
 
 ## The Timer callback
 
