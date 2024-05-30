@@ -3,7 +3,7 @@ keywords: Project Folder
 author:   Christoph Hart
 summary:  A overview of the Project Management in HISE
 icon:     /images/icon_filebrowser
-index:    03
+index:    3
 ---
 
 ## Project Folder
