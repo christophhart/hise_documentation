@@ -2,7 +2,7 @@
 keywords: Presets
 author:   Christoph Hart
 summary:  Explains the HISE Presets Folder
-index:    06
+index:    09
 ---
 
 The presets folder is certainly the most poorly named thing in HISE, but because of lacking alternatives and problems with backwards compatibiltiy we're stuck with this name, so let's get it over quickly.  

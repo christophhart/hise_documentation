@@ -1,5 +1,5 @@
 ---
-keywords: Tour
+keywords: Quick Tour
 summary:  An introductory tour through HISE
 index:    02
 weight:   50
@@ -8,7 +8,7 @@ Author:   Dominik Mayer
 
 ![Hise GUI](images/custom/hise_GUI_1.0.1.png)
 
-In this tour we are going to explore a new **HISE** project and the basic architecture of building instruments with **HISE** from start to compilation. 
+In this quick tour we are going to explore the **HISE GUI** and the project architecture for building an instruments or plugin with **HISE**.
 
 When you first start up your desktop version of **HISE** you will get asked to create a new project. The project will consist of a folder structure for all the files, scripts and samples that are necessary to build and compile your virtual instrument. Most of them are empty at the beginning, but ready to be filled with your ideas.
 
@@ -16,23 +16,27 @@ Have a look at [Project Management](/working-with-hise/project-management) to le
 
 But let's jump in right away: 
 
-## The Main Workspace
+## The Module Tree
 
 ![Main Workspace](images/custom/main-workspace.png)
 
-The **Main Workspace** is the area of HISE where you patch together Sound Processors, Modulators and FX ([HISE Modules](/hise-modules)) to create the Audio DSP (DigitalSignalProcessing) architecture of your instrument.
+In the **Module Tree** on the left side of the interface HISE you can patch together Sound Processors, Modulators and FX ([HISE Modules](/hise-modules)) to create the Audio DSP (Digital Signal Processing) architecture of your instrument.
 
-The central Module Panel holds the **Master Chain**. It's the topmost root container of your instrument and will hold all the modules that you might want to add to it.
+The topmost module holds the **Master Chain**. It's the root container of all audio modules and the exit point of the final audio signal. 
 
-The top-down arrangement thereby follows the [tree structure](https://en.wikipedia.org/wiki/Tree_structure) paradigm and allows to build instruments with an efficent signal flow, optimized for handling a lot of voices in parallel.
+The top-down arrangement follows the [tree structure](https://en.wikipedia.org/wiki/Tree_structure) paradigm and allows to build instruments with an efficent signal flow, optimized for handling a lot of voices in parallel.
 
-You can save your **HISE Preset** (The name for the current modules state) in two different formats. Either as a compressed `.hip`-file **File > Save as Archive** (features: autosave, HiseSnippet), or as a human-readable `.xml`-File **File > Save as XML** (features: version control).
+You can save your project in two different ways. Either with **File > Save as Archive** as a compressed `.hip`-file (this is also the autosave format). Or as a human-readable `.xml`-File **File > Save as XML** (which is recommended for using version control).
 
-## Add a Sound Generator
+
+### Add a Sound Generator
 
 ![masterchain](images/custom/masterchain.png)
 
-Click the little plus icon to create a new [Sound Generator](/hise-modules/sound-generators). Best, pick something simple like the Sine Wave Generator or the Waveform Generator and start playing around.
+
+In the **Module Tree** you can click the _Pen Icon_ to activate the adding functionality. 
+
+Click the plus icon next to the **Master Chain** to create a new [Sound Generator](/hise-modules/sound-generators). Pick something simple like the Sine Wave Generator or the Waveform Generator and start playing around.
 
 You will notice that the Sine Wave Generator features nearly the same top-bar as the Master Chain with its mostly self-explanatory controls:
 
@@ -41,7 +45,7 @@ You will notice that the Sine Wave Generator features nearly the same top-bar as
 ![Sine](/images/custom/gen-sinewave.png)
 
 
-## Modulation Chains
+### Modulation Chains
 
 Beneath the top-bar you can find the **Tab-Section** with the Processor & Modulation chains of the Sound-Generator. Each one of them reveales a chain for adding additional processors & modulators to a specific aspect of the generated sound. 
 
@@ -64,7 +68,7 @@ As the name suggests, the PitchModulation Chain gives you access to modulate the
 The EffectChain is applied at last. Here you can add a bunch of well-known [Effects](/hise-modules/effects) to spice up your sounds.
 
 
-## Modulators 
+### Modulators 
 
 The **Gain** and **Pitch**-Modulators deserve a deeper look. They represent a generic type of modulator that has the task to generate a sample accurate (real-time) control signals to modulate their respective sources. 
 
@@ -95,20 +99,11 @@ The best way to explore all the features of the Modules and Modulators in **HISE
 Behind the scenes, the architecture of modules that is built within the Main/Preset Workspace is reflected in the `.xml` file that is saved in the **XmlPresetBackups** folder. After you have saved your preset as an `.xml`-file **File > Save as XML** you can open it with an external code editor to take a look at its raw architecture. This can be quite insightful, especially if you want to understand how to access and manipulate the modules and their attributes via [scripting](/scripting).
 
 
-## HISE Snippets
-
-By the way: Did you know that it's very easy to share your **HISE presets** as Snippets with each other? Exporting your preset via **Export > Export as HISE Snippet** will copy a base64-encoded version of the `.xml` to your clipboard. 
-
-> You can easily share this string on the [Forum](https://forum.hise.audio/) (tip: surrounding the string with markdown code-fences (three successive backticks) will make it look much nicer.)
-
-Import the **HISE Snippet** from clipboard via **File > Import HISE Snippet**. 
-
-
-## The Scripting Workspace
+## The Code Editor
 ![](images/custom/scripting_workspace.png)
 
 
-The [Scripting Workspace](/working-with-hise/workspaces/scripting-workspace) is a specialised Workspace that features an IDE-like [Code editor](/working-with-hise/workspaces/scripting-workspace/code-editor) for scripting, side by side with the [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas) which helps you to create a GUI for your plugin. 
+The [Code Editor]() is a specialised Workspace that features an IDE-like [Code editor](/working-with-hise/workspaces/scripting-workspace/code-editor) for scripting, side by side with the [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas) which helps you to create a GUI for your plugin. 
 
 Because the interface is instantiated via script and the UI Components behaviour has to be regularly tweaked by scripting, they sit besides each other, but can be toggled on or off in the left sidebar with their respective icons. 
 
@@ -116,7 +111,6 @@ On your first visit of the Scripting Workspace it may be possible that you encou
 
 There is a handy shortcut to quickly hook up an UI: Click the house button in the top bar. It will present you with a dialog to set up a new User Interface of variable sizes. After confirmation this shortcut creates a ScriptProcessor with the ProcessorID: "Interface" in the MIDIProcessorChain of the MasterChain of your **HISE preset** and automatically connects it to the **Code Editor**.
 
-## Code Editor
 
 ![Code Editor](images/custom/code-editor.png)
 
@@ -163,7 +157,10 @@ You can drag the Components to change the z-order of the components from the top
 A neat way to group several elements together is to drag them into a shared [Panel](/ui-components/plugin-components/panel) Component. This makes it easy to structure complex projects as well as to implement page-like UI-designs. You can open a JSON representation of the UIComponents properties when you press the [j]-Key with a selected element. You can then edit these values on the fly and accept the changes with [F5].
 
 
-## The Sampler Workspace
+## ScriptNode Editor
+
+
+## Sample Editor
 
 ![Sampler-Workspace](images/custom/sampler-workspace.png)
 
@@ -183,3 +180,29 @@ General Workflow:
 - If you are sure that you won't change the samples anymore you can compress them into the lossless **HLAC Monolith file-format** `.ch1` (per SampleMap). This speeds up streaming-performance and reduces file-size.
 - In the final step, these Monolith files can be collected and exported together as **HISE Resource Archive File** `.hr1 ` via **Export > Export Samples for Installer** to distribute the samples alongside your instrument. 
 
+## HISE Snippets and Examples
+
+By the way: Did you know that it's very easy to share your project as snippet? Exporting your preset via **Export > Export as HISE Snippet** will copy a base64-encoded version of your projects `.xml` to your clipboard.
+The HISE snippet is also able to embed referenced scripts (`include("")`) in the code as "embedded" files.
+
+> You can easily share this string on the [Forum](https://forum.hise.audio/) (tip: surrounding the string with markdown code-fences (three successive backticks) will make it look much nicer.)
+
+Import the **HISE Snippet** from clipboard via **File > Import HISE Snippet**. 
+
+### Snippet Browser
+
+Under **Help > Browse example snippets** you can find the **Snippet Browser** where you can save your own HISE Snippets or explore a range of example snippets that showcase a broad range of HISE functionality.
+
+
+##### Snippet Browser (under new category "tools?)
+
+The Snippet browser..
+
+### Settings
+
+### Categories and Tags 
+
+
+### Contribute
+
+[HiseSnippetDB](https://github.com/qdr/HiseSnippetDB)

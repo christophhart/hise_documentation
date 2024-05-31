@@ -2,9 +2,8 @@
 keywords: SampleMaps
 author:   Christoph Hart
 summary:  Explains the HISE SampleMaps Folder
-index:    07
+index:    10
 ---
-
 
 A SampleMap is a collection of audio samples with mapping information that is the standard data format for the [Sampler](/hise-modules/sound-generators/list/streamingsampler) module. For a detailed specification of this format please read the dedicated SampleMap reference, but here we will just focus on the handling of those files. All we need to know for this is that they are XML files and every SampleMap is loaded into the pool on startup. The reason for this is that you have a list of all samplemaps available through the API call [`Sampler.getSampleMapList()`](/scripting/scripting-api/sampler#getsamplemaplist), which you can use to implement the sample loading UI (otherwise calling this method would result in scanning the directory everytime which comes with a huge performance overhead). Also the sampler module just needs to store the ID of the samplemap which makes the XML files less verbose.
 
