@@ -4,8 +4,8 @@ summary: A node that records the signal input into an audio file slot.
 author: [Your Name]
 modified: 30.05.2024
 parameters: 
-  - `State`: Sets the recording state. When set to "On" (1.0), the node begins recording. When set to "Off" (0.0), the node stops recording. The recording will automatically stop if the buffer is full.
-  - `RecordingLength`: Sets the length of the recording buffer in milliseconds. Range: 0.0 to 2000.0 ms.
+  - State: Sets the recording state. When set to "On" (1.0), the node begins recording. When set to "Off" (0.0), the node stops recording. The recording will automatically stop if the buffer is full.
+  - RecordingLength: Sets the length of the recording buffer in milliseconds. Range: 0.0 to 2000.0 ms.
 ---
 
 The `recorder` node captures audio signals and records them into an audio buffer. It supports configurable recording length and state management, ensuring precise control over the recording process.
