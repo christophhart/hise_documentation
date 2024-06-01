@@ -10,4 +10,3 @@ This node will use a slider pack as lookup table and can be used to implement st
 It works in the normalised domain, so an input value of `0.0` will output whatever the first slider value is and an input value of `1.0` will output the last slider value.
 
 > It uses linear interpolation to fade between the slider values.
-

@@ -13,4 +13,3 @@ There are a few occasions where you need to multiply the signal with PI (eg. fee
 output = input * Math.PI * value;
 ```
 
-

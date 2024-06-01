@@ -1,33 +1,19 @@
 ---
-keywords: Workspaces
-summary:  Different workspaces
+keywords: Interface Elements
+summary:  Hise Interface Elements
 index: 02
 ---
 
-The HISE GUI is separated into 4 workspaces which are tailored for a specific parts of the development process.
-
-![main-workspace](/images/icon_main-workspace:24px)
-
-[Main Workspace](/working-with-hise/workspaces/main-workspace)
-
-![scripting-workspace](/images/icon_scripting-workspace:24px)
-
-[Scripting Workspace](/working-with-hise/workspaces/scripting-workspace)
-
-![sampler-workspace](/images/icon_sampler-workspace:24px)
-
-[Sampler Workspace](/working-with-hise/workspaces/sampler-workspace)
-
-![custom-workspace](/images/icon_custom-workspace:24px)
-
-[Custom Workspace](/working-with-hise/workspaces/custom-workspace)
+Hise is built on a flexible system of modular interface elments called floating tiles. 
+- [Layout Floating tiles](/ui-components/floating-tiles/layout)
+- [HISE Floating tiles](/ui-components/floating-tiles/hise)
 
 
-## Customising the workspaces
 
-The default layout in HISE is optimized for just one of many possible workflows, but if you want to customize the behaviour, you can edit the layout data.
 
-The HISE layout is defined in an JSON file called `editorData.json` which is in the HISE app data directory. You can edit this file to change the layout. 
+
+
+The HISE layout is defined in an JSON file called `editorData.json` which is in the HISE app data directory `%APPDATA%`. You can edit this file to change the layout. 
 
 > Be aware that if you corrupt the JSON file (or there is a change in the default HISE layout, this file will be overwritten with the default JSON data) so make sure you keep a backup of this file as soon as you start making non-trivial changes.
 

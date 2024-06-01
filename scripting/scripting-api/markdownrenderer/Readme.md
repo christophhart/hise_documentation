@@ -1,5 +1,5 @@
 ---
-keywords: markdownrenderer
+keywords: MarkdownRenderer
 summary:  A Markdown Renderer for rendering markdown text on a Panel
 author:   Christoph Hart
 modified: 02.07.2022

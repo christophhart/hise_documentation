@@ -130,5 +130,3 @@ You can click on the debug button on the top right in order to enter debug mode.
 1. If the compile state is yellow, it will show you the compiler warning that you can then fix
 2. If the compile state is green, it will print the input -> output value pairs so you can see exactly what the function is doing.
 
-
-

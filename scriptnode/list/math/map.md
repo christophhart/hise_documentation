@@ -18,4 +18,3 @@ norm = (input - InputStart) / (InputEnd - InputStart);
 // convert the output signal from 0...1
 output = norm * (OutputEnd - OutputStart) + OutputStart;
 ```
-

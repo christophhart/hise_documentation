@@ -8,6 +8,3 @@ parameters:
 ---
   
 This node folds negative values into the positive domain and is the equivalent to the HiseScript function [Math.abs()](/scripting/scripting-api/math#abs)
-
-
-
