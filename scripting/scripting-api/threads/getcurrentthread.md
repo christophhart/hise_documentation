@@ -1,0 +1,1 @@
+The return value is one of the constants of this class, so if you can compare it against those. If you just want to dump the thread info to the console, you should use getCurrentThreadName() as this returns a string.
