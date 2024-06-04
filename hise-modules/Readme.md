@@ -9,7 +9,7 @@ weight: 50
 
 ![hise-modules](images/custom/hise-modules.png:700px)
 
-A **HISE Module** is a basic Audio-DSP building block of HISE. You can stitch them together to create your instrument/plugin. They come in four different base types:
+An **Audio Module** is a basic building block of HISE. You can stitch them together to create your instrument/plugin. They come in four different base types:
 
 - [Sound Generators](/hise-modules/sound-generators) 
 
@@ -19,7 +19,7 @@ A **HISE Module** is a basic Audio-DSP building block of HISE. You can stitch th
 
 - [Effects](/hise-modules/effects) 
 
-Every Module has a topbar with at least four controls:  
+Every module has a topbar with at least four controls:  
 
 **Fold/Collapse > Processor ID > Bypass Button > and an X to delete it.** 
 
@@ -65,5 +65,3 @@ v.asTableProcessor().addTablePoint(0, 0.5, 0.25);
 - [RoutingMatrix](/scripting/scripting-api/routingmatrix)
 - [Sampler](/scripting/scripting-api/sampler) 
 - [MidiPlayer](/scripting/scripting-api/midiplayer)
-
-## TODO [SliderPackProcessor]

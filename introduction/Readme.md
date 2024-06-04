@@ -10,20 +10,22 @@ index: 01
 
 ### What is HISE?
 
-**HISE** is an open source framework for building sample based virtual instruments. 
+**HISE** is an open source toolkit for building virtual instruments and audio effects.
 
 ## Key Features
 - A highly performant **Disk-Streaming Engine** that allows you to stream hundreds of samples in parallel. Powerful `.xml` sample-mapping and HLAC-compression-algorithm included. See: [Sampler](/hise-modules/sound-generators/list/streamingsampler)
 
-- A flexible DSP-Audio **Module system** that lets you combine Sound Generators, Modulators and Effects in a tree-like architecture for maximum efficiency. See: [Hise Modules](/hise-modules)
+- A flexible **Module system** that lets you combine Sound Generators, Modulators and Effects in a tree-like architecture for maximum efficiency. See: [Audio Modules](/hise-modules)
 
-- A handy **Interface Designer** that makes it easy to hook up an interface with customizable [UI Components](/ui-components/plugin-components) and convenient [Floating Tiles](/ui-components/floating-tiles/plugin).
+- An **Interface Designer** that makes it easy to hook up an interface with customizable [UI Components](/ui-components/plugin-components) and convenient [Floating Tiles](/ui-components/floating-tiles/plugin).
 
 - Connect & control the interactions with your virtual instrument via the powerful **HISE Scripting Language** (based upon javascript) in an IDE-like environment. See: [Scripting](/scripting) 
 
-- Build upon the **HISE** architecture, include external libraries and get the most out of the Engine with C++. See: [Hraw](/hraw)
+- A node-based graph editor for building DSP-networks. See [ScriptNode](/scriptnode).  
 
-- [Export and Compile](/working-with-hise/project-management/export) your **HISE** instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. 
+- Build upon the **HISE** architecture, include external libraries and get the most out of the Engine with [C++ API](/cpp_api).
+
+- [Export and Compile](/working-with-hise/menu-reference/export) your **HISE** instruments and plugins as VSTi, AU and Standalone for all major OS platforms and DAWs. 
 
 
 ## Licensing

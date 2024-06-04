@@ -1,0 +1,1 @@
+Compiles all DSP-networks into .dll files and make them usable in a [Hardcoded Master FX](/hise-modules/effects/list/hardcoded-master-fx) or [Hardcoded Polyhonic FX](/hise-modules/effects/list/hardcodedpolyphonicfx).

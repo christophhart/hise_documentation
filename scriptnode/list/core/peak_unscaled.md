@@ -1,24 +1,23 @@
 ---
-keywords: peak
-summary:  Sends the maximum input value as control signal
+keywords: peak_unscaled
+summary:  Create a raw modulation signal from the input. 
 author:   Christoph Hart
-modified: 06.08.2021
+modified: 04.06.2024
 ---
   
-This node will analyse the signal input and detect the (absolute) maximum value which is then sent as control value to any connected target. The value will be calculated using this formula:
+This node is a counterpart to the default [peak](/scriptnode/list/core/peak) node which performs no range conversions and just sends whatever signal value is being processed.
 
-```
-output = Math.max(Math.abs(signalMin), Math.abs(signalMax))
-```
+It also deactivates the scaling so the target parameter value will not be scaled based on its range.
 
-So it will fold a negative signal back into the 0...1 range and send this as normalised value to its targets. If you want to convert a audio signal into this value range, use the [sig2mod](/scriptnode/list/math/sig2mod) node which will perform this conversion for you.
+Take a look at how both nodes will process a LFO sine wave signal:
 
-This makes it suitable for all kinds of modulation:
+![](/images/custom/scriptnode/peakvsunscaled.png)
 
-- envelope followers
-- LFOs
+The peak node folds the negative part of the sine wave back into the positive range so that the value is guaranteed to be within 0...1 which is required for scaling the value to the target parameter range. The peak_unscaled node however just sends the "real" sine wave signal.
 
-However if you need a **raw output** of the signal without any processing, take a look at the [core.peak_unscaled](/scriptnode/list/core/peak_unscaled) node.
+### Visualisation
+
+When using the peak_unscaled node, the graph that shows the peak values over time does not have a fixed range (because the signal can be anything). Instead it will start with a 0...1 range and automatically expand itself to display whatever value is being processed as signal.
 
 ### Modulation Frequency
 

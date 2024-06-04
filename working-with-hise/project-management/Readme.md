@@ -64,7 +64,7 @@ Some file types are even cached from the beginning: They are loaded into the poo
 
 > This might lead to a few quirks that are often solved by restarting HISE after changing a file in order to use the updated version instead of the cached one.
 
-## {PROJECT_FOLDER} Wildcard
+## Project Folder Wildcard
 
 There are multiple occasions in HISE where you need to use external resources, and all of them use the HISE project system - some of them (like SampleMaps) do this implicitely and you don't have to bother about how it works, but in some situations (mostly when using Scripting API calls that access an external resource) you will have to supply a String that is resolved to the desired resource. 
 
