@@ -15,6 +15,6 @@ An simple_ar node applies an envelope to an audio signal. The envelope shapes th
 ## Modulation Outputs
 
 - **CV**: An audio-rate modulation output that sends out the envelope value at each audio buffer. The output range is 0 to 1.
-- **GT**: An audio-rate modulation output that sends out a pulse whenever the gate value changes. The output range is 0 to 1.
+- **GT**: An audio-rate modulation output that sends out a pulse whenever the gate value changes. The output range is 0 to 1. Note that this is not the actual Gate parameter, but will remain open for the release phase too. The purpose of this modulation output is to control the voice management logic in HISE so that you can tell when a voice should stop being rendered by connecting it to a [voice_manager](/scriptnode/list/envelope/voice_manager) node.
 
 In addition to providing modulation outputs, the envelope node also processes the audio signal by applying the envelope to the amplitude of the signal. This allows you to use the envelope node to modulate the gain of the signal directly, without the need to use the modulation outputs.
