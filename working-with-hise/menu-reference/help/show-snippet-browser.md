@@ -1,1 +1,0 @@
-Opens the snippet browser in a detached HISE instance.

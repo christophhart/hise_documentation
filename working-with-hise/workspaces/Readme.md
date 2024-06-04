@@ -1,5 +1,5 @@
 ---
-keywords: Interface Elements
+keywords: Workspaces
 summary:  Hise Interface Elements
 index: 02
 ---
@@ -7,10 +7,6 @@ index: 02
 Hise is built on a flexible system of modular interface elments called floating tiles. 
 - [Layout Floating tiles](/ui-components/floating-tiles/layout)
 - [HISE Floating tiles](/ui-components/floating-tiles/hise)
-
-
-
-
 
 
 The HISE layout is defined in an JSON file called `editorData.json` which is in the HISE app data directory `%APPDATA%`. You can edit this file to change the layout. 

@@ -6,28 +6,24 @@ weight:   50
 Author:   Dominik Mayer
 ---
 
-![Hise GUI](images/custom/hise_GUI_1.0.1.png)
+![Hise GUI](images/custom/quick_tour/hise_interface.png)
 
-In this quick tour we are going to explore the **HISE GUI** and the project architecture for building an instruments or plugin with **HISE**.
+In this quick tour we are going to explore the **HISE GUI*.
 
-When you first start up your desktop version of **HISE** you will get asked to create a new project. The project will consist of a folder structure for all the files, scripts and samples that are necessary to build and compile your virtual instrument. Most of them are empty at the beginning, but ready to be filled with your ideas.
+When you first start up your desktop version of **HISE** you will get asked to create a new project. Have a look at [Project Management](/working-with-hise/project-management) to learn more about its  folders and the general architecture of a **HISE** project. 
 
-Have a look at [Project Management](/working-with-hise/project-management) to learn more about these folders and the general architecture of a **HISE** project. 
+>You can save your project in two different ways. Either with **File > Save as Archive** as a compressed archive (`.hip`-file, which is also the autosave format), or as a human-readable `.xml`-File **File > Save as XML** (which is recommended for using version control).
 
-But let's jump in right away: 
 
 ## The Module Tree
 
-![Main Workspace](images/custom/main-workspace.png)
+![Main Workspace](images/custom/quick_tour/module-tree.png)
 
-In the **Module Tree** on the left side of the interface HISE you can patch together Sound Processors, Modulators and FX ([HISE Modules](/hise-modules)) to create the Audio DSP (Digital Signal Processing) architecture of your instrument.
+In the **Module Tree** on the left side of the interface HISE you can patch together Sound Processors, Modulators and FX ([Audio Modules](/hise-modules)) to create the Audio DSP (Digital Signal Processing) architecture of your instrument.
 
-The topmost module holds the **Master Chain**. It's the root container of all audio modules and the exit point of the final audio signal. 
+The topmost module is the **Master Chain**. It's the root container of all audio modules and the exit point of the final audio signal. 
 
 The top-down arrangement follows the [tree structure](https://en.wikipedia.org/wiki/Tree_structure) paradigm and allows to build instruments with an efficent signal flow, optimized for handling a lot of voices in parallel.
-
-You can save your project in two different ways. Either with **File > Save as Archive** as a compressed `.hip`-file (this is also the autosave format). Or as a human-readable `.xml`-File **File > Save as XML** (which is recommended for using version control).
-
 
 ### Add a Sound Generator
 
@@ -36,9 +32,7 @@ You can save your project in two different ways. Either with **File > Save as Ar
 
 In the **Module Tree** you can click the _Pen Icon_ to activate the adding functionality. 
 
-Click the plus icon next to the **Master Chain** to create a new [Sound Generator](/hise-modules/sound-generators). Pick something simple like the Sine Wave Generator or the Waveform Generator and start playing around.
-
-You will notice that the Sine Wave Generator features nearly the same top-bar as the Master Chain with its mostly self-explanatory controls:
+When you click the plus icon next to the **Master Chain** you can create a new [Sound Generator](/hise-modules/sound-generators). Pick something simple like the Sine Wave Generator or the Waveform Generator and click on the newly created module.You will notice that the Sine Wave Generator features nearly the same top-bar as the Master Chain with its mostly self-explanatory controls:
 
 **Minimize** **Colorpicker** **processor ID** **Mute** **Meter** **Routing Matrix** **Gain** **Pan** and **Delete** 
 
@@ -53,7 +47,7 @@ Beneath the top-bar you can find the **Tab-Section** with the Processor & Modula
 
 **MIDI**
 
-The MidiProcessor Chain processes MIDI input before the actual sound generation. This includes incoming MIDI Messages, CC Inputs as well as executed scripts. Here you can add a couple of useful [Midi Processors](/hise-modules/midi-processors), and the mighty [Script Processor](/hise-modules/midi-processors/list/scriptprocessor) with which you can inject your own scripts into each specific Sound Generator to finetune its behaviour.
+The MidiProcessor Chain processes MIDI input and scripts before the actual sound is generated. This includes incoming MIDI Messages, CC Inputs as well as executed scripts. Here you can add a couple of useful [Midi Processors](/hise-modules/midi-processors), and a [Script Processor](/hise-modules/midi-processors/list/scriptprocessor) with which you can inject your own scripts into each specific Sound Generator to finetune its behaviour.
 
 **Gain**
 
@@ -74,90 +68,106 @@ The **Gain** and **Pitch**-Modulators deserve a deeper look. They represent a ge
 
 When you look at the header of a Gain-Modulator you can see that the "Gain bar" (**dB**) of a Sound-Generator is replaced by an Intensity bar that shows the values from 0 to 1, and in the Pitch-Modulators a range from -12 to +12 semitones (**st**). The Intensity sets how intense the modulation should be applied.
 
-A nice feature to get a grip of their effect: You can click the Plot-Button to visualize the modulators influence in the **Right Panel** sidebar.
+You can visualise their signal with clicking on the little indicator next the modulators name.
+![mod-header](images/custom/quick_tour/lfo_modulator.png)
 
-![mod-header](images/custom/mod-header.png)
+Hit the **plus** icon of a Modulation-Chain to add Modulators from the following categories: 
 
-Hit the **plus** Button to add Modulators from the following Modulator categories: 
+
+---
 
 [Voice Start Modulators](/hise-modules/modulators/voice-start-modulators) (polyphonic):
 
-which set a value directly when a key is pressed and a voice is started. (see: [Velocity Modulator](/hise-modules/modulators/voice-start-modulators/list/velocity))
+- which set a value directly when a key is pressed and a voice is started. (see: [Velocity Modulator](/hise-modules/modulators/voice-start-modulators/list/velocity))
 
 [Time Variant Modulators](/hise-modules/modulators/time-variant-modulators) (monophonic):
 
-whose signals vary over time and can influence the voice dynamically. ([LFO](/hise-modules/modulators/time-variant-modulators/list/lfo))
+- whose signals vary over time and can influence the voice dynamically. ([LFO](/hise-modules/modulators/time-variant-modulators/list/lfo))
 
 [Envelope Modulators](/hise-modules/modulators/envelopes)(polyphonic):
 
-who follow a defineable envelope to shape the tone of the voices. ([AHDSR](/hise-modules/modulators/envelopes/list/ahdsr))
+- who follow a defineable envelope to shape the tone of the voices. ([AHDSR](/hise-modules/modulators/envelopes/list/ahdsr))
 
->In a few of the TimeVariant and Envelope-Modulators you'll even find slots for modulating the Modulations, which creates the possibility for some quite complex modulation arrangements. Also make sure that you try out the power of these modulators on some of the Effects in the FX section. 
+---
 
-The best way to explore all the features of the Modules and Modulators in **HISE** is probably to dig in right away and start to add, combine and delete some modules and play around with them. You can use the [HISE Modules](/hise-modules)-Reference here in the docs to get a general overview and discover their hidden capabilities.
+In a few of the TimeVariant and Envelope-Modulators you'll even find slots for modulating the Modulations, which creates the possibility for some quite complex modulation arrangements.
 
-Behind the scenes, the architecture of modules that is built within the Main/Preset Workspace is reflected in the `.xml` file that is saved in the **XmlPresetBackups** folder. After you have saved your preset as an `.xml`-file **File > Save as XML** you can open it with an external code editor to take a look at its raw architecture. This can be quite insightful, especially if you want to understand how to access and manipulate the modules and their attributes via [scripting](/scripting).
+The best way to explore all the features of the Modules and Modulators in **HISE** is probably to dig in right away and start to add, combine and delete some modules and play around with them. [Audio-Modules](/hise-modules).
+
+
+>Behind the scenes, the architecture of modules that is built within the Main/Preset Workspace is reflected in the `.xml` file that is saved in the **XmlPresetBackups** folder. After you have saved your preset as an `.xml`-file **File > Save as XML** you can open it with an external code editor to take a look at its raw architecture. This can be quite insightful, especially if you want to understand how to access and manipulate the modules and their attributes via [scripting](/scripting).
 
 
 ## The Code Editor
 ![](images/custom/scripting_workspace.png)
 
+ 
+When you open a new HISE project for the first time, you will see two editor next to each other: 
+- The [Code Editor]() which an IDE-like [Code editor](/working-with-hise/workspaces/scripting-workspace/code-editor) for scripting.
+- The [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas) which helps you to create a GUI for your plugin. 
 
-The [Code Editor]() is a specialised Workspace that features an IDE-like [Code editor](/working-with-hise/workspaces/scripting-workspace/code-editor) for scripting, side by side with the [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas) which helps you to create a GUI for your plugin. 
-
-Because the interface is instantiated via script and the UI Components behaviour has to be regularly tweaked by scripting, they sit besides each other, but can be toggled on or off in the left sidebar with their respective icons. 
-
-On your first visit of the Scripting Workspace it may be possible that you encounter a pretty bleak and grey surface. That indicates that no [Script Processor](/hise-modules/midi-processors/list/scriptprocessor) has yet been created and connected to the **Code Editor**. 
-
-There is a handy shortcut to quickly hook up an UI: Click the house button in the top bar. It will present you with a dialog to set up a new User Interface of variable sizes. After confirmation this shortcut creates a ScriptProcessor with the ProcessorID: "Interface" in the MIDIProcessorChain of the MasterChain of your **HISE preset** and automatically connects it to the **Code Editor**.
-
-
-![Code Editor](images/custom/code-editor.png)
-
-The [Code editor](/working-with-hise/workspaces/scripting-workspace/code-editor) now holds a ScriptProcessor named "Interface". You can see that the first line of the script contains :
+The **Master Chain** holds a ScriptProcessor named "Interface". The **Code Editor** shows its "onInit"-Tab. This is the main script in which you can start scripting a GUI or any other interaction inside HISE. Per default this script contains a function to create an interface, that is displayed in the **Interface Designer**.
 
 ```javascript
 Content.makeFrontInterface(600, 500);
 ```
 
-This command tells **HISE** to (_blush_) make a Front Interface with the width of `600` and the height of `500` pixels that you can see right now on the Interface Designers Canvas. You can change the values (`600 to 60`), and hit **Compile [F5]**. This evaluates the script, redraws the interface and prints "Compiled OK" to the [Console](/working-with-hise/workspaces/scripting-workspace/code-editor#console) beneath the editor. But.. oh, obviously this Interface Canvas is much too small, so let's change it back to the previous values. 
+> You can click the little "open icon" next to the ScriptProcessor "Interface" to open the script and the Interface Designer.
 
-We don't want to delve too much in scripting right now but it's important to know that even the basic use of **HISE** definitely relies on scripting for building instruments. If you want to learn more about scripting in **HISE** please check out the [Scripting](/scripting) docs.  
 
-In case that you just want to say hello to the world, type + **[F5]**:
+Let us say hello to the console. Type:
 
 ```!javascript
 Console.print("Hello World");
 ```
 
+in the onInit Tab, and hit **[F5]** to compile. This evaluates the script, redraws the interface and prints the message to the [Console](/working-with-hise/workspaces/scripting-workspace/code-editor#console) beneath the editor.
+
+We don't want to delve too much in scripting right now but it's important to know that even the basic use of **HISE** relies on scripting and learning about it is needed if you want to craft your own instrument or plugin. Check out the [Scripting](/scripting) docs for more.
+
+
+
 ## Interface Designer
 
-![interfacedesigner](images/custom/interface-designer.png)
+![interfacedesigner](images/custom/quick_tour/interface_designer.png)
 
-So, let's take a look at the [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas). This is the place to create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little lock icon **[F4]**. With it you can toggle between the **edit** and the **presentation mode** of the Interface Designer. 
+Let's take a look at the [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas), now. This is the place where you create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little pen icon **[F4]**. With it you can toggle between the **edit** and the **presentation mode** of the Interface Designer. 
 
-While in **edit mode** add a new [Slider](/ui-components/plugin-components/knob) Component by **right-clicking** on the surface of the interface. 
+While in **edit mode** add a new [Slider](/ui-components/plugin-components/knob) [UI Component](/ui-components) by **right-clicking** on the surface of the interface.
+You can drag the slider around or move it pixel-wise with the arrow keys (hold **Ctrl** to move it 10 pixels and/or **Shift** to rescale the elements boundaries). There is also the option to easily copy & paste the UI Component with dragging and holding the **Alt**-Key and to multiselect UI Components while holding **Ctrl**. You can delete the component with the **Del**-Key.
 
-> You can drag the slider around or move it pixel-wise with the arrow keys (hold **Ctrl** to move it 10 pixels and/or **Shift** to rescale the elements boundaries). There is also the option to easily copy & paste the UI Component with dragging and holding the **Alt**-Key and to multiselect UI Components while holding **Ctrl**. You can delete the item with the **Del**-Key.
 
 #### Property Editor
 
-On the right hand side you can see the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor). It lets you access and modify different properties of an UI Component. A list of all common and special UI Components can be found in [Plugin Components](/ui-components/plugin-components).
+On the right hand side you can see the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor). It lets you access and modify different properties of an UI Component.
 
-The Sliders **ID** will most definitely be "Knob1". You can change it to anything you want, but you should be aware that the **ID** is the internal handle for accessing the component via scripting. So if you should want to change it at a later stage it's quite easy to mess things up. The **ID** should therefore be as consistent as possible. If you just want to change the name of the slider you can do that via the `text` property.
+The Sliders **ID** will be "Knob1". You can change it to anything you want, but you should be aware that the **ID** is the internal handle for accessing the component via scripting. So if you should want to change it at a later stage it's quite easy to mess things up. The **ID** should therefore be as consistent as possible. If you just want to change the name of the slider you can do this via the `text` property.
 
-If you toggle back to **presentation mode** **[F4]** the interface will lock down. You can now use the controls like in a finished plugin. This workflow gives you a handy way to design and test your plugins interface. You can additionally display a preview of the plugin-interface by clicking the top-bar house-button again, or add an external preview window via **View > Add interface preview**.
+If you toggle back to **presentation mode** **[F4]** the interface will lock down. You can now use the controls like in a finished plugin.
 
 ##### Component List
 
 On the left hand side of the Interface Designer you can see an overview of your added UI Components in the [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list). 
 
-You can drag the Components to change the z-order of the components from the top (background) to the bottom (front). The green and red dots indicate if an UI Components state is going to be saved in a [User Presets](/working-with-hise/project-management/user-presets) via the `saveInPreset` property. 
+You can drag the Components to change the z-order of the components from the top (background) to the bottom (front). 
 
-A neat way to group several elements together is to drag them into a shared [Panel](/ui-components/plugin-components/panel) Component. This makes it easy to structure complex projects as well as to implement page-like UI-designs. You can open a JSON representation of the UIComponents properties when you press the [j]-Key with a selected element. You can then edit these values on the fly and accept the changes with [F5].
+A neat way to group several elements together is to drag them into a shared [Panel](/ui-components/plugin-components/panel) Component. This makes it easy to structure complex projects as well as to implement page-like UI-designs. 
+
+You can open a JSON representation of the UIComponents properties when you press the [j]-Key with a selected element. You can then edit these values on the fly and accept the changes with [F5].
 
 
 ## ScriptNode Editor
+
+![ScriptNode Editor](images/custom/quick_tour/scriptnode_workspace.png)
+
+You can get access to the ScriptNode Editor in two ways. Either you create a [ScriptFX](/hise-modules/effects/list/scriptfx) in the FX-Chain of the **MasterChain** for creating a DSP effect, or by creating a [Scriptnode Synthesiser](/hise-modules/sound-generators/list/scriptsynth) Sound Generator in the Master Chain if you want to process incoming MIDI events.
+
+Click the little "open in"-icon next to their name to open the ScriptNode Editor.
+
+![ScriptNode new](images/custom/quick_tour/scriptnode_create.png)
+
+After creating a new DSP-Network you will see a empty container in which you can add new DSP nodes. Clicking into the chain opens up a "Create Node" window in which you can add new nodes and built your DSP-Network. Take a look at the [Scriptnode Node list](/scriptnode/list) and the [ScriptNode 101](/scriptnode/101) to get started.
+
 
 
 ## Sample Editor
@@ -166,15 +176,16 @@ A neat way to group several elements together is to drag them into a shared [Pan
 
 The [Sampler Workspace](/working-with-hise/workspaces/sampler-workspace) is built all around the the [Sampler](/hise-modules/sound-generators/list/streamingsampler) Module and displays three of its tabs in one workspace. 
 
-The main task of these tabs is to comfortly map your samples into SampleMaps, edit them to suit your needs and finally export the mapped samples into a deliverable file-format that can be shipped with your instrument.
+The main task of these tabs is to map your samples into [SampleMaps](/hise-modules/sound-generators/list/streamingsampler#sample-maps), edit them to suit your needs and finally export the mapped samples into a deliverable file-format that can be shipped with your instrument.
 
 General Workflow:
 
-- Put all the samples that you want to map into your Projects [Samples](/working-with-hise/project-management/projects-folders/samples)-Folder
+- Put all the samples that you want to map into your Projects [Sample Folder](/working-with-hise/project-management/projects-folders/samples)
 - Drag the samples from the [Filebrowser](/ui-components/floating-tiles/hise/filebrowser) into the [Sample Map Editor](/working-with-hise/workspaces/sampler-workspace/sample-map-editor) and choose one of three options to map them: 
-   - [Drop Point](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#drop-point), which places the samples where you drag them. 
-   - [Pitch Detection](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#pitch-detection), which automatically tries to detect the pitch of the samples.
-   - [Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser), which reads the filename of your samples and maps them according to your requirements.
+[Drop Point](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#drop-point), which places the samples where you drag them. 
+[Pitch Detection](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#pitch-detection), which automatically tries to detect the pitch of the samples.
+[Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser), which reads the filename of your samples and maps them according to your requirements.
+
 - Edit and finetune your samples with the [Sample Editor](/working-with-hise/workspaces/sampler-workspace/sample-editor) and the [Sampler Settings](/working-with-hise/workspaces/sampler-workspace/sample-settings). 
 - When you are happy with the map, save it. It'll appear in the SampleMap folder. You can now access SampleMaps with scripting[link] and play them with your instrument. 
 - If you are sure that you won't change the samples anymore you can compress them into the lossless **HLAC Monolith file-format** `.ch1` (per SampleMap). This speeds up streaming-performance and reduces file-size.
@@ -182,8 +193,7 @@ General Workflow:
 
 ## HISE Snippets and Examples
 
-By the way: Did you know that it's very easy to share your project as snippet? Exporting your preset via **Export > Export as HISE Snippet** will copy a base64-encoded version of your projects `.xml` to your clipboard.
-The HISE snippet is also able to embed referenced scripts (`include("")`) in the code as "embedded" files.
+By the way: Did you know that it's very easy to share your project as snippet? Exporting your preset via **Export > Export as HISE Snippet** will copy a base64-encoded version of your projects `.xml` to your clipboard. The HISE snippet is also able to embed referenced scripts (`include("")`) in the code as "embedded" files.
 
 > You can easily share this string on the [Forum](https://forum.hise.audio/) (tip: surrounding the string with markdown code-fences (three successive backticks) will make it look much nicer.)
 
@@ -191,18 +201,14 @@ Import the **HISE Snippet** from clipboard via **File > Import HISE Snippet**.
 
 ### Snippet Browser
 
-Under **Help > Browse example snippets** you can find the **Snippet Browser** where you can save your own HISE Snippets or explore a range of example snippets that showcase a broad range of HISE functionality.
+Under **Help > Browse example snippets** you can find the **Snippet Browser** in which you can save your own HISE Snippets or explore a range of example snippets that showcase a broad range of HISE functionality.
+
+![SnippetBrowser](images/custom/quick_tour/snippet_browser.png)
+
+The Snippet Browser will open a detached HISE instance, so that opening different snippets won't interfere with your current project. You can add your own HISE snippets to this instance and then click the **plus icon** on the top-left to save the snippet to the Snippet Browser. You can add a little description, categories and tags to it.
+
+If you want to check out the example snippets click the **cog-wheel-icon**, set a snippet directory and username and download the latest example snippets and assets. 
+
+If you want to contribute to the Example snippets please file a üull request at: [HiseSnippetDB](https://github.com/qdr/HiseSnippetDB).
 
 
-##### Snippet Browser (under new category "tools?)
-
-The Snippet browser..
-
-### Settings
-
-### Categories and Tags 
-
-
-### Contribute
-
-[HiseSnippetDB](https://github.com/qdr/HiseSnippetDB)

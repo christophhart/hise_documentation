@@ -1,1 +1,1 @@
-Dudel funky
+Opens the Hise Snippet Browser in a detached HISE instance.
