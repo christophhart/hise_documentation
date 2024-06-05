@@ -4,16 +4,22 @@ summary:  The menu reference for the Scripting Canvas in the Interface Editor
 icon:     /images/icon_scriptcontent
 index: 02
 items:	
+- Zoom Fit: Sets the zoom factor so that the entire interface is displayed.
 - Edit: Toggles the canvas between play mode(where you can actually use the Components) and edit mode where you can edit them and drag them around.
 - Editoff: Toggles the canvas between play mode(where you can actually use the Components) and edit mode where you can edit them and drag them around.
 - Cancel: Deselects all items
+- Lock: You can lock the current component selection so that it will not be included when you drag the lasso for selecting components. This is helpful for background panels, etc. which you don't want to select but their child elements.
+- Move: Enabling this will prevent the mouse dragging of selected elements to move their position. This avoids screwing up your interface layout accidentally.
 - Undo: Undo the last property change. This is using the global undo manager, so it also undoes drag operations in the Component List or property changes in the Property Editor. 
 - Redo:  Same as undo says Captain Obvious. 
 - Rebuild: Refreshes the UI model. 
+- Suspend: This simulates the suspension of the UI timers just as if the user would close your plugin window. You can use this to check if any vital functionality is depending on the UI timers being active.
+- Learn: This enables the connection learn mode. Click this to enable the learn mode for the current selection, then move any other knob or UI element of another processor (or a meta parameter of a DSP network). It will then assign the processor connection and update the range of the Knob to match the target.
 - Vertical Align: Align the selection vertically on the left edge. 
 - Horizontal Align: Align the selection horizontally on the top edge. 
 - Vertical Distribute: Distribute the selection vertically with equal space. 
 - Horizontal Distribute: Distribute the selection horizontally with equal space. 
+- Edit JSON: This will open a popup with the JSON properties of the currently selected elements. It allows you to manually change the properties and do batch processing. Note that this is a very risky operation so it's possible to mess up the entire component tree so proceed with caution!
 ---
 
 ![interfacedesigner](images/custom/interface-designer.png)
