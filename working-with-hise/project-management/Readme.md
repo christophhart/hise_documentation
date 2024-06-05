@@ -6,8 +6,6 @@ icon:     /images/icon_filebrowser
 index:    3
 ---
 
-## Project Folder
-
 A new project in HISE will hold predefined sub-folders with all the files, data and scripts that you need in your instrument/plugin.
 
 These folders are categorized according to their filetype and usage:

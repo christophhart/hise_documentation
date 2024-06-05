@@ -10,7 +10,7 @@ Author:   Dominik Mayer
 
 In this quick tour we are going to explore the **HISE GUI*.
 
-When you first start up your desktop version of **HISE** you will get asked to create a new project. Have a look at [Project Management](/working-with-hise/project-management) to learn more about its  folders and the general architecture of a **HISE** project. 
+When you first start up your desktop version of **HISE** you will get asked to create a new project. Have a look at [Project Management](/working-with-hise/project-management) to learn more about its folders and the general architecture of a **HISE** project.
 
 >You can save your project in two different ways. Either with **File > Save as Archive** as a compressed archive (`.hip`-file, which is also the autosave format), or as a human-readable `.xml`-File **File > Save as XML** (which is recommended for using version control).
 
@@ -27,23 +27,21 @@ The top-down arrangement follows the [tree structure](https://en.wikipedia.org/w
 
 ### Add a Sound Generator
 
-![masterchain](images/custom/masterchain.png)
+In the **Module Tree** you can click the "pen-icon" to activate the adding functionality. 
 
-
-In the **Module Tree** you can click the _Pen Icon_ to activate the adding functionality. 
-
-When you click the plus icon next to the **Master Chain** you can create a new [Sound Generator](/hise-modules/sound-generators). Pick something simple like the Sine Wave Generator or the Waveform Generator and click on the newly created module.You will notice that the Sine Wave Generator features nearly the same top-bar as the Master Chain with its mostly self-explanatory controls:
-
-**Minimize** **Colorpicker** **processor ID** **Mute** **Meter** **Routing Matrix** **Gain** **Pan** and **Delete** 
+When you click the plus icon next to the **Master Chain** you can create a new [Sound Generator](/hise-modules/sound-generators). Pick something simple like the Sine Wave Generator or the Waveform Generator and click on the newly created module.
 
 ![Sine](/images/custom/gen-sinewave.png)
+
+On the header of the module you can change it's name (ID), pick a color, mute the generator, set the Gain/Intensity or pan its audio signal. When you **right-click** on the header you can copy&paste its xml data, or create script references with which you can access more internal functions of the module by script. 
 
 
 ### Modulation Chains
 
+![Tabs](images/custom/tabs.png)
+
 Beneath the top-bar you can find the **Tab-Section** with the Processor & Modulation chains of the Sound-Generator. Each one of them reveales a chain for adding additional processors & modulators to a specific aspect of the generated sound. 
 
-![Tabs](images/custom/tabs.png)
 
 **MIDI**
 
@@ -64,14 +62,16 @@ The EffectChain is applied at last. Here you can add a bunch of well-known [Effe
 
 ### Modulators 
 
-The **Gain** and **Pitch**-Modulators deserve a deeper look. They represent a generic type of modulator that has the task to generate a sample accurate (real-time) control signals to modulate their respective sources. 
+![mod-header](images/custom/quick_tour/lfo_modulator.png)
+
+The modulators for the *Gain** and **Pitch**-chains deserve a deeper look. They represent a generic type of modulator with the task to generate a sample accurate (real-time) control signals to modulate their respective sources. 
 
 When you look at the header of a Gain-Modulator you can see that the "Gain bar" (**dB**) of a Sound-Generator is replaced by an Intensity bar that shows the values from 0 to 1, and in the Pitch-Modulators a range from -12 to +12 semitones (**st**). The Intensity sets how intense the modulation should be applied.
 
 You can visualise their signal with clicking on the little indicator next the modulators name.
-![mod-header](images/custom/quick_tour/lfo_modulator.png)
 
-Hit the **plus** icon of a Modulation-Chain to add Modulators from the following categories: 
+
+Hit the **plus** icon of a Modulation-Chain to add modulators from the following categories: 
 
 
 ---
@@ -92,8 +92,7 @@ Hit the **plus** icon of a Modulation-Chain to add Modulators from the following
 
 In a few of the TimeVariant and Envelope-Modulators you'll even find slots for modulating the Modulations, which creates the possibility for some quite complex modulation arrangements.
 
-The best way to explore all the features of the Modules and Modulators in **HISE** is probably to dig in right away and start to add, combine and delete some modules and play around with them. [Audio-Modules](/hise-modules).
-
+The best way to explore all the features of the Modules and Modulators in **HISE** is probably to dig in right away and start to add, combine and delete some modules and play around with them.
 
 >Behind the scenes, the architecture of modules that is built within the Main/Preset Workspace is reflected in the `.xml` file that is saved in the **XmlPresetBackups** folder. After you have saved your preset as an `.xml`-file **File > Save as XML** you can open it with an external code editor to take a look at its raw architecture. This can be quite insightful, especially if you want to understand how to access and manipulate the modules and their attributes via [scripting](/scripting).
 
@@ -114,8 +113,7 @@ Content.makeFrontInterface(600, 500);
 
 > You can click the little "open icon" next to the ScriptProcessor "Interface" to open the script and the Interface Designer.
 
-
-Let us say hello to the console. Type:
+Let us test the scripting. Type:
 
 ```!javascript
 Console.print("Hello World");
@@ -126,12 +124,11 @@ in the onInit Tab, and hit **[F5]** to compile. This evaluates the script, redra
 We don't want to delve too much in scripting right now but it's important to know that even the basic use of **HISE** relies on scripting and learning about it is needed if you want to craft your own instrument or plugin. Check out the [Scripting](/scripting) docs for more.
 
 
-
 ## Interface Designer
 
 ![interfacedesigner](images/custom/quick_tour/interface_designer.png)
 
-Let's take a look at the [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas), now. This is the place where you create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little pen icon **[F4]**. With it you can toggle between the **edit** and the **presentation mode** of the Interface Designer. 
+Now we'll take a look at the  [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas). This is the place where you create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little pen icon **[F4]**. With it you can toggle between the **edit** and the **presentation mode** of the Interface Designer. 
 
 While in **edit mode** add a new [Slider](/ui-components/plugin-components/knob) [UI Component](/ui-components) by **right-clicking** on the surface of the interface.
 You can drag the slider around or move it pixel-wise with the arrow keys (hold **Ctrl** to move it 10 pixels and/or **Shift** to rescale the elements boundaries). There is also the option to easily copy & paste the UI Component with dragging and holding the **Alt**-Key and to multiselect UI Components while holding **Ctrl**. You can delete the component with the **Del**-Key.

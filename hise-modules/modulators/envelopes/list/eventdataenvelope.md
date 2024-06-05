@@ -1,5 +1,5 @@
 ---
-keywords: EventDataEnvelope
+keywords: EventData Envelope
 summary:  An envelope modulator for time-varying event data slots
 author:   Christoph Hart
 modified: 22.05.2024

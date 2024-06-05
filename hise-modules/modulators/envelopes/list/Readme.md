@@ -5,4 +5,11 @@ author:   Christoph Hart
 modified: 18.03.2019
 ---
 
-An envelope is a polyphonic, timevarying modulation source. Usually it's considered as envelope that will apply it's envelope shape on a signal, but it can also be other things (eg. MPE modulator or a polyphonic LFO). There are a few inbuilt envelope modulators in HISE, but you can also create your own envelope modulators with scriptnode.
+- [AHDSR Envelope](/hise-modules/modulators/envelopes/list/ahdsr)
+- [Event Data Envelope](/hise-modules/modulators/envelopes/list/eventdataenvelope)
+- [Global Envelope Modulator](/hise-modules/modulators/envelopes/list/globalenvelopemodulator)
+- [MPE Modulator](/hise-modules/modulators/envelopes/list/mpemodulator)
+- [Script Envelope Modulator](/hise-modules/modulators/envelopes/list/scriptenvelopemodulator)
+- [Scriptnode Voice Killer](/hise-modules/modulators/envelopes/list/scriptnodevoicekiller)
+- [Simple Envelope](/hise-modules/modulators/envelopes/list/simpleenvelope)
+- [Table Envelope](/hise-modules/modulators/envelopes/list/tableenvelope)

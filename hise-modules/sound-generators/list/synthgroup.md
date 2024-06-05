@@ -1,5 +1,5 @@
 ---
-keywords: Syntesizer Group
+keywords: Syntesiser Group
 summary: A container for other Sound generators that allows FM and other additional synthesis types.
 ---
 

@@ -1,5 +1,5 @@
 ---
-keywords: LFO
+keywords: LFO Modulator
 summary:  A LFO Modulator modulates the signal with a low frequency
 weight:   50
 index:    01

@@ -16,4 +16,4 @@ Two of these are somewhat special:
 
 - [Plugin Floating Tiles](/ui-components/floating-tiles/plugin) are hard-coded interface elements with which you can add predefined functionalities to your plugin. ([Keyboard](/ui-components/floating-tiles/plugin/keyboard), [CustomSettings](/ui-components/floating-tiles/plugin/customsettings), [PresetBrowser](/ui-components/floating-tiles/plugin/presetbrowser), etc..)
 
-Because the **HISE** interface itself is built with Floating Tiles, you're able to access all its elements in [HISE Floating Tiles](/ui-components/floating-tiles/hise). In connection with the [Layout Floating Tiles](/ui-components/floating-tiles/layout) you can adapt your version of **HISE** to your needs. Like in the Main Workspaces [Left Panel](/working-with-hise/workspaces/main-workspace/left-panel) or the [Custom Workspace]link. (See: [Enable Layout Mode](/working-with-hise/menu-reference/view#enable-layout-mode))  
+If you want more control over the the appearance of the UI Components make sure to take a look at the [Look and Feel](/glossary/custom_lookandfeel) functionality.

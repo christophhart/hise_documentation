@@ -21,7 +21,6 @@ At the end, the monophonic gain modulation will be applied to the voices, then t
 
 ## Multichannel Routing
 
-
 There are multiple use cases in the instrument design where you would want to have a multichannel routing:
 
 - multimic samples
@@ -34,7 +33,7 @@ A sound generator in HISE can process multiple channels (if applicable, a sine w
 
 You can access the Routing Matrix with clicking on the little "volume-display-icon" next to the SoundGenerators name.
 
-You can change the channel amount by creating a "typed Routing Matrix Script Reference". (by right-click on the Audio Modules top-bar) and set the number of channels via script:
+You can change the channel amount by right-clicking in the Routing Matrix popup or by creating a "typed Routing Matrix Script Reference". (by right-click on the Audio Modules top-bar) and set the number of channels via script:
 
 ```javascript
 const var MasterChain = Synth.getRoutingMatrix("Master Chain");
