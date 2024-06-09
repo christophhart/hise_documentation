@@ -5,7 +5,7 @@ author:   Christoph Hart
 modified: 13.03.2019
 ---
 
-# Array Class Reference
+The array is the default container type in HiseScript for holding multiple elements that can be accessed by their index. There are a few other container types which are better suited for particular workflows (see the section about Alternatives below), but for general data processing this is one of the most important concepts to know about.
 
 ## Basic usage
 
@@ -41,4 +41,18 @@ const var b = a;
 a[0] = 10;           // set the first element of a
 Console.print(b[0]); // the first element of b will also be 10
 ```
+
+## Alternatives
+
+The Array is a very dynamic container type and can be resized at any time to make room for more elements. For UI and data processing this is an incredibly useful feature. However this flexibility makes it a very poor choice for whenever you want to do some MIDI processing logic which usually runs in the audio callback where allocating new memory is a no go. 
+
+In order to mitigate this problem, there are a bunch of other container types similar to the stock Array but with an emphasis on certain tasks within the realtime callback:
+
+- [Buffer](/scripting/scripting-api/buffer) is a densely packed, floating point array that represents audio signals
+- [MidiList](/scripting/scripting-api/midilist) is a object that holds 128 integer numbers and is particularly useful for holding MIDI information (eg. note numbers)
+- [FixObjectArray](/scripting/scripting-api/fixobjectarray) is a preallocated list of elements with a predefined memory structure and can be the most efficient solution for many tasks
+- [Unorderedstack](/scripting/scripting-api/unorderedstack) is a stack that offers fast insertion / removal by ignoring the order of elements and is particularly useful for storing the information about currently played notes (where the order doesn't matter).
+
+If you don't want to use those containers, you can of course use the Array in the MIDI processing context as long as you don't resize the container (which is why the [Array.reserve()](/scripting/scripting-api/array#reserve) function is so importanta).
+
 
