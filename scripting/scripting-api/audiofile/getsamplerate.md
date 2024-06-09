@@ -25,7 +25,3 @@ Console.print("Audio engine sample rate: " + engineSampleRate + " Hz");
 // back samples will do this for you).
 var playbackRatio = fileSampleRate / engineSampleRate;
 ```
-
----
-
-Please let me know if there's anything else you need or if there are other methods you'd like documented!
