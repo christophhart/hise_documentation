@@ -15,7 +15,6 @@ Console.print(trace(arr1)); // [0, 1, [2, 3, 4], 5, 6, 7]
 arr1.concat(arr3);
 
 // the arr1 already contains arr2 
-// error: arr4 is not of type array
 Console.print(trace(arr1)); // [0, 1, [2, 3, 4], 5, 6, 7, 8, 9, 10]     
 
 
