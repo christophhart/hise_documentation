@@ -6,7 +6,7 @@ index:    02
 author:   Christoph Hart
 ---
 
-![HISE Topbar](images/custom/hise-topbar.png:700px)
+![HISE Topbar](images/custom/quick_tour/top-bar.png)
 
 An overview of **HISE**s Interface elements and tools. 
 

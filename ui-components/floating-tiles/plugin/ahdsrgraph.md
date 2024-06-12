@@ -16,3 +16,5 @@ Connect the "ProcessorId" to your AHDSR Gain Modulators ID
   "ProcessorId": "AHDSR Envelope1"
 }
 ``` 
+
+If you want more control in styling the AHDSR Graph, please take a look at [CustomLookAndFeel](/glossary/custom_lookandfeel#ahdsr-graph).

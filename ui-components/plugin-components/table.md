@@ -30,5 +30,10 @@ where input equals output. It has at least two points which are tied to the left
 > If you're inside the main workspace, you need to use Cmd + Mousewheel to prevent accidently changing the curve if you scroll around
 
 
+## Customization
+
+If you want more control over the table please have a look at [CustomLAF #Table](/glossary/custom_lookandfeel#table-editor).
+
+
 ## Scripting API 
 [ScriptTable](/scripting/scripting-api/scripttable)

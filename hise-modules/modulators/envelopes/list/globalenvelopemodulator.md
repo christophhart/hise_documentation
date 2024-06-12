@@ -5,3 +5,4 @@ author:   Christoph Hart
 modified: 22.05.2024
 ---
 
+A slot for applying a Global Envelope Modulator signal, living in a [Global Modulator Container](/hise-modules/sound-generators/list/globalmodulatorcontainer)
