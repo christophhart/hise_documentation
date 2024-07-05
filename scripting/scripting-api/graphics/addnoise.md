@@ -8,3 +8,17 @@ This adds pixelated noise to the current graphics layer. The parameter can eithe
 | `area` | `[x, y, w, h]` | the area that should be painted with the noise. |
 
 > HISE will cache internal images filled with the noise for performance reasons, however this means that using this method increases the memory usage (depending on the noise area size).
+
+### Example
+```javascript
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(0);
+	
+	g.addNoise(0.07); // 0 -> 0.999
+	
+	g.endLayer();
+});
+```

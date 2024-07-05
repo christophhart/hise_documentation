@@ -27,3 +27,16 @@ g.setGradientFill([Colours.white, 0.0, 0.0,
 				   false,
 				   Colours.black, 0.5]);
 ```
+
+
+```javascript
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setGradientFill([Colours.white, 0 , 0,
+				   Colours.black, this.getWidth()/1.5, 0,
+				   false]);
+				   
+	g.fillRect(this.getLocalBounds(0));
+});
+
+```

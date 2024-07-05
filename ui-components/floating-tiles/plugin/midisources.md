@@ -8,4 +8,4 @@ properties:
 - FontSize: Set the font size. 
 ---
 
-Displays all available MIDI sources connected to the OS.
+Displays all available MIDI sources connected to the OS. You can activate or deactive them with a little check-box.

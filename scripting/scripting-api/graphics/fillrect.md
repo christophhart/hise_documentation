@@ -1,3 +1,6 @@
+
+### Example 
+
 ```javascript
 Panel1.setPaintRoutine(function(g)
 {	
