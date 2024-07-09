@@ -5,6 +5,7 @@ const var Panel1 = Content.getComponent("Panel1");
 Panel1.setPaintRoutine(function(g)
 {	
 	g.setColour(Colours.white);
-	g.fillRoundedRectangle(this.getLocalBounds(10), 25); // area, rounded 0 - 100+
+	g.drawHorizontalLine(0, 0, this.getWidth()); // xStart, yStart, length
 });
+
 ```

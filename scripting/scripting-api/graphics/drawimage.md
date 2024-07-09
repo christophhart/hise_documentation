@@ -1,5 +1,4 @@
 
-### Example
 ```javascript
 const var Panel1 = Content.getComponent("Panel1");
 

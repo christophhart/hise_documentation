@@ -28,3 +28,25 @@ Panel.setPaintRoutine(function(g)
     g.fillPath(p, area);
 });
 ```
+
+```javascript
+const var Panel1 = Content.getComponent("Panel1");
+
+// that's a poor circle, but the blur will save us...
+var circlePath = Content.createPath();
+circlePath.startNewSubPath(0.5, 0);
+circlePath.quadraticTo(1.0, 0.0, 1.0, 0.5);
+circlePath.quadraticTo(1.0, 1.0, 0.5, 1.0);
+circlePath.quadraticTo(0.0, 1.0, 0.0, 0.5);
+circlePath.quadraticTo(0.0, 0.0, 0.5, 0.0);
+
+Panel1.set("width", Panel1.get("height"));
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.drawDropShadowFromPath(circlePath, this.getLocalBounds(50), Colours.black, 50, [0, 0]);
+});
+
+
+```
+

@@ -1,6 +1,5 @@
-You can use this method in order to render the [ScriptShader](/scripting/scripting-api/scriptshader) object to the given area (relative to the ScriptPanel's boundaries).
+You can use this method in order to render the GLSL [ScriptShader](/scripting/scripting-api/scriptshader) object to the given area (relative to the ScriptPanel's boundaries).
 
-### Example
 
 ```javascript
 const var Panel1 = Content.addPanel("Panel1", 0, 0);

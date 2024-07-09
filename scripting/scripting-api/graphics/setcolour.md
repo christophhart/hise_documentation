@@ -14,6 +14,19 @@ Panel1.setPaintRoutine(function(g)
 {	
 	g.setColour(Colours.white);
 	g.fillEllipse([0,0,50,50]);
+
+});
+```
+
+
+
+```javascript
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.fillEllipse([0,0,50,50]);
 	
 	g.setColour(Colours.grey);
 	g.fillEllipse([55,0,50,50]);

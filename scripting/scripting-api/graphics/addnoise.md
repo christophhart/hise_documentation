@@ -9,7 +9,6 @@ This adds pixelated noise to the current graphics layer. The parameter can eithe
 
 > HISE will cache internal images filled with the noise for performance reasons, however this means that using this method increases the memory usage (depending on the noise area size).
 
-### Example
 ```javascript
 const var Panel1 = Content.getComponent("Panel1");
 
