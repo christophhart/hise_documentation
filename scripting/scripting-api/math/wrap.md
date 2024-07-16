@@ -1,4 +1,5 @@
-Unlike its sibling `fmod()`, this function will not behave weird with negative values, so if you rely on it to loop around correctly with negative numbers, use this instead.
+
+Unlike its sibling [`fmod()`](/scripting/scripting-api/math#fmod), this function will not behave weird with negative values, so if you rely on it to loop around correctly with negative numbers, use this instead.
 
 ```javascript
 // fmod will not wrap around zero

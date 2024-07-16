@@ -1,3 +1,6 @@
+
+![fmod](images/custom/math/fmod.png:400px)
+
 This is usually useful for two use cases:
 
 1. Get the fractional part: `Math.fmod(19.52, 1.0) == 0.52)`
