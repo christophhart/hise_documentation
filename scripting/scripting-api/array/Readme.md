@@ -5,7 +5,8 @@ author:   Christoph Hart
 modified: 13.03.2019
 ---
 
-The array is the default container type in HiseScript for holding multiple elements that can be accessed by their index. There are a few other container types which are better suited for particular workflows (see the section about Alternatives below), but for general data processing this is one of the most important concepts to know about.
+The array is the default container type in HiseScript for holding multiple elements that can be accessed by their index. 
+There are a few other container types which are better suited for particular workflows (see the section about Alternatives below), but for general data processing this is one of the most important concepts to know about.
 
 ## Basic usage
 

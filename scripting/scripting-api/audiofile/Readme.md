@@ -5,7 +5,7 @@ author:   Christoph Hart
 modified: 09.06.2024
 ---
   
-The Audiofile object is a data slot for loading sample files - not to be confused with the [File](/scripting/scripting-api/file) object which represents an actual file on your disk.
+The `Audiofile` object is a data slot for loading sample files - not to be confused with the [File](/scripting/scripting-api/file) object which represents an actual file on your disk.
 
 ### Creating an Audiofile object
 
