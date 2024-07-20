@@ -37,3 +37,80 @@ If you want more control over the table please have a look at [CustomLAF #Table]
 
 ## Scripting API 
 [ScriptTable](/scripting/scripting-api/scripttable)
+
+## CSS Styling
+
+You can also use CSS in order to style the table appearance. It uses the following selectors & additional properties:
+
+- style the **background & the path** of the table using the `.scripttable` class ID (note that the HTML tag `table` is reserved for the Viewport in table mode)
+- in order to draw the actual table path, you can use the CSS property `var(--tablePath)` as the `background-image` property, which will contain the Base64 representation of the path. 
+- style the **text overlay** with the HTML tag selector `label`
+- style the individual **table points** using the class selector `.tablepoint`. It supports the `:hover` and `:active` pseudo-selectors, as well as the `:first-child` and `:last-child` selectors for the first and last point at the left and right edges.
+- style the **position indicator** using the class selector `.playhead`. You can calculate the position using the CSS property `var(--playhead)`, which contains the normalised x-position (note that this is consistent with the playhead rendering) of the AudioWaveform).
+
+### Stylesheet Example
+
+```javascript
+const var t = Content.addTable("Table1", 10, 10);
+
+t.set("width", 300);
+t.set("height", 100);
+
+const var laf = Content.createLocalLookAndFeel();
+
+t.getTableValue(Math.random());
+
+
+laf.setInlineStyleSheet("
+
+.scripttable
+{
+	background: #444;
+	border-radius: 3px;
+	
+	
+}
+
+.scripttable::before
+{
+	content: '';
+	background-image: var(--tablePath);
+	background-color: #aaa;
+	box-shadow: inset 0px 2px 4px rgba(0,0,0, 0.5);
+}
+
+.tablepoint
+{
+	background: rgba(255,255,255, 0.5);
+	border-radius: 50%;
+	margin: 2px;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tablepoint:hover
+{
+	background: white;
+}
+
+label
+{
+	background: rgba(255, 255, 255, 0.9);
+	color: #222;
+	border: 1px solid #aaa;
+	padding: 5px;
+}
+
+.playhead::before
+{
+	content: '';
+	width: 2px;
+	left: calc(calc(var(--playhead) * 100%) - 1px);
+	background: white;
+	box-shadow: 0px 0px 4px black;
+}
+");
+
+t.setLocalLookAndFeel(laf);
+```
+
+

@@ -18,6 +18,7 @@ items:
 - Vertical Align: Align the selection vertically on the left edge. 
 - Horizontal Align: Align the selection horizontally on the top edge. 
 - Vertical Distribute: Distribute the selection vertically with equal space. 
+- Debug Css: If enabled you can hover over an element that has a CSS stylesheet attached to inspect the CSS properties (and variables) that are applied to the component.
 - Horizontal Distribute: Distribute the selection horizontally with equal space. 
 - Edit JSON: This will open a popup with the JSON properties of the currently selected elements. It allows you to manually change the properties and do batch processing. Note that this is a very risky operation so it's possible to mess up the entire component tree so proceed with caution!
 ---
@@ -48,15 +49,13 @@ The Toolbar features convenient helpers, like a zoom selector, undo/redo functio
 
 {ICON_TABLE}
 
-> Behind the scenes, HISE uses a layer called ScriptComponent that wraps around the data model for each control. It stores a reference to the data and communicates between the actual GUI you see and the script / UI model in the backend. However, in some cases these connections may break and you'll wind up with a somewhat broken interface. This can easily be fixed by deleting all those wrappers and create them new from the UI model. You can do that with the **Rebuild Button**. If you only rebuild the interface, your ScriptProcessor script will not automatically be recompiled, so in order to make a full reset, you need to rebuild the interface first, and then recompile your script.
+Behind the scenes, HISE uses a layer called ScriptComponent that wraps around the data model for each control. It stores a reference to the data and communicates between the actual GUI you see and the script / UI model in the backend. However, in some cases these connections may break and you'll wind up with a somewhat broken interface. This can easily be fixed by deleting all those wrappers and create them new from the UI model. You can do that with the **Rebuild Button**. If you only rebuild the interface, your ScriptProcessor script will not automatically be recompiled, so in order to make a full reset, you need to rebuild the interface first, and then recompile your script.
 
 ### Select and position UI Components
 
 You can select components by clicking on them or dragging a lasso around many, for multiple selection. While holding the **Command/Ctrl key** you can add and delete components from the selection. To deselect all components, press the **Escape key**.
 
 You can move the selected Components with **Mouse Dragging** or the **Arrow Keys** on your keyboard. The Modifier Keys change their effect depending on each method: 
-
-
 
 | Modifier Key | Arrows Keys | Mouse Dragging |
 | --------- | -------------- | ---------------- |
