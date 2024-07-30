@@ -5,9 +5,7 @@ author:   Christoph Hart
 modified: 29.11.2023
 ---
 
-# Threads
-
-The Threads API class provides information about various threads and some helper functions regarding multithreaded actions. This is an extremely advanced topic but it allows you to control and synchronize the different threads in a complex HISE project.
+The `Threads` API class provides information about various threads and some helper functions regarding multithreaded actions. This is an extremely advanced topic but it allows you to control and synchronize the different threads in a complex HISE project.
 
 Basically you have 4 main thread types running simultaneously in HISE:
 

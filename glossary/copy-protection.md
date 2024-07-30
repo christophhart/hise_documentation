@@ -24,7 +24,7 @@ In order to enable the copy protection, you'll have to follow these steps:
 1. Add `USE_SCRIPT_COPY_PROTECTION=1` in the ExtraDefinitions fields of your project.
 2. Create a RSA key pair (Tools -> Create RSA Key Pair, then choose "Save to file"). The public key will be embedded automatically into the plugin and will be used to decrypt the license key. The private key from this file needs to be stored on your server at some point and will be used to generate the key file.
 
-The `ScriptUnlocker` Scripting API class is used to handle all authorization. When you create an object of this class it will try to perform a "unlock" using a preexisting key file that is stored in the app data folder. If this step fails (and `unlocker.isUnlocked()` return false), you will have to implement a logic that calls your server with the user credentials which returns a key file that needs to be stored as text file and then will be used to unlock the plugin from then on. 
+The [`Unlocker` Scripting API](/scripting/scripting-api/unlocker) class is used to handle all authorization. When you create an object of this class it will try to perform a "unlock" using a preexisting key file that is stored in the app data folder. If this step fails (and `unlocker.isUnlocked()` return false), you will have to implement a logic that calls your server with the user credentials which returns a key file that needs to be stored as text file and then will be used to unlock the plugin from then on. 
 
 ### Server Side
 

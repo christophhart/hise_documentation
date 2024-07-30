@@ -5,7 +5,7 @@ author:   Christoph Hart
 modified: 29.04.2021
 ---
   
-This class can be used to register callbacks that react on certain host tranport events. As of now, these events are supported:
+The `TransportHandler` class can be used to register callbacks that react on host transport events. As of now, these events are supported:
 
 - Tempo changes
 - Time signature changes
@@ -15,6 +15,11 @@ This class can be used to register callbacks that react on certain host tranport
 
 In order to use it, just create an object with [`Engine.createTransportHandler()`](/scripting/scripting-api/engine#createtransporthandler)
 and then use the functions to register callbacks.
+
+```javascript
+const var TransportHandler = Engine.createTransportHandler();
+
+```
 
 ### Execution modes
 

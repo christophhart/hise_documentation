@@ -5,7 +5,7 @@ author: Christoph Hart
 modified: 17.07.2020
 ---
 
-This class offers a basic API for communicating with a server using POST and GET requests as well as a downloading resources. 
+The `Server` class offers a basic API for communicating with a server using POST and GET requests as well as functions for downloading resources. 
 
 ### Server callbacks
 

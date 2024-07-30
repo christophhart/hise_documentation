@@ -56,7 +56,48 @@ mp.add(secondPage, mp.types.Button,
    Text: "Click me", 
    // You can bind HiseScript callbacks to react on
    // button clicks like this:
-   Code: mp.bindCallback("hiseCallback", hiseCallback)
+   Code: mp.bindCallback("hiseCallback", hiseCallback, // Create a multipage dialog component
+const var mp = Content.addMultipageDialog("mp", 0, 0);
+
+// the text property is used as title
+mp.set("text", "Hello Dialog!");
+
+// I swear this is the "last" time I'll do this...
+mp.set("Font", "Comic Sans MS");
+
+// The width / height properties will define what
+// area is masked by the dialog
+mp.set("height", 600);
+
+// The actual dialog size is set by those properties
+mp.set("DialogWidth", 550);
+mp.set("DialogHeight", 500);
+
+// Add two pages
+const var firstPage = mp.addPage();
+const var secondPage = mp.addPage();
+
+// Add a markdown text
+mp.add(firstPage, mp.types.MarkdownText, { Text: "This is some markdown  \n> Noice!" });
+
+// This function will be called when you click the button defined below...
+inline function hiseCallback(id, value, state)
+{
+	Console.print("ID: " + id + ", value: " + value);
+}
+
+// Add a button to the second page
+mp.add(secondPage, mp.types.Button, 
+{ 
+   ID: "MyButton", 
+   Text: "Click me", 
+   // You can bind HiseScript callbacks to react on
+   // button clicks like this:
+   Code: mp.bindCallback("hiseCallback", hiseCallback, "string")
+});
+
+// Show the dialog
+mp.show(true);)
 });
 
 // Show the dialog

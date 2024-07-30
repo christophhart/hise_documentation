@@ -5,7 +5,7 @@ author:   Christoph Hart
 modified: 07.02.2024
 ---
   
-This class will run a periodic callback with a customizable interval in order to implement UI interactions / animations. The frequency of the callbacks is not exact as it will be scheduled by the scripting background process to be approximately the time that you want it to be, but this means that you must not use this for any kind of MIDI processing logic (use the inbuild onTimer callback for this as this is sample accurate).
+The `Timer` class will run a periodic callback with a customizable interval in order to implement UI interactions / animations. Be aware: The refresh rate of the callbacks will not be super precise because it will be scheduled by a background process to be approximately the time that you want it to be. This means that you better not use this for any kind of MIDI processing logic (use the inbuild [onTimer callback](/hise-modules/midi-processors/list/scriptprocessor#the-ontimer-callback) for this, as the callback is sample accurate).
 
 ## Suspending the TimerObject
 

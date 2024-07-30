@@ -5,9 +5,9 @@ author:   Christoph Hart
 modified: 27.05.2023
 ---
   
-The WebView widget allows you to render parts of your UI with the native browser technology on your OS. The integration into HISE is pretty straightforward and it allows bidirectional communication and resource management.
+The `WebView` component allows you to render parts of your UI with the native browser technology on your OS. The integration into HISE is pretty straightforward and it allows bidirectional communication and resource management.
 
-In order to use the webview, just create it, set its bounds and then give it a root directory and a initial file to render. 
+In order to use the Webview, just create it, set its bounds and then give it a root directory and a initial file to render. 
 
 ### Component Properties
 
