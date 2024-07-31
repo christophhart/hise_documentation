@@ -5,4 +5,4 @@ author:   Christoph Hart
 modified: 17.07.2024
 ---
 
-Get and set Midi automation data.
+ Get and set Midi automation data with the `MidiAutomationHandler`.

@@ -5,7 +5,7 @@ author: Christoph Hart
 modified: 17.07.2020
 ---
 
-This API class can be used for File I/O and create [`File`](/scripting/scripting-api/file) objects that can be used to access files.
+The `FileSystem` API class can be used for File I/O and to create [`File`](/scripting/scripting-api/file) objects that can be used to access files.
 
 ### Special Locations
 

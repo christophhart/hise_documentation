@@ -3,7 +3,7 @@ keywords: Engine
 summary:  An API class for accessing global properties.
 ---
 
-The `Engine` object contains functions related to global properties (like sample rate or host tempo).
+The `Engine` object contains a lot of functions related to global properties (like sample rate or host tempo) and object creation.
 
 
 ```javascript

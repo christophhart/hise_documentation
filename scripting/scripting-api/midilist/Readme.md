@@ -5,9 +5,9 @@ author:   Christoph Hart
 modified: 21.06.2019
 ---
   
-A MidiList is a array with 128 numbers that is particularly useful for MIDI processing.
+A `MidiList` is an array with 128 numbers that is particularly useful for MIDI processing.
 
-It offers a slight performance advantage as well as some handy methods which makes it the
+It offers a slight performance advantage as well as some handy methods which makes it the 
 preferred data type when you need to store a list of numbers:
 
 ```!javascript

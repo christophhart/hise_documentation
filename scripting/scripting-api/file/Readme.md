@@ -5,7 +5,7 @@ author: Christoph Hart
 modified: 17.07.2020
 ---
 
-The File object represents a file or directory on disk and can be used to navigate / access the file system from HISEScript.
+The `File` object refers to a file or directory on disk and can be used to navigate / access the file system.
 
 In order to use it, call the [`Filesystem`](/scripting/scripting-api/filesystem) API class to get a folder from where you navigate to the file you want to modify / load.
 
