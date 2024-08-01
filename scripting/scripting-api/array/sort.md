@@ -13,3 +13,5 @@ for(i in a)
 
 // Result: 1, 1, 2, 4, 6
 ```
+
+> You can also customize the sorting by supplying a custom sort function with [Engine.sortWithFunction()](/scripting/scripting-api/engine#sortwithfunction).
