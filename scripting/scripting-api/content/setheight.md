@@ -1,0 +1,1 @@
+This can now also be called after the onInit callback to change the interface dimensions. And you can attach a broadcaster to be notified when the interface changes its size using [Broadcaster.attachToInterfaceSize()](/scripting/scripting-api/broadcaster#attachtointerfacesize).
