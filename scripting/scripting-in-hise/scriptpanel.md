@@ -282,7 +282,7 @@ In addition to these properties, you'll also get the current modifier keys that 
 
 You can now implement the logic by using conditions to match the desired event and store data or call other functions for the Panel (the Example section will give you some usage scenarios). 
 
-## Context menus (aka Popup Menu)
+## Context Menus
 
 If your UI widgets needs to display a context menu on eg. right click, you don't need to build this by yourself. Instead, you can enable it using the callback level `"Context Menu"` (or above) and specify the items with the `popupMenuItems"` property (best use the text editor in the interface designer for this).
 

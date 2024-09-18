@@ -8,8 +8,10 @@ properties:
 - fontName: Select a font of your system fonts. 
 - fontSize: Set the font size
 - fontStyle: Set the font style
+- popupAlignment: Controls where the popup menu will appear relative to the combobox
+- enableMidiLearn: If `true` then you can right-click and assign this combobox to a MIDI controller / macro control.
+- useCustomPopup: If `true`, then you can use the [advanced syntax](/scripting/scripting-in-hise/scriptpanel#context-menus) for creating complex popup menus with headers, submenus etc.
 ---
-
 
 ## Scripting
 

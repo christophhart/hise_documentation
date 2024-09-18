@@ -9,3 +9,29 @@ properties:
 ---
   
 A list of all connected macro parameters. You have to enable the the functionality with [Engine.setFrontendMacros](/scripting/scripting-api/engine#setfrontendmacros).
+
+This is the most convenient way of giving the user full control over the macro control assignments, but you can roll your own management solution using the [Macrohandler](/scripting/scripting-api/macrohandler) Scripting API class that lets you manipulate the macro connections through a JSON object.
+
+## CSS Styling
+
+The FrontEndMacroPanel can also be styled using the CSS renderer. This allows a far more in-depth customization than the scripted look and feel. In order to use the CSS renderer, register a LookAndFeel with a stylesheet to the FloatingTile and define the following selectors:
+
+| Selector | Description |
+| = | ===== |
+| `table` | Draws the background of the entire table. It also uses the `margin` and `padding` properties for positioning |
+| `th` | Draws the cells of the table header. Use the pseudo states `:first-child` and `last-child` to style the edges |
+| `tr` | Draws the background of a table row. |
+| `td` | Draws the content of a table cell (in this case the text of the first two columns). |
+| `button` | Renders the Inverted button. Use the `width` property to change the size of the button column. |
+| `.range-slider` | Renders the range sliders. Use the `width` property to change the size of the button column. |
+| `scrollbar` | Render the scrollbar that appears when the number of rows exceed the table height. |
+
+### Layouting
+
+In addition to the UI rendering, the CSS stylesheets will also be used for determining the positions & size of each element:
+
+- the table header height is determined by the height of the `th` element which takes the font height & vertical margin / padding into account
+- the table row height is determined by the height of the `td` element which takes the font height & vertical margin / padding into account
+- the table column widths are determined by the width of the text of the header or cell and the horizontal margin / padding. Note that the second column (with the parameter target ID) is supposed to be stretched to fill the remaining size while the other columns are fix-sized depending on the width of the text or the UI element
+
+> Note that the styling of this component is 100% identical to the styling of the [MidiLearnPanel](/ui-components/floating-tiles/plugin/midilearnpanel).
