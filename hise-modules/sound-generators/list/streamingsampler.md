@@ -97,6 +97,34 @@ obj.SkipLatency = true;
 Sampler.setTimestretchOptions(obj);
 ```
 
+## Release Start
+
+![](/images/custom/releasestart.png)
+
+This is a new feature in HISE 4.1.0 and allows you to use the natural trail of a sustain sample as release sample without having to chop the sample and setup a second sampler with the release trigger logic. You can enable this by setting the **ReleaseStart** value to a non-zero value. If that is the case, then the sample will be played normally, but as soon as you release the key, it will seek to the position you specified and play it back until the end. This works with disk-streaming, HLAC multimics & loops so it can be used in any configuration that you run the sampler with. Note that for performance reasons, HISE tries to deactivate the entire logic until at least a single sample of a samplemap uses this feature, then it assumes that all samples use this feature. Also the memory usage will be increased as it requires another preload buffer for each sample at the release position.
+
+> If you use that feature make sure to use a gain envelope with a long release time as the envelope release will fade out the release trail otherwise.
+
+The native implementation of this features direct into the streaming engine allows special modes that improve the smoothness of the fade between sustain part & release trail. You can specify the length of the fade, the gamma curve as well as whether it should apply gain matching to reduce the volume bump.
+
+### Release Start Options
+
+The interface to setting the release start options is the same as the time stretching algorithm: There is no UI, instead you need to query and set a JSON object that define the settings using the [scripting API](/scripting/scripting-api/sampler#setreleasestartoptions).
+
+| Property | Type | Default | Description |
+| ---- | - | -- | -------- |
+| `ReleaseFadeTime` | `int` | `4096` | The fade time in samples. The sample rate is derived from the sample not the audio processing rate. |
+| `FadeGamma` | `float` | `1.0` | The gamma curve for the fade. `1.0` means linear and other values will create a curve using the `output = Math.pow(input, gamma)` formula. The values for the gamma curve must lie between `0.125` and `4.0` |
+| `UseAscendingZeroCrossing` | `bool` | `false` | if true, then the start of the fade will wait until the sample goes through the next positive zero crossing (from negative to positive). If you set the release start position correctly (also a positive zero crossing), then it makes sure that the start of the fade is phase-aligned. |
+| `GainMatchingMode` | `String` | `None` | This setting will define how the sample tries to blend the fade between sustain and release phase. These options are available: `["None", "Volume", "Offset"]`. **Volume** will monitor the peaks of the sample while playing back, and then apply a constant gain factor to the release tail to match the current volume. **Offset** will jump into the release tail to skip the louder part if the current gain is low (coming soon). |
+| `PeakSmoothing` | `float` | `0.96` | The filter coefficient for smoothing the volume detection of the currently playing sample. This **must** be a number below 1.0 and the higher the number the slower the max peak will change. |
+
+Do you remember when I told you that there is no UI? I was lying. There is in fact a popup window that allows you to change the values of the setting properties on the fly (in the sample editor, next to the loop improve icon):
+
+![](/images/custom/releasestartpopup.png)
+
+This allows you to check different options quicker during development, but remember that in order to make persistent setting changes, you will still have to use the API call (but there's a quick shortcut that creates the script lines for you in the popup).
+
 ## Compress and Export
 
 ### Export to HLAC (Monolith)
