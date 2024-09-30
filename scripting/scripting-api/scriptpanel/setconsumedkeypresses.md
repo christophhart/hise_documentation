@@ -4,7 +4,9 @@ Before this method was introduced, you had to return `true` in the callback for 
 
 So instead this method was introduced that you must call **before**  calling `setKeyPressCallback()` with either a single key press "object" or an array of key presses. A key press object can be either a string description of the key press like it's supplied in the callback argument or a JSON object like the callback parameter. 
 
-> You can also use the special string "all" to make the component consume every single key stroke, which is the default behaviour when you don't call this method (so compiled plugins will still work as they don't report compilation errors).
+> You can also use the special string `"all"` to make the component consume every single key stroke, which is the default behaviour when you don't call this method (so compiled plugins will still work as they don't report compilation errors). 
+
+> There is another special string `"all_nonexclusive"` that you can pass into this function which will fire the script callback for each key press but not consume it so it can be processed further (a use case for this would be to attach additional functionality to a [ScriptLabel](/scripting/scripting-api/scriptlabel))
 
 By using the same format as the callback parameter you can use this procedure for creating the filter list:
 
