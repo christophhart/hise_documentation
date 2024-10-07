@@ -18,3 +18,8 @@ If you want to use a cable as OSC address that can send and receive values from 
 ```
 
 will automatically be used as OSC address as soon as you start using the global routing system as OSC server.
+
+
+### External C++ communication
+
+The global cable is the preferred way of communicating values back from your C++ node. Take a look [here](/scriptnode/list/routing/global_cable) for a description on how to use it.
