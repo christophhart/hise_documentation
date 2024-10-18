@@ -76,10 +76,9 @@ In addition to the timestretching mode, there are several other options which al
 | Property | Type | Default | Description |
 | -- | - | -- | -------- |
 | `Mode` | `String` | `"Disabled"` | the timestretching mode (as described above). Changing this mode will kill all voices and refresh the voice states on the background thread. |
-| `SkipLatency` | `bool` | `false` | If true, starting a new voice will skip the inherent latency of the timestretching algorithm. This vastly improves the timing of the voice, however it comes with a pretty steep CPU overhead because it has to (silently) calculate the timestretched signal for the duration of the latency (about 50ms). |
+| `SkipLatency` | `bool` | `false` | If false, the voice start will be delayed by a short amount of time. If true, the voice start will be executed immediately and cause a pretty big spike in CPU usage (see below for a detailed explanation). |
 | `NumQuarters` | `double` | `0.0` | if this is not 0.0, it will skip the automatic detection of the sample length when in tempo-synced mode and use this value to determine the BPM of the source sample (so you will need to set this to the value of your loop lengths). |
 | `Tonality` | `double` | `0.0` | This value allows you to [retain the timbre](https://signalsmith-audio.co.uk/code/stretch/#how-to-use-pitch-shifting) when using pitch transposition. |
-
 
 Be aware that there is no UI interface for these properties in HISE (except for the mode). Instead, you will have to use the scripting API calls that query and set these properties from a JSON object.
 
@@ -90,12 +89,52 @@ const var obj = Sampler.getTimestretchOptions();
 // print out all properties
 Console.print(trace(obj));
 
-// Apply your changed
+// Apply your changes
 obj.SkipLatency = true;
 
 // Update the options
 Sampler.setTimestretchOptions(obj);
 ```
+
+#### The `SkipLatency` property
+
+Until HISE 4.1.0 the SkipLatency property (that is set to `false` as default) introduced a very big latency at the start of the voice:
+
+![](https://forum.hise.audio/assets/uploads/files/1728557959510-testfull.png)
+
+The rationale was to keep the CPU spikes in check:
+
+![](https://forum.hise.audio/assets/uploads/files/1728558366002-98171806-906d-44a8-8521-5bf17a5d6217-image.png)
+
+If you set SkipLatency to `true`, then it will feed the first 4096 samples into the timestretch engine so that the voice will start rendering the sample right away:
+
+![](https://forum.hise.audio/assets/uploads/files/1728557860512-latencysync.png)
+
+But that workload at the voice start caused a very big CPU spike that is not very reassuring:
+
+![](https://forum.hise.audio/assets/uploads/files/1728558426675-675b83cf-9ff1-40bf-8447-7b44d1b10b83-image.png)
+
+This basically gave you the option between
+
+1. it being unusable because the latency is ridiculously high and
+2. it being unusable because the CPU spike is ridiculously high
+
+so it effectively made the timestretching engine sit around collecting dust. In order to solve that problem, I had to ditch the first option (introducing the latency) and replace it with something that has a reasonable amount of latency but without blowing up the CPU. This was achieved by the following routine:
+
+- when a voice is started, it will not start rendering the output. 
+- instead it will fire up the background thread that is usually busy shuffling and preparing data from the hard drive and tell it to process the first 50ms As Fast As Possible (tm).
+- when the task is done, the voice can start rendering the data right from the start. 
+
+With this approach, you'll get no CPU spikes (on the audio thread) and a reasonably low latency:
+
+![](https://forum.hise.audio/assets/uploads/files/1728558026597-latencylazy.png)
+
+![](https://forum.hise.audio/assets/uploads/files/1728558266133-fee5a576-0128-442e-9f3c-ed0d0eb4c260-image.png)
+
+How low is the latency? This depends on how fast the background thread can be scheduled and finish its task, but it usually happens within 1-2 audio buffers. My initial tests yielded an average latency of around 270 samples (with 512 samples buffer size)
+
+> Be aware that when you run your plugin in offline mode (eg. if you use the bounce to disk feature), it always uses the synchronous option of directly calculating the voice start since there are no realtime requirements in this scenario.
+
 
 ## Release Start
 
