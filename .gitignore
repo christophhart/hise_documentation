@@ -1,4 +1,4 @@
 *.dat
-cpp_api/
+cached/hash.json
 images/web/
 .vs
