@@ -18,6 +18,19 @@ jobs:
         uses: actions/checkout@v1
         with:
           ref: 'master'
+      - name: Clone snippet directory
+        uses: sudosubin/git-clone-action@v1.0.1
+        with:
+          repository: https://github.com/qdr/HiseSnippetDB
+          path: '/hise_snippets'
+      - name: Download Assets from release
+        uses: robinraju/release-downloader@v1.11
+        with:
+          repository: https://github.com/qdr/HiseSnippetDB
+          latest: true
+          fileName: 'Assets.zip'
+          out-file-path: './hise_snippets/Assets'
+          extract: true
       - name: Run HISE CI build to create docs
         working-directory: ${{ github.workspace }}/tools/auto_build/
         run: 01_build_docs.bat
