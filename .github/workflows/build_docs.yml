@@ -34,16 +34,4 @@ jobs:
       - name: Run HISE CI build to create docs
         run: build.bat
         shell: cmd
-      - name: Push HTML build
-        uses: cpina/github-action-push-to-another-repository@v1.7.2
-        with:
-          source-directory: /html_build
-          destination-github-username: christophhart
-          destination-repository-name: hise_doc_html
-          user-email: christoph-hart@gmx.de
-          commit-message: 'push from build server'
-      - name: Upload Cached files
-        uses: astertom/nexus-upload-artifact@v1
-        with:
-          directory: /cached
-          pattern: '*'
+      
