@@ -13,4 +13,21 @@ echo %html_dir%
 
 REM %hise_path% --help
 
+mkdir html_build
+cd html_build
+
+git clone https://github.com/christophhart/hise_doc_html .
+
+cd ..
+
 %hise_path% create-docs %root_dir% %snippet_dir% %html_dir%
+
+cd html_build
+
+git add --all
+git commit -m "build server update"
+git push
+
+cd ..
+
+
