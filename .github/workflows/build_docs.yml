@@ -1,0 +1,29 @@
+name: Build Docs
+on: 
+  workflow_dispatch:
+  push:
+    branches: 
+      - master
+    tags:
+      - '*'
+jobs:
+  build_docs:
+    runs-on: [self-hosted, windows]
+    steps:
+      - name: Cleanup working directory
+        working-directory: ${{ github.workspace }}
+        run: del *.* /Q /S
+        shell: cmd
+      - name: Checkout doc repository repository
+        uses: actions/checkout@v1
+        with:
+          ref: 'master'
+      - name: Run HISE CI build to create docs
+        working-directory: ${{ github.workspace }}/tools/auto_build/
+        run: 01_build_docs.bat
+        shell: cmd
+      - name: Upload artifacts
+        uses: astertom/nexus-upload-artifact@v1
+        with:
+          directory: /cached
+          pattern: '*'
