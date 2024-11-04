@@ -1,0 +1,1 @@
+Get a reference to a `LorisManager` object with `Engine.getLorisManager()`
