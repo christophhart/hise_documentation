@@ -4,6 +4,7 @@ summary:  A repository for development and workflow recipes. Short, concise, bul
 author: Lindon, Dominik Mayer, Christoph Hart, 
 modified: 13.11.2024
 ---
+A collection of development and workflow recipes.
 
 ## Move your Faust code from Windows to MacOS
 
@@ -15,8 +16,8 @@ Move the entire project to a MacOS hard drive or use [git](/glossary/git) to che
 
 Delete all the files in these folders:
 
-{Project}/AdditionalSourceCode/nodes. <-- this will be C++ headers or .cpp files
-{Project}/DspNetworks/Binaries. <— everything from here  
-{Project}/DspNetworks/ThirdParty <-- again C++ code in here (be careful about user generated scripts)
+`{Project}/AdditionalSourceCode/nodes` <-- this will be C++ headers or .cpp files
+`{Project}/DspNetworks/Binaries` <— everything from here 
+`{Project}/DspNetworks/ThirdParty` <-- again C++ code in here (be careful about user generated scripts)
 
 At this point you can load your project, open a scriptnode and compile your MacOS DLL/dynlib.

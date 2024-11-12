@@ -25,14 +25,11 @@ If you haven't installed HISE already, grab the latest [stable release](https://
 
 After installing you should be able to start HISE either as a Standalone or as plugin inside your DAW. With the stable release you should be ready to go and be able to prototype your first instrument and check out HISE. A crucial part is still missing, though: 
 
->If you want to compile and export your VSTis and plugins with HISE you have to take a few extra steps and install some required software:
-
 ## Setting up VSTi/plugin compilation
 
-**HISE** itself does not compile anything by itself, but congregates your HISE-project's scripts and files and outsources the heavy lifting to your system compilers. That is why you have to install a suitable **IDE** (Integrated Development Environment) on your OS environment and a some additional SDKs (Software Development Kits).  
+If you want to be able to export a plugin or VSTI by yourself you first have to setup additional software. **HISE** is not able compile anything by itself, but mainly packages your HISE-project's scripts and files and outsources the heavy lifting to your system compilers. This is why you have to install a suitable **IDE** (Integrated Development Environment) on your OS environment and some additional Software development kits (SDKs).
 
-Let's get started: Below is a list of every application required for compiling & exporting virtual instruments with **HISE**. They are all free, but some require that you register an account at their company's website.
-
+Let's get started: Below is a list of every application required for compiling & exporting virtual instruments with **HISE**.
 
 | Tool | Type | Link |  Explanation |
 | ---- | ---- | ----- | ----------- |
@@ -48,7 +45,7 @@ After installing these programs we're almost ready for compiling plugins with **
 
 ### Configure the Settings
 
-To access the Settings dialog, choose **File -> Preferences** or click the little gear symbol on the right of the tool-bar. Now set the **HISE Path**, which has to point to the root **HISE**-source-code folder that you downloaded or cloned earlier.
+In **HISE** you can access the Settings dialog with **File -> Settings** or click the little gear symbol on the right of the tool-bar. Here you can set the **HISE Path** to the root **HISE**-source-code folder that you downloaded or cloned earlier.
 
 ![hise-path](images/custom/hise-path.png)
 
@@ -56,19 +53,19 @@ Scroll to the Compiler Settings section in the HISE Settings. You can insert you
 
 In the Settings you will encounter many other options to adjust your project. Have a look at [HISE Settings](/working-with-hise/settings) to learn more about them.
 
-BTW: There you'll also find the Audio & MIDI Settings to adjust and connect your sound-card, drivers and MIDI Equipment.
+BTW: There you'll also find the **Audio & MIDI Settings** to adjust and connect your sound-card, drivers and MIDI Equipment.
 ![audio-settings](images/custom/audio-settings.png)
 
 
-## Compile the latest HISE
+## Compile the latest HISE 
 
 A nice side effect of having installed these tools is that you are now able to compile **HISE** yourself! In this way you can work with the bleeding edge [development branch](https://github.com/christophhart/HISE/tree/develop) and don't have to wait for upcoming stable build releases.  
 
-**HISE** ships with an adapted version of the [JUCE Projucer](https://juce.com/discover/projucer) that can be found @ `HISE/tools/projucer/Projucer`. The Projucer is a user-friendly application that allows you to deploy **HISE** on different platforms in conjunction with your preferred IDE.
+**HISE** ships with an adapted version of the [JUCE Projucer](https://docs.juce.com/master/tutorial_new_projucer_project.html) that can be found in the HISE folder @ `HISE/tools/projucer/Projucer`. The Projucer is a user-friendly application that allows you to deploy **HISE** on different platforms in conjunction with your preferred IDE.
 
-![projucer](images/custom/projucer.png)
+![projucr](images/custom/projucer.png)
 
-Open the **Projucer** and select (**File > Open**) the 'HISE Standalone.jucer' file that you can find in the `HISE/projects/standalone/` folder. It will present you with compile (debug/release) options for MacOS, Windows and Linux.
+To compile HISE open the **Projucer** and select (**File > Open**) the 'HISE Standalone.jucer' file that you can find in the `HISE/projects/standalone/` folder. It will present you with compile (debug/release) options for MacOS, Windows and Linux.
 
 Select the Release Version for your applicable IDE and select **File > Save Project and Open in IDE**. This will open the latest HISE source code in your IDE (VS, XCode etc..). Hit the **Compile**-Button in your IDE (something with a play-arrow) and let the compiler proceed. 
 
