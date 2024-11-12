@@ -1,5 +1,7 @@
 # HISE Documentation
 
+[![Build Docs](https://github.com/christophhart/hise_documentation/actions/workflows/build_docs.yml/badge.svg)](https://github.com/christophhart/hise_documentation/actions/workflows/build_docs.yml)
+
 This is the repository for the documentation of [HISE](http://hise.dev). It contains the documentation in Markdown format which is processed and build into the internal documentation system of HISE as well as the online documentation available at
 
 https://docs.hise.dev
