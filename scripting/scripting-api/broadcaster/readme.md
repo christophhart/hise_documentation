@@ -209,3 +209,7 @@ A metadata object can be a simple string that only contains a description of the
 
 
 For an example usage take a look at the various API calls.
+
+## Queuing
+
+By default, messages from broadcasters are not queued; if they take too long, they are cancelled. To engage a system-wide queue (ensuring all messages are delivered), call `setEnableQueue()`.
