@@ -17,3 +17,12 @@ The recommended workflow for contributions looks like this:
 - make your changes and submit them with pull requests. They will be merged into the master branch and published in a timely basis.
 
 If you contribute a non-trivial amount of documentation, your authorship will be properly attributed. 
+
+## Linking
+Internal links in the documentation use the typical `[text](path)` format. To create a link, copy the path after the domain name, including the leading `/`.
+
+For example, to link to the page https://docs.hise.dev/scripting/scripting-api/colours/, do:
+
+```
+This is a link to [colours](/scripting/scripting-api/colours/)
+```
