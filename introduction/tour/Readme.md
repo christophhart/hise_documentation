@@ -25,6 +25,32 @@ The topmost module is the **Master Chain**. It's the root container of all audio
 
 The top-down arrangement follows the [tree structure](https://en.wikipedia.org/wiki/Tree_structure) paradigm and allows to build instruments with an efficent signal flow, optimized for handling a lot of voices in parallel.
 
+The module tree is a powerful tool for viewing and editing the overall structure of a project.
+
+The colored squares function as bypass buttons. <img align="left" src="https://github.com/user-attachments/assets/a402715d-db5a-4a07-97f8-4855983a34c6">
+<br clear="left"/>
+
+The arrow icon  ![image](https://github.com/user-attachments/assets/d60e2de2-d1e6-44e8-a4b1-200a7ad4e72c)
+opens a processor for editing in the main workspace.
+
+<img align="left" src="https://github.com/user-attachments/assets/2fee296b-d373-479d-8d59-ebb6fad3a654">
+On MIDI processors, the MIDI icon blinks to show incoming messages. Clicking the MIDI icon opens an Event Logger.
+<br />
+<br />
+
+Events can be filtered with a HISEScript expression, for example,  ```Message.isNoteOn() || Message.isNoteOff()```
+<br clear="left"/>
+
+The small colored circle on modulator sources and targets indicates the current value of the modulator (if the dot is filled in, the modulator is at a value of 1.0). Clicking the circle opens a plotter.
+
+![output](https://github.com/user-attachments/assets/47f76eab-3e70-489d-b39c-2e20d725b5a0)
+
+Clicking a VU meter opens the routing matrix for that module. ![image](https://github.com/user-attachments/assets/013b95ae-6790-4fe0-80a6-a496af2e30d8)
+
+The pencil enters edit mode, where submodules can be added, removed, and reordered via drag and drop.
+![image](https://github.com/user-attachments/assets/003355d0-6554-4503-8849-46e60829a61a)
+
+
 ### Add a Sound Generator
 
 In the **Module Tree** you can click the "pen-icon" to activate the adding functionality. 
