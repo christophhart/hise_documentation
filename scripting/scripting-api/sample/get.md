@@ -24,14 +24,14 @@
 |`SampleState`			|This property allows to set the state of samples between Normal(0) and Purged (1)|
 |`Reversed`				|Whether the sample is reversed.|
 
-Example to print the `SampleEnd` of all samples:
+Example to print the `SamplEnd` of all samples:
 
 ```
-const selection = Synth.getChildSynth("Sampler1").asSampler().createSelection("^.*")` //Array of `Sample` objects.
+const selection = Synth.getChildSynth("Sampler1").asSampler().createSelection(".")` //Array of `Sample` objects.
 `for (sample in selection){
-  Console.print(sample.get(Sampler.FileName));
+  Console.print(sample.get(Sampler.SamplEnd));
 }
 ```
 Note that attribute names belong to the `Sampler` class, not `Sample`
 
-trace() does not work on `Sample` objects.
+trace() does not work on `Sample` objects. Use the [Script Watch Table](/working-with-hise/workspaces/scripting-workspace/code-editor.html#scriptwatchtable) to peek inside.
