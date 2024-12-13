@@ -3,7 +3,7 @@
 |`FileName`				|The file name|
 |`Root`					|The root note|
 |`HiKey`				|The highest mapped key|
-|`LowKey`				|The lowest mapped key|
+|`LoKey`				|The lowest mapped key|
 |`LoVel`				|The lowest mapped velocity|
 |`HiVel`				|The highest mapped velocity|
 |`RRGroup`				|The group index for round robin / random group start behaviour|
