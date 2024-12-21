@@ -18,17 +18,50 @@ You can load a pooled audio file into this module and it will use it as impulse 
 
 > This module can also be used for cabinet simulation when a cabinet IR is used.
 
+### Loading a single impulse response called impulse.wav
 
-
-### Load AudioFiles per script
+The file impulse.wav should be placed in the AudioFiles folder. This script assumes there is a Convolution Reverb already added called `Convolution Reverb1`.
 
 ```javascript
 // Create a typed Audio Sample Script Reference with right click on the Convolution Module
 const var ConvolutionReverb1 = Synth.getAudioSampleProcessor("Convolution Reverb1");
 
-// load all Audio Files from the AudioFiles Folder into the Pool
+// Load all Audio Files from the AudioFiles Folder into the Pool
 Engine.loadAudioFilesIntoPool();
 
-// set a new file 
+// Load the impulse response. Use of {PROJECT_FOLDER} here automatically refers to the AudioFiles folder.
 ConvolutionReverb1.setFile("{PROJECT_FOLDER}impulse.wav");
+```
+
+### Including several user-selectable impulse responses with a plugin
+Impulse Response files should be placed in the AudioFiles project directory. If [Embed Audio Files](/working-with-hise/settings/project.html#embed-audio-files) is enabled, they will be embeded into the compiled plugin.
+
+Call [`Engine.loadAudioFilesIntoPool()`](/scripting/scripting-api/engine/index.html#loadaudiofilesintopool) to ensure the files are accessible in the compiled plugin. This returns an array of paths in the `{PROJECT_FOLDER}filename.wav` format, which can be directly loaded into the Convolution Reverb.
+
+```javascript
+// Create a typed Audio Sample Script Reference with right click on the Convolution Module
+const var ConvolutionReverb1 = Synth.getAudioSampleProcessor("Convolution Reverb1");
+
+// Create a comboBox
+const var impulseSelector = Content.addComboBox("impulseSelector",0,0);
+
+// Clear the items in the combobox. Otherwise, the entire list will be appended each time the script is run.
+impulseSelector.set("items","");
+
+// Load all Audio Files from the AudioFiles Folder into the Pool and get the list of references
+const var impulses = Engine.loadAudioFilesIntoPool();
+
+// Add names of impulse responses to the comboBox
+for (impulse in impulses)
+{ 
+  impulseSelector.addItem(impulse.replace(".wav","").replace("{PROJECT_FOLDER}","")); //Add just the name, removing the .wav extension and `{PROJECT_FOLDER}`
+}
+
+// Create custom callback for the comboBox
+inline function onimpulseSelectorControl(component, value)
+{
+  ConvolutionReverb1.setFile(impulses[value - 1]); //Load the selected IR. Note that the comboBox value is 1 indexed
+};
+
+impulseSelector.setControlCallback(onimpulseSelectorControl);
 ```
