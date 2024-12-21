@@ -52,7 +52,8 @@ impulseSelector.set("items","");
 const var impulses = Engine.loadAudioFilesIntoPool();
 
 // Add names of impulse responses to the comboBox
-for (impulse in impulses){ 
+for (impulse in impulses)
+{ 
   impulseSelector.addItem(impulse.replace(".wav","").replace("{PROJECT_FOLDER}","")); //Add just the name, removing the .wav extension and `{PROJECT_FOLDER}`
 }
 
