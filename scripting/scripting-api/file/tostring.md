@@ -8,5 +8,5 @@ The following table will show the formatting for the file `C:\MyFolder\Textfile.
 | ==== | ======= |
 | `FullPath` | `C:\MyFolder\Textfile.txt` |
 | `NoExtension` | `Textfile` |
-| `OnlyExtension` | `.txt` |
+| `Extension` | `.txt` |
 | `Filename` | `Textfile.txt` |
