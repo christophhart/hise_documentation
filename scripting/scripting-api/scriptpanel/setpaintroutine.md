@@ -7,16 +7,16 @@ myPanel.setPaintRoutine(function(g)
 });
 ```
 
-Re-using a paint routine for multiple panels:
+Using an inlined function to paint multiple panels:
 ```
 const panel1 = Content.addPanel("panel1",0,0);
 const panel2 = Content.addPanel("panel2",0,40);
 
-inline function paintPanels(g,this)
+inline function paintPanels(g)
 {
    g.fillRect(this.getLocalBounds(0));
 };
 
-panel1.setPaintRoutine(function(g){paintPanels(g, this);});
-panel2.setPaintRoutine(function(g){paintPanels(g, this);});
+panel1.setPaintRoutine(paintPanels});
+panel2.setPaintRoutine(paintPanels});
 ```
