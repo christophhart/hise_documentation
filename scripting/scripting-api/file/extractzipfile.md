@@ -1,6 +1,6 @@
 This method will extract a standard ZIP file (without password protection) to the given target directory (which can be either a file path String or a [File](/scripting/scripting-api/file) object).
 
-In order to extract to privileged locations on Windows, for example the user's VST3 folder, it is neccessary to add an extra linker flag `/MANIFESTUAC:level='requireAdministrator'` to your project's .jucer file.
+In order to extract to privileged locations on Windows, for example the user's VST3 folder, it is neccessary to enable the 'Admin Permissions' checkbox in your project's preferences. There isn't currently a way to do this on OSX.
 
 The extraction process will be executed on the sample loading thread and you can assign a callback that is executed to track the extraction progress.
 
