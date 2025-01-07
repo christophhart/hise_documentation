@@ -21,3 +21,7 @@ Delete all the files in these folders:
 `{Project}/DspNetworks/ThirdParty` <-- again C++ code in here (be careful about user generated scripts)
 
 At this point you can load your project, open a scriptnode and compile your MacOS DLL/dynlib.
+
+[Forum Topic](https://forum.hise.audio/topic/11034/are-you-having-problems-compiling-your-faust-code-moving-from-windows-to-macos)
+
+
