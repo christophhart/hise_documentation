@@ -62,6 +62,15 @@ Now the routing appears like this:
 
 > Again, it will look a bit different on your version, but all the output of your plugin should be routed to each of HISE's output channels.
 
+2. Edit the project setting
+
+Lastly, you'll have to add those extra definitions in your project's settings:
+```
+HISE_NUM_PLUGIN_CHANNELS=8
+NUM_MAX_CHANNELS=8
+```
+![562b7413-4f5e-45b0-a8e5-5cf3fdef7d8e-image.png](/assets/uploads/files/1736252864305-562b7413-4f5e-45b0-a8e5-5cf3fdef7d8e-image.png) 
+
 You're all set now to do what you want with your outputs.
 
 Here's a snippet:
