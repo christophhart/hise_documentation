@@ -438,6 +438,10 @@ global g_myGlobalVariable = 50;
 ```
 
 - For larger projects it's a good idea to declare all global variables in an external script file called `Globals.js` and include it at the top of your interface script.
+  
+- The scope of global variables is across all execution instances until you quit HISE.
+
+> If your programme sets a global variable, the next time you run (compile) your programme, that variable will have the value set during the previous execution instance.
 
 ### Numbers
 
