@@ -63,6 +63,8 @@ In the search-bar of the **Event Logger** you can filter the events with HISEScr
 ## Modulation Plotter
 ![Mod Plotter](images/interface/plotter.png)
 
+Next to [Modulators](/hise-modules/modulators) you can find a little circle. Its colours intensity indicates the modulators effect on the intensity of the Modulators chain. If you click the circle a little popup opens and shows a plot of the current mod value. 
+
 
 ### Additional Tips & Links
 
