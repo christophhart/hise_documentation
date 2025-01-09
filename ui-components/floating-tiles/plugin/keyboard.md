@@ -1,6 +1,6 @@
 ---
 keywords: Keyboard
-summary:  A highly customizable virtual MIDI keyboard.
+summary:  A highly customizable virtual MIDI keyboard. To change the key colours, see [Engine.setKeyColour()](/scripting/scripting-api/engine#setkeycolour).
 weight:   50
 index:    01
 author:   Christoph Hart
