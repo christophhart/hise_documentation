@@ -18,7 +18,7 @@ Right next to each of these script modules you can find a **Open in Code Editor*
 
 Next to the Connection drop-down you can find the **Callback drop-down menu**. It lets you select the callbacks that are part of the current script. The `onInit` callback is the main callback that gets executed everytime you hit Compile [F5]. Learn more about the other callbacks types in: [Scripting Callbacks](/hise-modules/midi-processors/list/scriptprocessor#callbacks).
 
-Behind the scenes these callbacks are part of the same `.js` file. You can take a look at the file(s) in your project folder at `Scripts > ScriptPocessors > save >`. They will appear after you saved your project for the first time. 
+Behind the scenes these callbacks are part of the same `.js` file. You can take a look at the file(s) in your project folder at `Scripts > ScriptPocessors > {your xml save name} >`. They will appear after you saved your project for the first time. 
 
 
 ### REPL

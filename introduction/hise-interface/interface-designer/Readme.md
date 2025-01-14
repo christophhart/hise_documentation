@@ -27,29 +27,70 @@ items:
 
 The Interface Designer is split in three parts:
 
-- The [Canvas](/working-with-hise/workspaces/scripting-workspace/canvas#canvas), a WYSIWYG editor for your plugins GUI. 
-- The [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list) which is a value-tree representation of all the UI Components that have been added to the Canvas.
-- The [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor), with which you can change the properties of each UI Component, on the fly.
+
+- The [Canvas](/introduction/hise-interface/interface-designer#canvas), a WYSIWYG editor of your plugins GUI. 
+- The [Component List](/introduction/hise-interface/interface-designer#component-list) which is a value-tree representation of all the UI Components that have been added to the Canvas.
+- The [Property Editor](/introduction/hise-interface/interface-designer#property-editor), with which you can change the properties of each UI Component on the fly.
 
 ## Canvas
 
-![canvas](images/custom/canvas.png)
+![canvas](images/interface/canvas.png)
 
+On the Canvas you can build your plugins Graphical User Interface. Here you can add [UI Components](/ui-components) to the interface with **right-clicking** on the canvas.
 
-The Canvas shows your plugins Graphical User Interface if you connect an Interface ScriptProcessor to it. (If you don't see anything yet, create a new User Interface by clicking the house symbol in the top-bar.)
+With the Pen/Lock symbol in the Toolbar you can toggle between the **Edit** and **Play**-Mode.
 
-With the Pen/Lock symbol in the Toolbar you can toggle between the **Edit** and **Play**-Mode. In **Edit Mode** you can **right-click** on the interface to create new UI Components and edit their properties in the Property Editor.
+When you lock down the interface into **Play Mode** you can use the UI Components as in a compiled plugin, test the sliders and the general layout. Basically it's the same behaviour as the Interface Preview (house symbol) in the top-bar.    
 
-When you lock down the interface into **Play Mode** you can use the UI Components as in a compiled plugin.
+Behind the scenes the Interface consists of two parts: 
+- The architecture of the components with their position, ID/names and properties is saved in a value-tree structure in a `.hip` or `.xml` file. You can take a look at the XML code when you save your project with `File > Save as XML`. The file then shows up in your projects XmlPresetBackups folder: **XmlPresetBackups > ..UIData > ..Desktop.xml**. 
+
+- A `.js` script that lives in a [ScriptProcessor](/hise-modules/midi-processors/list/scriptprocessor) in which you can set the interface size `Content.makeFrontInterface(600, 600);`, customize the behaviour of the GUI, change its looks and script advanced interactions. It is saved in the Scripts folder: **Scripts > ScriptPocessors > {your xml save name} > ScriptProcessorName.js**
+
+> The default **File > New** (Preset) file (`HISE Preset`, not to be confused with [UserPresets](/working-with-hise/project-management/user-presets)) already features a setup with a ScriptProcessor named **Interface** in the MIDIProcessor Tab of the Master Chain that is already connected to the Interface Designer.
 
 
 ### Toolbar
 
-The Toolbar features convenient helpers, like a zoom selector, undo/redo functions and automatic positioners.
+![canvas_toolbar](images/interface/canvas-topbar.png)
 
-{ICON_TABLE}
+The Toolbar features convenient helpers in building your interface.
 
-Behind the scenes, HISE uses a layer called ScriptComponent that wraps around the data model for each control. It stores a reference to the data and communicates between the actual GUI you see and the script / UI model in the backend. However, in some cases these connections may break and you'll wind up with a somewhat broken interface. This can easily be fixed by deleting all those wrappers and create them new from the UI model. You can do that with the **Rebuild Button**. If you only rebuild the interface, your ScriptProcessor script will not automatically be recompiled, so in order to make a full reset, you need to rebuild the interface first, and then recompile your script.
+- **Zoom to Fit** - Zooms the interface to fill the whole canvas.
+- **Zoom size** - from 50% - 200 %. Use [CTRL + MouseWheel] to zoom even further. 
+
+----
+
+- **Toggle between Edit and Presentation Mode [F4]** - Toggles the canvas between play mode(where you can actually use the Components) and edit mode where you can edit them and drag them around.
+- **Automatic parameter assignment mode** - Select a UI component and click the **Connection Assigment Button**. HISE is now in connection mode. If you now open an [Audio Module](/hise-modules) in the the **Module Tree** you can directly connect the UI Component to the module parameter. It will automatically copy the correct parameters to the component to match the module. This also works with meta parameters of a DSP network.
+- **Deselect** - Deselects the current items [ESC].
+- **Rebuild Interface [F5]** - Behind the scenes, HISE uses a layer called ScriptComponent that wraps around the data model for each control. It stores a reference to the data and communicates between the actual GUI you see and the script / UI model in the backend. However, in some cases these connections may break and you'll wind up with a somewhat broken interface. This can easily be fixed by deleting all those wrappers and create them new from the UI model. You can do that with the **Rebuild Button**. If you only rebuild the interface, your ScriptProcessor script will not automatically be recompiled, so in order to make a full reset, you need to rebuild the interface first, and then recompile your script.
+
+----
+
+- **Undo** - Undo the last property change. This is using the global undo manager, so it also undoes drag operations in the Component List or property changes in the Property Editor. 
+- **Redo** - Same as undo says Captain Obvious. 
+
+----
+
+- **Lock** - You can lock the current component selection so that it will not be included when you drag the lasso for selecting components. This is helpful for background panels, etc. which you don't want to select but their child elements.
+- **Move** - Enabling this will prevent the mouse dragging of selected elements to move their position. This avoids screwing up your interface layout accidentally.
+- **Suspension Simulator** - This simulates the suspension of the UI timers just as if the user would close your plugin window. You can use this to check if any vital functionality is depending on the UI timers being active.
+
+----
+
+- **Vertical Align** - Align the selection vertically on the left edge. 
+- **Horizontal Align** - Align the selection horizontally on the top edge. 
+- **Vertical Distribute** - Distribute the selection vertically with equal space. 
+- **Horizontal Distribute** - Distribute the selection horizontally with equal space.
+
+----
+
+- **Edit JSON [J]** - This will open a popup with the JSON properties of the currently selected elements. It allows you to manually change the properties and do batch processing. Note that this is a very risky operation so it's possible to mess up the entire component tree so proceed with caution!
+- **Debug CSS** - If enabled you can hover over an element that has a CSS stylesheet attached to inspect the CSS properties (and variables) that are applied to the component.
+- **Overlay Selector** - Select an image to display it as design template over the Canvas. You can use this for pixel perfect UI positioning.  
+- **Overlay Fader** - Fades the Alpha channel of the Overlay Image. You can also invert the image, which in some cases helps when the outlines might not be visible enough.
+
 
 ### Select and position UI Components
 

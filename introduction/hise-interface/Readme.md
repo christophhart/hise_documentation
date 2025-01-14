@@ -8,7 +8,7 @@ summary:  HISE Interface Elements
 [Menu](/working-with-hise/menu-reference) | [Top Bar](/introduction/hise-interface/top-bar) | [Left Panel](/introduction/hise-interface/left-panel) | [Code Editor](/introduction/hise-interface/code-editor) |[Interface Designer](/introduction/hise-interface/interface-designer) | [Sampler Workspace](/introduction/hise-interface/sampler-workspace) | [Scriptnode Editor](/introduction/hise-interface/scriptnode-editor) | [Custom Workspace](/introduction/hise-interface/custom-workspace)
 
 
-## Interface Architecture
+## HISE Interface Architecture
 
 HISE interface is built on a flexible system of modular elements called [floating tiles]().
 
