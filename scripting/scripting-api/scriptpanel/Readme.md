@@ -7,6 +7,8 @@ modified: 18.03.2019
 
 Create a reference to a [Panel](/ui-components/plugin-components/panel) UI component and modify its values.
 
+See [Script Panel](/scripting/scripting-in-hise/scriptpanel.html) for examples and common usecases.
+
 ```javascript
 const var Panel1 = Content.getComponent("Panel1");
 ```
