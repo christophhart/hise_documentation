@@ -6,7 +6,7 @@ modified: 30.05.2024
 properties:
 - Font: Set the font type.
 - FontSize: Set the font size.
-- ProcessorId: The ID (name) of any Sound Generator
+- ProcessorId: The ID (name) of any module with a meter (sound generator, effect, container, matrix, etc)
 - SegmentLedSize: Segment the bar into parts to give it a LED like look.
 - UpDecayTime: Smoothes the way up in milliseconds.
 - DownDecayTime: Smoothes the way down, in milliseconds.
