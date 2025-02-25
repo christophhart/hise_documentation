@@ -1,9 +1,10 @@
 setPaintRoutine() automatically passes a [graphics API](https://docs.hise.dev/scripting/scripting-api/graphics/index.html) object to the provided function, so it can be accessed from inside the paint routine. Conventionally, this parameter is named `g`. 
 
-## Examples
+### Examples
 
 Setting a paint routine for a single panel:
-```
+
+```javascript
 const myPanel = Content.addPanel("myPanel",0,0);
 myPanel.setPaintRoutine(function(g)
 {
@@ -12,7 +13,8 @@ myPanel.setPaintRoutine(function(g)
 ```
 
 Using an inlined function to paint multiple panels:
-```
+
+```javascript
 const panel1 = Content.addPanel("panel1",0,0);
 const panel2 = Content.addPanel("panel2",0,60);
 
@@ -26,7 +28,8 @@ panel2.setPaintRoutine(paintPanels);
 ```
 
 Using a regular function to paint multiple panels:
-```
+
+```javascript
 const panel1 = Content.addPanel("panel1",0,0);
 const panel2 = Content.addPanel("panel2",0,60);
 
@@ -37,3 +40,4 @@ function paintPanels(g) //The function declaration must come before setPaintRout
 
 panel1.setPaintRoutine(paintPanels);
 panel2.setPaintRoutine(paintPanels);
+```
