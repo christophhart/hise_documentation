@@ -1,3 +1,4 @@
+While `area` is measured in usual HISE screen-space pixels, xOffset and yOffset are measured in pixels in the source image before any scaling is applied.
 
 ```javascript
 const var Panel1 = Content.getComponent("Panel1");
