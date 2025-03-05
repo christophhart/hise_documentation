@@ -6,17 +6,22 @@ index: 03
 
 ![Code Editor](images/custom/code-editor.png)
 
-The Code Editor features three elements. A basic [Script Editor](/working-with-hise/workspaces/scripting-workspace/code-editor#script-editor) with HISE/Javascript syntax highlighting, the [Console](/working-with-hise/workspaces/scripting-workspace/code-editor#console) for getting feedback, and the [ScriptWatchTable](/working-with-hise/workspaces/scripting-workspace/code-editor#scriptwatchtable) with which you can observe the referenced variables of the connected ScriptProcessor.
+The Code Editor features three main elements. 
+- A basic [Script Editor](/working-with-hise/workspaces/scripting-workspace/code-editor#script-editor) with HISE/Javascript syntax highlighting, 
+- the [Console](/working-with-hise/workspaces/scripting-workspace/code-editor#console) for getting feedback, and the 
+- [ScriptWatchTable](/working-with-hise/workspaces/scripting-workspace/code-editor#scriptwatchtable) with which you can observe the referenced variables of the connected ScriptProcessor.
 
 ## Script Editor
 
-The Script Editor it the central place to edit [Scripts](/scripting) inside HISE. You can add [Audio Modules](/hise-modules) with scripting capabilities (Indicated by the name "Script" like in: **Script Processor**, **Script Voice Start Modulator** or **Polyphonic Script FX**) all over the [Module Tree](/introduction/hise-interface/left-panel/module-tree) and they'll get executed in place. In this way you can create parts of your plugin in a modular and encapsulated manner. 
+The Script Editor it the central place to edit [Scripts](/scripting) inside HISE. 
 
-Right next to each of these script modules you can find a **Open in Code Editor** icon with which you can connect the Script Module to the Code Editor, and display its content (Like the one next to the main **Interface** Processor in the Master MIDI Chain). In the left drop-down menu on top of the Code Editor you can see to which Script Processor the Editor is currenly connected.
+The scripts live in the [Module Tree](/hise-modules) in their respective "Script" Modules (like [MIDI: Script Processor](/hise-modules/midi-processors/list/scriptprocessor), [Script Envelope Modulator](/hise-modules/modulators/envelopes/list/scriptenvelopemodulator) or [Script FX](/hise-modules/effects/list/scriptfx)) and can be connected and shown in the **Script Editor** with the little **Open in Code Editor** icon displayed on the module in the Module Tree.
 
-### Callback drop-down
+On top of the Script Editor you can see two little drop-down menus. 
+- The first shows to which Script Module the Editor is connected to. It can also serve as a shortcut to switch between different script modules. 
+- The second drop-down shows the current callback of the script and lists the included (external) files.
 
-Next to the Connection drop-down you can find the **Callback drop-down menu**. It lets you select the callbacks that are part of the current script. The `onInit` callback is the main callback that gets executed everytime you hit Compile [F5]. Learn more about the other callbacks types in: [Scripting Callbacks](/hise-modules/midi-processors/list/scriptprocessor#callbacks).
+The **Callback drop-down** let you select the callbacks that are part of the current script. The `onInit` callback is the main callback that gets executed everytime you hit Compile [F5]. Learn more about the other callbacks types in: [Scripting Callbacks](/hise-modules/midi-processors/list/scriptprocessor#callbacks).
 
 Behind the scenes these callbacks are part of the same `.js` file. You can take a look at the file(s) in your project folder at `Scripts > ScriptPocessors > {your xml save name} >`. They will appear after you saved your project for the first time. 
 
@@ -80,3 +85,10 @@ If you have defined a reference to a [HISE Modules](/hise-modules) with a variab
 | ![globals](images/custom/globals.png) | [Globals.x](/scripting/scripting-in-hise/additions-in-hise#globals.x-variables) - global variables |
 | ![namespace](images/custom/namespace.png) | [Namespaces](/scripting/scripting-in-hise/additions-in-hise#namespaces) - namespace wrapper  |
 | ![inline](images/custom/inline.png) | [inline functions](/scripting/scripting-in-hise/additions-in-hise#inline-functions) - scoped functions |
+
+
+## # define
+
+## .profile
+
+

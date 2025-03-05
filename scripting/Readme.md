@@ -24,7 +24,6 @@ Here are some of the most useful purposes of scripting in HISE:
 - Access the UIComponents and change/trigger their properties to create a dynamic interface experience.
 - Implement custom GUI interactions for your instrument (Page handling, Film Strips, ScriptPanels) that react to User Input.
 
-Please have a look at the [Recipes](/tutorials/recipes) to access some handy scripting examples.
 
 
 ### Performance

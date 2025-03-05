@@ -3,12 +3,11 @@ keywords: Sampler Settings
 summary:  The Settings of the Sampler Module
 author:   Christoph Hart
 modified: 18.03.2019
-index: 01
+index: 04
 ---
 ![sampler-table](/images/custom/sampler-settings.png) 
 
-
-The Settings for the Sampler Module. They set how the sampler engine treats your samples with Disk IO-, Voice-, Group- and Playback Settings.
+Although not part of the Sample Workspace, the Sampler settings can be quite important to adjust the samplers Disk IO-, Voice-, Group- and Playback Settings to your needs. You can find them with clicking on a Sampler module and selecting the **Sampler Settings** tab.
 
 
 ## Disk IO Settings	

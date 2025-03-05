@@ -23,9 +23,9 @@ items:
 - Edit JSON: This will open a popup with the JSON properties of the currently selected elements. It allows you to manually change the properties and do batch processing. Note that this is a very risky operation so it's possible to mess up the entire component tree so proceed with caution!
 ---
 
-![interfacedesigner](images/custom/interface-designer.png)
+![interfacedesigner](images/interface/interface-designer.png)
 
-The Interface Designer is split in three parts:
+The Interface Designer is split into three parts:
 
 
 - The [Canvas](/introduction/hise-interface/interface-designer#canvas), a WYSIWYG editor of your plugins GUI. 
@@ -36,11 +36,11 @@ The Interface Designer is split in three parts:
 
 ![canvas](images/interface/canvas.png)
 
-On the Canvas you can build your plugins Graphical User Interface. Here you can add [UI Components](/ui-components) to the interface with **right-clicking** on the canvas.
+On the Canvas you can build your plugins Graphical User Interface. Here you can add [UI Components](/ui-components) to the interface with **right-clicking** on the canvas and selecting a component from the dropdown list.
 
-With the Pen/Lock symbol in the Toolbar you can toggle between the **Edit** and **Play**-Mode.
+With the Pen/Lock symbol in the Toolbar you can toggle between the **Edit** and **Play**-Mode [F4].
 
-When you lock down the interface into **Play Mode** you can use the UI Components as in a compiled plugin, test the sliders and the general layout. Basically it's the same behaviour as the Interface Preview (house symbol) in the top-bar.    
+When you lock the interface into **Play Mode** you can use the UI Components as in a compiled plugin, test the sliders and the general layout. This is the same behaviour as the Interface Preview (house symbol) in the top-bar.
 
 Behind the scenes the Interface consists of two parts: 
 - The architecture of the components with their position, ID/names and properties is saved in a value-tree structure in a `.hip` or `.xml` file. You can take a look at the XML code when you save your project with `File > Save as XML`. The file then shows up in your projects XmlPresetBackups folder: **XmlPresetBackups > ..UIData > ..Desktop.xml**. 
@@ -108,7 +108,7 @@ You can move the selected Components with **Mouse Dragging** or the **Arrow Keys
 
 ## Component List
 
-![component-list](images/custom/component-list.png)
+![component-list](images/interface/component-list.png)
 
 The [Component List](/ui-components/floating-tiles/hise/scriptcomponentlist) shows a list of all UI Components that have been added to the Interface. You can add new components in here, too.
 
@@ -116,7 +116,7 @@ The Z-order of the components starts on the top (background) and advances to the
 
 You can group components into each other. Create a [Panel](/ui-components/plugin-components/panel) or a [Viewport](/ui-components/plugin-components/viewport) and add or drag other components beneath them in the Component List. This will group components together, which makes it easy to implement page-like logic for complex projects.
 
-The little **green/red dot** indicates if an UIComponent has its `saveinPreset`-property set to true or false. Learn more about this in the [User Presets](/working-with-hise/project-management/user-presets) chapter.  
+The little star icon indicates if an UIComponent has its `saveinPreset`-property set to true or false. This indicates if the value of the component should be saved in UserPreset or not. Learn more about this in the [User Presets](/working-with-hise/project-management/user-presets) chapter.  
 
 
 ## Property Editor
@@ -128,9 +128,9 @@ When you select multiple components, the property change will affect all selecte
 
 ### Set the ID
 
-The textbox in the top row is used to change the **ID** of the component.
-> Bear in mind that the ID is **ridiculously important** for further processing - preset restoring, script referencing, resolving the UI parent hierarchy etc. - Try to pick a name once and stick to it because changing the ID later on will become more and more unpleasant over time.
+The textbox in the top row is used to change the **ID** of the component. After changing the **ID** make sure to accept the change with [ENTER].
 
+> Bear in mind that the ID is **ridiculously important** for further processing - preset restoring, script referencing, resolving the UI parent hierarchy etc. - Try to pick a name once and stick to it because changing the ID later on will become more and more unpleasant over time.
 
 ### Copying selected properties as JSON
 
@@ -141,5 +141,3 @@ On the top-right of the Property Editor you can find two litte icons for copy & 
 - Hit the **Copy** Button to create a JSON dump in your clipboard containing all selected properties including their values. 
 - Select all components that you want to paste the property selection to.
 - Click on the **Paste** button to apply the property values for the entire selection.
-
-> If you still have older HISE projects or are interested in the [History](https://github.com/christophhart/hise_documentation/blob/master/NewInterfaceDesigner.md) of the Interface Designer, please have a look at this link that explains the transition to the current Interface Designer concept. 

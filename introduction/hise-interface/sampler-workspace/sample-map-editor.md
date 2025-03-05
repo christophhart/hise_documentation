@@ -2,7 +2,7 @@
 keywords: Map Editor
 summary:  The editor for the sample mappings.
 icon:     /images/icon_samplemapeditor
-index:  03
+index:  02
 items:	
 - Zoom Out: Zoom out the sample map
 - New SampleMap: Create a new SampleMap
