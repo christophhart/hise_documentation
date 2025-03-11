@@ -9,7 +9,6 @@ index: 04
 
 Although not part of the Sample Workspace, the Sampler settings can be quite important to adjust the samplers Disk IO-, Voice-, Group- and Playback Settings to your needs. You can find them with clicking on a Sampler module and selecting the **Sampler Settings** tab.
 
-
 ## Disk IO Settings	
 
 | name | default value | description |
@@ -21,13 +20,13 @@ Although not part of the Sample Workspace, the Sampler settings can be quite imp
 | Disk Usage | 0.0% | Shows the disk usage of the played samples |
 | Purge All | Disabled | If Purge All is set to Enabled, all samples of this sampler won't be loaded into memory. |
 
-> In the Disk IO Settings you can see the Memory and the Disk Usage of the sampler. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the Buffer Size (which increases the disk performance) or reduce the voice amount.
+In the Disk IO Settings you can see the Memory and the Disk Usage of the sampler. The memory usage includes the streaming buffers, so if you want to decrease the memory usage, consider lowering the Buffer Size (which increases the disk performance) or reduce the voice amount.
 
 ## Voice Settings
 
 | name | default value | description |
 | --- | --- | ------------ |
-| Amount | 256 | The hard limit of voices that this synth can play. |
+| Amount | 256 | The hard limit of voices that this sampler can play. |
 | Soft Limit | 256 | The soft limit of voices that this sampler plays before it  starts to fade out voices.   |
 | Fade Time | 20 | If you play more than the number of soft-limit voices this setting will determine the fadeout time of each voice that is going to be killed in ms. |
 
@@ -53,7 +52,7 @@ Although not part of the Sample Workspace, the Sampler settings can be quite imp
 
 ### Scripting
 
-You can access most of these properties with scripting. Use a generic script reference to access the Samplers Audio Settings. 
+You can access most of these properties with scripting. Use a generic script reference to access the [Samplers](/scripting/scripting-api/sampler) audio settings by script. 
 
 ```javascript
 const var Sampler1 = Synth.getChildSynth("Sampler1");

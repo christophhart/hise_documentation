@@ -1,41 +1,22 @@
 ---
-keywords: Map Editor
+keywords: Sample Map Editor
 summary:  The editor for the sample mappings.
 icon:     /images/icon_samplemapeditor
 index:  02
-items:	
-- Zoom Out: Zoom out the sample map
-- New SampleMap: Create a new SampleMap
-- Load SampleMap: Load a SampleMap from the pool.
-- Save SampleMap: Save the current SampleMap
-- Convert to Monolith: Convert the current samplemap to HLAC monolith format
-- Import SFZ file format: Import SFZ file format
-- Undo: Undo the last operation
-- Redo: Redo the last operation
-- Zoom In: Zoom in the sample map
-- Duplicate: Duplicate all selected samples
-- Cut: Cut selected samples
-- Copy: Copy samples to clipboard
-- Paste: Paste samples from clipboard
-- Delete: Delete all selected samples
-- warning: Shows up, when you haven't saved your SampleMap
-- Select all Samples: Select all Samples
-- Deselect all Samples: Deselect all Samples
-- Fill Note Gaps: Fill note gaps in SampleMap
-- Fill Velocity Gaps: Fill velocity gaps in SampleMap
-- Automap Velocity: Sort the sounds along the velocity range according to their volume
-- Refresh Velocity Crossfades.: Switches to crossfade mode. LoKey and HighKey switch to LowerVelocityXFade and UpperVelocityXFade.
 ---
-![sampler-map](/images/custom/sampler-map.png) 
+![sampler-map](/images/interface/sample-map-editor.png) 
 
-With the **Map Editor** you can map your samples and save them as a [SampleMaps](/hise-modules/sound-generators/list/streamingsampler#sample-maps). 
+With the **Sample Map Editor** you can map your samples and save them as a [SampleMaps](/hise-modules/sound-generators/list/streamingsampler#sample-maps). You can add samples to the map with drag & dropping samples from your OS' filebrowser onto the map.
 
-Drag & Drop your samples into the map to select from one of three different mapping functions: 
-- [Drop Point](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#drop-point), 
-- [Pitch Detection](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#pitch-detection)
-- and the mighty [Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser).
+Then select one of the three mapping functions: 
+- **Drop Point** - Drop your samples to a specific location in the Sample Map Editor. Move the samples up & down to select different drop modes.  
+- **Pitch Detection** - A pitch detection algorithm that maps the samples according to their pitch. (not always 100% reliable)
+- The mighty **[Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser)**, in which you can map the samples according to their filename.
 
-After you added your samples to the SampleMap it's possible to drag them around in the Map Editor and adjust their map properties with the [SampleMap Value Setters](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#samplemap-value-setters) and their audio-related properties in the adjacent [Sample Editor](/working-with-hise/workspaces/sampler-workspace/sample-editor). 
+
+## Editing the Samplemap
+
+After you added your samples to the SampleMap it's possible to drag them around in the Map Editor and adjust their map properties with the [SampleMap Value Setters](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#samplemap-value-setters) and edit their audio-related properties in the adjacent [Sample Editor](/working-with-hise/workspaces/sampler-workspace/sample-editor). 
 
 In the Sample Map Editor you can use some of the usual suspected Action Keys while dragging:
 - **Ctrl** - to move the samples in octaves.
@@ -43,23 +24,9 @@ In the Sample Map Editor you can use some of the usual suspected Action Keys whi
 - **Alt** - to duplicate samples.
 - **Ctrl + Arrow Keys** - To move the samples with the keyboard arrows.
 
-After you're finished with editing you can save the SampleMap (Ctrl+s). It will be saved into the [SampleMaps Folder](/working-with-hise/project-management/projects-folders/sample-maps) of your project and from this moment on be available in the SampleMap Selector in the toolbar and accessible with the scripting capabilities of HISE. [Recipe: Switch Samplemaps with a ComboBox](/tutorials/recipes/ui/general#switch-samplemaps-with-a-combobox)
+After you're finished with editing you can save the SampleMap (Ctrl+s) and give it a filename. The SampleMap will be saved into the projects [SampleMaps Folder](/working-with-hise/project-management/projects-folders/sample-maps) and will from this moment on be available in the SampleMap Selector in the toolbar and accessible with the scripting capabilities of HISE. [Example: Minimal Sampler](/tutorials/modules#minimal-sampler-example)
 
 The next step would be to compress the SampleMaps samples into a single big monolith-file (HLAC) for improved loading-time and reduced file-size. Learn more about this here: [Compress and Export](/hise-modules/sound-generators/list/streamingsampler#compress-and-export)
-
-
-## Toolbar
-
-{ICON_TABLE}
-
-## SFZ Importer
-SFZ is a free file exchange format for samplers. However, **HISE** is not designed to be a SFZ sample player. The SFZ parser makes it more easy to transfer other sample formats to **HISE**. Although there are opcodes for almost any property of a sampler, only these opcodes are supported:
-
-> `sample, lokey, hikey, lovel, hivel, offset, end, loop_mode, loopstart, loopend, tune, pitch_keycenter, volume, group_volume, pan, groupName, key`
-
-These are pretty much all opcodes thich relate to a **HISE** sampler property. If you want to convert NI KONTAKT libraries, check out the Chicken Translator SFZ edition, as this is the preferred way of migrating KONTAKT libraries
-
-Loading SFZ files is remarkably easy, just use the SFZ button, or drop a .sfz file on the sampler. If there are multiple groups in the SFZ file, you will see a dialog window where you can consolidate the sfz groups to RR Groups or ignore dedicated sfz groups (and drop the same sfz on another sampler with a inverted selection to split the sfz file to two independant samplers")
 
 
 ### SampleMap Value Setters
@@ -76,29 +43,43 @@ Loading SFZ files is remarkably easy, just use the SFZ button, or drop a .sfz fi
 > **Right click** on the property to open a big slider that allows finer adjustment
 
 
+## Toolbar
+- **New SampleMap** - Create a new SampleMap
+- **Import SFZ file format** - [Import SFZ file format](/introduction/hise-interface/sampler-workspace/sample-map-editor#sfz-importer)
+- **Select SampleMap** - Load a SampleMap that has already been saved.
+- **Warning** - Shows up, when you haven't saved your SampleMap
+- **Save SampleMap** - Save the current SampleMap as..
+- **Convert the current samplemap to HLAC monolith** - Convert the current samplemap to HLAC monolith format
 
-## Drop Point
-Drag & drop your samples to a specific location in the Map Editor.
+- **Zoom In** - Zoom in the sample map
+- **Zoom Out** - Zoom out the sample map
+- **Undo** - Undo the last operation [Ctrl + Z]
+- **Redo** - Redo the last operation [Ctrl + Y]
 
-## Pitch Detection
-A pitch detection algorithm that maps the samples according to their pitch. (not always 100% reliable) 
+- **Select all Samples** - Select all Samples [Ctrl + A]
+- **Deselect all Samples** - Deselect all Samples [Escape]
+- **Autoplay sample on selection** - Autoplays the sample on selection. 
+
+- **Fill Note Gaps** - Fill note gaps in SampleMap, horizontally
+- **Fill Velocity Gaps** - Fill velocity gaps in SampleMap, vertically
+- **Add Crossfades to overlapping sounds in groups** - Switches to crossfade mode. LoKey and HighKey properties are switched to **LowerVelocityXFade** and **UpperVelocityXFade**.
+
+
 
 ## Filename Token Parser
 ![sampler-map](/images/custom/sampler-filenametokenparser.png) 
 
-The **Filename Token Parser** maps samples according to their filename. It can divide the filenames into `tokens` and automap them to specific properties of the SampleMap.
+The **Filename Token Parser** parses parts of the samples filenames into `tokens`. You can then map these tokens to specific properties of the sample map.
 
-With this we can take these two sample filenames:
+Let's say we have two sample with these filenames:
 - **1** - `Cello_stacc_RR1_D#2_p.wav`  
 - **2** - `Cello_stacc_RR2_C3_f.wav`
 
-and automap them to these properties:
-- **1** - First RR Group, Root Note D#2, Velocity Range 0-63  
-- **2** - Second RR Group, Root Note C3, Velocity Range 64-127
+First we split the filename with the **Separator** (the default separator is `_`). Then we map the tokens to specific properties of the sample map:
 
-Load your samples into the Map Editor and choose **Filename Token Parser**. 
+- **1** - RR Group 1, Root Note D#2, Velocity Range 0-63  
+- **2** - RR Group 2, Root Note C3, Velocity Range 64-127
 
-First you have to specify the filename **Separator**. The parser needs this character to divide the filenames into tokens (the default separator is `_`). Each token will now appear in a separate row in the popup. Step through each token and tell the parser what to do:
 
 ### The Rows
 
@@ -137,14 +118,13 @@ The Data Type column defines as which data type the token should be interpreted.
 | Fixed Value | Sets a fixed value that can be entered in the Items&Values columns | number | number |
 | Ignored | Ignores the token. You should not have to use this directly, as it's the datatype for ignored tokens. | - | - |
 
-In case that you want to store the parser settings for further use: You can Copy&Paste or Save&Load the Filename Token Parsers settings in the top of the Popup.
-
-> There is a handy tool called "Close Gaps" which can be useful after importing the files with this method.
+In case that you want to store the parser settings for further use: You can Copy & Paste or Save & Load the Filename Token Parsers settings in the top of the Popup.
 
 
 The Solution to the example:
 
-`Cello_stacc_RR1_D#2_p.wav` 
+`Cello_stacc_RR1_D#2_p.wav`
+
 `Cello_stacc_RR2_C3_f.wav`
 
 | Token | Property | Data Type |
@@ -155,6 +135,17 @@ The Solution to the example:
 | `D#2` | Single Key | Note name |
 | `p` | Velocity Spread | Custom |
 
+
+
+
+## SFZ Importer
+SFZ is a free file exchange format for samplers. However, **HISE** is not designed to be a SFZ sample player. The SFZ parser makes it more easy to transfer other sample formats to **HISE**. Although there are opcodes for almost any property of a sampler, only these opcodes are supported:
+
+> `sample, lokey, hikey, lovel, hivel, offset, end, loop_mode, loopstart, loopend, tune, pitch_keycenter, volume, group_volume, pan, groupName, key`
+
+These are pretty much all opcodes thich relate to a **HISE** sampler property. If you want to convert NI KONTAKT libraries, check out the Chicken Translator SFZ edition, as this is the preferred way of migrating KONTAKT libraries
+
+Loading SFZ files is remarkably easy, just use the SFZ button, or drop a .sfz file on the sampler. If there are multiple groups in the SFZ file, you will see a dialog window where you can consolidate the sfz groups to RR Groups or ignore dedicated sfz groups (and drop the same sfz on another sampler with a inverted selection to split the sfz file to two independant samplers")
 
 
 ### Scripting

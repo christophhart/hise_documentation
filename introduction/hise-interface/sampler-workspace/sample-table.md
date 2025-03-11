@@ -5,7 +5,7 @@ author:   Christoph Hart
 modified: 18.03.2019
 index: 03
 ---
-![sampler-table](/images/custom/sampler-table.png) 
+![sampler-table](/images/interface/sampler-table.png) 
 
 The Sample Table is a list of all samples loaded in the current SampleMap. You can sort them with a click on their mapped properties in the top row. 
 
@@ -20,7 +20,7 @@ Use the search bar to isolate specific samples by their name. If you have a more
 - the end of the filename can be checked with `$`, the start of the filename can be checked with `^`.
 
 
-## Isolate a token in the file name
+### Isolate a token in the file name
 If you want to check one specific token only (tokens are supposed to be parts of the filename that are divided by the separation character (eg. `_`), you can use this expression:
 
 ```
