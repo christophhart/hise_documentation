@@ -4,71 +4,95 @@ summary:  The editor for the scriptnode environment
 index: 06
 ---
 
-The editor for scriptnode is trying to use the same principles as the interface designer, with a list on the left, a main canvas and a property editor on the right.
+![scriptnode-editor](/images/interface/scriptnode-editor.png)
 
-## The Node List
+After you added a [Scriptnode](/scriptnode) module to the [Module Tree](/introduction/hise-interface/left-panel/module-tree) you can edit its DSP network in the ScriptNode Editor. Click the little `Open in..` icon on the audio module to connect and display it's network in the Scriptnode Editor.   
 
-This will show a list of all nodes that are currently used in the network as well as the nodes that have been created but removed from the current processing chain: if you delete nodes, they will be kept around and can be easily reinserted later. If you click on a node, it will fold all other nodes and zoom on the selection (you can select multiple nodes by holding down the command modifier). This might be an effective way of navigating big networks where you need to focus on certain parts.
+# The Scriptnode canvas
 
-## The DSP Network graph
+![scriptnode-canvas](/images/interface/scriptnode-canvas.png)
+The main Scriptnode interface. It will show a map of the DSP network tree.
 
-The main interface with scriptnode. This will show a two dimensional graph of the network tree with multiple elements:
+It features: 
+- a container node for adding [nodes](/scriptnode/list)
+- a visual representation of the **audio signal** and the channel amount (the cables underneath the nodes)
+- a visual representation of the **modulation & parameter** connections (the cables that are hanging over the nodes)
+- a [toolbar](/introduction/hise-interface/scriptnode-editor#toolbar) with useful tools that help in designing DSP networks
 
-- nested container nodes which house other nodes
-- processing nodes which perform operations on the audio signal
-- a visual representation of the audio signal and the channel amount (the cables underneath the nodes)
-- a visual representaion of the modulation & parameter connections (the cables that are hanging over the nodes)
+You can add new nodes by clicking inside the container node and selecting a node from the [Add node popup](/introduction/hise-interface/scriptnode-editor#add-node-popup). You can drag them around, mute them, fold them with [double-click], change their individual parameter values, unhide their parameters (in case of containers), and delete them with the little x or [DEL]. For a complete reference and description of each node, please take a look at the [Scriptnode Node List](/scriptnode/list).
 
-You can add / remove nodes, drag them around and change parameters. For a complete reference and description of each node, take a look at the [Scriptnode Node List](/scriptnode/list).
+Take a look at the [Scriptnode Snippets](/tutorials/scriptnode) in the [Snippet Browser](/tutorials#the-snippet-browser) to take a look at some examples.
 
-Clicking anywhere in a container will open the node creation popup:
+## Add Node Popup
 
 ![](/images/custom/create_node.png)
 
-You can either type in the node, or filter the node list using the factory tags, which group the nodes into categories. Once you've selected a node, it will show a screen shot with a description.;
+Select a node from the list to display its details on the right side of the popup. You can also type its name in the search bar or filter the node list using tags, which group the nodes into categories. Add them to the network with [double-click] or [Enter]. 
 
-> Pressing the help button (or F1) when you've selected a node will open the browser with the node documenation
+> Pressing the help button (or [F1]) with a selected node will open the nodes documentation in the web browser. If you have already added a node to your network you can open its HISE inhouse documentation with [F1].
 
-### Toolbar
+
+## Toolbar
+![](/images/interface/script-canvas-topbar.png)
 
 The toolbar contains a selection of various function / helper tools that you will need during the development of scriptnode networks:
 
-| Icon | Shortcut | Description |
-| - | -- | ------ |
-| ![export](/images/icon_export:32px) | `` | Toggles between the compiled and interpreted version of the network. |
-| ![zoom](/images/icon_zoom:32px) | `Ctrl+Backspace` | Shows the entire network graph. |
-| Bookmark | `` | Allows to switch between multiple bookmarks (selection of visible nodes). |
-| ![foldunselected](/images/icon_foldunselected:32px) | `` | Folds all unselected nodes. Select a few nodes, then click this button and it will hide all other nodes helping you focussing on the selection. |
-| ![swap-orientation](/images/icon_swap-orientation:32px) | `` | This will swap the layout dimension of chain nodes. By default chain nodes are displayed vertically, but it might be better for the visual density of the network graph to display child nodes horizontally. |
-| ![error](/images/icon_error:32px) | `` | This button will be enabled if there is a runtime error in the DSP graph. Clicking on it will select the faulty node. It will reevaluate the error when you drag or delete nodes. |
-| ![cable](/images/icon_cable:32px) | `C` | This will toggle the display of the hanging cables. For complex networks those might be cluttering the visuals so enabling this will clear the view on the underlying modules. |
-| ![probe](/images/custom/icon_probe:32px) | `` | This will enter the parameter probe mode which can be used to enter multiple parameter values at once. Enable it, then click on each knob you want to change. Click again and it will open a JSON editor where you can manually enter parameter values for each node when pressing the Apply button. |
-| ![signal](/images/icon_signal:32px) | `` | Enables the signal visualisation in the cables. Clicking this will show the amplitude of each channel peak in the network. |
-| ![parameters](/images/icon_parameters:32px) | `` | Shows a popup with all DSP network parameters. This mirrors the top row in the network, but if you're working in a big patch, this might not be visible so this is a handy way of controlling the meta parameters at all time. |
-| ![wrap](/images/icon_wrap:32px) | `` | Shows a context menu that helps you wrap the node selection into specific container types. |
-| ![colour](/images/icon_colour:32px) | `` | Applies a random colour to the node selection. Use this feature to visually group nodes. |
-| ![profile](/images/icon_profile:32px) | `` | Toggles the profile mode. If enabled, this will show the CPU usage of each node so you can easily spot CPU hogs. |
-| ![undo](/images/icon_undo:32px) | `Ctrl+Z` | Undo the last scriptnode operation (dragging nodes, changing properties, adding parameters, etc). |
-| ![undo](/images/icon_undo:32px) | `Ctrl+Y` | Redo the last scriptnode operation (dragging nodes, changing properties, adding parameters, etc). |
-| ![save](/images/icon_save:32px) | `` | Saves the current network as XML file. |
-| ![eject](/images/icon_eject:32px) | `` | Unloads the current network and shows the scriptnode title screen. |
-| ![properties](/images/icon_properties:32px) | `` | Shows the properties popup of the selected node (or the network if nothing is selected). | 
 
-## Node Properties
+- **Reset Zoom** - Resets the window and displays the whole network.
+- **Add Bookmark** - Add "zoom" bookmarks to save a graph view, and take shortcuts to display specific sections of the graph. 
+
+- **Fold all unselected nodes** - Use this to single out a container or node and fold all other nodes
+- **Swap the oprientation of the selected containers** - Swaps from vertical to horizontal view
+
+- **Select nodes with error** - Select nods with error
+- **Show / Hide cables [C]** - Shows and hides the parameter cables
+- **Enable parameter list selection** - 1. Step: Activate and select multiple node parameters with the little "ingredient bottle" icon. 2. Step: Opens a popup with the selected parameters in JSON format, for quick changes
+
+- **Display the signal flow in the cables** - Toggle on to display if a signal is moving through the cable
+- **Show all parameters in a popup** - Shows the main containers parameters in a popup for quick access.
+
+- **Show / hide comments** - Displays the comments inside the graph if you have added some.
+- **Open the wrap context menu** - Opens a context menu with wrapping options. Use this to quickly wrap different types of containers around the selection. Undo with [CTRL+Z].
+
+- **Randomize color for selection** - Applies a random colour to the node selection. Use this feature to visually group nodes.
+- **Activate CPU Profiling**
+
+- **Lock the current container**
+
+- **Undo** - Undo the latest action [Ctrl+Z]
+- **Redo** - Redo the latest action [Ctrl+Y]
+
+- **Save the DSP Network** - Saves the current network as XML file.
+- **Unload this network** - Unloads the current network and shows the scriptnode title screen.
+
+- **Show the node properties** - Shows the properties popup of the selected node (or the network if nothing is selected).
+
+
+# The Node List
+
+![mode-list](/images/interface/node-list.png)
+
+This will show a list of all nodes that are currently used in the network as well as the nodes that have been created but removed from the current processing chain: if you delete nodes, they will be kept around and can be easily reinserted later. If you click on a node, it will fold all other nodes and zoom on the selection (you can select multiple nodes by holding down the command modifier). This might be an effective way of navigating big networks where you need to focus on certain parts.
+
+
+# Node Properties
+
+![node-list](/images/interface/node-list.png)
 
 This will show the properties of the current selection of nodes so you can edit multiple properties at once.
 
-### The Parameter Editor 
+
+## The Parameter Editor 
 
 One of the most important tasks when developing DSP algorithms is tweaking the parameters and setting appropriate ranges. There are a bunch of helper tools in scriptnode which help you with this. Every slider in scriptnode has a few extra functions worth mentioning:
 
-### Parameter popup
+## Parameter popup
 
 ![](/images/custom/editparameters.png)
 
 Right clicking on a slider will open up a popup menu where you can edit the raw properties. This is not the preferred way of setting the ranges as the range editor described below has far more QOL functions, but in some case it gives you the most flexibility.
 
-### The range editor
+## The range editor
 
 If you hover over a slider it will show a bidirectional arrow on the top left. Clicking on that arrow will open the range editor.
 
@@ -101,5 +125,4 @@ Right clicking will open a context menu with more options:
 | Invert range | this will invert the parameter so that it goes from maximum to minimum. Obviously this is only interesting when the parameter is controlled by another source. |
 | Copy range to source | If the parameter is connected to a source, this will make the source range copy the target range. If you have a single connection, this makes sense as it avoids the conversion between source and target range. Note that if you have a single connection with different ranges, it will show a warning sign at the meta parameter and clicking on this will perform the exact same operation as this. |
 
-### The Node Property Popup
 

@@ -10,7 +10,7 @@ index: 01
 
 Sample Editor displays a single selected sample and let you change the samples properties.
 
-The **Toolbar**:
+## **Toolbar**
 - **Zoom in, zoom out** - Zoom into the sample waveform
 - **Enable MIDI Selection** - Auto-select a sample by incoming MIDI input
 - **TAB key cycling** - If enabled you can quickly cycle through the selected samples with **[TAB]** 

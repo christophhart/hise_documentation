@@ -6,8 +6,22 @@ modified: 24.06.2019
 index:    06
 ---
 
+![scriptnode-start](/images/interface/scriptnode-start.png)
 
-## Introduction
+With Scriptnode you get access to a full fledged modular DSP toolkit for building [DSP networks](/scriptnode/manual/glossary#dsp-network) that can be inserted into HISE audio chain.
+
+Add one of the following **Script** audio modules to the [Module Tree](/introduction/hise-interface/left-panel/module-tree), create a DSP network and start adding [nodes](/scriptnode/list) to it.
+
+- [Script FX](/hise-modules/effects/list/scriptfx) - Use a DSP network in the FX Chain as an effect.
+- [Scriptnode Synthesiser](/hise-modules/sound-generators/list/scriptsynth) - Use the MIDI input to build a multivoice Scriptnode synthesiser
+
+Add **Script Modulators** to the Modulation Chain to build customized modulation signals:
+- [Script Voice Start Modulator](/hise-modules/modulators/voice-start-modulators/list/scriptvoicestartmodulator)
+- [Script Time Variant Modulator](/hise-modules/modulators/time-variant-modulators/list/scripttimevariantmodulator)
+- [Script Envelope Modulator](/hise-modules/modulators/envelopes/list/scriptenvelopemodulator)
+
+
+## Rationale
 
 **HISE** started as a toolkit for developing sample based virtual instruments (hence the name: *Hart Instruments Sampler Engine*). The first features were a module for low overhead streaming of audio samples and a scripting engine that allowed customization of the MIDI processing.
 
@@ -30,7 +44,7 @@ So this is the workflow that can be used to achieve Cpp performance while keepin
 
 A little example: If you use 3 addition nodes like this:
 
-![additions.png](../images/custom/scriptnode/additions.png)
+![additions.png](/images/custom/scriptnode/additions.png)
 
 the interpreter will have to calculate three nodes individually. The generated Cpp code will boil them down to a single assembly instruction:
 

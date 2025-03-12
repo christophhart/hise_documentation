@@ -13,7 +13,9 @@ The **Project Directory** tab shows the content of the current projects folder i
 To learn more about each folder and their intended usages in [Project Folder](/working-with-hise/project-management).
 
 
-
 ## Expansion Creator
 
 [Expansions](/working-with-hise/project-management/expansions)
+
+
+

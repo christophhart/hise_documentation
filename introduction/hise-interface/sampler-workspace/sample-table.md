@@ -20,7 +20,7 @@ Use the search bar to isolate specific samples by their name. If you have a more
 - the end of the filename can be checked with `$`, the start of the filename can be checked with `^`.
 
 
-### Isolate a token in the file name
+#### Isolate a token in the file name
 If you want to check one specific token only (tokens are supposed to be parts of the filename that are divided by the separation character (eg. `_`), you can use this expression:
 
 ```
