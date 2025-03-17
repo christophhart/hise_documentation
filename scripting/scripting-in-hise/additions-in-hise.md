@@ -556,13 +556,13 @@ Now that we've defined the general syntax and purpose, let's take a look at the 
 
 | Statement | Arguments | Description |
 | -- | ---- | ------- |
-| `print` | `(expression)` | Prints `enter expression` and `exit expression` when entering and leaving the scope. |
-| `profile` | `(ID)` | Prints the duration of the scope with the literal string as label. |
-| `trace` | `(ID)` | Creates a label for the Perfetto tracer so you can find it by searching for the ID |
-| `dump` | `(e1, e2, ...)` | Dumps whatever variables you put in there at the beginning and the end of the scope. |
-| `count` | `(ID)` | Counts the number of times that this scope is executed (reset at compilation). |
-| `before` | `(actual, expected)` | Checks the equality of the two expressions **at the beginning of the scope** and throws a compile error if they don't match. |
-| `after` | `(actual, expected)` | Checks the equality of the two expressions **at the end of the scope** and throws a compile error if they don't match. |
+| `.print` | `(expression)` | Prints `enter expression` and `exit expression` when entering and leaving the scope. |
+| `.profile` | `(ID)` | Starts a profiling session (if `HISE_INCLUDE_PROFILING_TOOLKIT` is enabled) of the scope including all child statements. |
+| `.trace` | `(ID)` | Creates a named item for the given scope when profiling. Use this to quickly find the code in a complex profiling session. |
+| `.dump` | `(e1, e2, ...)` | Dumps whatever variables you put in there at the beginning and the end of the scope. |
+| `.count` | `(ID)` | Counts the number of times that this scope is executed (reset at compilation). |
+| `.before` | `(actual, expected)` | Checks the equality of the two expressions **at the beginning of the scope** and throws a compile error if they don't match. |
+| `.after` | `(actual, expected)` | Checks the equality of the two expressions **at the end of the scope** and throws a compile error if they don't match. |
 
 In general, all these statements do not bring something revolutionary new to the table (with the exception of `.trace()`, which is a unique feature that only makes sense with a scoped statement), but can rather be considered as quality of live improvements over their `Console.xxx()` counterparts that makes coding in HISE a little bit more pleasant. Some remarks:
 
@@ -630,9 +630,10 @@ Now we get to the real juicy stuff. The guaranteed cleanup operation gives us th
 
 | Statement | Arguments | Description |
 | -- | ---- | ------- |
-| `set` | `(variable, tempValue)` | temporarily sets the given variable to the temp value and resets it after the scope. |
-| `lock` | `(Threads.XXX)` | Locks the given thread for the duration of the scope. This performs additional safe checks to avoid common mistakes that lead to deadlocks. |
-| `defer` | `("path")` | This suspends all notifications for the given path until the scope is done. |
+| `.set` | `(variable, tempValue)` | temporarily sets the given variable to the temp value and resets it after the scope. |
+| `.lock` | `(Threads.XXX)` | Locks the given thread for the duration of the scope. This performs additional safe checks to avoid common mistakes that lead to deadlocks. |
+| `.defer` | `("path")` | This suspends all notifications for the given path until the scope is done. |
+| `.bypass` | `(broadcaster, send)` | temporarily deactivates the given broadcaster and sends a message after the scope when `send` is true. |
 
 We already know our little buddy `set` in our example, however in a real world project we wouldn't roll our own solution for multithreaded synchronisation but rather rely on its powerful friend, the `lock` statement. Since this is a language guide, describing the concepts behind `lock` and `defer` is out of the scope of this document (hihihi), so if you want to know more about that, keep reading here:
 
