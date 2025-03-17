@@ -631,6 +631,7 @@ Now we get to the real juicy stuff. The guaranteed cleanup operation gives us th
 | Statement | Arguments | Description |
 | -- | ---- | ------- |
 | `.set` | `(variable, tempValue)` | temporarily sets the given variable to the temp value and resets it after the scope. |
+| `.call` | `(callable, args...)` | calls the given object (either function or broadcaster) with the given arguments at the beginning and end of the scope. |
 | `.lock` | `(Threads.XXX)` | Locks the given thread for the duration of the scope. This performs additional safe checks to avoid common mistakes that lead to deadlocks. |
 | `.defer` | `("path")` | This suspends all notifications for the given path until the scope is done. |
 | `.bypass` | `(broadcaster, send)` | temporarily deactivates the given broadcaster and sends a message after the scope when `send` is true. |
