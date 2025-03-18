@@ -5,7 +5,7 @@ author:   Christoph Hart
 modified: 14.06.2022
 ---
   
-If you [export](/working-with-hise/menu-reference/export#compile-dsp-networks-as-dll) your scriptnode network as dynamic library, it will create a C++ file for each network. HISE will then load this code as dynamic library and allows you to use the C++ version of your networks inside HISE (either as "frozen" DspNetwork, a node inside a network or as HardcodedFX module). 
+If you [compile your scriptnode dsp networks as dll](/working-with-hise/menu-reference/export#compile-dsp-networks-as-dll) it will create a C++ file for each network. HISE will then load this code as dynamic library and allows you to use the C++ version of your networks inside HISE (either as "frozen" DspNetwork inside a network or as [HardcodedFX module](/hise-modules/effects/list/hardcoded-master-fx)) in the module tree. 
 
 When you export your plugin, it will include these files into the C++ compilation so that you don't need to bother about shipping the dynamic library file alongside your plugin / app.
 

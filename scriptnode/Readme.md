@@ -8,7 +8,7 @@ index:    06
 
 ![scriptnode-start](/images/interface/scriptnode-start.png)
 
-With Scriptnode you get access to a full fledged modular DSP toolkit for building [DSP networks](/scriptnode/manual/glossary#dsp-network) that can be inserted into HISE audio chain.
+With Scriptnode you get access to a full fledged modular DSP toolkit for building [DSP networks](/scriptnode/manual/glossary#dsp-network) that can be inserted into the HISE audio chain.
 
 Add one of the following **Script** audio modules to the [Module Tree](/introduction/hise-interface/left-panel/module-tree), create a DSP network and start adding [nodes](/scriptnode/list) to it.
 
