@@ -1,0 +1,3 @@
+This function can be used if you want to transmit more complex data than a single number - it accepts any kind of data object (JSON, array, Buffers, Strings) and sends the raw byte to all registered targets.
+
+Note that this involves a deep copy creation for each listener so it might not be the fastest option (and is definitely not realtime safe), but if you want to communicate complex information across modules (and even into C++ nodes), this is the way to do it safely.
