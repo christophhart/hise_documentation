@@ -5,6 +5,7 @@ Calling this function will turn this Viewport into a table with multiple columns
 | MultiColumnMode | bool | If enabled, the table will treat each column as individual data entity (see above for a detailed explanation of this mode). |
 | HeaderHeight | int | The height of the column header. If this is 0, it will be hidden. |
 | RowHeight | int | the height of each row. |
+| Sortable | bool | If this is set, then clicking on the column header will set it to be the sort column, and clicking again will reverse the order. . |
 | MultiSelection | bool | if enabled, this allows selection of multiple rows at once. |
 | ScrollOnDrag | bool | if enabled, dragging the mouse will scroll the viewport (like on a web browser). If disabled, you'll need to use the scrollbars. |
 | SliderRangeIdSet | String | if you're using sliders in a cell, you can define which ID set is used to fetch the range limits. This is useful if you're displaying JSON data with a fixed format (eg. the output of [`Midiautomationhandler.getAutomationDataObject()`](/scripting/scripting-api/midiautomationhandler#getautomationdataobject)). The possible values are `"scriptnode"`, `"ScriptComponent"`, `"MidiAutomation"` and `"MidiAutomationFull"` (check the console output for a list of range ids that is used when you call this method with this property). |
