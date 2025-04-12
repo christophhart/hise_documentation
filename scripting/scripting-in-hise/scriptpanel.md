@@ -365,17 +365,9 @@ const var Panel2 = createPanel("Panel2", 150, 0);
 
 The `this` keyword is only meaningful inside the three callbacks, but it allows a totally encapsulated widget.
 
-### Control Data
+Values stored in `data` are always non-persistent even if the panel has `saveInPreset` set to true.
 
-The control data is the data that actually represents the current value of the widget:
-
-- `1` / `0` for toggle buttons
-- `double` numbers for slider types
-- `int` numbers for discrete widgets like combobox selectors.
-
-You access and store **Control Value** just like with any other UI type in HISE: using the `setValue(value)` / `getValue()`  methods. This feature is deactivated by default, so if you create a UI widget that uses a **Control Value**, you have to set the `saveInPreset` property of the Panel to `true`
-
-It's heavily recommended that this will be just a simple number, but you can choose to use more complex types if your widget that demands that (we'll cover this case in a example later on). But even then it might be more efficient to store the actual value as an array in the `data` object and use the **Control Value** as index:
+It's heavily recommended to store a simple number whenever possible, but you can choose to use more complex types if your widget demands it (we'll cover this case in a example later on). Even then it might be more efficient to store the possible values as an array in the `data` object, and use the **Control Value** as an index:
 
 ```javascript
 // Not very efficient
@@ -384,6 +376,22 @@ this.data.setValue("First Item");
 // Better, as it doesn't need to create the string each time
 this.data.values = ["First Item", "Second Item", "Third Item"];
 this.data.setValue(0);
+```
+
+### Control Data
+
+In other UI controls, the control data is the data that actually represents the current value of the widget, which can be set and accessed with the `getValue()` and `setValue()` methods:
+
+- `1` / `0` for toggle buttons
+- `double` numbers for slider types
+- `int` numbers for discrete widgets like combobox selectors.
+
+Panels also support storing and getting their value with `setValue(value)` / `getValue()`, but as a panel is a generic control, this will not be reflected in any way on the UI. Also, panels have `saveInPreset` set to false by default. Enabling `saveInPreset` on a panel makes it useful as a place to persistently store objects, numbers, or booleans. Strings cannot be saved to Control Data, but can be encapsulated inside an object if circumstances require saving a persistent string.
+
+Snippet demonstrating making a value persistent using a panel:
+
+```
+HiseSnippet 1233.3ocsVs0aiTCE1SaGXSfshUhmQVyKjVhZSBYaK6BhcaZKa.ZaDoag2V43wSGSmXOx1oYip5+Y9G.GamIYRZJKphcdHJ9b86bwmi6ojTlVKUnfpWLImgB97v9SDlzNoDt.08HTvlgmRzFlB6Ic3jbhVyhQAAq+SVBAU1.499qe7PRFQPYyIgPWJ4T1uxGxMyo16U+BOK6DRL6B9vRR29UcoRQGYlbDfm0CafxIzqIWwNiXEasPzaH5TTv1gwMa2L4.JYuCZ1tEk15f8a8c6SYjjD1dMe99sOHocBg1nEJ3SNNlajp9FhgoQAabnLdR+T4Xg2AWx07AYL6gln9fm8jOQlEaCQKUTmTdVbuhDkFAVo27z159z1WFdJOlOi97z2W3XfmqQ4DXvZKBu0W.dMKCuFkf2JfTPIHsgGROKrOUwyMy4XwymE1U.USH8vV.JdYQqsYXXGIHgvryPx0rSTvgYZTqUiF0wMazXqWVEjRKyX6PyXDUMf.T6zFbNQvxv+.tvHj33dVR0hbbhpiAKzXl3CFYLRwhxeniVsHOun5MpumUgpNCrilYpEoI2v5J5oXvon5F0HFHfW9UIPBISCRf2c2KRYE9jRxxF.MXXcpbTVLVJxlfS3JFdbJCXmwoWyhqVUwtBmyTZt1BvKIJ.sQQVi86fnDgAaR4Z7MDEm.EKrQhGvJoQ0R.yFkJYVmottlmy4hozgffKx3BFNYjfZ3.JWRhZT4vbo.LacviYPbea0JPXwduABHgPZrNWC8TrXKRbxTGqkXt4q03wJRdNvgKvDAVN3OYTS0J.v5UJ.AMpcqAr3KhdCKKSBwGCxJtef.UKGxvwDCI5N.u2U8dPdElaJTgbFXQH0LSXK3O2l3Akr9wCXrLwcvWwwuF.w34DlW4f.btd9z+NUqLqOorueYAcZJQbEKtlqcnCYjloe.Sa6Erw2L6sb0ywnbwa2cOjQslDWt+ykzrvDxjJa0XlSrdPCMd3LIIFz9LoA5eRI9PZIw1lj.WC2FDuqfCk+wobZJdHiHzKjAvWwLfQugoFq3FnFf4I3IxQfymTjw3FaKf2R2q9sXXsxNtkuO3X.o3hgB4Jt.tEZY5X8BbD9a..Xmgrfta4agl4aovlCNWTaqpfa.V3kYkjrRdSQaFSsR11MMp+MEqIFMb.SUDiEBBSSWbDc3COht7FDpebVIA8I6yyYhGZuBZ5LP637onBD03Fl+zhg41ZChCir+zPWcB4vKJ3qB+49me1sQ16sQP59Lo6Np6VazcHza6dDbrvzfW.OCUBC2FTAGwtA1S62aTI7Hl9ZiLGV41on1CA9GBHuGjIvtGeRweJeIvRyQ79lbyolzO22YymD5m6sjQ+9UXT+SJt21OXuqLdTFwr3xX6SVlx.J+KrAztkSn4lIkeRy+aan+uBwmE1ianoqFiqsBLBkzOFXb56ZdZ3wvipnl4.bivS9iONOhA8axQFt3pSIFE2V3Oazv9vaAoLv6BnEyd8KXMaOj+bih5eelH1c3uguoLaVzwYY1rfIZHgpjui5udYe4zSbT.LIbuxrB7bW3LtYwEq444gvC4dGktnotmhsdrJ9sOVEa+XU74OVE26wp39OVEO3Cqn8c1udjQNzesAgNs2wtYdAAGKrKFccqn+gNTucw
 ```
 
 Calling `setValue(value)` does not execute the `onControl` callback (for safety reasons). Instead you need to explicitely tell the engine to fire the control callback using the method `Panel.changed()`
