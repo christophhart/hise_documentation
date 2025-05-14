@@ -8,7 +8,7 @@ author:   Christoph Hart
 
 ![Hise Interface 4.1](images/interface/interface_empty_4.png)
 
-An overview of **HISE**s Interface, Menu, Project Folder and Settings.   
+An overview of **HISE's** Interface, Menu, Project Folder and Settings.   
 
 - [Menu](/working-with-hise/menu-reference)
 

@@ -51,7 +51,7 @@ Unlike parameters in HISE, scriptnode parameters do not have a fixed range (but 
 
 You can change the ranges anytime, either by right-clicking on the knob and change its properties in the popup editor, or by using the range editor which gives you a more intuitive approach.
 
-A description of this user interface can be found [here](/working-with-hise/workspaces/scripting-workspace/scriptnode#node-properties)
+A description of this user interface can be found [here](/working-with-hise/hise-interface/scriptnode-editor)
 
 ### Scaled vs. unscaled parameters
 

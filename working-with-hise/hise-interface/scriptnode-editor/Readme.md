@@ -6,7 +6,7 @@ index: 06
 
 ![scriptnode-editor](/images/interface/scriptnode-editor.png)
 
-After adding a [Scriptnode](/scriptnode) module to the [Module Tree](/introduction/hise-interface/left-panel/module-tree) you can edit its DSP network the ScriptNode Editor. Click the little `Open in..` icon on the audio module to connect and display it's network in the Scriptnode Editor.   
+After adding a [Scriptnode](/scriptnode) module to the [Module Tree](/working-with-hise/hise-interface/left-panel/module-tree) you can edit its DSP network the ScriptNode Editor. Click the little `Open in..` icon on the audio module to connect and display it's network in the Scriptnode Editor.   
 
 # The Scriptnode canvas
 
@@ -17,9 +17,9 @@ It features:
 - the audio modules main container node for adding [Script nodes](/scriptnode/list) 
 - a visual representation of the **audio signal** and the channel amount (the cables underneath the nodes)
 - a visual representation of the **modulation & parameter** connections (the cables that are hanging over the nodes)
-- a [toolbar](/introduction/hise-interface/scriptnode-editor#toolbar) with useful tools that help in designing DSP networks
+- a [toolbar](/working-with-hise/hise-interface/scriptnode-editor#toolbar) with useful tools that help in designing DSP networks
 
-You can add new nodes by clicking inside the container node and selecting a new node from the [Add node popup](/introduction/hise-interface/scriptnode-editor#add-node-popup). You can drag them around, mute them, fold them with [double-click], change their individual parameter values, unhide their parameters (in case of containers), and delete them with the little X or [DEL]. For a complete reference and description of each node, please take a look at the [Scriptnode Node List](/scriptnode/list).
+You can add new nodes by clicking inside the container node and selecting a new node from the [Add node popup](/working-with-hise/hise-interface/scriptnode-editor#add-node-popup). You can drag them around, mute them, fold them with [double-click], change their individual parameter values, unhide their parameters (in case of containers), and delete them with the little X or [DEL]. For a complete reference and description of each node, please take a look at the [Scriptnode Node List](/scriptnode/list).
 
 If you want to take a look at some examples check out the [Scriptnode Snippets](/tutorials/scriptnode) in the [Snippet Browser](/tutorials#the-snippet-browser).
 
@@ -82,7 +82,7 @@ A list of all nodes that are currently used in the network. If you click on a no
 
 **Unused Nodes**
 
-This is a list of nodes that have been created but removed from the current processing chain. If you delete nodes, they will be kept around and can be easily reinserted later. You can delete the nodes permanently in the [Add node popup](/introduction/hise-interface/scriptnode-editor#add-node-popup)
+This is a list of nodes that have been created but removed from the current processing chain. If you delete nodes, they will be kept around and can be easily reinserted later. You can delete the nodes permanently in the [Add node popup](/working-with-hise/hise-interface/scriptnode-editor#add-node-popup)
 
 
 # Node Properties
@@ -140,7 +140,7 @@ Right clicking on a range editor will open a context menu with options to:
 
 # Script driven nodes
 
-Scriptnode features nodes that evaluate a script to produce or manipulate audio: After creating a new file, you can click on the little `Open in..` symbol on the nodes surface to open its script in the [Code Editor](/introduction/hise-interface/code-editor).
+Scriptnode features nodes that evaluate a script to produce or manipulate audio: After creating a new file, you can click on the little `Open in..` symbol on the nodes surface to open its script in the [Code Editor](/working-with-hise/hise-interface/code-editor).
 
 - The [Snex node](/scriptnode/list/core/snex_node) in which you can use HISEs own jit compilable [SNEX](/scriptnode/manual/snex) language. 
 

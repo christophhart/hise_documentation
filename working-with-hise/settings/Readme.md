@@ -2,7 +2,7 @@
 keywords: Settings
 summary:  Settings 
 icon:     /images/icon_settings
-index: 4
+index: 3
 ---
 ![SettingsWindow](/images/custom/settingswindow.png) 
 You can change the preferences of HISE in the settings dialog, which opens when you click on the Settings icon on the top right of HISE or with **File > Settings**. The settings are organized into multiple categories.

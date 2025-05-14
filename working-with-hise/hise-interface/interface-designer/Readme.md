@@ -28,9 +28,9 @@ items:
 The Interface Designer is split into three parts:
 
 
-- The [Canvas](/introduction/hise-interface/interface-designer#canvas), a WYSIWYG editor of your plugins GUI. 
-- The [Component List](/introduction/hise-interface/interface-designer#component-list) which is a value-tree representation of all the UI Components that have been added to the Canvas.
-- The [Property Editor](/introduction/hise-interface/interface-designer#property-editor), with which you can change the properties of each UI Component on the fly.
+- The [Canvas](/working-with-hise/hise-interface/interface-designer#canvas), a WYSIWYG editor of your plugins GUI. 
+- The [Component List](/working-with-hise/hise-interface/interface-designer#component-list) which is a value-tree representation of all the UI Components that have been added to the Canvas.
+- The [Property Editor](/working-with-hise/hise-interface/interface-designer#property-editor), with which you can change the properties of each UI Component on the fly.
 
 ## Canvas
 

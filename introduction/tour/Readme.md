@@ -128,8 +128,8 @@ The best way to explore all the features of the Modules and Modulators in **HISE
 
  
 When you open a new HISE project for the first time, you will see two editor next to each other: 
-- The [Code Editor]() which an IDE-like [Code editor](/working-with-hise/workspaces/scripting-workspace/code-editor) for scripting.
-- The [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas) which helps you to create a GUI for your plugin. 
+- The [Code Editor]() which an IDE-like [Code editor](/working-with-hise/hise-interface/code-editor/code-editor) for scripting.
+- The [Interface Designer](/working-with-hise/hise-interface/interface-designer#canvas) which helps you to create a GUI for your plugin. 
 
 The **Master Chain** holds a ScriptProcessor named "Interface". The **Code Editor** shows its "onInit"-Tab. This is the main script in which you can start scripting a GUI or any other interaction inside HISE. Per default this script contains a function to create an interface, that is displayed in the **Interface Designer**.
 
@@ -145,7 +145,7 @@ Let us test the scripting. Type:
 Console.print("Hello World");
 ```
 
-in the onInit Tab, and hit **[F5]** to compile. This evaluates the script, redraws the interface and prints the message to the [Console](/working-with-hise/workspaces/scripting-workspace/code-editor#console) beneath the editor.
+in the onInit Tab, and hit **[F5]** to compile. This evaluates the script, redraws the interface and prints the message to the [Console](/working-with-hise/hise-interface/code-editor#console) beneath the editor.
 
 We don't want to delve too much in scripting right now but it's important to know that even the basic use of **HISE** relies on scripting and learning about it is needed if you want to craft your own instrument or plugin. Check out the [Scripting](/scripting) docs for more.
 
@@ -154,7 +154,7 @@ We don't want to delve too much in scripting right now but it's important to kno
 
 ![interfacedesigner](images/custom/quick_tour/interface_designer.png)
 
-Now we'll take a look at the  [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas). This is the place where you create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little pen icon **[F4]**. With it you can toggle between the **edit** and the **presentation mode** of the Interface Designer. 
+Now we'll take a look at the  [Interface Designer](/working-with-hise/hise-interface/interface-designer). This is the place where you create the interface for your instrument/plugin. In the top-left corner of the Canvas you can find a little pen icon **[F4]**. With it you can toggle between the **edit** and the **presentation mode** of the Interface Designer. 
 
 While in **edit mode** add a new [Slider](/ui-components/plugin-components/knob) [UI Component](/ui-components) by **right-clicking** on the surface of the interface.
 You can drag the slider around or move it pixel-wise with the arrow keys (hold **Ctrl** to move it 10 pixels and/or **Shift** to rescale the elements boundaries). There is also the option to easily copy & paste the UI Component with dragging and holding the **Alt**-Key and to multiselect UI Components while holding **Ctrl**. You can delete the component with the **Del**-Key.
@@ -162,7 +162,7 @@ You can drag the slider around or move it pixel-wise with the arrow keys (hold *
 
 #### Property Editor
 
-On the right hand side you can see the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor). It lets you access and modify different properties of an UI Component.
+On the right hand side you can see the [Property Editor](/working-with-hise/hise-interface/interface-designer#property-editor). It lets you access and modify different properties of an UI Component.
 
 The Sliders **ID** will be "Knob1". You can change it to anything you want, but you should be aware that the **ID** is the internal handle for accessing the component via scripting. So if you should want to change it at a later stage it's quite easy to mess things up. The **ID** should therefore be as consistent as possible. If you just want to change the name of the slider you can do this via the `text` property.
 
@@ -170,7 +170,7 @@ If you toggle back to **presentation mode** **[F4]** the interface will lock dow
 
 ##### Component List
 
-On the left hand side of the Interface Designer you can see an overview of your added UI Components in the [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list). 
+On the left hand side of the Interface Designer you can see an overview of your added UI Components in the [Component List](/working-with-hise/hise-interface/interface-designer#component-list). 
 
 You can drag the Components to change the z-order of the components from the top (background) to the bottom (front). 
 
@@ -197,19 +197,19 @@ After creating a new DSP-Network you will see a empty container in which you can
 
 ![Sampler-Workspace](images/custom/sampler-workspace.png)
 
-The [Sampler Workspace](/working-with-hise/workspaces/sampler-workspace) is built all around the the [Sampler](/hise-modules/sound-generators/list/streamingsampler) Module and displays three of its tabs in one workspace. 
+The [Sampler Workspace](/working-with-hise/hise-interface/sampler-workspace) is built all around the the [Sampler](/hise-modules/sound-generators/list/streamingsampler) Module and displays three of its tabs in one workspace. 
 
 The main task of these tabs is to map your samples into [SampleMaps](/hise-modules/sound-generators/list/streamingsampler#sample-maps), edit them to suit your needs and finally export the mapped samples into a deliverable file-format that can be shipped with your instrument.
 
 General Workflow:
 
 - Put all the samples that you want to map into your Projects [Sample Folder](/working-with-hise/project-management/projects-folders/samples)
-- Drag the samples from the [Filebrowser](/ui-components/floating-tiles/hise/filebrowser) into the [Sample Map Editor](/working-with-hise/workspaces/sampler-workspace/sample-map-editor) and choose one of three options to map them: 
-[Drop Point](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#drop-point), which places the samples where you drag them. 
-[Pitch Detection](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#pitch-detection), which automatically tries to detect the pitch of the samples.
-[Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser), which reads the filename of your samples and maps them according to your requirements.
+- Drag the samples from the [Filebrowser](/ui-components/floating-tiles/hise/filebrowser) into the [Sample Map Editor](/working-with-hise/hise-interface/sampler-workspace/sample-map-editor) and choose one of three options to map them: 
+- **Drop Point**, which places the samples where you drag them. 
+- **Pitch Detection**, which automatically tries to detect the pitch of the samples.
+- [Filename Token Parser](/working-with-hise/hise-interface/sampler-workspace/sample-map-editor#filename-token-parser), which reads the filename of your samples and maps them according to your requirements.
 
-- Edit and finetune your samples with the [Sample Editor](/working-with-hise/workspaces/sampler-workspace/sample-editor) and the [Sampler Settings](/working-with-hise/workspaces/sampler-workspace/sample-settings). 
+- Edit and finetune your samples with the [Sample Editor](/working-with-hise/hise-interface/sampler-workspace/sample-editor) and the [Sampler Settings](/working-with-hise/hise-interface/sampler-workspace/sample-settings). 
 - When you are happy with the map, save it. It'll appear in the SampleMap folder. You can now access SampleMaps with scripting[link] and play them with your instrument. 
 - If you are sure that you won't change the samples anymore you can compress them into the lossless **HLAC Monolith file-format** `.ch1` (per SampleMap). This speeds up streaming-performance and reduces file-size.
 - In the final step, these Monolith files can be collected and exported together as **HISE Resource Archive File** `.hr1 ` via **Export > Export Samples for Installer** to distribute the samples alongside your instrument. 

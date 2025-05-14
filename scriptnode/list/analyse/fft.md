@@ -9,7 +9,7 @@ This node will analyse the spectrum of the audio signal and display a FFT graph.
 
 ### Changing FFT properties
 
-You can change the FFT properties (window type, FFT size, decibel range etc) by supplying a JSON object and passing it to [this method](/scripting/scripting-api/scriptringbuffer#setringbufferproperties).  
+You can change the FFT properties (window type, FFT size, decibel range etc) by supplying a JSON object and passing it to [this method](/scripting/scripting-api/displaybuffer#setringbufferproperties).  
 The default FFT property object is:
 
 ```javascript

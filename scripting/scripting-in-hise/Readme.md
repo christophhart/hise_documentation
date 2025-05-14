@@ -30,7 +30,7 @@ This will copy a [`const var`](/scripting/scripting-in-hise/additions-in-hise#co
 
 Now that we have created a reference to the Module we can access all its methods and attributes/parameters directly via script. 
 
-Start to type `SineW...` in the `onInit`-script and hit **[Escape]**. Select the full variable-name `SineWaveGenerator1` with the **[Down Arrow]** and **[Enter]** or click. When you now append a `.`(dot) and hit **[Escape]** again, you'll see a list of all available API methods and attributes/parameters of the Module in the [Autocomplete Popup](/working-with-hise/workspaces/scripting-workspace/code-editor#autocomplete-popup-[esc]).
+Start to type `SineW...` in the `onInit`-script and hit **[Escape]**. Select the full variable-name `SineWaveGenerator1` with the **[Down Arrow]** and **[Enter]** or click. When you now append a `.`(dot) and hit **[Escape]** again, you'll see a list of all available API methods and attributes/parameters of the Module in the [Autocomplete Popup](/working-with-hise/hise-interface/code-editor#autocomplete-popup-[esc]).
 
 Let's try out the `getAttribute()` and `setAttribute()` methods to get a grip of the parameters of the Module. The parameter is accessed with the reference variable + `.` followed by the parameters name. 
 
@@ -53,11 +53,11 @@ In this way you can get and set the attributes/parameters of every Module. You c
 const var Knob1 = Content.getComponent("Knob1");
 ```
 
-Referencing UI Components works in the same way as with Modules. Select a newly created UI Component in the Interface Designers [Canvas](/working-with-hise/workspaces/scripting-workspace/canvas#canvas) in **edit mode** or in the [Component List](/working-with-hise/workspaces/scripting-workspace/canvas#component-list) and **right-click** on it. Select **create script reference for selection** and paste the code in your `onInit` script.  
+Referencing UI Components works in the same way as with Modules. Select a newly created UI Component in the Interface Designers [Canvas](/working-with-hise/hise-interface/interface-designer#canvas) in **edit mode** or in the [Component List](/working-with-hise/hise-interface/interface-designer#component-list) and **right-click** on it. Select **create script reference for selection** and paste the code in your `onInit` script.  
 
 > In a bigger project, you will most likely want to use multiple references. If you select many components and create a **script reference** it will store them in an [Array](/scripting/scripting-api/array) that you can iterate over.
 
-Now you can directly `set()` and `get()` the properties of the component in your script, which will show up in the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor) as "Overwritten by script". 
+Now you can directly `set()` and `get()` the properties of the component in your script, which will show up in the [Property Editor](/working-with-hise/hise-interface/interface-designer#property-editor) as "Overwritten by script". 
 
 ```javascript
 // set and get a UI Components property
@@ -103,7 +103,7 @@ inline function onKnob1Control(component, value)
 
 Content.getComponent("Knob1").setControlCallback(onKnob1Control);
 ```
-But because this behaviour is needed very frequently, theres an extra shortcut for this connection. You can directly link a UI Components value to a Module attribute/parameter with the Components `processorId` and `parameterId` properties in the [Property Editor](/working-with-hise/workspaces/scripting-workspace/canvas#property-editor). 
+But because this behaviour is needed very frequently, theres an extra shortcut for this connection. You can directly link a UI Components value to a Module attribute/parameter with the Components `processorId` and `parameterId` properties in the [Property Editor](/working-with-hise/hise-interface/interface-designer#property-editor). 
 
 
 Nevertheless, the full power of the ControlCallback lies in its scripting flexibility to customize your instruments behaviour regarding incoming values:

@@ -8,4 +8,4 @@ properties:
 - FontSize: Set the font size. 
 ---
 
-An empty floating-tile can be filled with [HISE floating tiles](/ui-components/floating-tiles/hise) or custom popups, like in a [Custom workspace](/working-with-hise/workspaces/custom-workspace). (use this if you want to built HISE in HISE with HISE..)
+An empty floating-tile can be filled with [HISE floating tiles](/ui-components/floating-tiles/hise) or custom popups, like in a [Custom workspace](/working-with-hise/hise-interface/custom-workspace). (use this if you want to built HISE in HISE with HISE..)

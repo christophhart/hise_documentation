@@ -5,7 +5,7 @@ author:   Christoph Hart
 weight:   80
 modified: 18.03.2019
 properties:
-- tableIndex: the table index (starting with 0) of the table that you want to control. In most cases it will just be zero, but eg. the Table Envelope has two tables (0 = Attack, 1 = Release). It might be possible that you have to [rebuild](/working-with-hise/workspaces/scripting-workspace/canvas#toolbar) the interface after changing this value to apply the changes.
+- tableIndex: the table index (starting with 0) of the table that you want to control. In most cases it will just be zero, but eg. the Table Envelope has two tables (0 = Attack, 1 = Release). It might be possible that you have to [rebuild](/working-with-hise/hise-interface/interface-designer#canvas) the interface after changing this value to apply the changes.
 - customColours: if true, it will use a flat design with customizable colours, otherwise it will look like the thing above.
 ---
 

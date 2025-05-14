@@ -9,7 +9,7 @@ index:    04
 
 **UI Components** cover all clickable User Interface elements of **HISE**. 
 
-- [Plugin Components](/ui-components/plugin-components) are basic UI Components that you can add to the plugins interface with the [Interface Designer](/working-with-hise/workspaces/scripting-workspace/canvas). ([Slider](/ui-components/plugin-components/knob), [Button](/ui-components/plugin-components/button), [ComboBox](/ui-components/plugin-components/combobox), etc..). You can customize their colors or exchange their graphics with filmstrips. 
+- [Plugin Components](/ui-components/plugin-components) are basic UI Components that you can add to the plugins interface with the [Interface Designer](/working-with-hise/hise-interface/interface-designer#canvas). ([Slider](/ui-components/plugin-components/knob), [Button](/ui-components/plugin-components/button), [ComboBox](/ui-components/plugin-components/combobox), etc..). You can customize their colors or exchange their graphics with filmstrips. 
 
 Two of these are somewhat special: 
 - The [Panel](/ui-components/plugin-components/panel) is a generic Scripting Panel, that can be fully customized with scriptable [Paint Routine](/ui-components/plugin-components/panel#the-paint-routine), [MouseEvent-](/ui-components/plugin-components/panel#the-mouseevent-callback) and [Timer Callbacks](/ui-components/plugin-components/panel#the-timer-callback).  

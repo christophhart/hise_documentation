@@ -11,12 +11,12 @@ With the **Sample Map Editor** you can map your samples and save them as a [Samp
 Then select one of the three mapping functions: 
 - **Drop Point** - Drop your samples to a specific location in the Sample Map Editor. Move the samples up & down to select different drop modes.  
 - **Pitch Detection** - A pitch detection algorithm that maps the samples according to their pitch. (not always 100% reliable)
-- The mighty **[Filename Token Parser](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#filename-token-parser)**, in which you can map the samples according to their filename.
+- The mighty **[Filename Token Parser](/working-with-hise/hise-interface/sampler-workspace/sample-map-editor#filename-token-parser)**, in which you can map the samples according to their filename.
 
 
 ## Editing the Samplemap
 
-After you added your samples to the SampleMap it's possible to drag them around in the Map Editor and adjust their map properties with the [SampleMap Value Setters](/working-with-hise/workspaces/sampler-workspace/sample-map-editor#samplemap-value-setters) and edit their audio-related properties in the adjacent [Sample Editor](/working-with-hise/workspaces/sampler-workspace/sample-editor). 
+After you added your samples to the SampleMap it's possible to drag them around in the Map Editor and adjust their map properties with the [SampleMap Value Setters](/working-with-hise/hise-interface/sampler-workspace/sample-map-editor) and edit their audio-related properties in the adjacent [Sample Editor](/working-with-hise/hise-interface/sampler-workspace/sample-editor). 
 
 In the Sample Map Editor you can use some of the usual suspected Action Keys while dragging:
 - **Ctrl** - to move the samples in octaves.
@@ -45,7 +45,7 @@ The next step would be to compress the SampleMaps samples into a single big mono
 
 ## Toolbar
 - **New SampleMap** - Create a new SampleMap
-- **Import SFZ file format** - [Import SFZ file format](/introduction/hise-interface/sampler-workspace/sample-map-editor#sfz-importer)
+- **Import SFZ file format** - [Import SFZ file format](/working-with-hise/hise-interface/sampler-workspace/sample-map-editor#sfz-importer)
 - **Select SampleMap** - Load a SampleMap that has already been saved.
 - **Warning** - Shows up, when you haven't saved your SampleMap
 - **Save SampleMap** - Save the current SampleMap as..

@@ -10,7 +10,7 @@ index:    06
 
 With Scriptnode you get access to a full fledged modular DSP toolkit for building [DSP networks](/scriptnode/manual/glossary#dsp-network) that can be inserted into the HISE audio chain.
 
-Add one of the following **Script** audio modules to the [Module Tree](/introduction/hise-interface/left-panel/module-tree), create a DSP network and start adding [nodes](/scriptnode/list) to it.
+Add one of the following **Script** audio modules to the [Module Tree](/working-with-hise/hise-interface/left-panel/module-tree), create a DSP network and start adding [nodes](/scriptnode/list) to it.
 
 - [Script FX](/hise-modules/effects/list/scriptfx) - Use a DSP network in the FX Chain as an effect.
 - [Scriptnode Synthesiser](/hise-modules/sound-generators/list/scriptsynth) - Use the MIDI input to build a multivoice Scriptnode synthesiser

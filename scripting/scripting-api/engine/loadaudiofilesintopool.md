@@ -1,1 +1,1 @@
-This is for use with the [Convolution Reverb](/hise-modules/effects/list/convolution) effect, [Convolution](/scriptnode/list/filters/convolution.html) scriptnode module, or the [Audio Loop Player](/hise-modules/sound-generators/list/audiolooper.html).
+This is for use with the [Convolution Reverb](/hise-modules/effects/list/convolution) effect, [Convolution](/scriptnode/list/filters/convolution) scriptnode module, or the [Audio Loop Player](/hise-modules/sound-generators/list/audiolooper).

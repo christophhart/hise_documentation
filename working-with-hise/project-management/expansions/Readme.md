@@ -69,7 +69,7 @@ You can select an expansion to be active by either:
 
 If you want to use that feature, you can set a Javascript function that will be called whenever one of these events happen.
 
-> The concept of the active expansion is also important during development: for example the list of available samplemaps in the HISE sampler module is using the active expansion. You can change the active expansion in HISE using the [ExpansionEditBar](/ui-components/floating-tiles/hise/expansioneditbar), which is part of the [Sampler Workspace](/working-with-hise/workspaces/sampler-workspace)
+> The concept of the active expansion is also important during development: for example the list of available samplemaps in the HISE sampler module is using the active expansion. You can change the active expansion in HISE using the [ExpansionEditBar](/ui-components/floating-tiles/hise/expansioneditbar), which is part of the [Sampler Workspace](/working-with-hise/hise-interface/sampler-workspace)
 
 
 

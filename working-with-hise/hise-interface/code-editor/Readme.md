@@ -7,9 +7,9 @@ index: 03
 ![Code Editor](images/custom/code-editor.png)
 
 The Code Editor features three main elements. 
-- A basic [Script Editor](/working-with-hise/workspaces/scripting-workspace/code-editor#script-editor) with HISE/Javascript syntax highlighting, 
-- the [Console](/working-with-hise/workspaces/scripting-workspace/code-editor#console) for getting feedback, and the 
-- [ScriptWatchTable](/working-with-hise/workspaces/scripting-workspace/code-editor#scriptwatchtable) with which you can observe the referenced variables of the connected ScriptProcessor.
+- A basic [Script Editor](/working-with-hise/hise-interface/code-editor#script-editor) with HISE/Javascript syntax highlighting, 
+- the [Console](/working-with-hise/hise-interface/code-editor#console) for getting feedback, and the 
+- [ScriptWatchTable](/working-with-hise/hise-interface/code-editor#scriptwatchtable) with which you can observe the referenced variables of the connected ScriptProcessor.
 
 ## Script Editor
 
