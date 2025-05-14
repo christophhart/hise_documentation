@@ -1,12 +1,12 @@
 ---
 keywords: HISE Interface
 summary:  HISE Interface Elements
-index:    1
+index: 1
 ---
 
 ![Hise Interface 4.1](images/interface/interface_empty_4.png)
 
-[Menu](/working-with-hise/menu-reference) | [Top Bar](/introduction/hise-interface/top-bar) | [Left Panel](/introduction/hise-interface/left-panel) | [Code Editor](/introduction/hise-interface/code-editor) |[Interface Designer](/introduction/hise-interface/interface-designer) | [Sampler Workspace](/introduction/hise-interface/sampler-workspace) | [Scriptnode Editor](/introduction/hise-interface/scriptnode-editor) | [Custom Workspace](/introduction/hise-interface/custom-workspace)
+[Menu](/working-with-hise/menu-reference) | [Top Bar](/working-with-hise/hise-interface/top-bar) | [Left Panel](/working-with-hise/hise-interface/left-panel) | [Code Editor](/working-with-hise/hise-interface/code-editor) |[Interface Designer](/working-with-hise/hise-interface/interface-designer) | [Sampler Workspace](/working-with-hise/hise-interface/sampler-workspace) | [Scriptnode Editor](/working-with-hise/hise-interface/scriptnode-editor) | [Custom Workspace](/working-with-hise/hise-interface/custom-workspace)
 
 
 ## HISE Interface Architecture

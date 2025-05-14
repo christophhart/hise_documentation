@@ -102,7 +102,7 @@ const var WaveformGenerator = Synth.getChildSynth("Waveform Generator");
 
 ```
 
-The Waveform Generator is now accessible with this handle. Start to type `Wav...` in the line underneath and press `ESC` to access the [Autocomplete Popup](/working-with-hise/hise-interface/code-editor/code-editor#autocomplete-popup-[esc]).
+The Waveform Generator is now accessible with this handle. Start to type `Wav...` in the line underneath and press `ESC` to access the [Autocomplete Popup](/working-with-hise/hise-interface/code-editor#autocomplete-popup-[esc]).
 
 Let's try out to `get` 'n' `set` `Attributes` of the WaveformGenerator:
 

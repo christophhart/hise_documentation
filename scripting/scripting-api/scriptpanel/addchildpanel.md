@@ -9,4 +9,4 @@ The main use case for this method is to create dynamic components which have a v
 
 You can call this method again on the new panel and create a nested architecture of child panels. In order to delete the panel (and any child panel), use the [`removeFromParent()`](/scripting/scripting-api/scriptpanel#removefromparent) method. 
 
-For an example use case, take a look at the [Horizontal List Recipe](/tutorials/recipes/ui/scriptpanel#horizontal-list-example)
+For an example use case, take a look at the [Horizontal List Recipe](/tutorials/ui#dynamic-list)

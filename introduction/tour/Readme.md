@@ -128,8 +128,8 @@ The best way to explore all the features of the Modules and Modulators in **HISE
 
  
 When you open a new HISE project for the first time, you will see two editor next to each other: 
-- The [Code Editor]() which an IDE-like [Code editor](/working-with-hise/hise-interface/code-editor/code-editor) for scripting.
-- The [Interface Designer](/working-with-hise/hise-interface/interface-designer#canvas) which helps you to create a GUI for your plugin. 
+- The [Code Editor]() which an IDE-like [Code editor](/working-with-hise/hise-interface/code-editor) for scripting.
+- The [Interface Designer](/working-with-hise/hise-interface/interface-designer) which helps you to create a GUI for your plugin. 
 
 The **Master Chain** holds a ScriptProcessor named "Interface". The **Code Editor** shows its "onInit"-Tab. This is the main script in which you can start scripting a GUI or any other interaction inside HISE. Per default this script contains a function to create an interface, that is displayed in the **Interface Designer**.
 
