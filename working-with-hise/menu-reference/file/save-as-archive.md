@@ -1,1 +1,1 @@
-Opens a **Save As** dialog to save the current HISE preset file as .hip.
+Opens a **Save As** dialog to save the current HISE preset file as a `.hip` file.

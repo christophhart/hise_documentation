@@ -3,10 +3,10 @@ keywords: Project Folder
 author:   Christoph Hart
 summary:  A overview of the Project Management in HISE
 icon:     /images/icon_filebrowser
-index:    0
+index:    2
 ---
 
-A new project in HISE will hold predefined sub-folders with all the files, data and scripts that you need in your instrument/plugin.
+After creating a [new Project](/working-with-hise/menu-reference/file#create-new-project) your project folder will hold a set of predefined sub-folders for all the scripts and files that you might need in your instrument/plugin.
 
 These folders are categorized according to their filetype and usage:
 

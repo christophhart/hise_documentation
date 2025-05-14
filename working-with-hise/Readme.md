@@ -6,13 +6,13 @@ index:    02
 author:   Christoph Hart
 ---
 
-![HISE Topbar](images/custom/quick_tour/top-bar.png)
+![Hise Interface 4.1](images/interface/interface_empty_4.png)
 
-An overview of **HISE**s Interface elements and tools. 
+An overview of **HISE**s Interface, Menu, Project Folder and Settings.   
 
 - [Menu](/working-with-hise/menu-reference)
 
-- [Interface elements](/working-with-hise/workspaces)
+- [HISE Interface](/working-with-hise/hise-interface)
 
 - [Project folder](/working-with-hise/project-management)
 

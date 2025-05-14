@@ -1,0 +1,1 @@
+Converts a `.hip` HISE archive file into a human readable`.xml`project file and saves it ("filename_Recovered") into the projects `Presets` folder.

@@ -1,0 +1,1 @@
+This opens the currently loaded projects Appdata folder

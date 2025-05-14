@@ -1,1 +1,1 @@
-Open a OS Filebrowser in your current projects parent directory.
+Open a OS Filebrowser with your current projects project directory.
