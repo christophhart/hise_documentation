@@ -1,6 +1,7 @@
 ---
 keywords: HISE Interface
 summary:  HISE Interface Elements
+index:    1
 ---
 
 ![Hise Interface 4.1](images/interface/interface_empty_4.png)

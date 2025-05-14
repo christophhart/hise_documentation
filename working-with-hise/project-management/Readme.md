@@ -3,7 +3,7 @@ keywords: Project Folder
 author:   Christoph Hart
 summary:  A overview of the Project Management in HISE
 icon:     /images/icon_filebrowser
-index:    3
+index:    0
 ---
 
 A new project in HISE will hold predefined sub-folders with all the files, data and scripts that you need in your instrument/plugin.
