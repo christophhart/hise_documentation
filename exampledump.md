@@ -1,414 +1,4 @@
-/** If you start a comment with `/**` it will get attached to the metadata objects as `comment` property. */
-const var bc = Engine.createBroadcaster({
-	"id": "My Broadcaster",              // give it a meaningful name
-	"colour": -1,                        // assign a colour (-1 just creates a random colour from the ID hash)
-	"tags": ["audio", "value-handling"], // assign some tags
-	"args": ["myValue", "isPlaying"]
-});!!javascript
-// Create a filter effect
-const var effect = Synth.addEffect("PolyphonicFilter", "filter", 0);
-
-// Create a filter graph
-const var display = Content.addFloatingTile("tile", 0, 0);
-display.set("width", 200);
-display.set("height", 50);
-display.setContentData({"Type": "FilterDisplay", 
-                        "ProcessorId": "filter"});
-
-// Create a knob for the frequency
-const var filterKnob = Content.addKnob("filterKnob", 250, 0);
-filterKnob.set("mode", "Frequency");
-inline function f(component, value){ effect.setAttribute(effect.Frequency, value); };
-filterKnob.setControlCallback(f);
-
-const var modeSelector = Content.addComboBox("modeSelector", 400, 10);
-
-// Create the filter mode list object
-const var filterList = Engine.getFilterModeList();
-
-// Pick some values from the object and store it in an array
-const var filterModes = [ filterList.StateVariableNotch, 
-                          filterList.StateVariableLP ];
-                          
-// Create an array with a name for each mode
-const var filterNames = [ "Notch",
-                          "SVF Lowpass"];
-
-// Use the filterNames list as combobox items
-modeSelector.set("items", filterNames.join("\n"));
-
-
-inline function modeCallback(component, value)
-{
-    // combobox values are starting with 1
-    local index = value-1;
-    
-    if(index >= 0)
-    {
-        // use the index to get the actual number from the filterModes array.
-        effect.setAttribute(effect.Mode, filterModes[index]);
-    }
-}
-
-modeSelector.setControlCallback(modeCallback);!javascript
-Console.print(Engine.getOS());Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");const var myList = [1, 2, 3, 4, 5, 6];
-
-Engine.performUndoAction({
-  "obj": myList,				// the object that will be modified
-  "newValue": [3, 4, 5, 6, 7],  // the new state
-  "oldValue": myList.clone()    // the old state (we need to clone it or it will not keep the old values)
-}, function(isUndo)
-{
-	this.obj.clear();
-
-	// pick the values from the old or new state
-	for(v in isUndo ? this.oldValue : this.newValue)
-		this.obj.push(v);
-});
-
-// new state
-Console.print(trace(myList));
-
-Engine.undo();
-
-// old state
-Console.print(trace(myList));
-
-Engine.redo();
-
-// new state
-Console.print(trace(myList));const var macroNames = ["Volume", "FilterFreq", "FilterQ", "Reverb"];
-
-Engine.setFrontendMacros(macroNames);Engine.loadFontAs("{PROJECT_FOLDER}Fonts/Heebo.ttf", "heebo");
-Engine.setGlobalFont("heebo");Server.setBaseURL("https://forum.hise.audio");
-
-// The GET arguments as JSON object
-const var p =
-{
-    "term": "HISE",
-    "in": "titlespost"
-};
-
-// => https://forum.hise.audio/api/search?term=HISE&in=titlesposts
-Server.callWithGET("api/search", p, function(status, response)
-{
-    if(status == Server.StatusOK)
-    {
-        // Just use the response like any other JSON object
-        Console.print("There are " + response.matchCount + " results");
-    }
-});Server.setBaseURL("http://hise.audio");
-
-const var p = 
-{
-    "first_argument": 9000
-};
-
-// This dummy file just returns the `first_argument` as `post_argument`...
-Server.callWithPOST("post_test.php", p, function(status, response)
-{
-    Console.print(response.post_argument);
-});Server.setBaseURL("http://hise.audio");
-const var target = FileSystem.getFolder(FileSystem.Documents).getChildFile("HISE_1_1_1.exe");
-
-Server.downloadFile("download/HISE_1_1_1.exe", {}, target, function()
-{
-    var message = "";
-    
-    message += Engine.doubleToString(this.data.numDownloaded / 1024.0 / 1024.0, 1);
-    message += "MB / " + Engine.doubleToString(this.data.numTotal / 1024.0 / 1024.0, 1) + "MB";
-    
-    Console.print(message);
-     
-    if(this.data.finished)
-         Console.print(this.data.sucess ? "Done" : "Fail");
-});
-
-
-inline function onButton1Control(component, value)
-{
-	if(value)
-        Server.stopDownload("download/HISE_1_1_1.exe", {});
-};
-
-Content.getComponent("Button1").setControlCallback(onButton1Control);Server.setBaseURL("https://forum.hise.audio/api");
-Server.setServerCallback(function(isWaiting)
-{
-    Console.print(isWaiting ? "SERVER IS BUSY" : "DONE");
-});
-
-function printName(status, obj)
-{
-    if(status == 200)
-        Console.print(" " + obj.username);
-};
-
-// Now hammer the queue with the top 5 Posters
-Server.callWithGET("user/d-healey", {}, printName);
-Server.callWithGET("user/christoph-hart", {}, printName);
-Server.callWithGET("user/ustk", {}, printName);
-Server.callWithGET("user/Lindon", {}, printName);
-Server.callWithGET("user/hisefilo", {}, printName);
-```
-
-The output:
-
-```
-Interface: SERVER IS BUSY
-Interface:  d.healey
-Interface:  Christoph Hart
-Interface:  ustk
-Interface:  Lindon
-Interface:  hisefilo
-Interface: DONEconst var panel = Content.addPanel("p", 0, 0);
-
-panel.setConsumedKeyPresses("all");
-
-panel.setKeyPressCallback(function(obj)
-{
-	Console.print(trace(obj));
-});
-```
-
-then clicking on the panel (to gain focus) and pressing any key will yield something like this output:
-
-```javascript
-Interface: {
-  "isFocusChange": false,
-  "character": "",
-  "specialKey": true,
-  "isWhitespace": false,
-  "isLetter": false,
-  "isDigit": false,
-  "keyCode": 63238,
-  "description": "shift + F3",
-  "shift": true,
-  "cmd": false,
-  "alt": false
-}
-```
-
-This JSON object is a bit noisy as it provides additional information that we don't really need so we can reduce the number of required properties and paste it back into our first function call:
-
-```javascript
-panel.setConsumedKeyPresses({
-  "keyCode": 63238,
-  "shift": true,
-  "cmd": false,
-  "alt": false
-});Panel1.setFileDropCallback("All Callbacks", "*.wav", function(f)
-{
-    if(f.drop)
-    {
-        // We can't pass in only the filename
-        // (a String is forbidden as preset value in order
-        // to prevent subtle bugs) so we need to create
-        // a simple object with a single property
-        var x = {};
-        x.fileName = f.fileName;
-        
-        // We could also just have passed in f to the function,
-        // but this reduces the noise a bit
-        this.setValue(x);
-        this.changed();
-    }
-});
-
-inline function onPanel1Control(component, value)
-{
-    // This might be empty (at initialisation or for whatever reason)...
-    if(isDefined(value.fileName))
-    {
-        var myFile = FileSystem.fromAbsolutePath(value.fileName);
-        // Do something with myFile...
-    }
-};const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{
-	g.fillAll(0x22FFFFFF);
-	g.setColour(0x55FFFFFF);
-
-	if(this.data.hasFocus)
-		g.drawRect(this.getLocalBounds(0), 1.0);
-
-	g.setColour(Colours.white);
-	g.drawAlignedText(this.data.text, this.getLocalBounds(0), "centred");
-});
-
-Panel1.setKeyPressCallback(function(obj) 
-{
-	// Take a look at this in the console
-	Console.print(trace(obj));
-	
-	if(obj.isFocusChange)
-	{
-		this.data.hasFocus = obj.hasFocus;
-	}
-	else
-	{
-		switch(obj.keyCode)
-		{
-			// ESCAPE: Delete the text
-			case 27: this.data.text = ""; 
-				     break;
-			// RETURN KEY: just lose the focus
-			case 13: this.loseFocus();  
-					 break;
-			// BACKSPACE: Remove the last character
-			case 8:  this.data.text = this.data.text.substring(0, this.data.text.length-1);
-					 break;
-			// Append any non-special character
-			default: if(!obj.specialKey)
-						this.data.text += obj.character;				
-		}
-	}
-		
-	this.repaint();
-});!!javascript
-// Example: Preloading callback
-// this code will add a panel which will flash white during the preloading of new samples.
-
-const var panel = Content.addPanel("Panel", 0, 0);
-
-panel.data.colour = Colours.grey;
-
-panel.setPaintRoutine(function(g)
-{
-	g.fillAll(this.data.colour);
-});
-
-// This function will be executed whenever the preload state changes
-panel.setLoadingCallback(function(isPreloading)
-{
-	if(isPreloading)
-        this.data.colour = Colours.white;
-    else
-        this.data.colour = Colours.grey;
-        
-    // Update the UI
-    this.repaint();
-});// Changes the mouse pointer over the ScriptPanel1 to a hand with a pointing finger
-ScriptPanel1.setMouseCursor("PointingHandCursor", Colours.white, [0, 0]);const myPanel = Content.addPanel("myPanel",0,0);
-myPanel.setPaintRoutine(function(g)
-{
-  g.fillRect(this.getLocalBounds(0));
-});
-```
-
-Using an inlined function to paint multiple panels:
-```
-const panel1 = Content.addPanel("panel1",0,0);
-const panel2 = Content.addPanel("panel2",0,60);
-
-inline function paintPanels(g)
-{
-   g.fillRect(this.getLocalBounds(0));
-}
-
-panel1.setPaintRoutine(paintPanels);
-panel2.setPaintRoutine(paintPanels);
-```
-
-Using a regular function to paint multiple panels:["Selection", "SingleClick", "DoubleClick", "ReturnKey" ]const var ModTable = Content.getComponent("Viewport1");
-
-ModTable.setTableMode({
-	"MultiColumnMode": false,
-	"HeaderHeight": 32,
-	"RowHeight": 32,
-	"ScrollOnDrag": false
-});
-
-ModTable.setTableRowData([
-{
-	"Source": "Source",
-	"Mode": 
-	{
-		"items": ["Yes", "No", "Maybe"],
-		"Value": "No"
-	}
-},
-{
-	"Source": "Other Source",
-	"Mode": 
-	{
-		"items": ["Some other item", "Second"],
-		"Value": "Second"
-	}
-}]);
-
-ModTable.setTableColumns([
-{
-	"ID": "Source",
-	"Type": "Text",
-	"MinWidth": 150
-},
-{
-	"ID": "Mode",
-	"Type": "ComboBox",
-	"MinWidth": 80,
-	"Toggle": true,
-	"Text": "Default",
-	"ValueMode": "Text"
-}
-]);const var shader = Content.createShader("myShader");
-
-// No blending
-shader.setBlendFunc(false, shader.GL_ZERO , shader.GL_ZERO);
-
-// Additive blending with alpha
-shader.setBlendFunc(true, shader.GL_SRC_ALPHA , shader.GL_ONE);
-
-// Default blending based on alpha value:
-shader.setBlendFunc(true, shader.GL_SRC_ALPHA, shader.GL_ONE_MINUS_SRC_ALPHA);
-
-// Additive blending without alpha
-shader.setBlendFunc(true, shader.GL_ONE, shader.GL_ONE);
-
-// Additive blending with alpha
-shader.setBlendFunc(true, shader.GL_SRC_ALPHA , shader.GL_ONE);cpp
-// GLSL side
-
-uniform float myValue;
-uniform vec3 myColour;
-uniform float myBuffer[128];
-
-void main()
-{
-    fragColor = pixelAlpha * vec4(myColour, myValue);
-}
-```
-
-From the script you need to call this:
-
-```javascript
-// Javascript side:
-
-const var shader = Content.createShader("MyShader");
-
-// a single number will be parsed as float
-shader.setUniformData("myValue", 0.8);
-
-// an array with three elements will be interpreted as vec3 type.
-shader.setUniformData("myColour", [0.0, 1.0, 0.0]);
-
-const var buffer = Buffer.create(128);
-
-// A Buffer object (a float array) will be passed on to the GPU as read only
-shader.setUniformData("myBuffer", buffer);inline function dropCallback(f)
-{
-	local samplePath = f.getReferenceString("Samples");
-	
-	Sampler.loadSampleMapFromJSON([
-	{
-		"FileName": samplePath
-	}]);
-};FileSystem.browse(undefined, false, "*.txt", function(result)
-{
-    // the parameter is a File object, so we just show it
-    // in the OS' file browser.
-    result.show();
-});const var arr = []; // Declare an array
+const var arr = []; // Declare an array
 
 // preallocate 10 elements, do this if you
 // know how many elements you are about to insert
@@ -624,613 +214,7 @@ arr1.sortNatural();
 // [[4, 2], [1, 12], "1", 3, 
 // "3LittlePigs", 5.2, "17", 
 // {"prop1": 12, "prop2": 55} ]
-Console.print(trace(arr1));const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{		
-	g.drawImage("image", this.getLocalBounds(0), 0, 0); 
-	g.addDropShadowFromAlpha(Colours.black, 100); // borderShadow from 1 - 100
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(0);
-	
-	g.addNoise(0.07); // 0 -> 0.999
-	
-	g.endLayer();
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(1);
-	g.setGradientFill([Colours.black, 0, 0,
-				   Colours.white, this.getWidth(), 0,
-				   false]);
-	g.fillRect(this.getLocalBounds(0));
-	
-	g.applyGamma(1.5); // baseline 1
-	
-	g.endLayer();
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(1);
-
-	g.setColour(Colours.grey);
-	g.fillRect(this.getLocalBounds(0));
-	g.applyGradientMap(Colours.withBrightness(Colours.blue, 0.5), Colours.withBrightness(Colours.red, 0.7));
-	
-	g.endLayer();
-
-});const var Panel1 = Content.getComponent("Panel1");
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(1);
-	g.drawImage("image", this.getLocalBounds(0),0,0);
-	
-	g.applyHSL(270, 100, 0); // Hue: 0 - 360, Saturation: 0 - 100: Lightness: 0 - 100
-		
-	g.endLayer();
-});const var Panel1 = Content.getComponent("Panel1");
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-const var c = Content.createPath();
-
-c.startNewSubPath(0.0, 0.0);
-c.lineTo(1.0, 1.0);
-c.lineTo(1.0, 0.0);
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(1);
-	g.drawImage("image", this.getLocalBounds(0),0,0);
-	
-	g.applyMask(c, this.getLocalBounds(0), 0); // 1 to invert the mask. 
-	
-	g.endLayer();
-
-});const var Panel1 = Content.getComponent("Panel1");
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(0);
-	
-	g.drawImage("image", this.getLocalBounds(0),0,0);
-	
-	g.applySepia();
-	
-	g.endLayer();
-});const var Panel1 = Content.addPanel("Panel1", 0, 0);
-
-const var sh = Content.createShader("GLSL/init.glsl");
-
-PAnel1.setPaintRoutine(function(g)
-{
-	g.applyShader(sh, this.getLocalBounds(0));
-});const var Panel1 = Content.getComponent("Panel1");
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(1);
-	g.drawImage("image", this.getLocalBounds(0),0,0);
-	
-	g.applySharpness(1); // apply a sharpness filter
-	
-	g.endLayer();
-
-});const var Panel1 = Content.getComponent("Panel1");
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(1);
-	
-	g.drawImage("image", this.getLocalBounds(0),0,0);
-	
-	g.applyVignette(10, 1, 0.5); // 
-	
-	g.endLayer();
-
-});const var Panel1 = Content.getComponent("Panel1");
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginBlendLayer("Phoenix", 1);
-	
-	g.drawImage("image", this.getLocalBounds(0),0,0);
-	
-	g.endLayer();
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(true); 
-	
-	g.endLayer();
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(1);
-	g.drawImage("image", this.getLocalBounds(0),0,0);
-	
-	g.boxBlur(10); // apply box blur 0 - 100
-	
-	g.endLayer();
-});const var Panel1 = Content.getComponent("Panel1");
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginBlendLayer("Phoenix", 1);
-	
-	g.drawImage("image", this.getLocalBounds(0),0,0);
-	
-	g.desaturate();
-	
-	g.endLayer();
-});Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setFont("nunito", 32);
-	g.setColour(Colours.white);
-	g.drawAlignedText("Hello World", this.getLocalBounds(0), "top");
-	
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{
-	g.setFontWithSpacing("Comic Sans MS", 40.0, 0.05);
-	g.drawAlignedTextShadow("funky", this.getLocalBounds(0), "centred", { "Colour": Colours.red, "Offset": [0, 4], "Radius": 10});
-	g.drawAlignedTextShadow("funky", this.getLocalBounds(0), "centred", { "Colour": Colours.green, "Offset": [2, 2], "Radius": 0});
-	g.setColour(Colours.white);
-	g.drawAlignedText("funky", this.getLocalBounds(0), "centred");
-});const var Panel1 = Content.addPanel("Panel1",10,10);
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.drawDropShadow(this.getLocalBounds(12), Colours.black, 20);
-	g.setColour(Colours.red);
-	g.fillRect(this.getLocalBounds(12));
-});
-```
-
-Paint routines can only draw within the area of the object they are applied to, so a drop shadow applied to an entire panel will not dispaly around the panel as expected.
-
-In the above example, the rectangle and drop shadow are being drawn to an area smaller than the panel they are painted on, using the reduceAmount paramtere of `getLocalBounds`.
-```
-HiseSnippet 1041.3ocsW0saiSDEdbZcE1vhnR7.LjavQJjMoa6BRqPj1jVHBZ2HRYAIDZ0D6Iwip8LV1iaR.UIzdAWviBWyCvdION6a.bF+Sxjs+rsFEeQzb9+a97YFexvXgKMIQDiLrNeQDEY7AliVvk987ILNZPejwtlQDNMHwm3IlIoIRzQKhHIITOjgwVesxMCqsQYOu4qNhDP3tzUpPnWHXtzuiExjqzNr62xBBNg3QOmEp489cG3J38DAhT.RaY1FEQbufLkdFQ4VMSjwNG6wjh3QRB.FvmiDdKF4Klwy8+ErD13.pRnCZDjnb0nd9r.ugka2DDxX6gq17aku4+XySYdrk5WQBeTlA7pHz4.iZ2Ej57.fjgFj1NGR6ZNxMlEIWYQgm22b.WRimP.pVGJ49hp8m0L6I.O3xVgjKnmDCBKiv4osa2DC+z3Y11O9weBNhGn7F1rzXaf+SjqoB+k3xjMkJ6IBiDbPvottS0UISWQqDpbHrR98hTInvYRJ2UxDbmoMr+Maqosl.s.GFD3H8YIpL6Te7z7W80a.Yyx1ZhHF6LGy3J7LJc7PUmXCaKHbqKIwXRLk.n6mmmG975MZhKVuX45ej4I8cJk9FJapuzowu7LKn..J7hIy5GKhFk0f6nRYSbNLRZMiI8OLHxm3TpYb.zP1D2t0APF2SQgVWYekFSVBS7mgOSHwtpWx37iP3wTWRZBEK8IxOMASBfh4s.S.EL9zUT+xbrFyCb0RxOIi8K8CH+R1EK3PYoOm6jwx1WYieaSSlbi1TUJVDDPiuQypCpw2UfN7zvwz3l3KIAozkNBcxqe7Xm62wC27MtliB9.NS97HZg7Ih.OUauZ80OLgJXNX0OLnOQRTmuJzA9EQikLEbL5SuDtfJ+zlkYeZxERQTluEbM.YYl0GUdVTw4HFT5OzTukGMW+duE5ByTMgKU75W00OqOTWiwNZUz5NqX46815Ub+tZUre2HnSlK0R4ag0BDYZ7Of6knwz3UfDSRCKuC1Zm+EdPqocOc0nGLp6niZdEQ84F5n9u27nduaiq+8IUkqmu4Q8StMT2M89i5+XMt9MadTu+s0g75fp1g3s4Q8AZnt6uVQt9uP++35qOAAL6hvKMfHWefF0jaEFfqwWaJB0jB7Dlbg9jcOfobZemS4beg3tlCYRW+aFi0tALBWvuIvXwrgOx73ISntxU.bayS9opNH36n74yLM8ThLlAMUlmkFNBdU6RgpyUiRnZNpoZRykaqjULvHJ2KSP0PTXriR1nvXmRinPhar3kt4e7VM846koAvDOaXaKySUx3NnrOnqyygvvvuz0c8Tcs.2qpA9jpF39UMvCpZfOspA94UMvu3cGn5+pbXpTDlerAgNc3wYS.YXbLm.cfYcqn+CPvQZOn
-```
-
-Another method is to use a transparent panel as a shadow catcher.
-```
-HiseSnippet 1080.3ocwW0raaaDDdoroQDaSQMPe.13KkBPUQxwNs.AAU1RVEBM1QvxMn2BVQthbgWtKwxkQVoH.E4PeX549.ji8knuC4MHcW9izpX4+HZg0AAMy7My9M6LC0vQBtGNIgK.V0OadLFX8k1imyjg8BQDFXXef011wHFllDh74yj3DI3v4wnjDrOvxZieRCyp9lfrOe7GODQQLO7RU.vq3DO7KHQD4Rsi59yDJc.xGeFIx.8dcG5wY83TdphRaX2FDi7NGEfOAogUyFXs0Q9DIWLVhTjQg4Pt+7wg7Yrb7uhjPlPwZgNfwp.kqFzKjP8GUltI.f0liVl7ajm7ei8wDexB8KuD95LCvkdXdGXU65nTm6.krLnzl4TZa6wdBRrboEMe9B6gLIVLEotpMoRNVPs+olcOtBAS1JBcNdfPIrvC2m1tcSn5qFOyw4wO9QvXFUiVkrXgi59OQthJ3ygkAK.K6wih4Lkf6Nlf1wHXiSmLR2y.+N3IbIzSmmv7tH3DrGJMACkgH42l.QTAF4OGhTJHrfkm9hXrxge.kt37SxHPItryeJW.cu.RXlQngS8KZkfkiT7TdJOUpnqqu.MaAfm4TWQc3fTlmjnHfCgQUffSKT.MQ6Fzv42bpS4dHph1OWS7DM2dgVyg7Tleham1YAsdPKsq8E73wYyOtnlv7t6jVyHxvCnwgH2RMSnpl8lv1s1uQSXYHt4iHQWTzQvsDm6NSBxUsSCMpfVSUiampcD6eJ1ShXATrlLFdvE9XwoHeRZRlWuaQ5yYpxH9kL2rL24cNvO2zzoq0ltxI3TJVrVy5Yew04nKKMZBVzD9FDMEu.nZ3X0ItstcSbd4MRF.4rgLh7kw3B4AbpudRR+6KOeBJ5DU+5WF1GIQ5Q1BcJbwXgjnoiUe7aTOyKe.ttcebx4RdbF1hdWf0CjYVeX43st0BPTG8WYaNVAtv7QoyMElQ7kgKT7g22MDSBBklZHRbT4CSquEmy+j1vRs6Zp1ZKC54bszqbVnsI81qqA852MFITQxHjeVhUPeaq+VAuj51VueEBp42mTeVCsKUW1oapCbmyjNlYBqhYxYVlYxec+jI6dU0jeeZUqIWb+jIO4pxjto29L4OVol7w6mLYuqp65Czp1c4e+jI6ajIceaEqI+I3+9Zxk2bRsyF2OkhjqtHmdi0BCp+qYksmzaHwRHx4lazdG1tq80tc2skhaaOhH8BWOGqsFNpdz8+GbrXm3GZezzopUFVRvMsG7qUcA3a33yWOK3XjTPTMZ1mjFMVUo8vpSmo2eT2vTS23lK2VKquAFiY9YB5FhBiczxVEF6TZDDg7D7W6kuggdq6GjoQwIV1KYT29XsLrCHaqCy64H0KA7ZOuUC0kbb2p53Sppi6UUG2upN9zp532WUG+ga1Q86ncPpjGkO1..GO5nr0zrrNhgTcfYcqf+EsW3jJconst var Panel = Content.addPanel("Panel", 0, 0);
-
-const var p = Content.createPath();
-
-// pass an array with numbers to load SVG images
-p.loadFromData([110,109,0,245,207,67,128,217,36,67,108,0,236,189,67,128,89,69,67,108,0,
-                245,207,67,128,217,101,67,108,192,212,207,67,128,53,81,67,98,217,93,211,
-                67,51,180,80,67,123,228,219,67,2,123,91,67,128,144,224,67,0,149,101,67,
-                98,39,209,224,67,29,247,89,67,79,60,223,67,36,224,61,67,0,245,207,67,0,
-                12,54,67,108,0,245,207,67,128,217,36,67,99,109,128,33,193,67,0,168,88,
-                67,108,0,66,193,67,0,76,109,67,98,231,184,189,67,77,205,109,67,69,50,
-                181,67,126,6,99,67,64,134,176,67,128,236,88,67,98,154,69,176,67,99,138,
-                100,67,49,218,177,67,174,80,128,67,128,33,193,67,192,58,132,67,108,128,
-                33,193,67,0,212,140,67,108,192,42,211,67,0,40,121,67,108,128,33,193,67,
-                0,168,88,67,99,101,0,0]);
-
-Panel.setPaintRoutine(function(g)
-{
-    g.fillAll(Colours.grey);
-    var area = [20, 20, 100, 100];
-    
-    g.drawDropShadowFromPath(p, area, 0x88000000, 5, [0, 5]);
-    g.setColour(Colours.white);
-    g.fillPath(p, area);
-});
-```
-
-```javascript
-const var Panel1 = Content.getComponent("Panel1");
-
-// that's a poor circle, but the blur will save us...
-var circlePath = Content.createPath();
-circlePath.startNewSubPath(0.5, 0);
-circlePath.quadraticTo(1.0, 0.0, 1.0, 0.5);
-circlePath.quadraticTo(1.0, 1.0, 0.5, 1.0);
-circlePath.quadraticTo(0.0, 1.0, 0.0, 0.5);
-circlePath.quadraticTo(0.0, 0.0, 0.5, 0.0);
-
-Panel1.set("width", Panel1.get("height"));
-
-Panel1.setPaintRoutine(function(g)
-{
-	g.drawDropShadowFromPath(circlePath, this.getLocalBounds(50), Colours.black, 50, [0, 0]);
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawEllipse([10,10,80,50], 1.5);
-});const var Panel1 = Content.getComponent("Panel1");
-
-const var fft = Engine.createFFT();
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawFFTSpectrum(fft, this.getLocalBounds(0));
-
-});Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setFont("nunito", 32);
-	g.setColour(Colours.white);
-	g.drawFittedText("Hello World", this.getLocalBounds(0), "topLeft", 2, 20);
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawHorizontalLine(0, 0, this.getWidth()); // xStart, yStart, length
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image"); // Load image.png from the "Images" folder
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.drawImage("image", this.getLocalBounds(0), 0, 0); // draw the image in the Panel boundaries.
-	
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawLine(0, 100, 50, 100, 1.2); // x1,x2,y1,y2,linewidth
-});const var Panel1 = Content.getComponent("Panel1");
-
-const var markd = Content.createMarkdownRenderer();
-markd.setTextBounds(Panel1.getLocalBounds(0));
-
-markd.setText("
-## Heading
-Explain explain explain
-");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.drawMarkdownText(markd);
-});const var Panel1 = Content.getComponent("Panel1");
-
-const var text = "Lorem ipsum HISEorium explanadum in excelsis christophorum non delandam improprium contenatio cimex."
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawMultiLineText(text, [0,20], this.getWidth(), "left", 2.); // text, width, alignment, lineHeight
-});const var c = Content.createPath();
-
-c.startNewSubPath(0.0, 0.0);
-c.lineTo(0.0, 1.0);
-c.lineTo(1.0, 0.0);
-c.lineTo(0.5, 1.0);
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{
-    g.fillAll(0x22FFFFFF);
-    g.setColour(Colours.white);
-    
-    var p = {};               // Pick one of these:
-    p.EndCapStyle = "butt";   // ["butt", "square", "rounded"]
-    p.JointStyle = "rounded"; // ["mitered", "curved","beveled"]
-    p.Thickness = 12.0;
-    
-	g.drawPath(c, this.getLocalBounds(p.Thickness), p);
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawRect(this.getLocalBounds(0), 3);
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.drawRepaintMarker(""); 
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	
-	// area, float value (0-50) for all corners or object with {Cornersize:15, Rounded:[1,1,1,1]}, lineWidth
-	g.drawRoundedRectangle([8,8,90,60], {CornerSize:15, Rounded:[0,1,1,0]}, 1.5); 
-});const var Panel1 = Content.getComponent("Panel1");
-
-const var svg = Content.createSVG("552.nT6K8CFjCTOD.Xa2dUB7vwL.SvXp6TpBfQoF8BK9fB04advjZYtXueJWWylbAdFn2PtHYAvT.HE.5rS67tttXTRauwfO3CIDiu+uEnPhmjIRhwHzJhQF3KBCMfvDQ7t31dIDgESh.gDAfDfAG.yX3jEmynrvT6sGDhQgIS.mtvWqbE19fR+gS37cSa4dYTpb.jfkyJYy3PyjkcyHqiHkbkmw0xosaVsFbxVQosIEihh9Mv2rJRRobNsgevG537uF5+jOIbpRFgN6kaiccsXO3.R4Cmv1V2Nn01x+OFiaUWLMJ8Bwqzz3Oc91UV8SE5cH4u3PqUGWVebIyRsw48BhlN9rBwrz797idlkWt7DT4p2TTfSTz4L1vT586Bx6wT5los6KELGYsD9l0vxX2Hq2aZ2rpGVVYb..FbwsEgrDMmMuWo0KZZndSzCMpw+ZcoVcYs9Hc4C0.zG4SZc4IxoRn2A3j0CaSoU8met3T+XD9nfkG5I.iKsD8g7mm4CjWcfU+g57voNdPnfPf.C.YHCuCPQ..D.VbASWpJIv.zgSfoDP4fAkPqLUiDXB.n..V7tA3Hb.iq3e.SSDCbUQzX3KnvI9YcxM6fibJgmc42KQ3z.uEElWxrMVBU.J1gKFfMkE9fPWLPtyXTAFX.gIKvPCvjUfnO.FubCO.OzFZEtB9CDBDLLstdfvZ0LokAGD6UR.RFeMvXSxYionq.qoALngCSAwAtBX.Fo.");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawSVG(svg, this.getLocalBounds(0), 1);
-});Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setFont("nunito", 32);
-	g.setColour(Colours.white);
-	g.drawText("Hello World", this.getLocalBounds(0));
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawTriangle(this.getLocalBounds(0), Math.toRadians(180), 2);
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.drawVerticalLine(this.getWidth()/2, 0, this.getHeight()); // xStart, yStart, length
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(true); 
-	
-	 // fill the layer.
-	
-	g.endLayer();
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.fillAll(Colours.grey);	
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.pink);
-	g.fillEllipse([0,0,this.getWidth(), this.getHeight()]);
-});const var p = Content.createPath();
-
-p.startNewSubPath(0.0, 0.0);
-p.lineTo(0, 0);
-p.lineTo(0.5, 1);
-p.lineTo(1, 0);
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
-	g.fillPath(p, this.getLocalBounds(0));
-});Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);	
-	g.fillRect([0,0,this.getWidth(),this.getHeight()]);
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.fillRoundedRectangle(this.getLocalBounds(10), 25); // area, rounded 0 - 100+
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);	
-	g.fillTriangle([0,0,this.getWidth(), this.getHeight()], Math.toRadians(90));
-});const var p = Content.createPath();
-
-p.startNewSubPath(0.0, 0.0);
-p.lineTo(0, 0);
-p.lineTo(0.8, 1);
-p.lineTo(1, 0);
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
-	g.flip(0, this.getLocalBounds(0));
-	g.fillPath(p, this.getLocalBounds(0));
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.beginLayer(true);
-	
-	g.setColour(Colours.white);
-	g.fillRoundedRectangle(this.getLocalBounds(10), 50);
-	g.gaussianBlur(12);
-	
-	g.endLayer();
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	Console.print(g.getStringWidth("Hello"));
-});const var Panel1 = Content.getComponent("Panel1");
-
-const var p = Content.createPath();
-
-p.startNewSubPath(0.0, 0.0);
-p.lineTo(0, 0);
-p.lineTo(0.8, 1);
-p.lineTo(1, 0);
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
-	g.rotate(Math.toRadians(180), [this.getWidth()/2,this.getHeight()/2]);
-	g.fillPath(p, this.getLocalBounds(0));
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.fillEllipse([0,0,50,50]);
-
-});
-```
-
-
-
-```javascript
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setColour(Colours.white);
-	g.fillEllipse([0,0,50,50]);
-	
-	g.setColour(Colours.grey);
-	g.fillEllipse([55,0,50,50]);
-	
-	g.setColour(Colours.black);
-	g.fillEllipse([110,0,50,50]);
-	
-	g.setColour(Colours.red);
-	g.fillEllipse([0,55,50,50]);
-	
-	g.setColour(Colours.green);
-	g.fillEllipse([55,55,50,50]);
-	
-	g.setColour(Colours.dodgerblue);
-	g.fillEllipse([110,55,50,50]);		
-});Engine.loadFontAs("{PROJECT_FOLDER}Nunito-Regular.ttf", "nunito");
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setFont("nunito", 48);
-	g.setColour(Colours.white);
-	g.drawAlignedText("hello", this.getLocalBounds(0), "top");
-});Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setFontWithSpacing("nunito", 36, 0.08); // from 0 to 1 over the whole width of the panel.
-	g.setColour(Colours.white);
-	g.drawAlignedText("hello", this.getLocalBounds(0), "top");
-});// A blurry white ball in the middle
-g.setGradientFill([Colours.white, 100.0, 100.0,
-				   Colours.black, 50.0, 50.0,
-				   true]);
-
-// A top down gradient with a black bar in the middle and white at the edges
-g.setGradientFill([Colours.white, 0.0, 0.0,
-				   Colours.white, 0.0, 100.0,
-				   false,
-				   Colours.black, 0.5]);
-```
-
-
-```javascript
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setGradientFill([Colours.white, 0 , 0,
-				   Colours.black, this.getWidth()/1.5, 0,
-				   false]);
-				   
-	g.fillRect(this.getLocalBounds(0));
-});const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
-
-Panel1.setPaintRoutine(function(g)
-{	
-	g.setOpacity(0.3);	
-	g.drawImage("image", this.getLocalBounds(0), 0, 0); 
-});// Create a wrapper object around the expansion handler
-const var expHandler = Engine.createExpansionHandler();
-
-function installExp(hxiFile)
-{
-    expHandler.encodeWithCredentials(hxiFile);
-};
-
-FileSystem.browse(FileSystem.Documents, 
-                  false,   // read
-                  "*.hxi", // hxi
-                  installExp); // callbackExpansionHandler.FileBased
-ExpansionHandler.Intermediate
-ExpansionHandler.Encryptedconst var t = FileSystem.getFolder(FileSystem.Desktop).getChildFile("test.hr1");
-const var e = Engine.createExpansionHandler();
-
-function installCallback(obj)
-{
-    if(obj.Status == 2 && isDefined(obj.Expansion))
-    {
-        // make sure the user presets are updated
-        obj.Expansion.rebuildUserPresets();
-        
-        // ask the user if he wants to delete the archive file...
-        Engine.showYesNoWindow("Installation sucessful", 
-                               "Do you want to delete the archive file", 
-        function(ok)
-        {
-            if(ok)
-                t.deleteFileOrDirectory();                
-        });
-    }
-};
-
-e.setInstallCallback(installCallback);
-e.installExpansionFromPackage(t, FileSystem.Expansions);const var th = Engine.createTransportHandler();
-
-th.setOnBypass(function(isBypassed)
-{
-	if(isBypassed)
-	{
-		PeakMeter.clear(); // whatever...
-		someTimer.stopTimer();
-	}
-	else
-	{
-		// resume the timer that detects the peak
-		someTimer.startTimer(30);
-	}
-});// create a typed reference from the build integer index
-var asSampler = builder.get(sampler, builder.InterfaceTypes.Sampler)
-
-asSampler.loadSampleMap("MySampleMap");// Add the AHDSR (we need to save the return value for the next call)
-var ahdsr = builder.create(builder.Modulators.AHDSR,    // the module type
-	               "GainAHDSR " + (i+1),        // the ID 
-	               sampler,                     // the parent module
-	               builder.ChainIndexes.Gain);  // the slot type
-	
-	
-builder.setAttributes(ahdsr, {
-  "Attack": 8000,
-  "Release": 100.0
-});// Assume 'audioFile' is a valid AudioFile object
+Console.print(trace(arr1));// Assume 'audioFile' is a valid AudioFile object
 
 // Retrieve the current audio content
 var audioContent = audioFile.getContent();
@@ -1417,422 +401,87 @@ Console.print(counter); // 0
 // Interface: 0
 // Interface: 0
 // Interface: 1
-// Interface: 2const var f1 = Engine.createFixObjectFactory({
-	"myValue": 17,
-	"someOtherValue": 42.0
-});
+// Interface: 2// Create a background task and give it a name that's descriptive
+const var b = Engine.createBackgroundTask("DownloadTest");
 
-// Creates a preallocated array with the given size
-const var list = f1.createArray(64);
+// Let's forward the status and progress to the official HISE progress system
+// (this will show the status in the main top bar in HISE and you can hook up
+//  Panels to a preload callback on your UI)
+b.setForwardStatusToLoadingThread(true);
 
-// Creates an object for interacting with the array above
-const var obj = f1.create();
+// CURL will spit out a new line roughly every second, so setting the timeout to 2 seconds will ensure 
+// that it can be cancelled gracefully.
+b.setTimeOut(2000);
 
-Console.print(trace(obj));
-
-// Now we want to push an object with both values zero
-// into the list. 
-obj.myValue = 0;
-obj.someOtherValue = 0.0;
-
-// This will not insert a reference into the array but copy the 
-// data values from the current state of obj
-list.push(obj);
-
-// You can also call trace with a FixObjectArray and it will dump it like a JSON
-Console.print(trace(list));
-
-// this function will perform a bitwise comparison of the data
-const var idx = list.indexOf(obj);
-Console.print(idx); // => 0
-
-obj.myValue = 90;
-
-// Now it won't find the element because we changed it.
-// Note that that's different from the default JS behaviour
-// because we are not storing a reference to the object in the 
-// array but a copy!
-const var idx2 = list.indexOf(obj);
-
-Console.print(idx2); // => -1const var f1 = Engine.createFixObjectFactory({
-	"eventId": 0,
-	"noteNumber": 0
-});
-
-// This will make all indexing functions only look for the eventID
-f1.setCompareFunction("eventId");Content.addVisualGuide([0, 200], Colours.white);       // adds a horizontal line at 200px
-Content.addVisualGuide([100, 0], Colours.red);         // adds a vertical line at 100px
-Content.addVisualGuide([10, 10, 100, 50], 0xFF00FF00); // adds a rectangle
-
-Content.addVisualGuide(0, 0);                          // clears all visual guides// Save the image to C:\Users\UserName\Documents\myimage.png;
-Content.createScreenShot([0, 0, 1024 768], 
-                         FileSystem.getFolder(FileSystem.Documents), 
-                         "myimage");const var t = Engine.createTimerObject();
-const var Label1 = Content.getComponent("Label1");
-reg isPending = false;
-
-t.setTimerCallback(function()
+// We can use the finish callback to show / hide some elements
+b.setFinishCallback(function(isFinished, wasCancelled)
 {
-	var tooltip = Content.getCurrentTooltip();
+	b.setProgress(0.0);
+
+	Console.print("Finished: " + isFinished);
+	Console.print("Cancelled: " + wasCancelled);
+});
+
+function downloadLogger(thread, isFinished, data)
+{
+	if(isFinished)
+		return;
+
+	// Now let's hack around and format the CURL output to something
+	// that we can show in HISE
 	
-	if(tooltip == "")
+	// Begin of nasty hacking procedure...
+	var v = data.split(" ");
+	for (i = 0; i < v.length; i++) 
 	{
-		// Now the mouse is over a component without a tooltip
+	    if (v[i].length == 0)
+	        v.removeElement(i--);
+	}
 	
-		if(Label1.get("text") != "" && !isPending)
-		{
-			// The tooltip label was not empty so we set the isPending flag
-			// and reset the internal counter of the timer object
-			isPending = true;
-			this.resetCounter(); // [1]
-		}
-		else if (this.getMilliSecondsSinceCounterReset() > 1000)
-		{
-			// Now a second has passed since [1] without a new tooltip being
-			// set, so we clear the label and reset the isPending flag
-			isPending = false;
-			Label1.set("text", "");
-		}
+	var progress = parseInt(v[0]) / 100.0;
+	var m = "Downloading " + v[3] + "B of " + v[1] + "B";
+	
+	if (progress < 0.01) 
+		m = "Start Downloading...";
+	// ...End of nasty hacking procedure
+	
+	thread.setProgress(progress);	
+	thread.setStatusMessage(m);
+}
+
+// This button will just start and cancel the download
+const var button = Content.addButton("Run", 0, 0);
+button.set("saveInPreset", false);
+
+inline function onButton(component, value)
+{
+	if(value)
+	{
+		local f = FileSystem.getFolder(FileSystem.Desktop).getChildFile("testfile.dat");
+		
+		// Use CURL to download a test file of 100MB
+		b.runProcess("curl", ["https://speed.hetzner.de/100MB.bin",
+							  "--output", 
+							  f.toString(0)], 
+							  downloadLogger);
 	}
 	else
 	{
-		// We update the label with the new tooltip and
-		// clear the isPending flag
-		isPending = false;
-		Label1.set("text", tooltip);
+		// This should gracefully cancel the download
+		b.sendAbortSignal(false);
 	}
-});
-
-// We don't need it to be super fast, so 100ms should be fine
-t.startTimer(100);Content.setValuePopupData({
-    "itemColour":   Colours.forestgreen,    // BG colour TOP
-    "itemColour2":  Colours.firebrick, // BG colour BOTTOM
-    "bgColour":     Colours.gainsboro,      // In fact the Border colour...
-    "borderSize":   6.66,
-    "textColour":   Colours.navajowhite,
-    "fontSize":     66.6,
-    "fontName":     "Comic Sans MS"
-});
-```
-
-```javascript
-Content.setValuePopupData({
-    "fontName":"Comic Sans MS",
-    "fontSize": 14,
-    "borderSize": 1,
-    "borderRadius": 1,
-    "margin":0,
-    "bgColour": 0xFF636363,
-    "itemColour": 0xFF000000,
-    "itemColour2": 0xFF000000,
-     "textColour": 0xFF636363 
-});// Oscilloscope:
-d.createPath([0, 0, w, h],   // target rectangle 
-             [-1, 1, 0, -1], // samplerange 0 - numSamples,
-                             // valuerange: from -1 to 1
-             0.0);           // start at the center (bipolar)
-
-// Plotter
-d.createPath([0, 0, w, h],   // target rectangle 
-             [0, 1, 0, -1],  // samplerange 0 - numSamples,
-                             // valuerange: from 0 to 1
-             0.0);           // start at the bottom (unibipolar)
-
-// Inverted Plotter
-d.createPath([0, 0, w, h],   // target rectangle 
-             [0, 1, 0, -1],  // samplerange 0 - numSamples,
-                             // valuerange: from 0 to 1
-             1.0);           // start at the top (negative)const var b1 = Content.addButton("b1", 0, 0);
-const var laf = Content.createLocalLookAndFeel();
-
-b1.setLocalLookAndFeel(laf);
-
-/** Set the inline style sheet that just colours the button. */
-laf.setInlineStyleSheet("button{
-	background-color: red;
-}");// HiseScript:
-// Set myProperty as a pixel value
-laf.setStyleSheetProperty("myProperty", "10", "px");
-
-// CSS side
-button
-{
-	/** read the property and use it as border radius. */
-	border-radius: var(--myProperty);
-}
-```
-
-> Note that calling this method will automatically repaint the components so you don't have to explicitely repaint them with `sendRepaintMessage()` or friends.
-
-### Inbuilt colour properties
-
-Be aware that HISE will automatically send changes to any of the colour properties from an UI component to the CSS, so if you eg. want to update the background color based on the `bgColour` property, you don't need to use this method, but just use the variable in your CSS code like this:
-
-```javascript
-button
-{
-	background-color: var(--bgColour);
-}
-```
-
-### Value converters
-
-The third argument in the function call is a string that can be used to convert the value into a CSS value domain.
-
-| Type | Expected Value | Description |
-| = | == | === |
-| `""` | any string | does no conversion and just passes the raw string over to CSS |
-| `"px"` | a number | uses the number as pixel value |
-| `"%"` | a float number between 0.0 and 1.0 | converts the number to a percentage value. |
-| `"color"` | a colour value (either int or string) | converts any colour from HiseScript (eg. `Colours.red` or `0xFF00FF00` into a propert CSS string ('#FF00FF00') |
-| `path` | a [Path](/scripting/scripting-api/path) object. | Converts the given path into a base64 string which then can be used as `background-image` property to replace the standard background rectangle path. |
-| `class` | a string | writes one or multiple class selectors into the component. |
-
-```javascript
-// HiseScript:
-// Raw string
-laf.setStyleSheetProperty("rawString", "bold", "");
-
-// Pixel value (25px)
-laf.setStyleSheetProperty("pixelVariable", 25, "px");
-
-// Relative value (80%)
-laf.setStyleSheetProperty("percentageVariable", 0.8, "%");
-
-// Colour value (#FF0000FF)
-laf.setStyleSheetProperty("colorVariable", Colours.blue, "color");
-
-// Path object (some Base64 gibberish)
-const var p = Content.createPath();
-p.addEllipse([12, 12, 30, 30]);
-laf.setStyleSheetProperty("pathVariable", p, "path");
-
-// set the CSS class
-const var b = Content.getComponent("button");
-b.setStyleSheetProperty("class", ".someclass", "class");
-
-// CSS side
-button
-{
-	font-weight: var(--bold);
-	padding-left: var(--pixelVariable);
-	transform: scale(var(--percentageVariable));
-	background-color: var(--colorVariable);
-	background-image: var(--pathVariable);
-}
-
-.someclass 
-{
-	/* will be applied to the `b` Button only. */
-	background: red;
-}
-```
-
-The last conversion allows you to pass any path in HISE over to CSS and render it with box shadows & different stroke types. 
-
-### Precedence
-
-Using this method from the LAF object will send the value to all objects that use the LAF, however there is another [method](/scripting/scripting-api/scriptbutton#setstylesheetproperty) that you can call on individual UI components in order to use different properties for different components. 
-
-In that case, the properties set by the component method will always override the properties set by this method, even if they are executed in reversed order:
-
-```javascript
-const var b1 = Content.addButton("b1", 0, 0);
-const var b2 = Content.addButton("b2", 130, 0);
-
-const var laf = Content.createLocalLookAndFeel();
-
-b1.setLocalLookAndFeel(laf);
-b2.setLocalLookAndFeel(laf);
-
-/** Set the inline style sheet that just colours the button. */
-laf.setInlineStyleSheet("button{
-	background-color: var(--c);
-}");
-
-/** Set the component specific property. */
-b1.setStyleSheetProperty("c", Colours.blue, "color");
-
-/** Set the "global" property for all components. */
-laf.setStyleSheetProperty("c", Colours.red, "color");
-```
-
-In this code example, the first button will be blue, even if the property for the component was set before setting the global component.
-
-### Debugging properties
-
-In order to check the value of each property for individual components, you can right click on any UI component in the Interface designer that has assigned a CSS LookAndFeel and then choose `Show CSS debugger` in the context menu. Doing so for the second button will show this:
-
-```javascript
-Current variable values:
-{
-  "c": "#FFFF0000",
-  "bgColour": "#00000000",
-  "itemColour": "#00000000",
-  "itemColour2": "#00000000",
-  "textColour": "#00000000"
-}
-==============================
-
-/* CSS for component hierarchy: */
-
-button #b2 .scriptbutton
-
-/** Component stylesheet: */
-button #b2 .scriptbutton {
-  background-color[]: var(--c)
-}
-
-
-/** Inherited style sheets: */
-button {
-  background-color[]: var(--c)
-}someFunction({"value": Math.random()}).then ((result) => 
-{ 
-    console.log(result);
-});
-```
-
-#### HiseScript
-
-```javascript
-wv.bindCallback("someFunction", function(args)
-{
-	Console.print(args.value);
-	return args.value * 2.0;
-});wv.callFunction("someFunction", {"value": Math.random()});
-```
-
-#### Javascript in your webview:
-
-You will need to define a JS function in your webview code somewhere like this:
-
-```javascript
-// I'm not a web guy, but tucking it to the window object raises the chances of it being
-// resolved correctly...
-window.someFunction = function(args)
-{
-	console.log(args.value); // something between 0 and 1...
-};// define a prototype using the scriptnode syntax
-reg prototype = {
-	"MinValue": 20.0,
-	"MaxValue": 20000.0,
-	"SkewFactor": 0.6
 };
 
-// pass that into the factory to create a fix object
-const var f1 = Engine.createFixObjectFactory(prototype);
-
-// create a fix object (think JSON but faster)
-const var range = f1.create();
-
-// 9.5% slower than just calling Math.pow() (which is the baseline for this function)
-const var x = Math.from0To1(0.5, range);
-
-// 34% slower than just calling Math.pow
-const var y = Math.from0To1(0.5, prototype);
-
-// There's a small rounding error because of single precision vs. double precision
-// but that shouldn't have a real world impact
-Console.assertTrue(Math.abs(x - y) < 0.001);const var skewFactor = Math.skew(0.0, 20000.0, 1000.0);
-const var midPoint = Math.pow(0.5, 1.0 / skewFactor) * 20000.0; // => 1000
-```
-
-However the most interesting use case for this would be if you want to convert a range object from a mid point to a skew factor based range definition for increased performance:
-
-```javascript
-// This is a range how it would come from a UI component
-// it defines the curve with a middle position
-const var p1 = {
-	min: 20.0,
-	max: 20000.0,
-	middlePosition: 1000.0
-}
-
-// Using a skew-based range avoids an additional log calculation
-// in the conversion functions
-const var p2 = {
-	MinValue: p1.min,
-	MaxValue: p1.max,
-	SkewFactor: Math.skew(p1.min, p1.max, p1.middlePosition)
-};
-
-// We're caring about performance here so we use fix objects:
-const var f1 = Engine.createFixObjectFactory(p1);
-const var f2 = Engine.createFixObjectFactory(p2);
-const var o1 = f1.create();
-const var o2 = f2.create();
-
+Content.getComponent("Run").setControlCallback(onButton);function myTask(thread)
 {
-	.profile(" - mid point with JSON");
-
-	for(i = 0; i < 100000; i++)
-		Math.from0To1(0.5, p1);
-}
-
-{
-	.profile(" - skew factor with JSON");
-
-	for(i = 0; i < 100000; i++)
-		Math.from0To1(0.5, p2);
-}
-
-{
-	.profile(" - mid point with fix object");
-
-	for(i = 0; i < 100000; i++)
-		Math.from0To1(0.5, o1);
-}
-
-{
-	.profile(" - skew factor with fix object");
-
-	for(i = 0; i < 100000; i++)
-		Math.from0To1(0.5, o2);
-}
-
-/* Results:
-- mid point with JSON: 83.185 ms
-- skew factor with JSON: 29.896 ms
-- mid point with fix object: 27.032 ms
-- skew factor with fix object: 24.955 ms
-*/Console.print(Math.toDegrees(Math.PI*2)); // 360.0Console.print(Math.toRadians(360)); // 6.2831.. // PI*2// fmod will not wrap around zero
-Console.print(Math.fmod(-1.0, 19.0)); // -> -1.0
-
-// wrap will... wrap around zero
-Console.print(Math.wrap(-1.0, 19.0)); // -> 18.0const var mods = Knob1.createModifiers();
-
-// keyboard modifiers
-mods.shiftDown
-mods.altDown
-mods.ctrlDown
-mods.cmdDown
-
-// mouse button modifiers
-mods.rightClick
-mods.doubleClick
-
-// special modifiers
-mods.disabled
-mods.noKeyModifierconst var mods = Knob1.createModifiers();
-
-const var doubleClickAndShift = [ mods.doubleClick, mods.shiftDown];
-const var rightClickOrAlt = mods.rightClick | mods.altDown;
-const var commandOrShift = mods.shiftDown | mods.cmdDown;
-const var doubleClickWithoutModifiers = [ mods.doubleClick, mods.noKeyModifiers ];
-```
-
-You can just overwrite the function you want to reassign, however you need to make sure that the assignment doesn't create any collision with the default mapping, otherwise the action that will be performed might not be the one you have reassigned (it will just pick the first match that is stored in a arbitrary order internally).
-
-```javascript
-const var Knob1 = Content.getComponent("Knob1");
-const var mods = Knob1.createModifiers();
-
-// We want to reassign the reset double click to shift + double click
-Knob1.setModifiers(mods.ResetToDefault, [ mods.doubleClick, mods.shiftDown ]);
-
-// and the text input to a double click without modifiers.
-Knob1.setModifiers(mods.TextInput, [mods.doubleClick, mods.noKeyModifier]);Content.addKnob("Knob1", 0, 0);
+	for(i = 0; i < 1000000; i++)
+	{
+		if(thread.shouldAbort())
+			break;
+			
+		subFunctionThatTakes900MillisecondsPerRun();
+	}
+}Content.addKnob("Knob1", 0, 0);
 Content.addKnob("Knob2", 0, 50);
 Content.addKnob("Knob3", 0, 100);
 Content.addKnob("Knob4", 0, 150);
@@ -2256,221 +905,340 @@ b.addListener("", "funky", function(eventType, samplerId, data)
 		Console.print("Changed high key to " + data.value);
 	}
 });bc.sendMessage(0, false);
-bc.sendMessage(1, false);Console.print(trace(Colours.toVec4(Colours.saddlebrown)));const selection = Synth.getChildSynth("Sampler1").asSampler().createSelection(".")` //Array of `Sample` objects.
-`for (sample in selection){
-  Console.print(sample.get(Sampler.SamplEnd));
-}[
-{
-	"FileName": "C:\\MyFileName.wav",
-	"Root": 64
-},
-{
-	"FileName": "C:\\AnotherSample.wav",
-	"SampleStart": 64
-}];// A simple example for 2 dynamic layers with 2 RR repetitions.
-Sampler.enableRoundRobin(false);
+bc.sendMessage(1, false);// create a typed reference from the build integer index
+var asSampler = builder.get(sampler, builder.InterfaceTypes.Sampler)
 
-const var g1 = [1, 2, 3];
-const var g2 = [4, 5, 6];
-
-reg on = false;
-
-function onNoteOn()
-{
-    // Calling this function tells the sample to just use
-    // the first 3 tables for crossfading
-    Sampler.setMultiGroupIndex(g1, on);
-	Sampler.setMultiGroupIndex(g2, !on);
+asSampler.loadSampleMap("MySampleMap");// Add the AHDSR (we need to save the return value for the next call)
+var ahdsr = builder.create(builder.Modulators.AHDSR,    // the module type
+	               "GainAHDSR " + (i+1),        // the ID 
+	               sampler,                     // the parent module
+	               builder.ChainIndexes.Gain);  // the slot type
 	
-    on = !on;
-}const var obj = Sampler.getReleaseStartOptions();
-
-obj.FadeGamma = 0.5;
-
-Sampler.setReleaseStartOptions(obj);const var md = Content.createMarkdownRenderer();
-
-const var p = Content.createPath();
-
-// Create a triangle
-p.startNewSubPath(0.0, 0.0);
-p.lineTo(1.0, 1.0);
-p.lineTo(0.0, 1.0);
-p.closeSubPath();
-
-const var imageData = 
-[
-{
-	"URL": "my-path",
-	"Type": "Path",
-	"Data": p,
-	"Colour": Colours.blue
-}];
-
-md.setImageProvider(imageData);
-
-md.setText("### Example\n> Please render a path like an icon\n![](/my-path:30%)this is text after the icon");
-
-md.setTextBounds([10, 10, 200, 9000]);
-
-const var Panel1 = Content.getComponent("Panel1");
-
-Panel1.setPaintRoutine(function(g)
-{
-	g.fillAll(0xFF111111);
-	g.drawMarkdownText(md);
-});// Create a background task and give it a name that's descriptive
-const var b = Engine.createBackgroundTask("DownloadTest");
-
-// Let's forward the status and progress to the official HISE progress system
-// (this will show the status in the main top bar in HISE and you can hook up
-//  Panels to a preload callback on your UI)
-b.setForwardStatusToLoadingThread(true);
-
-// CURL will spit out a new line roughly every second, so setting the timeout to 2 seconds will ensure 
-// that it can be cancelled gracefully.
-b.setTimeOut(2000);
-
-// We can use the finish callback to show / hide some elements
-b.setFinishCallback(function(isFinished, wasCancelled)
-{
-	b.setProgress(0.0);
-
-	Console.print("Finished: " + isFinished);
-	Console.print("Cancelled: " + wasCancelled);
-});
-
-function downloadLogger(thread, isFinished, data)
-{
-	if(isFinished)
-		return;
-
-	// Now let's hack around and format the CURL output to something
-	// that we can show in HISE
 	
-	// Begin of nasty hacking procedure...
-	var v = data.split(" ");
-	for (i = 0; i < v.length; i++) 
+builder.setAttributes(ahdsr, {
+  "Attack": 8000,
+  "Release": 100.0
+});Console.print(trace(Colours.toVec4(Colours.saddlebrown)));{
+	.sample("my session"); // starts a sampling session until the block is done
+	
+	var x = [1, 2, 3, 4, 5];
+	
+	// creates a snapshot of the array and stores it as the first label
+	Console.sample("first", x);
+	
+	x[2] = 0;
+	
+	// creates a snapshot of the array and stores it under the second label
+	Console.sample("second", x);
+}Content.addVisualGuide([0, 200], Colours.white);       // adds a horizontal line at 200px
+Content.addVisualGuide([100, 0], Colours.red);         // adds a vertical line at 100px
+Content.addVisualGuide([10, 10, 100, 50], 0xFF00FF00); // adds a rectangle
+
+Content.addVisualGuide(0, 0);                          // clears all visual guides// Save the image to C:\Users\UserName\Documents\myimage.png;
+Content.createScreenShot([0, 0, 1024 768], 
+                         FileSystem.getFolder(FileSystem.Documents), 
+                         "myimage");const var t = Engine.createTimerObject();
+const var Label1 = Content.getComponent("Label1");
+reg isPending = false;
+
+t.setTimerCallback(function()
+{
+	var tooltip = Content.getCurrentTooltip();
+	
+	if(tooltip == "")
 	{
-	    if (v[i].length == 0)
-	        v.removeElement(i--);
-	}
+		// Now the mouse is over a component without a tooltip
 	
-	var progress = parseInt(v[0]) / 100.0;
-	var m = "Downloading " + v[3] + "B of " + v[1] + "B";
-	
-	if (progress < 0.01) 
-		m = "Start Downloading...";
-	// ...End of nasty hacking procedure
-	
-	thread.setProgress(progress);	
-	thread.setStatusMessage(m);
-}
-
-// This button will just start and cancel the download
-const var button = Content.addButton("Run", 0, 0);
-button.set("saveInPreset", false);
-
-inline function onButton(component, value)
-{
-	if(value)
-	{
-		local f = FileSystem.getFolder(FileSystem.Desktop).getChildFile("testfile.dat");
-		
-		// Use CURL to download a test file of 100MB
-		b.runProcess("curl", ["https://speed.hetzner.de/100MB.bin",
-							  "--output", 
-							  f.toString(0)], 
-							  downloadLogger);
+		if(Label1.get("text") != "" && !isPending)
+		{
+			// The tooltip label was not empty so we set the isPending flag
+			// and reset the internal counter of the timer object
+			isPending = true;
+			this.resetCounter(); // [1]
+		}
+		else if (this.getMilliSecondsSinceCounterReset() > 1000)
+		{
+			// Now a second has passed since [1] without a new tooltip being
+			// set, so we clear the label and reset the isPending flag
+			isPending = false;
+			Label1.set("text", "");
+		}
 	}
 	else
 	{
-		// This should gracefully cancel the download
-		b.sendAbortSignal(false);
+		// We update the label with the new tooltip and
+		// clear the isPending flag
+		isPending = false;
+		Label1.set("text", tooltip);
 	}
+});
+
+// We don't need it to be super fast, so 100ms should be fine
+t.startTimer(100);Content.setValuePopupData({
+    "itemColour":   Colours.forestgreen,    // BG colour TOP
+    "itemColour2":  Colours.firebrick, // BG colour BOTTOM
+    "bgColour":     Colours.gainsboro,      // In fact the Border colour...
+    "borderSize":   6.66,
+    "textColour":   Colours.navajowhite,
+    "fontSize":     66.6,
+    "fontName":     "Comic Sans MS"
+});
+```
+
+```javascript
+Content.setValuePopupData({
+    "fontName":"Comic Sans MS",
+    "fontSize": 14,
+    "borderSize": 1,
+    "borderRadius": 1,
+    "margin":0,
+    "bgColour": 0xFF636363,
+    "itemColour": 0xFF000000,
+    "itemColour2": 0xFF000000,
+     "textColour": 0xFF636363 
+});// Oscilloscope:
+d.createPath([0, 0, w, h],   // target rectangle 
+             [-1, 1, 0, -1], // samplerange 0 - numSamples,
+                             // valuerange: from -1 to 1
+             0.0);           // start at the center (bipolar)
+
+// Plotter
+d.createPath([0, 0, w, h],   // target rectangle 
+             [0, 1, 0, -1],  // samplerange 0 - numSamples,
+                             // valuerange: from 0 to 1
+             0.0);           // start at the bottom (unibipolar)
+
+// Inverted Plotter
+d.createPath([0, 0, w, h],   // target rectangle 
+             [0, 1, 0, -1],  // samplerange 0 - numSamples,
+                             // valuerange: from 0 to 1
+             1.0);           // start at the top (negative)/** If you start a comment with `/**` it will get attached to the metadata objects as `comment` property. */
+const var bc = Engine.createBroadcaster({
+	"id": "My Broadcaster",              // give it a meaningful name
+	"colour": -1,                        // assign a colour (-1 just creates a random colour from the ID hash)
+	"tags": ["audio", "value-handling"], // assign some tags
+	"args": ["myValue", "isPlaying"]
+});!!javascript
+// Create a filter effect
+const var effect = Synth.addEffect("PolyphonicFilter", "filter", 0);
+
+// Create a filter graph
+const var display = Content.addFloatingTile("tile", 0, 0);
+display.set("width", 200);
+display.set("height", 50);
+display.setContentData({"Type": "FilterDisplay", 
+                        "ProcessorId": "filter"});
+
+// Create a knob for the frequency
+const var filterKnob = Content.addKnob("filterKnob", 250, 0);
+filterKnob.set("mode", "Frequency");
+inline function f(component, value){ effect.setAttribute(effect.Frequency, value); };
+filterKnob.setControlCallback(f);
+
+const var modeSelector = Content.addComboBox("modeSelector", 400, 10);
+
+// Create the filter mode list object
+const var filterList = Engine.getFilterModeList();
+
+// Pick some values from the object and store it in an array
+const var filterModes = [ filterList.StateVariableNotch, 
+                          filterList.StateVariableLP ];
+                          
+// Create an array with a name for each mode
+const var filterNames = [ "Notch",
+                          "SVF Lowpass"];
+
+// Use the filterNames list as combobox items
+modeSelector.set("items", filterNames.join("\n"));
+
+
+inline function modeCallback(component, value)
+{
+    // combobox values are starting with 1
+    local index = value-1;
+    
+    if(index >= 0)
+    {
+        // use the index to get the actual number from the filterModes array.
+        effect.setAttribute(effect.Mode, filterModes[index]);
+    }
+}
+
+modeSelector.setControlCallback(modeCallback);!javascript
+Console.print(Engine.getOS());Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");const var myList = [1, 2, 3, 4, 5, 6];
+
+Engine.performUndoAction({
+  "obj": myList,				// the object that will be modified
+  "newValue": [3, 4, 5, 6, 7],  // the new state
+  "oldValue": myList.clone()    // the old state (we need to clone it or it will not keep the old values)
+}, function(isUndo)
+{
+	this.obj.clear();
+
+	// pick the values from the old or new state
+	for(v in isUndo ? this.oldValue : this.newValue)
+		this.obj.push(v);
+});
+
+// new state
+Console.print(trace(myList));
+
+Engine.undo();
+
+// old state
+Console.print(trace(myList));
+
+Engine.redo();
+
+// new state
+Console.print(trace(myList));const var macroNames = ["Volume", "FilterFreq", "FilterQ", "Reverb"];
+
+Engine.setFrontendMacros(macroNames);Engine.loadFontAs("{PROJECT_FOLDER}Fonts/Heebo.ttf", "heebo");
+Engine.setGlobalFont("heebo");// Create a wrapper object around the expansion handler
+const var expHandler = Engine.createExpansionHandler();
+
+function installExp(hxiFile)
+{
+    expHandler.encodeWithCredentials(hxiFile);
 };
 
-Content.getComponent("Run").setControlCallback(onButton);function myTask(thread)
+FileSystem.browse(FileSystem.Documents, 
+                  false,   // read
+                  "*.hxi", // hxi
+                  installExp); // callbackExpansionHandler.FileBased
+ExpansionHandler.Intermediate
+ExpansionHandler.Encryptedconst var t = FileSystem.getFolder(FileSystem.Desktop).getChildFile("test.hr1");
+const var e = Engine.createExpansionHandler();
+
+function installCallback(obj)
 {
-	for(i = 0; i < 1000000; i++)
+    if(obj.Status == 2 && isDefined(obj.Expansion))
+    {
+        // make sure the user presets are updated
+        obj.Expansion.rebuildUserPresets();
+        
+        // ask the user if he wants to delete the archive file...
+        Engine.showYesNoWindow("Installation sucessful", 
+                               "Do you want to delete the archive file", 
+        function(ok)
+        {
+            if(ok)
+                t.deleteFileOrDirectory();                
+        });
+    }
+};
+
+e.setInstallCallback(installCallback);
+e.installExpansionFromPackage(t, FileSystem.Expansions);inline function dropCallback(f)
+{
+	local samplePath = f.getReferenceString("Samples");
+	
+	Sampler.loadSampleMapFromJSON([
 	{
-		if(thread.shouldAbort())
-			break;
-			
-		subFunctionThatTakes900MillisecondsPerRun();
-	}
-}const var automationObject = 
-[
+		"FileName": samplePath
+	}]);
+};FileSystem.browse(undefined, false, "*.txt", function(result)
 {
-	"ID": "First Parameter",
-	"min": 0.5, 
-	"max": 2.0,
-	"middlePosition": 1.0,
-	"stepSize": 0.0,
-	"allowMidiAutomation": true,
-	"allowHostAutomation": false,
-	"connections": [
-	  {
-	  	"processorId": "SimpleGain1",
-	  	"parameterId": "Gain"
-	  },
-	  {
-	  	"processorId": "SimpleGain2",
-	  	"parameterId": "Gain"
-	  },
-	]
-}
-]const var uph = Engine.createUserPresetHandler();
+    // the parameter is a File object, so we just show it
+    // in the OS' file browser.
+    result.show();
+});const var f1 = Engine.createFixObjectFactory({
+	"myValue": 17,
+	"someOtherValue": 42.0
+});
+
+// Creates a preallocated array with the given size
+const var list = f1.createArray(64);
+
+// Creates an object for interacting with the array above
+const var obj = f1.create();
+
+Console.print(trace(obj));
+
+// Now we want to push an object with both values zero
+// into the list. 
+obj.myValue = 0;
+obj.someOtherValue = 0.0;
+
+// This will not insert a reference into the array but copy the 
+// data values from the current state of obj
+list.push(obj);
+
+// You can also call trace with a FixObjectArray and it will dump it like a JSON
+Console.print(trace(list));
+
+// this function will perform a bitwise comparison of the data
+const var idx = list.indexOf(obj);
+Console.print(idx); // => 0
+
+obj.myValue = 90;
+
+// Now it won't find the element because we changed it.
+// Note that that's different from the default JS behaviour
+// because we are not storing a reference to the object in the 
+// array but a copy!
+const var idx2 = list.indexOf(obj);
+
+Console.print(idx2); // => -1const var f1 = Engine.createFixObjectFactory({
+	"eventId": 0,
+	"noteNumber": 0
+});
+
+// This will make all indexing functions only look for the eventID
+f1.setCompareFunction("eventId");// Create a global routing manager
+const var rm = Engine.getGlobalRoutingManager();
+
+// Create the data cable
+const var dataCable = rm.getCable("dataCable");
 
 
-
-inline function onPresetLoad(var obj)
+// Register the callback
+dataCable.registerDataCallback(function(data)
 {
-	// do something with `obj`
-}
+	Console.print("DATA: " + trace(data));
+});
 
-inline function onPresetSave()
-{
-	return { "MyObject": someContent };
-}
+// Create some arbitrary data
+const var bf = Buffer.create(32);
+bf[10] = 90.0;
 
-uph.setUseCustomUserPresetModel(onPresetLoad, onPresetSave, false);inline function getNoteOff(list, noteOn)
-{
-    for(e in list)
-    {
-        if(e.isNoteOff() && e.getEventId() == noteOn.getEventId())
-            return e;
-    }
-}// Fetch a Panel
-const var Panel = Content.getComponent("Panel1");
+// Send the data over (this will not fire the callback above
+// but other targets)
+dataCable.sendData([bf, 100, "a string"]);const var rm = Engine.getGlobalRoutingManager();
+const var c = rm.getCable("myDataCable");
+c.sendData({ someJson: 1234, also: "strings are supported" });
+c.sendData([ 1, 2, 3, 4, 5, 6]);
+c.sendData(Buffer.create(128));
+```
 
-// Fetch a MIDI Player
-const var Player = Synth.getMidiPlayer("MIDI Player1");
+Note that there is not a data queue for the sender side of this protocol, which means that if you register a target after the data has been sent, it will not be "initialised" with the previously sent value. However if you're using the C++ API in your external node, it will queue the data that is about to be sent if the cable is not connected yet. 
 
-// Connect the player to the panel to make it update automatically
-Player.connectToPanel(Panel);
+Also it will skip its own callbacks, so if you register a callback using [Global Cable.registerDataCallback()](/scripting/scripting-api/globalcable#registerdatacallback), it will not be executed:
 
-Panel.setPaintRoutine(function(g)
-{
-    // create a list of note rectangles.
-    // the argument is the boundaries of this panel so it will scale
-    // them to the dimensions of the entire panel.
-    var entireArea = [0, 0, this.getWidth(), this.getHeight()];
-    var list = Player.getNoteRectangleList(entireArea);
-    
-    g.setColour(Colours.white);
+```javascript
+const var rm = Engine.getGlobalRoutingManager();
 
-    // Now we can simply iterate over them and paint them
-    for(note in list)
-    {
-        // `note` is a array with 4 numbers and can be passed
-        // into all Graphic API functions pretty conveniently.
-        g.fillRect(note);
-    }
-});// Do not call this in the audio thread obviously...
-inline function sequenceHasNoEvents(player)
-{
-    return player.getEventList().length == 0;
-}rm.connectToOSC({"Domain": "/myDomain"});
+// Create a instance of a cable
+const var c1 = rm.getCable("myDataCable");
+
+// Create a duplicate instance
+const var c2 = rm.getCable("myDataCable");
+
+// Register two callbacks to both objects
+c1.registerDataCallback(x => Console.print("C1 executed: " + trace(x)));
+c2.registerDataCallback(x => Console.print("C2 executed: " + trace(x)));
+
+Console.print("Send through cable 1");
+c1.sendData("some data");
+
+Console.print("Send through cable 2");
+c2.sendData("some data");
+
+// Output:
+// Interface: Send through cable 1
+// Interface: C2 executed: "some data"
+// Interface: Send through cable 2
+// Interface: C1 executed: "some data"rm.connectToOSC({"Domain": "/myDomain"});
 
 // React on /myDomain/fader1
 rm.addOSCCallback("/fader1", function(id, value) {});
@@ -2528,7 +1296,1641 @@ rm.sendOSCMessage("xy1", [0.2, 0.3]);
 
 
 // Send a message to an external display
-rm.sendOSCMessage("/label", "Hello World");const var mp = Content.addMultipageDialog("mp", 0, 0);
+rm.sendOSCMessage("/label", "Hello World");const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{		
+	g.drawImage("image", this.getLocalBounds(0), 0, 0); 
+	g.addDropShadowFromAlpha(Colours.black, 100); // borderShadow from 1 - 100
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(0);
+	
+	g.addNoise(0.07); // 0 -> 0.999
+	
+	g.endLayer();
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.setGradientFill([Colours.black, 0, 0,
+				   Colours.white, this.getWidth(), 0,
+				   false]);
+	g.fillRect(this.getLocalBounds(0));
+	
+	g.applyGamma(1.5); // baseline 1
+	
+	g.endLayer();
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+
+	g.setColour(Colours.grey);
+	g.fillRect(this.getLocalBounds(0));
+	g.applyGradientMap(Colours.withBrightness(Colours.blue, 0.5), Colours.withBrightness(Colours.red, 0.7));
+	
+	g.endLayer();
+
+});const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applyHSL(270, 100, 0); // Hue: 0 - 360, Saturation: 0 - 100: Lightness: 0 - 100
+		
+	g.endLayer();
+});const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+const var c = Content.createPath();
+
+c.startNewSubPath(0.0, 0.0);
+c.lineTo(1.0, 1.0);
+c.lineTo(1.0, 0.0);
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applyMask(c, this.getLocalBounds(0), 0); // 1 to invert the mask. 
+	
+	g.endLayer();
+
+});const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(0);
+	
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applySepia();
+	
+	g.endLayer();
+});const var Panel1 = Content.addPanel("Panel1", 0, 0);
+
+const var sh = Content.createShader("GLSL/init.glsl");
+
+PAnel1.setPaintRoutine(function(g)
+{
+	g.applyShader(sh, this.getLocalBounds(0));
+});const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applySharpness(1); // apply a sharpness filter
+	
+	g.endLayer();
+
+});const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.applyVignette(10, 1, 0.5); // 
+	
+	g.endLayer();
+
+});const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginBlendLayer("Phoenix", 1);
+	
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.endLayer();
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(true); 
+	
+	g.endLayer();
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(1);
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.boxBlur(10); // apply box blur 0 - 100
+	
+	g.endLayer();
+});const var Panel1 = Content.getComponent("Panel1");
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginBlendLayer("Phoenix", 1);
+	
+	g.drawImage("image", this.getLocalBounds(0),0,0);
+	
+	g.desaturate();
+	
+	g.endLayer();
+});Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFont("nunito", 32);
+	g.setColour(Colours.white);
+	g.drawAlignedText("Hello World", this.getLocalBounds(0), "top");
+	
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.setFontWithSpacing("Comic Sans MS", 40.0, 0.05);
+	g.drawAlignedTextShadow("funky", this.getLocalBounds(0), "centred", { "Colour": Colours.red, "Offset": [0, 4], "Radius": 10});
+	g.drawAlignedTextShadow("funky", this.getLocalBounds(0), "centred", { "Colour": Colours.green, "Offset": [2, 2], "Radius": 0});
+	g.setColour(Colours.white);
+	g.drawAlignedText("funky", this.getLocalBounds(0), "centred");
+});const var Panel1 = Content.addPanel("Panel1",10,10);
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.drawDropShadow(this.getLocalBounds(12), Colours.black, 20);
+	g.setColour(Colours.red);
+	g.fillRect(this.getLocalBounds(12));
+});
+```
+
+Additionally, `drawDropShadow()` fills the area of the passed rectangle.
+
+```
+HiseSnippet 1125.3ocwW0saaaCElxIJnVacXAXO.b4loLj4Z457yPQwbhcxVvZRMh6JVuYszTTVDglTfhpNdCEXXOY8EYuC6MHiTxxlNwoc0YAwWDD9c9geejmC8wckBLIMUHANduXbBA374t8FyUwsiQTN33N.m0cSPbBKMFEJFoHoJvAiSPoojPfiyJ+nwMmpqBx+7O+vAHFhiIyf.fWJnXxynCopYnca8yTF6HTH4EzgVd2r0wXAusfIxzTZE25fDD9bz.xoHiaUbA+DJMF37stgAMCh1Ci1YuflMv3F6saiueWLAEEQ1IX6catWTyHDtdCfyZGFRUBYOERydfypGHBG2KVLhWrAujlR6yHlEAfd5ct.9HAKzHQCJncLkE1s7rJEnyR2YmbqTbx8UtmPCoSwmcB9k4Ffyhv9.zox7zak4nWfM8paQuEPIGKJsZAkV2sGVRSTyrX3ym4dLWQj5iGxbTovWPk+thaag1Ctp1Pz4jij5ESivem502Bp+ylOwy6QO5qgIblwasXIRO8kWpZNH3SgkIa.Q0VLLQv0K72v1oMrRVur9cMEbvuCdpPAwFcBKJAg8IXTVJAphQpuIEhXRBJbLDoAn7Ay18o4XtMeeFa59mlSfR+x2+HgD5eAjxsyvldUunVJQ0UyS0YhLklt9gRznoN7DupZpCOJiiUTMA7nbl1IXzD.ns29C1z6O7pxDXDSS6mZHdpgaOyfbfHiGl5GTOOoUGTyDZGoHoWdymOZKXQqQZsQTU79rjXjeIReltSYKX8Zau4VvxT7w2hTykhIC9k94uQ+AEParowqA0hz8pmYBjDdFAqP7ALhgLVQHjgD4YnPZVZdTuap7Eb80H44b+bk68NO3UMEEsPalaNofwHxEZ17vg7CEnOOaXehbK3aQrLxTG0MGy2w4dycb1OHfKJjrbTvOlSUOOgvuomI.Sp9z+2ubbGjBYZSmfo8KgHUTCEb5Pdq9Qxhl1ptcHomqDI49NodE37.Ut0GV1RaJm.Tci6W3Z2JAtv9s2w1KFQCUwSAd+e0JlPGDqrQnJxvxWeqtlPHtzXXFZCaXm0rnm2Gjdk0+0soWyVVzqSqDjTmIqTdEgMO8AzqR+Vu4Jz+R8mEP+R3xp7IXEY8SVQA1JheaTTqrqpn+L5VonKWNE03ltizz41dGA9s6CE83aRQ5i7OME8lKtlh32GJp4MU08d1stpC7p6CEsskhZ862l6nVj6j6nqOckdtNQXFColeXOyHwSLn+9n4lvxLEEOkpFaOx7+aS.9ekhq61kpvwKliUV.G0O0eWvwIyM+P2C0CsiUyH3ptG8q2MCICJFgavIHkjpK3bOMaXO8MMln2ctYFSMlSESAbw55l0lSfdDdX9BSAwDiAl0NSLFTZDLDgkhWiKlBwLY9CxQzbhm+qXp5dhYML.jOYh847P8OT30X77o5ZA1XYC7wKafMW1.2dYCbmkMvcW1.26iGn42wselRLrnsA.No6g4i043bHGoq.yqVA+KfJ1wUz
+```
+
+Another method is to use a transparent panel as a shadow catcher.
+
+```
+HiseSnippet 1080.3ocwW0raaaDDdoroQDaSQMPe.13KkBPUQxwNs.AAU1RVEBM1QvxMn2BVQthbgWtKwxkQVoH.E4PeX549.ji8knuC4MHcW9izpX4+HZg0AAMy7My9M6LC0vQBtGNIgK.V0OadLFX8k1imyjg8BQDFXXef011wHFllDh74yj3DI3v4wnjDrOvxZieRCyp9lfrOe7GODQQLO7RU.vq3DO7KHQD4Rsi59yDJc.xGeFIx.8dcG5wY83TdphRaX2FDi7NGEfOAogUyFXs0Q9DIWLVhTjQg4Pt+7wg7Yrb7uhjPlPwZgNfwp.kqFzKjP8GUltI.f0liVl7ajm7ei8wDexB8KuD95LCvkdXdGXU65nTm6.krLnzl4TZa6wdBRrboEMe9B6gLIVLEotpMoRNVPs+olcOtBAS1JBcNdfPIrvC2m1tcSn5qFOyw4wO9QvXFUiVkrXgi59OQthJ3ygkAK.K6wih4Lkf6Nlf1wHXiSmLR2y.+N3IbIzSmmv7tH3DrGJMACkgH42l.QTAF4OGhTJHrfkm9hXrxge.kt37SxHPItryeJW.cu.RXlQngS8KZkfkiT7TdJOUpnqqu.MaAfm4TWQc3fTlmjnHfCgQUffSKT.MQ6Fzv42bpS4dHph1OWS7DM2dgVyg7Tleham1YAsdPKsq8E73wYyOtnlv7t6jVyHxvCnwgH2RMSnpl8lv1s1uQSXYHt4iHQWTzQvsDm6NSBxUsSCMpfVSUiampcD6eJ1ShXATrlLFdvE9XwoHeRZRlWuaQ5yYpxH9kL2rL24cNvO2zzoq0ltxI3TJVrVy5Yew04nKKMZBVzD9FDMEu.nZ3X0ItstcSbd4MRF.4rgLh7kw3B4AbpudRR+6KOeBJ5DU+5WF1GIQ5Q1BcJbwXgjnoiUe7aTOyKe.ttcebx4RdbF1hdWf0CjYVeX43st0BPTG8WYaNVAtv7QoyMElQ7kgKT7g22MDSBBklZHRbT4CSquEmy+j1vRs6Zp1ZKC54bszqbVnsI81qqA852MFITQxHjeVhUPeaq+VAuj51VueEBp42mTeVCsKUW1oapCbmyjNlYBqhYxYVlYxec+jI6dU0jeeZUqIWb+jIO4pxjto29L4OVol7w6mLYuqp65Czp1c4e+jI6ajIceaEqI+I3+9Zxk2bRsyF2OkhjqtHmdi0BCp+qYksmzaHwRHx4lazdG1tq80tc2skhaaOhH8BWOGqsFNpdz8+GbrXm3GZezzopUFVRvMsG7qUcA3a33yWOK3XjTPTMZ1mjFMVUo8vpSmo2eT2vTS23lK2VKquAFiY9YB5FhBiczxVEF6TZDDg7D7W6kuggdq6GjoQwIV1KYT29XsLrCHaqCy64H0KA7ZOuUC0kbb2p53Sppi6UUG2upN9zp532WUG+ga1Q86ncPpjGkO1..GO5nr0zrrNhgTcfYcqf+EsW3jJconst var Panel = Content.addPanel("Panel", 0, 0);
+
+const var p = Content.createPath();
+
+// pass an array with numbers to load SVG images
+p.loadFromData([110,109,0,245,207,67,128,217,36,67,108,0,236,189,67,128,89,69,67,108,0,
+                245,207,67,128,217,101,67,108,192,212,207,67,128,53,81,67,98,217,93,211,
+                67,51,180,80,67,123,228,219,67,2,123,91,67,128,144,224,67,0,149,101,67,
+                98,39,209,224,67,29,247,89,67,79,60,223,67,36,224,61,67,0,245,207,67,0,
+                12,54,67,108,0,245,207,67,128,217,36,67,99,109,128,33,193,67,0,168,88,
+                67,108,0,66,193,67,0,76,109,67,98,231,184,189,67,77,205,109,67,69,50,
+                181,67,126,6,99,67,64,134,176,67,128,236,88,67,98,154,69,176,67,99,138,
+                100,67,49,218,177,67,174,80,128,67,128,33,193,67,192,58,132,67,108,128,
+                33,193,67,0,212,140,67,108,192,42,211,67,0,40,121,67,108,128,33,193,67,
+                0,168,88,67,99,101,0,0]);
+
+Panel.setPaintRoutine(function(g)
+{
+    g.fillAll(Colours.grey);
+    var area = [20, 20, 100, 100];
+    
+    g.drawDropShadowFromPath(p, area, 0x88000000, 5, [0, 5]);
+    g.setColour(Colours.white);
+    g.fillPath(p, area);
+});
+```
+
+```javascript
+const var Panel1 = Content.getComponent("Panel1");
+
+// that's a poor circle, but the blur will save us...
+var circlePath = Content.createPath();
+circlePath.startNewSubPath(0.5, 0);
+circlePath.quadraticTo(1.0, 0.0, 1.0, 0.5);
+circlePath.quadraticTo(1.0, 1.0, 0.5, 1.0);
+circlePath.quadraticTo(0.0, 1.0, 0.0, 0.5);
+circlePath.quadraticTo(0.0, 0.0, 0.5, 0.0);
+
+Panel1.set("width", Panel1.get("height"));
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.drawDropShadowFromPath(circlePath, this.getLocalBounds(50), Colours.black, 50, [0, 0]);
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawEllipse([10,10,80,50], 1.5);
+});const var Panel1 = Content.getComponent("Panel1");
+
+const var fft = Engine.createFFT();
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawFFTSpectrum(fft, this.getLocalBounds(0));
+
+});Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFont("nunito", 32);
+	g.setColour(Colours.white);
+	g.drawFittedText("Hello World", this.getLocalBounds(0), "topLeft", 2, 20);
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawHorizontalLine(0, 0, this.getWidth()); // xStart, yStart, length
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image"); // Load image.png from the "Images" folder
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.drawImage("image", this.getLocalBounds(0), 0, 0); // draw the image in the Panel boundaries.
+	
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawLine(0, 100, 50, 100, 1.2); // x1,x2,y1,y2,linewidth
+});const var Panel1 = Content.getComponent("Panel1");
+
+const var markd = Content.createMarkdownRenderer();
+markd.setTextBounds(Panel1.getLocalBounds(0));
+
+markd.setText("
+## Heading
+Explain explain explain
+");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.drawMarkdownText(markd);
+});const var Panel1 = Content.getComponent("Panel1");
+
+const var text = "Lorem ipsum HISEorium explanadum in excelsis christophorum non delandam improprium contenatio cimex."
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawMultiLineText(text, [0,20], this.getWidth(), "left", 2.); // text, width, alignment, lineHeight
+});const var c = Content.createPath();
+
+c.startNewSubPath(0.0, 0.0);
+c.lineTo(0.0, 1.0);
+c.lineTo(1.0, 0.0);
+c.lineTo(0.5, 1.0);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+    g.fillAll(0x22FFFFFF);
+    g.setColour(Colours.white);
+    
+    var p = {};               // Pick one of these:
+    p.EndCapStyle = "butt";   // ["butt", "square", "rounded"]
+    p.JointStyle = "rounded"; // ["mitered", "curved","beveled"]
+    p.Thickness = 12.0;
+    
+	g.drawPath(c, this.getLocalBounds(p.Thickness), p);
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawRect(this.getLocalBounds(0), 3);
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.drawRepaintMarker(""); 
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	
+	// area, float value (0-50) for all corners or object with {Cornersize:15, Rounded:[1,1,1,1]}, lineWidth
+	g.drawRoundedRectangle([8,8,90,60], {CornerSize:15, Rounded:[0,1,1,0]}, 1.5); 
+});const var Panel1 = Content.getComponent("Panel1");
+
+const var svg = Content.createSVG("552.nT6K8CFjCTOD.Xa2dUB7vwL.SvXp6TpBfQoF8BK9fB04advjZYtXueJWWylbAdFn2PtHYAvT.HE.5rS67tttXTRauwfO3CIDiu+uEnPhmjIRhwHzJhQF3KBCMfvDQ7t31dIDgESh.gDAfDfAG.yX3jEmynrvT6sGDhQgIS.mtvWqbE19fR+gS37cSa4dYTpb.jfkyJYy3PyjkcyHqiHkbkmw0xosaVsFbxVQosIEihh9Mv2rJRRobNsgevG537uF5+jOIbpRFgN6kaiccsXO3.R4Cmv1V2Nn01x+OFiaUWLMJ8Bwqzz3Oc91UV8SE5cH4u3PqUGWVebIyRsw48BhlN9rBwrz797idlkWt7DT4p2TTfSTz4L1vT586Bx6wT5los6KELGYsD9l0vxX2Hq2aZ2rpGVVYb..FbwsEgrDMmMuWo0KZZndSzCMpw+ZcoVcYs9Hc4C0.zG4SZc4IxoRn2A3j0CaSoU8met3T+XD9nfkG5I.iKsD8g7mm4CjWcfU+g57voNdPnfPf.C.YHCuCPQ..D.VbASWpJIv.zgSfoDP4fAkPqLUiDXB.n..V7tA3Hb.iq3e.SSDCbUQzX3KnvI9YcxM6fibJgmc42KQ3z.uEElWxrMVBU.J1gKFfMkE9fPWLPtyXTAFX.gIKvPCvjUfnO.FubCO.OzFZEtB9CDBDLLstdfvZ0LokAGD6UR.RFeMvXSxYionq.qoALngCSAwAtBX.Fo.");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawSVG(svg, this.getLocalBounds(0), 1);
+});Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFont("nunito", 32);
+	g.setColour(Colours.white);
+	g.drawText("Hello World", this.getLocalBounds(0));
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawTriangle(this.getLocalBounds(0), Math.toRadians(180), 2);
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.drawVerticalLine(this.getWidth()/2, 0, this.getHeight()); // xStart, yStart, length
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(true); 
+	
+	 // fill the layer.
+	
+	g.endLayer();
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.fillAll(Colours.grey);	
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.pink);
+	g.fillEllipse([0,0,this.getWidth(), this.getHeight()]);
+});const var p = Content.createPath();
+
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(0, 0);
+p.lineTo(0.5, 1);
+p.lineTo(1, 0);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
+	g.fillPath(p, this.getLocalBounds(0));
+});Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);	
+	g.fillRect([0,0,this.getWidth(),this.getHeight()]);
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.fillRoundedRectangle(this.getLocalBounds(10), 25); // area, rounded 0 - 100+
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);	
+	g.fillTriangle([0,0,this.getWidth(), this.getHeight()], Math.toRadians(90));
+});const var p = Content.createPath();
+
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(0, 0);
+p.lineTo(0.8, 1);
+p.lineTo(1, 0);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
+	g.flip(0, this.getLocalBounds(0));
+	g.fillPath(p, this.getLocalBounds(0));
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.beginLayer(true);
+	
+	g.setColour(Colours.white);
+	g.fillRoundedRectangle(this.getLocalBounds(10), 50);
+	g.gaussianBlur(12);
+	
+	g.endLayer();
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	Console.print(g.getStringWidth("Hello"));
+});const var Panel1 = Content.getComponent("Panel1");
+
+const var p = Content.createPath();
+
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(0, 0);
+p.lineTo(0.8, 1);
+p.lineTo(1, 0);
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.withAlpha(Colours.white, 0.5));	
+	g.rotate(Math.toRadians(180), [this.getWidth()/2,this.getHeight()/2]);
+	g.fillPath(p, this.getLocalBounds(0));
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.fillEllipse([0,0,50,50]);
+
+});
+```
+
+
+
+```javascript
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setColour(Colours.white);
+	g.fillEllipse([0,0,50,50]);
+	
+	g.setColour(Colours.grey);
+	g.fillEllipse([55,0,50,50]);
+	
+	g.setColour(Colours.black);
+	g.fillEllipse([110,0,50,50]);
+	
+	g.setColour(Colours.red);
+	g.fillEllipse([0,55,50,50]);
+	
+	g.setColour(Colours.green);
+	g.fillEllipse([55,55,50,50]);
+	
+	g.setColour(Colours.dodgerblue);
+	g.fillEllipse([110,55,50,50]);		
+});Engine.loadFontAs("{PROJECT_FOLDER}Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFont("nunito", 48);
+	g.setColour(Colours.white);
+	g.drawAlignedText("hello", this.getLocalBounds(0), "top");
+});Engine.loadFontAs("{PROJECT_FOLDER}fonts/Nunito-Regular.ttf", "nunito");
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setFontWithSpacing("nunito", 36, 0.08); // from 0 to 1 over the whole width of the panel.
+	g.setColour(Colours.white);
+	g.drawAlignedText("hello", this.getLocalBounds(0), "top");
+});// A blurry white ball in the middle
+g.setGradientFill([Colours.white, 100.0, 100.0,
+				   Colours.black, 50.0, 50.0,
+				   true]);
+
+// A top down gradient with a black bar in the middle and white at the edges
+g.setGradientFill([Colours.white, 0.0, 0.0,
+				   Colours.white, 0.0, 100.0,
+				   false,
+				   Colours.black, 0.5]);
+```
+
+
+```javascript
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setGradientFill([Colours.white, 0 , 0,
+				   Colours.black, this.getWidth()/1.5, 0,
+				   false]);
+				   
+	g.fillRect(this.getLocalBounds(0));
+});const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.loadImage("{PROJECT_FOLDER}image.png", "image");
+
+Panel1.setPaintRoutine(function(g)
+{	
+	g.setOpacity(0.3);	
+	g.drawImage("image", this.getLocalBounds(0), 0, 0); 
+});const var md = Content.createMarkdownRenderer();
+
+const var p = Content.createPath();
+
+// Create a triangle
+p.startNewSubPath(0.0, 0.0);
+p.lineTo(1.0, 1.0);
+p.lineTo(0.0, 1.0);
+p.closeSubPath();
+
+const var imageData = 
+[
+{
+	"URL": "my-path",
+	"Type": "Path",
+	"Data": p,
+	"Colour": Colours.blue
+}];
+
+md.setImageProvider(imageData);
+
+md.setText("### Example\n> Please render a path like an icon\n![](/my-path:30%)this is text after the icon");
+
+md.setTextBounds([10, 10, 200, 9000]);
+
+const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.fillAll(0xFF111111);
+	g.drawMarkdownText(md);
+});// define a prototype using the scriptnode syntax
+reg prototype = {
+	"MinValue": 20.0,
+	"MaxValue": 20000.0,
+	"SkewFactor": 0.6
+};
+
+// pass that into the factory to create a fix object
+const var f1 = Engine.createFixObjectFactory(prototype);
+
+// create a fix object (think JSON but faster)
+const var range = f1.create();
+
+// 9.5% slower than just calling Math.pow() (which is the baseline for this function)
+const var x = Math.from0To1(0.5, range);
+
+// 34% slower than just calling Math.pow
+const var y = Math.from0To1(0.5, prototype);
+
+// There's a small rounding error because of single precision vs. double precision
+// but that shouldn't have a real world impact
+Console.assertTrue(Math.abs(x - y) < 0.001);const var skewFactor = Math.skew(0.0, 20000.0, 1000.0);
+const var midPoint = Math.pow(0.5, 1.0 / skewFactor) * 20000.0; // => 1000
+```
+
+However the most interesting use case for this would be if you want to convert a range object from a mid point to a skew factor based range definition for increased performance:
+
+```javascript
+// This is a range how it would come from a UI component
+// it defines the curve with a middle position
+const var p1 = {
+	min: 20.0,
+	max: 20000.0,
+	middlePosition: 1000.0
+}
+
+// Using a skew-based range avoids an additional log calculation
+// in the conversion functions
+const var p2 = {
+	MinValue: p1.min,
+	MaxValue: p1.max,
+	SkewFactor: Math.skew(p1.min, p1.max, p1.middlePosition)
+};
+
+// We're caring about performance here so we use fix objects:
+const var f1 = Engine.createFixObjectFactory(p1);
+const var f2 = Engine.createFixObjectFactory(p2);
+const var o1 = f1.create();
+const var o2 = f2.create();
+
+{
+	.profile(" - mid point with JSON");
+
+	for(i = 0; i < 100000; i++)
+		Math.from0To1(0.5, p1);
+}
+
+{
+	.profile(" - skew factor with JSON");
+
+	for(i = 0; i < 100000; i++)
+		Math.from0To1(0.5, p2);
+}
+
+{
+	.profile(" - mid point with fix object");
+
+	for(i = 0; i < 100000; i++)
+		Math.from0To1(0.5, o1);
+}
+
+{
+	.profile(" - skew factor with fix object");
+
+	for(i = 0; i < 100000; i++)
+		Math.from0To1(0.5, o2);
+}
+
+/* Results:
+- mid point with JSON: 83.185 ms
+- skew factor with JSON: 29.896 ms
+- mid point with fix object: 27.032 ms
+- skew factor with fix object: 24.955 ms
+*/Console.print(Math.toDegrees(Math.PI*2)); // 360.0Console.print(Math.toRadians(360)); // 6.2831.. // PI*2// fmod will not wrap around zero
+Console.print(Math.fmod(-1.0, 19.0)); // -> -1.0
+
+// wrap will... wrap around zero
+Console.print(Math.wrap(-1.0, 19.0)); // -> 18.0[{
+  "Controller": 1,
+  "Channel": 0,
+  "Processor": "Interface",
+  "MacroIndex": -1,
+  "Start": 0.0,
+  "End": 1.0,
+  "FullStart": 0.0,
+  "FullEnd": 1.0,
+  "Skew": 1.0,
+  "Interval": 0.01,
+  "Converter": "37.nT6K8CBGgC..VEFa0U1Pu4lckIGckIG.ADPXiQWZ1UF.ADf...",
+  "Attribute": "Knob1",
+  "Inverted": false
+}]function modifySecondController()
+{
+	// grab the existing list
+	var list = mh.getAutomationDataObject();
+	
+	// set the second range start to 50%
+	list[1].Start = 0.5;
+	
+	// send the list back to the automation handler.
+	mh.setAutomationDataObject(list);
+}mh.setControllerNumbersInPopup([1, 2, 7]);
+mh.setControllerNumberNames("Funky Controller!!!", ["Modwheel", "Breath Controller", "Volume"]);const var mh = Engine.createMidiAutomationHandler();
+
+mh.setUpdateCallback(function(obj)
+{
+	Console.print(trace(obj));
+});
+```
+
+> Never call [MidiAutomationHandler.setAutomationDataFromObject()](/scripting/scripting-api/midiautomationhandler#setautomationdatafromobject) inside this function or it will cause an endless loop of callbacks! Note that trying to outsmart this rule by using a simple recursion protection would not work as the update message is asynchronous.
+
+```javascript
+const var mh = Engine.createMidiAutomationHandler();
+
+// This freezes your computer.
+mh.setUpdateCallback(function(obj)
+{
+	obj[0].Start = 0.5;
+	mh.setAutomationDataFromObject(obj);
+});
+
+var recursion = false;
+
+// Good idea and extra points for using scoped statements,
+// but this freezes your computer too because the update message
+// will be called asynchronously...
+mh.setUpdateCallback(function(obj)
+{
+	if(!recursion)
+	{
+		.set(recursion, true);
+		
+		obj[0].Start = 0.5;
+		mh.setAutomationDataFromObject(obj);
+	}
+});inline function getNoteOff(list, noteOn)
+{
+    for(e in list)
+    {
+        if(e.isNoteOff() && e.getEventId() == noteOn.getEventId())
+            return e;
+    }
+}// Fetch a Panel
+const var Panel = Content.getComponent("Panel1");
+
+// Fetch a MIDI Player
+const var Player = Synth.getMidiPlayer("MIDI Player1");
+
+// Connect the player to the panel to make it update automatically
+Player.connectToPanel(Panel);
+
+Panel.setPaintRoutine(function(g)
+{
+    // create a list of note rectangles.
+    // the argument is the boundaries of this panel so it will scale
+    // them to the dimensions of the entire panel.
+    var entireArea = [0, 0, this.getWidth(), this.getHeight()];
+    var list = Player.getNoteRectangleList(entireArea);
+    
+    g.setColour(Colours.white);
+
+    // Now we can simply iterate over them and paint them
+    for(note in list)
+    {
+        // `note` is a array with 4 numbers and can be passed
+        // into all Graphic API functions pretty conveniently.
+        g.fillRect(note);
+    }
+});// Do not call this in the audio thread obviously...
+inline function sequenceHasNoEvents(player)
+{
+    return player.getEventList().length == 0;
+}{
+	.sample("constrainedWithin");
+	
+	var textPos = Rectangle(200, 20);
+	var bounds = Rectangle(100, 100, 400, 300);
+	
+	Console.sample("bounds", bounds);
+	Console.sample("textBounds", textPos);
+	Console.sample("fitted", textPos.constrainedWithin(bounds));
+}{
+	.sample("getUnion");
+	
+	var r1 = Rectangle(10, 50, 90, 65);
+	var r2 = Rectangle(300, 200, 10, 55);
+	
+	Console.sample("r1", r1);
+	Console.sample("r2", r2);
+	Console.sample("union", r1.getUnion(r2));
+}{
+	.sample("reduced");
+	
+	var x = Rectangle(20, 20, 400, 200);
+	
+	Console.sample("before", x);
+	Console.sample("afterTwoArgs", x.reduced(50, 20));
+	Console.sample("afterOneArg", x.reduced(30));
+}{
+	.sample("slicing");
+	
+	var r = Rectangle(20, 20, 500, 400);
+	
+	Console.sample("full", r);
+	
+	var top = r.removeFromTop(50);
+	
+	Console.sample("topLeft", top.removeFromLeft(50));
+	Console.sample("top", top);
+	Console.sample("remaining", r);
+};{
+	.sample("withAspectRatioLike");
+	
+	var r = Rectangle(20, 10, 300, 300]);
+	var other = Rectangle(500, 80, 100, 50);
+	
+	Console.sample("target", r);
+	Console.sample("other", other);	
+	Console.sample("fitted", r.withAspectRatioLike(other));
+}{
+	.sample("withSizeKeepingCentre");
+	
+	var x = Rectangle(10, 10, 300, 300);
+	
+	Console.sample("bounds", x);
+	Console.sample("smaller", x.withSizeKeepingCentre(50, 50));
+}const selection = Synth.getChildSynth("Sampler1").asSampler().createSelection(".")` //Array of `Sample` objects.
+for (sample in selection){
+  Console.print(sample.get(Sampler.SamplEnd));
+}[
+{
+	"FileName": "C:\\MyFileName.wav",
+	"Root": 64
+},
+{
+	"FileName": "C:\\AnotherSample.wav",
+	"SampleStart": 64
+}];// A simple example for 2 dynamic layers with 2 RR repetitions.
+Sampler.enableRoundRobin(false);
+
+const var g1 = [1, 2, 3];
+const var g2 = [4, 5, 6];
+
+reg on = false;
+
+function onNoteOn()
+{
+    // Calling this function tells the sample to just use
+    // the first 3 tables for crossfading
+    Sampler.setMultiGroupIndex(g1, on);
+	Sampler.setMultiGroupIndex(g2, !on);
+	
+    on = !on;
+}const var obj = Sampler.getReleaseStartOptions();
+
+obj.FadeGamma = 0.5;
+
+Sampler.setReleaseStartOptions(obj);["Selection", "SingleClick", "DoubleClick", "ReturnKey" ]const var ModTable = Content.getComponent("Viewport1");
+
+ModTable.setTableMode({
+	"MultiColumnMode": false,
+	"HeaderHeight": 32,
+	"RowHeight": 32,
+	"ScrollOnDrag": false
+});
+
+ModTable.setTableRowData([
+{
+	"Source": "Source",
+	"Mode": 
+	{
+		"items": ["Yes", "No", "Maybe"],
+		"Value": "No"
+	}
+},
+{
+	"Source": "Other Source",
+	"Mode": 
+	{
+		"items": ["Some other item", "Second"],
+		"Value": "Second"
+	}
+}]);
+
+ModTable.setTableColumns([
+{
+	"ID": "Source",
+	"Type": "Text",
+	"MinWidth": 150
+},
+{
+	"ID": "Mode",
+	"Type": "ComboBox",
+	"MinWidth": 80,
+	"Toggle": true,
+	"Text": "Default",
+	"ValueMode": "Text"
+}
+]);const var b1 = Content.addButton("b1", 0, 0);
+const var laf = Content.createLocalLookAndFeel();
+
+b1.setLocalLookAndFeel(laf);
+
+/** Set the inline style sheet that just colours the button. */
+laf.setInlineStyleSheet("button{
+	background-color: red;
+}");// HiseScript:
+// Set myProperty as a pixel value
+laf.setStyleSheetProperty("myProperty", "10", "px");
+
+// CSS side
+button
+{
+	/** read the property and use it as border radius. */
+	border-radius: var(--myProperty);
+}
+```
+
+> Note that calling this method will automatically repaint the components so you don't have to explicitely repaint them with `sendRepaintMessage()` or friends.
+
+### Inbuilt colour properties
+
+Be aware that HISE will automatically send changes to any of the colour properties from an UI component to the CSS, so if you eg. want to update the background color based on the `bgColour` property, you don't need to use this method, but just use the variable in your CSS code like this:
+
+```javascript
+button
+{
+	background-color: var(--bgColour);
+}
+```
+
+### Value converters
+
+The third argument in the function call is a string that can be used to convert the value into a CSS value domain.
+
+| Type | Expected Value | Description |
+| = | == | === |
+| `""` | any string | does no conversion and just passes the raw string over to CSS |
+| `"px"` | a number | uses the number as pixel value |
+| `"%"` | a float number between 0.0 and 1.0 | converts the number to a percentage value. |
+| `"color"` | a colour value (either int or string) | converts any colour from HiseScript (eg. `Colours.red` or `0xFF00FF00` into a propert CSS string ('#FF00FF00') |
+| `path` | a [Path](/scripting/scripting-api/path) object. | Converts the given path into a base64 string which then can be used as `background-image` property to replace the standard background rectangle path. |
+| `class` | a string | writes one or multiple class selectors into the component. |
+
+```javascript
+// HiseScript:
+// Raw string
+laf.setStyleSheetProperty("rawString", "bold", "");
+
+// Pixel value (25px)
+laf.setStyleSheetProperty("pixelVariable", 25, "px");
+
+// Relative value (80%)
+laf.setStyleSheetProperty("percentageVariable", 0.8, "%");
+
+// Colour value (#FF0000FF)
+laf.setStyleSheetProperty("colorVariable", Colours.blue, "color");
+
+// Path object (some Base64 gibberish)
+const var p = Content.createPath();
+p.addEllipse([12, 12, 30, 30]);
+laf.setStyleSheetProperty("pathVariable", p, "path");
+
+// set the CSS class
+const var b = Content.getComponent("button");
+b.setStyleSheetProperty("class", ".someclass", "class");
+
+// CSS side
+button
+{
+	font-weight: var(--bold);
+	padding-left: var(--pixelVariable);
+	transform: scale(var(--percentageVariable));
+	background-color: var(--colorVariable);
+	background-image: var(--pathVariable);
+}
+
+.someclass 
+{
+	/* will be applied to the `b` Button only. */
+	background: red;
+}
+```
+
+The last conversion allows you to pass any path in HISE over to CSS and render it with box shadows & different stroke types. 
+
+### Precedence
+
+Using this method from the LAF object will send the value to all objects that use the LAF, however there is another [method](/scripting/scripting-api/scriptbutton#setstylesheetproperty) that you can call on individual UI components in order to use different properties for different components. 
+
+In that case, the properties set by the component method will always override the properties set by this method, even if they are executed in reversed order:
+
+```javascript
+const var b1 = Content.addButton("b1", 0, 0);
+const var b2 = Content.addButton("b2", 130, 0);
+
+const var laf = Content.createLocalLookAndFeel();
+
+b1.setLocalLookAndFeel(laf);
+b2.setLocalLookAndFeel(laf);
+
+/** Set the inline style sheet that just colours the button. */
+laf.setInlineStyleSheet("button{
+	background-color: var(--c);
+}");
+
+/** Set the component specific property. */
+b1.setStyleSheetProperty("c", Colours.blue, "color");
+
+/** Set the "global" property for all components. */
+laf.setStyleSheetProperty("c", Colours.red, "color");
+```
+
+In this code example, the first button will be blue, even if the property for the component was set before setting the global component.
+
+### Debugging properties
+
+In order to check the value of each property for individual components, you can right click on any UI component in the Interface designer that has assigned a CSS LookAndFeel and then choose `Show CSS debugger` in the context menu. Doing so for the second button will show this:
+
+```javascript
+Current variable values:
+{
+  "c": "#FFFF0000",
+  "bgColour": "#00000000",
+  "itemColour": "#00000000",
+  "itemColour2": "#00000000",
+  "textColour": "#00000000"
+}
+==============================
+
+/* CSS for component hierarchy: */
+
+button #b2 .scriptbutton
+
+/** Component stylesheet: */
+button #b2 .scriptbutton {
+  background-color[]: var(--c)
+}
+
+
+/** Inherited style sheets: */
+button {
+  background-color[]: var(--c)
+}const var mp = Content.addMultipageDialog("mp", 0, 0);
 
 for(i = 0; i < 10; i++)
-	mp.addPage();
+	mp.addPage();const var panel = Content.addPanel("p", 0, 0);
+
+panel.setConsumedKeyPresses("all");
+
+panel.setKeyPressCallback(function(obj)
+{
+	Console.print(trace(obj));
+});
+```
+
+then clicking on the panel (to gain focus) and pressing any key will yield something like this output:
+
+```javascript
+Interface: {
+  "isFocusChange": false,
+  "character": "",
+  "specialKey": true,
+  "isWhitespace": false,
+  "isLetter": false,
+  "isDigit": false,
+  "keyCode": 63238,
+  "description": "shift + F3",
+  "shift": true,
+  "cmd": false,
+  "alt": false
+}
+```
+
+This JSON object is a bit noisy as it provides additional information that we don't really need so we can reduce the number of required properties and paste it back into our first function call:
+
+```javascript
+panel.setConsumedKeyPresses({
+  "keyCode": 63238,
+  "shift": true,
+  "cmd": false,
+  "alt": false
+});Panel1.setFileDropCallback("All Callbacks", "*.wav", function(f)
+{
+    if(f.drop)
+    {
+        // We can't pass in only the filename
+        // (a String is forbidden as preset value in order
+        // to prevent subtle bugs) so we need to create
+        // a simple object with a single property
+        var x = {};
+        x.fileName = f.fileName;
+        
+        // We could also just have passed in f to the function,
+        // but this reduces the noise a bit
+        this.setValue(x);
+        this.changed();
+    }
+});
+
+inline function onPanel1Control(component, value)
+{
+    // This might be empty (at initialisation or for whatever reason)...
+    if(isDefined(value.fileName))
+    {
+        var myFile = FileSystem.fromAbsolutePath(value.fileName);
+        // Do something with myFile...
+    }
+};const var Panel1 = Content.getComponent("Panel1");
+
+Panel1.setPaintRoutine(function(g)
+{
+	g.fillAll(0x22FFFFFF);
+	g.setColour(0x55FFFFFF);
+
+	if(this.data.hasFocus)
+		g.drawRect(this.getLocalBounds(0), 1.0);
+
+	g.setColour(Colours.white);
+	g.drawAlignedText(this.data.text, this.getLocalBounds(0), "centred");
+});
+
+Panel1.setKeyPressCallback(function(obj) 
+{
+	// Take a look at this in the console
+	Console.print(trace(obj));
+	
+	if(obj.isFocusChange)
+	{
+		this.data.hasFocus = obj.hasFocus;
+	}
+	else
+	{
+		switch(obj.keyCode)
+		{
+			// ESCAPE: Delete the text
+			case 27: this.data.text = ""; 
+				     break;
+			// RETURN KEY: just lose the focus
+			case 13: this.loseFocus();  
+					 break;
+			// BACKSPACE: Remove the last character
+			case 8:  this.data.text = this.data.text.substring(0, this.data.text.length-1);
+					 break;
+			// Append any non-special character
+			default: if(!obj.specialKey)
+						this.data.text += obj.character;				
+		}
+	}
+		
+	this.repaint();
+});!!javascript
+// Example: Preloading callback
+// this code will add a panel which will flash white during the preloading of new samples.
+
+const var panel = Content.addPanel("Panel", 0, 0);
+
+panel.data.colour = Colours.grey;
+
+panel.setPaintRoutine(function(g)
+{
+	g.fillAll(this.data.colour);
+});
+
+// This function will be executed whenever the preload state changes
+panel.setLoadingCallback(function(isPreloading)
+{
+	if(isPreloading)
+        this.data.colour = Colours.white;
+    else
+        this.data.colour = Colours.grey;
+        
+    // Update the UI
+    this.repaint();
+});// Changes the mouse pointer over the ScriptPanel1 to a hand with a pointing finger
+ScriptPanel1.setMouseCursor("PointingHandCursor", Colours.white, [0, 0]);const myPanel = Content.addPanel("myPanel",0,0);
+myPanel.setPaintRoutine(function(g)
+{
+  g.fillRect(this.getLocalBounds(0));
+});
+```
+
+Using an inlined function to paint multiple panels:
+
+```javascript
+const panel1 = Content.addPanel("panel1",0,0);
+const panel2 = Content.addPanel("panel2",0,60);
+
+inline function paintPanels(g)
+{
+   g.fillRect(this.getLocalBounds(0));
+}
+
+panel1.setPaintRoutine(paintPanels);
+panel2.setPaintRoutine(paintPanels);
+```
+
+Using a regular function to paint multiple panels:
+
+```javascript
+const panel1 = Content.addPanel("panel1",0,0);
+const panel2 = Content.addPanel("panel2",0,60);
+
+function paintPanels(g) //The function declaration must come before setPaintRoutine().
+{
+  g.fillRect(this.getLocalBounds(0));
+}
+
+panel1.setPaintRoutine(paintPanels);
+panel2.setPaintRoutine(paintPanels);const var shader = Content.createShader("myShader");
+
+// No blending
+shader.setBlendFunc(false, shader.GL_ZERO , shader.GL_ZERO);
+
+// Additive blending with alpha
+shader.setBlendFunc(true, shader.GL_SRC_ALPHA , shader.GL_ONE);
+
+// Default blending based on alpha value:
+shader.setBlendFunc(true, shader.GL_SRC_ALPHA, shader.GL_ONE_MINUS_SRC_ALPHA);
+
+// Additive blending without alpha
+shader.setBlendFunc(true, shader.GL_ONE, shader.GL_ONE);
+
+// Additive blending with alpha
+shader.setBlendFunc(true, shader.GL_SRC_ALPHA , shader.GL_ONE);cpp
+// GLSL side
+
+uniform float myValue;
+uniform vec3 myColour;
+uniform float myBuffer[128];
+
+void main()
+{
+    fragColor = pixelAlpha * vec4(myColour, myValue);
+}
+```
+
+From the script you need to call this:
+
+```javascript
+// Javascript side:
+
+const var shader = Content.createShader("MyShader");
+
+// a single number will be parsed as float
+shader.setUniformData("myValue", 0.8);
+
+// an array with three elements will be interpreted as vec3 type.
+shader.setUniformData("myColour", [0.0, 1.0, 0.0]);
+
+const var buffer = Buffer.create(128);
+
+// A Buffer object (a float array) will be passed on to the GPU as read only
+shader.setUniformData("myBuffer", buffer);const var mods = Knob1.createModifiers();
+
+// keyboard modifiers
+mods.shiftDown
+mods.altDown
+mods.ctrlDown
+mods.cmdDown
+
+// mouse button modifiers
+mods.rightClick
+mods.doubleClick
+
+// special modifiers
+mods.disabled
+mods.noKeyModifierconst var mods = Knob1.createModifiers();
+
+const var doubleClickAndShift = [ mods.doubleClick, mods.shiftDown];
+const var rightClickOrAlt = mods.rightClick | mods.altDown;
+const var commandOrShift = mods.shiftDown | mods.cmdDown;
+const var doubleClickWithoutModifiers = [ mods.doubleClick, mods.noKeyModifiers ];
+```
+
+You can just overwrite the function you want to reassign, however you need to make sure that the assignment doesn't create any collision with the default mapping, otherwise the action that will be performed might not be the one you have reassigned (it will just pick the first match that is stored in a arbitrary order internally).
+
+```javascript
+const var Knob1 = Content.getComponent("Knob1");
+const var mods = Knob1.createModifiers();
+
+// We want to reassign the reset double click to shift + double click
+Knob1.setModifiers(mods.ResetToDefault, [ mods.doubleClick, mods.shiftDown ]);
+
+// and the text input to a double click without modifiers.
+Knob1.setModifiers(mods.TextInput, [mods.doubleClick, mods.noKeyModifier]);someFunction({"value": Math.random()}).then ((result) => 
+{ 
+    console.log(result);
+});
+```
+
+#### HiseScript
+
+```javascript
+wv.bindCallback("someFunction", function(args)
+{
+	Console.print(args.value);
+	return args.value * 2.0;
+});wv.callFunction("someFunction", {"value": Math.random()});
+```
+
+#### Javascript in your webview:
+
+You will need to define a JS function in your webview code somewhere like this:
+
+```javascript
+// I'm not a web guy, but tucking it to the window object raises the chances of it being
+// resolved correctly...
+window.someFunction = function(args)
+{
+	console.log(args.value); // something between 0 and 1...
+};xml
+<head>
+<script src="hisewebsocket-min.js"></script>
+</head>
+```
+
+> Note that you don't need to provide the actual `hisewebsocket-min.js` file as it's embedded in the webview wrapper and will automatically be loaded. However if you want to develop your webview through an external IDE, you will have to manually provide that file. Just copy this minified JS beauty into the root directory where your `index.html` file resides:
+
+```javascript
+class HiseWebSocketServer{constructor(e){this.port=e,this.eventListeners=[],this.initQueue=[],window.addEventListener("load",this.initialise),window.addEventListener("beforeunload",this.onUnload)}onUnload=()=>{this.socket.close()};onReader=e=>{let t=new Uint8Array(e.target.result),s=this.parseWebSocketMessage(t);for(let i=0;i<this.eventListeners.length;i++)this.eventListeners[i](s.id,s.data)};onMessage=e=>{let t=new FileReader;t.onload=this.onReader,t.readAsArrayBuffer(e.data)};initialise=()=>{console.log("PORT: "+this.port),this.socket=new WebSocket("ws://localhost:"+this.port),this.socket.onmessage=this.onMessage,this.socket.onopen=this.sendInitMessages};sendInitMessages=()=>{for(let e=0;e<this.initQueue.length;e++)console.log("send init message"+this.initQueue[e]),this.send(this.initQueue[e]);this.initQueue=[]};parseWebSocketMessage(e){let t=0,s=1==new DataView(e.buffer,t,1).getUint8(0,!0);t++;let i=new DataView(e.buffer,t,2).getUint16(0,!0);t+=2;let n=new TextDecoder().decode(e.slice(t,t+i-1));t+=i;let o=new DataView(e.buffer,t,4).getUint32(0,!0);t+=4;let r;return r=s?new TextDecoder().decode(e.buffer.slice(t,t+o)):new Float32Array(e.buffer.slice(t,t+o)),{id:n,data:r}}addEventListener(e){this.eventListeners.push(e)}send(e){this.socket?this.socket.send(e):this.initQueue.push(e)}}
+```
+
+Now you can use the framework to create a HiseWebSocketServer object. It's recommended to put the initialisation code into a separate function and then call this from HISE to initialise the websocket server after everything has been loaded:
+
+```javascript
+<script>
+var server;
+// this function will be called from HISE when everything is loaded
+window.initWebSocket = function(port)
+{
+	
+	// create a new instance of the WebSocket server that connects to HISE
+    server = new HiseWebSocketServer(port);
+
+	// Adds a function that receives the id and data that you send to the webview
+    server.addEventListener(function(id, data)
+    {
+		console.log(id, data);
+    });
+}
+</script>
+```
+
+Now in HISE you can initialise the websocket like this:
+
+```javascript
+const var wv = Content.addWebView("wv", 0, 0);
+
+// just pick a random port and hope that there will be no collisions...
+const var PORT = parseInt(Math.random() * 65536);
+wv.setEnableWebSocket(PORT);
+
+// we pass in the random port number to the initialisation function that opens
+// the server connection on the webview
+wv.callFunction("initWebSocket", PORT);
+```
+
+> Note that choosing a random port number allows multiple plugin instances to communicate with their interface (while living with the 1/65536 chance of a collision, but that's life). However using a static / constant port number can also be used to implement a cross-instance communication across all plugin instances!
+
+#### Data Types
+
+The `data` parameter that is passed to any callback that you register with `HiseWebSocketServer.addEventListener()` contains the data and is one of two possible data types:
+
+1. A `string` if the data sent from HISE was a [String](/scripting/scripting-api/string). 
+2. A [`Float32Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array) if the data sent from HISE was a [Buffer](/scripting/scripting-api/buffer) object.
+
+Note that the second data type is specifically added for transferring audio buffers between the webview and HISE to implement custom waveforms / oscilloscopes etc. If you want to send a JSON object (or a Array), you will need to convert and parse it yourself:
+
+```javascript
+// on the HISE side
+ScriptWebview.sendToWebsocket("myobject", trace(obj));
+
+// on the Webview side
+function onWebSocketMessage(id, data)
+{
+	let obj = JSON.parse(data);
+}// webview
+HiseWebSocketServer.send("send some string");
+
+// HISE
+// data will be a plain string
+ScriptWebView.setWebSocketCallback(function(data)
+{
+	Console.print(data) // "send some string"
+});
+
+// webview
+const x = { "key1": 12, "key2": "some value"};
+HiseWebSocketServer.send(JSON.stringify(x));
+
+// HISE
+// data will be a JSON object that you can trace to view
+ScriptWebView.setWebSocketCallback(function(data)
+{
+	Console.print(trace(data)) // { key1: 12, key12: "some value" }
+});
+
+// webview
+const x = new Float32Array(512);
+for(i = 0; i < x.length; i++)
+	x[i] = Math.random();
+HiseWebSocketServer.send(x);
+
+// HISE
+// data will be a Buffer object
+ScriptWebView.setWebSocketCallback(function(data)
+{
+	Console.print(data.length) // 512
+});Server.setBaseURL("https://forum.hise.audio");
+
+// The GET arguments as JSON object
+const var p =
+{
+    "term": "HISE",
+    "in": "titlespost"
+};
+
+// => https://forum.hise.audio/api/search?term=HISE&in=titlesposts
+Server.callWithGET("api/search", p, function(status, response)
+{
+    if(status == Server.StatusOK)
+    {
+        // Just use the response like any other JSON object
+        Console.print("There are " + response.matchCount + " results");
+    }
+});Server.setBaseURL("http://hise.audio");
+
+const var p = 
+{
+    "first_argument": 9000
+};
+
+// This dummy file just returns the `first_argument` as `post_argument`...
+Server.callWithPOST("post_test.php", p, function(status, response)
+{
+    Console.print(response.post_argument);
+});Server.setBaseURL("http://hise.audio");
+const var target = FileSystem.getFolder(FileSystem.Documents).getChildFile("HISE_1_1_1.exe");
+
+Server.downloadFile("download/HISE_1_1_1.exe", {}, target, function()
+{
+    var message = "";
+    
+    message += Engine.doubleToString(this.data.numDownloaded / 1024.0 / 1024.0, 1);
+    message += "MB / " + Engine.doubleToString(this.data.numTotal / 1024.0 / 1024.0, 1) + "MB";
+    
+    Console.print(message);
+     
+    if(this.data.finished)
+         Console.print(this.data.sucess ? "Done" : "Fail");
+});
+
+
+inline function onButton1Control(component, value)
+{
+	if(value)
+        Server.stopDownload("download/HISE_1_1_1.exe", {});
+};
+
+Content.getComponent("Button1").setControlCallback(onButton1Control);Server.setBaseURL("https://forum.hise.audio/api");
+Server.setServerCallback(function(isWaiting)
+{
+    Console.print(isWaiting ? "SERVER IS BUSY" : "DONE");
+});
+
+function printName(status, obj)
+{
+    if(status == 200)
+        Console.print(" " + obj.username);
+};
+
+// Now hammer the queue with the top 5 Posters
+Server.callWithGET("user/d-healey", {}, printName);
+Server.callWithGET("user/christoph-hart", {}, printName);
+Server.callWithGET("user/ustk", {}, printName);
+Server.callWithGET("user/Lindon", {}, printName);
+Server.callWithGET("user/hisefilo", {}, printName);
+```
+
+The output:
+
+```
+Interface: SERVER IS BUSY
+Interface:  d.healey
+Interface:  Christoph Hart
+Interface:  ustk
+Interface:  Lindon
+Interface:  hisefilo
+Interface: DONE// Grab your current settings from the profiling options popup
+// Just click Export as JSON as paste it in your script. */
+const var PROFILE_OPTIONS = {
+  "threadFilter": [ "UI Thread" ],
+  "eventFilter": [ "Lock", "Script", "Scriptnode", "Callback",
+    			   "Broadcaster", "Paint", "DSP", "Trace", "Server", 
+    			   "Background Task", "Undefined", "Threads" ],
+  "recordingLength": "300 ms",
+  "recordingTrigger": 0
+};
+
+// Pick whatever file you like
+const var PROFILE_TARGET = FileSystem.getFolder(FileSystem.Desktop).getChildFile("profile.dat");
+
+// dumps the profile to the desktop
+Threads.startProfiling(PROFILE_OPTIONS, x => PROFILE_TARGET.writeString(x));const var th = Engine.createTransportHandler();
+
+th.setOnBypass(function(isBypassed)
+{
+	if(isBypassed)
+	{
+		PeakMeter.clear(); // whatever...
+		someTimer.stopTimer();
+	}
+	else
+	{
+		// resume the timer that detects the peak
+		someTimer.startTimer(30);
+	}
+});const var automationObject = 
+[
+{
+	"ID": "First Parameter",
+	"min": 0.5, 
+	"max": 2.0,
+	"middlePosition": 1.0,
+	"stepSize": 0.0,
+	"allowMidiAutomation": true,
+	"allowHostAutomation": false,
+	"connections": [
+	  {
+	  	"processorId": "SimpleGain1",
+	  	"parameterId": "Gain"
+	  },
+	  {
+	  	"processorId": "SimpleGain2",
+	  	"parameterId": "Gain"
+	  },
+	]
+}
+]Macro 1
+Macro 2
+Macro 3
+Custom 1
+Custom 2
+Component 1
+Component 2
+Component 3
+Component 4
+```
+
+If you need to change that default order, just pass in a function into this method. This function will be executed whenever the plugin parameters are rebuilt (so in HISE itself after each compilation and in your compiled plugin once at initialisation). It expects two parameters `p1` and `p2` which will be filled with two JSON objects with the following properties:;
+
+| Property | Description |
+| -- | ------- |
+| `type` | the plugin parameter type. This is a magic number and will be `0` for macro controls, `1` for custom automation slots and `2` for UI components |
+| `parameterIndex` | This is the index in the default sorting order. |
+| `typeIndex` | This is the index within the type. So for the first custom automation slot it will be 0, no matter how many other parameters of a different type come before that. |
+| `group` | If you have assigned this parameter to a group, it will contain the string with the group name, otherwise it will be an empty string. |
+| `name` | the plugin parameter name as it will be shown in the host. |
+
+Using the example list above, this would be the JSON object for two of the elements:
+
+```javascript
+{
+	"Macro 2": {
+		type: 0,  // type is macro
+		parameterIndex: 1, // index in full list
+		typeIndex: 1 // second macro
+		group: "", // no group
+		name: "Macro 2" // macro name
+	},
+	"Component 1": {
+		type: 2, // type is UI component
+		parameterIndex: 5, // index in full list
+		typeIndex: 0, // first UI component
+		group: "", // no parameterGroupName set
+		name: "Component 1" // pluginParameterName property
+	}
+}
+
+```
+
+You will now have to implement the sorting logic by writing a function that compares the two objects and returns one of the given values:
+
+- `-1` if the first parameter should come before the second
+- `1` if the second parameter should come before the first
+- `0` if the parameters are supposed to be equal
+- `undefined` if you want to resort to the default sorting logic between the two parameters.
+
+> Note that if you use parameter groups it will override this sorting mechanism and always put parameters without a group ID first followed by all parameters of a group (as this is how it's required by the hosts), so be cautious when adding parameter group IDs to an existing project.
+
+### Examples
+
+Here is an example function that will keep the normal sorting logic but move all custom automation data slots at the beginning of the list.
+
+You would use this function if you have added the ability of assigning dynamic plugin parameters in an update and want to ensure that the original order of the custom automation slots are not changed (because by default the macro parameters would be put at the beginning of the list).
+
+```javascript
+const var CUSTOM_TYPE = 1;
+
+// This function moves all custom automation parameters at the beginning (so they appear before the macros)
+uph.setPluginParameterSortFunction(function(p1, p2)
+{
+	// If one of the parameters is a custom type, put it before
+	// the other element.
+	
+	if(p1.type == CUSTOM_TYPE && p2.type != CUSTOM_TYPE)
+		return -1;
+	else if (p2.type == CUSTOM_TYPE && p1.type != CUSTOM_TYPE)
+		return 1;
+	
+	// otherwise return undefined which uses the default sorting
+	return undefined;
+});
+```
+
+> You can always check the order of the parameters in the [Plugin Parameter Simulator](/ui-components/floating-tiles/hise/pluginparametersimulator) which will be rebuilt after each compilation and takes the sorting mechanism into account.
+
+Another example that will put the plugin parameters from a given name list at the end can be used if your update contains new controls that you want to be put at the end of the list:
+
+```javascript
+// These are the new controls in your update that you want to put at the end:
+const var NEW_CONTROLS = [ "Close 2", "Far 1"];
+
+// This function moves all custom automation parameters at the beginning (so they appear before the macros)
+uph.setPluginParameterSortFunction(function(p1, p2)
+{
+	var c1 = NEW_CONTROLS.contains(p1.name);
+	var c2 = NEW_CONTROLS.contains(p2.name);
+
+	if(c1 && !c2) // p1 is a new control and p2 isn't
+		return 1;
+	else if (c2 && !c1) // p2 is a new control and p1 isn't
+		return -1;
+	
+	// otherwise return undefined which uses the default sorting
+	return undefined;
+});const var uph = Engine.createUserPresetHandler();
+
+
+
+inline function onPresetLoad(var obj)
+{
+	// do something with `obj`
+}
+
+inline function onPresetSave()
+{
+	return { "MyObject": someContent };
+}
+
+uph.setUseCustomUserPresetModel(onPresetLoad, onPresetSave, false);

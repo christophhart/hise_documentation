@@ -1,6 +1,6 @@
 Paint routines can only draw within the area of the object they are applied to, so a drop shadow applied to an entire panel will not dispaly around the panel as expected.
 
-In this example, the rectangle and drop shadow are being drawn to an area smaller than the panel they are painted on, using the reduceAmount paramtere of [getLocalBounds()](/scripting/scripting-api/scriptpanel/index.html#getlocalbounds).
+In this example, the rectangle and drop shadow are being drawn to an area smaller than the panel they are painted on, using the reduceAmount paramtere of [getLocalBounds()](/scripting/scripting-api/scriptpanel#getlocalbounds).
 
 ```javascript
 const var Panel1 = Content.addPanel("Panel1",10,10);

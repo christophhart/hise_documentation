@@ -23,7 +23,7 @@ When you are happy, save your popup, give it a name and it will be available in 
 ![macros](images\interface\macro-controls.png)
 The **Macro Control** popup gives you quick access to the Macro functionality in HISE. 
 
-If you click the little arrow the macro gets "armed" and you can connect it to any opened [Audio Module control](/hise-modules) (also multiple), that you have created in the [Module Tree](/introduction/hise-interface/left-panel/module-tree). The macro from now on overwrites the control. It scales the connected value to its MIDI range: 0 - 127.
+If you click the little arrow the macro gets "armed" and you can connect it to any opened [Audio Module control](/hise-modules) (also multiple), that you have created in the [Module Tree](/working-with-hise/hise-interface/left-panel/module-tree). The macro from now on overwrites the control. It scales the connected value to its MIDI range: 0 - 127.
 
 In a [Sliders](/ui-components/plugin-components/knob) properties you can quickly assign the slider to a Macro control with the parameter `MacroControl`. If you want to connect the slider directly to a single Audio module you can do so with the parameters `processorId` and `parameterId`.
 
@@ -31,7 +31,7 @@ If you want to use the inbuilt [Macro Table editor](/ui-components/floating-tile
 
 ## Interface Preview
 
-When you click on the house icon in the middle of the **Top Bar** HISE will open a preview of the plugins interface that you built in the [Interface Designer](/introduction/hise-interface/interface-designer). It will behave in the same way as a the interface on the [Canvas](/introduction/hise-interface/interface-designer#canvas) in **presentation mode**.
+When you click on the house icon in the middle of the **Top Bar** HISE will open a preview of the plugins interface that you built in the [Interface Designer](/working-with-hise/hise-interface/interface-designer). It will behave in the same way as a the interface on the [Canvas](/working-with-hise/hise-interface/interface-designer#canvas) in **presentation mode**.
 
 ## Preset Browser
 ![preset-browser](images\interface\preset-browser.png)

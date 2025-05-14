@@ -5,4 +5,4 @@ The `ScriptLookAndFeel` object gives you access and let's you modify the LookAnd
 const var local_laf432 = Content.createLocalLookAndFeel();
 ```
 
-See also: [Look and Feel Getting Started](/glossary/custom_lookandfeel.html#getting-started)
+See also: [Look and Feel Getting Started](/glossary/custom_lookandfeel#getting-started)

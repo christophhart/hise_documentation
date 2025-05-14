@@ -34,4 +34,4 @@ for (sample in selection){
 ```
 Note that attribute names belong to the `Sampler` class, not `Sample`
 
-trace() does not work on `Sample` objects. Use the [Script Watch Table](/working-with-hise/workspaces/scripting-workspace/code-editor.html#scriptwatchtable) to peek inside.
+trace() does not work on `Sample` objects. Use the [Script Watch Table](/working-with-hise/hise-interface/scripting-workspace/code-editor#scriptwatchtable) to peek inside.

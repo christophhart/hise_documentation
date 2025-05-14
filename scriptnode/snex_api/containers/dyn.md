@@ -171,4 +171,4 @@ auto same2 = d2[0] == data[2]; // true
 ```
 
   
-The second argument is the length of the dyn (so if you call [size()](/cpp_api/hise/structsnex_1_1_types_1_1dyn#size) later this value will be returned). The third parameter acts as offset so you can create slices of another container. Obviously, offset + newSize must be smaller or equal to the size of the original container.   
+The second argument is the length of the dyn (so if you call `size()` later this value will be returned). The third parameter acts as offset so you can create slices of another container. Obviously, offset + newSize must be smaller or equal to the size of the original container.   

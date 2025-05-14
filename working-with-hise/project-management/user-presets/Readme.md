@@ -55,7 +55,7 @@ Loading the user preset will go through this list and set the value for each Con
 1. Controls which are connected to a Processor parameter just set the parameter of the Module as if you would have interacted with the Control via mouse / keyboard.
 2. Controls which have a scripted callback will execute their callbacks asynchronously.
 
-The values are set according to this files top-down flow. There are a few edge cases in which you need to be aware of this: If you have a Slider that controls the [Sample Start offset](/hise-modules/sound-generators/list/streamingsampler#chains) of a [Sampler](/hise-modules/sound-generators/list/streamingsampler) and a Combobox that selects the different [SampleMap indexes](/tutorials/recipes/ui/general#switch-samplemaps-with-a-combobox), the Slider must be placed after the ComboBox to set the values in this order:
+The values are set according to this files top-down flow. There are a few edge cases in which you need to be aware of this: If you have a Slider that controls the [Sample Start offset](/hise-modules/sound-generators/list/streamingsampler#chains) of a [Sampler](/hise-modules/sound-generators/list/streamingsampler) and a Combobox that selects the different [SampleMap indexes](/tutorials/modules#minimal-sampler-example), the Slider must be placed after the ComboBox to set the values in this order:
 
 1. Load the new SampleMap including samples
 2. Apply the sample start offset modulation value to the new sample set.

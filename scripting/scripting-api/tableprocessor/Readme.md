@@ -5,7 +5,7 @@ author:   Christoph Hart
 modified: 30.07.2024
 ---
 
-Create a script reference to a Modulator that uses a TableProcessor like the [Table Envelope](/hise-modules/modulators/envelopes/list/tableenvelope) or the [Velocity Modulator](/hise-modules/modulators/voice-start-modulators/list/velocity.)
+Create a script reference to a Modulator that uses a TableProcessor like the [Table Envelope](/hise-modules/modulators/envelopes/list/tableenvelope) or the [Velocity Modulator](/hise-modules/modulators/voice-start-modulators/list/velocity)
 
 You can create this object with 
 

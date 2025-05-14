@@ -34,7 +34,7 @@ ConvolutionReverb1.setFile("{PROJECT_FOLDER}impulse.wav");
 ```
 
 ### Including several user-selectable impulse responses with a plugin
-Impulse Response files should be placed in the AudioFiles project directory. If [Embed Audio Files](/working-with-hise/settings/project.html#embed-audio-files) is enabled, they will be embeded into the compiled plugin.
+Impulse Response files should be placed in the AudioFiles project directory. If [Embed Audio Files](/working-with-hise/settings/project#embed-audio-files) is enabled, they will be embeded into the compiled plugin.
 
 Call [`Engine.loadAudioFilesIntoPool()`](/scripting/scripting-api/engine/index.html#loadaudiofilesintopool) to ensure the files are accessible in the compiled plugin. This returns an array of paths in the `{PROJECT_FOLDER}filename.wav` format, which can be directly loaded into the Convolution Reverb.
 
