@@ -361,10 +361,34 @@ In this example, when you hover over the button, its background color will chang
 
 ## Font-Handling
 
-CSS provides several properties for managing fonts. Note that the fonts must be loaded into HISE and then can be accessed with the same string as used in `g.setFont()`.
+CSS provides several properties for managing fonts:
+
+- `font-family` defines the font to be used
+- `font-weight` defines the weight (bold or not)
+- `font-size` defines the size of the font
+- `letter-spacing`: change the space between characters
+- `text-transform`: change to uppercase etc.
+- `text-align` and `vertical-align` will define the alignment of the text
+
+Note that the fonts must be loaded into HISE and then can be accessed with the same string as used in `g.setFont()`. If you're using the system fonts then you can directly use the font name in the `font-family` property, but for custom fonts that you have loaded with `Engine.loadFontAs()`, you will need to import the font using the at rule defined by the `@font-face` selector:
 
 ```javascript
+@font-face {
+    /* imports the font as FunkyFont */
+    font-family: FunkyFont;
+    /* This is optional if you haven't already called Engine.loadFontAs
+       but it will load the font with the given path.
+     */
+    src: url('{PROJECT_FOLDER}Fonts/DigitalNormal.ttf');
+}
+
+select {
+    /* now we can use our custom font. */
+    font-family: FunkyFont;
+}
+
 button {
+    /* system fonts are also available. */
     font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
