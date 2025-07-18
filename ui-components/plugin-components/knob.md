@@ -19,12 +19,53 @@ properties:
 - dragDirection: Select a drag direction
 - showValuePopup: Displays a Value Popup that shows the sliders value
 - showTextBox: If in horizontal or vertical mode: show slider value or not.
+- matrixTargetId: This property registers this UI knob as modulation target for the matrix modulation system. If the string corresponds to a target ID of one (or more) Matrix modulator(s), then it will connect to this module and update it's value parameter, otherwise it will create a custom modulation slot which will be periodically updated with the modulation value. |
 ---
 
 ## Filmstripping
 
 ## Scripting API
 [ScriptSlider](/scripting/scripting-api/scriptslider)
+
+## Matrix Modulated Sliders
+
+Starting with HISE 5.0 and the introduction of the [Matrix Modulation System](/hise-modules/modulators/envelopes/list/matrixmodulator), the Slider UI element was extended to offer a native integration with the modulation system. It boils down to two categories: Visualisation and Interaction.
+
+All you need to do to enable these features for a slider / knob is to set its `matrixTargetId` property (or connect it to the Value parameter of the Matrix modulator) and it will then act as a UI "representation" of that modulation target.
+
+> You might have to rebuild the module tree as this is not supposed to be a dynamic feature.
+
+### Modulation visualisation
+
+An important UX concept in synth plugins is the visualisation of the modulation and how it affects the signal. The most common one is to display an additional ring that shows the modulated value alongside the parameter value as it was set up by the user and the LAF `obj` parameter will give you a few additional properties that you can use for this. Most properties are already converted to the `0...1` range so you can directly throw them into the [Path.addArc()](/scripting/scripting-api/path#addarc) method or whatever you intend to use for rendering your knob.
+
+> Note that these additional properties only show up if the knob represents a "modulatable" parameter, which is one of the two things:
+
+1. the `Value` parameter of a [Matrix Modulator](/hise-modules/modulators/envelopes/list/matrixmodulator), which is the go-to solution for all modulation targets that are represented by a modulation chain, either in-built or customly defined in your scriptnode / hardcoded modules.
+2. a knob / slider that has its `matrixTargetId` set to a non-empty string so that it will be registered as additional modulation target.
+
+Take a look at the [Look and Feel Customization](/glossary/custom_lookandfeel#drawrotaryslider) section for an example of a modulated ring knob.
+
+### Inbuilt UI features
+
+The other part of a nice modulation UX is to be able to edit the modulation properties in a smooth way. This boils down to two operation types:
+
+1. Adding / removing connections should be possible with some kind of drag & drop system that extends on the possibility of selecting modulation sources / targets in a big drop down.
+2. Changing the modulation properties should be possible at the "target" location
+
+### Editing modulation properties
+
+If you hover over a modulated knob, it will show small modulation rings for every connection that you can use to change the intensity. The other modulation properties (inverting it or changing the modulation mode) is available at a context menu when you right click on any of these small connection rings. Double clicking on a connection ring will remove the modulation connection (of course fully undoable with `Engine.undo()`).
+
+While this is a heavily standardized feature that is found in the most popular synths, the exact appearance is of course fully customizable.
+
+### Connection via drag & drop
+
+Making the process of adding / removing modulation connections a smooth experience is a very important part of a good UX. Most synths have settled on some kind of drag & drop system where you just drag some representation of a modulation source to a target knob to add a connection.
+
+
+- modified & customizable context menu that allows to edit / remove the modulation connection
+- add additional modulation targets where a modulation chain is not available using the `matrixTargetId` property.
 
 ## CSS Styling
 

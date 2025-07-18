@@ -194,12 +194,27 @@ laf.registerFunction("drawToggleButton", function(g, obj)
 | `obj.value` | the slider value. |
 | `obj.valueNormalized` | the normalized slider value. |
 | `obj.valueSuffixString` | the slider value plus the suffix. |
+| `obj.valueAsText` | The prettified string representation of the slider value. |
 | `obj.suffix` | the suffix property. |
 | `obj.skew` | the skew factor. |
 | `obj.min` | the min value property. |
 | `obj.max` | the max value property. |
 | `obj.clicked` | the mouse clicked state of the slider. |
 | `obj.hover` | the mouse hover state of the slider. |
+
+If the slider is connected to a modulation target, the following properties will also be available:
+
+| Object Property | Description |
+| -- | ---- |
+| `obj.scaledValue` | the normalized slider value after it has been scaled by all modulation connections with the "Scale" mode. |
+| `obj.addValue` | the normalized slider value after all unipolar / bipolar modulation connections have been added to the value. |
+| `obj.modulationActive` | whether any modulation connection is active. |
+| `obj.modMinValue` | the (normalized) minimal value of the modulated range. |
+| `obj.modMaxValue` | the (normalized) maximal value of the modulation range. |
+| `obj.lastModValue` | a smoothed value of the last modulation value. |
+| `obj.modulationDragState` | indicates if a mod source component is currently being dragged. The value is an integer: 0 = no drag, 1 = drag is active, 2 = drag is active and the mod source is currently hovered over this knob. |
+
+> Note that in order to get the "actual" modulation value that you want to display, you will need to sum up and clip the `scaledValue` and `addValue` properties with `Math.range(obj.scaledValue + obj.addValue, 0.0, 1.0)`.
 
 In addition to these properties, all the colour properties from the interface designer are available too:
 
@@ -208,6 +223,60 @@ In addition to these properties, all the colour properties from the interface de
 - `obj.itemColour2`
 - `obj.textColour`
 
+This is a full example of how to style a modulated rotary knob:
+
+```javascript
+const var knobLaf = Content.createLocalLookAndFeel();
+
+const var ARC = 2.4;
+const var START = -ARC;
+const var ARC_WIDTH = 2.0 * ARC;
+const var THICKNESS = 14.0;
+
+var p = {};              
+p.EndCapStyle = "rounded"; 
+p.JointStyle = "beveled"; 
+p.Thickness = THICKNESS;
+
+inline function drawModSlider(g, obj)
+{
+	local a = Rectangle(obj.area).reduced(THICKNESS/2);
+	local n = Rectangle(0.0, 0.0, 1.0, 1.0);
+
+	local track = Content.createPath(); track.setBounds(n);
+	track.addArc(n, START-0.05, START + ARC_WIDTH+0.05);
+	
+	g.setColour(0x77000000);
+	g.drawPath(track, a, THICKNESS);
+	
+	local modRange = Content.createPath(); modRange.setBounds(n);
+	modRange.addArc(n, START + obj.modMinValue * ARC_WIDTH,
+					   START + obj.modMaxValue * ARC_WIDTH);
+					   
+	g.setColour(0x22FFFFFF);
+	g.drawPath(modRange, a, THICKNESS - 2);
+	
+	local value = Content.createPath(); value.setBounds(n);
+	value.addArc(n, START + obj.valueNormalized * ARC_WIDTH,
+					START + Math.range(obj.scaledValue + obj.addValue, 0.0, 1.0) * ARC_WIDTH);
+					
+	g.setColour(obj.itemColour1);
+	g.drawPath(value, a, THICKNESS - 4);
+	
+	local thumb = Content.createPath(); thumb.setBounds(n);
+	thumb.addArc(n, START + obj.valueNormalized * ARC_WIDTH - 0.01,
+					START + obj.valueNormalized * ARC_WIDTH + 0.01);
+	
+	g.setColour(Colours.white);
+	g.drawPath(thumb, a, p);
+	
+	g.drawAlignedText(obj.valueAsText, a, "centred");
+	g.setColour(0x55FFFFFF);
+	g.drawAlignedText(obj.text, a, "centredBottom");
+}
+
+knobLaf.registerFunction("drawRotarySlider", drawModSlider);
+```
 
 ### `drawLinearSlider`
 

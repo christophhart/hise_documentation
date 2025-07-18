@@ -17,7 +17,7 @@ This tutorial will guide you through the general syntax of CSS and its various f
 
 A CSS file is a collection of style rules. Each style rule consists of a selector and a declaration block. The selector points to the HISE UI Element you want to style. The declaration block contains one or more declarations separated by semicolons.
 
-```javascript
+```css
 selector 
 {
 	/* this is a comment. */
@@ -29,7 +29,7 @@ selector
 
 For example:
 
-```javascript
+```css
 button 
 {
     color: blue;
@@ -40,7 +40,7 @@ button
 
 Note that you can define multiple selectors with the same type and they will be coallascated into a single style sheet in the order of appearance.
 
-```javascript
+```css
 button 
 {
     color: green;
@@ -63,7 +63,7 @@ Selectors are used to select the elements you want to style. There are different
 
 Selects all elements. This selector is being overriden by any other selector and can be used as "fallback" selector or defining global properties like the font style etc. 
 
-```javascript
+```css
 * {
     margin: 0;
     padding: 0;
@@ -92,7 +92,7 @@ Class selectors have the `.classname` syntax and selects elements with a specifi
 - `.popup-menu`: The context menu
 - `.popup-item`: The item of a context menu
 
-```javascript
+```css
 .scriptslider 
 {
     font-weight: bold;
@@ -133,7 +133,7 @@ Class selectors will override the universal and type selectors (you can see that
 
 ID selectors have the `#id` syntax and select an element with a specific ID. In HISE this is simply the Component ID. You can use this selector to single out a specific component that you want to style different than the other components. The properties in the ID selector will have the highest priority and always override the other selectors.
 
-```javascript
+```css
 #Knob1 
 {
     text-align: center;
@@ -144,7 +144,7 @@ ID selectors have the `#id` syntax and select an element with a specific ID. In 
 
 You can inspect what classes are applied to a component with the right click **Show CSS debugger tool**. For the code example above, it will show something like this:
 
-```javascript
+```css
 /** Component stylesheet: */
 button #Button1 .scriptbutton .greenbg {
   background-color[]: 0xFF008000
@@ -181,7 +181,7 @@ Pseudo-states are appended after a selector and can be used to define the specia
 - `:checked`: only used by Buttons, indicate that the value is true (from `setValue(true)`).
 - `:disabled`: used when the element is not enabled (from `Knob1.set("enabled", false)`).
 
-```javascript
+```css
 button
 {
  background-color: red;
@@ -206,7 +206,7 @@ Style specific parts of an element. This can be used to draw an UI element that 
 
 > Note that you always have to set the `content` property of the element so that it shows up.
 
-```javascript
+```css
 select
 {
 	background: blue;
@@ -224,7 +224,7 @@ select::before
 
 CSS allows you to specify colors in several ways:
 
-```javascript
+```css
 button
 {
 	color: red; /* Predefined color names. */
@@ -246,7 +246,7 @@ Gradients allow you to create smooth transitions between two or more colors.
 
 Linear gradients transition colors along a straight line.
 
-```javascript
+```css
 button 
 {
     background: linear-gradient(to right, red, yellow);
@@ -264,7 +264,7 @@ In CSS, the box model describes the rectangular boxes generated for elements in 
 
 #### Examples
 
-```javascript
+```css
 button {
     padding-top: 20px;
     padding-right: 15px;
@@ -289,7 +289,7 @@ button {
 
 > Note that in HISE there is a big difference to how the CSS Standard uses the margin - usually it extends the layout and makes room between the elements. However since the positioning in HISE is fixed, this will not work, therefore the margin is defined as the distance between the component bounds and the background you draw (including border-radius, custom paths, etc)
 
-```javascript
+```css
 button {
     margin-top: 10px;
     margin-right: 20px;
@@ -313,7 +313,7 @@ button {
 The border is the area between the padding and the margin. It surrounds the padding and content of an element.
 
 
-```javascript
+```css
 /* Specifying border width, style, and color */
 button {
     border-width: 2px;
@@ -346,7 +346,7 @@ button {
 
 CSS transitions allow you to change property values smoothly over a given duration and is the easiest way to achieve some animations in HISE.
 
-```javascript
+```css
 button {
 	background-color: red;
     transition: background-color 0.5s ease;
@@ -372,7 +372,7 @@ CSS provides several properties for managing fonts:
 
 Note that the fonts must be loaded into HISE and then can be accessed with the same string as used in `g.setFont()`. If you're using the system fonts then you can directly use the font name in the `font-family` property, but for custom fonts that you have loaded with `Engine.loadFontAs()`, you will need to import the font using the at rule defined by the `@font-face` selector:
 
-```javascript
+```css
 @font-face {
     /* imports the font as FunkyFont */
     font-family: FunkyFont;
@@ -406,7 +406,7 @@ CSS Variables (Custom Properties) allow you dynamically change the appearance of
 
 To use a variable, use the `var()` function.
 
-```javascript
+```css
 button {
     background-color: var(--bgColour);
     color: var(--textColour);
@@ -428,7 +428,7 @@ Shadows can be applied to text and elements to create depth and emphasis.
 
 The `text-shadow` property adds shadow to text.
 
-```javascript
+```css
 button {
     text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
@@ -438,7 +438,7 @@ button {
 
 The `box-shadow` property adds shadow to elements.
 
-```javascript
+```css
 button {
     box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
 }
