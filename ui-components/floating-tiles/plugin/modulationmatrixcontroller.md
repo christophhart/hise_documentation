@@ -47,6 +47,7 @@ The dragger elements support all pseudo-classes:
 
 - `:hover` when you hover the element
 - `:active` when you drag the element. This state is also used to render the static image that is dragged around the screen
+- `:checked` when the element is corresponding to the current modulation source connection. This is automatically engaged when you click on a dragger, but can also be changed [programmatically](/scripting/scripting-api/scriptmodulationmatrix#setcurrentlyselectedsource).
 
 There is also a predefined default icon (the draggable +) supplied as `dragPath` variable, but you can of course replace that with any other icon.
 
@@ -86,6 +87,12 @@ The default appearance of this UI component will not win any design award, but h
 	position: absolute;
 	background-color: #555;
 	margin: 15px;
+}
+
+/** this will be enabled if the dragger is corresponding to the currently selected modulation source. */
+.dragger:checked
+{
+	background: #aaa;
 }
 
 .dragger:active
