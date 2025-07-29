@@ -14,6 +14,8 @@ If you pass in an empty String, it will deactivate the callback like `"No Callba
 The second parameter is a wildcard that filters the file types that can be dropped on the panel. The format is the usual file wildcard format, so `*.txt` or `*.*`.  
 If you want multiple wildcards, use a semicolon or comma: `*.aiff,*.wav,*.mp3`.
 
+> if you want to only allow folders to be dropped, you need to supply the string `"{FOLDER}"` as wildcard.
+
 The third parameter is the function that is executed at all events specified by the callback level parameter. It must be a (inline) function with a single parameter that
  contains a JSON object with the file drop status information:
 
@@ -23,7 +25,7 @@ The third parameter is the function that is executed at all events specified by 
 | `y` | `int` | Move, Enter, Drop | the `y` position relative to the top left of the panel of the drag event. |
 | `hover` | `bool` | Move, Enter, Drop, Exit | `true` if the file is currently being dragged over the panel. |
 | `drop` | `bool` | Move, Enter, Drop, Exit | `true` if the file is being dropped. |
-| `fileName` | `String` | Drop | The absolute path of the file being dropped. |
+| `fileName` | `String` | Drop | The absolute path of the file being dropped. If more than one file is dropped, then this will be an array with all matching filenames. |
 
 > If you need a [File](/scripting/scripting-api/file) object from the file being dropped, just use the new [`FileSystem.fromAbsolutePath()`](/scripting/scripting-api/filesystem#fromabsolutepath) method
 

@@ -157,5 +157,98 @@ for(c in offsetConnections)
 }
 ```
 
+## Modulation and UI Range
+
+When you connect a matrix modulator to a UI knob of your interface, it will control the **Value** parameter of this modulator:
+
+> Note that this is agnostic of how you connected the modulator: if you assign it through the `matrixTargetId` property, it will still internally call the **Value** parameter change when the target is a matrix modulator.
+
+This value parameter will control the **base offset** of the modulation signal so the target parameter will be modulated using this parameter as "starting point" (eg. if you have no modulation connections present, the target modulation value will correlate 1:1 with the value parameter).
+
+Now with this direct connection there comes a problem: in some cases you want to modify the modulation range and customize it to your project. However if you do so, the UI knob looses the ability of converting the modulation range to its displayed range and all the nice UI features with the modulation visualization go out of the window. Since all modulation in HISE boil down to a control signal between 0.0 and 1.0, the only option you would have is to set every knob to the `"NormalizedPercentage"` mode from 0 to 1.
+
+That would be a very limiting feature, and this is where the Modulation / UI Range comes in: you can define two ranges, one for the UI knob and one for the modulation output and the matrix modulator will use this to figure out the connection between the UI and the modulation signal:
+
+- whenever you change a value on your UI, it will use the UI Range (aka **InputRange**) to convert it to a normalised signal, then use this value as the **base offset** for the modulation signal. Then you just have make sure to set the knob range of your UI knob to the same range and you're good.
+- after all modulation signals have been calculated, it will use the Modulation Range (aka **OutputRange**) to convert the signal to the modulation output. This is required so that the UI value will actually match the outcome of the modulation signal.
+
+You can modify these ranges in three ways:
+
+1. Editing the ranges directly in the editor of the matrix modulator. Click on the **Edit value range** knob and modify the values.
+2. Use the [Modulator.setMatrixProperties()](/scripting/scripting-api/modulator#setmatrixproperties) function to modify them via script.
+3. [ScriptModulationMatrix.setMatrixModulationProperties()](/scripting/scripting-api/scriptmodulationmatrix#setmatrixmodulationproperties) to change them for all target modulators at once (alongside with other properties).
+
+Now making sure that the input and output ranges are setup correctly is a bit tricky and there are a few ready-made presets for most modulation target styles, but first let's take a look at a simple example on how to do this the "hard" way.
+
+### Example
+
+Let's take a look at a simple example: a matrix modulator in the Gain modulation chain of a sound generator. Now by default the normalized range from 0...1 means that the gain modulation output range will be from -100dB to 0dB with a -6dB midpoint (0.5 = -6dB). This is how all gain modulation in HISE works. On the UI we want to display a knob that controls the volume of the sound generator and represents the gain modulation, but we want:
+
+1. the gain value being displayed as Decibel.
+2. the range to be extended so that you can push the volume above unity gain. 
+
+For the example to remain as math-free as possible, we pick +6dB as max gain and 0dB as mid point (you'll see soon why that is the simplest example). So we set these values to be the input range:
+
+```javascript
+InputRange = {
+	min: -100.0,
+	max: 6.0,
+	middlePosition: 0.0,
+	stepSize: 0.0
+	mode: "Decibel"
+}
+```
+
+> Note that this is the proper syntax for the scripting calls and the range definitions use the same key names as the Slider range properties.
+
+We can now set our UI knob to the same range and now we can control the volume correctly, as the matrix modulator knows how to convert that incoming weird decibel value to a nice lean number between 0.0 and 1.0. However that's only part 1 of the system, because if you go completely insane and crank that bad boy up to +6dB like there is no tomorrow, the modulation output will still only be 1.0 (aka 0dB) because that is the default maximum modulation output value. 
+
+In order to reflect the desire for absolute mayhem and destruction we need to tell the modulator output that +6dB actually means +6dB. Now our idea of keeping the math as simple as possible pays off big time: +6dB just means a gain factor of 2.0, so what we need to do is to change the output range to:
+
+```javascript
+OutputRange = {
+	min: 0.0,
+	max: 2.0,
+	middlePosition: 1.0,
+	stepSize: 0.0
+}
+```
+
+This range will now be used to scale the output modulation value and now the UI knob does control the actual volume of that sound generator exactly how you would expect. No you might think that this was very complicated for such a basic function, but the idea here is to allow basically every input to output range conversion possible. 
+
+Now for most use cases you will never have to think about this concept, because there are a few ready made presets that you can simply select with the Presets dropdown 
+
+> if you call one the scripting methods, you can just supply a String that matches one of the presets described below instead of the Range JSON.
+
+### Range Presets
+
+These presets will setup the values of the input and output range automatically and should cover almost all use cases (and if not, you can easily start from a preset and modify it to match your requirements). Currently these presets are available:
+
+| Preset | Expected Target | Zero Position | Description |
+| === | == | = | ===== |
+| `NormalizedPercentage` | Anything | 0% | The default raw modulation from 0...1. |
+| `Gain0dB` | Gain Modulation | 0% | The default raw modulation from 0...1 but with a UI display in "Decibel" mode |
+| `Gain6dB` | Gain Modulation | 0% |A modulation from -100dB to +6dB (exactly what we have in our example). |
+| `Pitch1Octave` | Pitch Modulation | 50% | The default pitch modulation from -12 to +12 semitones. The step size is 1 semitone. |
+| `Pitch2Octaves` | Pitch Modulation | 50% | The default pitch modulation with an extended -24 to +24 semitone range. The step size is 1 semitone. |
+| `Pitch1Semitone` | Pitch Modulation | 50% | This will use the full modulation range to apply a +-1 semitone modulation so you can connect this to something like a "Fine Detune" knob. |
+| `FilterFreq` | Filter Frequency | 0% | The frequency modulation from 20Hz to 20kHz without any skewing (the mid-modulation position will be 10kHz). This is the default HISE filter frequency modulation behaviour and might not be the best sounding one. |
+| `FilterFreqLog` | Filter Frequency | 0% | The frequency modulation range from 20Hz to 20kHz but with a 2kHz midpoint. |
+| `Stereo` | Stereo Modulation | 50% | A modulation range from -100L to 100R. |
+
+### ZeroPosition
+
+As you can see, there is an additional property **Zero Position** (or `UseMidPositionAsZero` when you set this programatically) that defines how the intensity is calculated: For all targets that are bipolar in nature (eg. stereo balance or pitch modulation) you want the modulation to scale agains the mid point: if the modulation output signal is zero, the stereo position should be dead center and not hanging on the left speaker like a modulation signal of 0.0 would sound like. This is precisely what this property sets: it applies the modulation scaling to the middle of the input / output range.
+
+> Obviously this only affects modulation connections in the `"Scale"` mode, as unipolar or bipolar modulation connections are simply adding their value to the modulation signal and will not be affected by this setting.
+
+### Performance considerations
+
+The modulation output range will be used to convert the calculated modulation signal directly in the audio thread before it's sent to the target parameter. If that conversion needs to apply a skew factor (because the `middlePosition` is not exactly in the middle between `min` and `max`, this might come with a non-significant overhead so I highly suggest to evaluate whether this justifies the performance:
+
+1. for a filter frequency modulation slot it makes sense because we perceive frequency logarithmically so modulating around a 10kHz mid point feels off.
+2. for a gain modulation slot to scale every single voice with a non-default skew factor might not worth the performance overhead, as people are used to a linear modulation of gain (and the "logarithmic" scaling often happens already on the modulation source side, eg. "Linear" vs. "Exponential" envelope curves etc).
+
+
 
 
