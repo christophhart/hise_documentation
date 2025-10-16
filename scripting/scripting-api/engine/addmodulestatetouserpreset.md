@@ -1,6 +1,6 @@
 This function can be used to add the entire state of a HISE module to the user preset. This function will create the same XML element for the given module as it is stored in the XML file of the project (or if you copy a module using Ctrl+C) and attach it to the user preset's xml data. `moduleId` can be either the ID of the module that you want to attach to the user preset, or it can be a JSON object that provides additional functionality to remove properties and child elements.
 
-> Be aware that you can only use this method with HISE modules that do not have any child processors as this would cause a rearrangement of the signal tree with unexpected side effects!
+> Be aware that this function will only restore the immediate module - child modules are unaffected by this function. This ensures that the module tree is not being modified which might result in unstable behaviour.
 
 Passing in a JSON object as parameter allows you to sanitize the XML element before it gets stored into the user preset XML tree. This has two benefits:
 
