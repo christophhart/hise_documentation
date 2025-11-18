@@ -1,0 +1,1 @@
+Returns a JSON object with the current resynthesis options. Usually you call this method, then make your changes and call [setResynthesisOptions()](/scripting/scripting-api/wavetablecontroller#setresynthesisoptions) with the modified object.

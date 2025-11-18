@@ -1,0 +1,1 @@
+This returns a JSON with the current draggable filter data information. You can modify this JSON object and send it back to [setDraggableFilterData()](/scripting/scripting-api/effect) to update the properties for the given effect.

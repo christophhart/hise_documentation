@@ -12,14 +12,13 @@ With Scriptnode you get access to a full fledged modular DSP toolkit for buildin
 
 Add one of the following **Script** audio modules to the [Module Tree](/working-with-hise/hise-interface/left-panel/module-tree), create a DSP network and start adding [nodes](/scriptnode/list) to it.
 
-- [Script FX](/hise-modules/effects/list/scriptfx) - Use a DSP network in the FX Chain as an effect.
+- [Script FX](/hise-modules/effects/list/scriptfx) - Use a DSP network in the FX Chain as a monophonic effect.
+- [Polyphonic Script FX](/hise-modules/effects/list/polyscriptfx) - Use a DSP network in the FX chain of a sound generator as a polyphonic effect.
 - [Scriptnode Synthesiser](/hise-modules/sound-generators/list/scriptsynth) - Use the MIDI input to build a multivoice Scriptnode synthesiser
 
 Add **Script Modulators** to the Modulation Chain to build customized modulation signals:
-- [Script Voice Start Modulator](/hise-modules/modulators/voice-start-modulators/list/scriptvoicestartmodulator)
-- [Script Time Variant Modulator](/hise-modules/modulators/time-variant-modulators/list/scripttimevariantmodulator)
-- [Script Envelope Modulator](/hise-modules/modulators/envelopes/list/scriptenvelopemodulator)
-
+- [Script Time Variant Modulator](/hise-modules/modulators/time-variant-modulators/list/scripttimevariantmodulator) - create a monophonic time-variant modulation signal with a DSP network
+- [Script Envelope Modulator](/hise-modules/modulators/envelopes/list/scriptenvelopemodulator)- create a polyphonic time-variant modulation signal with a DSP network.
 
 ## Rationale
 

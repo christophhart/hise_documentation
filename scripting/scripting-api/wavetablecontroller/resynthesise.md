@@ -1,0 +1,1 @@
+This will resynthesise the wavetable based on the current options. 

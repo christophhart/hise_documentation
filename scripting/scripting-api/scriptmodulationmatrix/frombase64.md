@@ -1,0 +1,3 @@
+This restores all modulation connections from a given Base64 string. Note that by default a ScriptModulationMatrix will register itself to the user preset system and automatically restore / save its connections into user presets, but this function alongside with [ScriptModulationMatrix.toBase64()](/scripting/scripting-api/scriptmodulationmatrix#tobase64) allows you to manually save / restore the modulation setup of your synth.
+
+> This action is fully undoable with `Engine.undo()`. Note that this will kill all voices and perform this operation on the scripting thread to avoid audio glitches.

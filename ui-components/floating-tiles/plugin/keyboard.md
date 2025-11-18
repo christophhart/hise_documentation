@@ -84,7 +84,7 @@ There are a few additional variables that you can use in the CSS stylesheet:
 
 This is an example stylesheet for a noice keyboard that you can use as starting point for your custom CSS. Make sure you use the JSON property set from above to make it look as shown in the screenshot - all dimension properties should be relative so this should scale OKish with different proportions, but you might adapt it a bit.
 
-```javascript
+```css
 /** CSS Stylesheet for the MIDI keyboard. */
 
 /** Render the background. */

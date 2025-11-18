@@ -1,0 +1,1 @@
+This function returns a list of all available modulation sources, which are basically just the IDs of all modulators in the global modulator container.
