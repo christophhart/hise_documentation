@@ -1,5 +1,5 @@
 ---
-keywords: Chapter 1: Convention and DSP Network
+keywords: "Chapter 1: Convention and DSP Network"
 summary:  How to create a DSP network and how to access the network graph.
 author:   Matt_SF
 index:    01

@@ -22,6 +22,15 @@ cd ..
 
 %hise_path% create-docs %root_dir% %snippet_dir% %html_dir%
 
+
+REM Copy SEO files
+copy /Y template\robots.txt html_build\robots.txt
+
+REM Generate sitemap.xml
+python scripts\generate-sitemap.py
+
+echo SEO files generated!
+
 cd html_build
 
 git add --all

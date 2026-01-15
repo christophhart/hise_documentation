@@ -140,13 +140,11 @@
 
 @media only screen and (max-width: 750px) {
   #autoComplete {
-    width: 7rem;
     justify-content: flex-end;
     margin-right: 1rem;
     background: url("./images/magnifier.svg") no-repeat left/25% 1.1rem;
   }
   #autoComplete:focus {
-    width: 7rem;
     background: url("./images/magnifier.svg") no-repeat left/25% 1.0rem;
   }
 

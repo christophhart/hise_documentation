@@ -1,0 +1,25 @@
+# HISE Documentation - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: {BASE_URL}sitemap.xml
+
+# Crawl delay (be nice to servers)
+Crawl-delay: 1
+
+# Disallow test pages
+Disallow: /test-*.html
+
+# Allow all documentation pages
+Allow: /introduction/
+Allow: /scripting/
+Allow: /ui-components/
+Allow: /working-with-hise/
+Allow: /hise-modules/
+Allow: /tutorials/
+Allow: /glossary/
+
+# Allow search engines to index CSS/JS for better rendering
+Allow: /template/css/
+Allow: /template/scripts/

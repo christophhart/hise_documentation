@@ -527,10 +527,8 @@ var anchors = {
   "hise-modules/effects/list/stereofx.html": {
     "parameters": "Parameters"
   },
-  "ui-components/plugin-components/index.html": {
-  },
-  "scripting/index.html": {
-  },
+  "ui-components/plugin-components/index.html": {},
+  "scripting/index.html": {},
   "scripting/scripting-in-hise/index.html": {
     "basics": "Basics"
   },
@@ -2548,16 +2546,11 @@ var anchors = {
     "embedding-the-language": "Embedding the language",
     "examples": "Examples"
   },
-  "scriptnode/manual/third_party.html": {
-  },
-  "scriptnode/101/dsp_network.html": {
-  },
-  "scriptnode/101/gain_example.html": {
-  },
-  "scriptnode/101/panner.html": {
-  },
-  "scriptnode/101/drywet.html": {
-  },
+  "scriptnode/manual/third_party.html": {},
+  "scriptnode/101/dsp_network.html": {},
+  "scriptnode/101/gain_example.html": {},
+  "scriptnode/101/panner.html": {},
+  "scriptnode/101/drywet.html": {},
   "scriptnode/snex_api/containers/polydata.html": {
     "class-methods": "Class methods"
   },
@@ -2620,8 +2613,7 @@ var anchors = {
   "scriptnode/snex_api/node_types/snexsource.html": {
     "class-methods": "Class methods"
   },
-  "glossary/export.html": {
-  },
+  "glossary/export.html": {},
   "glossary/git.html": {
     "track-your-project": "Track your project",
     "how-to-use-git-lfs-large-file-storage-with-samples": "How to use Git LFS (Large File Storage) with samples",
@@ -2636,14 +2628,12 @@ var anchors = {
   "glossary/crash-reporting.html": {
     "testdrive-your-setup": "Testdrive your setup"
   },
-  "glossary/command-line-tool.html": {
-  },
+  "glossary/command-line-tool.html": {},
   "glossary/copy-protection.html": {
     "hise-copy-protection": "HISE Copy protection",
     "requirements": "Requirements"
   },
-  "glossary/hise-event.html": {
-  },
+  "glossary/hise-event.html": {},
   "glossary/custom_lookandfeel.html": {
     "getting-started": "Getting started",
     "popup-menu": "Popup menu",

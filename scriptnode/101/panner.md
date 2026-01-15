@@ -1,5 +1,5 @@
 ---
-keywords: Chapter 3: Panner
+keywords: "Chapter 3: Panner"
 summary:  A simple stereo panner that introduces the multi container
 author:   Matt_SF
 index:    03

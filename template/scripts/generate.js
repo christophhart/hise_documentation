@@ -21,35 +21,96 @@ function surroundWithTag(string, tagName, attributes)
 
 function createTocElement(object)
 {
-    if(object.Title.length == 0)
+    if(!object.Title || object.Title.length == 0)
+      return "";
+
+    if(object.URL && object.URL.includes('#'))
       return "";
 
     var path = window.location.pathname;
-    var thisPath =object.URL.replace("/index.html", "")
-    var isOpen = path.indexOf(thisPath) != -1;
-    var isSelected = path.replace("/index.html", "") == thisPath;
-    var cssStyleForSelected = surroundWithTag(object.Title, "a", "href='" + object.URL + "'");
+    var normalizedPath = path.startsWith('/') ? path.substring(1) : path;
+    var thisPath = object.URL.replace("/index.html", "").replace("index.html", "");
+    var normalizedCurrentPath = normalizedPath.replace("/index.html", "").replace("index.html", "");
+
+    var isOpen = normalizedPath.indexOf(thisPath) != -1;
+    var isSelected = normalizedCurrentPath == thisPath;
     var selectedStyle = isSelected ? "class=\"selected_details\"" : "";
 
+    var borderColor = object.Colour || "#666666";
+
+    var hasOnlyAnchors = false;
+    if(object.Children && object.Children.length > 0) {
+      hasOnlyAnchors = true;
+      for(var i = 0; i < object.Children.length; i++) {
+        if(!object.Children[i].URL || !object.Children[i].URL.includes('#')) {
+          hasOnlyAnchors = false;
+          break;
+        }
+      }
+    }
+
+
+    var detailsClass = hasOnlyAnchors ? "class=\"has-anchors\"" : "";
+
     var link = surroundWithTag(object.Title, "a", "href='" + object.URL + "'");
-    var summary = surroundWithTag(link, "summary", selectedStyle + "style=\"border-left: 3px solid " + object.Colour + ";\"");
+    var summary = surroundWithTag(link, "summary", selectedStyle + " style=\"border-left: 3px solid " + borderColor + ";\"");
 
-    for(child in object.Children)
-      summary += createTocElement(object.Children[child]);
-
+    if(object.Children && object.Children.length > 0) {
+      for(var i = 0; i < object.Children.length; i++) {
+        summary += createTocElement(object.Children[i]);
+      }
+    }
 
     summary += "\n";
 
-    return surroundWithTag(summary, "details", isOpen ? "open" : "");
+    return surroundWithTag(summary, "details", (isOpen ? "open " : "") + detailsClass);
+}
+
+function renderTOC() {
+
+
+  if (typeof rootDb === 'undefined') {
+    return;
+  }
+
+
+  var tocContainer = document.getElementById('toc-container');
+  if (!tocContainer) {
+    return;
+  }
+
+
+  var startTime = performance.now();
+
+  var html = '';
+  if (rootDb.Children && rootDb.Children.length > 0) {
+    for (var i = 0; i < rootDb.Children.length; i++) {
+      html += createTocElement(rootDb.Children[i]);
+    }
+  }
+
+
+  tocContainer.innerHTML = html;
+
+  var renderTime = (performance.now() - startTime).toFixed(1);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderTOC);
+} else {
+  renderTOC();
 }
 
 
- // Sidebar opener for mobile
-
- window.onload = function () {
+ function initMobileSidebar() {
 
   var toc = document.querySelector(".toc");
   var menuButton = document.getElementById("nav-button");
+
+  if (!toc || !menuButton) {
+    return;
+  }
+
 
   menuButton.addEventListener("click", function () {
     toc.classList.toggle("open");
@@ -61,7 +122,6 @@ function createTocElement(object)
     }
   })
 
-  // Toggle toc on swipe
   var start = {}, end = {}
 
   document.body.addEventListener("touchstart", function (e) {
@@ -82,4 +142,10 @@ function createTocElement(object)
     }
   })
 
+}
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileSidebar);
+  } else {
+    initMobileSidebar();
 }

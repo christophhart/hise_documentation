@@ -1,5 +1,5 @@
 ---
-keywords: Chapter 2: Gain Example
+keywords: "Chapter 2: Gain Example"
 summary:  The first hello world of scriptnode: a simple gain effect
 author:   Matt_SF
 index:    02

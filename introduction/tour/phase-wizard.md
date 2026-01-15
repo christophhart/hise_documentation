@@ -1,5 +1,5 @@
 ---
-keywords: Tutorial Project 1: PhaseWizard
+keywords: "Tutorial Project 1: PhaseWizard"
 summary:  Build a Synth VSTi
 index:    01
 weight:   70

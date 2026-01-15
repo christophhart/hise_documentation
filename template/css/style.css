@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:wght@300;400;600;700;900');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:wght@300;400;600;700;900');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800;900');
+/* Google Fonts with font-display: swap for better performance */
+/* Inter: Primary UI font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Roboto Mono: Code blocks */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
 
 
 /* GENERAL */
@@ -11,14 +13,17 @@
 
 html {
     font-size: 1rem;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     line-height: 1.6;
-
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .container {
@@ -27,6 +32,8 @@ body {
     z-index: 1;
     min-height: calc(100vh - 40px);
     background-color: #e3e3d9;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    max-width: 100vw; /* Never exceed viewport width */
 }
 
 header{
@@ -35,22 +42,22 @@ header{
     display:flex;
     background-color: hsl(0, 0%, 5%);
     z-index: 9;
-    width: 100%;
+    width: 100vw; /* Use viewport width instead of 100% */
+    max-width: 100vw; /* Ensure it never exceeds viewport */
+    left: 0; /* Anchor to left edge */
     top: 0;
     height:64px;
     margin:0;
-    padding:0;
+    padding:0 1rem;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-
-    
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 logo {
     display: flex;
     align-items: center;
     margin-top:0.2rem;
-    margin-left: 2rem;
-    
+    margin-left: 0.5rem;
 }
 
 logo > a > img {
@@ -73,11 +80,64 @@ logo > a > .heading {
 
 /* AUTOCOMPLETE */
 
+.search {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    position: relative;
+}
+
+#autoComplete {
+    padding: 0rem 0rem 0rem 2.5rem; /* Left padding for magnifier icon */
+    width: 250px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #2a2a2a;
+    color: #f5f5f5;
+    font-size: 0.9rem;
+}
+
+#autoComplete:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
 #autoComplete_results_list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    max-height: 60vh;
+    overflow-y: auto;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    z-index: 95;
     display: none;
-    height: 45vh;
-    overflow: auto;
-    border-radius: 2px;
+}
+
+/* Minimal scrollbar for search results */
+#autoComplete_results_list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#autoComplete_results_list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#autoComplete_results_list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#autoComplete_results_list::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+#autoComplete_results_list[style*="display: block"],
+#autoComplete_results_list[style*="display:block"] {
+    display: block !important;
 }
 
 .out {
@@ -134,6 +194,12 @@ nav.toc a {
     text-decoration: none;
     font-weight: 400;
     font-size: 0.9em;
+    transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+nav.toc a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 #nav-button {
@@ -143,27 +209,43 @@ nav.toc a {
 
 summary {
     padding-left: 10px;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    border-radius: 3px;
+}
+
+summary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 details {
     padding-left: 10px;
-    font-size: 19px;
+    font-size: 20px;
 }
 
 details details {
     padding-left: 20px;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 details details details {
     list-style: none;
 }
-details > details > details > details >summary::-webkit-details-marker {
+
+/* Hide disclosure triangle on items with only anchor children (any depth) */
+details.has-anchors > summary::-webkit-details-marker {
     display: none;
-  }
+}
 
+details.has-anchors > summary::marker {
+    display: none;
+}
 
+/* Firefox support */
+details.has-anchors > summary {
+    list-style: none;
+}
 
 
 /* CONTENT */
@@ -173,29 +255,23 @@ details > details > details > details >summary::-webkit-details-marker {
     padding-top: 6.5rem;
     padding-left: 410px;
     padding-right: 20px;
-    max-width: 800px;
+    max-width: 750px;
+    overflow-x: hidden; /* Prevent content from causing horizontal scroll */
+    word-wrap: break-word; /* Break long words if needed */
 }
 
 
-/* Anchor jump to*/
-.content > h1 {
-    padding-top: 68px;
-    margin-top: -58px;
-}
-.content > h2 {
-    padding-top: 98px;
-    margin-top: -88px;
-}
-
+/* Anchor jump to - compensate for fixed navbar */
+.content > h1,
+.content > h2,
 .content > h3 {
-	padding-top: 88px;
-    margin-top: -78px;
+    scroll-margin-top: 80px; /* 64px navbar + 16px breathing room */
 }
 
 h1,
 h2,
 h3 {
-    font-weight: 600;
+    font-weight: 400;
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     color: #3b3e42;
 }
@@ -235,9 +311,8 @@ h3 > code {
 
 p {
     margin: 1.2em 0 -1.2em;
-    padding-bottom: 1.2em;
-    font-size: 1.002em;
-    color:#272c31;
+    padding-bottom: 1.6em;
+    color:#1c1d1f;
 }
 
 p code
@@ -265,6 +340,7 @@ table {
     margin-top: 1.5rem;
     margin-bottom:1.5rem;
     color:#272c31;
+    max-width: 100%;
 }
 
 table code {
@@ -354,6 +430,7 @@ footer {
     transition: var(--transition-1);
     background-color: #A4A491;
     height:40px;
+    z-index: 2;
     font-size: 0.8rem;
 }
 
@@ -376,9 +453,409 @@ footer > div > a:hover {
     text-decoration: underline;
 }
 
+.footer_in {
+    padding-right:320px;
+}
 
+
+/* RIGHT-SIDE ANCHOR NAVIGATION */
+
+.anchor-nav {
+    position: fixed;
+    right: 0;
+    top: 64px;
+    bottom: 0; /* Extends to bottom, footer overlays it */
+    width: 250px;
+    background: #e3e3d9;
+    border-left: 1px solid #222427;
+    padding: 24px 20px;
+    padding-bottom: 60px; /* Extra padding for footer overlap */
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 5;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    display: none; /* Hidden by default, shown by JS when anchors exist */
+}
+
+.anchor-nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.anchor-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.anchor-nav::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.anchor-nav::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.anchor-nav-header {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #4CAF50;
+}
+
+.anchor-nav-page-title {
+    display: block;
+    color: #2E7D32;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+.anchor-nav-page-title:hover {
+    color: #1B5E20;
+    text-decoration: underline;
+}
+
+.anchor-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.anchor-nav-item {
+    margin-bottom: 4px;
+}
+
+.anchor-nav-link {
+    display: block;
+    padding: 8px 12px;
+    color: #222427;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.4;
+}
+
+.anchor-nav-link:hover {
+    color: #333;
+    background: #e8f5e9;
+    border-left-color: #81C784;
+}
+
+.anchor-nav-link.active {
+    color: #2E7D32;
+    font-weight: 600;
+    border-left-color: #4CAF50;
+    background: #f1f8f4;
+}
+
+/* Adjust content to make room for right anchor nav when it's visible */
+.content {
+    padding-right: 20px; /* Default without anchor nav */
+    transition: padding-right 0.3s ease;
+}
+
+/* When anchor nav is shown (display: block), add padding to content */
+.anchor-nav[style*="display: block"] ~ .content,
+.anchor-nav[style*="display:block"] ~ .content {
+    padding-right: 290px; /* 250px anchor nav + 40px margin */
+}
+
+/* Hide mobile anchor nav elements by default (shown on mobile via media query) */
+#anchor-nav-toggle {
+    display: none;
+}
+
+#anchor-nav-dropdown {
+    display: none;
+    position: fixed;
+}
+
+#anchor-nav-backdrop {
+    display: none;
+    position: fixed;
+}
 
 /* MEDIA */
+
+@media screen and (max-width: 1100px) {
+    /* Hide anchor nav completely on mobile - use dropdown instead */
+    .anchor-nav {
+        display: none !important;
+    }
+
+    .content {
+        padding-right: 20px !important; /* Always 20px on mobile */
+        overflow-x: hidden; /* Prevent content from causing horizontal scroll */
+        max-width: 100vw; /* Never exceed viewport width */
+    }
+
+    /* Make tables scrollable on mobile to prevent horizontal overflow */
+    .content table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-left: 0;
+        margin-right: 0;
+        /* Scrollbar styling */
+        scrollbar-width: thin;
+        scrollbar-color: #888 transparent;
+    }
+
+    .content table::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .content table::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+    }
+
+    .content table::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    .content table::-webkit-scrollbar-thumb:hover {
+        background: #666;
+    }
+
+    /* Keep thead, tbody, tr as table elements for proper rendering */
+    .content table thead,
+    .content table tbody {
+        display: table-row-group;
+    }
+
+    .content table tr {
+        display: table-row;
+    }
+
+    .content table th,
+    .content table td {
+        display: table-cell;
+    }
+
+    /* Make code blocks scrollable on mobile */
+    .content pre {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+    }
+
+    .content pre code {
+        display: inline-block;
+        min-width: 100%;
+        width: max-content;
+    }
+
+    /* Prevent images from overflowing */
+    .content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Footer adjustments for mobile - remove right padding */
+    .footer_in {
+        padding-right: 1rem !important; /* Remove the 320px padding for anchor nav */
+        margin-right: 0 !important;
+    }
+
+    footer > div {
+        margin-right: 0.5rem !important;
+    }
+
+    /* Search bar adjustments for mobile */
+    .search {
+        margin-right: 0.5rem;
+        flex: 1;
+        max-width: 300px;
+        position: relative;
+    }
+
+    #autoComplete {
+        width: 100%;
+        padding-left: 2.5rem !important; /* Make room for magnifier icon */
+        padding-right: 0.5rem !important;
+    }
+
+    #autoComplete_results_list {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0;
+    }
+
+    /* Make individual result items full width */
+    .autoComplete_result {
+        max-width: 100% !important;
+    }
+
+    /* Anchor dropdown toggle - always pinned top right */
+    #anchor-nav-toggle {
+        display: block; /* Override the default display: none */
+        position: fixed;
+        right: 15px;
+        top: 72px;
+        width: 44px;
+        height: 44px;
+        background: #2E7D32;
+        border-radius: 50%;
+        border: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 100;
+        transition: all 0.2s ease;
+    }
+
+    #anchor-nav-toggle:hover {
+        background: #1B5E20;
+        transform: scale(1.05);
+    }
+
+    #anchor-nav-toggle::before {
+        content: '☰';
+        color: white;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        transform: rotate(90deg);
+    }
+
+    /* Dropdown menu for anchors - slide-in drawer from right */
+    #anchor-nav-dropdown {
+        display: block; /* Override the default display: none */
+        position: fixed;
+        right: 0;
+        top: 64px;
+        bottom: 0;
+        width: 280px;
+        max-width: 80%;
+        background: #222427;
+        box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 99;
+        padding: 24px 20px;
+        padding-bottom: 60px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #anchor-nav-dropdown.open {
+        transform: translateX(0);
+    }
+
+    /* Scrollbar styling for mobile drawer */
+    #anchor-nav-dropdown::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    #anchor-nav-dropdown::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    #anchor-nav-dropdown::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 3px;
+    }
+
+    #anchor-nav-dropdown::-webkit-scrollbar-thumb:hover {
+        background: #999;
+    }
+
+    /* Backdrop overlay for mobile drawer */
+    #anchor-nav-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 98;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    #anchor-nav-backdrop.open {
+        display: block;
+        opacity: 1;
+    }
+
+    /* Change toggle appearance when dropdown is open */
+    body:has(#anchor-nav-dropdown.open) #anchor-nav-toggle {
+        background: #d32f2f;
+    }
+
+    body:has(#anchor-nav-dropdown.open) #anchor-nav-toggle::before {
+        content: '✕';
+        transform: rotate(0deg);
+    }
+
+    /* Style dropdown content */
+    #anchor-nav-dropdown .anchor-nav-header {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #4CAF50;
+        color: #f5f5f5;
+    }
+
+    #anchor-nav-dropdown .anchor-nav-page-title {
+        display: block;
+        color: #4CAF50;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    #anchor-nav-dropdown .anchor-nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #anchor-nav-dropdown .anchor-nav-item {
+        margin-bottom: 4px;
+    }
+
+    #anchor-nav-dropdown .anchor-nav-link {
+        display: block;
+        padding: 8px 12px;
+        color: #f5f5f5;
+        text-decoration: none;
+        font-size: 13px;
+        border-left: 3px solid transparent;
+        transition: all 0.2s ease;
+        border-radius: 4px;
+    }
+
+    #anchor-nav-dropdown .anchor-nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-left-color: #81C784;
+    }
+
+    #anchor-nav-dropdown .anchor-nav-link.active {
+        color: #4CAF50;
+        font-weight: 600;
+        border-left-color: #4CAF50;
+        background: rgba(76, 175, 80, 0.1);
+    }
+}
 
 @media screen and (max-width: 800px) {
 nav.toc {
@@ -386,7 +863,7 @@ nav.toc {
     z-index: 10;
     height: 100%;
     left: 0;
-	
+
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
     transition: all 0.2s cubic-bezier(0.4, 0, 0, 1);
     -webkit-transform: translate(-370px, 0);
@@ -420,6 +897,9 @@ a > .heading {
     padding-left: 2rem;
     padding-right: 2rem;
     font-size: 15px;
+    overflow-x: hidden;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 logo {
     margin-left: 0rem;
@@ -433,6 +913,36 @@ pre > code {
 }
 
 pre.line-numbers {
-  padding-left: 0.8em; 
+  padding-left: 0.8em;
+}
+
+/* Make search responsive on small screens */
+.search {
+    margin-right: 0.5rem;
+    max-width: 200px;
+    position: relative;
+}
+
+#autoComplete {
+    /* font-size: 0.85rem; */
+    padding: 0rem 0rem 0rem 2.5rem !important;
+}
+
+#autoComplete_results_list {
+    font-size: 0.85rem;
+    position: fixed !important;
+    top: 64px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Adjust anchor nav toggle for smaller screens */
+#anchor-nav-toggle {
+    right: 10px;
+    width: 40px;
+    height: 40px;
 }
 }

@@ -1,42 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<base href="{BASE_URL}"/>
+	<base href="{BASE_URL}" />
 	<title>HISE | {TITLE_SUFFIX}</title>
 	<meta name="description" content="{DESCRIPTION}">
-	<link rel="stylesheet" type="text/css" href="/template/css/prism.css">
+
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+	<link rel="canonical" href="{CANONICAL_URL}" />
+	<meta name="keywords" content="HISE, audio plugin, sampler, scripting, DSP, virtual instrument, documentation">
+	<meta name="author" content="Christoph Hart">
+	<meta name="robots" content="index, follow">
+
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{CANONICAL_URL}">
+	<meta property="og:title" content="HISE | {TITLE_SUFFIX}">
+	<meta property="og:description" content="{DESCRIPTION}">
+	<meta property="og:image" content="{BASE_URL}template/images/hise-og-image.png">
+	<meta property="og:site_name" content="HISE Documentation">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="/template/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/template/images/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/template/images/apple-touch-icon.png">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<link rel="preload" href="/template/css/style.min.css" as="style">
+
+	<link rel="stylesheet" type="text/css" href="/template/css/prism.min.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/autoComplete.css">
-	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="/template/css/style.min.css">
+
 	<script src="/template/scripts/toc.json"></script>
-	<script language="javascript" src="/template/scripts/generate.js"></script>
+	<script src="/template/scripts/generate.min.js" defer></script>
+	<script src="/template/scripts/anchor-nav.min.js" defer></script>
 </head>
+
 <body>
 	<header>
 		<a id="nav-button">
 		</a>
 		<logo>
-			
 			<a href="/">
 				<div class="heading">HISE Docs</div>
 			</a>
 		</logo>
 		<div class="search">
-			<input id="autoComplete" tabindex="1">
+			<input id="autoComplete" placeholder="Search..." tabindex="1" autocomplete="off">
 		</div>
 	</header>
 
 	<div class="container">
-		<nav class="toc">
-			<script>
-				for (rootIndex in rootDb.Children) {
-					document.write(createTocElement(rootDb.Children[rootIndex]));
-				}
-			</script>
-
+		<nav class="toc" id="toc-container" role="navigation" aria-label="Table of contents">
 		</nav>
 
-		<div class="content">
+		<main class="content" role="main">

@@ -2,3 +2,8 @@
 cached/hash.json
 images/web/
 .vs
+.claude
+.env
+
+html_build/
+
