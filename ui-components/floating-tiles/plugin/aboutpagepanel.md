@@ -7,7 +7,7 @@ properties:
 - Font: Select a font
 - FontSize: Set the fontsize
 - ShowProductName: Shows the product name set in the Project Settings
-- UseCustomImage: Set a image path to display an image on the AboutPagePanel
+- UseCustomImage: Set to true and add an image named about.png to the project's Images folder to apply it to the floating tile.
 - CopyrightNotice: Show a copyright notice string
 - ShowLicensedEmail: Select true if you want to show the licensed email adress. 
 - ShowVersion: Set to true if you want to display the current Product Version number, set in the project settings.
