@@ -55,14 +55,6 @@ echo.
 echo Generating sitemap.xml...
 powershell -ExecutionPolicy Bypass -File scripts\generate-sitemap.ps1
 
-REM Compress assets with gzip
-echo.
-echo Compressing assets with gzip...
-call scripts/gzip-assets.bat
-if %errorlevel% neq 0 (
-    echo WARNING: GZIP compression failed, continuing anyway...
-)
-
 echo.
 echo ============================================================================
 echo   Deploying to Git
