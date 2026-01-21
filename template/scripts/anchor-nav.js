@@ -8,91 +8,37 @@
   'use strict';
 
   /**
-   * Extract anchors from rootDb tree structure
-   * HISE generates anchors as Children with '#' in URL
+   * Extract anchors from the global 'anchors' object
+   * HISE generates anchors as a separate lookup table in toc.json
    */
   function getCurrentPageAnchors() {
-    if (typeof rootDb === 'undefined') {
+    if (typeof anchors === 'undefined') {
       return [];
     }
 
-    // Normalize current path (remove leading slash and handle base tag)
+    // Normalize current path (remove leading slash)
     let currentPath = window.location.pathname;
-
-    // If we have a base tag with docs.hise.dev, window.location.pathname might be absolute
-    // Extract just the relative path portion
-    const baseUrl = document.querySelector('base');
-    if (baseUrl && baseUrl.href) {
-      try {
-        const base = new URL(baseUrl.href);
-        const current = new URL(window.location.href);
-
-        // If on the same origin as base, get relative path
-        if (current.origin === base.origin || window.location.protocol === 'file:') {
-          currentPath = current.pathname.replace(base.pathname, '');
-        }
-      } catch (e) {
-        // Fallback to simple path handling
-      }
-    }
-
-    // Remove leading slash
     if (currentPath.startsWith('/')) {
       currentPath = currentPath.substring(1);
     }
 
-    // Find the page in the tree and extract its anchor children
-    const pageAnchors = findAnchorsInTree(rootDb, currentPath);
-    return pageAnchors;
-  }
-
-  /**
-   * Cache for tree search results
-   */
-  const anchorCache = {};
-
-  /**
-   * Recursively search tree for page and extract anchors (with caching)
-   */
-  function findAnchorsInTree(node, targetPath) {
-    // Check cache first
-    if (anchorCache[targetPath]) {
-      return anchorCache[targetPath];
+    // Look up anchors for this page
+    const pageAnchors = anchors[currentPath];
+    if (!pageAnchors) {
+      return [];
     }
 
-    // Check if this node matches the target page
-    if (node.URL === targetPath) {
-      // Extract anchors from Children (URLs with '#')
-      const anchors = [];
-      if (node.Children && node.Children.length > 0) {
-        for (const child of node.Children) {
-          if (child.URL && child.URL.includes('#')) {
-            const anchorId = child.URL.split('#')[1];
-            if (anchorId) {
-              anchors.push({
-                id: anchorId,
-                title: child.Title || anchorId
-              });
-            }
-          }
-        }
-      }
-      // Cache the result
-      anchorCache[targetPath] = anchors;
-      return anchors;
-    }
-
-    // Recursively search children
-    if (node.Children && node.Children.length > 0) {
-      for (const child of node.Children) {
-        const result = findAnchorsInTree(child, targetPath);
-        if (result.length > 0) {
-          return result;
-        }
+    // Convert object to array format
+    const result = [];
+    for (const id in pageAnchors) {
+      if (pageAnchors.hasOwnProperty(id)) {
+        result.push({
+          id: id,
+          title: pageAnchors[id]
+        });
       }
     }
-
-    return [];
+    return result;
   }
 
   /**
