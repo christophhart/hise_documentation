@@ -3,13 +3,11 @@
 HISE Documentation Development Server with Live Reload
 
 This script starts:
-1. Meilisearch server (for full-text search)
-2. Live-reload HTTP server (auto-refreshes browser on file changes)
+1. Live-reload HTTP server (auto-refreshes browser on file changes)
 
 WORKFLOW:
   1. Run this script: python start-dev.py
-  2. Edit files in html_build/ - browser auto-refreshes
-  3. Or: Edit template/ files, rebuild with HISE, auto-refreshes
+  1. Rebuild with HISE, takes template/footer.html and template/header.html and builds all doc files and puts them in /html_build
 
 Press Ctrl+C to stop all servers
 """
@@ -20,7 +18,6 @@ import os
 import signal
 
 # Configuration
-MEILI_MASTER_KEY = "KTs56V2lSaQTrlVSeE5QvTqUzLneyb_ezscYfpfe2hM"
 HTML_BUILD_DIR = "html_build"
 PORT = 8000
 
@@ -80,8 +77,6 @@ def main():
             cleanup()
             sys.exit(1)
     else:
-        print("live-server not found, using threaded HTTP server")
-        print("To enable auto-reload: npm install -g live-server")
         try:
             # Use Python's ThreadingHTTPServer for better concurrent handling
             from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -109,19 +104,6 @@ def main():
     print("Development servers ready!")
     print("=" * 60)
     print(f"\nDocumentation:  http://localhost:{PORT}")
-    print(f"Meilisearch:    http://localhost:7700")
-    print(f"Master Key:     {MEILI_MASTER_KEY}")
-
-    print("\n" + "=" * 60)
-    print("Development Workflow:")
-    print("=" * 60)
-    print("\n1. Edit files in html_build/ - browser auto-refreshes")
-    print("2. Or: Edit template/ files, rebuild with HISE")
-    print("3. Index to Meilisearch: npm run index-docs")
-
-    print("\nQuick Commands:")
-    print("   npm run index-docs       - Index docs to Meilisearch")
-    print("   npm run test-urls        - Validate search result URLs")
 
     print("\nPress Ctrl+C to stop all servers\n")
 

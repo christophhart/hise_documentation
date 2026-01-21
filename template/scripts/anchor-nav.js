@@ -7,35 +7,42 @@
 (function() {
   'use strict';
 
-  console.log('[Anchor Nav] Script loaded');
-
   /**
    * Extract anchors from rootDb tree structure
    * HISE generates anchors as Children with '#' in URL
    */
   function getCurrentPageAnchors() {
     if (typeof rootDb === 'undefined') {
-      console.warn('[Anchor Nav] rootDb not loaded');
       return [];
     }
 
-    // Normalize current path (remove leading slash)
+    // Normalize current path (remove leading slash and handle base tag)
     let currentPath = window.location.pathname;
+
+    // If we have a base tag with docs.hise.dev, window.location.pathname might be absolute
+    // Extract just the relative path portion
+    const baseUrl = document.querySelector('base');
+    if (baseUrl && baseUrl.href) {
+      try {
+        const base = new URL(baseUrl.href);
+        const current = new URL(window.location.href);
+
+        // If on the same origin as base, get relative path
+        if (current.origin === base.origin || window.location.protocol === 'file:') {
+          currentPath = current.pathname.replace(base.pathname, '');
+        }
+      } catch (e) {
+        // Fallback to simple path handling
+      }
+    }
+
+    // Remove leading slash
     if (currentPath.startsWith('/')) {
       currentPath = currentPath.substring(1);
     }
 
-    console.log('[Anchor Nav] Looking up:', currentPath);
-
     // Find the page in the tree and extract its anchor children
     const pageAnchors = findAnchorsInTree(rootDb, currentPath);
-
-    if (pageAnchors.length === 0) {
-      console.log('[Anchor Nav] No anchors defined for this page');
-      return [];
-    }
-
-    console.log('[Anchor Nav] Found', pageAnchors.length, 'anchors');
     return pageAnchors;
   }
 
@@ -110,7 +117,6 @@
   function renderAnchorNav() {
     const container = document.getElementById('anchor-nav-container');
     if (!container) {
-      console.warn('[Anchor Nav] Container not found');
       return false;
     }
 
@@ -118,7 +124,6 @@
 
     if (pageAnchors.length === 0) {
       // No anchors for this page - hide the navigation
-      console.log('[Anchor Nav] Hiding anchor nav (no anchors)');
       container.style.display = 'none';
 
       // Also hide the toggle button
@@ -131,7 +136,6 @@
     }
 
     // Show container
-    console.log('[Anchor Nav] Rendering', pageAnchors.length, 'anchors');
     container.style.display = 'block';
 
     // Get page title from <title> tag or <h1>
@@ -173,8 +177,6 @@
 
     html += '</ul>';
     container.innerHTML = html;
-
-    console.log('[Anchor Nav] Rendered successfully');
 
     // Add smooth scroll behavior
     addSmoothScroll();
@@ -237,7 +239,6 @@
     });
 
     smoothScrollAdded = true;
-    console.log('[Anchor Nav] Smooth scroll enabled');
   }
 
   /**
@@ -258,7 +259,6 @@
       .filter(Boolean);
 
     if (anchorElements.length === 0) {
-      console.warn('[Anchor Nav] No anchor elements found in DOM');
       return;
     }
 
@@ -398,7 +398,6 @@
       const backdropEl = document.getElementById('anchor-nav-backdrop');
       
       if (!dropdownEl || !backdropEl) {
-        console.error('[Anchor Nav] Dropdown or backdrop element not found');
         return;
       }
       
@@ -411,8 +410,6 @@
         dropdownEl.classList.add('open');
         backdropEl.classList.add('open');
       }
-
-      console.log('[Anchor Nav] Mobile drawer toggled:', !isOpen);
     }
 
     // Only add event listeners once
@@ -468,9 +465,6 @@
       });
 
       mobileNavInitialized = true;
-      console.log('[Anchor Nav] Mobile drawer initialized');
-    } else {
-      console.log('[Anchor Nav] Mobile drawer content updated');
     }
   }
 
@@ -481,11 +475,9 @@
   function initAnchorNav() {
     // Quick check - rootDb should be loaded from toc.json
     if (typeof rootDb === 'undefined') {
-      console.warn('[Anchor Nav] rootDb not loaded - skipping');
       return;
     }
 
-    console.log('[Anchor Nav] Initializing');
     const hasAnchors = renderAnchorNav();
 
     // Only initialize mobile functionality if we have anchors

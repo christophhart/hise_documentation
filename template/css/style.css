@@ -83,13 +83,12 @@ logo > a > .heading {
 .search {
     display: flex;
     align-items: center;
-    margin-right: 2rem;
     position: relative;
 }
 
 #autoComplete {
     padding: 0rem 0rem 0rem 2.5rem; /* Left padding for magnifier icon */
-    width: 250px;
+    width: 280px;
     border: 1px solid #444;
     border-radius: 4px;
     background: #2a2a2a;
@@ -264,7 +263,8 @@ details.has-anchors > summary {
 /* Anchor jump to - compensate for fixed navbar */
 .content > h1,
 .content > h2,
-.content > h3 {
+.content > h3,
+.content > h4 {
     scroll-margin-top: 80px; /* 64px navbar + 16px breathing room */
 }
 
@@ -672,7 +672,6 @@ footer > div > a:hover {
 
     /* Search bar adjustments for mobile */
     .search {
-        margin-right: 0.5rem;
         flex: 1;
         max-width: 300px;
         position: relative;

@@ -20,9 +20,7 @@ if %errorlevel% neq 0 (
     echo Options:
     echo   1. Install Git for Windows (includes gzip)
     echo   2. Install GnuWin32 gzip
-    echo   3. Use WSL/Git Bash and run gzip-assets.sh
     echo.
-    pause
     exit /b 1
 )
 
@@ -30,7 +28,7 @@ echo Using gzip:
 gzip --version | findstr "gzip"
 echo.
 
-cd template
+cd html_build\template
 
 echo Compressing Minified CSS files...
 echo -----------------------------------
@@ -77,4 +75,3 @@ echo.
 echo View file sizes:
 echo   dir /s *.gz
 echo.
-pause
